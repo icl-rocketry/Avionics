@@ -240,10 +240,6 @@ Wire Wire Line
 Wire Wire Line
 	8050 1650 8650 1650
 Wire Wire Line
-	8050 1150 8650 1150
-Text Label 8050 1150 0    50   ~ 0
-SD_CS
-Wire Wire Line
 	8350 1350 8650 1350
 $Comp
 L power:GND #PWR?
@@ -264,8 +260,6 @@ Text Label 7200 3850 2    50   ~ 0
 MISO
 Text Label 7200 3750 2    50   ~ 0
 SCLK
-Text Label 7200 3050 2    50   ~ 0
-SD_CS
 Wire Wire Line
 	8050 1250 8650 1250
 Text Label 8050 1650 0    50   ~ 0
@@ -446,59 +440,6 @@ Wire Wire Line
 	1000 1100 1100 1100
 Text Label 1100 1100 2    50   ~ 0
 VIN
-$Comp
-L Sensor_Pressure:MS5607-02BA U?
-U 1 1 5DAF7991
-P 9700 3200
-F 0 "U?" H 10030 3246 50  0000 L CNN
-F 1 "MS5607-02BA" H 10030 3155 50  0000 L CNN
-F 2 "Package_LGA:LGA-8_3x5mm_P1.25mm" H 9700 3200 50  0001 C CNN
-F 3 "https://www.te.com/commerce/DocumentDelivery/DDEController?Action=showdoc&DocId=Data+Sheet%7FMS5607-02BA03%7FB2%7Fpdf%7FEnglish%7FENG_DS_MS5607-02BA03_B2.pdf%7FCAT-BLPS0035" H 9700 3200 50  0001 C CNN
-	1    9700 3200
-	1    0    0    -1  
-$EndComp
-$Comp
-L power:+3.3V #PWR?
-U 1 1 5DAF89F9
-P 9700 2700
-F 0 "#PWR?" H 9700 2550 50  0001 C CNN
-F 1 "+3.3V" H 9715 2873 50  0000 C CNN
-F 2 "" H 9700 2700 50  0001 C CNN
-F 3 "" H 9700 2700 50  0001 C CNN
-	1    9700 2700
-	1    0    0    -1  
-$EndComp
-Wire Wire Line
-	9700 2700 9700 2800
-$Comp
-L power:GND #PWR?
-U 1 1 5DAFAAA1
-P 9700 3700
-F 0 "#PWR?" H 9700 3450 50  0001 C CNN
-F 1 "GND" H 9705 3527 50  0000 C CNN
-F 2 "" H 9700 3700 50  0001 C CNN
-F 3 "" H 9700 3700 50  0001 C CNN
-	1    9700 3700
-	1    0    0    -1  
-$EndComp
-Wire Wire Line
-	9700 3700 9700 3600
-Text Label 8950 3100 0    50   ~ 0
-MISO
-Text Label 8950 3200 0    50   ~ 0
-MOSI
-Text Label 8950 3300 0    50   ~ 0
-SCLK
-Text Label 8950 3400 0    50   ~ 0
-BARO_CS
-Wire Wire Line
-	8950 3100 9300 3100
-Wire Wire Line
-	8950 3200 9300 3200
-Wire Wire Line
-	8950 3300 9300 3300
-Wire Wire Line
-	8950 3400 9300 3400
 Text Label 7200 4750 2    50   ~ 0
 BARO_CS
 Wire Wire Line
@@ -582,63 +523,6 @@ TXD
 Wire Wire Line
 	7200 4850 6850 4850
 Text Label 7200 4850 2    50   ~ 0
-IMU_CS
-$Comp
-L Connector_Generic:Conn_01x06 J?
-U 1 1 5DB7D398
-P 9950 4400
-F 0 "J?" H 10030 4392 50  0000 L CNN
-F 1 "Conn_01x06" H 10030 4301 50  0000 L CNN
-F 2 "" H 9950 4400 50  0001 C CNN
-F 3 "~" H 9950 4400 50  0001 C CNN
-	1    9950 4400
-	1    0    0    -1  
-$EndComp
-$Comp
-L power:+3.3V #PWR?
-U 1 1 5DB7DB84
-P 9650 4100
-F 0 "#PWR?" H 9650 3950 50  0001 C CNN
-F 1 "+3.3V" H 9665 4273 50  0000 C CNN
-F 2 "" H 9650 4100 50  0001 C CNN
-F 3 "" H 9650 4100 50  0001 C CNN
-	1    9650 4100
-	1    0    0    -1  
-$EndComp
-Wire Wire Line
-	9650 4100 9650 4200
-Wire Wire Line
-	9650 4200 9750 4200
-$Comp
-L power:GND #PWR?
-U 1 1 5DB803B2
-P 9650 4850
-F 0 "#PWR?" H 9650 4600 50  0001 C CNN
-F 1 "GND" H 9655 4677 50  0000 C CNN
-F 2 "" H 9650 4850 50  0001 C CNN
-F 3 "" H 9650 4850 50  0001 C CNN
-	1    9650 4850
-	1    0    0    -1  
-$EndComp
-Wire Wire Line
-	9650 4850 9650 4700
-Wire Wire Line
-	9650 4700 9750 4700
-Wire Wire Line
-	9500 4300 9750 4300
-Wire Wire Line
-	9500 4400 9750 4400
-Wire Wire Line
-	9500 4500 9750 4500
-Wire Wire Line
-	9500 4600 9750 4600
-Text Label 9500 4300 0    50   ~ 0
-MISO
-Text Label 9500 4400 0    50   ~ 0
-MOSI
-Text Label 9500 4500 0    50   ~ 0
-SCLK
-Text Label 9500 4600 0    50   ~ 0
 IMU_CS
 $Comp
 L Connector_Generic:Conn_01x02 J?
@@ -1026,4 +910,222 @@ Wire Wire Line
 Wire Wire Line
 	1050 3050 1250 3050
 Connection ~ 1050 4000
+$Comp
+L Device:Jumper_NO_Small JP?
+U 1 1 5DAF9D41
+P 7300 3000
+F 0 "JP?" H 7300 3185 50  0000 C CNN
+F 1 "SD_JUMP" H 7300 3094 50  0000 C CNN
+F 2 "" H 7300 3000 50  0001 C CNN
+F 3 "~" H 7300 3000 50  0001 C CNN
+	1    7300 3000
+	1    0    0    -1  
+$EndComp
+Text Label 8050 1150 0    50   ~ 0
+SD_CS
+Wire Wire Line
+	8050 1150 8650 1150
+$Comp
+L Device:Jumper_NO_Small JP?
+U 1 1 5DB2151C
+P 7300 3100
+F 0 "JP?" H 7300 3285 50  0000 C CNN
+F 1 "FLASH_JUMP" H 7300 3194 50  0000 C CNN
+F 2 "" H 7300 3100 50  0001 C CNN
+F 3 "~" H 7300 3100 50  0001 C CNN
+	1    7300 3100
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	7200 3100 7200 3050
+Connection ~ 7200 3050
+Wire Wire Line
+	7200 3050 7200 3000
+Wire Wire Line
+	7400 3000 7650 3000
+Wire Wire Line
+	7400 3100 7650 3100
+Text Label 7650 3000 2    50   ~ 0
+SD_CS
+Text Label 7650 3100 2    50   ~ 0
+FLASH_CS
+$Comp
+L Sensor_Pressure:MS5607-02BA U?
+U 1 1 5DAF7991
+P 9750 4400
+F 0 "U?" H 10080 4446 50  0000 L CNN
+F 1 "MS5607-02BA" H 10080 4355 50  0000 L CNN
+F 2 "Package_LGA:LGA-8_3x5mm_P1.25mm" H 9750 4400 50  0001 C CNN
+F 3 "https://www.te.com/commerce/DocumentDelivery/DDEController?Action=showdoc&DocId=Data+Sheet%7FMS5607-02BA03%7FB2%7Fpdf%7FEnglish%7FENG_DS_MS5607-02BA03_B2.pdf%7FCAT-BLPS0035" H 9750 4400 50  0001 C CNN
+	1    9750 4400
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:+3.3V #PWR?
+U 1 1 5DAF89F9
+P 9750 3900
+F 0 "#PWR?" H 9750 3750 50  0001 C CNN
+F 1 "+3.3V" H 9765 4073 50  0000 C CNN
+F 2 "" H 9750 3900 50  0001 C CNN
+F 3 "" H 9750 3900 50  0001 C CNN
+	1    9750 3900
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	9750 3900 9750 4000
+$Comp
+L power:GND #PWR?
+U 1 1 5DAFAAA1
+P 9750 4900
+F 0 "#PWR?" H 9750 4650 50  0001 C CNN
+F 1 "GND" H 9755 4727 50  0000 C CNN
+F 2 "" H 9750 4900 50  0001 C CNN
+F 3 "" H 9750 4900 50  0001 C CNN
+	1    9750 4900
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	9750 4900 9750 4800
+Text Label 9000 4300 0    50   ~ 0
+MISO
+Text Label 9000 4400 0    50   ~ 0
+MOSI
+Text Label 9000 4500 0    50   ~ 0
+SCLK
+Text Label 9000 4600 0    50   ~ 0
+BARO_CS
+Wire Wire Line
+	9000 4300 9350 4300
+Wire Wire Line
+	9000 4400 9350 4400
+Wire Wire Line
+	9000 4500 9350 4500
+Wire Wire Line
+	9000 4600 9350 4600
+$Comp
+L Connector_Generic:Conn_01x06 J?
+U 1 1 5DB7D398
+P 10000 5600
+F 0 "J?" H 10080 5592 50  0000 L CNN
+F 1 "Conn_01x06" H 10080 5501 50  0000 L CNN
+F 2 "" H 10000 5600 50  0001 C CNN
+F 3 "~" H 10000 5600 50  0001 C CNN
+	1    10000 5600
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:+3.3V #PWR?
+U 1 1 5DB7DB84
+P 9700 5300
+F 0 "#PWR?" H 9700 5150 50  0001 C CNN
+F 1 "+3.3V" H 9715 5473 50  0000 C CNN
+F 2 "" H 9700 5300 50  0001 C CNN
+F 3 "" H 9700 5300 50  0001 C CNN
+	1    9700 5300
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	9700 5300 9700 5400
+Wire Wire Line
+	9700 5400 9800 5400
+$Comp
+L power:GND #PWR?
+U 1 1 5DB803B2
+P 9700 6050
+F 0 "#PWR?" H 9700 5800 50  0001 C CNN
+F 1 "GND" H 9705 5877 50  0000 C CNN
+F 2 "" H 9700 6050 50  0001 C CNN
+F 3 "" H 9700 6050 50  0001 C CNN
+	1    9700 6050
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	9700 6050 9700 5900
+Wire Wire Line
+	9700 5900 9800 5900
+Wire Wire Line
+	9550 5500 9800 5500
+Wire Wire Line
+	9550 5600 9800 5600
+Wire Wire Line
+	9550 5700 9800 5700
+Wire Wire Line
+	9550 5800 9800 5800
+Text Label 9550 5500 0    50   ~ 0
+MISO
+Text Label 9550 5600 0    50   ~ 0
+MOSI
+Text Label 9550 5700 0    50   ~ 0
+SCLK
+Text Label 9550 5800 0    50   ~ 0
+IMU_CS
+Wire Wire Line
+	6850 3550 7200 3550
+Wire Wire Line
+	6850 3650 7200 3650
+Text Label 7200 3650 2    50   ~ 0
+RADIO_RX
+Text Label 7200 3550 2    50   ~ 0
+RADIO_TX
+$Comp
+L Sparkfun_RF:XBEE JP?
+U 1 1 5DB6F306
+P 9800 2950
+F 0 "JP?" H 9800 3710 45  0000 C CNN
+F 1 "XBEE" H 9800 3626 45  0000 C CNN
+F 2 "XBEE" H 9800 3550 20  0001 C CNN
+F 3 "" H 9800 2950 50  0001 C CNN
+F 4 "XXX-00000" H 9800 3531 60  0000 C CNN "Field4"
+	1    9800 2950
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:GND #PWR?
+U 1 1 5DB72471
+P 9000 3550
+F 0 "#PWR?" H 9000 3300 50  0001 C CNN
+F 1 "GND" H 9005 3377 50  0000 C CNN
+F 2 "" H 9000 3550 50  0001 C CNN
+F 3 "" H 9000 3550 50  0001 C CNN
+	1    9000 3550
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	9100 3450 9000 3450
+Wire Wire Line
+	9000 3450 9000 3550
+$Comp
+L power:+3.3V #PWR?
+U 1 1 5DB78938
+P 9000 2400
+F 0 "#PWR?" H 9000 2250 50  0001 C CNN
+F 1 "+3.3V" H 9015 2573 50  0000 C CNN
+F 2 "" H 9000 2400 50  0001 C CNN
+F 3 "" H 9000 2400 50  0001 C CNN
+	1    9000 2400
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	9000 2400 9000 2550
+Wire Wire Line
+	9000 2550 9100 2550
+Wire Wire Line
+	9100 2750 8700 2750
+Wire Wire Line
+	9100 2650 8700 2650
+Text Label 8700 2650 0    50   ~ 0
+RADIO_RX
+Text Label 8700 2750 0    50   ~ 0
+RADIO_TX
+$Comp
+L Connector:8P8C_LED J?
+U 1 1 5DB9241E
+P 8650 5750
+F 0 "J?" H 8650 5183 50  0000 C CNN
+F 1 "8P8C_LED" H 8650 5274 50  0000 C CNN
+F 2 "" V 8650 5775 50  0001 C CNN
+F 3 "~" V 8650 5775 50  0001 C CNN
+	1    8650 5750
+	-1   0    0    1   
+$EndComp
 $EndSCHEMATC
