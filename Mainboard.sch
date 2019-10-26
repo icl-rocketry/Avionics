@@ -15,6 +15,17 @@ Comment3 ""
 Comment4 ""
 $EndDescr
 $Comp
+L RF_Module:ESP32-WROOM-32D U?
+U 1 1 5DA5F4C7
+P 6250 3750
+F 0 "U?" H 6250 5331 50  0000 C CNN
+F 1 "ESP32-WROOM-32D" H 6250 5240 50  0000 C CNN
+F 2 "RF_Module:ESP32-WROOM-32" H 6250 2250 50  0001 C CNN
+F 3 "https://www.espressif.com/sites/default/files/documentation/esp32-wroom-32d_esp32-wroom-32u_datasheet_en.pdf" H 5950 3800 50  0001 C CNN
+	1    6250 3750
+	1    0    0    -1  
+$EndComp
+$Comp
 L power:+3.3V #PWR?
 U 1 1 5DA60792
 P 6250 2050
@@ -899,17 +910,44 @@ Wire Wire Line
 Wire Wire Line
 	1050 3050 1250 3050
 Connection ~ 1050 4000
+$Comp
+L Device:Jumper_NO_Small JP?
+U 1 1 5DAF9D41
+P 7300 3000
+F 0 "JP?" H 7300 3185 50  0000 C CNN
+F 1 "SD_JUMP" H 7300 3094 50  0000 C CNN
+F 2 "" H 7300 3000 50  0001 C CNN
+F 3 "~" H 7300 3000 50  0001 C CNN
+	1    7300 3000
+	1    0    0    -1  
+$EndComp
 Text Label 8700 1150 0    50   ~ 0
 SD_CS
 Wire Wire Line
 	8700 1150 9300 1150
+$Comp
+L Device:Jumper_NO_Small JP?
+U 1 1 5DB2151C
+P 7300 3100
+F 0 "JP?" H 7300 3285 50  0000 C CNN
+F 1 "FLASH_JUMP" H 7300 3194 50  0000 C CNN
+F 2 "" H 7300 3100 50  0001 C CNN
+F 3 "~" H 7300 3100 50  0001 C CNN
+	1    7300 3100
+	1    0    0    -1  
+$EndComp
 Wire Wire Line
-	7350 2850 7600 2850
+	7200 3100 7200 3050
+Connection ~ 7200 3050
 Wire Wire Line
-	7350 3250 7600 3250
-Text Label 7600 2850 2    50   ~ 0
+	7200 3050 7200 3000
+Wire Wire Line
+	7400 3000 7650 3000
+Wire Wire Line
+	7400 3100 7650 3100
+Text Label 7650 3000 2    50   ~ 0
 SD_CS
-Text Label 7600 3250 2    50   ~ 0
+Text Label 7650 3100 2    50   ~ 0
 FLASH_CS
 $Comp
 L Sensor_Pressure:MS5607-02BA U?
@@ -1030,7 +1068,7 @@ RADIO_RX
 Text Label 7200 3550 2    50   ~ 0
 RADIO_TX
 $Comp
-L Sparkfun_RF:XBEE JP?
+L Mainboard-rescue:XBEE-Sparkfun_RF-Mainboard-rescue JP?
 U 1 1 5DB6F306
 P 10350 3150
 F 0 "JP?" H 10350 3910 45  0000 C CNN
@@ -1109,90 +1147,70 @@ Text Label 7900 5450 0    50   ~ 0
 CAN_HIGH
 Text Label 7900 5550 0    50   ~ 0
 CAN_LOW
-$Comp
-L RF_Module:ESP32-WROOM-32D U?
-U 1 1 5DA5F4C7
-P 6250 3750
-F 0 "U?" H 6250 5331 50  0000 C CNN
-F 1 "ESP32-WROOM-32D" H 6250 5240 50  0000 C CNN
-F 2 "RF_Module:ESP32-WROOM-32" H 6250 2250 50  0001 C CNN
-F 3 "https://www.espressif.com/sites/default/files/documentation/esp32-wroom-32d_esp32-wroom-32u_datasheet_en.pdf" H 5950 3800 50  0001 C CNN
-	1    6250 3750
-	1    0    0    -1  
-$EndComp
-Text Label 7600 3950 2    50   ~ 0
-SDA
-Text Label 7600 4050 2    50   ~ 0
-SCL
-$Comp
-L Jumper:SolderJumper_3_Open JP?
-U 1 1 5DC01BB6
-P 7350 3050
-F 0 "JP?" V 7304 3118 50  0000 L CNN
-F 1 "SolderJumper_3_Open" V 7395 3118 50  0000 L CNN
-F 2 "" H 7350 3050 50  0001 C CNN
-F 3 "~" H 7350 3050 50  0001 C CNN
-	1    7350 3050
-	0    1    1    0   
-$EndComp
-Wire Wire Line
-	6850 3950 7300 3950
-Wire Wire Line
-	6850 4050 7400 4050
-Wire Wire Line
-	7400 4050 7400 3850
-Connection ~ 7400 4050
-Wire Wire Line
-	7400 4050 7600 4050
-Wire Wire Line
-	7300 3950 7300 3850
-Connection ~ 7300 3950
-Wire Wire Line
-	7300 3950 7600 3950
-$Comp
-L Device:R_Small R?
-U 1 1 5DB1BC5B
-P 7400 3750
-F 0 "R?" H 7459 3796 50  0000 L CNN
-F 1 "4.7K" H 7459 3705 50  0000 L CNN
-F 2 "" H 7400 3750 50  0001 C CNN
-F 3 "~" H 7400 3750 50  0001 C CNN
-	1    7400 3750
-	1    0    0    -1  
-$EndComp
-$Comp
-L Device:R_Small R?
-U 1 1 5DB1C9E2
-P 7300 3750
-F 0 "R?" H 7359 3796 50  0000 L CNN
-F 1 "4.7K" H 7359 3705 50  0000 L CNN
-F 2 "" H 7300 3750 50  0001 C CNN
-F 3 "~" H 7300 3750 50  0001 C CNN
-	1    7300 3750
-	1    0    0    -1  
-$EndComp
-Wire Wire Line
-	7300 3650 7350 3650
-$Comp
-L power:+3.3V #PWR?
-U 1 1 5DB29AD6
-P 7350 3600
-F 0 "#PWR?" H 7350 3450 50  0001 C CNN
-F 1 "+3.3V" H 7365 3773 50  0000 C CNN
-F 2 "" H 7350 3600 50  0001 C CNN
-F 3 "" H 7350 3600 50  0001 C CNN
-	1    7350 3600
-	1    0    0    -1  
-$EndComp
-Wire Wire Line
-	7350 3600 7350 3650
-Connection ~ 7350 3650
-Wire Wire Line
-	7350 3650 7400 3650
 $Sheet
 S 8400 3050 500  200 
 U 5DBDE223
 F0 "GPS" 50
 F1 "gps.sch" 50
+F2 "SDA" I L 8400 3100 50 
+F3 "SCL" I L 8400 3200 50 
+F4 "RXD" I R 8900 3100 50 
+F5 "TXD" I R 8900 3200 50 
 $EndSheet
+$Comp
+L Device:R R?
+U 1 1 5DAFE4EF
+P 8300 2800
+F 0 "R?" H 8230 2754 50  0000 R CNN
+F 1 "4k7" H 8230 2845 50  0000 R CNN
+F 2 "" V 8230 2800 50  0001 C CNN
+F 3 "~" H 8300 2800 50  0001 C CNN
+	1    8300 2800
+	-1   0    0    1   
+$EndComp
+$Comp
+L Device:R R?
+U 1 1 5DAFF41E
+P 8100 2800
+F 0 "R?" H 8170 2846 50  0000 L CNN
+F 1 "4k7" H 8170 2755 50  0000 L CNN
+F 2 "" V 8030 2800 50  0001 C CNN
+F 3 "~" H 8100 2800 50  0001 C CNN
+	1    8100 2800
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	8400 3100 8300 3100
+Wire Wire Line
+	8300 3100 8300 2950
+Wire Wire Line
+	8400 3200 8100 3200
+Wire Wire Line
+	8100 3200 8100 2950
+$Comp
+L power:+3V3 #PWR?
+U 1 1 5DB0C92E
+P 8300 2550
+F 0 "#PWR?" H 8300 2400 50  0001 C CNN
+F 1 "+3V3" H 8315 2723 50  0000 C CNN
+F 2 "" H 8300 2550 50  0001 C CNN
+F 3 "" H 8300 2550 50  0001 C CNN
+	1    8300 2550
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:+3V3 #PWR?
+U 1 1 5DB0D45A
+P 8100 2550
+F 0 "#PWR?" H 8100 2400 50  0001 C CNN
+F 1 "+3V3" H 8115 2723 50  0000 C CNN
+F 2 "" H 8100 2550 50  0001 C CNN
+F 3 "" H 8100 2550 50  0001 C CNN
+	1    8100 2550
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	8100 2550 8100 2650
+Wire Wire Line
+	8300 2550 8300 2650
 $EndSCHEMATC

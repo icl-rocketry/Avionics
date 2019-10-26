@@ -1,9 +1,10 @@
 EESchema Schematic File Version 4
+LIBS:Mainboard-cache
 EELAYER 30 0
 EELAYER END
 $Descr A4 11693 8268
 encoding utf-8
-Sheet 1 1
+Sheet 1 2
 Title ""
 Date ""
 Rev ""
@@ -17,7 +18,7 @@ $Comp
 L RF_GPS:MAX-M8Q U?
 U 1 1 5DAF40DC
 P 6000 4050
-F 0 "U?" H 5750 3400 50  0000 C CNN
+F 0 "U?" H 6400 4700 50  0000 C CNN
 F 1 "MAX-M8Q" H 6250 3400 50  0000 C CNN
 F 2 "RF_GPS:ublox_MAX" H 6400 3400 50  0001 C CNN
 F 3 "https://www.u-blox.com/sites/default/files/MAX-M8-FW3_DataSheet_%28UBX-15031506%29.pdf" H 6000 4050 50  0001 C CNN
@@ -36,79 +37,11 @@ F 3 "" H 6000 4950 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 Wire Wire Line
-	6000 4750 6000 4950
-NoConn ~ 5400 3650
-NoConn ~ 5400 3750
-$Comp
-L Device:R R?
-U 1 1 5DAF5C91
-P 4800 4050
-F 0 "R?" V 4593 4050 50  0000 C CNN
-F 1 "R" V 4684 4050 50  0000 C CNN
-F 2 "" V 4730 4050 50  0001 C CNN
-F 3 "~" H 4800 4050 50  0001 C CNN
-	1    4800 4050
-	0    1    1    0   
-$EndComp
-$Comp
-L power:+3V3 #PWR?
-U 1 1 5DAF62DE
-P 4350 4050
-F 0 "#PWR?" H 4350 3900 50  0001 C CNN
-F 1 "+3V3" H 4365 4223 50  0000 C CNN
-F 2 "" H 4350 4050 50  0001 C CNN
-F 3 "" H 4350 4050 50  0001 C CNN
-	1    4350 4050
-	1    0    0    -1  
-$EndComp
-Wire Wire Line
-	4350 4050 4650 4050
-Wire Wire Line
-	4950 4050 5250 4050
-$Comp
-L Device:R R?
-U 1 1 5DAF7091
-P 5200 3600
-F 0 "R?" H 5270 3646 50  0000 L CNN
-F 1 "R" H 5270 3555 50  0000 L CNN
-F 2 "" V 5130 3600 50  0001 C CNN
-F 3 "~" H 5200 3600 50  0001 C CNN
-	1    5200 3600
-	1    0    0    -1  
-$EndComp
-$Comp
-L power:+3V3 #PWR?
-U 1 1 5DAF787F
-P 5200 3350
-F 0 "#PWR?" H 5200 3200 50  0001 C CNN
-F 1 "+3V3" H 5215 3523 50  0000 C CNN
-F 2 "" H 5200 3350 50  0001 C CNN
-F 3 "" H 5200 3350 50  0001 C CNN
-	1    5200 3350
-	1    0    0    -1  
-$EndComp
-Wire Wire Line
-	5200 3350 5200 3450
-Wire Wire Line
-	5200 3950 5400 3950
-Text HLabel 5000 3650 0    50   Input ~ 0
+	6000 4750 6000 4800
+Text HLabel 5100 3950 0    50   Input ~ 0
 SDA
-Text HLabel 5100 4200 0    50   Input ~ 0
+Text HLabel 5100 4050 0    50   Input ~ 0
 SCL
-Wire Wire Line
-	5250 4050 5250 4200
-Wire Wire Line
-	5250 4200 5100 4200
-Connection ~ 5250 4050
-Wire Wire Line
-	5250 4050 5400 4050
-Wire Wire Line
-	5200 3750 5200 3950
-Wire Wire Line
-	5200 3950 5000 3950
-Wire Wire Line
-	5000 3950 5000 3650
-Connection ~ 5200 3950
 $Comp
 L power:+3V3 #PWR?
 U 1 1 5DAF8CAF
@@ -135,4 +68,147 @@ Wire Wire Line
 	6000 3250 6000 3350
 Connection ~ 5900 3250
 NoConn ~ 5400 4350
+NoConn ~ 6600 3850
+Wire Wire Line
+	5100 4050 5400 4050
+Wire Wire Line
+	5100 3950 5400 3950
+$Comp
+L Device:R R?
+U 1 1 5DB38D7E
+P 6350 3250
+F 0 "R?" V 6143 3250 50  0000 C CNN
+F 1 "10" V 6234 3250 50  0000 C CNN
+F 2 "Resistor_SMD:R_0603_1608Metric" V 6280 3250 50  0001 C CNN
+F 3 "~" H 6350 3250 50  0001 C CNN
+	1    6350 3250
+	0    1    1    0   
+$EndComp
+Wire Wire Line
+	6200 3250 6200 3350
+$Comp
+L Device:C C?
+U 1 1 5DB393F9
+P 6850 3400
+F 0 "C?" H 6965 3446 50  0000 L CNN
+F 1 "10nF" H 6965 3355 50  0000 L CNN
+F 2 "Capacitor_SMD:C_0603_1608Metric" H 6888 3250 50  0001 C CNN
+F 3 "~" H 6850 3400 50  0001 C CNN
+	1    6850 3400
+	1    0    0    -1  
+$EndComp
+$Comp
+L pspice:INDUCTOR L?
+U 1 1 5DB3AAFD
+P 6650 2900
+F 0 "L?" V 6696 2856 50  0000 R CNN
+F 1 "27nH" V 6605 2856 50  0000 R CNN
+F 2 "" H 6650 2900 50  0001 C CNN
+F 3 "~" H 6650 2900 50  0001 C CNN
+	1    6650 2900
+	0    -1   -1   0   
+$EndComp
+Wire Wire Line
+	6500 3250 6650 3250
+$Comp
+L power:GND #PWR?
+U 1 1 5DB39CF5
+P 6850 3650
+F 0 "#PWR?" H 6850 3400 50  0001 C CNN
+F 1 "GND" H 6855 3477 50  0000 C CNN
+F 2 "" H 6850 3650 50  0001 C CNN
+F 3 "" H 6850 3650 50  0001 C CNN
+	1    6850 3650
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	6650 3150 6650 3250
+Connection ~ 6650 3250
+Wire Wire Line
+	6650 3250 6850 3250
+Wire Wire Line
+	6850 3550 6850 3650
+Wire Wire Line
+	6600 4050 7250 4050
+$Comp
+L power:+3V3 #PWR?
+U 1 1 5DB3F51D
+P 4700 4450
+F 0 "#PWR?" H 4700 4300 50  0001 C CNN
+F 1 "+3V3" H 4715 4623 50  0000 C CNN
+F 2 "" H 4700 4450 50  0001 C CNN
+F 3 "" H 4700 4450 50  0001 C CNN
+	1    4700 4450
+	1    0    0    -1  
+$EndComp
+NoConn ~ 6600 4350
+NoConn ~ 5400 4250
+Wire Wire Line
+	6650 2650 6650 2600
+Wire Wire Line
+	6650 2600 7250 2600
+Wire Wire Line
+	7250 2600 7250 4050
+Connection ~ 6650 2600
+Wire Wire Line
+	6650 2600 6650 2500
+$Comp
+L Connector:Conn_Coaxial J?
+U 1 1 5DB44C2E
+P 6650 2300
+F 0 "J?" V 6887 2229 50  0000 C CNN
+F 1 "Conn_Coaxial" V 6796 2229 50  0000 C CNN
+F 2 "Connector_Coaxial:U.FL_Hirose_U.FL-R-SMT-1_Vertical" H 6650 2300 50  0001 C CNN
+F 3 " ~" H 6650 2300 50  0001 C CNN
+	1    6650 2300
+	0    -1   -1   0   
+$EndComp
+Wire Wire Line
+	6850 2300 7400 2300
+Wire Wire Line
+	7400 2300 7400 4800
+Wire Wire Line
+	7400 4800 6000 4800
+Connection ~ 6000 4800
+Wire Wire Line
+	6000 4800 6000 4950
+Text HLabel 5100 3650 0    50   Input ~ 0
+RXD
+Text HLabel 5100 3750 0    50   Input ~ 0
+TXD
+Wire Wire Line
+	5400 3750 5100 3750
+Wire Wire Line
+	5100 3650 5400 3650
+$Comp
+L Device:R R?
+U 1 1 5DB48655
+P 5000 4450
+F 0 "R?" V 5207 4450 50  0000 C CNN
+F 1 "10k" V 5116 4450 50  0000 C CNN
+F 2 "" V 4930 4450 50  0001 C CNN
+F 3 "~" H 5000 4450 50  0001 C CNN
+	1    5000 4450
+	0    -1   -1   0   
+$EndComp
+Wire Wire Line
+	4850 4450 4700 4450
+Wire Wire Line
+	5150 4450 5200 4450
+$Comp
+L power:+3V3 #PWR?
+U 1 1 5DB4B478
+P 5200 4350
+F 0 "#PWR?" H 5200 4200 50  0001 C CNN
+F 1 "+3V3" H 5215 4523 50  0000 C CNN
+F 2 "" H 5200 4350 50  0001 C CNN
+F 3 "" H 5200 4350 50  0001 C CNN
+	1    5200 4350
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	5200 4350 5200 4450
+Connection ~ 5200 4450
+Wire Wire Line
+	5200 4450 5400 4450
 $EndSCHEMATC
