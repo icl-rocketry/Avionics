@@ -1,10 +1,10 @@
 EESchema Schematic File Version 4
-LIBS:Mainboard-cache
+LIBS:gps-cache
 EELAYER 30 0
 EELAYER END
 $Descr A4 11693 8268
 encoding utf-8
-Sheet 1 2
+Sheet 1 1
 Title ""
 Date ""
 Rev ""
@@ -194,21 +194,5 @@ $EndComp
 Wire Wire Line
 	4850 4450 4700 4450
 Wire Wire Line
-	5150 4450 5200 4450
-$Comp
-L power:+3V3 #PWR?
-U 1 1 5DB4B478
-P 5200 4350
-F 0 "#PWR?" H 5200 4200 50  0001 C CNN
-F 1 "+3V3" H 5215 4523 50  0000 C CNN
-F 2 "" H 5200 4350 50  0001 C CNN
-F 3 "" H 5200 4350 50  0001 C CNN
-	1    5200 4350
-	1    0    0    -1  
-$EndComp
-Wire Wire Line
-	5200 4350 5200 4450
-Connection ~ 5200 4450
-Wire Wire Line
-	5200 4450 5400 4450
+	5150 4450 5400 4450
 $EndSCHEMATC
