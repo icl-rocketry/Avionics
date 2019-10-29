@@ -243,8 +243,6 @@ F 3 "" H 11000 2050 50  0001 C CNN
 $EndComp
 Wire Wire Line
 	11000 2050 11000 1950
-Text Label 7200 4150 2    50   ~ 0
-MOSI
 Text Label 7200 3850 2    50   ~ 0
 MISO
 Text Label 7200 3750 2    50   ~ 0
@@ -511,8 +509,6 @@ Text Label 3750 1700 0    50   ~ 0
 TXD
 Wire Wire Line
 	7200 4850 6850 4850
-Text Label 7200 4850 2    50   ~ 0
-IMU_CS
 $Comp
 L Connector_Generic:Conn_01x02 J?
 U 1 1 5DB8D7BB
@@ -1122,20 +1118,22 @@ Connection ~ 7350 3650
 Wire Wire Line
 	7350 3650 7400 3650
 $Sheet
-S 9950 5450 500  200 
+S 10500 5650 550  450 
 U 5DBDE223
 F0 "GPS" 50
 F1 "gps.sch" 50
-F2 "SDA" I L 9950 5500 50 
-F3 "SCL" I L 9950 5600 50 
+F2 "SDA" I L 10500 5700 50 
+F3 "SCL" I L 10500 5800 50 
+F4 "RXD" I L 10500 5900 50 
+F5 "TXD" I L 10500 6000 50 
 $EndSheet
 Wire Wire Line
-	9950 5500 9650 5500
+	10500 5700 10200 5700
 Wire Wire Line
-	9950 5600 9650 5600
-Text Label 9650 5500 0    50   ~ 0
+	10500 5800 10200 5800
+Text Label 10200 5700 0    50   ~ 0
 SDA
-Text Label 9650 5600 0    50   ~ 0
+Text Label 10200 5800 0    50   ~ 0
 SCL
 Wire Wire Line
 	6850 3450 7200 3450
@@ -1151,8 +1149,6 @@ Text Label 7200 3250 2    50   ~ 0
 MOSI1
 Text Label 7200 3150 2    50   ~ 0
 MISO1
-Text Label 7200 3450 2    50   ~ 0
-CS1
 $Comp
 L power:GND #PWR?
 U 1 1 5DB9DB5B
@@ -1252,34 +1248,40 @@ F 3 "http://www.ti.com/lit/ds/symlink/sn65hvd230.pdf" H 3900 7350 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Sheet
-S 9950 5850 700  550 
+S 9300 5650 700  550 
 U 5DBB30BF
 F0 "IMU" 50
 F1 "IMU.sch" 50
-F2 "MISO" I L 9950 5900 50 
-F3 "MOSI" I L 9950 6000 50 
-F4 "SCLK" I L 9950 6100 50 
-F5 "IMU_CS" I L 9950 6200 50 
-F6 "MAG_CS" I L 9950 6300 50 
+F2 "MISO" I L 9300 5700 50 
+F3 "MOSI" I L 9300 5800 50 
+F4 "SCLK" I L 9300 5900 50 
+F5 "IMU_CS" I L 9300 6000 50 
+F6 "MAG_CS" I L 9300 6100 50 
 $EndSheet
 Wire Wire Line
-	9950 5900 9700 5900
+	9300 5700 9050 5700
 Wire Wire Line
-	9950 6000 9700 6000
+	9300 5800 9050 5800
 Wire Wire Line
-	9950 6100 9700 6100
+	9300 5900 9050 5900
 Wire Wire Line
-	9950 6200 9700 6200
+	9300 6000 9050 6000
 Wire Wire Line
-	9950 6300 9700 6300
-Text Label 9700 5900 0    50   ~ 0
-MISO
-Text Label 9700 6000 0    50   ~ 0
-MOSI
-Text Label 9700 6100 0    50   ~ 0
-SCLK
-Text Label 9700 6200 0    50   ~ 0
+	9300 6100 9050 6100
+Text Label 9050 6000 0    50   ~ 0
 IMU_CS
-Text Label 9700 6300 0    50   ~ 0
+Text Label 9050 6100 0    50   ~ 0
 MAG_CS
+Text Label 7200 3450 2    50   ~ 0
+IMU_CS
+Text Label 7200 4850 2    50   ~ 0
+MAG_CS
+Text Label 9050 5700 0    50   ~ 0
+MISO1
+Text Label 9050 5800 0    50   ~ 0
+MOSI1
+Text Label 9050 5900 0    50   ~ 0
+SCLK1
+Text Label 7200 4150 2    50   ~ 0
+MOSI
 $EndSCHEMATC
