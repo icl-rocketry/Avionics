@@ -1,0 +1,197 @@
+EESchema Schematic File Version 4
+LIBS:Mainboard-cache
+EELAYER 30 0
+EELAYER END
+$Descr A4 11693 8268
+encoding utf-8
+Sheet 4 4
+Title ""
+Date ""
+Rev ""
+Comp ""
+Comment1 ""
+Comment2 ""
+Comment3 ""
+Comment4 ""
+$EndDescr
+$Comp
+L pspice:INDUCTOR L?
+U 1 1 5DBA17F7
+P 5900 3200
+F 0 "L?" H 5900 3415 50  0000 C CNN
+F 1 "1u5" H 5900 3324 50  0000 C CNN
+F 2 "Inductor_SMD:L_Taiyo-Yuden_NR-30xx" H 5900 3200 50  0001 C CNN
+F 3 "~" H 5900 3200 50  0001 C CNN
+	1    5900 3200
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	6400 3600 6400 3200
+Wire Wire Line
+	6400 3200 6150 3200
+Wire Wire Line
+	6400 4000 6400 3800
+Connection ~ 6400 3800
+$Comp
+L power:+3V3 #PWR?
+U 1 1 5DBA4350
+P 6700 3800
+F 0 "#PWR?" H 6700 3650 50  0001 C CNN
+F 1 "+3V3" H 6715 3973 50  0000 C CNN
+F 2 "" H 6700 3800 50  0001 C CNN
+F 3 "" H 6700 3800 50  0001 C CNN
+	1    6700 3800
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:C C?
+U 1 1 5DBA4ED0
+P 6550 4300
+F 0 "C?" H 6665 4346 50  0000 L CNN
+F 1 "10u" H 6665 4255 50  0000 L CNN
+F 2 "Capacitor_SMD:CP_Elec_4x5.4" H 6588 4150 50  0001 C CNN
+F 3 "~" H 6550 4300 50  0001 C CNN
+	1    6550 4300
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	6400 3800 6550 3800
+$Comp
+L Device:C C?
+U 1 1 5DBA6514
+P 6550 4000
+F 0 "C?" H 6665 4046 50  0000 L CNN
+F 1 "10u" H 6665 3955 50  0000 L CNN
+F 2 "Capacitor_SMD:CP_Elec_4x5.4" H 6588 3850 50  0001 C CNN
+F 3 "~" H 6550 4000 50  0001 C CNN
+	1    6550 4000
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	6550 3800 6550 3850
+Connection ~ 6550 3800
+Wire Wire Line
+	6550 3800 6700 3800
+Wire Wire Line
+	6550 4450 6550 4700
+$Comp
+L iclr:TPS63031 U?
+U 1 1 5DBADF56
+P 5900 3400
+F 0 "U?" H 5900 3450 50  0000 C CNN
+F 1 "TPS63031" H 5900 3350 50  0000 C CNN
+F 2 "" H 5900 3400 50  0001 C CNN
+F 3 "" H 5900 3400 50  0001 C CNN
+	1    5900 3400
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	6350 3600 6400 3600
+Wire Wire Line
+	6350 3800 6400 3800
+Wire Wire Line
+	6350 4000 6400 4000
+Wire Wire Line
+	5650 3200 5400 3200
+Wire Wire Line
+	5400 3200 5400 3600
+Wire Wire Line
+	5400 3600 5450 3600
+Wire Wire Line
+	5700 4600 5700 4700
+Wire Wire Line
+	5700 4700 5750 4700
+Wire Wire Line
+	5800 4700 5800 4600
+Connection ~ 5800 4700
+Wire Wire Line
+	5800 4700 6550 4700
+$Comp
+L power:GND #PWR?
+U 1 1 5DBB0345
+P 5750 4700
+F 0 "#PWR?" H 5750 4450 50  0001 C CNN
+F 1 "GND" H 5755 4527 50  0000 C CNN
+F 2 "" H 5750 4700 50  0001 C CNN
+F 3 "" H 5750 4700 50  0001 C CNN
+	1    5750 4700
+	1    0    0    -1  
+$EndComp
+Connection ~ 5750 4700
+Wire Wire Line
+	5750 4700 5800 4700
+Wire Wire Line
+	5450 3900 5400 3900
+Wire Wire Line
+	5400 3900 5400 4000
+Wire Wire Line
+	5400 4000 5450 4000
+Wire Wire Line
+	5400 4000 5400 4200
+Wire Wire Line
+	5400 4200 5450 4200
+Connection ~ 5400 4000
+$Comp
+L Device:C C?
+U 1 1 5DBBD700
+P 5150 4050
+F 0 "C?" H 5265 4096 50  0000 L CNN
+F 1 "10u" H 5265 4005 50  0000 L CNN
+F 2 "Capacitor_SMD:C_0201_0603Metric" H 5188 3900 50  0001 C CNN
+F 3 "~" H 5150 4050 50  0001 C CNN
+	1    5150 4050
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	5400 3900 5150 3900
+Connection ~ 5400 3900
+$Comp
+L power:GND #PWR?
+U 1 1 5DBBE1E1
+P 5150 4300
+F 0 "#PWR?" H 5150 4050 50  0001 C CNN
+F 1 "GND" H 5155 4127 50  0000 C CNN
+F 2 "" H 5150 4300 50  0001 C CNN
+F 3 "" H 5150 4300 50  0001 C CNN
+	1    5150 4300
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	5150 4200 5150 4250
+$Comp
+L power:VDD #PWR?
+U 1 1 5DBCE035
+P 4650 3800
+F 0 "#PWR?" H 4650 3650 50  0001 C CNN
+F 1 "VDD" H 4667 3973 50  0000 C CNN
+F 2 "" H 4650 3800 50  0001 C CNN
+F 3 "" H 4650 3800 50  0001 C CNN
+	1    4650 3800
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:C C?
+U 1 1 5DBCE6FA
+P 4800 4050
+F 0 "C?" H 4915 4096 50  0000 L CNN
+F 1 "10u" H 4915 4005 50  0000 L CNN
+F 2 "Capacitor_SMD:CP_Elec_4x5.4" H 4838 3900 50  0001 C CNN
+F 3 "~" H 4800 4050 50  0001 C CNN
+	1    4800 4050
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	4800 4200 4800 4250
+Wire Wire Line
+	4800 4250 5150 4250
+Connection ~ 5150 4250
+Wire Wire Line
+	5150 4250 5150 4300
+Wire Wire Line
+	4650 3800 4800 3800
+Wire Wire Line
+	4800 3900 4800 3800
+Connection ~ 4800 3800
+Wire Wire Line
+	4800 3800 5450 3800
+$EndSCHEMATC

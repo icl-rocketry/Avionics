@@ -4,7 +4,7 @@ EELAYER 30 0
 EELAYER END
 $Descr A4 11693 8268
 encoding utf-8
-Sheet 1 3
+Sheet 1 4
 Title ""
 Date ""
 Rev ""
@@ -40,101 +40,6 @@ F 3 "" H 6250 5350 50  0001 C CNN
 $EndComp
 Wire Wire Line
 	6250 5150 6250 5350
-$Comp
-L power:+3.3V #PWR?
-U 1 1 5DA617B9
-P 2800 950
-F 0 "#PWR?" H 2800 800 50  0001 C CNN
-F 1 "+3.3V" H 2815 1123 50  0000 C CNN
-F 2 "" H 2800 950 50  0001 C CNN
-F 3 "" H 2800 950 50  0001 C CNN
-	1    2800 950 
-	1    0    0    -1  
-$EndComp
-$Comp
-L Device:C_Small C?
-U 1 1 5DA626BC
-P 3000 1050
-F 0 "C?" V 2771 1050 50  0000 C CNN
-F 1 "4.7uF" V 2862 1050 50  0000 C CNN
-F 2 "" H 3000 1050 50  0001 C CNN
-F 3 "~" H 3000 1050 50  0001 C CNN
-	1    3000 1050
-	0    1    1    0   
-$EndComp
-$Comp
-L Device:C_Small C?
-U 1 1 5DA63E5A
-P 3000 1250
-F 0 "C?" V 2771 1250 50  0000 C CNN
-F 1 "0.1uF" V 2862 1250 50  0000 C CNN
-F 2 "" H 3000 1250 50  0001 C CNN
-F 3 "~" H 3000 1250 50  0001 C CNN
-	1    3000 1250
-	0    1    1    0   
-$EndComp
-$Comp
-L power:GND #PWR?
-U 1 1 5DA64564
-P 3100 1350
-F 0 "#PWR?" H 3100 1100 50  0001 C CNN
-F 1 "GND" H 3105 1177 50  0000 C CNN
-F 2 "" H 3100 1350 50  0001 C CNN
-F 3 "" H 3100 1350 50  0001 C CNN
-	1    3100 1350
-	1    0    0    -1  
-$EndComp
-Wire Wire Line
-	2800 950  2800 1050
-Wire Wire Line
-	2800 1050 2900 1050
-Wire Wire Line
-	2800 1050 2800 1250
-Wire Wire Line
-	2800 1250 2900 1250
-Connection ~ 2800 1050
-Wire Wire Line
-	3100 1050 3100 1250
-Wire Wire Line
-	3100 1250 3100 1350
-Connection ~ 3100 1250
-$Comp
-L Regulator_Linear:LM1117-3.3 U?
-U 1 1 5DA66F40
-P 1950 1050
-F 0 "U?" H 1950 1292 50  0000 C CNN
-F 1 "LM1117-3.3" H 1950 1201 50  0000 C CNN
-F 2 "" H 1950 1050 50  0001 C CNN
-F 3 "http://www.ti.com/lit/ds/symlink/lm1117.pdf" H 1950 1050 50  0001 C CNN
-	1    1950 1050
-	1    0    0    -1  
-$EndComp
-$Comp
-L power:GND #PWR?
-U 1 1 5DA69208
-P 1950 1500
-F 0 "#PWR?" H 1950 1250 50  0001 C CNN
-F 1 "GND" H 1955 1327 50  0000 C CNN
-F 2 "" H 1950 1500 50  0001 C CNN
-F 3 "" H 1950 1500 50  0001 C CNN
-	1    1950 1500
-	1    0    0    -1  
-$EndComp
-Wire Wire Line
-	1950 1350 1950 1500
-$Comp
-L power:GND #PWR?
-U 1 1 5DA6C375
-P 1100 1200
-F 0 "#PWR?" H 1100 950 50  0001 C CNN
-F 1 "GND" H 1105 1027 50  0000 C CNN
-F 2 "" H 1100 1200 50  0001 C CNN
-F 3 "" H 1100 1200 50  0001 C CNN
-	1    1100 1200
-	1    0    0    -1  
-$EndComp
-Wire Wire Line
-	1000 1200 1100 1200
 $Comp
 L power:+3.3V #PWR?
 U 1 1 5DA6E370
@@ -419,14 +324,6 @@ Wire Wire Line
 	1850 6500 1650 6500
 Text Label 1850 6500 2    50   ~ 0
 EN
-Wire Wire Line
-	1400 1050 1650 1050
-Text Label 1400 1050 0    50   ~ 0
-VIN
-Wire Wire Line
-	1000 1100 1100 1100
-Text Label 1100 1100 2    50   ~ 0
-VIN
 Text Label 7200 4750 2    50   ~ 0
 BARO_CS
 Wire Wire Line
@@ -500,17 +397,6 @@ Text Label 3900 1300 0    50   ~ 0
 TXD
 Wire Wire Line
 	7200 4850 6850 4850
-$Comp
-L Connector_Generic:Conn_01x02 J?
-U 1 1 5DB8D7BB
-P 800 1200
-F 0 "J?" H 718 875 50  0000 C CNN
-F 1 "LIPO 1S" H 718 966 50  0000 C CNN
-F 2 "" H 800 1200 50  0001 C CNN
-F 3 "~" H 800 1200 50  0001 C CNN
-	1    800  1200
-	-1   0    0    1   
-$EndComp
 Wire Wire Line
 	6850 2550 7200 2550
 Wire Wire Line
@@ -837,19 +723,6 @@ Wire Wire Line
 	4750 950  4950 950 
 Wire Wire Line
 	5500 950  5450 950 
-$Comp
-L power:+3.3V #PWR?
-U 1 1 5DC5E3BF
-P 2350 1050
-F 0 "#PWR?" H 2350 900 50  0001 C CNN
-F 1 "+3.3V" H 2365 1223 50  0000 C CNN
-F 2 "" H 2350 1050 50  0001 C CNN
-F 3 "" H 2350 1050 50  0001 C CNN
-	1    2350 1050
-	1    0    0    -1  
-$EndComp
-Wire Wire Line
-	2250 1050 2350 1050
 $Comp
 L Device:R_Small R?
 U 1 1 5DAEB42F
@@ -1280,4 +1153,10 @@ Connection ~ 4750 950
 Wire Wire Line
 	4600 950  4600 1300
 Connection ~ 4600 950 
+$Sheet
+S 6750 1300 500  150 
+U 5DB9F80E
+F0 "power" 50
+F1 "power.sch" 50
+$EndSheet
 $EndSCHEMATC

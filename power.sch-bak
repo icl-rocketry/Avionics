@@ -1,0 +1,197 @@
+EESchema Schematic File Version 4
+LIBS:Mainboard-cache
+EELAYER 30 0
+EELAYER END
+$Descr A4 11693 8268
+encoding utf-8
+Sheet 4 4
+Title ""
+Date ""
+Rev ""
+Comp ""
+Comment1 ""
+Comment2 ""
+Comment3 ""
+Comment4 ""
+$EndDescr
+$Comp
+L pspice:INDUCTOR L?
+U 1 1 5DBA17F7
+P 3700 1100
+F 0 "L?" H 3700 1315 50  0000 C CNN
+F 1 "1u5" H 3700 1224 50  0000 C CNN
+F 2 "" H 3700 1100 50  0001 C CNN
+F 3 "~" H 3700 1100 50  0001 C CNN
+	1    3700 1100
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	4200 1500 4200 1100
+Wire Wire Line
+	4200 1100 3950 1100
+Wire Wire Line
+	4200 1900 4200 1700
+Connection ~ 4200 1700
+$Comp
+L power:+3V3 #PWR?
+U 1 1 5DBA4350
+P 4500 1700
+F 0 "#PWR?" H 4500 1550 50  0001 C CNN
+F 1 "+3V3" H 4515 1873 50  0000 C CNN
+F 2 "" H 4500 1700 50  0001 C CNN
+F 3 "" H 4500 1700 50  0001 C CNN
+	1    4500 1700
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:C C?
+U 1 1 5DBA4ED0
+P 4350 2200
+F 0 "C?" H 4465 2246 50  0000 L CNN
+F 1 "10u" H 4465 2155 50  0000 L CNN
+F 2 "Capacitor_SMD:CP_Elec_4x5.4" H 4388 2050 50  0001 C CNN
+F 3 "~" H 4350 2200 50  0001 C CNN
+	1    4350 2200
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	4200 1700 4350 1700
+$Comp
+L Device:C C?
+U 1 1 5DBA6514
+P 4350 1900
+F 0 "C?" H 4465 1946 50  0000 L CNN
+F 1 "10u" H 4465 1855 50  0000 L CNN
+F 2 "Capacitor_SMD:CP_Elec_4x5.4" H 4388 1750 50  0001 C CNN
+F 3 "~" H 4350 1900 50  0001 C CNN
+	1    4350 1900
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	4350 1700 4350 1750
+Connection ~ 4350 1700
+Wire Wire Line
+	4350 1700 4500 1700
+Wire Wire Line
+	4350 2350 4350 2600
+$Comp
+L iclr:TPS63031 U?
+U 1 1 5DBADF56
+P 3700 1300
+F 0 "U?" H 3700 1350 50  0000 C CNN
+F 1 "TPS63031" H 3700 1250 50  0000 C CNN
+F 2 "" H 3700 1300 50  0001 C CNN
+F 3 "" H 3700 1300 50  0001 C CNN
+	1    3700 1300
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	4150 1500 4200 1500
+Wire Wire Line
+	4150 1700 4200 1700
+Wire Wire Line
+	4150 1900 4200 1900
+Wire Wire Line
+	3450 1100 3200 1100
+Wire Wire Line
+	3200 1100 3200 1500
+Wire Wire Line
+	3200 1500 3250 1500
+Wire Wire Line
+	3500 2500 3500 2600
+Wire Wire Line
+	3500 2600 3550 2600
+Wire Wire Line
+	3600 2600 3600 2500
+Connection ~ 3600 2600
+Wire Wire Line
+	3600 2600 4350 2600
+$Comp
+L power:GND #PWR?
+U 1 1 5DBB0345
+P 3550 2600
+F 0 "#PWR?" H 3550 2350 50  0001 C CNN
+F 1 "GND" H 3555 2427 50  0000 C CNN
+F 2 "" H 3550 2600 50  0001 C CNN
+F 3 "" H 3550 2600 50  0001 C CNN
+	1    3550 2600
+	1    0    0    -1  
+$EndComp
+Connection ~ 3550 2600
+Wire Wire Line
+	3550 2600 3600 2600
+Wire Wire Line
+	3250 1800 3200 1800
+Wire Wire Line
+	3200 1800 3200 1900
+Wire Wire Line
+	3200 1900 3250 1900
+Wire Wire Line
+	3200 1900 3200 2100
+Wire Wire Line
+	3200 2100 3250 2100
+Connection ~ 3200 1900
+$Comp
+L Device:C C?
+U 1 1 5DBBD700
+P 2950 1950
+F 0 "C?" H 3065 1996 50  0000 L CNN
+F 1 "10u" H 3065 1905 50  0000 L CNN
+F 2 "Capacitor_SMD:C_0201_0603Metric" H 2988 1800 50  0001 C CNN
+F 3 "~" H 2950 1950 50  0001 C CNN
+	1    2950 1950
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	3200 1800 2950 1800
+Connection ~ 3200 1800
+$Comp
+L power:GND #PWR?
+U 1 1 5DBBE1E1
+P 2950 2200
+F 0 "#PWR?" H 2950 1950 50  0001 C CNN
+F 1 "GND" H 2955 2027 50  0000 C CNN
+F 2 "" H 2950 2200 50  0001 C CNN
+F 3 "" H 2950 2200 50  0001 C CNN
+	1    2950 2200
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	2950 2100 2950 2150
+$Comp
+L power:VDD #PWR?
+U 1 1 5DBCE035
+P 2450 1700
+F 0 "#PWR?" H 2450 1550 50  0001 C CNN
+F 1 "VDD" H 2467 1873 50  0000 C CNN
+F 2 "" H 2450 1700 50  0001 C CNN
+F 3 "" H 2450 1700 50  0001 C CNN
+	1    2450 1700
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:C C?
+U 1 1 5DBCE6FA
+P 2600 1950
+F 0 "C?" H 2715 1996 50  0000 L CNN
+F 1 "10u" H 2715 1905 50  0000 L CNN
+F 2 "Capacitor_SMD:CP_Elec_4x5.4" H 2638 1800 50  0001 C CNN
+F 3 "~" H 2600 1950 50  0001 C CNN
+	1    2600 1950
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	2600 2100 2600 2150
+Wire Wire Line
+	2600 2150 2950 2150
+Connection ~ 2950 2150
+Wire Wire Line
+	2950 2150 2950 2200
+Wire Wire Line
+	2450 1700 2600 1700
+Wire Wire Line
+	2600 1800 2600 1700
+Connection ~ 2600 1700
+Wire Wire Line
+	2600 1700 3250 1700
+$EndSCHEMATC
