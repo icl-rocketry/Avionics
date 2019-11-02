@@ -14,11 +14,11 @@ Comment2 ""
 Comment3 ""
 Comment4 ""
 $EndDescr
-Text HLabel 4800 2350 0    50   Input ~ 0
+Text HLabel 5750 2700 0    50   Input ~ 0
 MISO
-Text HLabel 4800 2500 0    50   Input ~ 0
+Text HLabel 5800 2200 0    50   Input ~ 0
 MOSI
-Text HLabel 4800 2650 0    50   Input ~ 0
+Text HLabel 5800 2100 0    50   Input ~ 0
 SCLK
 Text HLabel 4800 2800 0    50   Input ~ 0
 IMU_CS
@@ -199,22 +199,12 @@ F 3 "" H 6250 1300 50  0001 C CNN
 	1    6250 1300
 	-1   0    0    1   
 $EndComp
-Text Label 5850 2100 0    50   ~ 0
-SCLK
-Wire Wire Line
-	5850 2100 6050 2100
-Wire Wire Line
-	5850 2200 6050 2200
-Text Label 5850 2200 0    50   ~ 0
-MOSI
 Wire Wire Line
 	7450 2200 7750 2200
 Text Label 7500 2200 0    50   ~ 0
 SDO_M
 Wire Wire Line
 	5950 2700 5750 2700
-Text Label 5750 2700 0    50   ~ 0
-MISO
 Text Label 5750 2500 0    50   ~ 0
 SDO_M
 Connection ~ 5950 2500
@@ -280,4 +270,8 @@ F 3 "" H 5700 3250 50  0001 C CNN
 	1    5700 3250
 	0    1    1    0   
 $EndComp
+Wire Wire Line
+	5800 2100 6050 2100
+Wire Wire Line
+	5800 2200 6050 2200
 $EndSCHEMATC
