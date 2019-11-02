@@ -997,19 +997,7 @@ SDA
 Text Label 10200 5800 0    50   ~ 0
 SCL
 Wire Wire Line
-	6850 3450 7200 3450
-Wire Wire Line
-	6850 3350 7200 3350
-Wire Wire Line
-	6850 3250 7200 3250
-Wire Wire Line
-	6850 3150 7200 3150
-Text Label 7200 3350 2    50   ~ 0
-SCLK1
-Text Label 7200 3250 2    50   ~ 0
-MOSI1
-Text Label 7200 3150 2    50   ~ 0
-MISO1
+	6850 4350 7200 4350
 $Comp
 L power:GND #PWR?
 U 1 1 5DB9DB5B
@@ -1133,16 +1121,10 @@ Text Label 9050 6000 0    50   ~ 0
 IMU_CS
 Text Label 9050 6100 0    50   ~ 0
 MAG_CS
-Text Label 7200 3450 2    50   ~ 0
+Text Label 7200 4350 2    50   ~ 0
 IMU_CS
 Text Label 7200 4850 2    50   ~ 0
 MAG_CS
-Text Label 9050 5700 0    50   ~ 0
-MISO1
-Text Label 9050 5800 0    50   ~ 0
-MOSI1
-Text Label 9050 5900 0    50   ~ 0
-SCLK1
 Text Label 7200 4150 2    50   ~ 0
 MOSI
 Wire Wire Line
@@ -1320,4 +1302,10 @@ F 3 "" H 6250 7150 50  0001 C CNN
 	1    6250 7150
 	1    0    0    -1  
 $EndComp
+Text Label 9050 5700 0    50   ~ 0
+MISO
+Text Label 9050 5800 0    50   ~ 0
+MOSI
+Text Label 9050 5900 0    50   ~ 0
+SCLK
 $EndSCHEMATC
