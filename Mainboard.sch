@@ -4,7 +4,7 @@ EELAYER 30 0
 EELAYER END
 $Descr A4 11693 8268
 encoding utf-8
-Sheet 1 4
+Sheet 1 5
 Title ""
 Date ""
 Rev ""
@@ -1126,12 +1126,12 @@ $EndSheet
 $Comp
 L Device:Buzzer BZ1
 U 1 1 5DBF25B1
-P 7650 4550
-F 0 "BZ1" H 7802 4579 50  0000 L CNN
-F 1 "Buzzer" H 7802 4488 50  0000 L CNN
-F 2 "" V 7625 4650 50  0001 C CNN
-F 3 "~" V 7625 4650 50  0001 C CNN
-	1    7650 4550
+P 8100 4550
+F 0 "BZ1" H 8252 4579 50  0000 L CNN
+F 1 "Buzzer" H 8252 4488 50  0000 L CNN
+F 2 "" V 8075 4650 50  0001 C CNN
+F 3 "~" V 8075 4650 50  0001 C CNN
+	1    8100 4550
 	1    0    0    -1  
 $EndComp
 Wire Wire Line
@@ -1200,16 +1200,16 @@ Wire Wire Line
 $Comp
 L power:GND #PWR0129
 U 1 1 5DC8DCD7
-P 7550 4750
-F 0 "#PWR0129" H 7550 4500 50  0001 C CNN
-F 1 "GND" H 7555 4577 50  0000 C CNN
-F 2 "" H 7550 4750 50  0001 C CNN
-F 3 "" H 7550 4750 50  0001 C CNN
-	1    7550 4750
+P 8000 4750
+F 0 "#PWR0129" H 8000 4500 50  0001 C CNN
+F 1 "GND" H 8005 4577 50  0000 C CNN
+F 2 "" H 8000 4750 50  0001 C CNN
+F 3 "" H 8000 4750 50  0001 C CNN
+	1    8000 4750
 	1    0    0    -1  
 $EndComp
 Wire Wire Line
-	7550 4750 7550 4650
+	8000 4750 8000 4650
 $Comp
 L Device:R_Small R13
 U 1 1 5DCA6D89
@@ -1439,4 +1439,46 @@ Wire Wire Line
 	5350 7200 5350 7350
 Wire Wire Line
 	5350 7350 5450 7350
+$Sheet
+S 7800 5600 800  500 
+U 5DDE1103
+F0 "nukes" 50
+F1 "Nukes.sch" 50
+F2 "Nuke1" I L 7800 5700 50 
+F3 "Cont1" I L 7800 5800 50 
+F4 "Nuke2" I L 7800 5900 50 
+F5 "Cont2" I L 7800 6000 50 
+$EndSheet
+Wire Wire Line
+	6850 3150 7200 3150
+Wire Wire Line
+	6850 3250 7200 3250
+Wire Wire Line
+	6850 3350 7200 3350
+Wire Wire Line
+	6850 3450 7200 3450
+Text Label 7200 3150 2    50   ~ 0
+Nuke1
+Text Label 7200 3250 2    50   ~ 0
+Cont1
+Text Label 7200 3350 2    50   ~ 0
+Nuke2
+Text Label 7200 3450 2    50   ~ 0
+Cont2
+Wire Wire Line
+	7800 5700 7450 5700
+Wire Wire Line
+	7800 5800 7450 5800
+Wire Wire Line
+	7800 5900 7450 5900
+Wire Wire Line
+	7800 6000 7450 6000
+Text Label 7450 5700 0    50   ~ 0
+Nuke1
+Text Label 7450 5800 0    50   ~ 0
+Cont1
+Text Label 7450 5900 0    50   ~ 0
+Nuke2
+Text Label 7450 6000 0    50   ~ 0
+Cont2
 $EndSCHEMATC
