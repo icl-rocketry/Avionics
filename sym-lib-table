@@ -1,3 +1,4 @@
 (sym_lib_table
   (lib (name Mainboard-rescue)(type Legacy)(uri ${KIPRJMOD}/Mainboard-rescue.lib)(options "")(descr ""))
+  (lib (name Mainboard-cache)(type Legacy)(uri /Users/Kiran/Downloads/Avionics-master-3/Mainboard-cache.lib)(options "")(descr ""))
 )
