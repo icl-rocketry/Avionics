@@ -1126,12 +1126,12 @@ $EndSheet
 $Comp
 L Device:Buzzer BZ1
 U 1 1 5DBF25B1
-P 8100 4550
-F 0 "BZ1" H 8252 4579 50  0000 L CNN
-F 1 "Buzzer" H 8252 4488 50  0000 L CNN
-F 2 "" V 8075 4650 50  0001 C CNN
-F 3 "~" V 8075 4650 50  0001 C CNN
-	1    8100 4550
+P 8150 3650
+F 0 "BZ1" H 8302 3679 50  0000 L CNN
+F 1 "Buzzer" H 8302 3588 50  0000 L CNN
+F 2 "" V 8125 3750 50  0001 C CNN
+F 3 "~" V 8125 3750 50  0001 C CNN
+	1    8150 3650
 	1    0    0    -1  
 $EndComp
 Wire Wire Line
@@ -1195,21 +1195,6 @@ F 3 "" H 5050 2650 50  0001 C CNN
 	1    5050 2650
 	1    0    0    -1  
 $EndComp
-Wire Wire Line
-	6850 4450 7550 4450
-$Comp
-L power:GND #PWR0129
-U 1 1 5DC8DCD7
-P 8000 4750
-F 0 "#PWR0129" H 8000 4500 50  0001 C CNN
-F 1 "GND" H 8005 4577 50  0000 C CNN
-F 2 "" H 8000 4750 50  0001 C CNN
-F 3 "" H 8000 4750 50  0001 C CNN
-	1    8000 4750
-	1    0    0    -1  
-$EndComp
-Wire Wire Line
-	8000 4750 8000 4650
 $Comp
 L Device:R_Small R13
 U 1 1 5DCA6D89
@@ -1481,4 +1466,67 @@ Text Label 7450 5900 0    50   ~ 0
 Nuke2
 Text Label 7450 6000 0    50   ~ 0
 Cont2
+$Comp
+L Device:Q_NMOS_GSD Q?
+U 1 1 5DE0D306
+P 7950 4450
+AR Path="/5DDE6CFA/5DE0D306" Ref="Q?"  Part="1" 
+AR Path="/5DDE1103/5DE0D306" Ref="Q?"  Part="1" 
+AR Path="/5DE0D306" Ref="Q?"  Part="1" 
+F 0 "Q?" H 8156 4496 50  0000 L CNN
+F 1 "PMV20ENR" H 8156 4405 50  0000 L CNN
+F 2 "Package_TO_SOT_SMD:SOT-23" H 8150 4550 50  0001 C CNN
+F 3 "~" H 7950 4450 50  0001 C CNN
+	1    7950 4450
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:GND #PWR?
+U 1 1 5DE0D30D
+P 8050 4900
+AR Path="/5DDE6CFA/5DE0D30D" Ref="#PWR?"  Part="1" 
+AR Path="/5DDE1103/5DE0D30D" Ref="#PWR?"  Part="1" 
+AR Path="/5DE0D30D" Ref="#PWR?"  Part="1" 
+F 0 "#PWR?" H 8050 4650 50  0001 C CNN
+F 1 "GND" H 8055 4727 50  0000 C CNN
+F 2 "" H 8050 4900 50  0001 C CNN
+F 3 "" H 8050 4900 50  0001 C CNN
+	1    8050 4900
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:D_Schottky D?
+U 1 1 5DE49A6B
+P 8050 4000
+AR Path="/5DAD2180/5DE49A6B" Ref="D?"  Part="1" 
+AR Path="/5DB4FA2A/5DE49A6B" Ref="D?"  Part="1" 
+AR Path="/5DDE6CFA/5DE49A6B" Ref="D?"  Part="1" 
+AR Path="/5DDE1103/5DE49A6B" Ref="D?"  Part="1" 
+AR Path="/5DE49A6B" Ref="D?"  Part="1" 
+F 0 "D?" V 8096 3921 50  0000 R CNN
+F 1 "D_Schottky" V 8005 3921 50  0000 R CNN
+F 2 "Diode_SMD:D_SOD-123F" H 8050 4000 50  0001 C CNN
+F 3 "http://www.smc-diodes.com/propdf/DSS12U%20THRU%20DSS125U%20N1873%20REV.A.pdf" H 8050 4000 50  0001 C CNN
+	1    8050 4000
+	0    -1   -1   0   
+$EndComp
+Wire Wire Line
+	8050 4150 8050 4250
+Wire Wire Line
+	8050 3750 8050 3850
+Wire Wire Line
+	8050 4650 8050 4900
+Wire Wire Line
+	6850 4450 7750 4450
+$Comp
+L power:+3.3V #PWR?
+U 1 1 5DEC6485
+P 8050 3550
+F 0 "#PWR?" H 8050 3400 50  0001 C CNN
+F 1 "+3.3V" H 8065 3723 50  0000 C CNN
+F 2 "" H 8050 3550 50  0001 C CNN
+F 3 "" H 8050 3550 50  0001 C CNN
+	1    8050 3550
+	1    0    0    -1  
+$EndComp
 $EndSCHEMATC
