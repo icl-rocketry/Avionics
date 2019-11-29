@@ -4,7 +4,7 @@ EELAYER 30 0
 EELAYER END
 $Descr A4 11693 8268
 encoding utf-8
-Sheet 1 5
+Sheet 1 6
 Title ""
 Date ""
 Rev ""
@@ -1369,14 +1369,14 @@ Wire Wire Line
 Wire Wire Line
 	5350 7350 5450 7350
 $Sheet
-S 7800 5600 800  500 
+S 7950 5700 800  500 
 U 5DDE1103
 F0 "nukes" 50
 F1 "Nukes.sch" 50
-F2 "Nuke1" I L 7800 5700 50 
-F3 "Cont1" I L 7800 5800 50 
-F4 "Nuke2" I L 7800 5900 50 
-F5 "Cont2" I L 7800 6000 50 
+F2 "Nuke1" I L 7950 5800 50 
+F3 "Cont1" I L 7950 5900 50 
+F4 "Nuke2" I L 7950 6000 50 
+F5 "Cont2" I L 7950 6100 50 
 $EndSheet
 Wire Wire Line
 	6850 3150 7200 3150
@@ -1395,20 +1395,20 @@ Nuke2
 Text Label 7200 3450 2    50   ~ 0
 Cont2
 Wire Wire Line
-	7800 5700 7450 5700
+	7950 5800 7600 5800
 Wire Wire Line
-	7800 5800 7450 5800
+	7950 5900 7600 5900
 Wire Wire Line
-	7800 5900 7450 5900
+	7950 6000 7600 6000
 Wire Wire Line
-	7800 6000 7450 6000
-Text Label 7450 5700 0    50   ~ 0
+	7950 6100 7600 6100
+Text Label 7600 5800 0    50   ~ 0
 Nuke1
-Text Label 7450 5800 0    50   ~ 0
+Text Label 7600 5900 0    50   ~ 0
 Cont1
-Text Label 7450 5900 0    50   ~ 0
+Text Label 7600 6000 0    50   ~ 0
 Nuke2
-Text Label 7450 6000 0    50   ~ 0
+Text Label 7600 6100 0    50   ~ 0
 Cont2
 $Comp
 L Device:Q_NMOS_GSD Q?
@@ -1649,4 +1649,16 @@ Wire Wire Line
 	2050 6500 2350 6500
 Wire Wire Line
 	2450 6500 2750 6500
+$Sheet
+S 6800 5700 550  700 
+U 5DE3360C
+F0 "radio" 50
+F1 "radio.sch" 50
+F2 "SCLK" I L 6800 5750 50 
+F3 "MOSI" I L 6800 5850 50 
+F4 "MISO" O L 6800 5950 50 
+F5 "~CS" I L 6800 6050 50 
+F6 "RESET" I L 6800 6150 50 
+F7 "~INT" O L 6800 6250 50 
+$EndSheet
 $EndSCHEMATC
