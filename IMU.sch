@@ -20,9 +20,9 @@ Text HLabel 5800 2200 0    50   Input ~ 0
 MOSI
 Text HLabel 5800 2100 0    50   Input ~ 0
 SCLK
-Text HLabel 4800 2800 0    50   Input ~ 0
+Text HLabel 5800 2400 0    50   Input ~ 0
 IMU_CS
-Text HLabel 4800 2950 0    50   Input ~ 0
+Text HLabel 7750 2100 2    50   Input ~ 0
 MAG_CS
 $Comp
 L Sensor_Motion:LSM9DS1 U7
@@ -274,4 +274,8 @@ Wire Wire Line
 	5800 2100 6050 2100
 Wire Wire Line
 	5800 2200 6050 2200
+Wire Wire Line
+	7750 2100 7450 2100
+Wire Wire Line
+	6050 2400 5800 2400
 $EndSCHEMATC
