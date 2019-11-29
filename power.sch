@@ -1,6 +1,6 @@
 EESchema Schematic File Version 4
 LIBS:Mainboard-cache
-EELAYER 30 0
+EELAYER 29 0
 EELAYER END
 $Descr A4 11693 8268
 encoding utf-8
@@ -157,7 +157,7 @@ U 1 1 5DE04FA4
 P 5900 4000
 F 0 "U8" H 5733 4665 50  0000 C CNN
 F 1 "TPS63031" H 5733 4574 50  0000 C CNN
-F 2 "" H 5900 4600 50  0001 C CNN
+F 2 "iclr:VSON-10-1EP_2.5x2.5mm_Pitch0.5mm_ThermalPad" H 5900 4600 50  0001 C CNN
 F 3 "" H 5900 4600 50  0001 C CNN
 	1    5900 4000
 	1    0    0    -1  
