@@ -25,188 +25,6 @@ F 3 "" H 10150 6800 50  0001 C CNN
 	1    10150 6800
 	1    0    0    -1  
 $EndComp
-Wire Wire Line
-	900  950  900  1750
-Wire Wire Line
-	900  1750 1300 1750
-Wire Wire Line
-	1300 1750 1300 1600
-Wire Wire Line
-	1300 1600 1050 1600
-Wire Wire Line
-	1050 1600 1050 950 
-Wire Wire Line
-	1050 950  900  950 
-Wire Wire Line
-	1350 950  1350 1750
-Wire Wire Line
-	1350 1750 1750 1750
-Wire Wire Line
-	1750 1750 1750 950 
-Wire Wire Line
-	1750 950  1600 950 
-Wire Wire Line
-	1600 950  1600 1600
-Wire Wire Line
-	1600 1600 1500 1600
-Wire Wire Line
-	1500 1600 1500 950 
-Wire Wire Line
-	1500 950  1350 950 
-Wire Wire Line
-	2200 950  1850 950 
-Wire Wire Line
-	1850 950  1850 1750
-Wire Wire Line
-	1850 1750 2200 1750
-Wire Wire Line
-	2200 1750 2200 1600
-Wire Wire Line
-	2200 1600 1950 1600
-Wire Wire Line
-	1950 1600 1950 1050
-Wire Wire Line
-	1950 1050 2200 1050
-Wire Wire Line
-	2200 1050 2200 950 
-Wire Wire Line
-	2300 1750 2300 950 
-Wire Wire Line
-	2300 950  2650 950 
-Wire Wire Line
-	2650 950  2650 1750
-Wire Wire Line
-	2650 1750 2550 1750
-Wire Wire Line
-	2550 1750 2550 1450
-Wire Wire Line
-	2550 1450 2400 1450
-Wire Wire Line
-	2400 1450 2400 1750
-Wire Wire Line
-	2400 1750 2300 1750
-Wire Wire Line
-	2400 1350 2400 1050
-Wire Wire Line
-	2400 1050 2550 1050
-Wire Wire Line
-	2550 1050 2550 1350
-Wire Wire Line
-	2550 1350 2400 1350
-Wire Wire Line
-	3150 1750 3150 950 
-Wire Wire Line
-	3150 950  3200 950 
-Wire Wire Line
-	3200 950  3200 1000
-Wire Wire Line
-	3200 1000 3250 1000
-Wire Wire Line
-	3250 1000 3250 1050
-Wire Wire Line
-	3250 1050 3300 1050
-Wire Wire Line
-	3300 1050 3300 1100
-Wire Wire Line
-	3300 1100 3350 1100
-Wire Wire Line
-	3350 1100 3350 1150
-Wire Wire Line
-	3350 1150 3400 1150
-Wire Wire Line
-	3400 1150 3400 1200
-Wire Wire Line
-	3400 1200 3450 1200
-Wire Wire Line
-	3450 1200 3450 1250
-Wire Wire Line
-	3450 1250 3500 1250
-Wire Wire Line
-	3500 1250 3500 1300
-Wire Wire Line
-	3500 1300 3550 1300
-Wire Wire Line
-	3550 1300 3550 1400
-Wire Wire Line
-	3550 1400 3600 1400
-Wire Wire Line
-	3600 1400 3600 1500
-Wire Wire Line
-	3600 1500 3650 1500
-Wire Wire Line
-	3650 950  3800 950 
-Wire Wire Line
-	3800 1750 3600 1750
-Wire Wire Line
-	3600 1750 3600 1550
-Wire Wire Line
-	3600 1550 3500 1550
-Wire Wire Line
-	3500 1550 3500 1450
-Wire Wire Line
-	3500 1450 3400 1450
-Wire Wire Line
-	3400 1450 3400 1350
-Wire Wire Line
-	3400 1350 3350 1350
-Wire Wire Line
-	3350 1350 3350 1250
-Wire Wire Line
-	3350 1250 3250 1250
-Wire Wire Line
-	3650 950  3650 1500
-Wire Wire Line
-	3800 950  3800 1750
-Wire Wire Line
-	3250 1150 3250 1250
-Connection ~ 3650 1500
-Wire Wire Line
-	3650 1500 3650 1550
-Connection ~ 3250 1250
-Wire Wire Line
-	3250 1250 3250 1750
-Wire Wire Line
-	3950 1000 3950 1750
-Wire Wire Line
-	3950 1750 4100 1750
-Wire Wire Line
-	4100 1750 4100 1000
-Wire Wire Line
-	4100 1000 3950 1000
-Wire Wire Line
-	4550 1000 4250 1000
-Wire Wire Line
-	4250 1000 4250 1700
-Wire Wire Line
-	4250 1700 4600 1700
-Wire Wire Line
-	4600 1700 4600 1600
-Wire Wire Line
-	4600 1600 4350 1600
-Wire Wire Line
-	4350 1600 4350 1100
-Wire Wire Line
-	4350 1100 4550 1100
-Wire Wire Line
-	4550 1100 4550 1000
-Wire Wire Line
-	4700 1000 5100 1000
-Wire Wire Line
-	5100 1000 5100 1700
-Wire Wire Line
-	5100 1700 4700 1700
-Wire Wire Line
-	4700 1700 4700 1000
-Wire Wire Line
-	4800 1100 5000 1100
-Wire Wire Line
-	5000 1100 5000 1600
-Wire Wire Line
-	5000 1600 4800 1600
-Wire Wire Line
-	4800 1600 4800 1100
-Wire Wire Line
-	3150 1750 3250 1750
 $Comp
 L Connector:Screw_Terminal_01x02 J?
 U 1 1 5DE04AED
@@ -376,7 +194,7 @@ AR Path="/5DDE6CFA/5DE04B45" Ref="JP?"  Part="1"
 AR Path="/5DDE1103/5DE04B45" Ref="JP4"  Part="1" 
 F 0 "JP4" H 7550 4005 50  0000 C CNN
 F 1 "SolderJumper_3_Open" H 7550 3914 50  0000 C CNN
-F 2 "Jumper:SolderJumper-3_P1.3mm_Open_RoundedPad1.0x1.5mm_NumberLabels" H 7550 3800 50  0001 C CNN
+F 2 "Jumper:SolderJumper-3_P2.0mm_Open_TrianglePad1.0x1.5mm_NumberLabels" H 7550 3800 50  0001 C CNN
 F 3 "~" H 7550 3800 50  0001 C CNN
 	1    7550 3800
 	1    0    0    -1  
@@ -639,7 +457,7 @@ AR Path="/5DDE6CFA/5DE32382" Ref="JP?"  Part="1"
 AR Path="/5DDE1103/5DE32382" Ref="JP3"  Part="1" 
 F 0 "JP3" H 3250 4155 50  0000 C CNN
 F 1 "SolderJumper_3_Open" H 3250 4064 50  0000 C CNN
-F 2 "Jumper:SolderJumper-3_P1.3mm_Open_RoundedPad1.0x1.5mm_NumberLabels" H 3250 3950 50  0001 C CNN
+F 2 "Jumper:SolderJumper-3_P2.0mm_Open_TrianglePad1.0x1.5mm_NumberLabels" H 3250 3950 50  0001 C CNN
 F 3 "~" H 3250 3950 50  0001 C CNN
 	1    3250 3950
 	1    0    0    -1  

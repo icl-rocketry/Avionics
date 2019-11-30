@@ -4,7 +4,7 @@ EELAYER 30 0
 EELAYER END
 $Descr A4 11693 8268
 encoding utf-8
-Sheet 3 5
+Sheet 3 6
 Title ""
 Date ""
 Rev ""
@@ -20,40 +20,18 @@ Text HLabel 5800 2200 0    50   Input ~ 0
 MOSI
 Text HLabel 5800 2100 0    50   Input ~ 0
 SCLK
-Text HLabel 4800 2800 0    50   Input ~ 0
+Text HLabel 5800 2400 0    50   Input ~ 0
 IMU_CS
-Text HLabel 4800 2950 0    50   Input ~ 0
+Text HLabel 7750 2100 2    50   Input ~ 0
 MAG_CS
-$Comp
-L Sensor_Motion:LSM9DS1 U7
-U 1 1 5DBB7353
-P 6750 2500
-F 0 "U7" H 6750 1611 50  0000 C CNN
-F 1 "LSM9DS1" H 6750 1520 50  0000 C CNN
-F 2 "Package_LGA:LGA-24L_3x3.5mm_P0.43mm" H 8250 3250 50  0001 C CNN
-F 3 "http://www.st.com/content/ccc/resource/technical/document/datasheet/1e/3f/2a/d6/25/eb/48/46/DM00103319.pdf/files/DM00103319.pdf/jcr:content/translations/en.DM00103319.pdf" H 6750 2600 50  0001 C CNN
-	1    6750 2500
-	1    0    0    -1  
-$EndComp
-Wire Wire Line
-	6650 3300 6850 3300
-Wire Wire Line
-	7450 3300 7450 3000
-Connection ~ 6850 3300
-Wire Wire Line
-	6850 3300 7450 3300
 Connection ~ 7450 2700
 Wire Wire Line
 	7450 2700 7450 2600
 Connection ~ 7450 2800
 Wire Wire Line
 	7450 2800 7450 2700
-Connection ~ 7450 2900
 Wire Wire Line
 	7450 2900 7450 2800
-Connection ~ 7450 3000
-Wire Wire Line
-	7450 3000 7450 2900
 Wire Wire Line
 	7450 2600 7600 2600
 Connection ~ 7450 2600
@@ -69,12 +47,7 @@ F 3 "" H 7600 2600 50  0001 C CNN
 	0    -1   -1   0   
 $EndComp
 Wire Wire Line
-	7050 1700 7150 1700
-Wire Wire Line
 	7250 1700 7250 1600
-Connection ~ 7150 1700
-Wire Wire Line
-	7150 1700 7250 1700
 Wire Wire Line
 	6800 1600 6800 1500
 $Comp
@@ -149,16 +122,11 @@ F 3 "" H 7500 1450 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 Wire Wire Line
-	6850 1700 6750 1700
-Wire Wire Line
 	6350 1700 6350 1600
 Wire Wire Line
 	6350 1600 6550 1600
 Wire Wire Line
 	6550 1600 6550 1500
-Connection ~ 6750 1700
-Wire Wire Line
-	6750 1700 6350 1700
 $Comp
 L power:+3.3V #PWR044
 U 1 1 5DBCC221
@@ -274,4 +242,45 @@ Wire Wire Line
 	5800 2100 6050 2100
 Wire Wire Line
 	5800 2200 6050 2200
+Wire Wire Line
+	7750 2100 7450 2100
+Wire Wire Line
+	6050 2400 5800 2400
+Connection ~ 7450 2900
+Connection ~ 6750 1700
+Wire Wire Line
+	6850 1700 6750 1700
+Connection ~ 7150 1700
+Wire Wire Line
+	7150 1700 7250 1700
+Wire Wire Line
+	7050 1700 7150 1700
+Connection ~ 7450 3000
+Connection ~ 6850 3300
+Wire Wire Line
+	7450 3000 7450 2900
+Wire Wire Line
+	7450 3300 7450 3000
+Wire Wire Line
+	6850 3300 7450 3300
+Wire Wire Line
+	6750 1700 6350 1700
+Wire Wire Line
+	6650 3300 6850 3300
+$Comp
+L Sensor_Motion:LSM9DS1 U7
+U 1 1 5DBB7353
+P 6750 2500
+F 0 "U7" H 6750 1611 50  0000 C CNN
+F 1 "LSM9DS1" H 6750 1520 50  0000 C CNN
+F 2 "Package_LGA:LGA-24L_3x3.5mm_P0.43mm" H 8250 3250 50  0001 C CNN
+F 3 "http://www.st.com/content/ccc/resource/technical/document/datasheet/1e/3f/2a/d6/25/eb/48/46/DM00103319.pdf/files/DM00103319.pdf/jcr:content/translations/en.DM00103319.pdf" H 6750 2600 50  0001 C CNN
+	1    6750 2500
+	1    0    0    -1  
+$EndComp
+NoConn ~ 7450 2400
+NoConn ~ 7450 2300
+NoConn ~ 6050 2600
+NoConn ~ 6050 2700
+NoConn ~ 6050 2800
 $EndSCHEMATC

@@ -163,19 +163,6 @@ F 3 "" H 5900 4600 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L power:+3V3 #PWR?
-U 1 1 5E0765FC
-P 3950 5100
-AR Path="/5DE3360C/5E0765FC" Ref="#PWR?"  Part="1" 
-AR Path="/5DB9F80E/5E0765FC" Ref="#PWR053"  Part="1" 
-F 0 "#PWR053" H 3950 4950 50  0001 C CNN
-F 1 "+3V3" H 3965 5273 50  0000 C CNN
-F 2 "" H 3950 5100 50  0001 C CNN
-F 3 "" H 3950 5100 50  0001 C CNN
-	1    3950 5100
-	1    0    0    -1  
-$EndComp
-$Comp
 L Device:C_Small C?
 U 1 1 5E076608
 P 4100 5350
@@ -204,14 +191,7 @@ $EndComp
 Wire Wire Line
 	3800 5250 3800 5150
 Wire Wire Line
-	3800 5150 3950 5150
-Wire Wire Line
 	4100 5150 4100 5250
-Wire Wire Line
-	3950 5100 3950 5150
-Connection ~ 3950 5150
-Wire Wire Line
-	3950 5150 4100 5150
 Wire Wire Line
 	3800 5450 3800 5550
 Wire Wire Line
@@ -421,19 +401,6 @@ Wire Wire Line
 Wire Wire Line
 	7650 5550 7650 5450
 $Comp
-L power:GND #PWR?
-U 1 1 5E084A03
-P 3950 5650
-AR Path="/5DE3360C/5E084A03" Ref="#PWR?"  Part="1" 
-AR Path="/5DB9F80E/5E084A03" Ref="#PWR055"  Part="1" 
-F 0 "#PWR055" H 3950 5400 50  0001 C CNN
-F 1 "GND" H 3955 5477 50  0000 C CNN
-F 2 "" H 3950 5650 50  0001 C CNN
-F 3 "" H 3950 5650 50  0001 C CNN
-	1    3950 5650
-	1    0    0    -1  
-$EndComp
-$Comp
 L Device:C_Small C?
 U 1 1 5E084A09
 P 8250 5350
@@ -462,11 +429,7 @@ $EndComp
 Wire Wire Line
 	7950 5250 7950 5150
 Wire Wire Line
-	8250 5150 8250 5250
-Wire Wire Line
 	7950 5450 7950 5550
-Wire Wire Line
-	8250 5550 8250 5450
 Connection ~ 4100 5150
 Wire Wire Line
 	4100 5150 4400 5150
@@ -548,15 +511,6 @@ Wire Wire Line
 Wire Wire Line
 	7350 5550 7650 5550
 Wire Wire Line
-	3800 5550 3950 5550
-Wire Wire Line
-	3950 5650 3950 5550
-Connection ~ 3950 5550
-Wire Wire Line
-	3950 5550 4100 5550
-Wire Wire Line
-	7950 5550 8250 5550
-Wire Wire Line
 	7950 5150 8250 5150
 $Comp
 L Device:C_Small C?
@@ -595,8 +549,6 @@ Wire Wire Line
 Wire Wire Line
 	8250 5150 8550 5150
 Connection ~ 8550 5150
-Wire Wire Line
-	8250 5550 8550 5550
 Connection ~ 8550 5550
 Wire Wire Line
 	8550 5150 8850 5150
@@ -607,10 +559,10 @@ L Connector:TestPoint TP?
 U 1 1 5E403DEA
 P 5000 3800
 AR Path="/5E403DEA" Ref="TP?"  Part="1" 
-AR Path="/5DB9F80E/5E403DEA" Ref="TP?"  Part="1" 
-F 0 "TP?" V 4954 3988 50  0000 L CNN
+AR Path="/5DB9F80E/5E403DEA" Ref="TP16"  Part="1" 
+F 0 "TP16" V 4954 3988 50  0000 L CNN
 F 1 "TestPoint" V 5045 3988 50  0000 L CNN
-F 2 "" H 5200 3800 50  0001 C CNN
+F 2 "TestPoint:TestPoint_THTPad_1.0x1.0mm_Drill0.5mm" H 5200 3800 50  0001 C CNN
 F 3 "~" H 5200 3800 50  0001 C CNN
 	1    5000 3800
 	0    -1   -1   0   
@@ -620,12 +572,87 @@ L Connector:TestPoint TP?
 U 1 1 5E4076DE
 P 6700 3800
 AR Path="/5E4076DE" Ref="TP?"  Part="1" 
-AR Path="/5DB9F80E/5E4076DE" Ref="TP?"  Part="1" 
-F 0 "TP?" V 6654 3988 50  0000 L CNN
+AR Path="/5DB9F80E/5E4076DE" Ref="TP17"  Part="1" 
+F 0 "TP17" V 6654 3988 50  0000 L CNN
 F 1 "TestPoint" V 6745 3988 50  0000 L CNN
-F 2 "" H 6900 3800 50  0001 C CNN
+F 2 "TestPoint:TestPoint_THTPad_1.0x1.0mm_Drill0.5mm" H 6900 3800 50  0001 C CNN
 F 3 "~" H 6900 3800 50  0001 C CNN
 	1    6700 3800
 	0    1    1    0   
 $EndComp
+$Comp
+L Connector:Conn_01x02_Male J11
+U 1 1 5DE7E179
+P 3700 3350
+F 0 "J11" V 3762 3394 50  0000 L CNN
+F 1 "Conn_01x02_Male" V 3853 3394 50  0000 L CNN
+F 2 "Connector_JST:JST_PH_B2B-PH-K_1x02_P2.00mm_Vertical" H 3700 3350 50  0001 C CNN
+F 3 "~" H 3700 3350 50  0001 C CNN
+	1    3700 3350
+	0    1    1    0   
+$EndComp
+$Comp
+L power:VDD #PWR062
+U 1 1 5DE7F5AD
+P 3700 3650
+F 0 "#PWR062" H 3700 3500 50  0001 C CNN
+F 1 "VDD" V 3717 3778 50  0000 L CNN
+F 2 "" H 3700 3650 50  0001 C CNN
+F 3 "" H 3700 3650 50  0001 C CNN
+	1    3700 3650
+	0    1    1    0   
+$EndComp
+Wire Wire Line
+	3700 3550 3700 3650
+$Comp
+L power:GND #PWR059
+U 1 1 5DE8310C
+P 3600 3650
+F 0 "#PWR059" H 3600 3400 50  0001 C CNN
+F 1 "GND" H 3605 3477 50  0000 C CNN
+F 2 "" H 3600 3650 50  0001 C CNN
+F 3 "" H 3600 3650 50  0001 C CNN
+	1    3600 3650
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	3600 3650 3600 3550
+Wire Wire Line
+	8250 5250 8250 5150
+Wire Wire Line
+	7950 5550 8250 5550
+Connection ~ 8250 5150
+Wire Wire Line
+	8250 5450 8250 5550
+Connection ~ 8250 5550
+Wire Wire Line
+	8250 5550 8550 5550
+Wire Wire Line
+	3800 5550 4100 5550
+Wire Wire Line
+	3800 5150 4100 5150
+$Comp
+L Mainboard-cache:+3.3V #PWR0106
+U 1 1 5E4CE71E
+P 3800 5150
+F 0 "#PWR0106" H 3800 5000 50  0001 C CNN
+F 1 "+3.3V" H 3815 5323 50  0000 C CNN
+F 2 "" H 3800 5150 50  0001 C CNN
+F 3 "" H 3800 5150 50  0001 C CNN
+	1    3800 5150
+	1    0    0    -1  
+$EndComp
+Connection ~ 3800 5150
+$Comp
+L power:GND #PWR0107
+U 1 1 5E4CEA96
+P 8850 5550
+F 0 "#PWR0107" H 8850 5300 50  0001 C CNN
+F 1 "GND" H 8855 5377 50  0000 C CNN
+F 2 "" H 8850 5550 50  0001 C CNN
+F 3 "" H 8850 5550 50  0001 C CNN
+	1    8850 5550
+	1    0    0    -1  
+$EndComp
+Connection ~ 8850 5550
 $EndSCHEMATC
