@@ -4,7 +4,7 @@ EELAYER 30 0
 EELAYER END
 $Descr A4 11693 8268
 encoding utf-8
-Sheet 5 5
+Sheet 5 6
 Title ""
 Date ""
 Rev ""
@@ -767,10 +767,10 @@ Wire Wire Line
 Wire Wire Line
 	5850 2700 5850 2950
 $Comp
-L power:GND #PWR?
+L power:GND #PWR0101
 U 1 1 5DEC1515
 P 5850 2950
-F 0 "#PWR?" H 5850 2700 50  0001 C CNN
+F 0 "#PWR0101" H 5850 2700 50  0001 C CNN
 F 1 "GND" H 5855 2777 50  0000 C CNN
 F 2 "" H 5850 2950 50  0001 C CNN
 F 3 "" H 5850 2950 50  0001 C CNN
