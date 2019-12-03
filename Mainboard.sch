@@ -583,16 +583,6 @@ F 3 "http://www.littelfuse.com/~/media/files/littelfuse/technical%20resources/do
 	1    0    0    -1  
 $EndComp
 Wire Wire Line
-	1600 4400 1600 4300
-Connection ~ 1600 4300
-Wire Wire Line
-	1600 4300 1650 4300
-Wire Wire Line
-	1500 4400 1500 4200
-Connection ~ 1500 4200
-Wire Wire Line
-	1500 4200 1650 4200
-Wire Wire Line
 	1400 4400 1400 3800
 Connection ~ 1400 3800
 Wire Wire Line
@@ -671,10 +661,6 @@ F 3 "~" H 1250 3150 50  0001 C CNN
 $EndComp
 Wire Wire Line
 	1050 4000 1300 4000
-Wire Wire Line
-	1050 4200 1500 4200
-Wire Wire Line
-	1050 4300 1600 4300
 Wire Wire Line
 	1050 4000 1050 3050
 Wire Wire Line
@@ -1955,4 +1941,21 @@ F 3 "http://www.diodes.com/_files/datasheets/ds30125.pdf" H 1550 5950 50  0001 C
 	2    1550 5950
 	1    0    0    1   
 $EndComp
+Wire Wire Line
+	1050 4200 1600 4200
+Wire Wire Line
+	1050 4300 1500 4300
+Wire Wire Line
+	1500 4400 1500 4300
+Connection ~ 1500 4300
+Wire Wire Line
+	1500 4300 1650 4300
+Wire Wire Line
+	1600 4400 1600 4200
+Connection ~ 1600 4200
+Wire Wire Line
+	1600 4200 1650 4200
+Wire Wire Line
+	2100 3500 2850 3500
+Connection ~ 2850 3500
 $EndSCHEMATC
