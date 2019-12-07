@@ -372,7 +372,7 @@ Wire Wire Line
 Wire Wire Line
 	6850 2850 7200 2850
 Wire Wire Line
-	6850 4450 7200 4450
+	6850 4250 7200 4250
 Wire Wire Line
 	6850 3750 7200 3750
 Wire Wire Line
@@ -667,7 +667,7 @@ Text Label 8700 1150 0    50   ~ 0
 SD_CS
 Wire Wire Line
 	8700 1150 9300 1150
-Text Label 7200 4450 2    50   ~ 0
+Text Label 7200 4250 2    50   ~ 0
 SD_CS
 $Comp
 L Sensor_Pressure:MS5607-02BA U5
@@ -1174,12 +1174,12 @@ F4 "Nuke2" I L 7850 6000 50
 F5 "Cont2" I L 7850 6100 50 
 $EndSheet
 Wire Wire Line
-	6850 4250 7200 4250
+	6850 4450 7200 4450
 Wire Wire Line
 	6850 4750 7200 4750
 Wire Wire Line
 	6850 4850 7200 4850
-Text Label 7200 4250 2    50   ~ 0
+Text Label 7200 4450 2    50   ~ 0
 Nuke1
 Text Label 7200 4750 2    50   ~ 0
 Cont1
@@ -1740,12 +1740,12 @@ $EndComp
 $Comp
 L Connector:TestPoint TP2
 U 1 1 5DF668A2
-P 7200 4450
-F 0 "TP2" V 7154 4638 50  0000 L CNN
-F 1 "TestPoint" V 7245 4638 50  0000 L CNN
-F 2 "TestPoint:TestPoint_THTPad_1.0x1.0mm_Drill0.5mm" H 7400 4450 50  0001 C CNN
-F 3 "~" H 7400 4450 50  0001 C CNN
-	1    7200 4450
+P 7200 4250
+F 0 "TP2" V 7154 4438 50  0000 L CNN
+F 1 "TestPoint" V 7245 4438 50  0000 L CNN
+F 2 "TestPoint:TestPoint_THTPad_1.0x1.0mm_Drill0.5mm" H 7400 4250 50  0001 C CNN
+F 3 "~" H 7400 4250 50  0001 C CNN
+	1    7200 4250
 	0    1    1    0   
 $EndComp
 $Comp

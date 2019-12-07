@@ -1174,12 +1174,12 @@ F4 "Nuke2" I L 7850 6000 50
 F5 "Cont2" I L 7850 6100 50 
 $EndSheet
 Wire Wire Line
-	6850 4450 7200 4450
+	6850 4350 7200 4350
 Wire Wire Line
 	6850 4750 7200 4750
 Wire Wire Line
 	6850 4850 7200 4850
-Text Label 7200 4450 2    50   ~ 0
+Text Label 7200 4350 2    50   ~ 0
 Nuke1
 Text Label 7200 4750 2    50   ~ 0
 Cont1
@@ -1960,8 +1960,8 @@ Text Label 7200 3350 2    50   ~ 0
 MAG_CS
 Wire Wire Line
 	7200 3350 6850 3350
-Text Label 7200 4350 2    50   ~ 0
+Text Label 7200 4450 2    50   ~ 0
 Nuke2
 Wire Wire Line
-	6850 4350 7200 4350
+	6850 4450 7200 4450
 $EndSCHEMATC

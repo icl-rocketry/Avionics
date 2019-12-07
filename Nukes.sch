@@ -186,23 +186,6 @@ Wire Wire Line
 Connection ~ 9450 5250
 Wire Wire Line
 	9150 4800 8900 4800
-$Comp
-L Jumper:SolderJumper_3_Open JP?
-U 1 1 5DE04B45
-P 7550 3800
-AR Path="/5DDE6CFA/5DE04B45" Ref="JP?"  Part="1" 
-AR Path="/5DDE1103/5DE04B45" Ref="JP4"  Part="1" 
-F 0 "JP4" H 7550 4005 50  0000 C CNN
-F 1 "SolderJumper_3_Open" H 7550 3914 50  0000 C CNN
-F 2 "Jumper:SolderJumper-3_P2.0mm_Open_TrianglePad1.0x1.5mm_NumberLabels" H 7550 3800 50  0001 C CNN
-F 3 "~" H 7550 3800 50  0001 C CNN
-	1    7550 3800
-	1    0    0    -1  
-$EndComp
-Wire Wire Line
-	7750 3800 7950 3800
-Wire Wire Line
-	7950 3800 7950 3650
 Text Notes 4800 2500 0    50   ~ 0
 External ematch supply
 $Comp
@@ -275,19 +258,6 @@ F 3 "" H 10150 4850 50  0001 C CNN
 $EndComp
 Wire Wire Line
 	10150 4850 10150 4800
-$Comp
-L power:+3V3 #PWR?
-U 1 1 5DE04B74
-P 7950 3650
-AR Path="/5DDE6CFA/5DE04B74" Ref="#PWR?"  Part="1" 
-AR Path="/5DDE1103/5DE04B74" Ref="#PWR061"  Part="1" 
-F 0 "#PWR061" H 7950 3500 50  0001 C CNN
-F 1 "+3V3" H 7965 3823 50  0000 C CNN
-F 2 "" H 7950 3650 50  0001 C CNN
-F 3 "" H 7950 3650 50  0001 C CNN
-	1    7950 3650
-	1    0    0    -1  
-$EndComp
 $Comp
 L power:+3V3 #PWR?
 U 1 1 5DE04B7A
@@ -450,23 +420,6 @@ Connection ~ 5200 5400
 Wire Wire Line
 	4900 4950 4650 4950
 $Comp
-L Jumper:SolderJumper_3_Open JP?
-U 1 1 5DE32382
-P 3250 3950
-AR Path="/5DDE6CFA/5DE32382" Ref="JP?"  Part="1" 
-AR Path="/5DDE1103/5DE32382" Ref="JP3"  Part="1" 
-F 0 "JP3" H 3250 4155 50  0000 C CNN
-F 1 "SolderJumper_3_Open" H 3250 4064 50  0000 C CNN
-F 2 "Jumper:SolderJumper-3_P2.0mm_Open_TrianglePad1.0x1.5mm_NumberLabels" H 3250 3950 50  0001 C CNN
-F 3 "~" H 3250 3950 50  0001 C CNN
-	1    3250 3950
-	1    0    0    -1  
-$EndComp
-Wire Wire Line
-	3450 3950 3650 3950
-Wire Wire Line
-	3650 3950 3650 3800
-$Comp
 L Device:D_Schottky D?
 U 1 1 5DE3238F
 P 4350 4500
@@ -538,19 +491,6 @@ Wire Wire Line
 	5900 5000 5900 4950
 $Comp
 L power:+3V3 #PWR?
-U 1 1 5DE323B1
-P 3650 3800
-AR Path="/5DDE6CFA/5DE323B1" Ref="#PWR?"  Part="1" 
-AR Path="/5DDE1103/5DE323B1" Ref="#PWR054"  Part="1" 
-F 0 "#PWR054" H 3650 3650 50  0001 C CNN
-F 1 "+3V3" H 3665 3973 50  0000 C CNN
-F 2 "" H 3650 3800 50  0001 C CNN
-F 3 "" H 3650 3800 50  0001 C CNN
-	1    3650 3800
-	1    0    0    -1  
-$EndComp
-$Comp
-L power:+3V3 #PWR?
 U 1 1 5DE323B7
 P 4900 4750
 AR Path="/5DDE6CFA/5DE323B7" Ref="#PWR?"  Part="1" 
@@ -572,13 +512,9 @@ Text HLabel 8900 4800 0    50   Input ~ 0
 Cont2
 Wire Wire Line
 	3800 4150 3250 4150
-Wire Wire Line
-	3250 4150 3250 4100
 Connection ~ 3800 4150
 Wire Wire Line
 	8050 4000 7550 4000
-Wire Wire Line
-	7550 4000 7550 3950
 Connection ~ 8050 4000
 Wire Wire Line
 	5450 2700 5850 2700
@@ -599,12 +535,8 @@ Text Label 6100 2600 2    50   ~ 0
 External_Supply
 Wire Wire Line
 	5450 2600 6100 2600
-Wire Wire Line
-	7350 3800 6850 3800
-Wire Wire Line
-	2350 3950 3050 3950
-Text Label 2350 3950 0    50   ~ 0
+Text Label 3250 4150 0    50   ~ 0
 External_Supply
-Text Label 6850 3800 0    50   ~ 0
+Text Label 7550 4000 0    50   ~ 0
 External_Supply
 $EndSCHEMATC
