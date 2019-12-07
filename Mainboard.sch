@@ -366,15 +366,13 @@ RXD
 Text Label 2300 1300 0    50   ~ 0
 TXD
 Wire Wire Line
-	7200 3450 6850 3450
-Wire Wire Line
 	6850 2550 7200 2550
 Wire Wire Line
 	6850 2650 7200 2650
 Wire Wire Line
 	6850 2850 7200 2850
 Wire Wire Line
-	6850 3050 7200 3050
+	6850 4250 7200 4250
 Wire Wire Line
 	6850 3750 7200 3750
 Wire Wire Line
@@ -669,7 +667,7 @@ Text Label 8700 1150 0    50   ~ 0
 SD_CS
 Wire Wire Line
 	8700 1150 9300 1150
-Text Label 7200 3050 2    50   ~ 0
+Text Label 7200 4250 2    50   ~ 0
 SD_CS
 $Comp
 L Sensor_Pressure:MS5607-02BA U5
@@ -725,12 +723,12 @@ Wire Wire Line
 Wire Wire Line
 	9550 4800 9900 4800
 Wire Wire Line
-	6850 3550 7200 3550
-Wire Wire Line
 	6850 3650 7200 3650
-Text Label 7200 3650 2    50   ~ 0
-RADIO_RX
+Wire Wire Line
+	6850 3550 7200 3550
 Text Label 7200 3550 2    50   ~ 0
+RADIO_RX
+Text Label 7200 3650 2    50   ~ 0
 RADIO_TX
 $Comp
 L power:GND #PWR033
@@ -875,7 +873,7 @@ SDA
 Text Label 10200 5800 0    50   ~ 0
 SCL
 Wire Wire Line
-	6850 4350 7200 4350
+	6850 3150 7200 3150
 $Comp
 L power:GND #PWR018
 U 1 1 5DB9DB5B
@@ -978,10 +976,8 @@ Text Label 9200 6000 0    50   ~ 0
 IMU_CS
 Text Label 9200 6100 0    50   ~ 0
 MAG_CS
-Text Label 7200 4350 2    50   ~ 0
+Text Label 7200 3150 2    50   ~ 0
 IMU_CS
-Text Label 7200 3450 2    50   ~ 0
-MAG_CS
 Text Label 7200 4150 2    50   ~ 0
 MOSI
 Wire Wire Line
@@ -1001,12 +997,12 @@ $EndSheet
 $Comp
 L Device:Buzzer BZ1
 U 1 1 5DBF25B1
-P 8250 3650
-F 0 "BZ1" H 8402 3679 50  0000 L CNN
-F 1 "Buzzer" H 8402 3588 50  0000 L CNN
-F 2 "Buzzer_Beeper:Buzzer_TDK_PS1240P02BT_D12.2mm_H6.5mm" V 8225 3750 50  0001 C CNN
-F 3 "~" V 8225 3750 50  0001 C CNN
-	1    8250 3650
+P 8400 2450
+F 0 "BZ1" H 8552 2479 50  0000 L CNN
+F 1 "Buzzer" H 8552 2388 50  0000 L CNN
+F 2 "Buzzer_Beeper:Buzzer_TDK_PS1240P02BT_D12.2mm_H6.5mm" V 8375 2550 50  0001 C CNN
+F 3 "~" V 8375 2550 50  0001 C CNN
+	1    8400 2450
 	1    0    0    -1  
 $EndComp
 Wire Wire Line
@@ -1178,19 +1174,15 @@ F4 "Nuke2" I L 7850 6000 50
 F5 "Cont2" I L 7850 6100 50 
 $EndSheet
 Wire Wire Line
-	6850 3150 7200 3150
+	6850 4450 7200 4450
 Wire Wire Line
 	6850 4750 7200 4750
 Wire Wire Line
-	6850 3350 7200 3350
-Wire Wire Line
 	6850 4850 7200 4850
-Text Label 7200 3150 2    50   ~ 0
+Text Label 7200 4450 2    50   ~ 0
 Nuke1
 Text Label 7200 4750 2    50   ~ 0
 Cont1
-Text Label 7200 3350 2    50   ~ 0
-Nuke2
 Text Label 7200 4850 2    50   ~ 0
 Cont2
 Wire Wire Line
@@ -1212,62 +1204,62 @@ Cont2
 $Comp
 L Device:Q_NMOS_GSD Q?
 U 1 1 5DE0D306
-P 8050 4450
+P 8200 3250
 AR Path="/5DDE6CFA/5DE0D306" Ref="Q?"  Part="1" 
 AR Path="/5DDE1103/5DE0D306" Ref="Q?"  Part="1" 
 AR Path="/5DE0D306" Ref="Q3"  Part="1" 
-F 0 "Q3" H 8256 4496 50  0000 L CNN
-F 1 "PMV20ENR" H 8256 4405 50  0000 L CNN
-F 2 "Package_TO_SOT_SMD:SOT-23" H 8250 4550 50  0001 C CNN
-F 3 "~" H 8050 4450 50  0001 C CNN
-	1    8050 4450
+F 0 "Q3" H 8406 3296 50  0000 L CNN
+F 1 "PMV20ENR" H 8406 3205 50  0000 L CNN
+F 2 "Package_TO_SOT_SMD:SOT-23" H 8400 3350 50  0001 C CNN
+F 3 "~" H 8200 3250 50  0001 C CNN
+	1    8200 3250
 	1    0    0    -1  
 $EndComp
 $Comp
 L power:GND #PWR?
 U 1 1 5DE0D30D
-P 8150 4900
+P 8300 3700
 AR Path="/5DDE6CFA/5DE0D30D" Ref="#PWR?"  Part="1" 
 AR Path="/5DDE1103/5DE0D30D" Ref="#PWR?"  Part="1" 
 AR Path="/5DE0D30D" Ref="#PWR029"  Part="1" 
-F 0 "#PWR029" H 8150 4650 50  0001 C CNN
-F 1 "GND" H 8155 4727 50  0000 C CNN
-F 2 "" H 8150 4900 50  0001 C CNN
-F 3 "" H 8150 4900 50  0001 C CNN
-	1    8150 4900
+F 0 "#PWR029" H 8300 3450 50  0001 C CNN
+F 1 "GND" H 8305 3527 50  0000 C CNN
+F 2 "" H 8300 3700 50  0001 C CNN
+F 3 "" H 8300 3700 50  0001 C CNN
+	1    8300 3700
 	1    0    0    -1  
 $EndComp
 $Comp
 L Device:D_Schottky D?
 U 1 1 5DE49A6B
-P 8150 4000
+P 8300 2800
 AR Path="/5DAD2180/5DE49A6B" Ref="D?"  Part="1" 
 AR Path="/5DB4FA2A/5DE49A6B" Ref="D?"  Part="1" 
 AR Path="/5DDE6CFA/5DE49A6B" Ref="D?"  Part="1" 
 AR Path="/5DDE1103/5DE49A6B" Ref="D?"  Part="1" 
 AR Path="/5DE49A6B" Ref="D8"  Part="1" 
-F 0 "D8" V 8196 3921 50  0000 R CNN
-F 1 "D_Schottky" V 8105 3921 50  0000 R CNN
-F 2 "Diode_SMD:D_SOD-123F" H 8150 4000 50  0001 C CNN
-F 3 "http://www.smc-diodes.com/propdf/DSS12U%20THRU%20DSS125U%20N1873%20REV.A.pdf" H 8150 4000 50  0001 C CNN
-	1    8150 4000
+F 0 "D8" V 8346 2721 50  0000 R CNN
+F 1 "D_Schottky" V 8255 2721 50  0000 R CNN
+F 2 "Diode_SMD:D_SOD-123F" H 8300 2800 50  0001 C CNN
+F 3 "http://www.smc-diodes.com/propdf/DSS12U%20THRU%20DSS125U%20N1873%20REV.A.pdf" H 8300 2800 50  0001 C CNN
+	1    8300 2800
 	0    -1   -1   0   
 $EndComp
 Wire Wire Line
-	8150 4150 8150 4250
+	8300 2950 8300 3050
 Wire Wire Line
-	8150 3750 8150 3850
+	8300 2550 8300 2650
 Wire Wire Line
-	8150 4650 8150 4900
+	8300 3450 8300 3700
 $Comp
 L power:+3.3V #PWR028
 U 1 1 5DEC6485
-P 8150 3550
-F 0 "#PWR028" H 8150 3400 50  0001 C CNN
-F 1 "+3.3V" H 8165 3723 50  0000 C CNN
-F 2 "" H 8150 3550 50  0001 C CNN
-F 3 "" H 8150 3550 50  0001 C CNN
-	1    8150 3550
+P 8300 2350
+F 0 "#PWR028" H 8300 2200 50  0001 C CNN
+F 1 "+3.3V" H 8315 2523 50  0000 C CNN
+F 2 "" H 8300 2350 50  0001 C CNN
+F 3 "" H 8300 2350 50  0001 C CNN
+	1    8300 2350
 	1    0    0    -1  
 $EndComp
 NoConn ~ 10500 5900
@@ -1458,8 +1450,8 @@ F6 "RESET" I L 6850 6050 50
 F7 "~INT" O L 6850 6150 50 
 $EndSheet
 Wire Wire Line
-	6850 4250 7200 4250
-Text Label 7200 4250 2    50   ~ 0
+	6850 3450 7200 3450
+Text Label 7200 3450 2    50   ~ 0
 FLASH_CS
 Text Label 6350 5650 0    50   ~ 0
 SCLK
@@ -1486,7 +1478,7 @@ Wire Wire Line
 Wire Wire Line
 	6350 6150 6850 6150
 Wire Wire Line
-	6850 2750 7200 2750
+	6850 3050 7200 3050
 $Comp
 L power:VDD #PWR016
 U 1 1 5DC7CCF8
@@ -1543,7 +1535,7 @@ F 3 "~" H 5000 2650 50  0001 C CNN
 $EndComp
 Wire Wire Line
 	5200 2750 5650 2750
-Text Label 7200 2750 2    50   ~ 0
+Text Label 7200 3050 2    50   ~ 0
 LORA_CS
 Connection ~ 2350 4700
 $Comp
@@ -1631,8 +1623,6 @@ Wire Wire Line
 	3850 6950 4150 6950
 Wire Wire Line
 	7300 3950 7600 3950
-Wire Wire Line
-	6850 4450 7850 4450
 $Comp
 L Connector:TestPoint TP12
 U 1 1 5E3888D9
@@ -1695,34 +1685,23 @@ Wire Wire Line
 $Comp
 L Connector:TestPoint TP18
 U 1 1 5DEEBC25
-P 7200 4250
-F 0 "TP18" V 7154 4438 50  0000 L CNN
-F 1 "TestPoint" V 7245 4438 50  0000 L CNN
-F 2 "TestPoint:TestPoint_THTPad_1.0x1.0mm_Drill0.5mm" H 7400 4250 50  0001 C CNN
-F 3 "~" H 7400 4250 50  0001 C CNN
-	1    7200 4250
+P 7200 3450
+F 0 "TP18" V 7154 3638 50  0000 L CNN
+F 1 "TestPoint" V 7245 3638 50  0000 L CNN
+F 2 "TestPoint:TestPoint_THTPad_1.0x1.0mm_Drill0.5mm" H 7400 3450 50  0001 C CNN
+F 3 "~" H 7400 3450 50  0001 C CNN
+	1    7200 3450
 	0    1    1    0   
 $EndComp
 $Comp
 L Connector:TestPoint TP19
 U 1 1 5DF070A0
-P 7200 4350
-F 0 "TP19" V 7154 4538 50  0000 L CNN
-F 1 "TestPoint" V 7245 4538 50  0000 L CNN
-F 2 "TestPoint:TestPoint_THTPad_1.0x1.0mm_Drill0.5mm" H 7400 4350 50  0001 C CNN
-F 3 "~" H 7400 4350 50  0001 C CNN
-	1    7200 4350
-	0    1    1    0   
-$EndComp
-$Comp
-L Connector:TestPoint TP23
-U 1 1 5DF14B43
-P 7200 3450
-F 0 "TP23" V 7154 3638 50  0000 L CNN
-F 1 "TestPoint" V 7245 3638 50  0000 L CNN
-F 2 "TestPoint:TestPoint_THTPad_1.0x1.0mm_Drill0.5mm" H 7400 3450 50  0001 C CNN
-F 3 "~" H 7400 3450 50  0001 C CNN
-	1    7200 3450
+P 7200 3150
+F 0 "TP19" V 7154 3338 50  0000 L CNN
+F 1 "TestPoint" V 7245 3338 50  0000 L CNN
+F 2 "TestPoint:TestPoint_THTPad_1.0x1.0mm_Drill0.5mm" H 7400 3150 50  0001 C CNN
+F 3 "~" H 7400 3150 50  0001 C CNN
+	1    7200 3150
 	0    1    1    0   
 $EndComp
 $Comp
@@ -1761,12 +1740,12 @@ $EndComp
 $Comp
 L Connector:TestPoint TP2
 U 1 1 5DF668A2
-P 7200 3050
-F 0 "TP2" V 7154 3238 50  0000 L CNN
-F 1 "TestPoint" V 7245 3238 50  0000 L CNN
-F 2 "TestPoint:TestPoint_THTPad_1.0x1.0mm_Drill0.5mm" H 7400 3050 50  0001 C CNN
-F 3 "~" H 7400 3050 50  0001 C CNN
-	1    7200 3050
+P 7200 4250
+F 0 "TP2" V 7154 4438 50  0000 L CNN
+F 1 "TestPoint" V 7245 4438 50  0000 L CNN
+F 2 "TestPoint:TestPoint_THTPad_1.0x1.0mm_Drill0.5mm" H 7400 4250 50  0001 C CNN
+F 3 "~" H 7400 4250 50  0001 C CNN
+	1    7200 4250
 	0    1    1    0   
 $EndComp
 $Comp
@@ -1958,4 +1937,31 @@ Wire Wire Line
 Wire Wire Line
 	2100 3500 2850 3500
 Connection ~ 2850 3500
+Wire Wire Line
+	8000 3250 7800 3250
+Text Label 7800 3250 0    50   ~ 0
+Buzzer
+Wire Wire Line
+	6850 2750 7200 2750
+Text Label 7200 2750 2    50   ~ 0
+Buzzer
+$Comp
+L Connector:TestPoint TP23
+U 1 1 5DF14B43
+P 7200 3350
+F 0 "TP23" V 7154 3538 50  0000 L CNN
+F 1 "TestPoint" V 7245 3538 50  0000 L CNN
+F 2 "TestPoint:TestPoint_THTPad_1.0x1.0mm_Drill0.5mm" H 7400 3350 50  0001 C CNN
+F 3 "~" H 7400 3350 50  0001 C CNN
+	1    7200 3350
+	0    1    1    0   
+$EndComp
+Text Label 7200 3350 2    50   ~ 0
+MAG_CS
+Wire Wire Line
+	7200 3350 6850 3350
+Text Label 7200 4350 2    50   ~ 0
+Nuke2
+Wire Wire Line
+	6850 4350 7200 4350
 $EndSCHEMATC
