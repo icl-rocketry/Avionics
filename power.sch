@@ -1,5 +1,4 @@
 EESchema Schematic File Version 4
-LIBS:Mainboard-cache
 EELAYER 30 0
 EELAYER END
 $Descr A4 11693 8268
@@ -152,7 +151,7 @@ Wire Wire Line
 Wire Wire Line
 	6550 4150 6550 4700
 $Comp
-L iclr:TPS63031 U8
+L Mainboard-rescue:TPS63031-iclr U8
 U 1 1 5DE04FA4
 P 5900 4000
 F 0 "U8" H 5733 4665 50  0000 C CNN
@@ -632,9 +631,11 @@ Wire Wire Line
 Wire Wire Line
 	3800 5150 4100 5150
 $Comp
-L Mainboard-cache:+3.3V #PWR0106
+L Mainboard-rescue:+3.3V-Mainboard-cache #PWR0106
 U 1 1 5E4CE71E
 P 3800 5150
+AR Path="/5E4CE71E" Ref="#PWR0106"  Part="1" 
+AR Path="/5DB9F80E/5E4CE71E" Ref="#PWR0106"  Part="1" 
 F 0 "#PWR0106" H 3800 5000 50  0001 C CNN
 F 1 "+3.3V" H 3815 5323 50  0000 C CNN
 F 2 "" H 3800 5150 50  0001 C CNN
@@ -655,4 +656,72 @@ F 3 "" H 8850 5550 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 Connection ~ 8850 5550
+$Comp
+L Mechanical:MountingHole_Pad H2
+U 1 1 5E1B83DE
+P 8300 3950
+F 0 "H2" H 8400 3999 50  0000 L CNN
+F 1 "MountingHole_Pad" H 8400 3908 50  0000 L CNN
+F 2 "MountingHole:MountingHole_3.2mm_M3_DIN965_Pad" H 8300 3950 50  0001 C CNN
+F 3 "~" H 8300 3950 50  0001 C CNN
+	1    8300 3950
+	1    0    0    -1  
+$EndComp
+$Comp
+L Mechanical:MountingHole_Pad H1
+U 1 1 5E1B8AC2
+P 8050 3950
+F 0 "H1" H 8150 3999 50  0000 L CNN
+F 1 "MountingHole_Pad" H 8150 3908 50  0000 L CNN
+F 2 "MountingHole:MountingHole_3.2mm_M3_DIN965_Pad" H 8050 3950 50  0001 C CNN
+F 3 "~" H 8050 3950 50  0001 C CNN
+	1    8050 3950
+	1    0    0    -1  
+$EndComp
+$Comp
+L Mechanical:MountingHole_Pad H3
+U 1 1 5E1BE159
+P 8550 3950
+F 0 "H3" H 8650 3999 50  0000 L CNN
+F 1 "MountingHole_Pad" H 8650 3908 50  0000 L CNN
+F 2 "MountingHole:MountingHole_3.2mm_M3_DIN965_Pad" H 8550 3950 50  0001 C CNN
+F 3 "~" H 8550 3950 50  0001 C CNN
+	1    8550 3950
+	1    0    0    -1  
+$EndComp
+$Comp
+L Mechanical:MountingHole_Pad H4
+U 1 1 5E1C0B92
+P 8800 3950
+F 0 "H4" H 8900 3999 50  0000 L CNN
+F 1 "MountingHole_Pad" H 8900 3908 50  0000 L CNN
+F 2 "MountingHole:MountingHole_3.2mm_M3_DIN965_Pad" H 8800 3950 50  0001 C CNN
+F 3 "~" H 8800 3950 50  0001 C CNN
+	1    8800 3950
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	8050 4050 8300 4050
+Connection ~ 8300 4050
+Wire Wire Line
+	8300 4050 8550 4050
+Connection ~ 8550 4050
+Wire Wire Line
+	8550 4050 8800 4050
+Wire Wire Line
+	8050 4050 7900 4050
+Wire Wire Line
+	7900 4050 7900 4150
+Connection ~ 8050 4050
+$Comp
+L power:GND #PWR027
+U 1 1 5E1C87F6
+P 7900 4150
+F 0 "#PWR027" H 7900 3900 50  0001 C CNN
+F 1 "GND" H 7905 3977 50  0000 C CNN
+F 2 "" H 7900 4150 50  0001 C CNN
+F 3 "" H 7900 4150 50  0001 C CNN
+	1    7900 4150
+	1    0    0    -1  
+$EndComp
 $EndSCHEMATC

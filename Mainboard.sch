@@ -1,5 +1,4 @@
 EESchema Schematic File Version 4
-LIBS:Mainboard-cache
 EELAYER 30 0
 EELAYER END
 $Descr A4 11693 8268
@@ -1129,7 +1128,7 @@ MISO
 Text Label 6900 1400 0    50   ~ 0
 FLASH_CS
 $Comp
-L iclr:XBEE JP2
+L Mainboard-rescue:XBEE-iclr JP2
 U 1 1 5DBE2F9A
 P 10350 3150
 F 0 "JP2" H 10350 3910 45  0000 C CNN
@@ -1773,7 +1772,7 @@ $EndComp
 Wire Wire Line
 	7950 1200 7950 1400
 $Comp
-L iclr:W25Q64FV U4
+L Mainboard-rescue:W25Q64FV-iclr U4
 U 1 1 5E21AD44
 P 7550 1550
 F 0 "U4" H 7550 1965 50  0000 C CNN
@@ -1822,7 +1821,7 @@ Wire Wire Line
 	7950 1050 7950 850 
 Connection ~ 7950 1050
 $Comp
-L Mainboard-cache:+3.3V #PWR024
+L Mainboard-rescue:+3.3V-Mainboard-cache #PWR024
 U 1 1 5E2C7938
 P 7300 800
 F 0 "#PWR024" H 7300 650 50  0001 C CNN
