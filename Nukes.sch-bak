@@ -45,7 +45,7 @@ AR Path="/5DDE6CFA/5DE04AFB" Ref="J?"  Part="1"
 AR Path="/5DDE1103/5DE04AFB" Ref="J8"  Part="1" 
 F 0 "J8" V 8464 3612 50  0000 R CNN
 F 1 "Screw_Terminal_01x02" V 8373 3612 50  0000 R CNN
-F 2 "TerminalBlock_Phoenix:TerminalBlock_Phoenix_MPT-0,5-2-2.54_1x02_P2.54mm_Horizontal" H 8500 3800 50  0001 C CNN
+F 2 "iclr-hw:PHOENIX_1757242" H 8500 3800 50  0001 C CNN
 F 3 "~" H 8500 3800 50  0001 C CNN
 	1    8500 3800
 	0    -1   -1   0   
@@ -278,7 +278,7 @@ AR Path="/5DDE6CFA/5DE32338" Ref="J?"  Part="1"
 AR Path="/5DDE1103/5DE32338" Ref="J6"  Part="1" 
 F 0 "J6" V 4214 3762 50  0000 R CNN
 F 1 "Screw_Terminal_01x02" V 4123 3762 50  0000 R CNN
-F 2 "TerminalBlock_Phoenix:TerminalBlock_Phoenix_MPT-0,5-2-2.54_1x02_P2.54mm_Horizontal" H 4250 3950 50  0001 C CNN
+F 2 "iclr-hw:PHOENIX_1757242" H 4250 3950 50  0001 C CNN
 F 3 "~" H 4250 3950 50  0001 C CNN
 	1    4250 3950
 	0    -1   -1   0   

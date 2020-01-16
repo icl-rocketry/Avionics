@@ -854,22 +854,22 @@ Connection ~ 7350 3650
 Wire Wire Line
 	7350 3650 7400 3650
 $Sheet
-S 10500 5650 550  450 
+S 10550 5650 550  450 
 U 5DBDE223
 F0 "GPS" 50
 F1 "gps.sch" 50
-F2 "SDA" I L 10500 5700 50 
-F3 "SCL" I L 10500 5800 50 
-F4 "RXD" I L 10500 5900 50 
-F5 "TXD" I L 10500 6000 50 
+F2 "SDA" I L 10550 5700 50 
+F3 "SCL" I L 10550 5800 50 
+F4 "RXD" I L 10550 5900 50 
+F5 "TXD" I L 10550 6000 50 
 $EndSheet
 Wire Wire Line
-	10500 5700 10200 5700
+	10550 5700 10250 5700
 Wire Wire Line
-	10500 5800 10200 5800
-Text Label 10200 5700 0    50   ~ 0
+	10550 5800 10250 5800
+Text Label 10250 5700 0    50   ~ 0
 SDA
-Text Label 10200 5800 0    50   ~ 0
+Text Label 10250 5800 0    50   ~ 0
 SCL
 Wire Wire Line
 	6850 3150 7200 3150
@@ -898,12 +898,12 @@ $EndComp
 Wire Wire Line
 	5300 7450 5450 7450
 Wire Wire Line
-	6850 4550 7200 4550
-Wire Wire Line
 	6850 4650 7200 4650
-Text Label 7200 4550 2    50   ~ 0
-CAN_RX
+Wire Wire Line
+	6850 4550 7200 4550
 Text Label 7200 4650 2    50   ~ 0
+CAN_RX
+Text Label 7200 4550 2    50   ~ 0
 CAN_TX
 Wire Wire Line
 	3450 7450 3450 7350
@@ -1261,8 +1261,6 @@ F 3 "" H 8300 2350 50  0001 C CNN
 	1    8300 2350
 	1    0    0    -1  
 $EndComp
-NoConn ~ 10500 5900
-NoConn ~ 10500 6000
 NoConn ~ 9650 3050
 NoConn ~ 9650 3150
 NoConn ~ 9650 3250
@@ -1717,23 +1715,23 @@ $EndComp
 $Comp
 L Connector:TestPoint TP20
 U 1 1 5DF4B310
-P 7200 4550
-F 0 "TP20" V 7154 4738 50  0000 L CNN
-F 1 "TestPoint" V 7245 4738 50  0000 L CNN
-F 2 "TestPoint:TestPoint_THTPad_1.0x1.0mm_Drill0.5mm" H 7400 4550 50  0001 C CNN
-F 3 "~" H 7400 4550 50  0001 C CNN
-	1    7200 4550
+P 7200 4650
+F 0 "TP20" V 7154 4838 50  0000 L CNN
+F 1 "TestPoint" V 7245 4838 50  0000 L CNN
+F 2 "TestPoint:TestPoint_THTPad_1.0x1.0mm_Drill0.5mm" H 7400 4650 50  0001 C CNN
+F 3 "~" H 7400 4650 50  0001 C CNN
+	1    7200 4650
 	0    1    1    0   
 $EndComp
 $Comp
 L Connector:TestPoint TP21
 U 1 1 5DF58E12
-P 7200 4650
-F 0 "TP21" V 7154 4838 50  0000 L CNN
-F 1 "TestPoint" V 7245 4838 50  0000 L CNN
-F 2 "TestPoint:TestPoint_THTPad_1.0x1.0mm_Drill0.5mm" H 7400 4650 50  0001 C CNN
-F 3 "~" H 7400 4650 50  0001 C CNN
-	1    7200 4650
+P 7200 4550
+F 0 "TP21" V 7154 4738 50  0000 L CNN
+F 1 "TestPoint" V 7245 4738 50  0000 L CNN
+F 2 "TestPoint:TestPoint_THTPad_1.0x1.0mm_Drill0.5mm" H 7400 4550 50  0001 C CNN
+F 3 "~" H 7400 4550 50  0001 C CNN
+	1    7200 4550
 	0    1    1    0   
 $EndComp
 $Comp
@@ -1963,4 +1961,26 @@ Text Label 7200 4450 2    50   ~ 0
 Nuke2
 Wire Wire Line
 	6850 4450 7200 4450
+$Comp
+L Connector:TestPoint TP14
+U 1 1 5E274A78
+P 10550 5900
+F 0 "TP14" H 10608 6018 50  0000 L CNN
+F 1 "TestPoint" H 10608 5927 50  0000 L CNN
+F 2 "TestPoint:TestPoint_THTPad_1.0x1.0mm_Drill0.5mm" H 10750 5900 50  0001 C CNN
+F 3 "~" H 10750 5900 50  0001 C CNN
+	1    10550 5900
+	0    -1   -1   0   
+$EndComp
+$Comp
+L Connector:TestPoint TP15
+U 1 1 5E2842A3
+P 10550 6000
+F 0 "TP15" H 10608 6118 50  0000 L CNN
+F 1 "TestPoint" H 10608 6027 50  0000 L CNN
+F 2 "TestPoint:TestPoint_THTPad_1.0x1.0mm_Drill0.5mm" H 10750 6000 50  0001 C CNN
+F 3 "~" H 10750 6000 50  0001 C CNN
+	1    10550 6000
+	0    -1   -1   0   
+$EndComp
 $EndSCHEMATC

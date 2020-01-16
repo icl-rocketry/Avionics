@@ -40,53 +40,44 @@ $EndComp
 $Comp
 L Connector:Screw_Terminal_01x02 J?
 U 1 1 5DE04AFB
-P 8500 3800
+P 8500 3900
 AR Path="/5DDE6CFA/5DE04AFB" Ref="J?"  Part="1" 
 AR Path="/5DDE1103/5DE04AFB" Ref="J8"  Part="1" 
-F 0 "J8" V 8464 3612 50  0000 R CNN
-F 1 "Screw_Terminal_01x02" V 8373 3612 50  0000 R CNN
-F 2 "TerminalBlock_Phoenix:TerminalBlock_Phoenix_MPT-0,5-2-2.54_1x02_P2.54mm_Horizontal" H 8500 3800 50  0001 C CNN
-F 3 "~" H 8500 3800 50  0001 C CNN
-	1    8500 3800
-	0    -1   -1   0   
+F 0 "J8" V 8464 3712 50  0000 R CNN
+F 1 "Screw_Terminal_01x02" V 8373 3712 50  0000 R CNN
+F 2 "iclr-hw:PHOENIX_1757242" H 8500 3900 50  0001 C CNN
+F 3 "~" H 8500 3900 50  0001 C CNN
+	1    8500 3900
+	0    1    1    0   
 $EndComp
 $Comp
 L Device:R R?
 U 1 1 5DE04B01
-P 8050 4450
+P 7850 4450
 AR Path="/5DDE6CFA/5DE04B01" Ref="R?"  Part="1" 
 AR Path="/5DDE1103/5DE04B01" Ref="R32"  Part="1" 
-F 0 "R32" H 8120 4496 50  0000 L CNN
-F 1 "1k" H 8120 4405 50  0000 L CNN
-F 2 "Resistor_SMD:R_0603_1608Metric" V 7980 4450 50  0001 C CNN
-F 3 "~" H 8050 4450 50  0001 C CNN
-	1    8050 4450
+F 0 "R32" H 7920 4496 50  0000 L CNN
+F 1 "1k" H 7920 4405 50  0000 L CNN
+F 2 "Resistor_SMD:R_0603_1608Metric" V 7780 4450 50  0001 C CNN
+F 3 "~" H 7850 4450 50  0001 C CNN
+	1    7850 4450
 	1    0    0    -1  
 $EndComp
 $Comp
 L Device:LED D?
 U 1 1 5DE04B07
-P 8050 4150
+P 7850 4150
 AR Path="/5DDE6CFA/5DE04B07" Ref="D?"  Part="1" 
 AR Path="/5DDE1103/5DE04B07" Ref="D14"  Part="1" 
-F 0 "D14" V 8089 4033 50  0000 R CNN
-F 1 "FIRING" V 7998 4033 50  0000 R CNN
-F 2 "LED_SMD:LED_0603_1608Metric_Castellated" H 8050 4150 50  0001 C CNN
-F 3 "~" H 8050 4150 50  0001 C CNN
-	1    8050 4150
+F 0 "D14" V 7889 4033 50  0000 R CNN
+F 1 "FIRING" V 7798 4033 50  0000 R CNN
+F 2 "LED_SMD:LED_0603_1608Metric_Castellated" H 7850 4150 50  0001 C CNN
+F 3 "~" H 7850 4150 50  0001 C CNN
+	1    7850 4150
 	0    -1   -1   0   
 $EndComp
 Wire Wire Line
-	8050 4000 8500 4000
-Wire Wire Line
-	8600 4500 8600 4600
-Wire Wire Line
-	8050 4600 8600 4600
-Connection ~ 8600 4600
-Wire Wire Line
-	8600 4600 8600 4850
-Wire Wire Line
-	8600 4000 8600 4150
+	7850 4000 8300 4000
 $Comp
 L Device:Q_NMOS_GSD Q?
 U 1 1 5DE04B13
@@ -273,53 +264,44 @@ $EndComp
 $Comp
 L Connector:Screw_Terminal_01x02 J?
 U 1 1 5DE32338
-P 4250 3950
+P 4200 4050
 AR Path="/5DDE6CFA/5DE32338" Ref="J?"  Part="1" 
 AR Path="/5DDE1103/5DE32338" Ref="J6"  Part="1" 
-F 0 "J6" V 4214 3762 50  0000 R CNN
-F 1 "Screw_Terminal_01x02" V 4123 3762 50  0000 R CNN
-F 2 "TerminalBlock_Phoenix:TerminalBlock_Phoenix_MPT-0,5-2-2.54_1x02_P2.54mm_Horizontal" H 4250 3950 50  0001 C CNN
-F 3 "~" H 4250 3950 50  0001 C CNN
-	1    4250 3950
-	0    -1   -1   0   
+F 0 "J6" V 4164 3862 50  0000 R CNN
+F 1 "Screw_Terminal_01x02" V 4073 3862 50  0000 R CNN
+F 2 "iclr-hw:PHOENIX_1757242" H 4200 4050 50  0001 C CNN
+F 3 "~" H 4200 4050 50  0001 C CNN
+	1    4200 4050
+	0    1    1    0   
 $EndComp
 $Comp
 L Device:R R?
 U 1 1 5DE3233E
-P 3800 4600
+P 3550 4600
 AR Path="/5DDE6CFA/5DE3233E" Ref="R?"  Part="1" 
 AR Path="/5DDE1103/5DE3233E" Ref="R27"  Part="1" 
-F 0 "R27" H 3870 4646 50  0000 L CNN
-F 1 "1k" H 3870 4555 50  0000 L CNN
-F 2 "Resistor_SMD:R_0603_1608Metric" V 3730 4600 50  0001 C CNN
-F 3 "~" H 3800 4600 50  0001 C CNN
-	1    3800 4600
+F 0 "R27" H 3620 4646 50  0000 L CNN
+F 1 "1k" H 3620 4555 50  0000 L CNN
+F 2 "Resistor_SMD:R_0603_1608Metric" V 3480 4600 50  0001 C CNN
+F 3 "~" H 3550 4600 50  0001 C CNN
+	1    3550 4600
 	1    0    0    -1  
 $EndComp
 $Comp
 L Device:LED D?
 U 1 1 5DE32344
-P 3800 4300
+P 3550 4300
 AR Path="/5DDE6CFA/5DE32344" Ref="D?"  Part="1" 
 AR Path="/5DDE1103/5DE32344" Ref="D10"  Part="1" 
-F 0 "D10" V 3839 4183 50  0000 R CNN
-F 1 "FIRING" V 3748 4183 50  0000 R CNN
-F 2 "LED_SMD:LED_0603_1608Metric_Castellated" H 3800 4300 50  0001 C CNN
-F 3 "~" H 3800 4300 50  0001 C CNN
-	1    3800 4300
+F 0 "D10" V 3589 4183 50  0000 R CNN
+F 1 "FIRING" V 3498 4183 50  0000 R CNN
+F 2 "LED_SMD:LED_0603_1608Metric_Castellated" H 3550 4300 50  0001 C CNN
+F 3 "~" H 3550 4300 50  0001 C CNN
+	1    3550 4300
 	0    -1   -1   0   
 $EndComp
 Wire Wire Line
-	3800 4150 4250 4150
-Wire Wire Line
-	4350 4650 4350 4750
-Wire Wire Line
-	3800 4750 4350 4750
-Connection ~ 4350 4750
-Wire Wire Line
-	4350 4750 4350 5000
-Wire Wire Line
-	4350 4150 4350 4300
+	3550 4150 4000 4150
 $Comp
 L Device:Q_NMOS_GSD Q?
 U 1 1 5DE32350
@@ -510,11 +492,11 @@ Nuke2
 Text HLabel 8900 4800 0    50   Input ~ 0
 Cont2
 Wire Wire Line
-	3800 4150 3250 4150
-Connection ~ 3800 4150
+	3550 4150 3000 4150
+Connection ~ 3550 4150
 Wire Wire Line
-	8050 4000 7550 4000
-Connection ~ 8050 4000
+	7850 4000 7350 4000
+Connection ~ 7850 4000
 Wire Wire Line
 	5450 2700 5850 2700
 Wire Wire Line
@@ -534,8 +516,38 @@ Text Label 6100 2600 2    50   ~ 0
 External_Supply
 Wire Wire Line
 	5450 2600 6100 2600
-Text Label 3250 4150 0    50   ~ 0
+Text Label 3000 4150 0    50   ~ 0
 External_Supply
-Text Label 7550 4000 0    50   ~ 0
+Text Label 7350 4000 0    50   ~ 0
 External_Supply
+Wire Wire Line
+	8600 4500 8600 4600
+Wire Wire Line
+	7850 4600 8600 4600
+Connection ~ 8600 4600
+Wire Wire Line
+	8600 4600 8600 4850
+Wire Wire Line
+	8300 4000 8300 3700
+Wire Wire Line
+	8300 3700 8400 3700
+Wire Wire Line
+	8600 3700 8500 3700
+Wire Wire Line
+	8600 3700 8600 4150
+Wire Wire Line
+	4350 4650 4350 4750
+Wire Wire Line
+	3550 4750 4350 4750
+Connection ~ 4350 4750
+Wire Wire Line
+	4350 4750 4350 5000
+Wire Wire Line
+	4350 3850 4200 3850
+Wire Wire Line
+	4350 3850 4350 4300
+Wire Wire Line
+	4100 3850 4000 3850
+Wire Wire Line
+	4000 3850 4000 4150
 $EndSCHEMATC
