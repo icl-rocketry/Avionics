@@ -1,4 +1,4 @@
-16939665467477084
+16941244683465084
 Battery
 BatteryHolder_Bulgin_BX0036_1xC
 Bulgin Battery Holder, BX0036, Battery Type C (https://www.bulgin.com/products/pub/media/bulgin/data/Battery_holders.pdf)
@@ -75284,6 +75284,13 @@ Texas_PowerVFQFN_15
 0
 13
 13
+iclr-hw
+VIA-0.6mm
+
+
+0
+1
+1
 iclr-hw
 VSON-10-1EP_2.5x2.5mm_Pitch0.5mm_ThermalPad
 VSON 10 Thermal on 11 3x3mm Pitch 0.5mm http://chip.tomsk.ru/chip/chipdoc.nsf/Package/D8A64DD165C2AAD9472579400024FC41!OpenDocument
