@@ -32,7 +32,7 @@ AR Path="/5DDE6CFA/5DE04AED" Ref="J?"  Part="1"
 AR Path="/5DDE1103/5DE04AED" Ref="J7"  Part="1" 
 F 0 "J7" H 5168 2275 50  0000 C CNN
 F 1 "Screw_Terminal_01x02" H 5168 2366 50  0000 C CNN
-F 2 "TerminalBlock_Phoenix:TerminalBlock_Phoenix_MPT-0,5-2-2.54_1x02_P2.54mm_Horizontal" H 5250 2600 50  0001 C CNN
+F 2 "iclr-hw:PHOENIX_1757242" H 5250 2600 50  0001 C CNN
 F 3 "~" H 5250 2600 50  0001 C CNN
 	1    5250 2600
 	-1   0    0    -1  
@@ -498,24 +498,22 @@ Wire Wire Line
 	7850 4000 7350 4000
 Connection ~ 7850 4000
 Wire Wire Line
-	5450 2700 5850 2700
-Wire Wire Line
-	5850 2700 5850 2950
+	6350 2600 6350 2850
 $Comp
 L power:GND #PWR0101
 U 1 1 5DEC1515
-P 5850 2950
-F 0 "#PWR0101" H 5850 2700 50  0001 C CNN
-F 1 "GND" H 5855 2777 50  0000 C CNN
-F 2 "" H 5850 2950 50  0001 C CNN
-F 3 "" H 5850 2950 50  0001 C CNN
-	1    5850 2950
+P 6350 2850
+F 0 "#PWR0101" H 6350 2600 50  0001 C CNN
+F 1 "GND" H 6355 2677 50  0000 C CNN
+F 2 "" H 6350 2850 50  0001 C CNN
+F 3 "" H 6350 2850 50  0001 C CNN
+	1    6350 2850
 	1    0    0    -1  
 $EndComp
-Text Label 6100 2600 2    50   ~ 0
+Text Label 6100 2700 2    50   ~ 0
 External_Supply
 Wire Wire Line
-	5450 2600 6100 2600
+	5450 2700 6100 2700
 Text Label 3000 4150 0    50   ~ 0
 External_Supply
 Text Label 7350 4000 0    50   ~ 0
@@ -550,4 +548,6 @@ Wire Wire Line
 	4100 3850 4000 3850
 Wire Wire Line
 	4000 3850 4000 4150
+Wire Wire Line
+	5450 2600 6350 2600
 $EndSCHEMATC
