@@ -1541,7 +1541,7 @@ U 1 1 5DABCA8E
 P 2250 3800
 F 0 "U1" H 2250 4881 50  0000 C CNN
 F 1 "CP2102N-A01-GQFN24" H 2250 4790 50  0000 C CNN
-F 2 "Package_DFN_QFN:QFN-24-1EP_4x4mm_P0.5mm_EP2.6x2.6mm" H 2700 3000 50  0001 L CNN
+F 2 "Package_DFN_QFN:QFN-24-1EP_4x4mm_P0.5mm_EP2.6x2.6mm_ThermalVias" H 2700 3000 50  0001 L CNN
 F 3 "https://www.silabs.com/documents/public/data-sheets/cp2102n-datasheet.pdf" H 2300 2750 50  0001 C CNN
 	1    2250 3800
 	1    0    0    -1  
