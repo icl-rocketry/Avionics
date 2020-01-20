@@ -1932,9 +1932,6 @@ Connection ~ 1600 4200
 Wire Wire Line
 	1600 4200 1650 4200
 Wire Wire Line
-	2100 3500 2850 3500
-Connection ~ 2850 3500
-Wire Wire Line
 	8000 3250 7800 3250
 Text Label 7800 3250 0    50   ~ 0
 Buzzer
