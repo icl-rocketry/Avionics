@@ -1,4 +1,4 @@
-16941244683465084
+16949142387389084
 Battery
 BatteryHolder_Bulgin_BX0036_1xC
 Bulgin Battery Holder, BX0036, Battery Type C (https://www.bulgin.com/products/pub/media/bulgin/data/Battery_holders.pdf)
@@ -70062,6 +70062,13 @@ Logo WEEE
 0
 0
 0
+Symbol
+Write_Pad
+
+
+0
+0
+0
 TerminalBlock
 TerminalBlock_Altech_AK300-2_P5.00mm
 Altech AK300 terminal block, pitch 5.0mm, 45 degree angled, see http://www.mouser.com/ds/2/16/PCBMETRC-24178.pdf
@@ -75271,6 +75278,13 @@ iclr-hw
 2
 2
 iclr-hw
+MIT_logo
+
+
+0
+0
+0
+iclr-hw
 PHOENIX_1757242
 
 
@@ -75299,9 +75313,30 @@ VSON 10 Thermal on 11 3x3mm Pitch 0.5mm
 17
 11
 iclr-hw
+Write_Pad
+
+
+0
+0
+0
+iclr-hw
 XBEE
 DIGI XBEE AND XBEE-PRO RF MODULES
 DIGI XBEE AND XBEE-PRO RF MODULES
 0
 20
 20
+iclr-hw
+iclr_logo
+
+
+0
+0
+0
+iclr-hw
+ricardo_logo
+
+
+0
+0
+0
