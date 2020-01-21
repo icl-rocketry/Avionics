@@ -36,7 +36,7 @@
   )
 
   (setup
-    (last_trace_width 0.2)
+    (last_trace_width 0.25)
     (user_trace_width 0.2)
     (user_trace_width 0.33559)
     (user_trace_width 0.5)
@@ -9265,7 +9265,7 @@
   (gr_text "R.I.C.A.R.D.O - v1\n" (at 128.03 52.55) (layer F.SilkS)
     (effects (font (size 1.8 1.8) (thickness 0.3)))
   )
-  (gr_text "-Rocket\n-Integral\n-Computational\n-and\n-Raytracing\n-Deep-fried\n-Object" (at 115.61 59.97) (layer F.SilkS)
+  (gr_text "-Rocket\n-Integral\n-Complex\n-Analytical\n-Raytracing\n-Deep-fried\n-Object" (at 115.78 59.74) (layer F.SilkS)
     (effects (font (size 1 1) (thickness 0.15)) (justify left))
   )
   (gr_line (start 85 110) (end 85 50) (layer Edge.Cuts) (width 0.05) (tstamp 5DE74D49))
