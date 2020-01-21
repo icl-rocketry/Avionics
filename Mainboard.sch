@@ -1980,4 +1980,133 @@ F 3 "~" H 10750 6000 50  0001 C CNN
 	1    10550 6000
 	0    -1   -1   0   
 $EndComp
+$Comp
+L power:+3.3V #PWR0108
+U 1 1 5E2F0B8B
+P 4800 3450
+F 0 "#PWR0108" H 4800 3300 50  0001 C CNN
+F 1 "+3.3V" H 4815 3623 50  0000 C CNN
+F 2 "" H 4800 3450 50  0001 C CNN
+F 3 "" H 4800 3450 50  0001 C CNN
+	1    4800 3450
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	4800 3450 4800 3550
+Connection ~ 4800 3550
+$Comp
+L Device:R_Small R26
+U 1 1 5E30F368
+P 4900 3550
+F 0 "R26" V 4704 3550 50  0000 C CNN
+F 1 "10k" V 4795 3550 50  0000 C CNN
+F 2 "Resistor_SMD:R_0603_1608Metric" H 4900 3550 50  0001 C CNN
+F 3 "~" H 4900 3550 50  0001 C CNN
+	1    4900 3550
+	0    1    1    0   
+$EndComp
+Wire Wire Line
+	5000 3550 5350 3550
+Text Label 5350 3550 2    50   ~ 0
+BARO_CS
+$Comp
+L Device:R_Small R31
+U 1 1 5E320DFC
+P 4900 3850
+F 0 "R31" V 4704 3850 50  0000 C CNN
+F 1 "10k" V 4795 3850 50  0000 C CNN
+F 2 "Resistor_SMD:R_0603_1608Metric" H 4900 3850 50  0001 C CNN
+F 3 "~" H 4900 3850 50  0001 C CNN
+	1    4900 3850
+	0    1    1    0   
+$EndComp
+Wire Wire Line
+	5000 3850 5350 3850
+Text Label 5350 3850 2    50   ~ 0
+FLASH_CS
+$Comp
+L Device:R_Small R37
+U 1 1 5E33008C
+P 4900 4150
+F 0 "R37" V 4704 4150 50  0000 C CNN
+F 1 "10k" V 4795 4150 50  0000 C CNN
+F 2 "Resistor_SMD:R_0603_1608Metric" H 4900 4150 50  0001 C CNN
+F 3 "~" H 4900 4150 50  0001 C CNN
+	1    4900 4150
+	0    1    1    0   
+$EndComp
+Wire Wire Line
+	5000 4150 5350 4150
+Text Label 5350 4150 2    50   ~ 0
+IMU_CS
+$Comp
+L Device:R_Small R38
+U 1 1 5E34F390
+P 4900 4450
+F 0 "R38" V 4704 4450 50  0000 C CNN
+F 1 "10k" V 4795 4450 50  0000 C CNN
+F 2 "Resistor_SMD:R_0603_1608Metric" H 4900 4450 50  0001 C CNN
+F 3 "~" H 4900 4450 50  0001 C CNN
+	1    4900 4450
+	0    1    1    0   
+$EndComp
+Wire Wire Line
+	5000 4450 5350 4450
+Text Label 5350 4450 2    50   ~ 0
+LORA_CS
+$Comp
+L Device:R_Small R39
+U 1 1 5E35EDA1
+P 4900 4750
+F 0 "R39" V 4704 4750 50  0000 C CNN
+F 1 "10k" V 4795 4750 50  0000 C CNN
+F 2 "Resistor_SMD:R_0603_1608Metric" H 4900 4750 50  0001 C CNN
+F 3 "~" H 4900 4750 50  0001 C CNN
+	1    4900 4750
+	0    1    1    0   
+$EndComp
+Wire Wire Line
+	5000 4750 5350 4750
+Text Label 5350 4750 2    50   ~ 0
+MAG_CS
+Wire Wire Line
+	4800 3550 4800 3850
+Connection ~ 4800 3850
+Wire Wire Line
+	4800 3850 4800 4150
+Connection ~ 4800 4150
+Wire Wire Line
+	4800 4150 4800 4450
+Connection ~ 4800 4450
+Wire Wire Line
+	4800 4450 4800 4750
+$Comp
+L Device:R_Small R40
+U 1 1 5E390404
+P 4900 5050
+F 0 "R40" V 4704 5050 50  0000 C CNN
+F 1 "10k" V 4795 5050 50  0000 C CNN
+F 2 "Resistor_SMD:R_0603_1608Metric" H 4900 5050 50  0001 C CNN
+F 3 "~" H 4900 5050 50  0001 C CNN
+	1    4900 5050
+	0    1    1    0   
+$EndComp
+Wire Wire Line
+	5000 5050 5350 5050
+Text Label 5350 5050 2    50   ~ 0
+SD_CS
+Wire Wire Line
+	4800 5050 4800 4750
+Connection ~ 4800 4750
+$Comp
+L Connector:TestPoint TP25
+U 1 1 5E3F6828
+P 7200 3050
+F 0 "TP25" V 7154 3238 50  0000 L CNN
+F 1 "TestPoint" V 7245 3238 50  0000 L CNN
+F 2 "TestPoint:TestPoint_THTPad_1.0x1.0mm_Drill0.5mm" H 7400 3050 50  0001 C CNN
+F 3 "~" H 7400 3050 50  0001 C CNN
+	1    7200 3050
+	0    1    1    0   
+$EndComp
 $EndSCHEMATC
