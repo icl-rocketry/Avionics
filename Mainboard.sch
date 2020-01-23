@@ -1,4 +1,5 @@
 EESchema Schematic File Version 4
+LIBS:Mainboard-cache
 EELAYER 30 0
 EELAYER END
 $Descr A4 11693 8268
@@ -787,7 +788,7 @@ CAN_HIGH
 Text Label 5100 6850 0    50   ~ 0
 CAN_LOW
 $Comp
-L RF_Module:ESP32-WROOM-32D U3
+L Mainboard-rescue:ESP32-WROOM-32D-RF_Module U3
 U 1 1 5DA5F4C7
 P 6250 3750
 F 0 "U3" H 6250 5331 50  0000 C CNN
