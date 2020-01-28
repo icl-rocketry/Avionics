@@ -1,5 +1,4 @@
 EESchema Schematic File Version 4
-LIBS:Mainboard-cache
 EELAYER 30 0
 EELAYER END
 $Descr A4 11693 8268
@@ -67,7 +66,7 @@ L Device:C_Small C2
 U 1 1 5DA70D8A
 P 900 7550
 F 0 "C2" V 671 7550 50  0000 C CNN
-F 1 "0.1uF" V 762 7550 50  0000 C CNN
+F 1 "1nF" V 762 7550 50  0000 C CNN
 F 2 "Capacitor_SMD:C_0603_1608Metric" H 900 7550 50  0001 C CNN
 F 3 "~" H 900 7550 50  0001 C CNN
 	1    900  7550
