@@ -7,7 +7,7 @@ void setup() {
   Serial.begin(115200);
 
   #ifdef DEBUG
-    Serial.println("showing all debug messages...");
+    Serial.println("Displaying all debug messages...");
   #endif
 
 }
