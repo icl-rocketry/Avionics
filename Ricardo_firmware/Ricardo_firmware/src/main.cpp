@@ -1,6 +1,7 @@
 #include <Arduino.h>
 
 #include "config.h"
+#include "WebServer.h"
 
 void setup() {
   // put your setup code here, to run once:
@@ -9,6 +10,9 @@ void setup() {
   #ifdef DEBUG
     Serial.println("Displaying all debug messages...");
   #endif
+
+  setupWebserver();
+  
 
 }
 
