@@ -1,6 +1,8 @@
 #include <Arduino.h>
 
-#include "memory.h"
+#include "ricardo_pins.h"
+
+
 #include "WebServer.h"
 #include "battery.h"
 #include "MessageHandler.h"
