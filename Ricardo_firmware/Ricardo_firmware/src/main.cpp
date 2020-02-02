@@ -1,6 +1,6 @@
 #include <Arduino.h>
 
-#include "config.h"
+#include "memory.h"
 #include "WebServer.h"
 #include "battery.h"
 #include "MessageHandler.h"

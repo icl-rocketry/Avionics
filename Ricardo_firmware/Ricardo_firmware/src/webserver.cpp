@@ -1,12 +1,11 @@
 #include "webserver.h"
+#include "config.h"
 
 WiFiServer server(80);
 
 String header;
 
-//webserver settings
-const char* ssid = "RICARDO";
-const char* password = "Mil0s";
+
 
 
 void setupWebserver(){

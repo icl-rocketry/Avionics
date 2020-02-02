@@ -5,6 +5,8 @@
  */
 
 
+#ifndef PINS_H
+#define PINS_H
 
 #define Buzzer 2
 #define LoraReset 4
@@ -27,5 +29,7 @@
 #define RxCan 33
 #define Cont_1 34
 #define Cont_2 35
-#define BatVolt 36
+#define BattVolt 36
 #define LoraInt 39
+
+#endif

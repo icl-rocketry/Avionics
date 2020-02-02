@@ -1,4 +1,5 @@
 #include "MessageHandler.h"
+#include "config.h"
 
 
 // message type: INFO, ERROR
