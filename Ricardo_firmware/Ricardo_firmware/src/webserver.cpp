@@ -4,6 +4,10 @@ WiFiServer server(80);
 
 String header;
 
+//webserver settings
+const char* ssid = "RICARDO";
+const char* password = "Mil0s";
+
 
 void setupWebserver(){
     WiFi.softAP(ssid, password);

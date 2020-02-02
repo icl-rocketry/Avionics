@@ -2,6 +2,12 @@
 
 #include "config.h"
 #include "WebServer.h"
+#include "battery.h"
+#include "MessageHandler.h"
+
+
+//get core id using xPortGetCoreID()
+
 
 void setup() {
   // put your setup code here, to run once:
