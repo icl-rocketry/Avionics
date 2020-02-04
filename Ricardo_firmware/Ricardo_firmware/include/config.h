@@ -3,7 +3,7 @@
 #define CONFIG_H
 
 //uncomment to show all debug messages
-#define DEBUG
+#define VERBOSE
 
 //nominal charged battery voltage (mV)
 #define full_battery_voltage 4200

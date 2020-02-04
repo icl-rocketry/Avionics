@@ -15,7 +15,7 @@ void setup() {
   // put your setup code here, to run once:
   Serial.begin(115200);
 
-  #ifdef DEBUG
+  #ifdef VERBOSE
     Serial.println("Displaying all debug messages...");
   #endif
 
