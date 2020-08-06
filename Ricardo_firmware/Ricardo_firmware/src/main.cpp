@@ -3,9 +3,9 @@
 #include "ricardo_pins.h"
 
 
-#include "WebServer.h"
-#include "battery.h"
-#include "MessageHandler.h"
+#include "Comms/webserver.h"
+#include "Sensors/battery.h"
+#include "Logging/MessageHandler.h"
 
 
 //get core id using xPortGetCoreID()

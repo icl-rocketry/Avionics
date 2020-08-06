@@ -895,4 +895,16 @@ F 3 "" H 7750 5050 50  0001 C CNN
 	1    7750 5050
 	1    0    0    -1  
 $EndComp
+Wire Wire Line
+	7600 4200 7850 4200
+Wire Wire Line
+	7600 4400 7850 4400
+Wire Wire Line
+	7600 4650 7850 4650
+Text Label 7850 4200 2    50   ~ 0
+RING
+Text Label 7850 4400 2    50   ~ 0
+RXD
+Text Label 7850 4650 2    50   ~ 0
+TXD
 $EndSCHEMATC
