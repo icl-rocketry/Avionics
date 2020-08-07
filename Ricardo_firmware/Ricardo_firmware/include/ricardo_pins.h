@@ -17,11 +17,11 @@
 #define FlashCs 15
 #define RxRadio 16
 #define TxRadio 17
-#define Sclk 18
-#define Miso 19
-#define Sda 21
-#define Scl 22
-#define Mosi 23
+#define SCLK 18
+#define MISO 19
+#define SDA 21
+#define SCL 22
+#define MOSI 23
 #define SdCs 25
 #define Nuke_1 26
 #define Nuke_2 27
