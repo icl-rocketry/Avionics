@@ -1,5 +1,6 @@
 #include "battery.h"
 #include "config.h"
+#include "ricardo_pins.h"
 
 int battery_voltage(){
     float factor = 6600/4095;

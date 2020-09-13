@@ -1,5 +1,6 @@
 #include "webserver.h"
 #include "config.h"
+#include "WiFi.h"
 
 WiFiServer server(80);
 

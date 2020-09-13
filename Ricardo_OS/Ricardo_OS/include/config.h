@@ -8,31 +8,32 @@
 //nominal charged battery voltage (mV)
 #define full_battery_voltage 4200
 
-//message flag definitions
+//message flag definitions//
+
 #define NONE 0
 //state flags
-#define STATE_USBMODE 1 
-#define STATE_PREFLIGHT 2 
-#define STATE_COUNTDOWN 4 
-#define STATE_FLIGHT 8 
-#define STATE_RECOVERY 16
+#define STATE_USBMODE (1 << 0) 
+#define STATE_PREFLIGHT (1 << 1)
+#define STATE_COUNTDOWN (1 << 2)
+#define STATE_FLIGHT (1 << 3)
+#define STATE_RECOVERY (1 << 4)
 //critical messages 
-#define ERROR_SPI 32
-#define ERROR_I2C 64
-#define ERROR_SERIAL 128
-#define ERROR_LORA 256
-#define ERROR_BARO 512
-#define ERROR_BATT 1024
-#define ERROR_GPS 2048
-#define ERROR_IMU 4096
-#define ERROR_MAG 8192
-#define ERROR_KALMAN 16384
-#define ERROR_SD 32768
-#define ERROR_FLASH 65536
+#define ERROR_SPI (1 << 5)
+#define ERROR_I2C (1 << 6)
+#define ERROR_SERIAL (1 << 7)
+#define ERROR_LORA (1 << 8)
+#define ERROR_BARO (1 << 9)
+#define ERROR_BATT (1 << 10)
+#define ERROR_GPS (1 << 11)
+#define ERROR_IMU (1 << 12)
+#define ERROR_MAG (1 << 13)
+#define ERROR_KALMAN (1 << 14)
+#define ERROR_SD (1 << 15)
+#define ERROR_FLASH (1 << 16)
 //if rocket is inverted
-#define ERROR_ORIENTATION 131072
+#define ERROR_ORIENTATION (1 << 17)
 //warn
-#define WARN_BATT 262144
+#define WARN_BATT (1 << 18)
 
 //info
 
