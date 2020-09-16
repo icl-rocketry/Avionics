@@ -3,13 +3,7 @@
 #ifndef BARO_H
 #define BARO_H
 
-
-class Baro {
-    public:
-        void initialise();
-        
-};
-
+void setup_Baro();
 
 
 #endif

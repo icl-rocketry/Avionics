@@ -7,6 +7,16 @@
 
 //nominal charged battery voltage (mV)
 #define full_battery_voltage 4200
+#define warn_battery_voltage 3710 //coresponds to 15%
+#define empty_battery_voltage 3270
+
+//I2C frequrency - 4Khz
+#define I2C_FREQUENCY 400000
+//I2C device addresses
+//gps
+#define I2C_GPS_ADDRESS 0x42
+//SPI speed - 2MHz
+#define SPI_CLOCK_DIV8 0x004c1001
 
 //message flag definitions//
 
@@ -26,14 +36,13 @@
 #define ERROR_BATT (1 << 10)
 #define ERROR_GPS (1 << 11)
 #define ERROR_IMU (1 << 12)
-#define ERROR_MAG (1 << 13)
-#define ERROR_KALMAN (1 << 14)
-#define ERROR_SD (1 << 15)
-#define ERROR_FLASH (1 << 16)
+#define ERROR_KALMAN (1 << 13)
+#define ERROR_SD (1 << 14)
+#define ERROR_FLASH (1 << 15)
 //if rocket is inverted
-#define ERROR_ORIENTATION (1 << 17)
+#define ERROR_ORIENTATION (1 << 16)
 //warn
-#define WARN_BATT (1 << 18)
+#define WARN_BATT (1 << 17)
 
 //info
 
