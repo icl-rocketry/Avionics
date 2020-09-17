@@ -6,7 +6,7 @@
 #define INTERNAL_IO_H
 
 //define i2c object
-TwoWire I2C = TwoWire(0);
+TwoWire Wire = TwoWire(0);
 
 //define VSPI object
 SPIClass vspi = SPIClass(VSPI);

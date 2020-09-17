@@ -4,7 +4,7 @@
 
 void setup_io(){
     //intialize i2c interface
-    I2C.begin(SDA,SCL,I2C_FREQUENCY);
+    Wire.begin(SDA,SCL,I2C_FREQUENCY);
     //initalize spi interface
         //todo find the lowest denominator for the speed of the spi bus.
     //vspi.setClockDivider(SPI_CLOCK_DIV8);

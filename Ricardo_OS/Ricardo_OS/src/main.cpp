@@ -8,6 +8,7 @@
 
 
 
+
 //get core id using xPortGetCoreID()
 
 
@@ -18,6 +19,7 @@ void setup() {
   #ifdef VERBOSE
     Serial.println("Displaying all debug messages...");
   #endif
+
 
   setupWebserver();
   
