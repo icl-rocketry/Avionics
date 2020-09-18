@@ -22,6 +22,7 @@ void stateMachine::update() {
 
 void stateMachine::changeState(State* newStatePtr) {
   // Delete old state instance and change to new one
+  _currStatePtr->exitstate();
   delete _currStatePtr;
   _currStatePtr = newStatePtr;
   _currStatePtr -> initialise();

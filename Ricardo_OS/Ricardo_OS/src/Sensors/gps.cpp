@@ -3,12 +3,11 @@
 #include "TinyGPS++.h"
 
 
-
 //define tinygps object
 TinyGPSPlus gps;
 
 
 
 void setup_gps(){
-
+    
 }

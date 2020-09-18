@@ -3,12 +3,13 @@ State is called when usb is detected. No child state is called and state allows 
 FLash can be dumped over the serial terminal and extra commands avaliabe over serial interface to improve debugging.
 */
 
-#include "Arduino.h"
-#include "state.h"
-#include "stateMachine.h"
+
 
 #ifndef USBMODE_H
 #define USBMODE_H
+#include "Arduino.h"
+#include "state.h"
+#include "stateMachine.h"
 
 class USBmode: public State {
   public:

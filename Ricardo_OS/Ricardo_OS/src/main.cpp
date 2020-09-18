@@ -1,29 +1,19 @@
 #include <Arduino.h>
-
 #include "ricardo_pins.h"
-
-
-#include "Comms/webserver.h"
-#include "Sensors/battery.h"
-
-
+#include "config.h"
+#include "internal_io.h"
+#include "Logging/messages.h"
 
 
 //get core id using xPortGetCoreID()
 
 
 void setup() {
-  // put your setup code here, to run once:
-  Serial.begin(115200);
+  setup_io();
 
   #ifdef VERBOSE
     Serial.println("Displaying all debug messages...");
   #endif
-
-
-  setupWebserver();
-  
-
 }
 
 void loop() {

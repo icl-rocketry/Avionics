@@ -2,11 +2,14 @@
 #include "config.h"
 #include "internal_io.h"
 
-void setup_io(){
+//intialize vspi object
+SPIClass vspi = SPIClass(VSPI);
+
+bool setup_io(){
     //intialize i2c interface
-    Wire.begin(SDA,SCL,I2C_FREQUENCY);
+    Wire.begin(_SDA,_SCL,I2C_FREQUENCY);
     //initalize spi interface
-        //todo find the lowest denominator for the speed of the spi bus.
+        //todo find the lowest denominator for the speed of the spi bus.   
     //vspi.setClockDivider(SPI_CLOCK_DIV8);
     vspi.begin();
     //setup cs pins
@@ -27,4 +30,5 @@ void setup_io(){
     //open serial port on usb interface
     Serial.begin(115200);
 
+    return 1;
 };

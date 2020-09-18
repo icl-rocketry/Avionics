@@ -1,16 +1,14 @@
+#ifndef INTERNAL_IO_H
+#define INTERNAL_IO_H
+
 #include "Wire.h"
 #include "SPI.h"
 #include <Arduino.h>
 
-#ifndef INTERNAL_IO_H
-#define INTERNAL_IO_H
 
-//define i2c object
-TwoWire Wire = TwoWire(0);
+//define global VSPI object
+extern SPIClass vspi;
 
-//define VSPI object
-SPIClass vspi = SPIClass(VSPI);
-
-void setup_io();
+bool setup_io();
 
 #endif

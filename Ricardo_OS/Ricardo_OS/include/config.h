@@ -17,10 +17,16 @@
 #define I2C_GPS_ADDRESS 0x42
 //SPI speed - 2MHz
 #define SPI_CLOCK_DIV8 0x004c1001
+//Lora Specific Config
+#define LORA_SYNC_WORD 0xF3
+//Lora region codes
+//433E6 for Asia
+//866E6 for Europe
+//915E6 for North America
+#define LORA_REGION 866E6
 
 //message flag definitions//
-
-#define NONE 0
+#define NONE 0 
 //state flags
 #define STATE_USBMODE (1 << 0) 
 #define STATE_PREFLIGHT (1 << 1)
@@ -43,9 +49,11 @@
 #define ERROR_ORIENTATION (1 << 16)
 //warn
 #define WARN_BATT (1 << 17)
-
+#define WARN_PYRO1 (1 << 18)
+#define WARN_PYRO2 (1 << 19)
 //info
 
+//command flag definitions//
 
 
 

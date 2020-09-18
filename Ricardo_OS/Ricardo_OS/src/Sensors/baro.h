@@ -1,8 +1,6 @@
-#include <Arduino.h>
-
 #ifndef BARO_H
 #define BARO_H
-
+#include <Arduino.h>
 void setup_Baro();
 
 
