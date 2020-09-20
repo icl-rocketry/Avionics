@@ -9,3 +9,11 @@ void Countdown::initialise(){
 
 };
 
+State* Countdown::update(){
+
+};
+
+void Countdown::exitstate(){
+
+};
+
