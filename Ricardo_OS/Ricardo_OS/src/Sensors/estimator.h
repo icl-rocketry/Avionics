@@ -24,12 +24,12 @@ struct raw_measurements_t{
 
 class Estimator{
     public:
-        state_t state;
-        raw_measurements_t sensor_raw;
+        
         void setup();
         void update();
 
-
+        state_t state;
+        raw_measurements_t sensor_raw;
 
 
 };

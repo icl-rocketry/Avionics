@@ -2,7 +2,9 @@
 #ifndef DOWNLINK_H
 #define DOWNLINK_H
 #include "Arduino.h"
-#include "interfaces/radio.h"
+//#include "stateMachine.h"
+
+
 struct telemetry_packet_t{
     //telemetry data
 
@@ -21,12 +23,16 @@ struct recieved_packet_t{
     
 };
 
+class stateMachine;//forward declaration to prevent circular dependancy
+
+
 class Downlink{
     public:
+        Downlink(stateMachine* sm);
         void setup();
         void send_data(uint8_t iface,uint32_t* data, size_t len);
     private:
-
+        stateMachine* _sm; //pointer to state machine
 
 
 };

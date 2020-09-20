@@ -7,13 +7,15 @@ Allows flash system operation to dump/reformat of onboard and sd card.
 #define PREFLIGHT_H
 #include "Arduino.h"
 #include "state.h"
-#include "stateMachine.h"
+
 
 
 class Preflight: public State {
   public:
+    Preflight(stateMachine* sm);
     void initialise();
     State* update();
+    void exitstate();
 };
 
 #endif

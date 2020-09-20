@@ -9,12 +9,13 @@ FLash can be dumped over the serial terminal and extra commands avaliabe over se
 #define USBMODE_H
 #include "Arduino.h"
 #include "state.h"
-#include "stateMachine.h"
 
 class USBmode: public State {
   public:
+    USBmode(stateMachine* sm);
     void initialise();
     State* update();
+    void exitstate();
 };
 
 #endif

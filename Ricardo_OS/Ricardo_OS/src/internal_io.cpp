@@ -1,6 +1,10 @@
+#include "internal_io.h"
+
 #include "ricardo_pins.h"
 #include "config.h"
-#include "internal_io.h"
+
+#include "Wire.h"
+#include "SPI.h"
 
 //intialize vspi object
 SPIClass vspi = SPIClass(VSPI);

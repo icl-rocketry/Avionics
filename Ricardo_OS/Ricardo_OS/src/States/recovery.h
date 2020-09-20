@@ -8,12 +8,16 @@ State which deploys chutes after rocket has reached apogee.
 #define RECOVERY_H
 #include "Arduino.h"
 #include "state.h"
-#include "stateMachine.h"
+
+
+
 
 class Recovery: public State {
   public:
+    Recovery(stateMachine* sm);
     void initialise();
     State* update();
+    void exitstate();
 };
 
 #endif

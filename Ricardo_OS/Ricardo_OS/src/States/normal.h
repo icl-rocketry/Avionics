@@ -6,13 +6,14 @@ State for normal operation of the rocket. Calls immediatley child preflight stat
 #define NORMAL_H
 #include "Arduino.h"
 #include "state.h"
-#include "stateMachine.h"
 
 
 class Normal: public State {
   public:
+    Normal(stateMachine* sm);
     void initialise();
     State* update();
+    void exitstate();
 };
 
 #endif

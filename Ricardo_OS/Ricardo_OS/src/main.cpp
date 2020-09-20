@@ -5,6 +5,13 @@
 #include "Logging/messages.h"
 
 
+#include "stateMachine.h"
+#include "States/preflight.h"
+
+
+stateMachine statemach;
+
+
 //get core id using xPortGetCoreID()
 
 
@@ -14,8 +21,11 @@ void setup() {
   #ifdef VERBOSE
     Serial.println("Displaying all debug messages...");
   #endif
+
+  statemach.initialise(new Preflight(&statemach));
 }
 
 void loop() {
   // put your main code here, to run repeatedly:
+  statemach.update();
 }
