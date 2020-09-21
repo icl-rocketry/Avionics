@@ -3,10 +3,12 @@
 #include "countdown.h"
 
 Preflight::Preflight(stateMachine* sm) : State(sm){
-    _stateID = 2; //? random id for now
+    curr_stateID = 2; //? random id for now
 }
 
 void Preflight::initialise(){
+    State::initialise();
+
 
 };
 
@@ -20,5 +22,5 @@ State* Preflight::update(){
 };
 
 void Preflight::exitstate(){
-
+    State::exitstate();
 };

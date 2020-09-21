@@ -4,8 +4,19 @@ State::State(stateMachine* sm){
     _sm = sm; // assign statemachine pointer 
 };
 
-void State::initialise(){};
+State::~State(){
+  // Compulsory virtual destructor definition, even if it's empty
+};
 
-State* State::update(){};
+void State::initialise(){
+    time_entered_state = millis();
+    //log these variables using logging object
+};
 
-void State::exitstate(){};
+
+
+void State::exitstate(){
+    time_duration_state = millis() - time_entered_state;
+    //log these variables using logging object
+};
+
