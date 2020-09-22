@@ -18,7 +18,7 @@ Written by the Electronics team, Imperial College London Rocketry
 
 class stateMachine {
   public:
-    stateMachine();// public constructor
+    stateMachine();// The constructor
     //functions
     void initialise(State* initStatePtr);
     void update();
