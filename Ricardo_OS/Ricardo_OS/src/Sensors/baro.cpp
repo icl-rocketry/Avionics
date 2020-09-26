@@ -3,6 +3,6 @@
 
 
 
-void setup_Baro(){
+void setup_baro(){
 
 };

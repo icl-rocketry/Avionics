@@ -7,17 +7,26 @@
 #include "gps.h"
 #include "imu.h"
 #include "baro.h"
+#include "battery.h"
 
 
 
 
 
 
-void setup_sensors(){
+void Sensors::setup_sensors(){
     //calls setup for each indiviual sensor
+    setup_gps();
+    setup_baro();
+    setup_imu();
     
 };
 
-void update_sensors_raw(){
+void Sensors::update(){
 //updates the raw_measuremets data structure with new measurements
+
+    sensors_raw.batt_percent = battery_percentage();
+    sensors_raw.batt_volt = battery_voltage();
+
+
 };

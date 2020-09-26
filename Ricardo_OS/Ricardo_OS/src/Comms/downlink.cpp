@@ -12,7 +12,7 @@ void Downlink::setup(){
     _sm->estimator.update();// example of acsessing object called in statemachine
 };
 
-void Downlink::send_data(uint8_t iface,uint32_t* data, size_t len){
+void Downlink::send_data(uint8_t iface,uint8_t* data, size_t len){
     
 
 };

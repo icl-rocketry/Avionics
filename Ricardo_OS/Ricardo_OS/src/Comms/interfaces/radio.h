@@ -10,8 +10,8 @@
 class Radio: public Iface{
     public:
         void setup(SPIClass& spi);
-        void send_packet(uint32_t* txpacket,size_t packet_size);
-        void recieve_packet(uint32_t* rxpacket);
+        void send_packet(uint8_t* txpacket,size_t packet_size);
+        void recieve_packet(uint8_t* rxpacket);
         int8_t address;
 };
 

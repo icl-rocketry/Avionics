@@ -5,7 +5,7 @@
 //#include "stateMachine.h"
 
 
-struct telemetry_packet_t{
+struct tx_packet_t{
     //telemetry data
 
     //system_status
@@ -30,9 +30,11 @@ class Downlink{
     public:
         Downlink(stateMachine* sm);
         void setup();
-        void send_data(uint8_t iface,uint32_t* data, size_t len);
+        void send_data(uint8_t iface,uint8_t* data, size_t len);
     private:
         stateMachine* _sm; //pointer to state machine
+        tx_packet_t txpacket;
+        recieved_packet_t rxpacket;
 
 
 };

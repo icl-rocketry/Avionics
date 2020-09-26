@@ -12,25 +12,19 @@ struct state_t{
     uint8_t estimator_state; 
 };
 
-struct raw_measurements_t{
-    float ax,ay,az;
-    float gx,gy,gz;
-    float mx,my,mz;
-    float gps_lat,gps_long,gps_speed,gps_alt;
-    float baro_alt,baro_temp,baro_press;
-    uint32_t system_time;
 
-};
+class stateMachine; //forward declaration
 
 class Estimator{
     public:
-        
+        Estimator(stateMachine* sm);   
         void setup();
         void update();
 
         state_t state;
-        raw_measurements_t sensor_raw;
-
+    private:
+        stateMachine* _sm;//pointer to statemachine object
+        
 
 };
 

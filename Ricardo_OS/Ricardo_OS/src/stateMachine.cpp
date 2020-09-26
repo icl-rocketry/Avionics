@@ -12,8 +12,10 @@ Written by the Electronics team, Imperial College London Rocketry
 
 
 stateMachine::stateMachine() : 
-    estimator(),
+    sensors(),
+    estimator(this),
     downlink(this)
+    
 { 
 }
 

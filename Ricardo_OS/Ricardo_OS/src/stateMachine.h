@@ -10,8 +10,10 @@ Written by the Electronics team, Imperial College London Rocketry
 #include "Arduino.h"
 
 #include "States/state.h"
+
 #include "Sensors/estimator.h"
 #include "Comms/downlink.h"
+#include "Sensors/sensors.h"
 
 
 
@@ -25,9 +27,10 @@ class stateMachine {
     void changeState(State* newStatePtr);
 
 
+    Sensors sensors;
     Estimator estimator;
     Downlink downlink;
-
+    
 
   private:
     State* _currStatePtr;

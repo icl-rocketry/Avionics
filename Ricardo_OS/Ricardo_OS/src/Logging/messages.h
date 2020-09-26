@@ -2,7 +2,7 @@
 handles all messages bitwise so multiple messages can be contained in a single variable
 
 
-
+//reqwrite as class
 */
 
 #ifndef MESSAGES_H

@@ -22,13 +22,13 @@ void Radio::setup(SPIClass& _spi){
 
 };
 
-void Radio::send_packet(uint32_t* txpacket, size_t packet_len){
+void Radio::send_packet(uint8_t* txpacket, size_t packet_len){
     LoRa.beginPacket();
     LoRa.write((uint8_t*)&txpacket, packet_len);
     LoRa.endPacket();
 };
 
-void Radio::recieve_packet(uint32_t* rxpacket){
+void Radio::recieve_packet(uint8_t* rxpacket){
     int packetSize = LoRa.parsePacket();
     if (packetSize){ //check if theres data to read 
         LoRa.readBytes((uint8_t*)&rxpacket, packetSize);
