@@ -14,6 +14,8 @@ Written by the Electronics team, Imperial College London Rocketry
 #include "Sensors/estimator.h"
 #include "Comms/downlink.h"
 #include "Sensors/sensors.h"
+#include "SPI.h"
+#include "Wire.h"
 
 
 
@@ -26,6 +28,8 @@ class stateMachine {
     void update();
     void changeState(State* newStatePtr);
 
+    SPIClass vspi;
+    TwoWire I2C;
 
     Sensors sensors;
     Estimator estimator;

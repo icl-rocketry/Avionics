@@ -12,6 +12,8 @@ Written by the Electronics team, Imperial College London Rocketry
 
 
 stateMachine::stateMachine() : 
+    vspi(),
+    I2C(0),
     sensors(),
     estimator(this),
     downlink(this)
