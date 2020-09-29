@@ -3,6 +3,7 @@
 //calls and updates raw sensor values
 
 #include "Arduino.h"
+#include "gps.h"
 
 
 
@@ -18,13 +19,19 @@ struct raw_measurements_t{
 };
 
 
+class stateMachine; //forward declaration
 
 class Sensors{
     public:
+        Sensors(stateMachine* sm);
         void setup_sensors();
         void update();
         raw_measurements_t sensors_raw;
+    private:
+        stateMachine* _sm; //pointer to statemachine
 
+        //individual sensor objects
+        GPS gps;
 
 };
 

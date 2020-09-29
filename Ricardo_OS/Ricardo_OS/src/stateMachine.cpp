@@ -12,14 +12,13 @@ Written by the Electronics team, Imperial College London Rocketry
 
 
 stateMachine::stateMachine() : 
-    vspi(),
+    vspi(VSPI),
     I2C(0),
-    sensors(),
+    sensors(this),
     estimator(this),
     downlink(this)
     
-{ 
-}
+{}
 
 
 void stateMachine::initialise(State* initStatePtr) {
@@ -36,7 +35,9 @@ void stateMachine::update() {
 
 void stateMachine::changeState(State* newStatePtr) {
   // Delete old state instance and change to new one
-  _currStatePtr->exitstate();
+  if (_currStatePtr != NULL){
+    _currStatePtr->exitstate();
+  };
   delete _currStatePtr;
   _currStatePtr = newStatePtr;
   _currStatePtr -> initialise();

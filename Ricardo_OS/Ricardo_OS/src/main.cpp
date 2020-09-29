@@ -1,12 +1,11 @@
 #include <Arduino.h>
 #include "ricardo_pins.h"
 #include "config.h"
-#include "internal_io.h"
 #include "Logging/messages.h"
 
 
 #include "stateMachine.h"
-#include "States/preflight.h"
+#include "States/setup.h"
 
 
 stateMachine statemach;
@@ -16,13 +15,13 @@ stateMachine statemach;
 
 
 void setup() {
-  setup_io();
+
 
   #ifdef VERBOSE
     Serial.println("Displaying all debug messages...");
   #endif
 
-  statemach.initialise(new Preflight(&statemach));
+  statemach.initialise(new Setup(&statemach)); //intialize statemachine with setup state to run all necessary setup tasks.
 }
 
 void loop() {

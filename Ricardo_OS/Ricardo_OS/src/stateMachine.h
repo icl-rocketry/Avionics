@@ -27,7 +27,7 @@ class stateMachine {
     void initialise(State* initStatePtr);
     void update();
     void changeState(State* newStatePtr);
-
+    
     SPIClass vspi;
     TwoWire I2C;
 
