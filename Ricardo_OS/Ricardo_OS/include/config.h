@@ -54,7 +54,7 @@
 //info
 
 //command flag definitions//
-
+#define COMMAND_ABORT (1 << 0)
 
 
 #endif
