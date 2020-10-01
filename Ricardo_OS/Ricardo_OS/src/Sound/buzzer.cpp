@@ -4,14 +4,11 @@ Buzzer::Buzzer(){};
 
 void Buzzer::setup(){};
 
-void Buzzer::play_melody(uint8_t melody){
+void Buzzer::play(uint8_t melody,uint8_t priority){
     previous_time = millis();
     _melody = melody;   
 };
 
 void Buzzer::update(){
-    switch (_melody){
-        case 0:
-            break;
-    };
+    
 };

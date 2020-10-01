@@ -9,7 +9,7 @@ class Buzzer{
     public:
         Buzzer();
         void setup();
-        void play_melody(uint8_t melody);
+        void play(uint8_t melody,uint8_t priorty);
         void update();
 
     private:

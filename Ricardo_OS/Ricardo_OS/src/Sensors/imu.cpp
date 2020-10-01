@@ -1,16 +1,21 @@
 #include "imu.h"
 #include "config.h"
 #include "SPI.h"
-#include "Adafruit_LSM9DS1.h"
+
 #include "Adafruit_Sensor.h"
 #include "ricardo_pins.h"
 #include "../Logging/messages.h"
 
-Adafruit_LSM9DS1 imu = Adafruit_LSM9DS1(ImuCs, MagCs);
 
-void setup_imu(){
 
-    if (!imu.begin()){
+Imu::Imu(SPIClass* spi):
+    imu(ImuCs, MagCs)
+{
+    _spi = spi;
+};
+
+void Imu::setup(){
+        if (!imu.begin()){
         new_message(ERROR_IMU, "Unable to initialize the imu");
     };
     //setup imu scaling
@@ -19,4 +24,6 @@ void setup_imu(){
     imu.setupGyro(imu.LSM9DS1_GYROSCALE_245DPS);
 
 };
+
+void Imu::update(){};
 

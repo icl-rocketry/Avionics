@@ -2,6 +2,7 @@
 #define ESTIMATOR_H
 #include <Arduino.h>
 //global struct for state of rocket
+
 struct state_t{
     float lat,lng;
     float q[3]; //quaternion output

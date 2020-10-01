@@ -3,7 +3,7 @@
 #ifndef GPS_H
 #define GPS_H
 #include <Arduino.h>
-#include "TinyGPS++.h"
+#include "TinyGPS++.h"//possible to remove these headers and make them forward declarations but cba unless we run into circular depndancies
 #include "Wire.h"
 
 
@@ -14,8 +14,8 @@ struct gps_data_t{
 
 class GPS{
     public:
-        GPS();
-        void setup(TwoWire* wire);
+        GPS(TwoWire* wire);
+        void setup();
         void update();
 
         gps_data_t gps_data;

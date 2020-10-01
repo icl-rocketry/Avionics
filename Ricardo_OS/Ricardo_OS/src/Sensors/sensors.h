@@ -3,7 +3,11 @@
 //calls and updates raw sensor values
 
 #include "Arduino.h"
+
 #include "gps.h"
+#include "baro.h"
+#include "imu.h"
+#include "battery.h"
 
 
 
@@ -27,11 +31,16 @@ class Sensors{
         void setup_sensors();
         void update();
         raw_measurements_t sensors_raw;
+
     private:
         stateMachine* _sm; //pointer to statemachine
 
         //individual sensor objects
         GPS gps;
+        Baro baro;
+        Imu imu;
+        Battery batt;
+
 
 };
 

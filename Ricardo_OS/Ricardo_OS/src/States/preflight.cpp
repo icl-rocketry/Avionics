@@ -1,6 +1,7 @@
 #include "Arduino.h"
 #include "preflight.h"
 #include "countdown.h"
+#include "stateMachine.h"
 
 Preflight::Preflight(stateMachine* sm) : State(sm){
     curr_stateID = 2; //? random id for now
