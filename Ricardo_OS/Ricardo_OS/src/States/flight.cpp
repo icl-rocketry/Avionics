@@ -1,5 +1,6 @@
 #include "Arduino.h"
 #include "flight.h"
+#include "recovery.h"
 
 
 Flight::Flight(stateMachine* sm) : State(sm){
@@ -15,7 +16,7 @@ void Flight::initialise(){
 
 State* Flight::update(){
 
-
+    //at apogee transtion to recovery state
     return this;
 };
 

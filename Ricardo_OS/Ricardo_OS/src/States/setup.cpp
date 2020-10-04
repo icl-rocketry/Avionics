@@ -15,19 +15,14 @@ Setup::Setup(stateMachine* sm) : State(sm){
 
 void Setup::initialise(){
     State::initialise();
-
-
-};
-
-
-State* Setup::update(){
-    //intialize i2c interface
+    //internal io initilization must happen here so io buses setup for sensor initialzation
+        //intialize i2c interface
     _sm->I2C.begin(_SDA,_SCL,I2C_FREQUENCY);
-    //initalize spi interface
+        //initalize spi interface
         //todo find the lowest denominator for the speed of the spi bus.   
-    //vspi.setClockDivider(SPI_CLOCK_DIV8);
+    _sm->vspi.setClockDivider(SPI_CLOCK_DIV8);
     _sm->vspi.begin();
-     //setup cs pins
+        //setup cs pins
         //initialise output variables as output
     pinMode(LoraCs, OUTPUT);
     pinMode(ImuCs, OUTPUT);
@@ -42,9 +37,14 @@ State* Setup::update(){
     digitalWrite(MagCs, HIGH);
     digitalWrite(FlashCs, HIGH);
     digitalWrite(SdCs, HIGH);
-    //open serial port on usb interface
-    Serial.begin(115200);
+        //open serial port on usb interface
+    Serial.begin(Serial_baud);
 
+};
+
+
+State* Setup::update(){
+    //transtion to preflight state
     State* _preflight_ptr = new Preflight(_sm);
     return _preflight_ptr;
 };

@@ -17,7 +17,7 @@ void Preflight::initialise(){
 State* Preflight::update(){
 
 
-
+    //during preflight if serial command recieved transtion to usbmode
     State* _countdown_ptr = new Countdown(_sm);
     return _countdown_ptr;
 };

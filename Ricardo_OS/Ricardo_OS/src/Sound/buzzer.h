@@ -1,4 +1,4 @@
-//abusing sigma delta modulation to bring you sick tunes 
+//hopefully using sigma delta modulation to bring you sick tunes 
 
 #ifndef BUZZER_H
 #define BUZZER_H

@@ -20,7 +20,7 @@ Sensors::Sensors(stateMachine* sm) :
     _sm = sm;
 }
 
-void Sensors::setup_sensors(){
+void Sensors::setup(){
     //calls setup for each indiviual sensor
     gps.setup();
     baro.setup();

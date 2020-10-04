@@ -19,6 +19,8 @@ class State {
     virtual void initialise();
     virtual State* update() = 0;//pure virtual function 
     virtual void exitstate();
+
+    
   protected:
     stateMachine* _sm; //pointer to statemachine
     int curr_stateID;

@@ -28,7 +28,7 @@ class stateMachine; //forward declaration
 class Sensors{
     public:
         Sensors(stateMachine* sm);
-        void setup_sensors();
+        void setup();
         void update();
         raw_measurements_t sensors_raw;
 

@@ -18,9 +18,19 @@ stateMachine::stateMachine() :
 
 void stateMachine::initialise(State* initStatePtr) {
   changeState(initStatePtr);
+  //setup classes 
+  sensors.setup();
+  estimator.setup();
+  downlink.setup();
+  
 }
 
 void stateMachine::update() {
+  //call update in classes before state update method so state has most recent information
+  sensors.update();
+  estimator.update();
+  downlink.update();
+
   State* newStatePtr = _currStatePtr -> update();
 
   if (newStatePtr != _currStatePtr) {
@@ -31,7 +41,9 @@ void stateMachine::update() {
 void stateMachine::changeState(State* newStatePtr) {
   // Delete old state instance and change to new one
   if (_currStatePtr != NULL){
+    //if not null pointer call exitstate method
     _currStatePtr->exitstate();
+
   };
   delete _currStatePtr;
   _currStatePtr = newStatePtr;

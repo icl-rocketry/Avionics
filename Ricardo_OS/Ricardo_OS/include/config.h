@@ -10,6 +10,8 @@
 #define warn_battery_voltage 3710 //coresponds to 15%
 #define empty_battery_voltage 3270
 
+//Serial baud rate
+#define Serial_baud 115200
 //I2C frequrency - 4Khz
 #define I2C_FREQUENCY 400000
 //I2C device addresses
