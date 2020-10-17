@@ -1,4 +1,5 @@
 #include "radio.h"
+#include "iface.h"
 #include "config.h"
 #include "SPI.h"
 #include "ricardo_pins.h"
@@ -6,7 +7,8 @@
 #include "../packets.h"
 #include "../../Logging/messages.h"
 
-
+Radio::Radio(uint8_t address): Iface(address){
+};
 
 void Radio::setup(SPIClass& spi){
     //setup lora moudule

@@ -17,6 +17,7 @@ stateMachine::stateMachine() :
 
 
 void stateMachine::initialise(State* initStatePtr) {
+  //call setup state before callng individual setups
   changeState(initStatePtr);
   //setup classes 
   sensors.setup();
@@ -40,6 +41,7 @@ void stateMachine::update() {
 
 void stateMachine::changeState(State* newStatePtr) {
   // Delete old state instance and change to new one
+  
   if (_currStatePtr != NULL){
     //if not null pointer call exitstate method
     _currStatePtr->exitstate();

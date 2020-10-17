@@ -20,6 +20,7 @@ class Downlink{
         void send_data(uint8_t iface,uint8_t* data, size_t len);
     private:
         stateMachine* _sm; //pointer to state machine
+        
         tx_packet_t txpacket;
         rx_packet_t rxpacket;
 
