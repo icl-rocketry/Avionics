@@ -15,7 +15,7 @@ Radio::Radio(SPIClass* spi)
 void Radio::setup(){
     //setup lora moudule
     LoRa.setPins(LoraCs,LoraReset,LoraInt);
-    LoRa.setSPI(_spi);
+    LoRa.setSPI(*_spi);
 
     while (!LoRa.begin(LORA_REGION)){
         new_message(ERROR_LORA,"Lora setting up");

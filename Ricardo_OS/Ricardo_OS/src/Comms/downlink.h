@@ -35,7 +35,7 @@ class Downlink{
         CommandBuffer buffer;
 
         Radio radio; // lora radio object
-        Usb usb;    // usb serial object
+        USB usb;    // usb serial object
 
 
 

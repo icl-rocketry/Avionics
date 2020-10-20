@@ -4,27 +4,27 @@
 #include "PacketSerial.h"
 
 
-Usb::Usb(): 
+USB::USB(): 
     _ps()
 {
 };
 
-void Usb::setup(){
+void USB::setup(){
     _ps.setStream(&Serial);
 };
 
-void Usb::send_packet(uint8_t* data, size_t size){ // From RICARDO to USB
+void USB::send_packet(uint8_t* data, size_t size){ // From RICARDO to USB
     _ps.send(data,size);
 };
 
-void Usb::recieve_packet(){
+void USB::recieve_packet(){
 
 };
 
-void Usb::update(){
+void USB::update(){
     _ps.update();
 };
 
-void Usb::onSerialPacketRecieved(uint8_t* data, size_t size){
+void USB::onSerialPacketRecieved(uint8_t* data, size_t size){
     //do something with packet - add it to command buffer 
 };

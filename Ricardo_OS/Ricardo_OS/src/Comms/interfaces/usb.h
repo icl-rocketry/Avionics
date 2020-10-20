@@ -6,9 +6,9 @@
 
 #include "PacketSerial.h"
 
-class Usb: public Iface{
+class USB: public Iface{
     public:
-        Usb();
+        USB();
         void setup();
         void send_packet(uint8_t* data , size_t size);
         void recieve_packet();
