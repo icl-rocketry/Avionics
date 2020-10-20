@@ -16,7 +16,6 @@ stateMachine statemach;
 
 void setup() {
 
-
   #ifdef VERBOSE
     Serial.println("Displaying all debug messages...");
   #endif

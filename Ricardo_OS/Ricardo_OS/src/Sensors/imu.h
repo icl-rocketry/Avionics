@@ -3,6 +3,9 @@
 #include <Arduino.h>    
 #include "SPI.h"
 #include "Adafruit_LSM9DS1.h"
+#include "SparkFunLSM9DS1.h"
+
+#define RUAIRIDH_TEST_BOARD //used for testing  stuff
 
 struct imu_data_t{
     float mx,my,mz;
@@ -22,8 +25,14 @@ class Imu{
     private:
         //pointer to spi object
         SPIClass* _spi;
-        //adafruit imu object
-        Adafruit_LSM9DS1 imu;
+        void printAccel();
+        #ifdef RUAIRIDH_TEST_BOARD
+            //sparkfun imu object
+            LSM9DS1 imu;
+        #else
+            //adafruit imu object
+            Adafruit_LSM9DS1 imu;
+        #endif
 
 };    
 
