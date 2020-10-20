@@ -20,11 +20,10 @@ struct tx_packet_t{
 
 struct rx_packet_t{
 
-    uint32_t command;
+    uint8_t command;
     
-
-
 };
+
 
 
 

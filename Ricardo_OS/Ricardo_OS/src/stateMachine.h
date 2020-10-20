@@ -35,6 +35,7 @@ class stateMachine {
     Estimator estimator;
     Downlink downlink;
     
+    
 
   private:
     State* _currStatePtr;
