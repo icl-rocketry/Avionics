@@ -21,9 +21,9 @@ CommandHandler::update() {
 uint8_t* CommandHandler::handleCommand(Command command) {
 
 	switch (command.type) {
-		case Abort:
+		case COMMANDS::Abort:
 			break;
-		case Callibrate_Accel:
+		case COMMANDS::Callibrate_Accel:
 			break;
 		case Callibrate_Baro:
 			break;
