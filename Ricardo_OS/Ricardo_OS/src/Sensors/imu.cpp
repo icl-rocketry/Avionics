@@ -19,7 +19,7 @@ void Imu::setup(){
         new_message(ERROR_IMU, "Unable to initialize the imu");
     };
     //setup imu scaling
-    imu.setupAccel(imu.LSM9DS1_ACCELRANGE_2G);
+    imu.setupAccel(imu.LSM9DS1_ACCELRANGE_16G);
     imu.setupMag(imu.LSM9DS1_MAGGAIN_4GAUSS);
     imu.setupGyro(imu.LSM9DS1_GYROSCALE_245DPS);
 

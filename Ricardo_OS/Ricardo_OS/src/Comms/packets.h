@@ -14,7 +14,7 @@ struct tx_packet_t{
 
     uint32_t system_time;
     uint8_t packet_id;
-    uint8_t rssi;
+    uint8_t lora_rssi;
 
 };
 
