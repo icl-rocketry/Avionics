@@ -1,13 +1,12 @@
 #include "usb.h"
+
 #include "iface.h"
 #include "PacketSerial.h"
 
 
-Usb::Usb(uint8_t address): 
-    Iface(address),
+Usb::Usb(): 
     _ps()
-    {
-
+{
 };
 
 void Usb::setup(){

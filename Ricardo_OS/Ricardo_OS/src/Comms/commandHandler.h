@@ -5,7 +5,10 @@
 
 
 #include <Arduino.h>
+
 #include "commandBuffer.h"
+#include "commands.h"
+
 
 
 class stateMachine;//forward declaration to prevent circular dependancy

@@ -5,9 +5,6 @@
 
 class Iface{
     public:
-        Iface(uint8_t address);
-        virtual ~Iface() = 0;//pure virtual destructor
-
         virtual void setup();
         virtual void send_packet(uint8_t* txpacket, size_t packet_len);
         virtual void recieve_packet(uint8_t* rxpacket);

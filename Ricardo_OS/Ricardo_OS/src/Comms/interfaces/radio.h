@@ -9,12 +9,13 @@
 
 class Radio: public Iface{
     public:
-        Radio(uint8_t address);
-        void setup(SPIClass& spi);
+        Radio(SPIClass* spi);
+        void setup();
         void send_packet(uint8_t* txpacket_ptr,size_t packet_size);
         void recieve_packet(uint8_t* rxpacket_ptr);
         void update();
-        
+    private:
+        SPIClass* _spi; //pointer to spi class        
   
 };
 

@@ -2,12 +2,14 @@
 
 
 #include "stateMachine.h"
-
+#include "commandBuffer.h"
+#include "commands.h"
 
 CommandHandler::CommandHandler(stateMachine* sm, CommandBuffer* buffer_ptr){
     _sm = sm;
 	_buffer_ptr = buffer_ptr;
 };
+
 
 void CommandHandler::setup(){};
 
@@ -18,6 +20,8 @@ void CommandHandler::update() {
 	Command first_command = _buffer_ptr->at(0);
 	uint8_t* data = handleCommand(first_command);
 	if (data) {
+		//maybe change return type to NULL?
+
 		// If there's return data, send it back through the requesting interface
 		_sm->downlink.send_data(first_command.interface_id, data, sizeof(*data) / 8); 
 	}
@@ -93,6 +97,11 @@ uint8_t* CommandHandler::handleCommand(Command command) {
             break;
 		case COMMANDS::Zero_Sensors:
             break;
+		default:
+		//default case
+			break;
+
 	}
+	return 1;
 };
 

@@ -8,9 +8,9 @@
 
 
 struct Command {
-	uint8_t interface;
-	
-	COMMANDS type;
+	uint8_t interface; //source interface 
+
+	COMMANDS type; 
 };
 
 class CommandBuffer {

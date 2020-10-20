@@ -11,8 +11,8 @@
 
 Downlink::Downlink(stateMachine* sm):
     commandhandler(sm, &buffer),
-    radio(1),
-    usb(2)
+    radio(&(sm->vspi)),
+    usb()
 {
     _sm = sm;
 };

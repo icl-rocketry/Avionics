@@ -8,7 +8,7 @@
 
 class Usb: public Iface{
     public:
-        Usb(uint8_t address);
+        Usb();
         void setup();
         void send_packet(uint8_t* data , size_t size);
         void recieve_packet();
