@@ -4,13 +4,13 @@
 #define COMMANDS_H
 
 enum class COMMANDS {
-    Abort = 1,
-    Callibrate_Accel = 2 ,
-    Callibrate_Baro = 3,
-    Callibrate_Gyro = 4,
-    Callibrate_Mag = 5,
-    Clear_Flash = 6,
-    Clear_SD ,
+    Abort,
+    Callibrate_Accel,
+    Callibrate_Baro,
+    Callibrate_Gyro,
+    Callibrate_Mag,
+    Clear_Flash,
+    Clear_SD,
     Detailed_Accel,
     Detailed_All,
     Detailed_Baro,
@@ -37,7 +37,7 @@ enum class COMMANDS {
     Start_Logging,
     Stop_Logging,
     Zero_Sensors,
-}
+};
 
 
 

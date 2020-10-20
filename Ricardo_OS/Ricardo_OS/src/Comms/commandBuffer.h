@@ -9,12 +9,15 @@
 
 struct Command {
 	uint8_t interface;
+	
 	COMMANDS type;
 };
 
 class CommandBuffer {
 
 	public:
+		CommandBuffer();
+
 		std::vector<Command> buffer;
 
 

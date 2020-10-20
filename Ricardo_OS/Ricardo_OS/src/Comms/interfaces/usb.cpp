@@ -22,6 +22,10 @@ void Usb::recieve_packet(){
 
 };
 
+void Usb::update(){
+    _ps.update();
+};
+
 void Usb::onSerialPacketRecieved(uint8_t* data, size_t size){
     //do something with packet - add it to command buffer 
 };

@@ -41,3 +41,5 @@ void Radio::recieve_packet(uint8_t* rxpacket_ptr){
         LoRa.readBytes(rxpacket_ptr, packetSize);
     };
 };
+
+void Radio::update(){};

@@ -1,12 +1,18 @@
 #include "commandHandler.h"
 
 
+#include "stateMachine.h"
+
+
 CommandHandler::CommandHandler(stateMachine* sm, CommandBuffer* buffer_ptr){
     _sm = sm;
 	_buffer_ptr = buffer_ptr;
 };
 
-CommandHandler::update() {
+void CommandHandler::setup(){};
+
+
+void CommandHandler::update() {
 	// Handle the first command in the buffer
 	// Possibly implement priority queues in the future?
 	Command first_command = _buffer_ptr->at(0);
@@ -25,67 +31,67 @@ uint8_t* CommandHandler::handleCommand(Command command) {
 			break;
 		case COMMANDS::Callibrate_Accel:
 			break;
-		case Callibrate_Baro:
+		case COMMANDS::Callibrate_Baro:
 			break;
-		case Callibrate_Gyro:
+		case COMMANDS::Callibrate_Gyro:
 			break;
-		case Callibrate_Mag:
+		case COMMANDS::Callibrate_Mag:
     		break;
-		case Clear_Flash:
+		case COMMANDS::Clear_Flash:
             break;
-		case Clear_SD:
+		case COMMANDS::Clear_SD:
             break;
-		case Detailed_Accel:
+		case COMMANDS::Detailed_Accel:
             break;
-    	case Detailed_All:
+    	case COMMANDS::Detailed_All:
             break;
-		case Detailed_Baro:
+		case COMMANDS::Detailed_Baro:
             break;
-		case Detailed_Battery:
+		case COMMANDS::Detailed_Battery:
             break;
-		case Detailed_GPS:
+		case COMMANDS::Detailed_GPS:
             break;
-		case Detailed_Gyro:
+		case COMMANDS::Detailed_Gyro:
             break;
-		case Detailed_Mag:
+		case COMMANDS::Detailed_Mag:
             break;
-		case Detailed_Throttle:
+		case COMMANDS::Detailed_Throttle:
             break;
-		case Enter_Countdown:
+		case COMMANDS::Enter_Countdown:
             break;
-		case Enter_Flight:
+		case COMMANDS::Enter_Flight:
             break;
-		case Enter_Groundstation:
+		case COMMANDS::Enter_Groundstation:
             break;
-		case Enter_Recovery:
+		case COMMANDS::Enter_Recovery:
             break;
-		case Enter_USBMode:
+		case COMMANDS::Enter_USBMode:
             break;
-		case Estimator_Output:
+		case COMMANDS::Estimator_Output:
             break;
-		case Fire_pyro_1:
+		case COMMANDS::Fire_pyro_1:
             break;
-		case Fire_pyro_2:
+		case COMMANDS::Fire_pyro_2:
             break;
-		case Launch:
+		case COMMANDS::Launch:
             break;
-		case Play_Song:
+		case COMMANDS::Play_Song:
             break;
-		case Print_Flash:
+		case COMMANDS::Print_Flash:
             break;
-		case Print_Sd:
+		case COMMANDS::Print_Sd:
             break;
-		case Raw_Output:
+		case COMMANDS::Raw_Output:
             break;
-		case Reset:
+		case COMMANDS::Reset:
             break;
-		case Set_Throttle:
+		case COMMANDS::Set_Throttle:
             break;
-		case Start_Logging:
+		case COMMANDS::Start_Logging:
             break;
-		case Stop_Logging:
+		case COMMANDS::Stop_Logging:
             break;
-		case Zero_Sensors:
+		case COMMANDS::Zero_Sensors:
             break;
 	}
 };

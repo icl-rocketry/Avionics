@@ -13,6 +13,7 @@ class Radio: public Iface{
         void setup(SPIClass& spi);
         void send_packet(uint8_t* txpacket_ptr,size_t packet_size);
         void recieve_packet(uint8_t* rxpacket_ptr);
+        void update();
         
   
 };
