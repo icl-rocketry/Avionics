@@ -1,14 +1,14 @@
-#ifndef UBS_H
-#define USB_H
+#ifndef USBSEERIAL_H
+#define USBSEERIAL_H
 
 #include <Arduino.h>
 #include "iface.h"
 
 #include "PacketSerial.h"
 
-class USB: public Iface{
+class USBserial: public Iface{
     public:
-        USB();
+        USBserial();
         void setup();
         void send_packet(uint8_t* data , size_t size);
         void recieve_packet();

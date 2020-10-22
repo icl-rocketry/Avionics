@@ -7,12 +7,12 @@
 #include "commands.h"
 
 #include "interfaces/radio.h"
-#include "interfaces/usb.h"
+#include "interfaces/usbserial.h"
 
 Downlink::Downlink(stateMachine* sm):
-    commandhandler(sm, &buffer),
+    commandhandler(sm, &commandbuffer),
     radio(&(sm->vspi)),
-    usb()
+    usbserial()
 {
     _sm = sm;
 };
@@ -20,13 +20,13 @@ Downlink::Downlink(stateMachine* sm):
 
 void Downlink::setup(){
     radio.setup();
-    usb.setup();
+    usbserial.setup();
     
 };
 
 void Downlink::update(){
     radio.update();
-    usb.update();
+    usbserial.update();
 
 
 };
@@ -37,6 +37,6 @@ void Downlink::send_data(uint8_t iface,uint8_t* data, size_t len){
 };
 
 void Downlink::receive_command(uint8_t iface, uint32_t command) {
-    Command command_obj = Command(iface, static_cast<COMMANDS>(command));
-    buffer.addCommand(command_obj);
+    Command command_obj = Command{iface, static_cast<COMMANDS>(command)};
+    commandbuffer.addCommand(command_obj);
 }

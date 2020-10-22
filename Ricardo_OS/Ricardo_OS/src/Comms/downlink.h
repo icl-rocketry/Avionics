@@ -8,7 +8,7 @@
 #include "commandHandler.h"
 
 #include "interfaces/radio.h"
-#include "interfaces/usb.h"
+#include "interfaces/usbserial.h"
 //#include "stateMachine.h"
 
 
@@ -32,10 +32,10 @@ class Downlink{
 
         //objects to process commands
         CommandHandler commandhandler;
-        CommandBuffer buffer;
+        CommandBuffer commandbuffer;
 
         Radio radio; // lora radio object
-        USB usb;    // usb serial object
+        USBserial usbserial;    // usb serial object
 
 
 
