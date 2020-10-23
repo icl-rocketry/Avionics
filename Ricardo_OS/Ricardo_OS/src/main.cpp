@@ -16,6 +16,10 @@ stateMachine statemach;
 
 void setup() {
 
+  //currently have to set packet handler here 
+  statemach.downlink.usbserial._ps.setPacketHandler([](const uint8_t* buffer, size_t size){
+    statemach.downlink.usbserial.onPacketReceived(buffer,size);
+  });
 
   #ifdef VERBOSE
     Serial.println("Displaying all debug messages...");

@@ -8,7 +8,7 @@
 #include "commandHandler.h"
 
 #include "interfaces/radio.h"
-#include "interfaces/usbserial.h"
+#include "interfaces/usb.h"
 //#include "stateMachine.h"
 
 
@@ -24,18 +24,25 @@ class Downlink{
         void update();
         void send_data(uint8_t iface,uint8_t* data, size_t len);
         void receive_command(uint8_t iface, uint32_t command);
+
+        
+        USB usbserial;    // usb serial object needs to be public as currently packet handler is set in setup loop in main.cpp
+
+
     private:
         stateMachine* _sm; //pointer to state machine
         
         tx_packet_t txpacket;
         rx_packet_t rxpacket;
 
-        //objects to process commands
-        CommandHandler commandhandler;
-        CommandBuffer commandbuffer;
-
         Radio radio; // lora radio object
-        USBserial usbserial;    // usb serial object
+        
+        //objects to process commands
+        CommandBuffer commandbuffer;
+        CommandHandler commandhandler;
+        
+
+        
 
 
 

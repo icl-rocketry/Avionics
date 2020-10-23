@@ -102,6 +102,6 @@ uint8_t* CommandHandler::handleCommand(Command command) {
 			break;
 
 	}
-	return 1;
+
 };
 

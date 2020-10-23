@@ -37,11 +37,11 @@ void Radio::send_packet(uint8_t* txpacket_ptr, size_t packet_len){
     };
 };
 
-void Radio::recieve_packet(uint8_t* rxpacket_ptr){
+
+void Radio::update(){
     int packetSize = LoRa.parsePacket();
     if (packetSize){ //check if theres data to read 
-        LoRa.readBytes(rxpacket_ptr, packetSize);
+        uint8_t* tempdata; //how are we going to return data 
+        LoRa.readBytes(tempdata, packetSize);
     };
 };
-
-void Radio::update(){};
