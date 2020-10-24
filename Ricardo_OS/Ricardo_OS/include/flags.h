@@ -22,12 +22,13 @@ enum class system_flag:uint32_t{
     ERROR_KALMAN = (1 << 15),
     ERROR_SD = (1 << 16),
     ERROR_FLASH = (1 << 17),
+    ERROR_CAN = (1 << 18),
     //if rocket is inverted
-    ERROR_ORIENTATION = (1 << 18),
+    ERROR_ORIENTATION = (1 << 19),
     //warn
-    WARN_BATT = (1 << 19),
-    WARN_PYRO1 = (1 << 20),
-    WARN_PYRO2 = (1 << 21),
+    WARN_BATT = (1 << 20),
+    WARN_PYRO1 = (1 << 21),
+    WARN_PYRO2 = (1 << 22),
     //info 
 };
 
