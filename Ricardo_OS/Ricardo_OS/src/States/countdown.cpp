@@ -2,9 +2,11 @@
 #include "countdown.h"
 #include "flight.h"
 
+#include "flags.h"
+
 Countdown::Countdown(stateMachine* sm) : State(sm){
-    curr_stateID = 2; //? random id for now
-}
+    _curr_stateID = system_flag::STATE_COUNTDOWN;
+};
 
 void Countdown::initialise(){
     State::initialise();

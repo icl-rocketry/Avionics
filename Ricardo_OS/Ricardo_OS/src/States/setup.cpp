@@ -5,13 +5,15 @@
 #include "setup.h"
 #include "stateMachine.h"
 
+#include "flags.h"
+
 #include "preflight.h"
 
 
 
 Setup::Setup(stateMachine* sm) : State(sm){
-    curr_stateID = 1; //? random id for now
-}
+    _curr_stateID = system_flag::STATE_SETUP;
+};
 
 void Setup::initialise(){
     State::initialise();

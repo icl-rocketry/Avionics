@@ -2,10 +2,12 @@
 #include "flight.h"
 #include "recovery.h"
 
+#include "flags.h"
+
 
 Flight::Flight(stateMachine* sm) : State(sm){
-    curr_stateID = 3; //? random id for now
-}
+    _curr_stateID = system_flag::STATE_FLIGHT;
+};
 
 void Flight::initialise(){
     State::initialise();

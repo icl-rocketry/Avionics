@@ -5,7 +5,8 @@
 #include "ricardo_pins.h"
 #include "LoRa.h"
 #include "../packets.h"
-#include "../../Logging/messages.h"
+
+//#include "../../Logging/messages.h"
 
 Radio::Radio(SPIClass* spi)
 {
@@ -18,14 +19,15 @@ void Radio::setup(){
     LoRa.setSPI(*_spi);
 
     while (!LoRa.begin(LORA_REGION)){
-        new_message(ERROR_LORA,"Lora setting up");
+       // new_message(ERROR_LORA,"Lora setting up");
         delay(100);       
     };
-    delete_message(ERROR_LORA);
+    //delete_message(ERROR_LORA);
     
     LoRa.setSyncWord(LORA_SYNC_WORD);
 
 };
+
 //example usage send_packet((uint8_t*)&packet, sizeof(packet));
 
 void Radio::send_packet(uint8_t* txpacket_ptr, size_t packet_len){
@@ -44,5 +46,5 @@ void Radio::update(){
         uint8_t* tempdata; //how are we going to return data 
         LoRa.readBytes(tempdata, packetSize);
     };
-    
+
 };

@@ -2,9 +2,11 @@
 #include "groundstation.h"
 #include "stateMachine.h"
 
+#include "flags.h"
+
 Groundstation::Groundstation(stateMachine* sm) : State(sm){
-    curr_stateID = -1;
-}
+    _curr_stateID = system_flag::STATE_GROUNDSTATION;
+};
 
 void Groundstation::initialise(){
     State::initialise();

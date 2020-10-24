@@ -29,13 +29,12 @@ class stateMachine {
     void initialise(State* initStatePtr);
     void update();
     void changeState(State* newStatePtr);
-
-    uint8_t get_currStateID();
     
     SPIClass vspi;
     TwoWire I2C;
 
     SystemStatus systemstatus;
+    
     Sensors sensors;
     Estimator estimator;
     Downlink downlink;

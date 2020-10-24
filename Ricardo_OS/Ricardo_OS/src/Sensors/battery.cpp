@@ -2,7 +2,7 @@
 
 #include "config.h"
 
-#include "../Logging/messages.h"//this will likely be changed to be an object in the statemachine 
+//#include "../Logging/messages.h"//this will likely be changed to be an object in the statemachine 
 
 
 Battery::Battery(uint8_t pin)
@@ -20,9 +20,9 @@ void Battery::update(){
     batt_data.voltage = uint16_t(floor(float(factor*analogRead(_pin)))); // voltage in mV
 
     if (batt_data.voltage < warn_battery_voltage){
-        new_message(WARN_BATT,"Battery at " + String(batt_data.voltage) + "mV"); 
+       // new_message(WARN_BATT,"Battery at " + String(batt_data.voltage) + "mV"); 
     }else{
-         delete_message(WARN_BATT);
+        // delete_message(WARN_BATT);
     }
 
 

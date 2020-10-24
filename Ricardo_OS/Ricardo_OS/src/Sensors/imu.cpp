@@ -4,7 +4,7 @@
 
 #include "Adafruit_Sensor.h"
 #include "ricardo_pins.h"
-#include "../Logging/messages.h"
+//#include "../Logging/messages.h"
 
 
 
@@ -16,7 +16,7 @@ Imu::Imu(SPIClass* spi):
 
 void Imu::setup(){
         if (!imu.begin()){
-        new_message(ERROR_IMU, "Unable to initialize the imu");
+       // new_message(ERROR_IMU, "Unable to initialize the imu");
     };
     //setup imu scaling
     imu.setupAccel(imu.LSM9DS1_ACCELRANGE_16G);

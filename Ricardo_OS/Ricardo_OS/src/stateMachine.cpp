@@ -14,7 +14,7 @@ stateMachine::stateMachine() :
     estimator(this),
     downlink(this)
     
-{}
+{};
 
 
 void stateMachine::initialise(State* initStatePtr) {
@@ -25,7 +25,7 @@ void stateMachine::initialise(State* initStatePtr) {
   estimator.setup();
   downlink.setup();
   
-}
+};
 
 void stateMachine::update() {
   //call update in classes before state update method so state has most recent information
@@ -38,7 +38,7 @@ void stateMachine::update() {
   if (newStatePtr != _currStatePtr) {
     changeState(newStatePtr);
   }
-}
+};
 
 void stateMachine::changeState(State* newStatePtr) {
   // Delete old state instance and change to new one
@@ -51,8 +51,5 @@ void stateMachine::changeState(State* newStatePtr) {
   delete _currStatePtr;
   _currStatePtr = newStatePtr;
   _currStatePtr -> initialise();
-}
+};
 
-uint8_t get_currStateID(){
-  return _currStatePtr->curr_stateID;
-}

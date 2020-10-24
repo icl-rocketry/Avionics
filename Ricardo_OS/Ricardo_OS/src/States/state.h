@@ -2,18 +2,13 @@
 #define STATE_H
 
 #include <Arduino.h>
-//enum containing state id's bit masked
-enum class state{
-    PREFLIGHT = ( 1 << 0),
-
-
-};
-
+#include "flags.h"
 
 class stateMachine; //forward declaration 
 
+
 class State {
-  friend class stateMachine;
+  //friend class stateMachine;
 
   public:
     State(stateMachine* sm);
@@ -25,7 +20,8 @@ class State {
     
   protected:
     stateMachine* _sm; //pointer to statemachine
-    uint8_t curr_stateID;
+    system_flag _curr_stateID;
+
     uint32_t time_entered_state;
     uint32_t time_duration_state;
 

@@ -1,10 +1,12 @@
 #include "Arduino.h"
 #include "recovery.h"
 
+#include "flags.h"
+
 
 Recovery::Recovery(stateMachine* sm) : State(sm){
-    curr_stateID = 3; //? random id for now
-}
+    _curr_stateID = system_flag::STATE_RECOVERY;
+};
 
 void Recovery::initialise(){
     State::initialise();

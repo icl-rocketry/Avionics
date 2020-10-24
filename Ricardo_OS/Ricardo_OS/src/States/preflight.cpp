@@ -3,9 +3,11 @@
 #include "countdown.h"
 #include "stateMachine.h"
 
+#include "flags.h"
+
 Preflight::Preflight(stateMachine* sm) : State(sm){
-    curr_stateID = 2; //? random id for now
-}
+    _curr_stateID = system_flag::STATE_PREFLIGHT;
+};
 
 void Preflight::initialise(){
     State::initialise();

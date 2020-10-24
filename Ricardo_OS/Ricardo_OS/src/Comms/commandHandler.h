@@ -26,7 +26,7 @@ class CommandHandler {
 		CommandBuffer* _buffer_ptr;
 		
 		uint8_t* handleCommand(Command command);
-        bool commandAvailable(Command command, State state);
+        bool commandAvaliable(Command command);
 };	
 
 #endif
