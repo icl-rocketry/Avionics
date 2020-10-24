@@ -4,7 +4,14 @@
 #define PACKETS_H
 #include <Arduino.h>
 
-struct tx_packet_t{
+enum class packet_type{
+    TELEMETRY = 1,
+    COMMAND = 2,
+    DEATAILED = 3
+}
+
+struct telemetry_packet_t{
+    uint8_t packet_type = packet_type::TELEMETRY;
     //telemetry data
 
     //system_status
@@ -18,12 +25,16 @@ struct tx_packet_t{
 
 };
 
-struct rx_packet_t{
-
+struct command_packet_t{
+    uint8_t packet_type = packet_type::COMMAND;
     uint8_t command;
     
 };
 
+struct detailed_all_packet_t{
+    uint8_t packet_type = packet_type::DETAILED;
+    
+}
 
 
 

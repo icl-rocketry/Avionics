@@ -30,7 +30,9 @@ void CommandHandler::update() {
 
 uint8_t* CommandHandler::handleCommand(Command command) {
 	uint8_t curr_stateID = _sm->get_currStateID();
-	
+	if (!commandAvailable) {
+		return nullptr;
+	}
 	switch (command.type) {
 		case COMMANDS::Launch:
 			break;

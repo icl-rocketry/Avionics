@@ -9,6 +9,7 @@ Written by the Electronics team, Imperial College London Rocketry
 stateMachine::stateMachine() : 
     vspi(VSPI),
     I2C(0),
+    systemstatus(),
     sensors(this),
     estimator(this),
     downlink(this)
@@ -50,4 +51,8 @@ void stateMachine::changeState(State* newStatePtr) {
   delete _currStatePtr;
   _currStatePtr = newStatePtr;
   _currStatePtr -> initialise();
+}
+
+uint8_t get_currStateID(){
+  return _currStatePtr->curr_stateID;
 }

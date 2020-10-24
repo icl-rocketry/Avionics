@@ -31,10 +31,6 @@ class Downlink{
 
     private:
         stateMachine* _sm; //pointer to state machine
-        
-        tx_packet_t txpacket;
-        rx_packet_t rxpacket;
-
         Radio radio; // lora radio object
         
         //objects to process commands

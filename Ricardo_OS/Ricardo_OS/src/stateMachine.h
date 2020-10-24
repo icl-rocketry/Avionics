@@ -11,6 +11,7 @@ Written by the Electronics team, Imperial College London Rocketry
 
 #include "States/state.h"
 
+#include "Logging/systemstatus.h"
 #include "Sensors/estimator.h"
 #include "Comms/downlink.h"
 #include "Sensors/sensors.h"
@@ -21,16 +22,20 @@ Written by the Electronics team, Imperial College London Rocketry
 
 
 class stateMachine {
+  
   public:
     stateMachine();// The constructor
     //functions
     void initialise(State* initStatePtr);
     void update();
     void changeState(State* newStatePtr);
+
+    uint8_t get_currStateID();
     
     SPIClass vspi;
     TwoWire I2C;
 
+    SystemStatus systemstatus;
     Sensors sensors;
     Estimator estimator;
     Downlink downlink;
