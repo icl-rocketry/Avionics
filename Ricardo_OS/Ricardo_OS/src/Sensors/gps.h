@@ -11,24 +11,25 @@
 
 struct gps_data_t
 {
-    float lat, lng, alt, lon, course, speed;
-    //add more members if needed
+    float lat, lng, alt, course, speed, hdop;
 };
 
 class GPS
 {
+
 public:
     GPS(TwoWire *wire);
+
     void setup();
+
     void update();
 
     gps_data_t gps_data;
 
 private:
-    //define tinygps object
-    TinyGPSPlus tinygps;
-    //pointer to wire object
-    TwoWire *_wire;
+    TinyGPSPlus tinygps; //define tinygps object
+
+    TwoWire *_wire; //pointer to wire object
 };
 
 #endif

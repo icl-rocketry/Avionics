@@ -30,10 +30,8 @@ void GPS::update()
         uint16_t sizeDataStream;
         _wire->beginTransmission(I2C_GPS_ADDRESS);
         _wire->write(GPS_NUM_AVAILABLE_BYTES_REGISTER);
-        _wire->endTransmission(false); // false -> does not release bus
-
-        // reads 0xFD and 0xFE, which store the number of bytes in the data stream
-        _wire->requestFrom(I2C_GPS_ADDRESS, 2);
+        _wire->endTransmission(false);          // false -> does not release bus
+        _wire->requestFrom(I2C_GPS_ADDRESS, 2); // reads 0xFD and 0xFE, which store the number of bytes in the data stream
 
         // _wire->available() returns number of available bytes
         while (_wire->available() > 0)
@@ -48,17 +46,28 @@ void GPS::update()
         _wire->write(GPS_DATASTREAM_REGISTER);
         _wire->endTransmission(false);
 
-        // requestFrom limited to 32bytes
-        _wire->requestFrom(I2C_GPS_ADDRESS, sizeDataStream); // reads data-stream
-
         // in case we want to store this somewhere?
         uint8_t data[sizeDataStream] = {};
+        uint8_t index = 0;
 
-        for (int i = 0; i < sizeDataStream; i++)
+        while (sizeDataStream > 0)
         {
-            data[i] = _wire->read();
+            // requestFrom() limited to 32bytes
+            uint16_t maxBytes = 32;
+            uint16_t requestedBytes = min(sizeDataStream, maxBytes);
 
-            tinygps.encode(_wire->read()); // passing data to tinygps
+            // reads data-stream
+            _wire->requestFrom(I2C_GPS_ADDRESS, requestedBytes);
+
+            for (int i = index; i < index + requestedBytes; i++)
+            {
+                data[i] = _wire->read();
+
+                tinygps.encode(_wire->read()); // passing data to tinygps
+            }
+
+            index += requestedBytes;
+            sizeDataStream -= requestedBytes;
         }
 
         // Updates class values
@@ -70,17 +79,22 @@ void GPS::update()
         if (tinygps.location.isUpdated())
         {
             gps_data.lat = tinygps.location.lat();
-            gps_data.lon = tinygps.location.lng();
+            gps_data.lng = tinygps.location.lng();
         }
 
         if (tinygps.course.isUpdated())
         {
-            gps_data.course = tinygps.course.value();
+            gps_data.course = tinygps.course.deg();
         }
 
         if (tinygps.speed.isUpdated())
         {
             gps_data.speed = tinygps.speed.mps();
+        }
+
+        if (tinygps.hdop.isUpdated())
+        {
+            gps_data.hdop = tinygps.hdop.value(); // Horizontal Dim. of Precision
         }
     };
 }
