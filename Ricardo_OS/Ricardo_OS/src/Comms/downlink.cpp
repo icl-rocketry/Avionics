@@ -33,7 +33,15 @@ void Downlink::update(){
 };
 
 void Downlink::send_data(uint8_t iface,uint8_t* data, size_t len){
-    
+    switch (iface){
+        case 1:
+            break;
+        default:
+        //no interface selected do nothing
+            break; 
+    }
+
+
 
 };
 
