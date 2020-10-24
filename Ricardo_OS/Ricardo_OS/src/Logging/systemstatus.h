@@ -5,8 +5,8 @@ handles all messages bitwise so multiple messages can be contained in a single v
 //reqwrite as class
 */
 
-#ifndef MESSAGES_H
-#define MESSAGES_H
+#ifndef SYSTEMSTATUS_H
+#define SYSTEMSTATUS_H
 
 #include "Arduino.h"
 #include "flags.h"

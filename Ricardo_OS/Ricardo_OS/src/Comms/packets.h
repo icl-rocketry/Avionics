@@ -7,17 +7,32 @@
 enum class packet:uint8_t{
     TELEMETRY = 1,
     COMMAND = 2,
-    DETAILED = 3
+    DETAILED_ALL = 3,
+    DETAILED_ACCEL = 4,
+    DETAILED_GYRO = 5,
+    DETAILED_ACCEL = 6,
+    DETAILED_GPS = 7,
+    DETAILED_BATTERY = 8,
+    DETAILED_THROTTLE = 9,
+    PRINT_FLASH = 10,
+    PRINT_SD = 11,
+    RAW_SENSOR_OUTPUT = 12,
+    ESTIMATOR_OUTPUT = 13,
+    MESSAGE = 14,
 };
 
 struct telemetry_packet_t{
     uint8_t packet_type = static_cast<uint8_t>(packet::TELEMETRY);
     //telemetry data
+    float x,y,z;
+    float vx,vy,vz;
+    float ax,ay,az;
+    float y,p,r;
 
     //system_status
 
     //packet details
-    bool response_required;
+    
 
     uint32_t system_time;
     uint8_t packet_id;
@@ -32,7 +47,7 @@ struct command_packet_t{
 };
 
 struct detailed_all_packet_t{
-    uint8_t packet_type = static_cast<uint8_t>(packet::DETAILED);
+    uint8_t packet_type = static_cast<uint8_t>(packet::DETAILED_ALL);
     
 };
 
