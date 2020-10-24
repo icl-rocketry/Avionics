@@ -3,8 +3,7 @@
 #define BATTERY_H
 #include <Arduino.h>
 
-int battery_voltage();
-int battery_percentage();
+#include "Logging/systemstatus.h"
 
 
 struct batt_data_t{
@@ -14,13 +13,15 @@ struct batt_data_t{
 
 class Battery{
     public:
-        Battery(uint8_t pin);
+        Battery(uint8_t pin,SystemStatus* systemstatus);
         void setup();
         void update();
 
         batt_data_t batt_data;
     
     private:
+        //pointer to system status object
+        SystemStatus* _systemstatus;
 
         uint8_t _pin;
 

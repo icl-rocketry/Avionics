@@ -2,11 +2,13 @@
 #include "config.h"
 #include "SPI.h"
 
+#include "Logging/systemstatus.h"
 
 
-Baro::Baro(SPIClass* spi)
+Baro::Baro(SPIClass* spi,SystemStatus* systemstatus)
 {
     _spi = spi;
+    _systemstatus = systemstatus;
 };
 
 void Baro::setup(){

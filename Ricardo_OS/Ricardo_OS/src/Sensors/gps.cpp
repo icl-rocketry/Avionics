@@ -4,13 +4,15 @@
 #include "TinyGPS++.h"
 #include "Wire.h"
 
+#include "Logging/systemstatus.h"
 
 
 
-GPS::GPS(TwoWire* wire) :
+GPS::GPS(TwoWire* wire, SystemStatus* systemstatus) :
     tinygps()
 {
     _wire = wire;
+    _systemstatus = systemstatus;
 }
 
 void GPS::setup(){

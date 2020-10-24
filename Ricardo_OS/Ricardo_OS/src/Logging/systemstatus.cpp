@@ -19,6 +19,10 @@ void SystemStatus::new_message(system_flag flag,String reason){
 
 };
 
+void SystemStatus::new_message(system_flag flag){
+    _status |= static_cast<uint32_t>(flag);
+};
+
 
 void SystemStatus::delete_message(system_flag flag){
     _status &= ~static_cast<uint32_t>(flag);

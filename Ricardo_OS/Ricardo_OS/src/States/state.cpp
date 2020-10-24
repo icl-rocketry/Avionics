@@ -12,7 +12,7 @@ State::~State(){
 void State::initialise(){
     time_entered_state = millis();
     //_sm->systemstatus.new_message(_curr_stateID,'entered at ' + static_cast<String>(time_entered_state));
-    _sm->systemstatus.new_message(_curr_stateID,String('entry'));
+    _sm->systemstatus.new_message(_curr_stateID);
     //log these variables using logging object
 };
 

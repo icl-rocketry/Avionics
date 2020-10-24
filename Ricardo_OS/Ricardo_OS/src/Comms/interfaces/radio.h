@@ -4,17 +4,19 @@
 #include "iface.h"
 #include "SPI.h"
 #include "../packets.h"
+#include "Logging/systemstatus.h"
 //class for lora type devices
 
 
 class Radio: public Iface{
     public:
-        Radio(SPIClass* spi);
+        Radio(SPIClass* spi, SystemStatus* systemstatus);
         void setup();
         void send_packet(uint8_t* txpacket_ptr,size_t packet_size);
         void update();
     private:
-        SPIClass* _spi; //pointer to spi class        
+        SPIClass* _spi; //pointer to spi class 
+        SystemStatus* _systemstatus; //pointer to system status object       
   
 };
 

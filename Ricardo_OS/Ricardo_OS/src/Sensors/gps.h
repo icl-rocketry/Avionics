@@ -6,6 +6,8 @@
 #include "TinyGPS++.h"//possible to remove these headers and make them forward declarations but cba unless we run into circular depndancies
 #include "Wire.h"
 
+#include "Logging/systemstatus.h"
+
 
 struct gps_data_t{
     float lat,lng;
@@ -14,7 +16,7 @@ struct gps_data_t{
 
 class GPS{
     public:
-        GPS(TwoWire* wire);
+        GPS(TwoWire* wire,SystemStatus* systemstatus);
         void setup();
         void update();
 
@@ -25,6 +27,8 @@ class GPS{
         TinyGPSPlus tinygps;
         //pointer to wire object
         TwoWire* _wire;
+        //pointer to system status object
+        SystemStatus* _systemstatus;
 
         
 };

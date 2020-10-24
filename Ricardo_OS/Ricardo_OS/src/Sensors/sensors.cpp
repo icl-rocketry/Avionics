@@ -1,6 +1,8 @@
 #include "sensors.h"
 #include "stateMachine.h"
 
+
+
 //config
 #include "ricardo_pins.h"
 #include "config.h"
@@ -12,10 +14,10 @@
 #include "battery.h"
 
 Sensors::Sensors(stateMachine* sm) :
-    gps(&(sm->I2C)),
-    baro(&(sm->vspi)),
-    imu(&(sm->vspi)),
-    batt(BattVolt)
+    gps(&(sm->I2C),&(sm->systemstatus)),
+    baro(&(sm->vspi),&(sm->systemstatus)),
+    imu(&(sm->vspi),&(sm->systemstatus)),
+    batt(BattVolt,&(sm->systemstatus))
 {
     _sm = sm;
 }

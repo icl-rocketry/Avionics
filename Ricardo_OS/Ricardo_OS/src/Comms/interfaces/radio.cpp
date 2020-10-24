@@ -6,11 +6,13 @@
 #include "LoRa.h"
 #include "../packets.h"
 
-//#include "../../Logging/messages.h"
+#include "Logging/systemstatus.h"
+#include "flags.h"
 
-Radio::Radio(SPIClass* spi)
+Radio::Radio(SPIClass* spi,SystemStatus* systemstatus)
 {
     _spi = spi; //pointer to spi object
+    _systemstatus = systemstatus;
 };
 
 void Radio::setup(){
@@ -19,10 +21,10 @@ void Radio::setup(){
     LoRa.setSPI(*_spi);
 
     while (!LoRa.begin(LORA_REGION)){
-       // new_message(ERROR_LORA,"Lora setting up");
+        _systemstatus->new_message(system_flag::ERROR_LORA,"Lora setting up");
         delay(100);       
     };
-    //delete_message(ERROR_LORA);
+    _systemstatus->delete_message(system_flag::ERROR_LORA);
     
     LoRa.setSyncWord(LORA_SYNC_WORD);
 

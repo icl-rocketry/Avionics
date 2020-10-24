@@ -10,7 +10,7 @@ enum class packet:uint8_t{
     DETAILED_ALL = 3,
     DETAILED_ACCEL = 4,
     DETAILED_GYRO = 5,
-    DETAILED_ACCEL = 6,
+    DETAILED_MAG = 6,
     DETAILED_GPS = 7,
     DETAILED_BATTERY = 8,
     DETAILED_THROTTLE = 9,
@@ -18,7 +18,7 @@ enum class packet:uint8_t{
     PRINT_SD = 11,
     RAW_SENSOR_OUTPUT = 12,
     ESTIMATOR_OUTPUT = 13,
-    MESSAGE = 14,
+    MESSAGE = 14
 };
 
 struct telemetry_packet_t{
@@ -27,7 +27,7 @@ struct telemetry_packet_t{
     float x,y,z;
     float vx,vy,vz;
     float ax,ay,az;
-    float y,p,r;
+    //float y,p,r;
 
     //system_status
 

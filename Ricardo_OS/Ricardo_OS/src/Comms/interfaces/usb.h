@@ -6,10 +6,12 @@
 
 #include "PacketSerial.h"
 
+#include "Logging/systemstatus.h"
+
 class USB: public Iface{
 
     public:
-        USB();
+        USB(SystemStatus* systemstatus);
         void setup();
         void send_packet(uint8_t* data , size_t size);
         void update();
@@ -18,7 +20,8 @@ class USB: public Iface{
         void onPacketReceived(const uint8_t* data, size_t size);
 
         PacketSerial _ps; //packetserial object
-
+    private:
+        SystemStatus* _systemstatus;
 
 };
 

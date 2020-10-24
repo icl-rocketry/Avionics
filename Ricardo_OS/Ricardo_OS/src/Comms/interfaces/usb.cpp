@@ -2,11 +2,12 @@
 
 #include "iface.h"
 #include "PacketSerial.h"
+#include "Logging/systemstatus.h"
 
-
-USB::USB(): 
+USB::USB(SystemStatus* systemstatus): 
     _ps()
 {
+    _systemstatus = systemstatus;
 };
 
 void USB::setup(){

@@ -16,7 +16,10 @@ handles all messages bitwise so multiple messages can be contained in a single v
 class SystemStatus{
     public:
         SystemStatus();
+        
         void new_message(system_flag flag,String reason);
+        void new_message(system_flag flag);
+
         void delete_message(system_flag flag);
         bool flag_triggered(system_flag flag);
     protected:
