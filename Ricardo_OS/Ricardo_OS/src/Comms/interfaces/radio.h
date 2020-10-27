@@ -6,14 +6,16 @@
 #include "../packets.h"
 #include "Logging/systemstatus.h"
 //class for lora type devices
-
+struct data_recieved_t{
+    
+};
 
 class Radio: public Iface{
     public:
         Radio(SPIClass* spi, SystemStatus* systemstatus);
         void setup();
         void send_packet(uint8_t* txpacket_ptr,size_t packet_size);
-        void update();
+        bool update();
     private:
         SPIClass* _spi; //pointer to spi class 
         SystemStatus* _systemstatus; //pointer to system status object       

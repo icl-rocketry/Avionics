@@ -19,11 +19,15 @@ void USB::send_packet(uint8_t* data, size_t size){ // From RICARDO to USB
     _ps.send(data,size);
 };
 
-void USB::update(){
+bool USB::update(){
     _ps.update();    
+
+    // pop from the queue
+    return false;
 };
 
 void USB::onPacketReceived(const uint8_t* data, size_t size){
     //do something with packet - add it to command buffer 
     
+    //fill up a queue
 };

@@ -19,7 +19,7 @@ void CommandHandler::setup(){};
 void CommandHandler::update() {
 	// Handle the first command in the buffer
 	// Possibly implement priority queues in the future?
-	Command first_command = _buffer_ptr->at(0);
+	Command first_command = _buffer_ptr->buffer.at(0);
 	uint8_t* data = handleCommand(first_command);
 	if (data) {
 		//maybe change return type to NULL?
@@ -27,14 +27,14 @@ void CommandHandler::update() {
 		// If there's return data, send it back through the requesting interface
 		_sm->downlink.send_data(first_command.interface, data, sizeof(*data) / 8); 
 	}
-	_buffer_ptr->erase(0); // 0th command handled, remove it from the buffer
+	_buffer_ptr->buffer.erase(_buffer_ptr->buffer.begin()); // 0th command handled, remove it from the buffer
 };
 
 uint8_t* CommandHandler::handleCommand(Command command) {
 
 	if (!commandAvaliable(command)) {
 		return nullptr;
-	}else{
+	} else{
 		switch (command.type) {
 			case COMMANDS::Launch:
 				break;

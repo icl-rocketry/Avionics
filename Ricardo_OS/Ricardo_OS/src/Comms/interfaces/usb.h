@@ -8,13 +8,14 @@
 
 #include "Logging/systemstatus.h"
 
+
 class USB: public Iface{
 
     public:
         USB(SystemStatus* systemstatus);
         void setup();
         void send_packet(uint8_t* data , size_t size);
-        void update();
+        bool update();
 
         //packet handler function for packet serial
         void onPacketReceived(const uint8_t* data, size_t size);
@@ -23,6 +24,8 @@ class USB: public Iface{
     private:
         SystemStatus* _systemstatus;
 
+
 };
+
 
 #endif

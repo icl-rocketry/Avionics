@@ -42,11 +42,15 @@ void Radio::send_packet(uint8_t* txpacket_ptr, size_t packet_len){
 };
 
 
-void Radio::update(){
+bool Radio::update(){
     int packetSize = LoRa.parsePacket();
     if (packetSize){ //check if theres data to read 
         uint8_t* tempdata; //how are we going to return data 
         LoRa.readBytes(tempdata, packetSize);
-    };
-
+        
+        return true;
+    }else{
+        return false;
+    }
+    
 };
