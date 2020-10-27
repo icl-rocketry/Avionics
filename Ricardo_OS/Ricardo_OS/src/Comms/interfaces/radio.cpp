@@ -44,10 +44,13 @@ void Radio::send_packet(uint8_t* txpacket_ptr, size_t packet_len){
 
 bool Radio::update(){
     int packetSize = LoRa.parsePacket();
+    
     if (packetSize){ //check if theres data to read 
-        uint8_t* tempdata; //how are we going to return data 
-        LoRa.readBytes(tempdata, packetSize);
         
+        LoRa.readBytes(packet_received.data_ptr, packetSize);
+
+        memcpy(&packet_received.packet_id,packet_received.data_ptr,sizeof(uint8_t));//copy id of packet received
+        //maybe check if packet id is correct??
         return true;
     }else{
         return false;
