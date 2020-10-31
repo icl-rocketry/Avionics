@@ -31,6 +31,8 @@ class Downlink{
 
     private:
         stateMachine* _sm; //pointer to state machine
+        
+        std::vector<uint8_t*> _packet_buffer;
         Radio radio; // lora radio object
         
         //objects to process commands
