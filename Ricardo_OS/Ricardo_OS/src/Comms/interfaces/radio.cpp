@@ -46,10 +46,11 @@ bool Radio::update(){
     int packetSize = LoRa.parsePacket();
     
     if (packetSize){ //check if theres data to read 
-        
-        LoRa.readBytes(packet_received.data_ptr, packetSize);
+        uint8_t* packet_ptr = new uint8_t[packetSize]; // Allocate a new chunk of memory for the packet
 
-        memcpy(&packet_received.packet_id,packet_received.data_ptr,sizeof(uint8_t));//copy id of packet received
+        LoRa.readBytes(packet_ptr, packetSize); // Copy the received data into packet_received
+
+        //memcpy(&packet_received.packet_id,packet_received.data_ptr,sizeof(uint8_t));//copy id of packet received
         //maybe check if packet id is correct??
         return true;
     }else{

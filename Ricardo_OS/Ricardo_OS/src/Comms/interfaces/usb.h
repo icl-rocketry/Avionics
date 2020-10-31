@@ -9,6 +9,7 @@
 #include "Logging/systemstatus.h"
 
 
+
 class USB: public Iface{
 
     public:
@@ -22,6 +23,7 @@ class USB: public Iface{
 
         PacketSerial _ps; //packetserial object
     private:
+
         SystemStatus* _systemstatus;
 
 
