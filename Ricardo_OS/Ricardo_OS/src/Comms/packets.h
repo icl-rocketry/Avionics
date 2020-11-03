@@ -42,6 +42,12 @@ public:
     uint8_t packet_len = 0x00; // Size of the packet in bytes
 };
 
+class Packet {
+public:
+    static void serialize_float(const float num, std::vector<uint8_t> &buf);
+    static void serialize_floats(const float* nums, int num_floats, std::vector<uint8_t> &buf);
+    static void deserialize_float(float &f, const uint8_t* bytes);
+};
 
 class TelemetryPacket{
     //packet header
@@ -57,9 +63,11 @@ class TelemetryPacket{
     //packet details
     
     uint32_t system_time;
-    uint8_t packet_id;
     uint8_t lora_rssi;
 
+    // WARNING!
+    // Check if all the variables that need to be sent over are getting serialized
+    // Whenever a new variable is added here it needs to be added to the serialize method
     void serialize(std::vector<uint8_t>& buf);
     /*
         Deserialization constructor
@@ -71,6 +79,9 @@ class CommandPacket{
     PacketHeader header {static_cast<uint8_t>(packet::COMMAND)};
     uint8_t command;
 
+    // WARNING!
+    // Check if all the variables that need to be sent over are getting serialized
+    // Whenever a new variable is added here it needs to be added to the serialize method
     void serialize(std::vector<uint8_t>& buf);
     /*
         Deserialization constructor
@@ -81,6 +92,9 @@ class CommandPacket{
 class DetailedAllPacket{
     PacketHeader header {static_cast<uint8_t>(packet::DETAILED_ALL)};
 
+    // WARNING!
+    // Check if all the variables that need to be sent over are getting serialized
+    // Whenever a new variable is added here it needs to be added to the serialize method
     void serialize(std::vector<uint8_t>& buf);
     /*
         Deserialization constructor

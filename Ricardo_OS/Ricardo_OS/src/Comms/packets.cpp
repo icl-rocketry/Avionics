@@ -34,11 +34,11 @@ PacketHeader::PacketHeader(uint8_t* data, uint8_t size) {
 			this->packet_len = b;
 			step++;
 			break;
+		}
 	}
-	
 }
 
-PacketHeader::~PacketHeader() {}
+//PacketHeader::~PacketHeader() {}
 
 void PacketHeader::serialize(std::vector<uint8_t>& buf) {
     buf.push_back(start_byte);
@@ -52,7 +52,23 @@ void PacketHeader::serialize(std::vector<uint8_t>& buf) {
 void TelemetryPacket::serialize(std::vector<uint8_t>& buf) {
 	header.serialize(buf);
 
-	// TODO: Serialize floats into bytes
+	// TODO: Maybe come up with a better way to serialize?
+	// Serialize the float variables into bytes
+	Packet::serialize_float(x, buf);
+	Packet::serialize_float(y, buf);
+	Packet::serialize_float(z, buf);
+	Packet::serialize_float(vx, buf);
+	Packet::serialize_float(vy, buf);
+	Packet::serialize_float(vz, buf);
+	Packet::serialize_float(ax, buf);
+	Packet::serialize_float(ay, buf);
+	Packet::serialize_float(az, buf);
+
+	for (int i = sizeof(uint32_t) - 1; i>=0; i--) {
+		buf.push_back(system_time >> 8*i);
+	}
+	buf.push_back(lora_rssi);
+	// TODO: Add end of packet byte??
 }
 
 void CommandPacket::serialize(std::vector<uint8_t>& buf) {
@@ -76,4 +92,23 @@ CommandPacket::CommandPacket(uint8_t* data, uint8_t size) {
 
 TelemetryPacket::TelemetryPacket(uint8_t* data, uint8_t size) {
 	// TODO: Implement deserializer
+}
+
+void Packet::serialize_float(const float f, std::vector<uint8_t> &buf) {
+	uint8_t data[sizeof(float)];
+	memcpy(data, &f, sizeof f);
+
+	for (int i = 0; i < sizeof(float); i++) {
+		buf.push_back(data[i]);
+	}
+}
+
+void Packet::serialize_floats(const float* nums, int num_floats, std::vector<uint8_t> &buf) {
+	for (int i = 0; i < num_floats; i++) {
+		Packet::serialize_float(nums[i], buf);
+	}
+}
+
+void Packet::deserialize_float(float &f, const uint8_t* bytes) {
+	memcpy(&f, bytes, sizeof f);
 }
