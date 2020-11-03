@@ -18,10 +18,8 @@ class USB: public Iface{
         void send_packet(uint8_t* data , size_t size);
         bool update();
 
-        //packet handler function for packet serial
-        void onPacketReceived(const uint8_t* data, size_t size);
 
-        PacketSerial _ps; //packetserial object
+
     private:
 
         SystemStatus* _systemstatus;

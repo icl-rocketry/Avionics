@@ -9,6 +9,7 @@
 #include "interfaces/radio.h"
 #include "interfaces/usb.h"
 
+
 Downlink::Downlink(stateMachine* sm):
     usbserial(&(sm->systemstatus)),
     radio(&(sm->vspi),&(sm->systemstatus)),
