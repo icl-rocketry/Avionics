@@ -9,6 +9,8 @@
 #include "interfaces/radio.h"
 #include "interfaces/usb.h"
 
+#include "routingTable.h"
+
 
 Downlink::Downlink(stateMachine* sm):
     usbserial(&(sm->systemstatus)),
