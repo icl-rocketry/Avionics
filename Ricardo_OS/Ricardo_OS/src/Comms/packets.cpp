@@ -34,11 +34,6 @@ PacketHeader::PacketHeader(uint8_t* data, uint8_t size) {
 			this->packet_len = b;
 			step++;
 			break;
-		case 5:
-			this->checksum = b;
-			step++;
-			break;
-		}
 	}
 	
 }
@@ -51,7 +46,6 @@ void PacketHeader::serialize(std::vector<uint8_t>& buf) {
     buf.push_back(source);
 	buf.push_back(destination);
 	buf.push_back(packet_len);
-    buf.push_back(checksum);
 }
 
 
@@ -59,20 +53,17 @@ void TelemetryPacket::serialize(std::vector<uint8_t>& buf) {
 	header.serialize(buf);
 
 	// TODO: Serialize floats into bytes
-	// TODO: Compute checksums
 }
 
 void CommandPacket::serialize(std::vector<uint8_t>& buf) {
 	header.serialize(buf);
 	buf.push_back(command);
-	// TODO: Compute checksums
 }
 
 void DetailedAllPacket::serialize(std::vector<uint8_t>& buf) {
 	header.serialize(buf);
 
 	// TODO: Serialize floats into bytes
-	// TODO: Compute checksums
 }
 
 DetailedAllPacket::DetailedAllPacket(uint8_t* data, uint8_t size) {
