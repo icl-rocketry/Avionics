@@ -9,6 +9,6 @@ enum class Interface:uint8_t{
     USBSerial = 2,
     CAN = 3
 
-}
+};
 
 #endif

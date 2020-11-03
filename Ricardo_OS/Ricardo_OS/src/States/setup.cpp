@@ -41,6 +41,7 @@ void Setup::initialise(){
     digitalWrite(SdCs, HIGH);
         //open serial port on usb interface
     Serial.begin(Serial_baud);
+    Serial.setRxBufferSize(SERIAL_SIZE_RX);
 
 };
 

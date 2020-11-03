@@ -5,8 +5,24 @@
 
 /*currently static routing tables created for ease but could be rewritten to be dynamic later on
 format of routing table
-Current node | Destination Node | Gateway | Metric
+routingtable[Destination Node][Current node]= { Gateway , Metric }
 
 */
+
+struct RoutingTable{
+    Interface gateway;
+    uint8_t metric;
+};
+
+RoutingTable routingtable[4][2] = {
+    {{Interface::LOOPBACK,0},{Interface::LORA,1},{Interface::LORA,2},{Interface::CAN,1}},
+    {{Interface::LORA,1},{Interface::LOOPBACK,0},{Interface::USBSerial,1},{Interface::LORA,2}}
+};
+
+
+
+
+
+
 
 #endif

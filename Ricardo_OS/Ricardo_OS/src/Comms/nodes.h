@@ -4,10 +4,10 @@
 //enum for id corresponding to node in network
 
 enum class Nodes:uint8_t{
-    ROCKET = 1,
-    GROUNDSTATION = 2,
-    DESKTOP = 3,
-    MOTORBOARD = 4
+    ROCKET = 0,
+    GROUNDSTATION = 1,
+    DESKTOP = 2,
+    MOTORBOARD = 3
 };
 
 

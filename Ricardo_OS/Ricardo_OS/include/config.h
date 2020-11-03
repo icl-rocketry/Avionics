@@ -12,6 +12,8 @@
 
 //Serial baud rate
 #define Serial_baud 115200
+//Serial rx buffer size
+#define SERIAL_SIZE_RX 256
 //I2C frequrency - 4Khz
 #define I2C_FREQUENCY 400000
 //I2C device addresses
