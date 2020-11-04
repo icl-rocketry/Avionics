@@ -13,7 +13,7 @@ Written by the Electronics team, Imperial College London Rocketry
 
 #include "Logging/systemstatus.h"
 #include "Sensors/estimator.h"
-#include "Comms/downlink.h"
+#include "Comms/networkManager.h"
 #include "Sensors/sensors.h"
 #include "SPI.h"
 #include "Wire.h"
@@ -37,7 +37,7 @@ class stateMachine {
     
     Sensors sensors;
     Estimator estimator;
-    Downlink downlink;
+    NetworkManager networkmanager;
     
     
 

@@ -1,4 +1,4 @@
-#include "downlink.h"
+#include "networkManager.h"
 
 #include "stateMachine.h"
 
@@ -6,13 +6,14 @@
 #include "commandHandler.h"
 #include "commands.h"
 
+#include "interfaces/interfaces.h"
 #include "interfaces/radio.h"
 #include "interfaces/usb.h"
 
 #include "routingTable.h"
 
 
-Downlink::Downlink(stateMachine* sm):
+NetworkManager::NetworkManager(stateMachine* sm):
     usbserial(&(sm->systemstatus)),
     radio(&(sm->vspi),&(sm->systemstatus)),
     commandbuffer(),
@@ -23,21 +24,31 @@ Downlink::Downlink(stateMachine* sm):
 };
 
 
-void Downlink::setup(){
+void NetworkManager::setup(){
     radio.setup();
     usbserial.setup();
 };
 
-void Downlink::update(){
+void NetworkManager::update(){
     radio.update();
     usbserial.update();
 
 
 };
 
-void Downlink::send_data(uint8_t iface,uint8_t* data, size_t len){
+void NetworkManager::send_data(Interface iface,uint8_t* data, size_t len){
     switch (iface){
-        case 1:
+        case Interface::LOOPBACK:
+            //nothing here yet but can be devloped later
+            break;
+        case Interface::LORA:
+            
+            break;
+        case Interface::USBSerial:
+            
+            break;
+        case Interface::CAN:
+            
             break;
         default:
         //no interface selected do nothing
@@ -48,7 +59,7 @@ void Downlink::send_data(uint8_t iface,uint8_t* data, size_t len){
 
 };
 
-void Downlink::receive_command(uint8_t iface, uint32_t command) {
+void NetworkManager::receive_command(uint8_t iface, uint32_t command) {
     Command command_obj = Command{iface, static_cast<COMMANDS>(command)};
     commandbuffer.addCommand(command_obj);
 }

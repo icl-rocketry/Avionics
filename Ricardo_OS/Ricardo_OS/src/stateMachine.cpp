@@ -12,7 +12,7 @@ stateMachine::stateMachine() :
     systemstatus(),
     sensors(this),
     estimator(this),
-    downlink(this)
+    networkmanager(this)
     
 {};
 
@@ -23,7 +23,7 @@ void stateMachine::initialise(State* initStatePtr) {
   //setup classes 
   sensors.setup();
   estimator.setup();
-  downlink.setup();
+  networkmanager.setup();
   
 };
 
@@ -31,7 +31,7 @@ void stateMachine::update() {
   //call update in classes before state update method so state has most recent information
   sensors.update();
   estimator.update();
-  downlink.update();
+  networkmanager.update();
 
   State* newStatePtr = _currStatePtr -> update();
 
