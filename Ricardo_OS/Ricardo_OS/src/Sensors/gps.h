@@ -6,8 +6,7 @@
 #include "TinyGPS++.h" //possible to remove these headers and make them forward declarations but cba unless we run into circular depndancies
 #include "Wire.h"
 
-#define GPS_NUM_AVAILABLE_BYTES_REGISTER 0xfd
-#define GPS_DATASTREAM_REGISTER 0xff
+
 
 struct gps_data_t
 {

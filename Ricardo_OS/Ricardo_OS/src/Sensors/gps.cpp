@@ -8,6 +8,7 @@
 // SDA pin 16; SCL pin 17
 
 // http://arduiniana.org/libraries/tinygpsplus/
+// written by Luis Marques
 
 GPS::GPS(TwoWire *wire) : tinygps()
 {
@@ -16,13 +17,12 @@ GPS::GPS(TwoWire *wire) : tinygps()
 
 void GPS::setup()
 {
-    _wire->begin();
+    //_wire->begin();
 }
 
 void GPS::update()
 {
-    //maybe change this to get specifc values like a lat function instead of update
-    //someone needs to write this out and parse data into tinygps object i think this code should open up the ddc port for data transmission but havent tested it
+
     if (_wire != NULL)
     { //check for null pointer to rpevent undfiend behaviour
 
