@@ -39,7 +39,7 @@ void NetworkManager::update(){
 void NetworkManager::send_data(Interface iface,uint8_t* data, size_t len){
     switch (iface){
         case Interface::LOOPBACK:
-            //nothing here yet but can be devloped later
+            //nothing here yet but can be developed later
             break;
         case Interface::LORA:
             
