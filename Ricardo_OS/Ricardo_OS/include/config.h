@@ -17,6 +17,9 @@
 //I2C device addresses
 //gps
 #define I2C_GPS_ADDRESS 0x42
+//gps specific registers
+#define GPS_NUM_AVAILABLE_BYTES_REGISTER 0xfd
+#define GPS_DATASTREAM_REGISTER 0xff
 //SPI speed - 2MHz
 #define SPI_CLOCK_DIV8 0x004c1001
 //Lora Specific Config
