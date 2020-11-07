@@ -28,7 +28,8 @@
 //866E6 for Europe
 //915E6 for North America
 #define LORA_REGION 866E6
-
+//define max packet length on any interface in the network
+#define MAX_PACKET_LENGTH 256
 
 #endif
 

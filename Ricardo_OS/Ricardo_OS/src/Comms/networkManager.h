@@ -4,6 +4,8 @@
 #include <Arduino.h>
 
 #include "packets.h"
+#include "routingTable.h"
+
 #include "commandBuffer.h"
 #include "commandHandler.h"
 
@@ -25,7 +27,7 @@ class NetworkManager{
         void update();
         void send_data(Interface iface,uint8_t* data, size_t len);
         
-        void receive_command(uint8_t iface, uint32_t command);
+        void receive_command(Interface iface, uint32_t command);
 
         
             
@@ -33,18 +35,22 @@ class NetworkManager{
 
     private:
         stateMachine* _sm; //pointer to state machine
+
+
+        std::vector<uint8_t*> _global_packet_buffer; //packet buffer containing all network packets received
+
+        std::vector<uint8_t*> _local_packet_buffer; //packet buffer containing packets meant for this node
         
-        std::vector<uint8_t*> _packet_buffer; 
 
         USB usbserial; //usb serial object
         Radio radio; // lora radio object
-        
         
         //objects to process commands
         CommandBuffer commandbuffer;
         CommandHandler commandhandler;
         
-
+        void NetworkManager::update_buffer(Iface* iface,std::vector<uint8_t*>* buf);
+        void NetworkManager::process_global_packets(std::vector<uint8_t*>* global_buf)
         
 
 

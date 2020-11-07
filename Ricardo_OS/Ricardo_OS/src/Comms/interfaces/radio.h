@@ -12,7 +12,7 @@ class Radio: public Iface{
         Radio(SPIClass* spi, SystemStatus* systemstatus);
         void setup();
         void send_packet(uint8_t* txpacket_ptr,size_t packet_size);
-        bool update();
+        uint8_t* get_packet();
 
     private:
         SPIClass* _spi; //pointer to spi class 

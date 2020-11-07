@@ -13,16 +13,19 @@
 class USB: public Iface{
 
     public:
-        USB(SystemStatus* systemstatus);
+        USB(Stream* stream,SystemStatus* systemstatus);
         void setup();
         void send_packet(uint8_t* data , size_t size);
-        bool update();
+        uint8_t* get_packet();
 
 
 
     private:
+        Stream* _stream; // pointer to stream interface
+        SystemStatus* _systemstatus; //pointer to system status object
 
-        SystemStatus* _systemstatus;
+        bool _incompletePacketReceived;
+        uint8_t _firstByte;
 
 
 };

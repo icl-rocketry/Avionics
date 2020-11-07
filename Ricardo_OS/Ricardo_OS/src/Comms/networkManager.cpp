@@ -10,11 +10,12 @@
 #include "interfaces/radio.h"
 #include "interfaces/usb.h"
 
+#include "packets.h"
 #include "routingTable.h"
 
 
 NetworkManager::NetworkManager(stateMachine* sm):
-    usbserial(&(sm->systemstatus)),
+    usbserial(&Serial,&(sm->systemstatus)),
     radio(&(sm->vspi),&(sm->systemstatus)),
     commandbuffer(),
     commandhandler(sm, &commandbuffer)
@@ -30,8 +31,10 @@ void NetworkManager::setup(){
 };
 
 void NetworkManager::update(){
-    radio.update();
-    usbserial.update();
+    update_buffer(&radio,&_global_packet_buffer);
+    update_buffer(&usbserial,&_global_packet_buffer);
+
+    process_global_packets(&_global_packet_buffer);
 
 
 };
@@ -59,7 +62,27 @@ void NetworkManager::send_data(Interface iface,uint8_t* data, size_t len){
 
 };
 
-void NetworkManager::receive_command(uint8_t iface, uint32_t command) {
+
+
+void NetworkManager::update_buffer(Iface* iface,std::vector<uint8_t*>* buf){
+    uint8_t* data_ptr = iface->get_packet(); // get any packets from interface
+    if (data_ptr != nullptr) //check if a packet has been returned
+        (*buf).push_back(data_ptr);
+    else{
+        //do nothing cos no data returned
+    };
+}
+
+void NetworkManager::process_global_packets(std::vector<uint8_t*>* global_buf){
+    if (global_buf->size()>0){
+        uint8_t* curr_packet = global_buf->front();
+
+    }else{
+        //nothing to process
+    };
+}
+
+void NetworkManager::receive_command(Interface iface, uint32_t command) {
     Command command_obj = Command{iface, static_cast<COMMANDS>(command)};
     commandbuffer.addCommand(command_obj);
 }

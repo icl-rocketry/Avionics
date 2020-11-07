@@ -9,7 +9,7 @@
 
 
 struct Command {
-	uint8_t interface; //source interface 
+	Interface interface; //source interface 
 
 	COMMANDS type; 
 };

@@ -36,10 +36,10 @@ public:
 
 public:
     uint8_t start_byte = 0xAF; // Marks the begin of `Packet`
+    uint8_t packet_len = 0x00; // Size of the packet in bytes maybe this should be 32 bit to match size_t and subsequent sizeof() functionality
     uint8_t type = 0x00; // Type of the packet
     uint8_t source = 0x00; // Source interface ID for the packet
-    uint8_t destination = 0x00; // Destination interface ID for the packet
-    uint8_t packet_len = 0x00; // Size of the packet in bytes
+    uint8_t destination = 0x00; // Destination interface ID for the packet    
 };
 
 class Packet {

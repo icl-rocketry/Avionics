@@ -18,22 +18,24 @@ PacketHeader::PacketHeader(uint8_t* data, uint8_t size) {
 			this->start_byte = b;
 			step++;
 			break;
+			
 		case 1:
-			this->type = b;
-			step++;
-			break;
-		case 2:
-			this->source = b;
-			step++;
-			break;
-		case 3:
-			this->destination = b;
-			step++;
-			break;
-		case 4:
 			this->packet_len = b;
 			step++;
 			break;
+		case 2:
+			this->type = b;
+			step++;
+			break;
+		case 3:
+			this->source = b;
+			step++;
+			break;
+		case 4:
+			this->destination = b;
+			step++;
+			break;
+		
 		}
 	}
 }
@@ -42,10 +44,10 @@ PacketHeader::PacketHeader(uint8_t* data, uint8_t size) {
 
 void PacketHeader::serialize(std::vector<uint8_t>& buf) {
     buf.push_back(start_byte);
+	buf.push_back(packet_len);
 	buf.push_back(type);
     buf.push_back(source);
-	buf.push_back(destination);
-	buf.push_back(packet_len);
+	buf.push_back(destination);	
 }
 
 
