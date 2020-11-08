@@ -2,9 +2,10 @@
 #include "packets.h"
 
 PacketHeader::PacketHeader() {}
-PacketHeader::PacketHeader(uint8_t packet_type) : type{packet_type} {}
+PacketHeader::~PacketHeader() {}
+PacketHeader::PacketHeader(uint8_t packet_type, uint32_t packet_size) : packet_len{packet_size}, type{packet_type} {}
 
-PacketHeader::PacketHeader(uint8_t* data, uint8_t size) {
+PacketHeader::PacketHeader(const uint8_t* data, uint8_t size) {
 	int step = 0;
 	for (int i = 0; i < size; ++i) {
 		const auto b = data[i];
@@ -84,16 +85,59 @@ void DetailedAllPacket::serialize(std::vector<uint8_t>& buf) {
 	// TODO: Serialize floats into bytes
 }
 
-DetailedAllPacket::DetailedAllPacket(uint8_t* data, uint8_t size) {
+DetailedAllPacket::DetailedAllPacket(const uint8_t* data, const uint8_t size) {
 	// TODO: Implement deserializer
 }
 
-CommandPacket::CommandPacket(uint8_t* data, uint8_t size) {
+CommandPacket::CommandPacket(const uint8_t* data, const uint8_t size) {
 	// TODO: Implement deserializer
 }
 
-TelemetryPacket::TelemetryPacket(uint8_t* data, uint8_t size) {
-	// TODO: Implement deserializer
+TelemetryPacket::TelemetryPacket(const uint8_t* data, const uint8_t size) {
+	header = PacketHeader(data, size); // Deserialize the header
+
+	for (int i = 8; i < header.packet_len + 8; i++) {
+		switch (i)
+		{
+		case 8:
+			Packet::deserialize_float(x, data + i);
+			break;
+		case 9:
+			Packet::deserialize_float(y, data + i);
+			break;
+		case 10:
+			Packet::deserialize_float(z, data + i);
+			break;
+		case 11:
+			Packet::deserialize_float(ax, data + i);
+			break;
+		case 12:
+			Packet::deserialize_float(ay, data + i);
+			break;
+		case 13:
+			Packet::deserialize_float(az, data + i);
+			break;
+		case 14:
+			Packet::deserialize_float(vx, data + i);
+			break;
+		case 15:
+			Packet::deserialize_float(vy, data + i);
+			break;
+		case 16:
+			Packet::deserialize_float(vz, data + i);
+			break;
+		case 17:
+			for (int j = 0; j < sizeof(uint32_t); j++) {
+				system_time |= uint32_t(data[i]) << 8*(sizeof(uint32_t) - j - 1); 
+			}
+			i += sizeof(uint32_t);
+		case 17 + sizeof(uint32_t):
+			lora_rssi = data[i];
+			break;
+		default:
+			break;
+		}
+	}
 }
 
 void Packet::serialize_float(const float f, std::vector<uint8_t> &buf) {

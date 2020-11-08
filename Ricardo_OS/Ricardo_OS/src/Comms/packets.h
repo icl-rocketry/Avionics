@@ -25,8 +25,8 @@ enum class packet:uint8_t{
 class PacketHeader {
 public:
     PacketHeader();
-    PacketHeader(uint8_t packet_type); // Initialise with a type
-    PacketHeader(uint8_t* data, uint8_t size); // Deserialization constructor
+    PacketHeader(uint8_t packet_type, uint32_t packet_size); // Initialise a packet
+    PacketHeader(const uint8_t* data, const uint8_t size); // Deserialization constructor
     ~PacketHeader();
 
     /*
@@ -35,8 +35,10 @@ public:
     void serialize(std::vector<uint8_t>& buf);
 
 public:
+    //packet header 8 bytes
+    
     uint8_t start_byte = 0xAF; // Marks the begin of `Packet`
-    uint8_t packet_len = 0x00; // Size of the packet in bytes maybe this should be 32 bit to match size_t and subsequent sizeof() functionality
+    uint32_t packet_len = 0x00000000; // Size of the packet in bytes maybe this should be 32 bit to match size_t and subsequent sizeof() functionality
     uint8_t type = 0x00; // Type of the packet
     uint8_t source = 0x00; // Source interface ID for the packet
     uint8_t destination = 0x00; // Destination interface ID for the packet    
@@ -50,8 +52,9 @@ public:
 };
 
 class TelemetryPacket{
+public:
     //packet header
-    PacketHeader header {static_cast<uint8_t>(packet::TELEMETRY)};
+    PacketHeader header {static_cast<uint8_t>(packet::TELEMETRY), 9*sizeof(float) + 5};
     //telemetry data
     float x,y,z;
     float vx,vy,vz;
@@ -72,11 +75,13 @@ class TelemetryPacket{
     /*
         Deserialization constructor
     */
-    TelemetryPacket(uint8_t* data, uint8_t size);
+    TelemetryPacket(const uint8_t* data, const uint8_t size);
+    TelemetryPacket();
+    ~TelemetryPacket();
 };
 
 class CommandPacket{
-    PacketHeader header {static_cast<uint8_t>(packet::COMMAND)};
+    PacketHeader header {static_cast<uint8_t>(packet::COMMAND), 1};
     uint8_t command;
 
     // WARNING!
@@ -86,11 +91,13 @@ class CommandPacket{
     /*
         Deserialization constructor
     */
-    CommandPacket(uint8_t* data, uint8_t size);
+    CommandPacket(const uint8_t* data, const uint8_t size);
+    CommandPacket();
+    ~CommandPacket();
 };
 
 class DetailedAllPacket{
-    PacketHeader header {static_cast<uint8_t>(packet::DETAILED_ALL)};
+    PacketHeader header {static_cast<uint8_t>(packet::DETAILED_ALL), 0};
 
     // WARNING!
     // Check if all the variables that need to be sent over are getting serialized
@@ -99,7 +106,9 @@ class DetailedAllPacket{
     /*
         Deserialization constructor
     */
-    DetailedAllPacket(uint8_t* data, uint8_t size);
+    DetailedAllPacket(const uint8_t* data, const uint8_t size);
+    DetailedAllPacket();
+    ~DetailedAllPacket();
 };
 
 #endif
