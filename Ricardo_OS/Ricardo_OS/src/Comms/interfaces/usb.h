@@ -27,6 +27,8 @@ class USB: public Iface{
         bool _incompletePacketReceived;
         uint8_t _firstByte;
 
+        PacketHeader packetheader; // packetheader class to decode header of packet
+
 
 };
 

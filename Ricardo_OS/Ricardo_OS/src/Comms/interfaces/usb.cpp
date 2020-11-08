@@ -2,8 +2,11 @@
 
 #include "config.h"
 #include "iface.h"
-#include "PacketSerial.h"
+
 #include "Logging/systemstatus.h"
+
+#include "packets.h"
+
 
 USB::USB(Stream* stream,SystemStatus* systemstatus) 
 {
