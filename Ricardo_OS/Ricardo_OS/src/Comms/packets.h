@@ -39,6 +39,7 @@ public:
     static const uint8_t header_size = 8; // Change this variable to reflect the number of bytes in the header
     
     uint8_t start_byte = 0xAF; // Marks the begin of `Packet`
+    uint8_t src_interface = 0x00; // Source interface ID
     uint32_t packet_len = 0x00000000; // Size of the packet in bytes maybe this should be 32 bit to match size_t and subsequent sizeof() functionality
     uint8_t type = 0x00; // Type of the packet
     uint8_t source = 0x00; // Source interface ID for the packet
@@ -71,7 +72,7 @@ public:
 
     // WARNING!
     // Check if all the variables that need to be sent over are getting serialized
-    // Whenever a new variable is added here it needs to be added to the serialize method
+    // Whenever a new variable is added to the class it needs to be added to the serialize method
     void serialize(std::vector<uint8_t>& buf);
     /*
         Deserialization constructor
@@ -87,7 +88,7 @@ class CommandPacket{
 
     // WARNING!
     // Check if all the variables that need to be sent over are getting serialized
-    // Whenever a new variable is added here it needs to be added to the serialize method
+    // Whenever a new variable is added to the class it needs to be added to the serialize method
     void serialize(std::vector<uint8_t>& buf);
     /*
         Deserialization constructor
@@ -102,7 +103,7 @@ class DetailedAllPacket{
 
     // WARNING!
     // Check if all the variables that need to be sent over are getting serialized
-    // Whenever a new variable is added here it needs to be added to the serialize method
+    // Whenever a new variable is added to the class it needs to be added to the serialize method
     void serialize(std::vector<uint8_t>& buf);
     /*
         Deserialization constructor
