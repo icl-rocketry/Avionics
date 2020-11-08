@@ -4,7 +4,7 @@
 #include <Arduino.h>
 #include "iface.h"
 
-#include "PacketSerial.h"
+#include "../packets.h"
 
 #include "Logging/systemstatus.h"
 
@@ -27,7 +27,13 @@ class USB: public Iface{
         bool _incompletePacketReceived;
         uint8_t _firstByte;
 
-        PacketHeader packetheader; // packetheader class to decode header of packet
+        //byte array to store first 8 bytes of incoming packet for decoding
+        uint8_t _tmp_packet_data[8];
+        //pointer to packet header object
+        PacketHeader* _packetHeader_ptr = nullptr;
+        //counter for timeout to prevent blocking of serial port
+        uint8_t _timeoutCounter;
+        
 
 
 };

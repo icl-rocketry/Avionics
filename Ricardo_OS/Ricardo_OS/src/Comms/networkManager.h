@@ -49,8 +49,8 @@ class NetworkManager{
         CommandBuffer commandbuffer;
         CommandHandler commandhandler;
         
-        void NetworkManager::update_buffer(Iface* iface,std::vector<uint8_t*>* buf);
-        void NetworkManager::process_global_packets(std::vector<uint8_t*>* global_buf)
+        void update_buffer(Iface* iface,std::vector<uint8_t*>* buf);
+        void process_global_packets(std::vector<uint8_t*>* global_buf);
         
 
 
