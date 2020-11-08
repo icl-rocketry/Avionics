@@ -14,6 +14,8 @@
 #define Serial_baud 115200
 //Serial rx buffer size
 #define SERIAL_SIZE_RX 256
+//Serial max timeout
+#define MAX_SERIAL_TIMEOUT 5
 //I2C frequrency - 4Khz
 #define I2C_FREQUENCY 400000
 //I2C device addresses
