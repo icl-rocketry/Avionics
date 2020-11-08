@@ -90,13 +90,15 @@ DetailedAllPacket::DetailedAllPacket(const uint8_t* data, const uint8_t size) {
 }
 
 CommandPacket::CommandPacket(const uint8_t* data, const uint8_t size) {
-	// TODO: Implement deserializer
+	header = PacketHeader(data, size); // Deserialize header
+
+	command = data[8]; // First 8 bytes is header
 }
 
 TelemetryPacket::TelemetryPacket(const uint8_t* data, const uint8_t size) {
 	header = PacketHeader(data, size); // Deserialize the header
 
-	for (int i = 8; i < header.packet_len + 8; i++) {
+	for (int i = 8; i < header.packet_len + 8; i++) { // First 8 bytes is header, start with 9th byte
 		switch (i)
 		{
 		case 8:
