@@ -92,48 +92,48 @@ DetailedAllPacket::DetailedAllPacket(const uint8_t* data, const uint8_t size) {
 CommandPacket::CommandPacket(const uint8_t* data, const uint8_t size) {
 	header = PacketHeader(data, size); // Deserialize header
 
-	command = data[8]; // First 8 bytes is header
+	command = data[header.header_size]; // Get the first byte which is not the header
 }
 
 TelemetryPacket::TelemetryPacket(const uint8_t* data, const uint8_t size) {
 	header = PacketHeader(data, size); // Deserialize the header
 
-	for (int i = 8; i < header.packet_len + 8; i++) { // First 8 bytes is header, start with 9th byte
-		switch (i)
+	for (int i = header.header_size; i < header.packet_len + header.header_size; i++) { // First 8 bytes is header, start with 9th byte
+		switch (i - header.header_size)
 		{
-		case 8:
+		case 0:
 			Packet::deserialize_float(x, data + i);
 			break;
-		case 9:
+		case 1:
 			Packet::deserialize_float(y, data + i);
 			break;
-		case 10:
+		case 2:
 			Packet::deserialize_float(z, data + i);
 			break;
-		case 11:
+		case 3:
 			Packet::deserialize_float(ax, data + i);
 			break;
-		case 12:
+		case 4:
 			Packet::deserialize_float(ay, data + i);
 			break;
-		case 13:
+		case 5:
 			Packet::deserialize_float(az, data + i);
 			break;
-		case 14:
+		case 6:
 			Packet::deserialize_float(vx, data + i);
 			break;
-		case 15:
+		case 7:
 			Packet::deserialize_float(vy, data + i);
 			break;
-		case 16:
+		case 8:
 			Packet::deserialize_float(vz, data + i);
 			break;
-		case 17:
+		case 9:
 			for (int j = 0; j < sizeof(uint32_t); j++) {
 				system_time |= uint32_t(data[i]) << 8*(sizeof(uint32_t) - j - 1); 
 			}
 			i += sizeof(uint32_t);
-		case 17 + sizeof(uint32_t):
+		case 10 + sizeof(uint32_t):
 			lora_rssi = data[i];
 			break;
 		default:

@@ -36,6 +36,7 @@ public:
 
 public:
     //packet header 8 bytes
+    static const uint8_t header_size = 8; // Change this variable to reflect the number of bytes in the header
     
     uint8_t start_byte = 0xAF; // Marks the begin of `Packet`
     uint32_t packet_len = 0x00000000; // Size of the packet in bytes maybe this should be 32 bit to match size_t and subsequent sizeof() functionality
