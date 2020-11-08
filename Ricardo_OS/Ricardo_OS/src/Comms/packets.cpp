@@ -41,8 +41,6 @@ PacketHeader::PacketHeader(const uint8_t* data, uint8_t size) {
 	}
 }
 
-//PacketHeader::~PacketHeader() {}
-
 void PacketHeader::serialize(std::vector<uint8_t>& buf) {
     buf.push_back(start_byte);
 	buf.push_back(packet_len);
@@ -86,7 +84,9 @@ void DetailedAllPacket::serialize(std::vector<uint8_t>& buf) {
 }
 
 DetailedAllPacket::DetailedAllPacket(const uint8_t* data, const uint8_t size) {
-	// TODO: Implement deserializer
+	header = PacketHeader(data, size); // Deserialize header
+	
+	// TODO: Deserialize packet
 }
 
 CommandPacket::CommandPacket(const uint8_t* data, const uint8_t size) {
