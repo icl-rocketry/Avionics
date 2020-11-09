@@ -31,7 +31,7 @@ uint8_t* USB::get_packet(){
     while (_stream->available() > 0){
         //find and process any and all packets
 
-
+        
         _firstByte = _stream->peek();
         
         if (_firstByte == 0xAF || _incompletePacketReceived){
@@ -39,12 +39,12 @@ uint8_t* USB::get_packet(){
             if(!_incompletePacketReceived){
                 //reset timeoutcounter
                 _timeoutCounter = 0;
-                //read first 8bytes of stream to get packet header data into next elements in array
-                _stream->readBytes(&_tmp_packet_data[0],8);
+                //read first bytes of stream to get packet header data into next elements in array
+                _stream->readBytes(&_tmp_packet_data[0],_packetHeader_size);
                 // delete previous instance of temporary packer header object - should be fine if _packetHeader_ptr is null
                 delete _packetHeader_ptr; 
-                //create new instance of a packet header and give the first 8 bytes of incoming packet to decode
-                _packetHeader_ptr = new PacketHeader(&_tmp_packet_data[0], 8);
+                //create new instance of a packet header and give the first bytes of incoming packet to decode
+                _packetHeader_ptr = new PacketHeader(&_tmp_packet_data[0], _packetHeader_size);
 
             };
 
@@ -56,7 +56,7 @@ uint8_t* USB::get_packet(){
                 //return nothing flush buffer automatically
                 return nullptr;
 
-            }else if (_packetHeader_ptr->packet_len-8 > _stream->available()){
+            }else if (_packetHeader_ptr->packet_len - _packetHeader_size > _stream->available()){
                 //minus 8 to account for bytes read for header
                 //we dont have the full packet to read 
 
@@ -79,12 +79,12 @@ uint8_t* USB::get_packet(){
                 uint8_t* packet_ptr = new uint8_t[_packetHeader_ptr->packet_len]; // Allocate a new chunk of memory for the packet
                 
                 //copy data in _tmp_packet_data to packet container
-                for (int i = 0; i < 7; i++){
+                for (int i = 0; i < _packetHeader_size-1; i++){
                     *(packet_ptr+i) = _tmp_packet_data[i];
                 };
                 //read bytes in stream buffer into the packet data array starting at the 8th index as header has been read out of stream buffer.
                 //packet len has been decremented 8 as packet_len includes the packet header which is no longer in stream buffer
-                _stream->readBytes((packet_ptr+8), (_packetHeader_ptr->packet_len-8)); 
+                _stream->readBytes((packet_ptr + _packetHeader_size), (_packetHeader_ptr->packet_len - _packetHeader_size)); 
 
                 return packet_ptr;
             };

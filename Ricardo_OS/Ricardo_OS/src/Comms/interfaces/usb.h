@@ -31,6 +31,8 @@ class USB: public Iface{
         uint8_t _tmp_packet_data[8];
         //pointer to packet header object
         PacketHeader* _packetHeader_ptr = nullptr;
+        //expected size of header
+        uint8_t _packetHeader_size = PacketHeader::header_size;
         //counter for timeout to prevent blocking of serial port
         uint8_t _timeoutCounter;
         
