@@ -37,6 +37,7 @@ class stateMachine {
     
     Sensors sensors;
     Estimator estimator;
+    
     NetworkManager networkmanager;
     
     

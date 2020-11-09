@@ -30,7 +30,10 @@ class USB: public Iface{
         //byte array to store first 8 bytes of incoming packet for decoding
         uint8_t _tmp_packet_data[8];
         //pointer to packet header object
-        PacketHeader* _packetHeader_ptr = nullptr;
+        //PacketHeader* _packetHeader_ptr = nullptr;
+        
+        //Packet size
+        uint32_t _packet_len;
         //expected size of header
         uint8_t _packetHeader_size = PacketHeader::header_size;
         //counter for timeout to prevent blocking of serial port
