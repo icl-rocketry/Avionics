@@ -67,7 +67,7 @@ void NetworkManager::send_data(Interface iface,uint8_t* data, size_t len){
 void NetworkManager::update_buffer(Iface* iface,std::vector<uint8_t*>* buf){
     uint8_t* data_ptr = iface->get_packet(); // get any packets from interface
     if (data_ptr != nullptr) //check if a packet has been returned
-        (*buf).push_back(data_ptr);
+        buf->push_back(data_ptr);
     else{
         //do nothing cos no data returned
     };
@@ -77,7 +77,7 @@ void NetworkManager::process_global_packets(std::vector<uint8_t*>* global_buf){
     if (global_buf->size()>0){
         uint8_t* curr_packet_ptr = global_buf->front();
         //process some stuff
-
+        
         //delete array pointer prevent memory leak
         delete[] curr_packet_ptr;
     }else{
@@ -88,4 +88,12 @@ void NetworkManager::process_global_packets(std::vector<uint8_t*>* global_buf){
 void NetworkManager::receive_command(Interface iface, uint32_t command) {
     Command command_obj = Command{iface, static_cast<COMMANDS>(command)};
     commandbuffer.addCommand(command_obj);
+}
+
+void NetworkManager::clear_buffer(std::vector<uint8_t*>* buf){
+    while (buf->size() > 0){
+        uint8_t* packet_ptr = buf->front();
+        delete[] packet_ptr;
+        buf->erase(buf->begin());
+    };
 }

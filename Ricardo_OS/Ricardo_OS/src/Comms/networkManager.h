@@ -51,7 +51,7 @@ class NetworkManager{
         
         void update_buffer(Iface* iface,std::vector<uint8_t*>* buf);
         void process_global_packets(std::vector<uint8_t*>* global_buf);
-        
+        void clear_buffer(std::vector<uint8_t*>* buf);
 
 
 
