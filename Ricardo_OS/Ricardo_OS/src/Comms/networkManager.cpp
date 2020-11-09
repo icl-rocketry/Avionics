@@ -75,8 +75,11 @@ void NetworkManager::update_buffer(Iface* iface,std::vector<uint8_t*>* buf){
 
 void NetworkManager::process_global_packets(std::vector<uint8_t*>* global_buf){
     if (global_buf->size()>0){
-        uint8_t* curr_packet = global_buf->front();
+        uint8_t* curr_packet_ptr = global_buf->front();
+        //process some stuff
 
+        //delete array pointer prevent memory leak
+        delete[] curr_packet_ptr;
     }else{
         //nothing to process
     };
