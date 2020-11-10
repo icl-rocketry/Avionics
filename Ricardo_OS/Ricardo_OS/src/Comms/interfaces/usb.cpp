@@ -85,6 +85,8 @@ uint8_t* USB::get_packet(){
 
                 uint8_t* packet_ptr = new uint8_t[_packet_len]; // Allocate a new chunk of memory for the packet
                 
+                //if an exception occurs here we could get a memory leak as the pointer will not be returned... maybe use shared_ptr
+                
                 //copy data in _tmp_packet_data to packet container
                 for (int i = 0; i < _packetHeader_size-1; i++){
                     *(packet_ptr+i) = _tmp_packet_data[i];

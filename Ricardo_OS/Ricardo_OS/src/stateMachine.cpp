@@ -49,6 +49,7 @@ void stateMachine::changeState(State* newStatePtr) {
 
   };
   delete _currStatePtr;
+  
   _currStatePtr = newStatePtr;
   _currStatePtr -> initialise();
 };
