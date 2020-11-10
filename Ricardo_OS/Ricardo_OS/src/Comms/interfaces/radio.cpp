@@ -42,15 +42,18 @@ void Radio::send_packet(uint8_t* txpacket_ptr, size_t packet_len){
 };
 
 
-uint8_t* Radio::get_packet(){
+void Radio::get_packet(std::vector<uint8_t*> *buf){
     int packetSize = LoRa.parsePacket();
     
     if (packetSize){ //check if theres data to read 
         uint8_t* packet_ptr = new uint8_t[packetSize]; // Allocate a new chunk of memory for the packet
+        buf->push_back(packet_ptr);//add packet ptr immediatley to buffer
+
         LoRa.readBytes(packet_ptr, packetSize); // Copy the received data into packet_received
-        return packet_ptr;
+        
+        return ;
     }else{
-        return nullptr;
+        return ;
     }
     
 };

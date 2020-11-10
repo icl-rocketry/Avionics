@@ -24,9 +24,9 @@ void USB::send_packet(uint8_t* data, size_t size){ // From RICARDO to USB
     Serial.write(data,size);
 };
 
-uint8_t* USB::get_packet(){
+void USB::get_packet(std::vector<uint8_t*> *buf){
     //return if stream object is null
-    if (_stream == nullptr) return nullptr;   
+    if (_stream == nullptr) return ;   
 
     while (_stream->available() > 0){
         //find and process any and all packets
@@ -61,7 +61,7 @@ uint8_t* USB::get_packet(){
                 //TODO
                 //handle oversized packets some how...
                 //return nothing flush buffer automatically
-                return nullptr;
+                return ;
 
             }else if (_packet_len - _packetHeader_size > _stream->available()){
                 //minus 8 to account for bytes read for header
@@ -78,15 +78,14 @@ uint8_t* USB::get_packet(){
                     _incompletePacketReceived = true;
                 };
 
-                return nullptr;
+                return ;
             }else{
                 //only a single packet to read or multiple packets to read so we will only the first packet
                 _incompletePacketReceived = false;
 
                 uint8_t* packet_ptr = new uint8_t[_packet_len]; // Allocate a new chunk of memory for the packet
-                
-                //if an exception occurs here we could get a memory leak as the pointer will not be returned... maybe use shared_ptr
-                
+                buf->push_back(packet_ptr); // add pointer to packet immediately to buffer
+
                 //copy data in _tmp_packet_data to packet container
                 for (int i = 0; i < _packetHeader_size-1; i++){
                     *(packet_ptr+i) = _tmp_packet_data[i];
@@ -95,13 +94,16 @@ uint8_t* USB::get_packet(){
                 //packet len has been decremented 8 as packet_len includes the packet header which is no longer in stream buffer
                 _stream->readBytes((packet_ptr + _packetHeader_size), (_packet_len - _packetHeader_size)); 
 
-                return packet_ptr;
+                //should add exceptioj checking here so we know if we have failed to properly read the data into the packet ptr
+                
+
+                return ;
             };
             
         }else{
             // read byte to clear byte in serial buffer
             _stream->read(); 
-            return nullptr;
+            return ;
         };  
     };      
 
