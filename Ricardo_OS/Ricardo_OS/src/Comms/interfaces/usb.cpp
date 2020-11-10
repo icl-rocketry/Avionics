@@ -26,7 +26,7 @@ void USB::send_packet(uint8_t* data, size_t size){ // From RICARDO to USB
 
 void USB::get_packet(std::vector<uint8_t*> *buf){
     //return if stream object is null
-    if (_stream == nullptr) return ;   
+    if (_stream == nullptr) return;   
 
     while (_stream->available() > 0){
         //find and process any and all packets
@@ -61,7 +61,6 @@ void USB::get_packet(std::vector<uint8_t*> *buf){
                 //TODO
                 //handle oversized packets some how...
                 //return nothing flush buffer automatically
-                return ;
 
             }else if (_packet_len - _packetHeader_size > _stream->available()){
                 //minus 8 to account for bytes read for header
@@ -77,8 +76,6 @@ void USB::get_packet(std::vector<uint8_t*> *buf){
                 }else{
                     _incompletePacketReceived = true;
                 };
-
-                return ;
             }else{
                 //only a single packet to read or multiple packets to read so we will only the first packet
                 _incompletePacketReceived = false;
@@ -95,15 +92,11 @@ void USB::get_packet(std::vector<uint8_t*> *buf){
                 _stream->readBytes((packet_ptr + _packetHeader_size), (_packet_len - _packetHeader_size)); 
 
                 //should add exceptioj checking here so we know if we have failed to properly read the data into the packet ptr
-                
-
-                return ;
             };
             
         }else{
             // read byte to clear byte in serial buffer
             _stream->read(); 
-            return ;
         };  
     };      
 

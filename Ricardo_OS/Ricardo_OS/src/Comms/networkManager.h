@@ -35,7 +35,7 @@ class NetworkManager{
         void update();
         void send_packet(Interface iface,uint8_t* data, size_t len);
         
-        void receive_command(Interface iface, uint32_t command);
+        void add_command(Nodes source_node, uint32_t command);
     
     protected:
         //variable to tell network manager the current type of node
@@ -57,6 +57,7 @@ class NetworkManager{
         CommandHandler commandhandler;
         
         void process_global_packets();
+        void process_local_packets();
         void clear_buffer(std::vector<uint8_t*>* buf); 
 
 

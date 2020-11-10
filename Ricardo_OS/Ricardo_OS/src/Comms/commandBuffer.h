@@ -3,14 +3,15 @@
 
 #include <Arduino.h>
 #include "commands.h"
+
 #include "interfaces/interfaces.h"
+#include "nodes.h"
 
 
 
 
 struct Command {
-	Interface interface; //source interface 
-
+	Nodes source_node; //source node 
 	COMMANDS type; 
 };
 

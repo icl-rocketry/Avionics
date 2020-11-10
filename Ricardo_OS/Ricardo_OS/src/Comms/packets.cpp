@@ -5,7 +5,7 @@ PacketHeader::PacketHeader() {}
 PacketHeader::~PacketHeader() {}
 PacketHeader::PacketHeader(uint8_t packet_type, uint32_t packet_size) : packet_len{packet_size}, type{packet_type} {}
 
-PacketHeader::PacketHeader(const uint8_t* data, const uint8_t size) {
+PacketHeader::PacketHeader(const uint8_t* data, const uint32_t size) {
 	int step = 0;
 	for (int i = 0; i < size; ++i) {
 		const auto b = data[i];
@@ -88,19 +88,21 @@ void DetailedAllPacket::serialize(std::vector<uint8_t>& buf) {
 	// TODO: Serialize floats into bytes
 }
 
-DetailedAllPacket::DetailedAllPacket(const uint8_t* data, const uint8_t size) {
+DetailedAllPacket::DetailedAllPacket(const uint8_t* data, const uint32_t size) {
 	header = PacketHeader(data, size); // Deserialize header
 	
 	// TODO: Deserialize packet
 }
 
-CommandPacket::CommandPacket(const uint8_t* data, const uint8_t size) {
+CommandPacket::CommandPacket(const uint8_t* data, const uint32_t size) {
 	header = PacketHeader(data, size); // Deserialize header
 
 	command = data[header.header_size]; // Get the first byte which is not the header
 }
 
-TelemetryPacket::TelemetryPacket(const uint8_t* data, const uint8_t size) {
+CommandPacket::~CommandPacket() {}
+
+TelemetryPacket::TelemetryPacket(const uint8_t* data, const uint32_t size) {
 	header = PacketHeader(data, size); // Deserialize the header
 
 	for (int i = 0; i < header.packet_len; i++) { // First 8 bytes is header, start with 9th byte

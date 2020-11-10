@@ -26,7 +26,7 @@ class PacketHeader {
 public:
     PacketHeader();
     PacketHeader(uint8_t packet_type, uint32_t packet_size); // Initialise a packet
-    PacketHeader(const uint8_t* data, const uint8_t size); // Deserialization constructor
+    PacketHeader(const uint8_t* data, const uint32_t size); // Deserialization constructor
     ~PacketHeader();
 
     /*
@@ -77,12 +77,13 @@ public:
     /*
         Deserialization constructor
     */
-    TelemetryPacket(const uint8_t* data, const uint8_t size);
+    TelemetryPacket(const uint8_t* data, const uint32_t size);
     TelemetryPacket();
     ~TelemetryPacket();
 };
 
 class CommandPacket{
+public:
     PacketHeader header {static_cast<uint8_t>(packet::COMMAND), 1};
     uint8_t command;
 
@@ -93,7 +94,7 @@ class CommandPacket{
     /*
         Deserialization constructor
     */
-    CommandPacket(const uint8_t* data, const uint8_t size);
+    CommandPacket(const uint8_t* data, const uint32_t size);
     CommandPacket();
     ~CommandPacket();
 };
@@ -108,7 +109,7 @@ class DetailedAllPacket{
     /*
         Deserialization constructor
     */
-    DetailedAllPacket(const uint8_t* data, const uint8_t size);
+    DetailedAllPacket(const uint8_t* data, const uint32_t size);
     DetailedAllPacket();
     ~DetailedAllPacket();
 };

@@ -36,23 +36,31 @@ void NetworkManager::update(){
 
     process_global_packets();
 
+    process_local_packets();
+
 
 };
 
 void NetworkManager::send_packet(Interface iface,uint8_t* data, size_t len){
     switch (iface){
         case Interface::LOOPBACK:
-            //nothing here yet but can be developed later
+            {
+            //dump packet back onto global packet buffer - used for debuging purposes
+            _global_packet_buffer.push_back(data);
             break;
+            }
         case Interface::LORA:
-            
+            {
             break;
+            }
         case Interface::USBSerial:
-            
+            {
             break;
+            }
         case Interface::CAN:
-            
+            {
             break;
+            }
         default:
         //no interface selected do nothing
             break; 
@@ -112,13 +120,85 @@ void NetworkManager::process_global_packets(){
     };
 }
 
+void NetworkManager::process_local_packets(){
+    //function processes all local packets in packet buffer. each delete is explictly written
+    //so it is obvious where each packet pointer is deleted and removed from buffer.
+    //need to be careful we dont call delete twice tho - this is UNDEFINED BEHAVIOUR
+
+    if (_local_packet_buffer.size() > 0){
+        uint8_t* curr_packet_ptr = _local_packet_buffer.front();
+        //create temporary packet buffer object to decode packet header
+        PacketHeader packetheader = PacketHeader(curr_packet_ptr,PacketHeader::header_size);
+
+        if (packetheader.src_interface == static_cast<uint8_t>(Interface::LOOPBACK)){
+            //erase any packets sent on loopback for now. 
+            //can be modified later to test this code actually works without a second board
+            //or even a dynamic bin for packets we want to kill in a live system
+            //but then we may as well have some fun and create a death pit interface 
+            delete[] curr_packet_ptr;
+            _local_packet_buffer.erase(_local_packet_buffer.begin());
+
+        }else{
+
+            switch(static_cast<packet>(packetheader.type)){
+                case packet::TELEMETRY:
+                    {
+                        //telemerty packets are only processed if ricardo is acting as groundstation
+                        if (node_type == Nodes::GROUNDSTATION){
+                            //deserialize whole packet
+                            TelemetryPacket rocket_telemetry = TelemetryPacket(curr_packet_ptr,packetheader.packet_len);
+
+                            //copy packet data to remote rocket telemetry buffer
+                            /*do we then forward the telemetry packet to the laptop by sending here or do we handle it in the state?
+                            it is probably a better idea to wait for a command from the laptop to send telemetry data to prevent bus collisons
+                            in a more request like fashion so commands from the laptop can always be received and executed
+                            */
+
+                        //delete packet pointer object and remove from buffer
+                            delete[] curr_packet_ptr;
+                            _local_packet_buffer.erase(_local_packet_buffer.begin());
+                        }else{
+                            //delete packet as telemtry packets are not processed in any other state
+                            delete[] curr_packet_ptr;
+                            _local_packet_buffer.erase(_local_packet_buffer.begin());
+                        }
+                    }
+                    break;
+                case packet::COMMAND:
+                    {
+                        //deserialize packet
+                        CommandPacket commandpacket = CommandPacket(curr_packet_ptr,packetheader.packet_len);
+                        //add command to command buffer
+                        add_command(static_cast<Nodes>(commandpacket.header.source),commandpacket.command);
+                        //delete packet pointer and remove from packet buffer
+                        delete[] curr_packet_ptr;
+                        _local_packet_buffer.erase(_local_packet_buffer.begin());
+                        break;
+                    }
+                default:
+                    {
+                        //handle all other packet types received
+                        //delete packet as somehow a packet has slipped thru and shouldnt be processed on this node
+                        delete[] curr_packet_ptr;
+                        _local_packet_buffer.erase(_local_packet_buffer.begin());                
+                        break;
+                    }
+            };
+        };
+
+    }else{
+        //nothing to process
+    };
+
+}
 
 
 
-void NetworkManager::receive_command(Interface iface, uint32_t command) {
-    Command command_obj = Command{iface, static_cast<COMMANDS>(command)};
+void NetworkManager::add_command(Nodes source_node, uint32_t command) {
+    Command command_obj = Command{source_node, static_cast<COMMANDS>(command)};
     commandbuffer.addCommand(command_obj);
 }
+
 
 void NetworkManager::clear_buffer(std::vector<uint8_t*>* buf){
     while (buf->size() > 0){
