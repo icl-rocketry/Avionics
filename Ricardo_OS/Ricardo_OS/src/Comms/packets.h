@@ -35,8 +35,8 @@ public:
     void serialize(std::vector<uint8_t>& buf);
 
 public:
-    //packet header 8 bytes
-    static const uint8_t header_size = 9; // Change this variable to reflect the number of bytes in the header
+    //packet header 9 bytes
+    static const uint8_t header_size = 8; // Change this variable to reflect the number of bytes in the header
     
     uint8_t start_byte = 0xAF; // Marks the begin of `Packet`
     uint8_t src_interface = 0x00; // Source interface ID
