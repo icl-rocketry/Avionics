@@ -35,7 +35,6 @@ void NetworkManager::update(){
     usbserial.get_packet(&_global_packet_buffer);
 
     process_global_packets();
-
     process_local_packets();
 
 
@@ -75,7 +74,7 @@ void NetworkManager::send_packet(Interface iface,uint8_t* data, size_t len){
 
 
 void NetworkManager::process_global_packets(){
-    if (_global_packet_buffer.size()>0){
+    if (_global_packet_buffer.size() > 0){
         uint8_t* curr_packet_ptr = _global_packet_buffer.front();
         //create temporary packet buffer object to decode packet header
         PacketHeader packetheader = PacketHeader(curr_packet_ptr,PacketHeader::header_size);
@@ -86,11 +85,25 @@ void NetworkManager::process_global_packets(){
             //forward packet to next node
             //get sending interface from routing table
             Interface send_interface = routingtable[current_node][packetheader.destination].gateway;
-            //forward packet to correct interface to send to next node in network
-            send_packet(send_interface,curr_packet_ptr,static_cast<size_t>(packetheader.packet_len));
-            //remove packet_ptr from buffer as packet has been processed - this is dangerous. 
-            //if an exception occurs anywhere after here we will get memory leaks.
-            // Must change to shared ptrs
+            
+            if (send_interface == Interface::LOOPBACK){
+                /*
+                DO NOTHING... some one has messed up the routing table. 
+                This can lead to potential disaster
+                so lets nip this issue in the bud by dumping the packet responsibly
+                
+                explanation: if we send this packet over the loopback it will place the packet back in the global packet buffer
+                but after send we delete the pointer to clean up so the pointer will be pointing to freed memory which can lead to undefined 
+                actions. Further as the destination for not equal to the source this packet will get cycled in the buffer forever which
+                isnt good.
+                */
+
+            }else{
+                //forward packet to correct interface to send to next node in network
+                send_packet(send_interface,curr_packet_ptr,static_cast<size_t>(packetheader.packet_len));
+            }
+            //delete packet pointer as we no longer need it
+            delete[] curr_packet_ptr;
             _global_packet_buffer.erase(_global_packet_buffer.begin());
         }else{
             if (packetheader.source == current_node){
@@ -103,6 +116,7 @@ void NetworkManager::process_global_packets(){
                    //delete[] curr_packet_ptr;
                    _local_packet_buffer.push_back(curr_packet_ptr);
                    _global_packet_buffer.erase(_global_packet_buffer.begin());
+
                }else{
                    //more than 1 device with same node type on network.
                    delete[] curr_packet_ptr;
@@ -124,6 +138,7 @@ void NetworkManager::process_local_packets(){
     //function processes all local packets in packet buffer. each delete is explictly written
     //so it is obvious where each packet pointer is deleted and removed from buffer.
     //need to be careful we dont call delete twice tho - this is UNDEFINED BEHAVIOUR
+    //this will all hopefully be cleaned up when we transition to smart pointers
 
     if (_local_packet_buffer.size() > 0){
         uint8_t* curr_packet_ptr = _local_packet_buffer.front();
@@ -131,10 +146,11 @@ void NetworkManager::process_local_packets(){
         PacketHeader packetheader = PacketHeader(curr_packet_ptr,PacketHeader::header_size);
 
         if (packetheader.src_interface == static_cast<uint8_t>(Interface::LOOPBACK)){
-            //erase any packets sent on loopback for now. 
-            //can be modified later to test this code actually works without a second board
-            //or even a dynamic bin for packets we want to kill in a live system
-            //but then we may as well have some fun and create a death pit interface 
+            /*erase any packets sent on loopback for now. 
+            can be modified later to test this code actually works without a second board
+            or even a dynamic bin for packets we want to kill in a live system
+            but then we may as well have some fun and create a death pit interface 
+            */
             delete[] curr_packet_ptr;
             _local_packet_buffer.erase(_local_packet_buffer.begin());
 
@@ -149,7 +165,9 @@ void NetworkManager::process_local_packets(){
                             TelemetryPacket rocket_telemetry = TelemetryPacket(curr_packet_ptr,packetheader.packet_len);
 
                             //copy packet data to remote rocket telemetry buffer
-                            /*do we then forward the telemetry packet to the laptop by sending here or do we handle it in the state?
+
+                            /*
+                            do we then forward the telemetry packet to the laptop by sending here or do we handle it in the state?
                             it is probably a better idea to wait for a command from the laptop to send telemetry data to prevent bus collisons
                             in a more request like fashion so commands from the laptop can always be received and executed
                             */
@@ -173,6 +191,7 @@ void NetworkManager::process_local_packets(){
                         //delete packet pointer and remove from packet buffer
                         delete[] curr_packet_ptr;
                         _local_packet_buffer.erase(_local_packet_buffer.begin());
+
                         break;
                     }
                 default:
@@ -180,7 +199,8 @@ void NetworkManager::process_local_packets(){
                         //handle all other packet types received
                         //delete packet as somehow a packet has slipped thru and shouldnt be processed on this node
                         delete[] curr_packet_ptr;
-                        _local_packet_buffer.erase(_local_packet_buffer.begin());                
+                        _local_packet_buffer.erase(_local_packet_buffer.begin());  
+
                         break;
                     }
             };

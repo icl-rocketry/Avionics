@@ -7,6 +7,15 @@
 format of routing table
 routingtable[Current node][Destination Node]= { Gateway , Metric }
 
+WARNING: IF YOU EDIT THIS TABLE PLEASE MAKE SURE YOU GET IT CORRECT
+IF YOU DONT YOU MAY MAKE PACKETS CYCLE THE NETWORK CONTINOUSLY NOT DOING
+ANYTHING USEFUL....
+
+MAKE SURE YOU GET THE LOOPBACK INTERFACE CORRECT WORSE THINGS COULD HAPPEN LIKE
+REFERECNING A DELETED POINTER... NOT GOOD
+
+might be actually worth implementing ttl in packets to prevent packets looping infitley
+
 */
 
 struct RoutingTable{
