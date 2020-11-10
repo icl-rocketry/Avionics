@@ -31,15 +31,15 @@ void NetworkManager::setup(){
 };
 
 void NetworkManager::update(){
-    update_buffer(&radio,&_global_packet_buffer);
-    update_buffer(&usbserial,&_global_packet_buffer);
+    radio.get_packet(&_global_packet_buffer); //get any new packets and place in global packet buffer
+    usbserial.get_packet(&_global_packet_buffer);
 
-    process_global_packets(&_global_packet_buffer);
+    process_global_packets();
 
 
 };
 
-void NetworkManager::send_data(Interface iface,uint8_t* data, size_t len){
+void NetworkManager::send_packet(Interface iface,uint8_t* data, size_t len){
     switch (iface){
         case Interface::LOOPBACK:
             //nothing here yet but can be developed later
@@ -64,26 +64,56 @@ void NetworkManager::send_data(Interface iface,uint8_t* data, size_t len){
 
 
 
-void NetworkManager::update_buffer(Iface* iface,std::vector<uint8_t*>* buf){
-    uint8_t* data_ptr = iface->get_packet(); // get any packets from interface
-    if (data_ptr != nullptr) //check if a packet has been returned
-        buf->push_back(data_ptr);
-    else{
-        //do nothing cos no data returned
-    };
-}
 
-void NetworkManager::process_global_packets(std::vector<uint8_t*>* global_buf){
-    if (global_buf->size()>0){
-        uint8_t* curr_packet_ptr = global_buf->front();
-        //process some stuff
-        
-        //delete array pointer prevent memory leak
-        delete[] curr_packet_ptr;
+
+void NetworkManager::process_global_packets(){
+    if (_global_packet_buffer.size()>0){
+        uint8_t* curr_packet_ptr = _global_packet_buffer.front();
+        //create temporary packet buffer object to decode packet header
+        PacketHeader packetheader = PacketHeader(curr_packet_ptr,PacketHeader::header_size);
+
+        //get current node type
+        uint8_t current_node = static_cast<uint8_t>(node_type);
+        if (packetheader.destination != current_node){
+            //forward packet to next node
+            //get sending interface from routing table
+            Interface send_interface = routingtable[current_node][packetheader.destination].gateway;
+            //forward packet to correct interface to send to next node in network
+            send_packet(send_interface,curr_packet_ptr,static_cast<size_t>(packetheader.packet_len));
+            //remove packet_ptr from buffer as packet has been processed - this is dangerous. 
+            //if an exception occurs anywhere after here we will get memory leaks.
+            // Must change to shared ptrs
+            _global_packet_buffer.erase(_global_packet_buffer.begin());
+        }else{
+            if (packetheader.source == current_node){
+                /*this could be because of 2 of the same node types on the same network 
+                or because we are using the loopback interface but we cannot distinguish.
+                 UUID or comparing source interface can distinguish.
+                */
+               if (packetheader.src_interface == static_cast<uint8_t>(Interface::LOOPBACK)){
+                   //loopback packet
+                   //delete[] curr_packet_ptr;
+                   _local_packet_buffer.push_back(curr_packet_ptr);
+                   _global_packet_buffer.erase(_global_packet_buffer.begin());
+               }else{
+                   //more than 1 device with same node type on network.
+                   delete[] curr_packet_ptr;
+                   _global_packet_buffer.erase(_global_packet_buffer.begin());
+               }
+            }else{
+                //YOU GOT MAIL!!!
+                //place packet into local packet buffer for processing
+                _local_packet_buffer.push_back(curr_packet_ptr);
+                _global_packet_buffer.erase(_global_packet_buffer.begin());
+            }
+        }
     }else{
         //nothing to process
     };
 }
+
+
+
 
 void NetworkManager::receive_command(Interface iface, uint32_t command) {
     Command command_obj = Command{iface, static_cast<COMMANDS>(command)};
@@ -95,5 +125,6 @@ void NetworkManager::clear_buffer(std::vector<uint8_t*>* buf){
         uint8_t* packet_ptr = buf->front();
         delete[] packet_ptr;
         buf->erase(buf->begin());
+
     };
 }

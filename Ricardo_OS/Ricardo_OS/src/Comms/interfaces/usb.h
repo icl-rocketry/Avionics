@@ -16,7 +16,7 @@ class USB: public Iface{
         USB(Stream* stream,SystemStatus* systemstatus);
         void setup();
         void send_packet(uint8_t* data , size_t size);
-        uint8_t* get_packet();
+        void get_packet(std::vector<uint8_t*> *buf);
 
 
 

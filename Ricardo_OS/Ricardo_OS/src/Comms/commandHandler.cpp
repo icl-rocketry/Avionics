@@ -26,7 +26,7 @@ void CommandHandler::update() {
 		//maybe change return type to NULL?
 
 		// If there's return data, send it back through the requesting interface
-		_sm->networkmanager.send_data(static_cast<Interface>(first_command.interface), data, sizeof(*data) / 8); 
+		_sm->networkmanager.send_packet(static_cast<Interface>(first_command.interface), data, sizeof(*data) / 8); 
 	}
 	_buffer_ptr->buffer.erase(_buffer_ptr->buffer.begin()); // 0th command handled, remove it from the buffer
 };

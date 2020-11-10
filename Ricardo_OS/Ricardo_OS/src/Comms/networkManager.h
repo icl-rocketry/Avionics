@@ -14,6 +14,9 @@
 #include "interfaces/usb.h"
 //#include "stateMachine.h"
 
+#include "States/preflight.h"
+#include "States/groundstation.h"
+
 
 
 
@@ -21,25 +24,29 @@ class stateMachine;//forward declaration to prevent circular dependancy
 
 
 class NetworkManager{
+    //give these particular states rights to change node type
+
+    friend class Preflight;
+    friend class Groundstation;
+
     public:
         NetworkManager(stateMachine* sm);
         void setup();
         void update();
-        void send_data(Interface iface,uint8_t* data, size_t len);
+        void send_packet(Interface iface,uint8_t* data, size_t len);
         
         void receive_command(Interface iface, uint32_t command);
-
-        
-            
-
+    
+    protected:
+        //variable to tell network manager the current type of node
+        Nodes node_type;
 
     private:
         stateMachine* _sm; //pointer to state machine
 
 
         std::vector<uint8_t*> _global_packet_buffer; //packet buffer containing all network packets received
-
-        //std::vector<uint8_t*> _local_packet_buffer; //packet buffer containing packets meant for this node
+        std::vector<uint8_t*> _local_packet_buffer; //packet buffer containing packets meant for this node
         
 
         USB usbserial; //usb serial object
@@ -49,9 +56,8 @@ class NetworkManager{
         CommandBuffer commandbuffer;
         CommandHandler commandhandler;
         
-        void update_buffer(Iface* iface,std::vector<uint8_t*>* buf);
-        void process_global_packets(std::vector<uint8_t*>* global_buf);
-        void clear_buffer(std::vector<uint8_t*>* buf);
+        void process_global_packets();
+        void clear_buffer(std::vector<uint8_t*>* buf); 
 
 
 

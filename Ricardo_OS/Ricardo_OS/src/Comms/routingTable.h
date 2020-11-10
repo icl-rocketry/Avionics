@@ -5,7 +5,7 @@
 
 /*currently static routing tables created for ease but could be rewritten to be dynamic later on
 format of routing table
-routingtable[Destination Node][Current node]= { Gateway , Metric }
+routingtable[Current node][Destination Node]= { Gateway , Metric }
 
 */
 
