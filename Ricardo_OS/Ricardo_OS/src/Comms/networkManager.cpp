@@ -156,8 +156,8 @@ void NetworkManager::process_local_packets(){
 
         }else{
 
-            switch(static_cast<packet>(packetheader.type)){
-                case packet::TELEMETRY:
+            switch(packetheader.type){
+                case static_cast<uint8_t>(packet::TELEMETRY):
                     {
                         //telemerty packets are only processed if ricardo is acting as groundstation
                         if (node_type == Nodes::GROUNDSTATION){
@@ -182,7 +182,7 @@ void NetworkManager::process_local_packets(){
                         }
                     }
                     break;
-                case packet::COMMAND:
+                case static_cast<uint8_t>(packet::COMMAND):
                     {
                         //deserialize packet
                         CommandPacket commandpacket = CommandPacket(curr_packet_ptr,packetheader.packet_len);
