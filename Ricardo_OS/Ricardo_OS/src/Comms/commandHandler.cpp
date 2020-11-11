@@ -20,7 +20,7 @@ void CommandHandler::setup(){};
 void CommandHandler::update() {
 	// Handle the first command in the buffer
 	// Possibly implement priority queues in the future?
-	Command first_command = _buffer_ptr->buffer.at(0);
+	Command first_command = _buffer_ptr->buffer.front();
 	uint8_t* data = handleCommand(first_command);
 	if (data) {
 		//maybe change return type to NULL?

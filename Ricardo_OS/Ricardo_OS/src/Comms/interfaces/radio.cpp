@@ -32,9 +32,9 @@ void Radio::setup(){
 
 //example usage send_packet((uint8_t*)&packet, sizeof(packet));
 
-void Radio::send_packet(uint8_t* txpacket_ptr, size_t packet_len){
+void Radio::send_packet(uint8_t* data, size_t packet_len){
     if(LoRa.beginPacket()){
-        LoRa.write(txpacket_ptr, packet_len);
+        LoRa.write(data, packet_len);
         LoRa.endPacket();
     }else{
         //radio busy or some awful error
@@ -50,7 +50,7 @@ void Radio::get_packet(std::vector<uint8_t*> *buf){
         buf->push_back(packet_ptr);//add packet ptr immediatley to buffer
 
         LoRa.readBytes(packet_ptr, packetSize); // Copy the received data into packet_received
-        
+
         return ;
     }else{
         return ;

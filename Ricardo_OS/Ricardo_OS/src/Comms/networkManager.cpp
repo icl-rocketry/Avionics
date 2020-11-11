@@ -50,10 +50,12 @@ void NetworkManager::send_packet(Interface iface,uint8_t* data, size_t len){
             }
         case Interface::LORA:
             {
+            radio.send_packet(data,len);
             break;
             }
         case Interface::USBSerial:
             {
+            usbserial.send_packet(data,len);
             break;
             }
         case Interface::CAN:
@@ -81,6 +83,7 @@ void NetworkManager::process_global_packets(){
 
         //get current node type
         uint8_t current_node = static_cast<uint8_t>(node_type);
+        
         if (packetheader.destination != current_node){
             //forward packet to next node
             //get sending interface from routing table
@@ -89,8 +92,6 @@ void NetworkManager::process_global_packets(){
             if (send_interface == Interface::LOOPBACK){
                 /*
                 DO NOTHING... some one has messed up the routing table. 
-                This can lead to potential disaster
-                so lets nip this issue in the bud by dumping the packet responsibly
                 
                 explanation: if we send this packet over the loopback it will place the packet back in the global packet buffer
                 but after send we delete the pointer to clean up so the pointer will be pointing to freed memory which can lead to undefined 

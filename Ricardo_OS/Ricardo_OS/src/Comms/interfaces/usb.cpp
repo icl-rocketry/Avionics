@@ -22,6 +22,7 @@ void USB::send_packet(uint8_t* data, size_t size){ // From RICARDO to USB
     //maybe check if we can write using serial.avalibalewrite not sure what action we would take 
     //if we couldnt write though
     Serial.write(data,size);
+    
 };
 
 void USB::get_packet(std::vector<uint8_t*> *buf){
