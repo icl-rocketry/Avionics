@@ -22,7 +22,7 @@ void USB::send_packet(uint8_t* data, size_t size){ // From RICARDO to USB
     //maybe check if we can write using serial.avalibalewrite not sure what action we would take 
     //if we couldnt write though
     Serial.write(data,size);
-    
+
 };
 
 void USB::get_packet(std::vector<uint8_t*> *buf){
@@ -85,9 +85,7 @@ void USB::get_packet(std::vector<uint8_t*> *buf){
                 buf->push_back(packet_ptr); // add pointer to packet immediately to buffer
 
                 //copy data in _tmp_packet_data to packet container
-                for (int i = 0; i < _packetHeader_size-1; i++){
-                    *(packet_ptr+i) = _tmp_packet_data[i];
-                };
+                memcpy(packet_ptr,&_tmp_packet_data,_packetHeader_size);
                 //read bytes in stream buffer into the packet data array starting at the 8th index as header has been read out of stream buffer.
                 //packet len has been decremented 8 as packet_len includes the packet header which is no longer in stream buffer
                 _stream->readBytes((packet_ptr + _packetHeader_size), (_packet_len - _packetHeader_size)); 
