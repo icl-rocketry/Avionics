@@ -60,7 +60,7 @@ class NetworkManager{
         
         void process_global_packets();
         void process_local_packets();
-        //void clear_buffer(std::vector<uint8_t*>* buf); 
+
 
 
 

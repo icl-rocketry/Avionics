@@ -43,33 +43,36 @@ void NetworkManager::update(){
 };
 
 void NetworkManager::send_packet(Interface iface,uint8_t* data, size_t len){
-    switch (iface){
-        case Interface::LOOPBACK:
-            {
-            //dump packet back onto global packet buffer - used for debuging purposes
-            //_global_packet_buffer.push_back(data);
+    if (data == nullptr){
+        return;
+    }else{
+        switch (iface){
+            case Interface::LOOPBACK:
+                {
+                //dump packet back onto global packet buffer - used for debuging purposes
+                //_global_packet_buffer.push_back(data);
 
-            break;
-            }
-        case Interface::LORA:
-            {
-            radio.send_packet(data,len);
-            break;
-            }
-        case Interface::USBSerial:
-            {
-            usbserial.send_packet(data,len);
-            break;
-            }
-        case Interface::CAN:
-            {
-            break;
-            }
-        default:
-        //no interface selected do nothing
-            break; 
-    }
-
+                break;
+                }
+            case Interface::LORA:
+                {
+                radio.send_packet(data,len);
+                break;
+                }
+            case Interface::USBSerial:
+                {
+                usbserial.send_packet(data,len);
+                break;
+                }
+            case Interface::CAN:
+                {
+                break;
+                }
+            default:
+            //no interface selected do nothing
+                break; 
+        }
+    };
 
 
 };
@@ -153,7 +156,7 @@ void NetworkManager::process_local_packets(){
         if (packetheader.src_interface == static_cast<uint8_t>(Interface::LOOPBACK)){
             /*erase any packets sent on loopback for now. 
             can be modified later to test this code actually works without a second board
-            or even a dynamic bin for packets we want to kill in a live system
+            or even a  bin for packets we want to kill in a live system
             but then we may as well have some fun and create a death pit interface 
             */
             //delete[] curr_packet_ptr;
@@ -225,14 +228,5 @@ void NetworkManager::add_command(Nodes source_node, uint32_t command) {
     commandbuffer.addCommand(command_obj);
 }
 
-/*
 
-void NetworkManager::clear_buffer(std::vector<uint8_t*>* buf){
-    while (buf->size() > 0){
-        uint8_t* packet_ptr = buf->front();
-        delete[] packet_ptr;
-        buf->erase(buf->begin());
 
-    };
-}
-*/
