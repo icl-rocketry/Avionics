@@ -47,7 +47,8 @@ void NetworkManager::send_packet(Interface iface,uint8_t* data, size_t len){
         case Interface::LOOPBACK:
             {
             //dump packet back onto global packet buffer - used for debuging purposes
-            _global_packet_buffer.push_back(data);
+            //_global_packet_buffer.push_back(data);
+
             break;
             }
         case Interface::LORA:
@@ -79,9 +80,9 @@ void NetworkManager::send_packet(Interface iface,uint8_t* data, size_t len){
 
 void NetworkManager::process_global_packets(){
     if (_global_packet_buffer.size() > 0){
-        uint8_t* curr_packet_ptr = _global_packet_buffer.front();
+        std::shared_ptr<uint8_t> curr_packet_ptr = _global_packet_buffer.front();
         //create temporary packet buffer object to decode packet header
-        PacketHeader packetheader = PacketHeader(curr_packet_ptr,PacketHeader::header_size);
+        PacketHeader packetheader = PacketHeader(curr_packet_ptr.get());
 
         //get current node type
         uint8_t current_node = static_cast<uint8_t>(node_type);
@@ -103,11 +104,12 @@ void NetworkManager::process_global_packets(){
 
             }else{
                 //forward packet to correct interface to send to next node in network
-                send_packet(send_interface,curr_packet_ptr,static_cast<size_t>(packetheader.packet_len));
+                send_packet(send_interface,curr_packet_ptr.get(),static_cast<size_t>(packetheader.packet_len));
             }
             //delete packet pointer as we no longer need it
-            delete[] curr_packet_ptr;
+            //delete[] curr_packet_ptr;
             _global_packet_buffer.erase(_global_packet_buffer.begin());
+
         }else{
             if (packetheader.source == current_node){
                 /*this could be because of 2 of the same node types on the same network 
@@ -122,7 +124,7 @@ void NetworkManager::process_global_packets(){
 
                }else{
                    //more than 1 device with same node type on network.
-                   delete[] curr_packet_ptr;
+                   //delete[] curr_packet_ptr;
                    _global_packet_buffer.erase(_global_packet_buffer.begin());
                }
             }else{
@@ -144,9 +146,9 @@ void NetworkManager::process_local_packets(){
     //this will all hopefully be cleaned up when we transition to smart pointers
 
     if (_local_packet_buffer.size() > 0){
-        uint8_t* curr_packet_ptr = _local_packet_buffer.front();
+        std::shared_ptr<uint8_t> curr_packet_ptr = _local_packet_buffer.front();
         //create temporary packet buffer object to decode packet header
-        PacketHeader packetheader = PacketHeader(curr_packet_ptr,PacketHeader::header_size);
+        PacketHeader packetheader = PacketHeader(curr_packet_ptr.get());
 
         if (packetheader.src_interface == static_cast<uint8_t>(Interface::LOOPBACK)){
             /*erase any packets sent on loopback for now. 
@@ -154,7 +156,7 @@ void NetworkManager::process_local_packets(){
             or even a dynamic bin for packets we want to kill in a live system
             but then we may as well have some fun and create a death pit interface 
             */
-            delete[] curr_packet_ptr;
+            //delete[] curr_packet_ptr;
             _local_packet_buffer.erase(_local_packet_buffer.begin());
 
         }else{
@@ -165,7 +167,7 @@ void NetworkManager::process_local_packets(){
                         //telemerty packets are only processed if ricardo is acting as groundstation
                         if (node_type == Nodes::GROUNDSTATION){
                             //deserialize whole packet
-                            TelemetryPacket rocket_telemetry = TelemetryPacket(curr_packet_ptr,packetheader.packet_len);
+                            TelemetryPacket rocket_telemetry = TelemetryPacket(curr_packet_ptr.get());
 
                             //copy packet data to remote rocket telemetry buffer
 
@@ -176,11 +178,11 @@ void NetworkManager::process_local_packets(){
                             */
 
                         //delete packet pointer object and remove from buffer
-                            delete[] curr_packet_ptr;
+                            //delete[] curr_packet_ptr;
                             _local_packet_buffer.erase(_local_packet_buffer.begin());
                         }else{
                             //delete packet as telemtry packets are not processed in any other state
-                            delete[] curr_packet_ptr;
+                            //delete[] curr_packet_ptr;
                             _local_packet_buffer.erase(_local_packet_buffer.begin());
                         }
                     }
@@ -188,11 +190,12 @@ void NetworkManager::process_local_packets(){
                 case static_cast<uint8_t>(packet::COMMAND):
                     {
                         //deserialize packet
-                        CommandPacket commandpacket = CommandPacket(curr_packet_ptr,packetheader.packet_len);
+                        CommandPacket commandpacket = CommandPacket(curr_packet_ptr.get());
+
                         //add command to command buffer
                         add_command(static_cast<Nodes>(commandpacket.header.source),commandpacket.command);
                         //delete packet pointer and remove from packet buffer
-                        delete[] curr_packet_ptr;
+                        //delete[] curr_packet_ptr;
                         _local_packet_buffer.erase(_local_packet_buffer.begin());
 
                         break;
@@ -201,7 +204,7 @@ void NetworkManager::process_local_packets(){
                     {
                         //handle all other packet types received
                         //delete packet as somehow a packet has slipped thru and shouldnt be processed on this node
-                        delete[] curr_packet_ptr;
+                        //delete[] curr_packet_ptr;
                         _local_packet_buffer.erase(_local_packet_buffer.begin());  
 
                         break;

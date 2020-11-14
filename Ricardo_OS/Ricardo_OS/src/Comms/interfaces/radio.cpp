@@ -62,7 +62,7 @@ void Radio::get_packet(std::vector<std::shared_ptr<uint8_t>> *buf){
         //uint8_t* packet_ptr = new uint8_t[packetSize]; // Allocate a new chunk of memory for the packet
         
         
-        buf->push_back(std::move(packet_ptr));//add packet ptr immediately to buffer
+        buf->push_back(packet_ptr);//add packet ptr immediately to buffer
 
         
         return ;

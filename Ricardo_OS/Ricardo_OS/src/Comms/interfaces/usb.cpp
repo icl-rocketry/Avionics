@@ -51,7 +51,7 @@ void USB::get_packet(std::vector<std::shared_ptr<uint8_t>> *buf){
                 //_packetHeader_ptr = new PacketHeader(&_tmp_packet_data[0], _packetHeader_size);
 
                 //create packet header object to decode packet header and retrieve packet size
-                PacketHeader packetheader = PacketHeader(&_tmp_packet_data[0], _packetHeader_size);
+                PacketHeader packetheader = PacketHeader(&_tmp_packet_data[0]);
                 //save decoded packet length as packetheader object will get deleted if function returns
                 _packet_len = packetheader.packet_len;
 
@@ -97,7 +97,7 @@ void USB::get_packet(std::vector<std::shared_ptr<uint8_t>> *buf){
                 _stream->readBytes((packet_ptr.get() + _packetHeader_size), (_packet_len - _packetHeader_size)); 
 
                 //should add exceptioj checking here so we know if we have failed to properly read the data into the packet ptr
-                buf->push_back(std::move(packet_ptr)); // add pointer to packet immediately to buffer
+                buf->push_back(packet_ptr); // add pointer to packet immediately to buffer
             
             };
             
