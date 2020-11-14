@@ -49,9 +49,13 @@ void NetworkManager::send_packet(Interface iface,uint8_t* data, size_t len){
         switch (iface){
             case Interface::LOOPBACK:
                 {
-                //dump packet back onto global packet buffer - used for debuging purposes
-                //_global_packet_buffer.push_back(data);
-
+                // create new instance of shared pointer and push to global packet buffer
+                std::shared_ptr<uint8_t> packet_ptr(new uint8_t[len], [](uint8_t *p) { delete[] p; });
+                //copy data to packet_ptr
+                memcpy(packet_ptr.get(),data,len);
+                //push onto global packet buffer for processing
+                _global_packet_buffer.push_back(packet_ptr);
+                
                 break;
                 }
             case Interface::LORA:
