@@ -2,10 +2,13 @@
 
 
 #include "stateMachine.h"
+
 #include "commandBuffer.h"
 #include "commands.h"
 
 #include "flags.h"
+
+#include "packets.h"
 #include "interfaces/interfaces.h"
 
 CommandHandler::CommandHandler(stateMachine* sm, CommandBuffer* buffer_ptr){
@@ -21,20 +24,15 @@ void CommandHandler::update() {
 	// Handle the first command in the buffer
 	// Possibly implement priority queues in the future?
 	Command first_command = _buffer_ptr->buffer.front();
-	uint8_t* data = handleCommand(first_command);
-	if (data) {
-		//maybe change return type to NULL?
+	handleCommand(first_command);
 
-		// If there's return data, send it back through the requesting node
-		//_sm->networkmanager.send_packet(static_cast<Interface>(first_command.interface), data, sizeof(*data) / 8); 
-	}
 	_buffer_ptr->buffer.erase(_buffer_ptr->buffer.begin()); // 0th command handled, remove it from the buffer
 };
 
-uint8_t* CommandHandler::handleCommand(Command command) {
+void CommandHandler::handleCommand(Command command) {
 
 	if (!commandAvaliable(command)) {
-		return nullptr;
+		//do nothing as command is not avaliable
 	} else{
 		switch (command.type) {
 			case COMMANDS::Launch:
@@ -64,6 +62,19 @@ uint8_t* CommandHandler::handleCommand(Command command) {
 			case COMMANDS::Raw_Sensor_Output:
 				break;
 			case COMMANDS::Detailed_All_Sensors:
+				{
+					std::vector<uint8_t> data;
+					
+					DetailedAllPacket detailedall = DetailedAllPacket();
+					detailedall.header.destination = static_cast<uint8_t>(command.source_node);
+					detailedall.ax = _sm->estimator.state.ax;
+					detailedall.ay = _sm->estimator.state.ay;
+					detailedall.az = _sm->estimator.state.az;
+
+					detailedall.serialize(data);
+					//_sm->networkmanager.send_packet()
+					
+				}
 				break;
 			case COMMANDS::Detailed_Accel:
 				break;

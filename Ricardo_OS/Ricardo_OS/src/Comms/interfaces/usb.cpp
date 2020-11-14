@@ -52,7 +52,7 @@ void USB::get_packet(std::vector<std::shared_ptr<uint8_t>> *buf){
 
                 //create packet header object to decode packet header and retrieve packet size
                 PacketHeader packetheader = PacketHeader(&_tmp_packet_data[0]);
-                //save decoded packet length as packetheader object will get deleted if function returns
+                //get decoded packet length 
                 _packet_len = packetheader.packet_len;
 
 
@@ -66,7 +66,7 @@ void USB::get_packet(std::vector<std::shared_ptr<uint8_t>> *buf){
                 //return nothing flush buffer automatically
 
             }else if (_packet_len - _packetHeader_size > _stream->available()){
-                //minus 8 to account for bytes read for header
+                //minus packetheadersize to account for bytes read for header
                 //we dont have the full packet to read 
 
                 //increment timeoutcounter
@@ -79,6 +79,7 @@ void USB::get_packet(std::vector<std::shared_ptr<uint8_t>> *buf){
                 }else{
                     _incompletePacketReceived = true;
                 };
+                
             }else{
                 //only a single packet to read or multiple packets to read so we will only the first packet
                 _incompletePacketReceived = false;

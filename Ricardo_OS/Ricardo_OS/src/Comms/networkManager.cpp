@@ -55,7 +55,7 @@ void NetworkManager::send_packet(Interface iface,uint8_t* data, size_t len){
                 memcpy(packet_ptr.get(),data,len);
                 //push onto global packet buffer for processing
                 _global_packet_buffer.push_back(packet_ptr);
-                
+
                 break;
                 }
             case Interface::LORA:
@@ -77,10 +77,29 @@ void NetworkManager::send_packet(Interface iface,uint8_t* data, size_t len){
                 break; 
         }
     };
-
-
 };
 
+void NetworkManager::send_to_node(Nodes destination,uint8_t* data,size_t len){
+    
+
+    uint8_t current_node = static_cast<uint8_t>(node_type);
+    //get sending interface from routing table
+    Interface send_interface = routingtable[current_node][static_cast<uint8_t>(destination)].gateway;
+
+    if ((send_interface == Interface::LOOPBACK) && (current_node != static_cast<uint8_t>(destination))){
+        /*
+                DO NOTHING... some one has messed up the routing table. 
+                
+                explanation: if we send this packet over the loopback it will place the packet back in the global packet buffer
+                but after send we delete the pointer to clean up so the pointer will be pointing to freed memory which can lead to undefined 
+                actions. Further as the destination for not equal to the source this packet will get cycled in the buffer forever which
+                isnt good.
+                */
+    }else{
+        send_packet(send_interface,data,len);
+    };
+
+}
 
 
 
@@ -92,32 +111,20 @@ void NetworkManager::process_global_packets(){
         PacketHeader packetheader = PacketHeader(curr_packet_ptr.get());
 
         //get current node type
+
         uint8_t current_node = static_cast<uint8_t>(node_type);
         
         if (packetheader.destination != current_node){
-            //forward packet to next node
-            //get sending interface from routing table
-            Interface send_interface = routingtable[current_node][packetheader.destination].gateway;
-            
-            if (send_interface == Interface::LOOPBACK){
-                /*
-                DO NOTHING... some one has messed up the routing table. 
-                
-                explanation: if we send this packet over the loopback it will place the packet back in the global packet buffer
-                but after send we delete the pointer to clean up so the pointer will be pointing to freed memory which can lead to undefined 
-                actions. Further as the destination for not equal to the source this packet will get cycled in the buffer forever which
-                isnt good.
-                */
 
-            }else{
-                //forward packet to correct interface to send to next node in network
-                send_packet(send_interface,curr_packet_ptr.get(),static_cast<size_t>(packetheader.packet_len));
-            }
-            //delete packet pointer as we no longer need it
-            //delete[] curr_packet_ptr;
+            //forward packet to next node
+
+            send_to_node(static_cast<Nodes>(packetheader.destination),curr_packet_ptr.get(),static_cast<size_t>(packetheader.packet_len));
+
             _global_packet_buffer.erase(_global_packet_buffer.begin());
 
+
         }else{
+
             if (packetheader.source == current_node){
                 /*this could be because of 2 of the same node types on the same network 
                 or because we are using the loopback interface but we cannot distinguish.

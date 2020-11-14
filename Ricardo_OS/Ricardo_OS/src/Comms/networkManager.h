@@ -33,10 +33,13 @@ class NetworkManager{
 
     public:
         NetworkManager(stateMachine* sm);
+        
         void setup();
         void update();
-        void send_packet(Interface iface,uint8_t* data, size_t len);
         
+        void send_to_node(Nodes destination,uint8_t* data,size_t len);
+        void send_packet(Interface iface,uint8_t* data, size_t len);
+
         void add_command(Nodes source_node, uint32_t command);
     
     protected:
@@ -60,7 +63,7 @@ class NetworkManager{
         
         void process_global_packets();
         void process_local_packets();
-
+        
 
 
 

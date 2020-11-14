@@ -25,7 +25,7 @@ class CommandHandler {
         stateMachine* _sm; //pointer to state machine
 		CommandBuffer* _buffer_ptr;
 		
-		uint8_t* handleCommand(Command command);
+		void handleCommand(Command command);
         bool commandAvaliable(Command command);
 };	
 
