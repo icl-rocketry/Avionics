@@ -26,7 +26,7 @@ class PacketHeader {
 public:
     PacketHeader();
     PacketHeader(uint8_t packet_type, uint32_t packet_size); // Initialise a packet
-    PacketHeader(const uint8_t* data, const uint32_t size); // Deserialization constructor
+    PacketHeader(const uint8_t* data); // Deserialization constructor
     ~PacketHeader();
 
     /*
@@ -36,7 +36,7 @@ public:
 
 public:
     //packet header 9 bytes
-    static const uint8_t header_size = 8; // Change this variable to reflect the number of bytes in the header
+    static const uint8_t header_size = 9; // Change this variable to reflect the number of bytes in the header
     
     uint8_t start_byte = 0xAF; // Marks the begin of `Packet`
     uint8_t src_interface = 0x00; // Source interface ID
@@ -51,6 +51,7 @@ public:
     static void serialize_float(const float num, std::vector<uint8_t> &buf);
     static void serialize_floats(const float* nums, int num_floats, std::vector<uint8_t> &buf);
     static void deserialize_float(float &f, const uint8_t* bytes);
+    static void serialize_uint32_t(const uint32_t &n, std::vector<uint8_t> &buf);
 };
 
 class TelemetryPacket{
@@ -77,7 +78,7 @@ public:
     /*
         Deserialization constructor
     */
-    TelemetryPacket(const uint8_t* data, const uint32_t size);
+    TelemetryPacket(const uint8_t* data);
     TelemetryPacket();
     ~TelemetryPacket();
 };
@@ -94,13 +95,22 @@ public:
     /*
         Deserialization constructor
     */
-    CommandPacket(const uint8_t* data, const uint32_t size);
+    CommandPacket(const uint8_t* data);
     CommandPacket();
     ~CommandPacket();
 };
 
 class DetailedAllPacket{
+public:
     PacketHeader header {static_cast<uint8_t>(packet::DETAILED_ALL), 0};
+
+    float ax,ay,az;
+    float gx,gy,gz;
+    float mx,my,mz;
+    float gps_lat,gps_long,gps_speed,gps_alt;
+    float baro_alt,baro_temp,baro_press;
+    int batt_volt,batt_percent;
+    uint32_t system_time;
 
     // WARNING!
     // Check if all the variables that need to be sent over are getting serialized
@@ -109,7 +119,7 @@ class DetailedAllPacket{
     /*
         Deserialization constructor
     */
-    DetailedAllPacket(const uint8_t* data, const uint32_t size);
+    DetailedAllPacket(const uint8_t* data);
     DetailedAllPacket();
     ~DetailedAllPacket();
 };
