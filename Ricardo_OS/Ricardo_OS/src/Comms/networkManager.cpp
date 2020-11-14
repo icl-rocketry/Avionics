@@ -13,6 +13,8 @@
 #include "packets.h"
 #include "routingTable.h"
 
+#include <memory>
+
 
 NetworkManager::NetworkManager(stateMachine* sm):
     usbserial(&Serial,&(sm->systemstatus)),
@@ -220,6 +222,7 @@ void NetworkManager::add_command(Nodes source_node, uint32_t command) {
     commandbuffer.addCommand(command_obj);
 }
 
+/*
 
 void NetworkManager::clear_buffer(std::vector<uint8_t*>* buf){
     while (buf->size() > 0){
@@ -229,3 +232,4 @@ void NetworkManager::clear_buffer(std::vector<uint8_t*>* buf){
 
     };
 }
+*/

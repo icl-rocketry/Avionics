@@ -17,6 +17,8 @@
 #include "States/preflight.h"
 #include "States/groundstation.h"
 
+#include <memory>
+
 
 
 
@@ -45,7 +47,7 @@ class NetworkManager{
         stateMachine* _sm; //pointer to state machine
 
 
-        std::vector<uint8_t*> _global_packet_buffer; //packet buffer containing all network packets received
+        std::vector<std::shared_ptr<uint8_t>> _global_packet_buffer; //packet buffer containing all network packets received
         std::vector<uint8_t*> _local_packet_buffer; //packet buffer containing packets meant for this node
         
 
@@ -58,7 +60,7 @@ class NetworkManager{
         
         void process_global_packets();
         void process_local_packets();
-        void clear_buffer(std::vector<uint8_t*>* buf); 
+        //void clear_buffer(std::vector<uint8_t*>* buf); 
 
 
 

@@ -7,6 +7,8 @@
 
 #include "../packets.h"
 
+#include <memory>
+
 
 USB::USB(Stream* stream,SystemStatus* systemstatus) 
 {
@@ -25,7 +27,7 @@ void USB::send_packet(uint8_t* data, size_t size){ // From RICARDO to USB
 
 };
 
-void USB::get_packet(std::vector<uint8_t*> *buf){
+void USB::get_packet(std::vector<std::shared_ptr<uint8_t>> *buf){
     //return if stream object is null
     if (_stream == nullptr) return;   
 
@@ -81,16 +83,22 @@ void USB::get_packet(std::vector<uint8_t*> *buf){
                 //only a single packet to read or multiple packets to read so we will only the first packet
                 _incompletePacketReceived = false;
 
-                uint8_t* packet_ptr = new uint8_t[_packet_len]; // Allocate a new chunk of memory for the packet
-                buf->push_back(packet_ptr); // add pointer to packet immediately to buffer
+                //uint8_t* packet_ptr = new uint8_t[_packet_len]; // Allocate a new chunk of memory for the packet
+                
+                //create shared ptr with custom deleter
+                std::shared_ptr<uint8_t> packet_ptr(new uint8_t[_packet_len], [](uint8_t *p) { delete[] p; });
+                
+                
 
                 //copy data in _tmp_packet_data to packet container
-                memcpy(packet_ptr,&_tmp_packet_data,_packetHeader_size);
+                memcpy(packet_ptr.get(),&_tmp_packet_data,_packetHeader_size);
                 //read bytes in stream buffer into the packet data array starting at the 8th index as header has been read out of stream buffer.
                 //packet len has been decremented 8 as packet_len includes the packet header which is no longer in stream buffer
-                _stream->readBytes((packet_ptr + _packetHeader_size), (_packet_len - _packetHeader_size)); 
+                _stream->readBytes((packet_ptr.get() + _packetHeader_size), (_packet_len - _packetHeader_size)); 
 
                 //should add exceptioj checking here so we know if we have failed to properly read the data into the packet ptr
+                buf->push_back(std::move(packet_ptr)); // add pointer to packet immediately to buffer
+            
             };
             
         }else{
