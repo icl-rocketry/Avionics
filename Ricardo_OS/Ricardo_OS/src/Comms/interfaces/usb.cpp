@@ -2,6 +2,7 @@
 
 #include "config.h"
 #include "iface.h"
+#include "interfaces.h"
 
 #include "Logging/systemstatus.h"
 
@@ -90,11 +91,15 @@ void USB::get_packet(std::vector<std::shared_ptr<uint8_t>> *buf){
                 std::shared_ptr<uint8_t> packet_ptr(new uint8_t[_packet_len], [](uint8_t *p) { delete[] p; });
                 
                 //deserialize packet header, modify source interface and reserialize.
-                
-                
+                PacketHeader packetheader = PacketHeader(&_tmp_packet_data[0]);
+                //update source interface
+                packetheader.src_interface = static_cast<uint8_t>(Interface::USBSerial);
+                //serialize packet header
+                std::vector<uint8_t> modified_packet_header;
+                packetheader.serialize(modified_packet_header);
 
-                //copy data in _tmp_packet_data to packet container
-                memcpy(packet_ptr.get(),&_tmp_packet_data,_packetHeader_size);
+                //copy data in modified_packet_header to packet container
+                memcpy(packet_ptr.get(),modified_packet_header.data(),_packetHeader_size);
                 //read bytes in stream buffer into the packet data array starting at the 8th index as header has been read out of stream buffer.
                 //packet len has been decremented 8 as packet_len includes the packet header which is no longer in stream buffer
                 _stream->readBytes((packet_ptr.get() + _packetHeader_size), (_packet_len - _packetHeader_size)); 

@@ -12,6 +12,8 @@
 #include <memory>
 #include <Arduino.h>
 
+#include "interfaces.h"
+
 
 
 
@@ -58,9 +60,15 @@ void Radio::get_packet(std::vector<std::shared_ptr<uint8_t>> *buf){
 
         LoRa.readBytes(packet_ptr.get(), packetSize); // Copy the received data into packet_received
 
+        //deserialize packet header, modify source interface and reserialize.
+        PacketHeader packetheader = PacketHeader(packet_ptr.get());
+        //update source interface
+        packetheader.src_interface = static_cast<uint8_t>(Interface::LORA);
+        //serialize packet header
+        std::vector<uint8_t> modified_packet_header;
+        packetheader.serialize(modified_packet_header);
 
-        //uint8_t* packet_ptr = new uint8_t[packetSize]; // Allocate a new chunk of memory for the packet
-        
+        memcpy(packet_ptr.get(),modified_packet_header.data(),packetheader.header_size);
         
         buf->push_back(packet_ptr);//add packet ptr immediately to buffer
 

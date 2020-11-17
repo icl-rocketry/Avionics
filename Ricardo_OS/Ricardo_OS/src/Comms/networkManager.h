@@ -40,6 +40,7 @@ class NetworkManager{
         void send_to_node(Nodes destination,uint8_t* data,size_t len);
         void send_packet(Interface iface,uint8_t* data, size_t len);
 
+        //add command 
         void add_command(Nodes source_node, uint32_t command);
 
         int get_node_type();

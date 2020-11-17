@@ -104,7 +104,6 @@ void NetworkManager::send_to_node(Nodes destination,uint8_t* data,size_t len){
 int NetworkManager::get_node_type(){return static_cast<int>(node_type);};
 
 
-
 void NetworkManager::process_global_packets(){
     if (_global_packet_buffer.size() > 0){
         std::shared_ptr<uint8_t> curr_packet_ptr = _global_packet_buffer.front();
@@ -155,10 +154,7 @@ void NetworkManager::process_global_packets(){
 }
 
 void NetworkManager::process_local_packets(){
-    //function processes all local packets in packet buffer. each delete is explictly written
-    //so it is obvious where each packet pointer is deleted and removed from buffer.
-    //need to be careful we dont call delete twice tho - this is UNDEFINED BEHAVIOUR
-    //this will all hopefully be cleaned up when we transition to smart pointers
+    //function processes all local packets in packet buffer.
 
     if (_local_packet_buffer.size() > 0){
         std::shared_ptr<uint8_t> curr_packet_ptr = _local_packet_buffer.front();
