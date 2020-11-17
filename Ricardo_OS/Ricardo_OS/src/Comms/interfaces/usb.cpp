@@ -89,6 +89,8 @@ void USB::get_packet(std::vector<std::shared_ptr<uint8_t>> *buf){
                 //create shared ptr with custom deleter
                 std::shared_ptr<uint8_t> packet_ptr(new uint8_t[_packet_len], [](uint8_t *p) { delete[] p; });
                 
+                //deserialize packet header, modify source interface and reserialize.
+                
                 
 
                 //copy data in _tmp_packet_data to packet container

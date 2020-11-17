@@ -63,17 +63,22 @@ void CommandHandler::handleCommand(Command command) {
 				break;
 			case COMMANDS::Detailed_All_Sensors:
 				{
-					std::vector<uint8_t> data;
+					std::vector<uint8_t> packet;
 
 					DetailedAllPacket detailedall = DetailedAllPacket();
+
+					detailedall.header.source = _sm->networkmanager.get_node_type();
 					detailedall.header.destination = static_cast<uint8_t>(command.source_node);
+
+
+
 					detailedall.ax = _sm->estimator.state.ax;
 					detailedall.ay = _sm->estimator.state.ay;
 					detailedall.az = _sm->estimator.state.az;
 
-					detailedall.serialize(data);
+					detailedall.serialize(packet);
 					
-					_sm->networkmanager.send_to_node(command.source_node,data.data(),detailedall.header.packet_len);
+					_sm->networkmanager.send_to_node(command.source_node,packet.data(),detailedall.header.packet_len);
 					
 				}
 				break;
