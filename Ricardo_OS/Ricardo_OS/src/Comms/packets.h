@@ -35,15 +35,18 @@ public:
     void serialize(std::vector<uint8_t>& buf);
 
 public:
-    //packet header 9 bytes
-    static const uint8_t header_size = 9; // Change this variable to reflect the number of bytes in the header
+    //packet header 14 bytes
+    static const uint8_t header_size = 14; // Change this variable to reflect the number of bytes in the header
     
     uint8_t start_byte = 0xAF; // Marks the begin of `Packet`
     uint8_t src_interface = 0x00; // Source interface ID
     uint32_t packet_len = 0x00000000; // Size of the packet in bytes maybe this should be 32 bit to match size_t and subsequent sizeof() functionality
+    uint32_t system_time = 0x00000000; // system time
     uint8_t type = 0x00; // Type of the packet
     uint8_t source = 0x00; // Source interface ID for the packet
-    uint8_t destination = 0x00; // Destination interface ID for the packet    
+    uint8_t destination = 0x00; // Destination interface ID for the packet  
+    uint8_t ttl = 10; //time to live - prevents infinte rediretion of packets
+
 };
 
 class Packet {
@@ -67,8 +70,6 @@ public:
     //system_status
 
     //packet details
-    
-    uint32_t system_time;
     uint8_t lora_rssi;
 
     // WARNING!
@@ -102,7 +103,7 @@ public:
 
 class DetailedAllPacket{
 public:
-    PacketHeader header {static_cast<uint8_t>(packet::DETAILED_ALL), 0};
+    PacketHeader header {static_cast<uint8_t>(packet::DETAILED_ALL), 16*sizeof(float) + 2}; // WARNING: Update the size whenever you add/remove variables that are serialized
 
     float ax,ay,az;
     float gx,gy,gz;
@@ -110,7 +111,6 @@ public:
     float gps_lat,gps_long,gps_speed,gps_alt;
     float baro_alt,baro_temp,baro_press;
     int batt_volt,batt_percent;
-    uint32_t system_time;
 
     // WARNING!
     // Check if all the variables that need to be sent over are getting serialized

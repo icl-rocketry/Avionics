@@ -28,19 +28,30 @@ PacketHeader::PacketHeader(const uint8_t* data) {
 			step++;
 			break;
 		case 2:
-			this->type = b;
+			for (int j = sizeof(system_time) - 1; j >= 0 ; j--) {
+				this->system_time |= data[i+(sizeof(system_time) - j + 1)] << j*8;
+			}
+			i+=sizeof(system_time); // We've read sizeof(packet_len) bytes
 			step++;
 			break;
 		case 3:
-			this->source = b;
+			this->type = b;
 			step++;
 			break;
 		case 4:
-			this->destination = b;
+			this->source = b;
 			step++;
 			break;
 		case 5:
+			this->destination = b;
+			step++;
+			break;
+		case 6:
 			this->src_interface = b;
+			step++;
+			break;
+		case 7:
+			this->ttl = b;
 			step++;
 			break;
 		}
@@ -48,12 +59,17 @@ PacketHeader::PacketHeader(const uint8_t* data) {
 }
 
 void PacketHeader::serialize(std::vector<uint8_t>& buf) {
+
     buf.push_back(start_byte);
 	Packet::serialize_uint32_t(packet_len, buf);
+	system_time = static_cast<uint32_t>(millis()); // set systemtime to time at serialization of packet
+	Packet::serialize_uint32_t(system_time, buf);
 	buf.push_back(type);
     buf.push_back(source);
 	buf.push_back(destination);	
 	buf.push_back(src_interface);
+	buf.push_back(ttl);
+
 }
 
 
@@ -71,8 +87,10 @@ void TelemetryPacket::serialize(std::vector<uint8_t>& buf) {
 	Packet::serialize_float(vx, buf);
 	Packet::serialize_float(vy, buf);
 	Packet::serialize_float(vz, buf);
-	Packet::serialize_uint32_t(system_time, buf);
+
 	buf.push_back(lora_rssi);
+
+
 	// TODO: Add end of packet byte??
 }
 
@@ -107,8 +125,6 @@ void DetailedAllPacket::serialize(std::vector<uint8_t>& buf) {
 
 	buf.push_back(batt_volt);
 	buf.push_back(batt_percent);
-
-	Packet::serialize_uint32_t(system_time, buf);
 }
 
 DetailedAllPacket::DetailedAllPacket(const uint8_t* data) {
@@ -162,12 +178,6 @@ DetailedAllPacket::DetailedAllPacket(const uint8_t* data) {
 		case 14:
 			batt_percent = *(packet_start + i*sizeof(float) + 1);
 			break;
-		case 15:
-			for (int j = 0; j < sizeof(uint32_t); j++) {
-				system_time |= uint32_t(data[i]) << 8*(sizeof(uint32_t) - j - 1); 
-			}
-			i += sizeof(uint32_t);
-			break;
 		default:
 			break;
 		}
@@ -216,11 +226,6 @@ TelemetryPacket::TelemetryPacket(const uint8_t* data) {
 			Packet::deserialize_float(vz, packet_start + i*sizeof(float));
 			break;
 		case 9:
-			for (int j = 0; j < sizeof(uint32_t); j++) {
-				system_time |= uint32_t(data[i]) << 8*(sizeof(uint32_t) - j - 1); 
-			}
-			i += sizeof(uint32_t);
-		case 10 + sizeof(uint32_t):
 			lora_rssi = data[i];
 			break;
 		default:
