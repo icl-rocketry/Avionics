@@ -101,6 +101,7 @@ void NetworkManager::send_to_node(Nodes destination,uint8_t* data,size_t len){
 
 }
 
+int NetworkManager::get_node_type(){return static_cast<int>(node_type);};
 
 
 

@@ -41,7 +41,9 @@ class NetworkManager{
         void send_packet(Interface iface,uint8_t* data, size_t len);
 
         void add_command(Nodes source_node, uint32_t command);
-    
+
+        int get_node_type();
+
     protected:
         //variable to tell network manager the current type of node
         Nodes node_type;
