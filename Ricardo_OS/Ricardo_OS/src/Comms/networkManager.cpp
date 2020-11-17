@@ -49,6 +49,18 @@ void NetworkManager::send_packet(Interface iface,uint8_t* data, size_t len){
         switch (iface){
             case Interface::LOOPBACK:
                 {
+
+                //deserialize packet header, modify source interface and reserialize.
+                PacketHeader packetheader = PacketHeader(data);
+                //update source interface
+                packetheader.src_interface = static_cast<uint8_t>(Interface::LOOPBACK);
+                //serialize packet header
+                std::vector<uint8_t> modified_packet_header;
+                packetheader.serialize(modified_packet_header);
+                //copy into original packet
+                memcpy(data,modified_packet_header.data(),packetheader.header_size);
+
+
                 // create new instance of shared pointer and push to global packet buffer
                 std::shared_ptr<uint8_t> packet_ptr(new uint8_t[len], [](uint8_t *p) { delete[] p; });
                 //copy data to packet_ptr
