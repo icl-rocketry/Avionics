@@ -46,7 +46,7 @@ public:
     uint8_t source = 0x00; // Source interface ID for the packet
     uint8_t destination = 0x00; // Destination interface ID for the packet
 
-    //uint8_t ttl = 10; //time to live - prevents infinte rediretion of packets
+    uint8_t ttl = 10; //time to live - prevents infinte rediretion of packets
 
 };
 
