@@ -3,7 +3,7 @@
 #ifndef GPS_H
 #define GPS_H
 #include <Arduino.h>
-#include "TinyGPS++.h" //possible to remove these headers and make them forward declarations but cba unless we run into circular depndancies
+#include "TinyGPS++.h" 
 #include "Wire.h"
 
 #include "Logging/systemstatus.h"
