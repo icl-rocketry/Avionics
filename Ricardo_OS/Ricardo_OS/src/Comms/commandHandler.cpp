@@ -2,6 +2,12 @@
 
 
 #include "stateMachine.h"
+#include "States/usbmode.h"
+#include "States/groundstation.h"
+#include "States/countdown.h"
+#include "States/flight.h"
+#include "States/recovery.h"
+
 
 #include "commands.h"
 
@@ -9,6 +15,8 @@
 
 #include "packets.h"
 #include "interfaces/interfaces.h"
+
+
 
 CommandHandler::CommandHandler(stateMachine* sm){
     _sm = sm;
@@ -107,6 +115,7 @@ void CommandHandler::handleCommand(Command command) {
 			case COMMANDS::Callibrate_Baro:
 				break;
 			case COMMANDS::Enter_USBMode:
+				_sm->changeState(new USBmode(_sm));
 				break;
 			case COMMANDS::Enter_Groundstation:
 				break;
