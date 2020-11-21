@@ -3,7 +3,6 @@
 
 #include "stateMachine.h"
 
-#include "commandBuffer.h"
 #include "commands.h"
 
 #include "flags.h"
@@ -11,9 +10,8 @@
 #include "packets.h"
 #include "interfaces/interfaces.h"
 
-CommandHandler::CommandHandler(stateMachine* sm, CommandBuffer* buffer_ptr){
+CommandHandler::CommandHandler(stateMachine* sm){
     _sm = sm;
-	_buffer_ptr = buffer_ptr;
 };
 
 
@@ -23,10 +21,14 @@ void CommandHandler::setup(){};
 void CommandHandler::update() {
 	// Handle the first command in the buffer
 	// Possibly implement priority queues in the future?
-	Command first_command = _buffer_ptr->buffer.front();
+	Command first_command = commandbuffer.front();
 	handleCommand(first_command);
 
-	_buffer_ptr->buffer.erase(_buffer_ptr->buffer.begin()); // 0th command handled, remove it from the buffer
+	commandbuffer.erase(commandbuffer.begin()); // 0th command handled, remove it from the buffer
+};
+
+void CommandHandler::addCommand(Command command){
+	commandbuffer.push_back(command);
 };
 
 void CommandHandler::handleCommand(Command command) {

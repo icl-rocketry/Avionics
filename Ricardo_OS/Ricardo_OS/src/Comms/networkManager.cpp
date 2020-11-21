@@ -2,7 +2,7 @@
 
 #include "stateMachine.h"
 
-#include "commandBuffer.h"
+
 #include "commandHandler.h"
 #include "commands.h"
 
@@ -19,8 +19,7 @@
 NetworkManager::NetworkManager(stateMachine* sm):
     usbserial(&Serial,&(sm->systemstatus)),
     radio(&(sm->vspi),&(sm->systemstatus)),
-    commandbuffer(),
-    commandhandler(sm, &commandbuffer)
+    commandhandler(sm)
     
 {
     _sm = sm;
@@ -245,7 +244,7 @@ void NetworkManager::process_local_packets(){
 
 void NetworkManager::add_command(Nodes source_node, uint32_t command) {
     Command command_obj = Command{source_node, static_cast<COMMANDS>(command)};
-    commandbuffer.addCommand(command_obj);
+    commandhandler.addCommand(command_obj);
 }
 
 

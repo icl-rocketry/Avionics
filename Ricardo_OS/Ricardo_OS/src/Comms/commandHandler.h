@@ -6,16 +6,27 @@
 
 #include <Arduino.h>
 
-#include "commandBuffer.h"
+//#include "commandBuffer.h"
 #include "commands.h"
+
+#include "interfaces/interfaces.h"
+#include "nodes.h"
 
 
 
 class stateMachine;//forward declaration to prevent circular dependancy
 
+struct Command {
+	Nodes source_node; //source node 
+	COMMANDS type; 
+};
+
 class CommandHandler {
+
+    friend class NetworkManager;
+
     public:
-        CommandHandler(stateMachine* sm, CommandBuffer* buffer_ptr);
+        CommandHandler(stateMachine* sm);
 
         void setup();
         void update();
@@ -23,8 +34,11 @@ class CommandHandler {
 
     private:
         stateMachine* _sm; //pointer to state machine
-		CommandBuffer* _buffer_ptr;
+
+        std::vector<Command> commandbuffer;
 		
+        void addCommand(Command command);
+
 		void handleCommand(Command command);
         bool commandAvaliable(Command command);
 };	

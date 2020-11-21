@@ -36,7 +36,7 @@ public:
 
 public:
     //packet header 14 bytes
-    static const uint8_t header_size = 13; // Change this variable to reflect the number of bytes in the header
+    static const uint8_t header_size = 14; // Change this variable to reflect the number of bytes in the header
     
     uint8_t start_byte = 0xAF; // Marks the begin of `Packet`
     uint8_t src_interface = 0x00; // Source interface ID
@@ -45,6 +45,7 @@ public:
     uint8_t type = 0x00; // Type of the packet
     uint8_t source = 0x00; // Source interface ID for the packet
     uint8_t destination = 0x00; // Destination interface ID for the packet
+    
     uint8_t ttl = 10; //time to live - prevents infinte rediretion of packets - currently unused
 
 };

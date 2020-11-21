@@ -6,7 +6,7 @@
 #include "packets.h"
 #include "routingTable.h"
 
-#include "commandBuffer.h"
+
 #include "commandHandler.h"
 
 #include "interfaces/interfaces.h"
@@ -61,7 +61,6 @@ class NetworkManager{
         Radio radio; // lora radio object
         
         //objects to process commands
-        CommandBuffer commandbuffer;
         CommandHandler commandhandler;
         
         void process_global_packets();
