@@ -6,8 +6,10 @@
 
 
 Battery::Battery(uint8_t pin, SystemStatus* systemstatus):
-_pin(pin),
-_systemstatus(systemstatus)
+
+_systemstatus(systemstatus),
+_pin(pin)
+
 {};
 
 void Battery::setup(){

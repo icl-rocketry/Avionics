@@ -14,11 +14,12 @@
 #include "battery.h"
 
 Sensors::Sensors(stateMachine* sm) :
+    _sm(sm),
     gps(&(sm->I2C),&(sm->systemstatus)),
     baro(&(sm->vspi),&(sm->systemstatus)),
     imu(&(sm->vspi),&(sm->systemstatus)),
-    batt(BattVolt,&(sm->systemstatus)),
-    _sm(sm)
+    batt(BattVolt,&(sm->systemstatus))
+    
 {
 }
 

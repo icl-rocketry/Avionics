@@ -136,7 +136,9 @@ void CommandHandler::handleCommand(Command command) {
 			case COMMANDS::Set_Throttle:
 				break;
 			case COMMANDS::Fire_pyro:
+				{
 				uint8_t pyro_number = command.arg;
+				}
 				break;
 			default:
 				//invalid command issued
@@ -160,17 +162,6 @@ bool CommandHandler::commandAvaliable(Command command) {
 			|| _sm->systemstatus.flag_triggered(system_flag::STATE_FLIGHT);
 		case COMMANDS::Zero_Sensors:
 		case COMMANDS::Detailed_All_Sensors:
-		case COMMANDS::Detailed_Accel:
-		case COMMANDS::Detailed_Gyro:
-		case COMMANDS::Detailed_Mag:
-		case COMMANDS::Detailed_Baro:
-		case COMMANDS::Detailed_GPS:
-		case COMMANDS::Detailed_Battery:
-		case COMMANDS::Detailed_Throttle:
-		case COMMANDS::Callibrate_Accel:
-		case COMMANDS::Callibrate_Mag:
-		case COMMANDS::Callibrate_Gyro:
-		case COMMANDS::Callibrate_Baro:
 			return _sm->systemstatus.flag_triggered(system_flag::STATE_GROUNDSTATION) 
 			|| _sm->systemstatus.flag_triggered(system_flag::STATE_PREFLIGHT)
 			|| _sm->systemstatus.flag_triggered(system_flag::STATE_USBMODE);
@@ -188,17 +179,11 @@ bool CommandHandler::commandAvaliable(Command command) {
     	case COMMANDS::Clear_SD:
             return _sm->systemstatus.flag_triggered(system_flag::STATE_GROUNDSTATION)
 			|| _sm->systemstatus.flag_triggered(system_flag::STATE_PREFLIGHT);
-		case COMMANDS::Print_Flash:
-		case COMMANDS::Print_Sd:
-		case COMMANDS::Estimator_Output:
-		case COMMANDS::Raw_Sensor_Output:
 		case COMMANDS::Enter_Groundstation:
 		case COMMANDS::Enter_Countdown:
 		case COMMANDS::Enter_Flight:
 		case COMMANDS::Enter_Recovery:
 		case COMMANDS::Set_Throttle:
-		case COMMANDS::Fire_pyro_1:
-		case COMMANDS::Fire_pyro_2:
             return _sm->systemstatus.flag_triggered(system_flag::STATE_USBMODE);
 		default:
 			return false;
