@@ -11,11 +11,10 @@
 #include <memory>
 
 
-USB::USB(Stream* stream,SystemStatus* systemstatus) 
-{
-    _stream = stream;
-    _systemstatus = systemstatus;
-};
+USB::USB(Stream* stream,SystemStatus* systemstatus) :
+_stream(stream),
+_systemstatus(systemstatus)
+{};
 
 void USB::setup(){
 

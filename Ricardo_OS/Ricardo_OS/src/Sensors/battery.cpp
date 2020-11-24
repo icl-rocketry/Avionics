@@ -5,11 +5,10 @@
 
 
 
-Battery::Battery(uint8_t pin, SystemStatus* systemstatus)
-{
-    _pin = pin;
-    _systemstatus = systemstatus;
-};
+Battery::Battery(uint8_t pin, SystemStatus* systemstatus):
+_pin(pin),
+_systemstatus(systemstatus)
+{};
 
 void Battery::setup(){
     //maybe some sort of calibration??

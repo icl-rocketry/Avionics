@@ -3,9 +3,9 @@
 #include "flags.h"
 
 
-SystemStatus::SystemStatus(){
-    _status = 0; //initialize status to 0
-};
+SystemStatus::SystemStatus():
+_status(0)
+{};
 
 void SystemStatus::new_message(system_flag flag,String reason){
 
@@ -14,7 +14,7 @@ void SystemStatus::new_message(system_flag flag,String reason){
     //detect debug mode
     if (flag_triggered(system_flag::STATE_USBMODE)){
         //Serial print reason and log it
-       Serial.println(reason);
+       //Serial.println(reason);
     };
 
 };

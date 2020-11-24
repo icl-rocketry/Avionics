@@ -17,11 +17,10 @@
 
 
 
-Radio::Radio(SPIClass* spi,SystemStatus* systemstatus)
-{
-    _spi = spi; //pointer to spi object
-    _systemstatus = systemstatus;
-};
+Radio::Radio(SPIClass* spi,SystemStatus* systemstatus):
+_spi(spi),
+_systemstatus(systemstatus)
+{};
 
 void Radio::setup(){
     //setup lora module

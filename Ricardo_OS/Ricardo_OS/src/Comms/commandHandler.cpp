@@ -18,8 +18,10 @@
 
 
 
-CommandHandler::CommandHandler(stateMachine* sm){
-    _sm = sm;
+CommandHandler::CommandHandler(stateMachine* sm):
+	_sm(sm)
+	{
+ 
 };
 
 
@@ -63,13 +65,11 @@ void CommandHandler::handleCommand(Command command) {
 				break;
 			case COMMANDS::Clear_SD:
 				break;
-			case COMMANDS::Print_Flash:
+			case COMMANDS::Print_Flash_filesystem:
 				break;
-			case COMMANDS::Print_Sd:
+			case COMMANDS::Print_Sd_filesystem:
 				break;
-			case COMMANDS::Estimator_Output:
-				break;
-			case COMMANDS::Raw_Sensor_Output:
+			case COMMANDS::Raw_Sensors:
 				break;
 			case COMMANDS::Detailed_All_Sensors:
 				{
@@ -92,20 +92,6 @@ void CommandHandler::handleCommand(Command command) {
 					
 				}
 				break;
-			case COMMANDS::Detailed_Accel:
-				break;
-			case COMMANDS::Detailed_Gyro:
-				break;
-			case COMMANDS::Detailed_Mag:
-				break;
-			case COMMANDS::Detailed_Baro:
-				break;
-			case COMMANDS::Detailed_GPS:
-				break;
-			case COMMANDS::Detailed_Battery:
-				break;
-			case COMMANDS::Detailed_Throttle:
-				break;
 			case COMMANDS::Callibrate_Accel:
 				break;
 			case COMMANDS::Callibrate_Mag:
@@ -115,21 +101,42 @@ void CommandHandler::handleCommand(Command command) {
 			case COMMANDS::Callibrate_Baro:
 				break;
 			case COMMANDS::Enter_USBMode:
+			//Transitions from pre-flight to USBMode,toggles debug flag in state machine
+							
 				_sm->changeState(new USBmode(_sm));
+				_sm->systemstatus.new_message(system_flag::DEBUG);
+
 				break;
 			case COMMANDS::Enter_Groundstation:
+				_sm->changeState(new Groundstation(_sm));
 				break;
 			case COMMANDS::Enter_Countdown:
+				_sm->changeState(new Countdown(_sm));
 				break;
 			case COMMANDS::Enter_Flight:
+				_sm->changeState(new Flight(_sm));
 				break;
 			case COMMANDS::Enter_Recovery:
+				_sm->changeState(new Recovery(_sm));
+				break;
+			case COMMANDS::Exit_USBMode:
+			//Transitions from any state in debug mode first to USBmode, then to preflight
+				{
+				_sm->changeState(new USBmode(_sm));
+				_sm->systemstatus.delete_message(system_flag::DEBUG);
+				_sm->changeState(new Preflight(_sm));
+				}
+				break;
+			case COMMANDS::Exit_to_USBMode:
+			//Transtions from any state in debug to USBMode
+				{
+				_sm->changeState(new USBmode(_sm));
+				}
 				break;
 			case COMMANDS::Set_Throttle:
 				break;
-			case COMMANDS::Fire_pyro_1:
-				break;
-			case COMMANDS::Fire_pyro_2:
+			case COMMANDS::Fire_pyro:
+				uint8_t pyro_number = command.arg;
 				break;
 			default:
 				//invalid command issued

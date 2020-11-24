@@ -87,8 +87,9 @@ public:
 
 class CommandPacket{
 public:
-    PacketHeader header {static_cast<uint8_t>(packet::COMMAND), 1};
+    PacketHeader header {static_cast<uint8_t>(packet::COMMAND), 2};
     uint8_t command;
+    uint8_t arg;
 
     // WARNING!
     // Check if all the variables that need to be sent over are getting serialized

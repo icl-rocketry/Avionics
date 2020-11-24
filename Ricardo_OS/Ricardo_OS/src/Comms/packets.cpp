@@ -3,6 +3,7 @@
 
 PacketHeader::PacketHeader() {}
 PacketHeader::~PacketHeader() {}
+//shouldnt this be header_size+packet_size
 PacketHeader::PacketHeader(uint8_t packet_type, uint32_t packet_size) : packet_len{packet_size}, type{packet_type} {}
 
 PacketHeader::PacketHeader(const uint8_t* data) {
@@ -97,6 +98,7 @@ void TelemetryPacket::serialize(std::vector<uint8_t>& buf) {
 void CommandPacket::serialize(std::vector<uint8_t>& buf) {
 	header.serialize(buf);
 	buf.push_back(command);
+	buf.push_back(arg);
 }
 
 void DetailedAllPacket::serialize(std::vector<uint8_t>& buf) {
@@ -188,6 +190,7 @@ CommandPacket::CommandPacket(const uint8_t* data) {
 	header = PacketHeader(data); // Deserialize header
 
 	command = data[header.header_size]; // Get the first byte which is not the header
+	arg = data[header.header_size + 1]; // get next byte
 }
 
 CommandPacket::~CommandPacket() {}

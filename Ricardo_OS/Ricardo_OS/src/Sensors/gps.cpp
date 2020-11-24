@@ -17,11 +17,10 @@
 
 
 GPS::GPS(TwoWire* wire, SystemStatus* systemstatus) :
-    tinygps()
-{
-    _wire = wire;
-    _systemstatus = systemstatus;
-}
+    tinygps(),
+    _wire(wire),
+    _systemstatus(systemstatus)
+{}
 
 void GPS::setup()
 {

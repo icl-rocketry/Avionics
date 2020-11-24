@@ -17,12 +17,12 @@
 
 
 NetworkManager::NetworkManager(stateMachine* sm):
+    _sm(sm),
     usbserial(&Serial,&(sm->systemstatus)),
     radio(&(sm->vspi),&(sm->systemstatus)),
     commandhandler(sm)
     
 {
-    _sm = sm;
 };
 
 
@@ -215,7 +215,14 @@ void NetworkManager::process_local_packets(){
                         CommandPacket commandpacket = CommandPacket(curr_packet_ptr.get());
 
                         //add command to command buffer
-                        add_command(static_cast<Nodes>(commandpacket.header.source),commandpacket.command);
+                        //add_command(static_cast<Nodes>(commandpacket.header.source),commandpacket.command);
+
+                        Command command_obj = Command{
+                            static_cast<Nodes>(commandpacket.header.source), 
+                            static_cast<COMMANDS>(commandpacket.command),
+                            commandpacket.arg};
+                        commandhandler.addCommand(command_obj);
+
                         //delete packet pointer and remove from packet buffer
                         //delete[] curr_packet_ptr;
                         _local_packet_buffer.erase(_local_packet_buffer.begin());
@@ -239,13 +246,4 @@ void NetworkManager::process_local_packets(){
     };
 
 }
-
-
-
-void NetworkManager::add_command(Nodes source_node, uint32_t command) {
-    Command command_obj = Command{source_node, static_cast<COMMANDS>(command)};
-    commandhandler.addCommand(command_obj);
-}
-
-
 

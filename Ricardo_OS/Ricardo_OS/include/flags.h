@@ -10,25 +10,27 @@ enum class system_flag:uint32_t{
     STATE_RECOVERY = (1 << 4),
     STATE_SETUP = (1 << 5),
     STATE_GROUNDSTATION = (1 << 6),
+    //flags
+    DEBUG = (1 << 7),
     //critical messages 
-    ERROR_SPI = (1 << 7),
-    ERROR_I2C = (1 << 8),
-    ERROR_SERIAL = (1 << 9),
-    ERROR_LORA = (1 << 10),
-    ERROR_BARO = (1 << 11),
-    ERROR_BATT = (1 << 12),
-    ERROR_GPS = (1 << 13),
-    ERROR_IMU = (1 << 14),
-    ERROR_KALMAN = (1 << 15),
-    ERROR_SD = (1 << 16),
-    ERROR_FLASH = (1 << 17),
-    ERROR_CAN = (1 << 18),
+    ERROR_SPI = (1 << 8),
+    ERROR_I2C = (1 << 9),
+    ERROR_SERIAL = (1 << 10),
+    ERROR_LORA = (1 << 11),
+    ERROR_BARO = (1 << 12),
+    ERROR_BATT = (1 << 13),
+    ERROR_GPS = (1 << 14),
+    ERROR_IMU = (1 << 15),
+    ERROR_KALMAN = (1 << 16),
+    ERROR_SD = (1 << 17),
+    ERROR_FLASH = (1 << 18),
+    ERROR_CAN = (1 << 19),
     //if rocket is inverted
-    ERROR_ORIENTATION = (1 << 19),
+    ERROR_ORIENTATION = (1 << 20),
     //warn
-    WARN_BATT = (1 << 20),
-    WARN_PYRO1 = (1 << 21),
-    WARN_PYRO2 = (1 << 22),
+    WARN_BATT = (1 << 21),
+    WARN_PYRO1 = (1 << 22),
+    WARN_PYRO2 = (1 << 23),
     //info 
 };
 

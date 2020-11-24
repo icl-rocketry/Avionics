@@ -11,11 +11,10 @@
 
 
 Imu::Imu(SPIClass* spi, SystemStatus* systemstatus):
+    _spi(spi),
+    _systemstatus(systemstatus),
     imu(ImuCs, MagCs)
-{
-    _spi = spi;
-    _systemstatus = systemstatus;
-};
+{};
 
 void Imu::setup(){
         if (!imu.begin()){

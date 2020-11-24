@@ -19,6 +19,7 @@ class stateMachine;//forward declaration to prevent circular dependancy
 struct Command {
 	Nodes source_node; //source node 
 	COMMANDS type; 
+    uint8_t arg;
 };
 
 class CommandHandler {

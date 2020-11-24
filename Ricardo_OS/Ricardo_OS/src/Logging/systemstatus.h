@@ -22,7 +22,7 @@ class SystemStatus{
 
         void delete_message(system_flag flag);
         bool flag_triggered(system_flag flag);
-    protected:
+    private:
         uint32_t _status;
 };
 

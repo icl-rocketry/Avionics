@@ -17,9 +17,9 @@ Sensors::Sensors(stateMachine* sm) :
     gps(&(sm->I2C),&(sm->systemstatus)),
     baro(&(sm->vspi),&(sm->systemstatus)),
     imu(&(sm->vspi),&(sm->systemstatus)),
-    batt(BattVolt,&(sm->systemstatus))
+    batt(BattVolt,&(sm->systemstatus)),
+    _sm(sm)
 {
-    _sm = sm;
 }
 
 void Sensors::setup(){

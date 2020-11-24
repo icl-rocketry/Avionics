@@ -1,8 +1,9 @@
 #include "estimator.h"
 #include "stateMachine.h"
 
-Estimator::Estimator(stateMachine* sm){
-    _sm = sm;
+Estimator::Estimator(stateMachine* sm):_sm(sm)
+{
+
 }
 
 void Estimator::setup(){
