@@ -1,8 +1,6 @@
 /*
-handles all messages bitwise so multiple messages can be contained in a single variable
+handles all messages as a bitfield so multiple messages can be contained in a single variable
 
-
-//reqwrite as class
 */
 
 #ifndef SYSTEMSTATUS_H

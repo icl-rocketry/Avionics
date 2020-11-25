@@ -48,16 +48,29 @@ void CommandHandler::handleCommand(Command command) {
 	} else{
 		switch (command.type) {
 			case COMMANDS::Launch:
+				_sm->changeState(new Countdown(_sm));
 				break;
 			case COMMANDS::Reset:
+				_sm->changeState(new Preflight(_sm));
 				break;
 			case COMMANDS::Abort:
+				if(_sm->systemstatus.flag_triggered(system_flag::STATE_COUNTDOWN)){
+					//check if we are in no abort time region
+					//close all valves
+					_sm->changeState(new Preflight(_sm));
+				}else if (_sm->systemstatus.flag_triggered(system_flag::STATE_FLIGHT)){
+					//this behaviour needs to be confirmed with recovery 
+					//might be worth waiting for acceleration to be 0 after rocket engine cut
+					_sm->changeState(new Recovery(_sm));
+				}
 				break;
 			case COMMANDS::Zero_Sensors:
 				break;
 			case COMMANDS::Start_Logging:
 				break;
 			case COMMANDS::Stop_Logging:
+				break;
+			case COMMANDS::Telemetry:
 				break;
 			case COMMANDS::Play_Song:
 				break;
@@ -101,8 +114,7 @@ void CommandHandler::handleCommand(Command command) {
 			case COMMANDS::Callibrate_Baro:
 				break;
 			case COMMANDS::Enter_USBMode:
-			//Transitions from pre-flight to USBMode,toggles debug flag in state machine
-							
+			//Transitions from pre-flight to USBMode,toggles debug flag in state machine							
 				_sm->changeState(new USBmode(_sm));
 				_sm->systemstatus.new_message(system_flag::DEBUG);
 
@@ -141,7 +153,7 @@ void CommandHandler::handleCommand(Command command) {
 				}
 				break;
 			default:
-				//invalid command issued
+				//invalid command issued DELETE IT 
 				break;
 				
 		};
@@ -169,6 +181,7 @@ bool CommandHandler::commandAvaliable(Command command) {
 		return _sm->systemstatus.flag_triggered(system_flag::STATE_PREFLIGHT) 
 		||  _sm->systemstatus.flag_triggered(system_flag::STATE_USBMODE);
 		case COMMANDS::Start_Logging:
+		case COMMANDS::Telemetry:
     		return true; // all states
 		case COMMANDS::Play_Song:
             return _sm->systemstatus.flag_triggered(system_flag::STATE_GROUNDSTATION) 
