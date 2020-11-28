@@ -23,10 +23,10 @@ struct RoutingTable{
     uint8_t metric;
 };
 
-const RoutingTable routingtable[2][4] =
+const RoutingTable routingtable[2][5] =
 {
-    {{Interface::LOOPBACK,0},{Interface::LORA,1},{Interface::LORA,2},{Interface::CAN,1}}, 
-    {{Interface::LORA,1},{Interface::LOOPBACK,0},{Interface::USBSerial,1},{Interface::LORA,2}}
+    {{Interface::LOOPBACK,0},{Interface::LORA,1},{Interface::LORA,2},{Interface::CAN,1},{Interface::USBSerial,1}}, 
+    {{Interface::LORA,1},{Interface::LOOPBACK,0},{Interface::USBSerial,1},{Interface::LORA,2},{Interface::USBSerial,1}}
 };
 
 

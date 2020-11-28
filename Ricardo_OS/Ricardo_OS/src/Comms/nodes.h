@@ -7,7 +7,8 @@ enum class Nodes:uint8_t{
     ROCKET = 0,
     GROUNDSTATION = 1,
     DESKTOP = 2,
-    MOTORBOARD = 3
+    MOTORBOARD = 3,
+    DEBUG = 4
 };
 
 
