@@ -67,9 +67,9 @@ void Radio::get_packet(std::vector<std::shared_ptr<uint8_t>> *buf){
         std::vector<uint8_t> modified_packet_header;
         packetheader.serialize(modified_packet_header);
 
-        memcpy(packet_ptr.get(),modified_packet_header.data(),packetheader.header_size);
+        memcpy(packet_ptr.get(),modified_packet_header.data(),packetheader.header_len);
         
-        buf->push_back(packet_ptr);//add packet ptr immediately to buffer
+        buf->push_back(packet_ptr);//add packet ptr  to buffer
 
         
         return ;
