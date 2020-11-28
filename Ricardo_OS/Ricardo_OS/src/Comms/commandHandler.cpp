@@ -70,9 +70,9 @@ void CommandHandler::handleCommand(Command command) {
 				break;
 			case COMMANDS::Stop_Logging:
 				break;
-			case COMMANDS::Telemetry:
-				break;
 			case COMMANDS::Play_Song:
+				break;
+			case COMMANDS::Telemetry:
 				break;
 			case COMMANDS::Clear_Flash:
 				break;
@@ -101,7 +101,7 @@ void CommandHandler::handleCommand(Command command) {
 
 					detailedall.serialize(packet);
 					
-					_sm->networkmanager.send_to_node(command.source_node,packet.data(),detailedall.header.packet_len);
+					_sm->networkmanager.send_to_node(command.source_node,packet.data(),detailedall.header.packet_len+detailedall.header.header_len);
 					
 				}
 				break;
@@ -147,6 +147,11 @@ void CommandHandler::handleCommand(Command command) {
 				break;
 			case COMMANDS::Set_Throttle:
 				break;
+			case COMMANDS::Pyro_info:
+				{
+				uint8_t pyro_number = command.arg;
+				}
+				break;
 			case COMMANDS::Fire_pyro:
 				{
 				uint8_t pyro_number = command.arg;
@@ -164,40 +169,50 @@ void CommandHandler::handleCommand(Command command) {
 bool CommandHandler::commandAvaliable(Command command) {
 		// Checks if a comand can be executed in a given state
 	switch(command.type){
-		case COMMANDS::Launch:
-		case COMMANDS::Enter_USBMode:
-			return _sm->systemstatus.flag_triggered(system_flag::STATE_PREFLIGHT);
-		case COMMANDS::Reset:
-			return _sm->systemstatus.flag_triggered(system_flag::STATE_RECOVERY);
+		case COMMANDS::Start_Logging:
+		case COMMANDS::Telemetry:
+		case COMMANDS::Pyro_info:
+    		return true; // all states
 		case COMMANDS::Abort:
 			return _sm->systemstatus.flag_triggered(system_flag::STATE_COUNTDOWN) 
 			|| _sm->systemstatus.flag_triggered(system_flag::STATE_FLIGHT);
-		case COMMANDS::Zero_Sensors:
-		case COMMANDS::Detailed_All_Sensors:
-			return _sm->systemstatus.flag_triggered(system_flag::STATE_GROUNDSTATION) 
-			|| _sm->systemstatus.flag_triggered(system_flag::STATE_PREFLIGHT)
-			|| _sm->systemstatus.flag_triggered(system_flag::STATE_USBMODE);
-		case COMMANDS::Stop_Logging:
-		return _sm->systemstatus.flag_triggered(system_flag::STATE_PREFLIGHT) 
-		||  _sm->systemstatus.flag_triggered(system_flag::STATE_USBMODE);
-		case COMMANDS::Start_Logging:
-		case COMMANDS::Telemetry:
-    		return true; // all states
-		case COMMANDS::Play_Song:
-            return _sm->systemstatus.flag_triggered(system_flag::STATE_GROUNDSTATION) 
-			|| _sm->systemstatus.flag_triggered(system_flag::STATE_PREFLIGHT) 
-			|| _sm->systemstatus.flag_triggered(system_flag::STATE_USBMODE)
-			|| _sm->systemstatus.flag_triggered(system_flag::STATE_RECOVERY);
-		case COMMANDS::Clear_Flash:
-    	case COMMANDS::Clear_SD:
-            return _sm->systemstatus.flag_triggered(system_flag::STATE_GROUNDSTATION)
-			|| _sm->systemstatus.flag_triggered(system_flag::STATE_PREFLIGHT);
-		case COMMANDS::Enter_Groundstation:
 		case COMMANDS::Enter_Countdown:
 		case COMMANDS::Enter_Flight:
 		case COMMANDS::Enter_Recovery:
+		case COMMANDS::Exit_USBMode:
+		case COMMANDS::Exit_to_USBMode:
 		case COMMANDS::Set_Throttle:
-            return _sm->systemstatus.flag_triggered(system_flag::STATE_USBMODE);
+            return _sm->systemstatus.flag_triggered(system_flag::DEBUG);
+		case COMMANDS::Clear_Flash:
+    	case COMMANDS::Clear_SD:
+		case COMMANDS::Print_Flash_filesystem:
+		case COMMANDS::Print_Sd_filesystem:
+            return _sm->systemstatus.flag_triggered(system_flag::STATE_GROUNDSTATION)
+			|| _sm->systemstatus.flag_triggered(system_flag::STATE_PREFLIGHT)
+			|| _sm->systemstatus.flag_triggered(system_flag::DEBUG);
+		case COMMANDS::Launch:
+		case COMMANDS::Enter_USBMode:
+		case COMMANDS::Play_Song:
+			return _sm->systemstatus.flag_triggered(system_flag::STATE_PREFLIGHT);
+		case COMMANDS::Raw_Sensors:
+		case COMMANDS::Detailed_All_Sensors:
+		case COMMANDS::Callibrate_Accel:
+		case COMMANDS::Callibrate_Mag:
+		case COMMANDS::Callibrate_Gyro:
+		case COMMANDS::Callibrate_Baro:
+		case COMMANDS::Enter_Groundstation:
+		case COMMANDS::Stop_Logging:
+			return _sm->systemstatus.flag_triggered(system_flag::STATE_PREFLIGHT) 
+		||  _sm->systemstatus.flag_triggered(system_flag::DEBUG);
+		case COMMANDS::Zero_Sensors:
+			return _sm->systemstatus.flag_triggered(system_flag::STATE_GROUNDSTATION) 
+			|| _sm->systemstatus.flag_triggered(system_flag::STATE_PREFLIGHT)
+			|| _sm->systemstatus.flag_triggered(system_flag::DEBUG);
+		case COMMANDS::Reset:
+			return _sm->systemstatus.flag_triggered(system_flag::STATE_RECOVERY)
+			|| _sm->systemstatus.flag_triggered(system_flag::STATE_GROUNDSTATION);
+		case COMMANDS::Fire_pyro:
+			return _sm->systemstatus.flag_triggered(system_flag::STATE_USBMODE);
 		default:
 			return false;
 	}

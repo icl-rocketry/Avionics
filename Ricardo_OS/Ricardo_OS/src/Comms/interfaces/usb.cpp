@@ -54,19 +54,20 @@ void USB::get_packet(std::vector<std::shared_ptr<uint8_t>> *buf){
                 PacketHeader packetheader = PacketHeader(&_tmp_packet_data[0]);
                 //get decoded packet length 
                 _packet_len = packetheader.packet_len;
+                _header_len = packetheader.header_len;
+                _total_len = _packet_len+_header_len;
 
 
             };
 
-            if (_packet_len > SERIAL_SIZE_RX){
+            if (_total_len > SERIAL_SIZE_RX){
                 //This basically is a buffer overflow as the serial buffer wont be able to contain this size of packet
                 //in theory this shouldn't happen unless someone does something wrong
                 //TODO
                 //handle oversized packets some how...
                 //return nothing flush buffer automatically
 
-            }else if (_packet_len - _packetHeader_size > _stream->available()){
-                //minus packetheadersize to account for bytes read for header
+            }else if (_packet_len > _stream->available()){
                 //we dont have the full packet to read 
 
                 //increment timeoutcounter
@@ -87,7 +88,7 @@ void USB::get_packet(std::vector<std::shared_ptr<uint8_t>> *buf){
                 //uint8_t* packet_ptr = new uint8_t[_packet_len]; // Allocate a new chunk of memory for the packet
                 
                 //create shared ptr with custom deleter
-                std::shared_ptr<uint8_t> packet_ptr(new uint8_t[_packet_len], [](uint8_t *p) { delete[] p; });
+                std::shared_ptr<uint8_t> packet_ptr(new uint8_t[_total_len], [](uint8_t *p) { delete[] p; });
                 
                 //deserialize packet header, modify source interface and reserialize.
                 PacketHeader packetheader = PacketHeader(&_tmp_packet_data[0]);
@@ -98,10 +99,10 @@ void USB::get_packet(std::vector<std::shared_ptr<uint8_t>> *buf){
                 packetheader.serialize(modified_packet_header);
 
                 //copy data in modified_packet_header to packet container
-                memcpy(packet_ptr.get(),modified_packet_header.data(),_packetHeader_size);
+                memcpy(packet_ptr.get(),modified_packet_header.data(),_header_len);
                 //read bytes in stream buffer into the packet data array starting at the 8th index as header has been read out of stream buffer.
                 //packet len has been decremented 8 as packet_len includes the packet header which is no longer in stream buffer
-                _stream->readBytes((packet_ptr.get() + _packetHeader_size), (_packet_len - _packetHeader_size)); 
+                _stream->readBytes((packet_ptr.get() + _header_len), _packet_len); 
 
                 //should add exceptioj checking here so we know if we have failed to properly read the data into the packet ptr
                 buf->push_back(packet_ptr); // add pointer to packet immediately to buffer

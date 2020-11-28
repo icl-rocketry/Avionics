@@ -8,7 +8,7 @@ PacketHeader::PacketHeader(uint8_t packet_type, uint32_t packet_size) : packet_l
 
 PacketHeader::PacketHeader(const uint8_t* data) {
 	int step = 0;
-	for (int i = 0; i < header_size; ++i) {
+	for (int i = 0; i < _header_size; ++i) {
 		const auto b = data[i];
 		switch (step) {
 		case 0:
@@ -20,38 +20,42 @@ PacketHeader::PacketHeader(const uint8_t* data) {
 			this->start_byte = b;
 			step++;
 			break;
-			
 		case 1:
+			this->header_len = b;
+			step++;
+			header_size_mismatch = (header_len != _header_size);
+			break;
+		case 2:
 			for (int j = sizeof(packet_len) - 1; j >= 0 ; j--) {
 				this->packet_len |= data[i+(sizeof(packet_len) - j + 1)] << j*8;
 			}
 			i+=sizeof(packet_len); // We've read sizeof(packet_len) bytes
 			step++;
 			break;
-		case 2:
+		case 3:
 			for (int j = sizeof(system_time) - 1; j >= 0 ; j--) {
 				this->system_time |= data[i+(sizeof(system_time) - j + 1)] << j*8;
 			}
 			i+=sizeof(system_time); // We've read sizeof(packet_len) bytes
 			step++;
 			break;
-		case 3:
+		case 4:
 			this->type = b;
 			step++;
 			break;
-		case 4:
+		case 5:
 			this->source = b;
 			step++;
 			break;
-		case 5:
+		case 6:
 			this->destination = b;
 			step++;
 			break;
-		case 6:
+		case 7:
 			this->src_interface = b;
 			step++;
 			break;
-		case 7:
+		case 8:
 			this->ttl = b;
 			step++;
 			break;
@@ -62,6 +66,7 @@ PacketHeader::PacketHeader(const uint8_t* data) {
 void PacketHeader::serialize(std::vector<uint8_t>& buf) {
 
     buf.push_back(start_byte);
+	buf.push_back(header_len);
 	Packet::serialize_uint32_t(packet_len, buf);
 	system_time = static_cast<uint32_t>(millis()); // set systemtime to time at serialization of packet
 	Packet::serialize_uint32_t(system_time, buf);
@@ -131,7 +136,7 @@ void DetailedAllPacket::serialize(std::vector<uint8_t>& buf) {
 
 DetailedAllPacket::DetailedAllPacket(const uint8_t* data) {
 	header = PacketHeader(data); // Deserialize header
-	const uint8_t* packet_start = data + header.header_size; // Shift to the end of the header
+	const uint8_t* packet_start = data + header.header_len; // Shift to the end of the header
 	for (int i = 0; i < header.packet_len; i++) {
 		switch (i)
 		{
@@ -189,15 +194,15 @@ DetailedAllPacket::DetailedAllPacket(const uint8_t* data) {
 CommandPacket::CommandPacket(const uint8_t* data) {
 	header = PacketHeader(data); // Deserialize header
 
-	command = data[header.header_size]; // Get the first byte which is not the header
-	arg = data[header.header_size + 1]; // get next byte
+	command = data[header.header_len]; // Get the first byte which is not the header
+	arg = data[header.header_len + 1]; // get next byte
 }
 
 CommandPacket::~CommandPacket() {}
 
 TelemetryPacket::TelemetryPacket(const uint8_t* data) {
 	header = PacketHeader(data); // Deserialize the header
-	const uint8_t* packet_start = data + header.header_size; // Shift to the end of the header
+	const uint8_t* packet_start = data + header.header_len; // Shift to the end of the header
 	for (int i = 0; i < header.packet_len; i++) { // First 8 bytes is header, start with 9th byte
 		switch (i)
 		{

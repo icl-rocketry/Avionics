@@ -23,6 +23,7 @@ enum class packet:uint8_t{
 
 
 class PacketHeader {
+    friend class USB; //usb class needs to know the expected size of a header
 public:
     PacketHeader();
     PacketHeader(uint8_t packet_type, uint32_t packet_size); // Initialise a packet
@@ -34,19 +35,41 @@ public:
     */
     void serialize(std::vector<uint8_t>& buf);
 
+    bool header_size_mismatch;
+
+private:
+    //packet header 15 bytes
+    static const uint8_t _header_size = 15; // Change this variable to reflect the number of bytes in the header
 public:
-    //packet header 14 bytes
-    static const uint8_t header_size = 14; // Change this variable to reflect the number of bytes in the header
-    
+    //header packet defintion
     uint8_t start_byte = 0xAF; // Marks the begin of `Packet`
-    uint8_t src_interface = 0x00; // Source interface ID
+    uint8_t header_len = _header_size;//header len
     uint32_t packet_len = 0x00000000; // Size of the packet in bytes maybe this should be 32 bit to match size_t and subsequent sizeof() functionality
     uint32_t system_time = 0x00000000; // system time
     uint8_t type = 0x00; // Type of the packet
     uint8_t source = 0x00; // Source interface ID for the packet
     uint8_t destination = 0x00; // Destination interface ID for the packet
-    
+    uint8_t src_interface = 0x00; // Source interface ID
     uint8_t ttl = 10; //time to live - prevents infinte rediretion of packets - currently unused
+    
+    /*
+     ▄         ▄  ▄▄▄▄▄▄▄▄▄▄▄  ▄▄▄▄▄▄▄▄▄▄▄  ▄▄        ▄  ▄▄▄▄▄▄▄▄▄▄▄  ▄▄        ▄  ▄▄▄▄▄▄▄▄▄▄▄ 
+    ▐░▌       ▐░▌▐░░░░░░░░░░░▌▐░░░░░░░░░░░▌▐░░▌      ▐░▌▐░░░░░░░░░░░▌▐░░▌      ▐░▌▐░░░░░░░░░░░▌
+    ▐░▌       ▐░▌▐░█▀▀▀▀▀▀▀█░▌▐░█▀▀▀▀▀▀▀█░▌▐░▌░▌     ▐░▌ ▀▀▀▀█░█▀▀▀▀ ▐░▌░▌     ▐░▌▐░█▀▀▀▀▀▀▀▀▀ 
+    ▐░▌       ▐░▌▐░▌       ▐░▌▐░▌       ▐░▌▐░▌▐░▌    ▐░▌     ▐░▌     ▐░▌▐░▌    ▐░▌▐░▌          
+    ▐░▌   ▄   ▐░▌▐░█▄▄▄▄▄▄▄█░▌▐░█▄▄▄▄▄▄▄█░▌▐░▌ ▐░▌   ▐░▌     ▐░▌     ▐░▌ ▐░▌   ▐░▌▐░▌ ▄▄▄▄▄▄▄▄ 
+    ▐░▌  ▐░▌  ▐░▌▐░░░░░░░░░░░▌▐░░░░░░░░░░░▌▐░▌  ▐░▌  ▐░▌     ▐░▌     ▐░▌  ▐░▌  ▐░▌▐░▌▐░░░░░░░░▌
+    ▐░▌ ▐░▌░▌ ▐░▌▐░█▀▀▀▀▀▀▀█░▌▐░█▀▀▀▀█░█▀▀ ▐░▌   ▐░▌ ▐░▌     ▐░▌     ▐░▌   ▐░▌ ▐░▌▐░▌ ▀▀▀▀▀▀█░▌
+    ▐░▌▐░▌ ▐░▌▐░▌▐░▌       ▐░▌▐░▌     ▐░▌  ▐░▌    ▐░▌▐░▌     ▐░▌     ▐░▌    ▐░▌▐░▌▐░▌       ▐░▌
+    ▐░▌░▌   ▐░▐░▌▐░▌       ▐░▌▐░▌      ▐░▌ ▐░▌     ▐░▐░▌ ▄▄▄▄█░█▄▄▄▄ ▐░▌     ▐░▐░▌▐░█▄▄▄▄▄▄▄█░▌
+    ▐░░▌     ▐░░▌▐░▌       ▐░▌▐░▌       ▐░▌▐░▌      ▐░░▌▐░░░░░░░░░░░▌▐░▌      ▐░░▌▐░░░░░░░░░░░▌
+    ▀▀       ▀▀  ▀         ▀  ▀         ▀  ▀        ▀▀  ▀▀▀▀▀▀▀▀▀▀▀  ▀        ▀▀  ▀▀▀▀▀▀▀▀▀▀▀ 
+                                                                                            */  
+    /*
+    Add new variables after here so nothing gets messed up...
+    */ 
+
+
 
 };
 

@@ -57,7 +57,7 @@ void NetworkManager::send_packet(Interface iface,uint8_t* data, size_t len){
                 std::vector<uint8_t> modified_packet_header;
                 packetheader.serialize(modified_packet_header);
                 //copy into original packet
-                memcpy(data,modified_packet_header.data(),packetheader.header_size);
+                memcpy(data,modified_packet_header.data(),packetheader.header_len);
 
 
                 // create new instance of shared pointer and push to global packet buffer
@@ -129,7 +129,7 @@ void NetworkManager::process_global_packets(){
 
             //forward packet to next node
 
-            send_to_node(static_cast<Nodes>(packetheader.destination),curr_packet_ptr.get(),static_cast<size_t>(packetheader.packet_len));
+            send_to_node(static_cast<Nodes>(packetheader.destination),curr_packet_ptr.get(),static_cast<size_t>(packetheader.packet_len+packetheader.header_len));
 
             _global_packet_buffer.erase(_global_packet_buffer.begin());
 
