@@ -191,6 +191,9 @@ DetailedAllPacket::DetailedAllPacket(const uint8_t* data) {
 	}
 }
 
+DetailedAllPacket::DetailedAllPacket(){};
+DetailedAllPacket::~DetailedAllPacket(){};
+
 CommandPacket::CommandPacket(const uint8_t* data) {
 	header = PacketHeader(data); // Deserialize header
 

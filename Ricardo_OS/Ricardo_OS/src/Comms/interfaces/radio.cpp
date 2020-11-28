@@ -37,7 +37,6 @@ void Radio::setup(){
 
 };
 
-//example usage send_packet((uint8_t*)&packet, sizeof(packet));
 
 void Radio::send_packet(uint8_t* data, size_t packet_len){
     if(LoRa.beginPacket()){
@@ -71,10 +70,6 @@ void Radio::get_packet(std::vector<std::shared_ptr<uint8_t>> *buf){
         
         buf->push_back(packet_ptr);//add packet ptr  to buffer
 
-        
-        return ;
-    }else{
-        return ;
-    }
+    };
     
 };

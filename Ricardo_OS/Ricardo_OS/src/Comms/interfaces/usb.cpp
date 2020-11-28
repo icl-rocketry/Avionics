@@ -45,11 +45,6 @@ void USB::get_packet(std::vector<std::shared_ptr<uint8_t>> *buf){
                 //read first bytes of stream to get packet header data into next elements in array
                 _stream->readBytes(&_tmp_packet_data[0],_packetHeader_size);
 
-                // delete previous instance of temporary packer header object - should be fine if _packetHeader_ptr is null
-                //delete _packetHeader_ptr; 
-                //create new instance of a packet header and give the first bytes of incoming packet to decode
-                //_packetHeader_ptr = new PacketHeader(&_tmp_packet_data[0], _packetHeader_size);
-
                 //create packet header object to decode packet header and retrieve packet size
                 PacketHeader packetheader = PacketHeader(&_tmp_packet_data[0]);
                 //get decoded packet length 
@@ -65,7 +60,8 @@ void USB::get_packet(std::vector<std::shared_ptr<uint8_t>> *buf){
                 //in theory this shouldn't happen unless someone does something wrong
                 //TODO
                 //handle oversized packets some how...
-                //return nothing flush buffer automatically
+                //return nothing 
+                _stream->read(); // clear start byte so rest of packet is flushed
 
             }else if (_packet_len > _stream->available()){
                 //we dont have the full packet to read 
@@ -84,8 +80,6 @@ void USB::get_packet(std::vector<std::shared_ptr<uint8_t>> *buf){
             }else{
                 //only a single packet to read or multiple packets to read so we will only the first packet
                 _incompletePacketReceived = false;
-
-                //uint8_t* packet_ptr = new uint8_t[_packet_len]; // Allocate a new chunk of memory for the packet
                 
                 //create shared ptr with custom deleter
                 std::shared_ptr<uint8_t> packet_ptr(new uint8_t[_total_len], [](uint8_t *p) { delete[] p; });

@@ -38,6 +38,7 @@ void NetworkManager::update(){
     process_global_packets();
     process_local_packets();
 
+    commandhandler.update();// process any commands received
 
 };
 
