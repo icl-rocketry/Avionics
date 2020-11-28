@@ -30,7 +30,8 @@ enum class COMMANDS {
     Exit_USBMode = 105,
     Exit_to_USBMode = 106,
     Set_Throttle  = 180,
-    Fire_pyro = 200,
+    Pyro_info = 200,
+    Fire_pyro = 201
 };
 
 
