@@ -1,8 +1,9 @@
 #include "state.h"
 #include "stateMachine.h"
 
-State::State(stateMachine* sm){
-    _sm = sm; // assign statemachine pointer 
+State::State(stateMachine* sm):
+    _sm(sm)
+{// assign statemachine pointer 
 };
 
 State::~State(){

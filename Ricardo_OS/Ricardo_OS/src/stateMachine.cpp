@@ -31,7 +31,9 @@ void stateMachine::update() {
   //call update in classes before state update method so state has most recent information
   sensors.update();
   estimator.update();
+
   networkmanager.update();
+
 
   State* newStatePtr = _currStatePtr -> update();
 
@@ -48,9 +50,13 @@ void stateMachine::changeState(State* newStatePtr) {
     _currStatePtr->exitstate();
 
   };
+
   delete _currStatePtr;
   
   _currStatePtr = newStatePtr;
   _currStatePtr -> initialise();
+
+
+
 };
 

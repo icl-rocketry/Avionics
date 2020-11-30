@@ -31,10 +31,11 @@ void CommandHandler::setup(){};
 void CommandHandler::update() {
 	// Handle the first command in the buffer
 	// Possibly implement priority queues in the future?
-	Command first_command = commandbuffer.front();
-	handleCommand(first_command);
-
-	commandbuffer.erase(commandbuffer.begin()); // 0th command handled, remove it from the buffer
+	if (commandbuffer.size()>0){
+		Command first_command = commandbuffer.front();
+		handleCommand(first_command);
+		commandbuffer.erase(commandbuffer.begin()); // 0th command handled, remove it from the buffer
+	};
 };
 
 void CommandHandler::addCommand(Command command){

@@ -37,9 +37,7 @@ void NetworkManager::update(){
 
     process_global_packets();
     process_local_packets();
-
     commandhandler.update();// process any commands received
-
 };
 
 void NetworkManager::send_packet(Interface iface,uint8_t* data, size_t len){
