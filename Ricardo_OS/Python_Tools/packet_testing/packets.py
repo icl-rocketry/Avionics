@@ -2,7 +2,7 @@ import struct
 
 class Header:
 	start_byte = 0xAF
-	header_size = 14 # WARNING: This has to match with the size in packets.h!!!!
+	header_size = 15 # WARNING: This has to match with the size in packets.h!!!!
 	#ttl = 10 # Time to live
 
 	def __init__(self, packet_type: int,
@@ -26,7 +26,7 @@ class Header:
 		return obj
 
 	def serialize(self) -> bytes:
-		arr = [(self.start_byte, 1), (self.packet_len, 4), # Array with the integer variable and their number of bytes
+		arr = [(self.start_byte, 1), (self.header_size,1),  (self.packet_len, 4), # Array with the integer variable and their number of bytes
 				(self.system_time, 4), (self.packet_type, 1),
 				(self.source, 1), (self.destination, 1),
 				(self.src_interface, 1), (self.ttl, 1)]
