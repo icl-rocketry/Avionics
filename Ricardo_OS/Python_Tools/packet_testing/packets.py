@@ -70,6 +70,10 @@ class Header:
 				break
 			else:
 				print('Loop variable not caught by any statements, check Header.deserialize method')
+	
+	def __str__(self):
+		return f'HEADER:\n\tpacket type = {self.packet_type}\n\tpacket_len = {self.packet_len}\n\tsystem_time = {self.system_time}\n\tsource = {self.source}\n\tdestination = {self.destination}\n\tttl = {self.ttl}\n'
+
 
 class Packet:
 	pass
@@ -128,6 +132,11 @@ class Telemetry(Packet):
 		self.vx, self.vy, self.vz = struct.unpack('>fff', telemetry_data[4*3*2:4*3*3])
 		
 		self.lora_rssi = telemetry_data[4*3*3]
+
+	def __str__(self):
+		header_str = self.header.__str__() + '\ns'
+		desc_str = f'TELEMETRY PACKET BODY: \t(x, y, z)=({self.x:.3g}, {self.y:.3g}, {self.z:.3g})\n\t\t(ax, ay, az)=({self.ax:.3g}, {self.ay:.3g}, {self.az:.3g})\n\t\t(x, y, z)=({self.vx:.3g}, {self.vy:.3g}, {self.vz:.3g})\n\t\tlora rssi = {self.lora_rssi}\n'
+		return header_str + desc_str
 
 class DetailedAll(Packet):
 
@@ -208,12 +217,20 @@ class DetailedAll(Packet):
 
 		self.batt_volt = detailed_data[4*4*4]
 		self.batt_percent = detailed_data[4*4*4 + 1]
+	
+	def __str__(self):
+		header_str = self.header.__str__() + '\n'
+		position_str = f'DETAILED PACKET BODY: \t(ax, ay, az)=\t({self.ax:.3g}, {self.ay:.3g}, {self.az:.3g})\n\t\t\t(gx, gy, gz)=\t({self.gx:.3g}, {self.gy:.3g}, {self.gz:.3g})\n\t\t\t(mx, my, mz)=\t({self.mx:.3g}, {self.my:.3g}, {self.mz:.3g})\n'
+		gps_str = f'\t\t\t(gps_lat, gps_long)=\t({self.gps_lat:.5g}, {self.gps_long:.5g})\n\t\t\t(gps_speed, gps_alt)=\t({self.gps_speed:.5g}, {self.gps_alt:.5g})\n'
+		baro_str = f'\t\t\t(baro_alt, baro_temp, baro_press)=\t({self.baro_alt:.5g}, {self.baro_temp:.4g}, {self.baro_press:.8g})\n'
+		battery_str = f'\t\t\t(bat_voltage, batt_percent)=\t({self.batt_volt:.5g}, {self.batt_percent:.3g})'
+		return header_str + position_str + gps_str + baro_str + battery_str
 		
 
 
 class Command(Packet):
 	
-	def __init__(self, header: Header, command: int, arg: int):
+	def __init__(self, header: Header, command: int, arg: int = 0):
 		self.header = header
 
 		self.command = command
@@ -235,7 +252,11 @@ class Command(Packet):
 			data_byte_arr.append(byte_data[0])
 		
 		return bytes(data_byte_arr)
-		
+	
+	def __str__(self):
+		header_str = self.header.__str__() + "\n"
+		param_str = f'COMMAND PACKET BODY: \tcommand = {self.command}\n \t\t\targument = {self.arg}\n'
+		return header_str + param_str
 
 	def deserialize(self, data: bytes):
 		self.header = Header.from_bytes(data)
