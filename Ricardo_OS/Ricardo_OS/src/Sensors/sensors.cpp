@@ -42,6 +42,8 @@ void Sensors::update(){
 
     sensors_raw.batt_percent = batt.batt_data.percent;
     sensors_raw.batt_volt = batt.batt_data.voltage;
+    sensors_raw.gps_lat = gps.gps_data.lat;
+    sensors_raw.gps_long = gps.gps_data.lng;
     
 
 };

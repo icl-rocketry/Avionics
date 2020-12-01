@@ -25,6 +25,7 @@ GPS::GPS(TwoWire* wire, SystemStatus* systemstatus) :
 void GPS::setup()
 {
     //_wire->begin();
+    
 }
 
 void GPS::update()
@@ -32,7 +33,7 @@ void GPS::update()
 
     if (_wire != NULL)
     { //check for null pointer to rpevent undfiend behaviour
-
+        
         // Retrieve number of available bytes of data
         uint16_t sizeDataStream;
         _wire->beginTransmission(I2C_GPS_ADDRESS);
@@ -56,6 +57,7 @@ void GPS::update()
         // in case we want to store this somewhere?
         uint8_t data[sizeDataStream] = {};
         uint8_t index = 0;
+
 
         while (sizeDataStream > 0)
         {
@@ -87,6 +89,8 @@ void GPS::update()
         {
             gps_data.lat = tinygps.location.lat();
             gps_data.lng = tinygps.location.lng();
+            //Serial.println(gps_data.lat);
+            //Serial.println(gps_data.lng);
         }
 
         if (tinygps.course.isUpdated())
@@ -103,5 +107,6 @@ void GPS::update()
         {
             gps_data.hdop = tinygps.hdop.value(); // Horizontal Dim. of Precision
         }
+        
     };
 }

@@ -17,6 +17,7 @@ class SystemStatus{
         
         void new_message(system_flag flag,String reason);
         void new_message(system_flag flag);
+        uint32_t get_string();
 
         void delete_message(system_flag flag);
         bool flag_triggered(system_flag flag);

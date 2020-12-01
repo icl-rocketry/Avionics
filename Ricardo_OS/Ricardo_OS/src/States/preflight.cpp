@@ -21,7 +21,10 @@ void Preflight::initialise(){
 
 State* Preflight::update(){
 
-
+    //Serial.println(_sm->sensors.sensors_raw.gps_lat);
+    //Serial.println(_sm->sensors.sensors_raw.gps_long);
+    //Serial.println(_sm->sensors.sensors_raw.batt_percent);
+    
     return this;
 };
 

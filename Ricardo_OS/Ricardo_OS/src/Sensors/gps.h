@@ -12,7 +12,7 @@
 
 struct gps_data_t
 {
-    float lat, lng, alt, course, speed, hdop;
+    float lat, lng, alt, course, speed, hdop, sats;
 };
 
 
