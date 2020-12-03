@@ -96,9 +96,16 @@ void CommandHandler::handleCommand(Command command) {
 
 
 
-					detailedall.ax = _sm->estimator.state.ax;
-					detailedall.ay = _sm->estimator.state.ay;
-					detailedall.az = _sm->estimator.state.az;
+					detailedall.ax = _sm->sensors.sensors_raw.ax;
+					detailedall.ay = _sm->sensors.sensors_raw.ay;
+					detailedall.az = _sm->sensors.sensors_raw.az;
+					detailedall.gx = _sm->sensors.sensors_raw.gx;
+					detailedall.gy = _sm->sensors.sensors_raw.gy;
+					detailedall.gz = _sm->sensors.sensors_raw.gz;
+					detailedall.mx = _sm->sensors.sensors_raw.mx;
+					detailedall.my = _sm->sensors.sensors_raw.my;
+					detailedall.mz = _sm->sensors.sensors_raw.mz;
+					
 
 					detailedall.serialize(packet);
 					

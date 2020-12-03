@@ -40,6 +40,16 @@ void Sensors::update(){
     imu.update();
     batt.update();
 
+    sensors_raw.ax = imu.imu_data.ax;
+    sensors_raw.ay = imu.imu_data.ay;
+    sensors_raw.az = imu.imu_data.az;
+    sensors_raw.gx = imu.imu_data.gx;
+    sensors_raw.gy = imu.imu_data.gy;
+    sensors_raw.gz = imu.imu_data.gz;
+    sensors_raw.mx = imu.imu_data.mx;
+    sensors_raw.my = imu.imu_data.my;
+    sensors_raw.mz = imu.imu_data.mz;
+
     //sensors_raw.batt_percent = batt.batt_data.percent;
     //sensors_raw.batt_volt = batt.batt_data.voltage;
     //sensors_raw.gps_lat = gps.gps_data.lat;

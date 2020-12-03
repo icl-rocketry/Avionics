@@ -43,9 +43,10 @@ ser.write(serialized_packet)
 print('we wrote shit')
 
 while True:
-	print('num bytes: ' , ser.in_waiting)
+	#print('num bytes: ' , ser.in_waiting)
 	b = ser.read(1)
-	print('0x' , b.hex())
+	print('0x',b.hex())
+	#print(b.hex(),end=' ',flush=True)
 	if b == Header.start_byte.to_bytes(1, 'big'):
 		# We've read the header start byte, deserialize the header
 		header_bytes = ser.read(Header.header_size)
