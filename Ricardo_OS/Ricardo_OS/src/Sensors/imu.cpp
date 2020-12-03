@@ -26,10 +26,11 @@ void Imu::setup(){
     imu.setMagScale(MAG_SCALE);
 
     if (!imu.beginSPI(_SCLK, _MISO, _MOSI, ImuCs, MagCs)){
-        //new_message(ERROR_IMU, "Unable to initialize the imu");
+        _systemstatus->new_message(system_flag::ERROR_IMU, "Unable to initialize the imu");
     };
 
 };
+
 
 void Imu::update(){
     read_gyro();
