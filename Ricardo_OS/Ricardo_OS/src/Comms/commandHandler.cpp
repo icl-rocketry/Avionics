@@ -95,7 +95,7 @@ void CommandHandler::handleCommand(Command command) {
 					detailedall.header.destination = static_cast<uint8_t>(command.source_node);
 
 
-
+					
 					detailedall.ax = _sm->sensors.sensors_raw.ax;
 					detailedall.ay = _sm->sensors.sensors_raw.ay;
 					detailedall.az = _sm->sensors.sensors_raw.az;
@@ -108,7 +108,7 @@ void CommandHandler::handleCommand(Command command) {
 					
 
 					detailedall.serialize(packet);
-					
+
 					_sm->networkmanager.send_to_node(command.source_node,packet.data(),detailedall.header.packet_len+detailedall.header.header_len);
 					
 				}

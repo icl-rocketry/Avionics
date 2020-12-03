@@ -201,6 +201,7 @@ CommandPacket::CommandPacket(const uint8_t* data) {
 	arg = data[header.header_len + 1]; // get next byte
 }
 
+CommandPacket::CommandPacket(){}
 CommandPacket::~CommandPacket() {}
 
 TelemetryPacket::TelemetryPacket(const uint8_t* data) {
@@ -248,8 +249,10 @@ TelemetryPacket::TelemetryPacket(const uint8_t* data) {
 
 TelemetryPacket::TelemetryPacket() {}
 TelemetryPacket::~TelemetryPacket() {}
+
 void Packet::serialize_float(const float f, std::vector<uint8_t> &buf) {
 	uint8_t data[sizeof(float)];
+
 	memcpy(data, &f, sizeof f);
 
 	for (int i = 0; i < sizeof(float); i++) {

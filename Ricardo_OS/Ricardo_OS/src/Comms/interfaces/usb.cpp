@@ -23,7 +23,8 @@ void USB::setup(){
 void USB::send_packet(uint8_t* data, size_t size){ // From RICARDO to USB
     //maybe check if we can write using serial.avalibalewrite not sure what action we would take 
     //if we couldnt write though
-    Serial.write(data,size);
+    
+    _stream->write(data,size);
 
 };
 
