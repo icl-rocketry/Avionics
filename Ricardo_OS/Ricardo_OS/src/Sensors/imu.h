@@ -26,13 +26,13 @@ class Imu{
         //pointer to spi object
         SPIClass* _spi;
         void printAccel();
-        #ifdef RUAIRIDH_TEST_BOARD
-            //sparkfun imu object
-            LSM9DS1 imu;
-        #else
-            //adafruit imu object
-            Adafruit_LSM9DS1 imu;
-        #endif
+        LSM9DS1 imu;
+
+        void read_gyro();
+        void read_mag();
+        void read_accel();
+        void read_temp();
+
 
 };    
 

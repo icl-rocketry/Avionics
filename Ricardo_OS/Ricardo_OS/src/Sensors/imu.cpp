@@ -44,10 +44,36 @@ void Imu::setup(){
 };
 
 void Imu::update(){
+
+
     #ifdef RUAIRIDH_TEST_BOARD
         printAccel();
     #endif
 };
+
+void Imu::read_gyro(){
+  if(imu.gyroAvailable()){
+        imu.readGyro();
+        imu_data.gx = 
+
+    }
+}
+void Imu::read_accel(){
+  if(imu.accelAvailable()){
+        imu.readAccel();
+
+    }
+}
+void Imu::read_mag(){
+  if(imu.magAvailable()){
+        imu.readMag();
+    }
+}
+void Imu::read_temp(){
+  if(imu.tempAvailable()){
+        imu.readTemp();
+    }
+}
 
 void Imu::printAccel()
 {
