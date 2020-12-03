@@ -51,17 +51,22 @@ while True:
 		header_bytes = ser.read(Header.header_size)
 		recv_header = Header.from_bytes(b+header_bytes)
 		rcv_packet_type = recv_header.packet_type
+		print('packet_len',recv_header.packet_len)
+		print('packet_type',rcv_packet_type)
 
 		packet_body = ser.read(recv_header.packet_len) # Read the rest of the packet
-
+		print('got packet data')
 		if rcv_packet_type == 1:
 			# Telemetry
+			print('telem')
 			pass
 		elif rcv_packet_type == 2:
 			# Command
+			print('command')
 			pass
 		elif rcv_packet_type == 3:
 			# Detailed all
+			print('detailed')
 			rcv_packet = DetailedAll.from_bytes(header + packet_body) # Constructor expects to receive bytes consisting off header + packe body
 			print('RECEIVED PACKET:')
 			print(rcv_packet)
