@@ -26,17 +26,17 @@ PacketHeader::PacketHeader(const uint8_t* data) {
 			header_size_mismatch = (header_len != _header_size);
 			break;
 		case 2:
-			for (int j = sizeof(packet_len) - 1; j >= 0 ; j--) {
-				this->packet_len |= data[i+(sizeof(packet_len) - j + 1)] << j*8;
+			for (int j = sizeof(packet_len) - 1; j >= 0; j--) {
+				this->packet_len |= data[i+(sizeof(packet_len) - 1 - j)] << j*8;
 			}
-			i+=sizeof(packet_len); // We've read sizeof(packet_len) bytes
+			i+=sizeof(packet_len) - 1; // We've read sizeof(packet_len) bytes
 			step++;
 			break;
 		case 3:
-			for (int j = sizeof(system_time) - 1; j >= 0 ; j--) {
-				this->system_time |= data[i+(sizeof(system_time) - j + 1)] << j*8;
+			for (int j = sizeof(system_time) - 1; j >= 0; j--) {
+				this->system_time |= data[i+(sizeof(system_time) - 1 - j)] << j*8;
 			}
-			i+=sizeof(system_time); // We've read sizeof(packet_len) bytes
+			i+=sizeof(system_time) - 1; // We've read sizeof(packet_len) bytes
 			step++;
 			break;
 		case 4:
