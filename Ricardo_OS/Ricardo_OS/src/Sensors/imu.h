@@ -8,10 +8,10 @@
 #define RUAIRIDH_TEST_BOARD //used for testing  stuff
 
 struct imu_data_t{
-    float mx,my,mz;
-    float ax,ay,az;
     float gx,gy,gz;
-    //add more members if needed
+    float ax,ay,az;
+    float mx,my,mz;
+    int16_t temperature;
 };
 
 class Imu{
@@ -25,7 +25,7 @@ class Imu{
     private:
         //pointer to spi object
         SPIClass* _spi;
-        void printAccel();
+
         LSM9DS1 imu;
 
         void read_gyro();

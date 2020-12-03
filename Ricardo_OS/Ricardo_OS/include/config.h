@@ -27,6 +27,10 @@
 //915E6 for North America
 #define LORA_REGION 866E6
 
+#define ACCEL_SCALE 2
+#define MAG_SCALE 4
+#define GYRO_SCALE 245
+
 //message flag definitions//
 #define NONE 0 
 //state flags
