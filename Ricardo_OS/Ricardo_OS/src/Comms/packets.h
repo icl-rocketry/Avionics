@@ -135,7 +135,7 @@ public:
     float mx,my,mz;
     float gps_lat,gps_long,gps_speed,gps_alt;
     float baro_alt,baro_temp,baro_press;
-    int batt_volt,batt_percent;
+    uint8_t batt_volt,batt_percent;
 
     // WARNING!
     // Check if all the variables that need to be sent over are getting serialized

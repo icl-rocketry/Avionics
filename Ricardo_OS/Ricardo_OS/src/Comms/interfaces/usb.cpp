@@ -23,7 +23,8 @@ void USB::setup(){
 void USB::send_packet(uint8_t* data, size_t size){ // From RICARDO to USB
     //maybe check if we can write using serial.avalibalewrite not sure what action we would take 
     //if we couldnt write though
-    Serial.write(data,size);
+
+    _stream->write(data,size);
 
 };
 
@@ -33,12 +34,12 @@ void USB::get_packet(std::vector<std::shared_ptr<uint8_t>> *buf){
 
     while (_stream->available() > 0){
         //find and process any and all packets
-
+       
         
         _firstByte = _stream->peek();
         
         if (_firstByte == 0xAF || _incompletePacketReceived){
-
+            
             if(!_incompletePacketReceived){
                 //reset timeoutcounter
                 _timeoutCounter = 0;
@@ -51,6 +52,7 @@ void USB::get_packet(std::vector<std::shared_ptr<uint8_t>> *buf){
                 _packet_len = packetheader.packet_len;
                 _header_len = packetheader.header_len;
                 _total_len = _packet_len+_header_len;
+                _stream->write(_packet_len);
 
             };
 
@@ -99,7 +101,7 @@ void USB::get_packet(std::vector<std::shared_ptr<uint8_t>> *buf){
 
                 //should add exceptioj checking here so we know if we have failed to properly read the data into the packet ptr
                 buf->push_back(packet_ptr); // add pointer to packet immediately to buffer                
-            
+                
             };
             
         }else{

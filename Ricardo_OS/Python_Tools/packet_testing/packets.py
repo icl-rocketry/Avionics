@@ -33,7 +33,7 @@ class Header:
 		bytearr = bytearray()
 
 		for item in arr:
-			byte_data = item[0].to_bytes(item[1], 'big')
+			byte_data = item[0].to_bytes(item[1], 'little')
 			for i in range(item[1]):
 				bytearr.append(byte_data[i])
 
@@ -49,10 +49,10 @@ class Header:
 				self.header_size = data[i]
 				i += 1
 			elif i == 2:
-				self.packet_len = int.from_bytes(data[i:i+4], 'big', signed=False)
+				self.packet_len = int.from_bytes(data[i:i+4], 'little', signed=False)
 				i += 4 # increment by number of bytes read
 			elif i == 6:
-				self.system_time = int.from_bytes(data[i:i+4], 'big', signed=False)
+				self.system_time = int.from_bytes(data[i:i+4], 'little', signed=False)
 				i += 4 # increment by number of bytes read
 			elif i == 10:
 				self.packet_type = data[i]
@@ -122,7 +122,7 @@ class Telemetry(Packet):
 			byte_data = struct.pack('>f', var)
 			for byte in byte_data:
 				data_byte_arr.append(byte)
-		data_byte_arr.append(self.lora_rssi.to_bytes(1, 'big')[0])
+		data_byte_arr.append(self.lora_rssi.to_bytes(1, 'little')[0])
 
 		return bytes(data_byte_arr)
 	
@@ -203,7 +203,7 @@ class DetailedAll(Packet):
 		
 		int_vars = [self.batt_volt, self.batt_percent] # 8-bit integer variables
 		for item in int_vars:
-			byte_data = item.to_bytes(1, 'big')
+			byte_data = item.to_bytes(1, 'little')
 			data_byte_arr.append(byte_data[0])
 		
 		return bytes(data_byte_arr)
@@ -251,7 +251,7 @@ class Command(Packet):
 
 		int_vars = [self.command, self.arg] # 8-bit integer variables
 		for item in int_vars:
-			byte_data = item.to_bytes(1, 'big')
+			byte_data = item.to_bytes(1, 'little')
 			data_byte_arr.append(byte_data[0])
 		
 		return bytes(data_byte_arr)
