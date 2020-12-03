@@ -14,31 +14,38 @@ ap.add_argument("-p", "--port", required=True, help="Port hosting ricardo", type
 args = vars(ap.parse_args())
 
 
-ser = serial.Serial(args['port'])  # open serial port
-ser.baudrate = 115200
+ser = serial.Serial(port = args['port'],baudrate = 115200)  # open serial port
+#ser.rtscts = True
+#ser.dsrdtr = True
+ser.stopbits = serial.STOPBITS_ONE
+ser.parity = serial.PARITY_NONE
 ser.bytesize = serial.EIGHTBITS
 
+print('call reset on esp32')
+ser.setDTR(False)
 time.sleep(1)
-
-print('reset buffer')
 ser.flushInput()
-ser.flushOutput()
+ser.setDTR(True)
+print('esp32 reset')
+ser.flushInput()
+time.sleep(1)
+print('flushing boot messages')
+ser.read(ser.in_waiting)
 
-print(ser.read(ser.in_waiting))
+
 
 # Test send a comand packet
 header = Header(2, 0, 2, 0, source=4, destination=0) # source=4 for USB and destination=0 for rocket
+cmd_packet = Command(header, 50, 0) # 50 for detailed all
+serialized_packet = cmd_packet.serialize()
+print(serialized_packet.hex())
+ser.write(serialized_packet)
+print('we wrote shit')
+
 while True:
-	cmd_packet = Command(header, 50, 0) # 50 for detailed all
-	serialized_packet = cmd_packet.serialize()
-	ser.write(serialized_packet)
-	print('we wrote shit')
-	ser.flush()
-	print(ser.in_waiting)
-	b = ser.read(8)
-	for i in b:
-		print(hex(i))
-	print()	
+	print('num bytes: ' , ser.in_waiting)
+	b = ser.read(1)
+	print('0x' , b.hex())
 	if b == Header.start_byte.to_bytes(1, 'big'):
 		# We've read the header start byte, deserialize the header
 		header_bytes = ser.read(Header.header_size)
@@ -58,6 +65,6 @@ while True:
 			rcv_packet = DetailedAll.from_bytes(header + packet_body) # Constructor expects to receive bytes consisting off header + packe body
 			print('RECEIVED PACKET:')
 			print(rcv_packet)
-	time.sleep(1)
+	time.sleep(.01)
 
 ser.close() 
