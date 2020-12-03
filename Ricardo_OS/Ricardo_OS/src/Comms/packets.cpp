@@ -27,14 +27,14 @@ PacketHeader::PacketHeader(const uint8_t* data) {
 			break;
 		case 2:
 			for (int j = sizeof(packet_len) - 1; j >= 0; j--) {
-				this->packet_len |= data[i+(sizeof(packet_len) - 1 - j)] << j*8;
+				this->packet_len |= data[i + j] << j*8;
 			}
 			i+=sizeof(packet_len) - 1; // We've read sizeof(packet_len) bytes
 			step++;
 			break;
 		case 3:
 			for (int j = sizeof(system_time) - 1; j >= 0; j--) {
-				this->system_time |= data[i+(sizeof(system_time) - 1 - j)] << j*8;
+				this->system_time |= data[i + j] << j*8;
 			}
 			i+=sizeof(system_time) - 1; // We've read sizeof(packet_len) bytes
 			step++;
@@ -258,7 +258,7 @@ void Packet::serialize_float(const float f, std::vector<uint8_t> &buf) {
 }
 
 void Packet::serialize_uint32_t(const uint32_t &n, std::vector<uint8_t> &buf) {
-	for (int i = sizeof(uint32_t) - 1; i>=0; i--) {
+	for (int i = 0; i < sizeof(uint32_t); i++) {
 		buf.push_back(n >> 8*i);
 	}
 }
