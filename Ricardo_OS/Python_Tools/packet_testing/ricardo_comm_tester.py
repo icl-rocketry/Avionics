@@ -46,10 +46,10 @@ while True:
 	print('we wrote shit')
 
 	b = ser.read(1)
-	print(b.hex())
-	print(ser.in_waiting)
+	#print(b.hex())
+	#print(ser.in_waiting)
 	
-	if b == Header.start_byte.to_bytes(1, 'big'):
+	if b == Header.start_byte.to_bytes(1, 'little'):
 		# We've read the header start byte, deserialize the header
 		header_bytes = ser.read(Header.header_size-1)
 

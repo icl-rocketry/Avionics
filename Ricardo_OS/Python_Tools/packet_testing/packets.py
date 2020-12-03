@@ -119,7 +119,7 @@ class Telemetry(Packet):
 					  self.vx, self.vy, self.vz]
 		
 		for var in float_vars:
-			byte_data = struct.pack('>f', var)
+			byte_data = struct.pack('<f', var)
 			for byte in byte_data:
 				data_byte_arr.append(byte)
 		data_byte_arr.append(self.lora_rssi.to_bytes(1, 'little')[0])
@@ -130,9 +130,9 @@ class Telemetry(Packet):
 		self.header = Header.from_bytes(data)
 		telemetry_data = data[Header.header_size:] # Drop the first n bytes beloning to header
 		
-		self.x, self.y, self.z = struct.unpack('>fff', telemetry_data[:4*3]) # Unpack first 12 bytes
-		self.ax, self.ay, self.az = struct.unpack('>fff', telemetry_data[4*3:4*3*2])
-		self.vx, self.vy, self.vz = struct.unpack('>fff', telemetry_data[4*3*2:4*3*3])
+		self.x, self.y, self.z = struct.unpack('<fff', telemetry_data[:4*3]) # Unpack first 12 bytes
+		self.ax, self.ay, self.az = struct.unpack('<fff', telemetry_data[4*3:4*3*2])
+		self.vx, self.vy, self.vz = struct.unpack('<fff', telemetry_data[4*3*2:4*3*3])
 		
 		self.lora_rssi = telemetry_data[4*3*3]
 
@@ -197,7 +197,7 @@ class DetailedAll(Packet):
 					  self.baro_alt, self.baro_temp,
 					  self.baro_press]
 		for var in float_vars:
-			byte_data = struct.pack('>f', var)
+			byte_data = struct.pack('<f', var)
 			for byte in byte_data:
 				data_byte_arr.append(byte)
 		
@@ -212,11 +212,11 @@ class DetailedAll(Packet):
 		self.header = Header.from_bytes(data)
 		detailed_data = data[Header.header_size:] # Drop the first n bytes beloning to header
 		
-		self.ax, self.ay, self.az = struct.unpack('>fff', detailed_data[:4*3]) # Unpack first 12 bytes
-		self.gx, self.gy, self.gz = struct.unpack('>fff', detailed_data[4*3:4*3*2])
-		self.mx, self.my, self.mz = struct.unpack('>fff', detailed_data[4*3*2:4*3*3])
-		self.gps_lat, self.gps_long, self.gps_speed, self.gps_alt = struct.unpack('>ffff', detailed_data[4*3*3:4*3*3 + 4*4])
-		self.baro_alt, self.baro_temp, self.baro_press = struct.unpack('>fff', detailed_data[4*3*3 + 4*4:4*4*4])
+		self.ax, self.ay, self.az = struct.unpack('<fff', detailed_data[:4*3]) # Unpack first 12 bytes
+		self.gx, self.gy, self.gz = struct.unpack('<fff', detailed_data[4*3:4*3*2])
+		self.mx, self.my, self.mz = struct.unpack('<fff', detailed_data[4*3*2:4*3*3])
+		self.gps_lat, self.gps_long, self.gps_speed, self.gps_alt = struct.unpack('<ffff', detailed_data[4*3*3:4*3*3 + 4*4])
+		self.baro_alt, self.baro_temp, self.baro_press = struct.unpack('<fff', detailed_data[4*3*3 + 4*4:4*4*4])
 
 		self.batt_volt = detailed_data[4*4*4]
 		self.batt_percent = detailed_data[4*4*4 + 1]

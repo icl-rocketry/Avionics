@@ -52,7 +52,7 @@ void USB::get_packet(std::vector<std::shared_ptr<uint8_t>> *buf){
                 _packet_len = packetheader.packet_len;
                 _header_len = packetheader.header_len;
                 _total_len = _packet_len+_header_len;
-                _stream->write(_packet_len);
+                
 
             };
 
