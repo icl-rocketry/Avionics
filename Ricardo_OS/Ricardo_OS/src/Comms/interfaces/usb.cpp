@@ -52,7 +52,6 @@ void USB::get_packet(std::vector<std::shared_ptr<uint8_t>> *buf){
                 _header_len = packetheader.header_len;
                 _total_len = _packet_len+_header_len;
 
-
             };
 
             if (_total_len > SERIAL_SIZE_RX){
@@ -91,7 +90,7 @@ void USB::get_packet(std::vector<std::shared_ptr<uint8_t>> *buf){
                 //serialize packet header
                 std::vector<uint8_t> modified_packet_header;
                 packetheader.serialize(modified_packet_header);
-
+                
                 //copy data in modified_packet_header to packet container
                 memcpy(packet_ptr.get(),modified_packet_header.data(),_header_len);
                 //read bytes in stream buffer into the packet data array starting at the 8th index as header has been read out of stream buffer.
@@ -99,7 +98,7 @@ void USB::get_packet(std::vector<std::shared_ptr<uint8_t>> *buf){
                 _stream->readBytes((packet_ptr.get() + _header_len), _packet_len); 
 
                 //should add exceptioj checking here so we know if we have failed to properly read the data into the packet ptr
-                buf->push_back(packet_ptr); // add pointer to packet immediately to buffer
+                buf->push_back(packet_ptr); // add pointer to packet immediately to buffer                
             
             };
             

@@ -127,7 +127,7 @@ void NetworkManager::process_global_packets(){
         if (packetheader.destination != current_node){
 
             //forward packet to next node
-
+            
             send_to_node(static_cast<Nodes>(packetheader.destination),curr_packet_ptr.get(),static_cast<size_t>(packetheader.packet_len+packetheader.header_len));
 
             _global_packet_buffer.erase(_global_packet_buffer.begin());
@@ -140,6 +140,7 @@ void NetworkManager::process_global_packets(){
                 or because we are using the loopback interface but we cannot distinguish.
                  UUID or comparing source interface can distinguish.
                 */
+
                if (packetheader.src_interface == static_cast<uint8_t>(Interface::LOOPBACK)){
                    //loopback packet
                    //delete[] curr_packet_ptr;
