@@ -67,7 +67,7 @@ while True:
 		elif rcv_packet_type == 3:
 			# Detailed all
 			print('detailed')
-			rcv_packet = DetailedAll.from_bytes(header + packet_body) # Constructor expects to receive bytes consisting off header + packe body
+			rcv_packet = DetailedAll.from_bytes(b + header_bytes + packet_body) # Constructor expects to receive bytes consisting off header + packet body
 			print('RECEIVED PACKET:')
 			print(rcv_packet)
 	time.sleep(.01)

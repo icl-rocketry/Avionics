@@ -46,27 +46,30 @@ class Header:
 				# We found the start byte, increment i
 				i += 1
 			elif i == 1:
+				self.header_size = data[i]
+				i += 1
+			elif i == 2:
 				self.packet_len = int.from_bytes(data[i:i+4], 'big', signed=False)
 				i += 4 # increment by number of bytes read
-			elif i == 5:
+			elif i == 6:
 				self.system_time = int.from_bytes(data[i:i+4], 'big', signed=False)
 				i += 4 # increment by number of bytes read
-			elif i == 9:
+			elif i == 10:
 				self.packet_type = data[i]
 				i += 1
-			elif i == 10:
+			elif i == 11:
 				self.source = data[i]
 				i += 1
-			elif i == 11:
+			elif i == 12:
 				self.destination = data[i]
 				i += 1
-			elif i == 12:
+			elif i == 13:
 				self.src_interface = data[i]
 				i += 1
-			elif i == 13:
+			elif i == 14:
 				self.ttl = data[i]
 				i += 1
-			elif i == 14:
+			elif i == 15:
 				break
 			else:
 				print('Loop variable not caught by any statements, check Header.deserialize method')
