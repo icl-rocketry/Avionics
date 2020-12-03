@@ -4,8 +4,6 @@
 #include "ricardo_pins.h"
 #include "Logging/systemstatus.h"
 #include "flags.h"
-
-#include "../Logging/messages.h"
 #include "SparkFunLSM9DS1.h"
 
 
@@ -14,7 +12,7 @@
 Imu::Imu(SPIClass* spi, SystemStatus* systemstatus):
     _spi(spi),
     _systemstatus(systemstatus),
-    imu(ImuCs, MagCs)
+    imu(spi)
 {};
 
 

@@ -2,7 +2,6 @@
 #define IMU_H
 #include <Arduino.h>    
 #include "SPI.h"
-#include "Adafruit_LSM9DS1.h"
 #include "SparkFunLSM9DS1.h"
 
 #define RUAIRIDH_TEST_BOARD //used for testing  stuff
@@ -21,7 +20,6 @@ class Imu{
         Imu(SPIClass* spi,SystemStatus* systemstatus);
         void setup();
         void update();
-
         imu_data_t imu_data;
 
     private:
@@ -29,9 +27,10 @@ class Imu{
         SPIClass* _spi;
         //pointer to system status object
         SystemStatus* _systemstatus;
-
+        //Sparkfun IMU object
         LSM9DS1 imu;
 
+        //functions for reading and converting read int16 values
         void read_gyro();
         void read_mag();
         void read_accel();

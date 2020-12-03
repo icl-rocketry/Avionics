@@ -40,10 +40,29 @@ void Sensors::update(){
     imu.update();
     batt.update();
 
-    sensors_raw.batt_percent = batt.batt_data.percent;
-    sensors_raw.batt_volt = batt.batt_data.voltage;
-    sensors_raw.gps_lat = gps.gps_data.lat;
-    sensors_raw.gps_long = gps.gps_data.lng;
+    //sensors_raw.batt_percent = batt.batt_data.percent;
+    //sensors_raw.batt_volt = batt.batt_data.voltage;
+    //sensors_raw.gps_lat = gps.gps_data.lat;
+    //sensors_raw.gps_long = gps.gps_data.lng;
+    /*
+    Serial.println(imu.imu_data.ax);
+    Serial.print("\t");
+    Serial.print(imu.imu_data.ay);
+    Serial.print("\t");
+    Serial.print(imu.imu_data.az);
+    Serial.print("\t");
+    Serial.print(imu.imu_data.gx);
+    Serial.print("\t");
+    Serial.print(imu.imu_data.gy);
+    Serial.print("\t");
+    Serial.print(imu.imu_data.gz);
+    Serial.print("\t");
+    Serial.print(imu.imu_data.mx);
+    Serial.print("\t");
+    Serial.print(imu.imu_data.my);
+    Serial.print("\t");
+    Serial.print(imu.imu_data.mz);
+    */
     
 
 };
