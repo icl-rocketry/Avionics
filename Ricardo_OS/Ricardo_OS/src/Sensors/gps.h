@@ -8,21 +8,14 @@
 
 #include "Logging/systemstatus.h"
 
-
-
-struct gps_data_t
-{
-    float lat, lng, alt, course, speed, hdop, sats;
-};
+#include "sensorStructs.h"
 
 
 class GPS{
 public:
-    GPS(TwoWire* wire,SystemStatus* systemstatus);
+    GPS(TwoWire* wire,SystemStatus* systemstatus,raw_measurements_t* raw_data);
     void setup();
     void update();
-
-    gps_data_t gps_data;
 
 private:
     TinyGPSPlus tinygps; //define tinygps object
@@ -30,6 +23,8 @@ private:
     TwoWire *_wire; //pointer to wire object
       
     SystemStatus* _systemstatus;//pointer to system status object
+
+    raw_measurements_t*  _raw_data;//pointer to raw data struct
 };
 
 #endif

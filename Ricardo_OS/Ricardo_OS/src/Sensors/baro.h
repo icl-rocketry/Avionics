@@ -5,25 +5,21 @@
 
 #include "Logging/systemstatus.h"
 
-
-struct baro_data_t{
-    float temp,pressure;
-    //add more members if needed
-};
+#include "sensorStructs.h"
 
 class Baro{
     public:
-        Baro(SPIClass* spi,SystemStatus* systemstatus);
+        Baro(SPIClass* spi,SystemStatus* systemstatus,raw_measurements_t* raw_data);
         void setup();
         void update();
-
-        baro_data_t baro_data;
 
     private:
         //pointer to spi object
         SPIClass* _spi;
         //pointer to system status object
         SystemStatus* _systemstatus;
+        //pointer to raw data struct
+        raw_measurements_t* _raw_data;
 
 
 };    

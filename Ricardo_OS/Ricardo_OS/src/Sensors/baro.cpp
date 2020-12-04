@@ -4,12 +4,14 @@
 
 #include "Logging/systemstatus.h"
 
+#include "sensorStructs.h"
 
-Baro::Baro(SPIClass* spi,SystemStatus* systemstatus)
-{
-    _spi = spi;
-    _systemstatus = systemstatus;
-};
+
+Baro::Baro(SPIClass* spi,SystemStatus* systemstatus,raw_measurements_t* raw_data):
+_spi(spi),
+_systemstatus(systemstatus),
+_raw_data(raw_data)
+{};
 
 void Baro::setup(){
     //some sort of gps intilization idk

@@ -6,13 +6,16 @@
 #include "flags.h"
 #include "SparkFunLSM9DS1.h"
 
+#include "sensorStructs.h"
 
 
 
-Imu::Imu(SPIClass* spi, SystemStatus* systemstatus):
+
+Imu::Imu(SPIClass* spi, SystemStatus* systemstatus,raw_measurements_t* raw_data):
     _spi(spi),
     _systemstatus(systemstatus),
-    imu(spi)
+    imu(spi),
+    _raw_data(raw_data)
 {};
 
 
@@ -42,32 +45,33 @@ void Imu::update(){
 void Imu::read_gyro(){
   if(imu.gyroAvailable()){
         imu.readGyro();
-        imu_data.gx = imu.calcGyro(imu.gx);
-        imu_data.gy = imu.calcGyro(imu.gy);
-        imu_data.gz = imu.calcGyro(imu.gz);
+        _raw_data->gx = imu.calcGyro(imu.gx);
+        _raw_data->gy = imu.calcGyro(imu.gy);
+        _raw_data->gz = imu.calcGyro(imu.gz);
 
     }
 }
 void Imu::read_accel(){
   if(imu.accelAvailable()){
         imu.readAccel();
-        imu_data.ax = imu.calcAccel(imu.ax);
-        imu_data.ay = imu.calcAccel(imu.ay);
-        imu_data.az = imu.calcAccel(imu.az);
+        _raw_data->ax = imu.calcAccel(imu.ax);
+        _raw_data->ay = imu.calcAccel(imu.ay);
+        _raw_data->az = imu.calcAccel(imu.az);
 
     }
 }
 void Imu::read_mag(){
   if(imu.magAvailable()){
         imu.readMag();
-        imu_data.mx = imu.calcMag(imu.mx);
-        imu_data.my = imu.calcMag(imu.my);
-        imu_data.mz = imu.calcMag(imu.mz);
+        _raw_data->mx = imu.calcMag(imu.mx);
+        _raw_data->my = imu.calcMag(imu.my);
+        _raw_data->mz = imu.calcMag(imu.mz);
     }
 }
 void Imu::read_temp(){
   if(imu.tempAvailable()){
         imu.readTemp();
+        _raw_data->imu_temp = imu.temperature;
     }
 }
 

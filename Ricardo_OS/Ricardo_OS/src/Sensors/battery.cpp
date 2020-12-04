@@ -3,12 +3,14 @@
 #include "flags.h"
 #include "config.h"
 
+#include "sensorStructs.h"
 
-
-Battery::Battery(uint8_t pin, SystemStatus* systemstatus):
+Battery::Battery(uint8_t pin, SystemStatus* systemstatus,raw_measurements_t* raw_data):
 
 _systemstatus(systemstatus),
+_raw_data(raw_data),
 _pin(pin)
+
 
 {};
 
@@ -17,16 +19,17 @@ void Battery::setup(){
 }
 
 void Battery::update(){
+    
     float factor = 6600/4095;
 
-    batt_data.voltage = uint16_t(floor(float(factor*analogRead(_pin)))); // voltage in mV
+    _raw_data->batt_volt = uint16_t(floor(float(factor*analogRead(_pin)))); // voltage in mV
 
-    if (batt_data.voltage < warn_battery_voltage){
-        _systemstatus->new_message(system_flag::WARN_BATT,"Battery at " + String(batt_data.voltage) + "mV"); 
+    if (_raw_data->batt_volt < warn_battery_voltage){
+        _systemstatus->new_message(system_flag::WARN_BATT,"Battery at " + String(_raw_data->batt_volt) + "mV"); 
     }else{
          _systemstatus->delete_message(system_flag::WARN_BATT);
     }
 
 
-   batt_data.percent = uint16_t(((batt_data.voltage-empty_battery_voltage)/(full_battery_voltage-empty_battery_voltage)));
+   _raw_data->batt_percent = uint16_t(((_raw_data->batt_volt-empty_battery_voltage)/(full_battery_voltage-empty_battery_voltage)));
 }

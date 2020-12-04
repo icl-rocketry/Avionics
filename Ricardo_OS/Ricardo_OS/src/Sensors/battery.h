@@ -5,23 +5,20 @@
 
 #include "Logging/systemstatus.h"
 
+#include "sensorStructs.h"
 
-struct batt_data_t{
-    uint16_t voltage,percent;
-    //add more members if needed
-};
 
 class Battery{
     public:
-        Battery(uint8_t pin,SystemStatus* systemstatus);
+        Battery(uint8_t pin,SystemStatus* systemstatus,raw_measurements_t* raw_data);
         void setup();
         void update();
-
-        batt_data_t batt_data;
     
     private:
         //pointer to system status object
         SystemStatus* _systemstatus;
+        //pointer to raw data struct
+        raw_measurements_t* _raw_data;
 
         uint8_t _pin;
 

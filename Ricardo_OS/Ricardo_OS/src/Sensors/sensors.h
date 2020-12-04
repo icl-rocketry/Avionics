@@ -4,25 +4,13 @@
 
 #include "Arduino.h"
 
+#include "sensorStructs.h"
 
 
 #include "gps.h"
 #include "baro.h"
 #include "imu.h"
 #include "battery.h"
-
-
-
-struct raw_measurements_t{
-    float ax,ay,az;
-    float gx,gy,gz;
-    float mx,my,mz;
-    float gps_lat,gps_long,gps_speed,gps_alt;
-    float baro_alt,baro_temp,baro_press;
-    int batt_volt,batt_percent;
-    uint32_t system_time;
-
-};
 
 
 class stateMachine; //forward declaration

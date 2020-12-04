@@ -7,6 +7,8 @@
 
 #include "Logging/systemstatus.h"
 
+#include "sensorStructs.h"
+
 // GPS: U-Blox Max-M8
 // SDA pin 16; SCL pin 17
 
@@ -16,10 +18,11 @@
 
 
 
-GPS::GPS(TwoWire* wire, SystemStatus* systemstatus) :
+GPS::GPS(TwoWire* wire, SystemStatus* systemstatus,raw_measurements_t* raw_data) :
     tinygps(),
     _wire(wire),
-    _systemstatus(systemstatus)
+    _systemstatus(systemstatus),
+    _raw_data(raw_data)
 {}
 
 void GPS::setup()
@@ -82,31 +85,35 @@ void GPS::update()
         // Updates class values
         if (tinygps.altitude.isUpdated())
         {
-            gps_data.alt = tinygps.altitude.meters();
+            _raw_data->gps_alt = tinygps.altitude.meters();
         }
 
         if (tinygps.location.isUpdated())
         {
-            gps_data.lat = tinygps.location.lat();
-            gps_data.lng = tinygps.location.lng();
+            _raw_data->gps_lat = tinygps.location.lat();
+            _raw_data->gps_long = tinygps.location.lng();
             //Serial.println(gps_data.lat);
             //Serial.println(gps_data.lng);
         }
 
         if (tinygps.course.isUpdated())
         {
-            gps_data.course = tinygps.course.deg();
+            _raw_data->gps_course = tinygps.course.deg();
         }
 
         if (tinygps.speed.isUpdated())
         {
-            gps_data.speed = tinygps.speed.mps();
+            _raw_data->gps_speed = tinygps.speed.mps();
         }
 
         if (tinygps.hdop.isUpdated())
         {
-            gps_data.hdop = tinygps.hdop.value(); // Horizontal Dim. of Precision
+            _raw_data->gps_hdop = tinygps.hdop.value(); // Horizontal Dim. of Precision
         }
-        
+        if(tinygps.satellites.isUpdated())
+        {
+            _raw_data->gps_sat = tinygps.satellites.value();//number of connected satellites
+        }
+
     };
 }

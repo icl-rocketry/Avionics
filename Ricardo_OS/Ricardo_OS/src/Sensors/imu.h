@@ -7,20 +7,14 @@
 #define RUAIRIDH_TEST_BOARD //used for testing  stuff
 
 #include "Logging/systemstatus.h"
+#include "sensorStructs.h"
 
-struct imu_data_t{
-    float gx,gy,gz;
-    float ax,ay,az;
-    float mx,my,mz;
-    int16_t temperature;
-};
 
 class Imu{
     public:
-        Imu(SPIClass* spi,SystemStatus* systemstatus);
+        Imu(SPIClass* spi,SystemStatus* systemstatus,raw_measurements_t* raw_data);
         void setup();
         void update();
-        imu_data_t imu_data;
 
     private:
         //pointer to spi object
@@ -29,6 +23,8 @@ class Imu{
         SystemStatus* _systemstatus;
         //Sparkfun IMU object
         LSM9DS1 imu;
+        //pointer to raw measurements struct
+        raw_measurements_t* _raw_data;
 
         //functions for reading and converting read int16 values
         void read_gyro();
