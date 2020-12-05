@@ -74,6 +74,18 @@ void CommandHandler::handleCommand(Command command) {
 			case COMMANDS::Play_Song:
 				break;
 			case COMMANDS::Telemetry:
+				{
+					std::vector<uint8_t> packet;
+					TelemetryPacket telemetry;
+
+					telemetry.header.source = _sm->networkmanager.get_node_type();
+					telemetry.header.destination = static_cast<uint8_t>(command.source_node);
+
+					telemetry.serialize(packet);
+
+					_sm->networkmanager.send_to_node(command.source_node,packet.data(),telemetry.header.packet_len+telemetry.header.header_len);
+
+				}
 				break;
 			case COMMANDS::Clear_Flash:
 				break;
@@ -89,23 +101,34 @@ void CommandHandler::handleCommand(Command command) {
 				{
 					std::vector<uint8_t> packet;
 
-					DetailedAllPacket detailedall = DetailedAllPacket();
+					DetailedAllPacket detailedall;
 
 					detailedall.header.source = _sm->networkmanager.get_node_type();
 					detailedall.header.destination = static_cast<uint8_t>(command.source_node);
 
-
-					
 					detailedall.ax = _sm->sensors.sensors_raw.ax;
 					detailedall.ay = _sm->sensors.sensors_raw.ay;
 					detailedall.az = _sm->sensors.sensors_raw.az;
+
 					detailedall.gx = _sm->sensors.sensors_raw.gx;
 					detailedall.gy = _sm->sensors.sensors_raw.gy;
 					detailedall.gz = _sm->sensors.sensors_raw.gz;
+
 					detailedall.mx = _sm->sensors.sensors_raw.mx;
 					detailedall.my = _sm->sensors.sensors_raw.my;
 					detailedall.mz = _sm->sensors.sensors_raw.mz;
-					
+
+					detailedall.gps_lat = _sm->sensors.sensors_raw.gps_lat;
+					detailedall.gps_long = _sm->sensors.sensors_raw.gps_long;
+					detailedall.gps_speed = _sm->sensors.sensors_raw.gps_speed;
+					detailedall.gps_alt = _sm->sensors.sensors_raw.gps_alt;
+
+					detailedall.baro_alt = _sm->sensors.sensors_raw.baro_alt;
+					detailedall.baro_temp = _sm->sensors.sensors_raw.baro_temp;
+					detailedall.baro_press = _sm->sensors.sensors_raw.baro_press;
+
+					detailedall.batt_volt = _sm->sensors.sensors_raw.batt_volt;
+					detailedall.batt_percent= _sm->sensors.sensors_raw.batt_percent;
 
 					detailedall.serialize(packet);
 

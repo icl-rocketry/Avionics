@@ -17,7 +17,10 @@ public:
     Storage();
 
     void setup();
-    void ls();
+
+    //file system funcitons
+    void ls(fs::FS &fs, const char *dirname, uint8_t levels);
+    
 
     void write();
     void read();
