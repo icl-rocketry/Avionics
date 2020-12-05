@@ -30,9 +30,8 @@ class NetworkManager:
 		self.plotter = Plotter()
 
 		self.run = True # Run flag
-		self._loop()
 
-	def _loop(self):
+	def loop(self):
 		while self.run:
 			header = Header(2, 0, 2, 0, source=4, destination=0) # source=4 for USB and destination=0 for rocket
 			cmd_packet = Command(header, 50, 0) # 50 for detailed all
@@ -79,3 +78,13 @@ class NetworkManager:
 
 	def _call_callbacks(self):
 		pass
+
+if __name__ == '__main__':
+	# Argument Parsing
+	ap = argparse.ArgumentParser()
+	ap.add_argument("-p", "--port", required=True, help="Port hosting ricardo", type=str)
+	args = vars(ap.parse_args())
+
+	nm = NetworkManager(args['port'])
+	nm.loop()
+
