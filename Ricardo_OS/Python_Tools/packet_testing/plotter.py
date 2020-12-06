@@ -39,17 +39,17 @@ class Plotter:
 		#line1, = ax.plot(x, y, 'r-') # Returns a tuple of line objects, thus the comma
 
 	def _time_series_append_packet(self, packet: DetailedAll, t: float):
-		self.time_series['ax'].extend(packet.ax)
-		self.time_series['ay'].extend(packet.ay)
-		self.time_series['az'].extend(packet.az)
+		self.time_series['ax'].extend(np.array(packet.ax))
+		self.time_series['ay'].extend(np.array(packet.ay))
+		self.time_series['az'].extend(np.array(packet.az))
 
-		self.time_series['mx'].extend(packet.mx)
-		self.time_series['my'].extend(packet.my)
-		self.time_series['mz'].extend(packet.mz)
+		self.time_series['mx'].extend(np.array(packet.mx))
+		self.time_series['my'].extend(np.array(packet.my))
+		self.time_series['mz'].extend(np.array(packet.mz))
 
-		self.time_series['gx'].extend(packet.gx)
-		self.time_series['gy'].extend(packet.gy)
-		self.time_series['gz'].extend(packet.gz)
+		self.time_series['gx'].extend(np.array(packet.gx))
+		self.time_series['gy'].extend(np.array(packet.gy))
+		self.time_series['gz'].extend(np.array(packet.gz))
 	
 	def _plot_lines(self):
 		plot_vars = ['ax', 'ay', 'az', 'mx', 'my', 'mz', 'gx', 'gy', 'gz']
