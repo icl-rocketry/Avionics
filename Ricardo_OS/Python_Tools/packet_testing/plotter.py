@@ -57,7 +57,7 @@ class Plotter:
 			self.lines = []
 		
 			for var in plot_vars:
-				line, _ = self.ax.plot(self.time_series['t'], self.time_series[var])
+				line = self.ax.plot(self.time_series['t'], self.time_series[var])
 				self.lines.append(line)
 		else:
 			for idx, var in enumerate(plot_vars):

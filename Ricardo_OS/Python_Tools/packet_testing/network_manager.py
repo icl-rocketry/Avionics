@@ -32,6 +32,7 @@ class NetworkManager:
 		self.run = True # Run flag
 
 	def loop(self):
+		t_prev = time.time_ns()
 		while self.run:
 			header = Header(2, 0, 2, 0, source=4, destination=0) # source=4 for USB and destination=0 for rocket
 			cmd_packet = Command(header, 50, 0) # 50 for detailed all
@@ -39,7 +40,10 @@ class NetworkManager:
 			self._send_packet(cmd_packet)
 			packet = self._read_next_packet()
 			
-			self.plotter.update(packet)
+			t = time.time_ns()
+			dt = t - t_prev
+			t_prev = t
+			self.plotter.update(packet, dt)
 			#self.db.add(packet)
 	
 	def _read_next_packet(self):
