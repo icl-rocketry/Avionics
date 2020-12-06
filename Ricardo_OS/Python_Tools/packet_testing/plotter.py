@@ -57,12 +57,12 @@ class Plotter:
 			self.lines = []
 		
 			for var in plot_vars:
-				line = self.ax.plot(self.time_series['t'], self.time_series[var])
+				line = self.ax.plot(self.time_series['t'].data, self.time_series[var].data)
 				self.lines.append(line)
 		else:
 			for idx, var in enumerate(plot_vars):
-				self.lines[idx].set_xdata(self.time_series['t'])
-				self.lines[idx].set_ydata(self.time_series[var])
+				self.lines[idx].set_xdata(self.time_series['t'].data)
+				self.lines[idx].set_ydata(self.time_series[var].data)
 
 	
 	def update(self, packet: DetailedAll, dt: float):
