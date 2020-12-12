@@ -1,7 +1,7 @@
 from packets import *
 import matplotlib.pyplot as plt
 import numpy as np
-
+import time
 
 class RingBuffer():
 	"A 1D ring buffer using numpy arrays"
@@ -23,22 +23,29 @@ class RingBuffer():
 class Plotter:
 
 	def __init__(self):
+		plt.style.use('bmh')
 		plt.ion()
-		self.rb_length = 100
+		self.rb_length = 50
 		self.t = 0
 		self.lines = None
+		self.iter = 0
 
 		self.time_series = {'t': RingBuffer(self.rb_length),
 							'ax': RingBuffer(self.rb_length),  'ay': RingBuffer(self.rb_length), 'az': RingBuffer(self.rb_length),
 							'mx': RingBuffer(self.rb_length),  'my': RingBuffer(self.rb_length), 'mz': RingBuffer(self.rb_length),
 							'gx': RingBuffer(self.rb_length),  'gy': RingBuffer(self.rb_length), 'gz': RingBuffer(self.rb_length),} # time series for all the different accels
 
-		self.fig = plt.figure()
+		self.fig = plt.figure(figsize=(12.8, 9.6))
 		self.ax = self.fig.add_subplot(111)
+		plt.show()
+		#a = input('')
 
 		#line1, = ax.plot(x, y, 'r-') # Returns a tuple of line objects, thus the comma
 
 	def _time_series_append_packet(self, packet: DetailedAll, t: float):
+
+		self.time_series['t'].extend(np.array(t))
+
 		self.time_series['ax'].extend(np.array(packet.ax))
 		self.time_series['ay'].extend(np.array(packet.ay))
 		self.time_series['az'].extend(np.array(packet.az))
@@ -57,19 +64,32 @@ class Plotter:
 			self.lines = []
 		
 			for var in plot_vars:
-				line = self.ax.plot(self.time_series['t'].data, self.time_series[var].data)
+				line, = self.ax.plot(self.time_series['t'].get(), self.time_series[var].get(), linewidth = 1, label=var)
+				self.ax.legend(loc='upper right')
+				self.ax.set_xlabel("Time (s)")
+				self.ax.grid()
 				self.lines.append(line)
 		else:
 			for idx, var in enumerate(plot_vars):
-				self.lines[idx].set_xdata(self.time_series['t'].data)
-				self.lines[idx].set_ydata(self.time_series[var].data)
+				self.lines[idx].set_xdata(self.time_series['t'].get())
+				self.lines[idx].set_ydata(self.time_series[var].get())
 
-	
+
 	def update(self, packet: DetailedAll, dt: float):
-		self.t += dt
+		self.t += dt*1E-9
 
 		self._time_series_append_packet(packet, self.t)
-		self._plot_lines()
 
-		self.fig.canvas.draw()
-		self.fig.canvas.flush_events()
+
+		if self.iter > self.rb_length:
+			self._plot_lines()
+			plt.pause(.01)
+			self.ax.relim()
+			self.ax.set_xlim(left=self.time_series["t"].get()[1], right=self.time_series["t"].get()[-1])
+			self.ax.autoscale_view()
+			#self.ax.grid()
+			self.fig.canvas.draw()
+			self.fig.canvas.flush_events()
+		else:
+			time.sleep(.001)
+		self.iter += 1
