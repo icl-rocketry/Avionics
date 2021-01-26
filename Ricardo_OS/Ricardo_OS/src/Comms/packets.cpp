@@ -9,19 +9,18 @@ PacketHeader::PacketHeader(uint8_t packet_type, uint32_t packet_size) : packet_l
 PacketHeader::PacketHeader(const uint8_t* data) {
 	int step = 0;
 	for (int i = 0; i < _header_size; ++i) {
-		const auto b = data[i];
+		const auto cur_byte = data[i];
 		switch (step) {
 		case 0:
-			if (data[i] != 0xAF) // Look for the start byte in data
+			if (data[i] != this->start_byte) // Look for the start byte in data
 			{
 				step = 0;
 				continue;
 			}
-			this->start_byte = b;
 			step++;
 			break;
 		case 1:
-			this->header_len = b;
+			this->header_len = cur_byte;
 			step++;
 			header_size_mismatch = (header_len != _header_size);
 			break;
@@ -40,23 +39,23 @@ PacketHeader::PacketHeader(const uint8_t* data) {
 			step++;
 			break;
 		case 4:
-			this->type = b;
+			this->type = cur_byte;
 			step++;
 			break;
 		case 5:
-			this->source = b;
+			this->source = cur_byte;
 			step++;
 			break;
 		case 6:
-			this->destination = b;
+			this->destination = cur_byte;
 			step++;
 			break;
 		case 7:
-			this->src_interface = b;
+			this->src_interface = cur_byte;
 			step++;
 			break;
 		case 8:
-			this->ttl = b;
+			this->ttl = cur_byte;
 			step++;
 			break;
 		}

@@ -18,6 +18,9 @@ might be actually worth implementing ttl in packets to prevent packets looping i
 
 */
 
+//TODO
+//convert to class
+
 struct RoutingTable{
     Interface gateway;
     uint8_t metric;

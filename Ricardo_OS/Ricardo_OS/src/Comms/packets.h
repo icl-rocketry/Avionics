@@ -24,6 +24,10 @@ enum class packet:uint8_t{
 
 class PacketHeader {
     friend class USB; //usb class needs to know the expected size of a header
+private:
+    //packet header 15 bytes
+    static const uint8_t _header_size = 15; // Change this variable to reflect the number of bytes in the header
+    
 public:
     PacketHeader();
     PacketHeader(uint8_t packet_type, uint32_t packet_size); // Initialise a packet
@@ -37,10 +41,6 @@ public:
 
     bool header_size_mismatch;
 
-private:
-    //packet header 15 bytes
-    static const uint8_t _header_size = 15; // Change this variable to reflect the number of bytes in the header
-public:
     //header packet defintion
     uint8_t start_byte = 0xAF; // Marks the begin of `Packet`
     uint8_t header_len = _header_size;//header len
