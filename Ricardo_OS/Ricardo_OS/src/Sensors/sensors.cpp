@@ -29,9 +29,37 @@ void Sensors::setup(){
     baro.setup();
     imu.setup();
     batt.setup();
-
     
 };
+
+void Sensors::callibrate(SENSOR sensor){
+    switch(sensor) {
+        case SENSOR::ACCEL:
+        {
+        
+        }
+        case SENSOR::MAG:
+        {
+        
+        }
+        case SENSOR::GYRO:
+        {
+        
+        }
+        case SENSOR::BARO:
+        {
+        
+        }
+        case SENSOR::GPS:
+        {
+        
+        }
+        case SENSOR::BATT:
+        {
+        
+        }
+    }
+}
 
 void Sensors::update(){
 //updates the raw_measuremets data structure with new measurements
