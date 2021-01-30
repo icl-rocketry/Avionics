@@ -16,18 +16,17 @@ class Storage{
 public:
     Storage();
 
-    void setup();
+    virtual void setup();
 
     //file system funcitons
     void ls(fs::FS &fs, const char *dirname, uint8_t levels);
+    void cd();
     
 
     void write();
     void read();
 
 private:
-     
-    fs::SDFS _flash;
 
 };
 

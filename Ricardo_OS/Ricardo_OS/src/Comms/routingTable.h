@@ -19,7 +19,8 @@ might be actually worth implementing ttl in packets to prevent packets looping i
 */
 
 //TODO
-//convert to class
+//convert to class maybe a json object type instead??
+
 
 struct RoutingTable{
     Interface gateway;
