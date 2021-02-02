@@ -7,12 +7,15 @@
 void StorageController::write(std::string path,std::string data,STORAGE_DEVICE device){
     switch(device){
         case(STORAGE_DEVICE::ALL):{
+
             break;
         }
         case(STORAGE_DEVICE::MICROSD):{
+
             break;
         }
         case(STORAGE_DEVICE::FLASH):{
+
             break;
         }
         default:{
