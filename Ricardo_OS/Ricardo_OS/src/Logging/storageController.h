@@ -30,10 +30,8 @@ class StorageController{
     private:
         stateMachine *_sm;//pointer to state machine
 
-        MicroSD microsd; // microsd card storage object
+        SdFat microsd; // microsd card storage object
         
-
-
         Adafruit_FlashTransport_SPI spi_flash;
         Adafruit_SPIFlash flash;// flash storage object
         SPIFlash_Device_t flash_config; //specific flash config
