@@ -1,8 +1,10 @@
 #include "logController.h"
 #include "config.h"
+#include "storageController.h"
 
 
-LogController::LogController()
+LogController::LogController(StorageController* storagecontroller):
+_storagecontroller(storagecontroller)
 {};
 
 void LogController::log(state_t estimator_state) {

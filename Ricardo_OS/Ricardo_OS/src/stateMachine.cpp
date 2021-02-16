@@ -6,14 +6,17 @@ Written by the Electronics team, Imperial College London Rocketry
 
 #include "stateMachine.h"
 
+
 stateMachine::stateMachine() : 
     vspi(VSPI),
     I2C(0),
     systemstatus(),
     sensors(this),
     estimator(this),
-    networkmanager(this)
-    
+    networkmanager(this),
+    storagecontroller(this),
+    logcontroller(&storagecontroller),
+    configcontroller(&storagecontroller)   
 {};
 
 

@@ -2,6 +2,10 @@
 
 #include <string>
 
+StorageController::StorageController(stateMachine* sm):
+_sm(sm)
+{};
+
 void StorageController::write(std::string path,std::string data,STORAGE_DEVICE device){
     switch(device){
         case(STORAGE_DEVICE::ALL):{

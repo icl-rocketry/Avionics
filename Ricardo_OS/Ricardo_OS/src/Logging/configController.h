@@ -2,13 +2,14 @@
 #define CONFIGCONTROLLER_H
 
 #include <string>
+#include "storageController.h"
 
 
 class ConfigController{
     public:
-        ConfigController(std::string filename);
+        ConfigController(StorageController *storagecontroller);
     private:
-
+        StorageController *_storagecontroller; //pointer to storage controller
 };
 
 #endif

@@ -4,9 +4,11 @@
 
 #include <SdFat.h>
 #include <Adafruit_SPIFlash.h>
-#include "stateMachine.h"
+
 #include <string>
 #include "flash_devices.h"//flash_device configuration defintion
+
+class stateMachine; //forward declaration to prevent ciruclar dependancy
 
 enum class STORAGE_DEVICE:uint8_t{
     ALL = 0, //all writes to all avalibale memory devices to backup

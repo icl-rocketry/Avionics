@@ -47,7 +47,9 @@ class stateMachine {
     
     NetworkManager networkmanager;
 
-    
+    StorageController storagecontroller;
+    LogController logcontroller;
+    ConfigController configcontroller;
 
 
 
