@@ -12,9 +12,15 @@ Written by the Electronics team, Imperial College London Rocketry
 #include "States/state.h"
 
 #include "Logging/systemstatus.h"
+
+#include "Logging/logController.h"
+#include "Logging/storageController.h"
+#include "Logging/configController.h"
+
 #include "Sensors/estimator.h"
 #include "Comms/networkManager.h"
 #include "Sensors/sensors.h"
+
 #include "SPI.h"
 #include "Wire.h"
 
@@ -40,6 +46,12 @@ class stateMachine {
     Estimator estimator;
     
     NetworkManager networkmanager;
+
+    
+
+
+
+    
     
     
 

@@ -8,6 +8,7 @@ handles all messages as a bitfield so multiple messages can be contained in a si
 
 #include "Arduino.h"
 #include "flags.h"
+#include <string>
 
 
 
@@ -15,7 +16,7 @@ class SystemStatus{
     public:
         SystemStatus();
         
-        void new_message(system_flag flag,String reason);
+        void new_message(system_flag flag,std::string reason);
         void new_message(system_flag flag);
         uint32_t get_string();
 

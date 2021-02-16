@@ -2,18 +2,20 @@
 #include <Arduino.h>
 #include "flags.h"
 
+#include <string>
+
 
 SystemStatus::SystemStatus():
 _status(0)
 {};
 
-void SystemStatus::new_message(system_flag flag,String reason){
+void SystemStatus::new_message(system_flag flag,std::string reason){
 
     _status |= static_cast<uint32_t>(flag);
     //detect debug mode
     if (flag_triggered(system_flag::STATE_USBMODE)){
         //Serial print reason and log it
-       Serial.println(reason);
+       Serial.println(reason.c_str());
     };
 
 };

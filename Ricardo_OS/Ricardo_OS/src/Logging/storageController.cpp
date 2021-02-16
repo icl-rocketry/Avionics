@@ -1,12 +1,13 @@
 #include "storageController.h"
 
-#include "microSD.h"
-#include "flash.h"
 #include <string>
 
 void StorageController::write(std::string path,std::string data,STORAGE_DEVICE device){
     switch(device){
         case(STORAGE_DEVICE::ALL):{
+            
+            write(path,data,STORAGE_DEVICE::MICROSD);
+            write(path,data,STORAGE_DEVICE::FLASH);
 
             break;
         }
@@ -15,6 +16,7 @@ void StorageController::write(std::string path,std::string data,STORAGE_DEVICE d
             break;
         }
         case(STORAGE_DEVICE::FLASH):{
+
 
             break;
         }
@@ -25,7 +27,7 @@ void StorageController::write(std::string path,std::string data,STORAGE_DEVICE d
     }
 }
 
-void StorageController::read(std::string path,STORAGE_DEVICE device)){
+void StorageController::read(std::string path,STORAGE_DEVICE device){
     switch(device){
         case(STORAGE_DEVICE::ALL):{
             //illegal option - do nothing

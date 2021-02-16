@@ -34,7 +34,6 @@ void stateMachine::update() {
 
   networkmanager.update();
 
-
   State* newStatePtr = _currStatePtr -> update();
 
   if (newStatePtr != _currStatePtr) {
