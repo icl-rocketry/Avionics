@@ -5,14 +5,27 @@
 #include "logframe.h"
 #include "Comms/packets.h"
 #include "storageController.h"
+#include <vector>
 
 class LogController{
     public:
         LogController(StorageController* storagecontroller);
 
-        void log(state_t estimator_state);
-        void log(raw_measurements_t raw_sensors);
-		void log(PacketHeader header);
+        //telemtry logging
+        void log(state_t &estimator_state);
+        void log(raw_measurements_t &raw_sensors);
+        //network logging
+		void log(PacketHeader &header);
+        //system logging
+        void log(std::string message);
+        void log(uint32_t flag,std::string reason);
+        void log(uint32_t flag);
+
+        //update the buffers
+        void update();
+
+        void write_to_file();
+
 
     private:
         StorageController* _storagecontroller; //pointer to storage controller
@@ -20,6 +33,13 @@ class LogController{
         telemetry_logframe telemetry_frame; //telemetry log frame object
         system_logframe system_frame;   //system log frame object
         network_logframe network_frame; //network log frame object
+        //log frame buffers to temporarily store log frames before writing to storage devices
+        std::vector<telemetry_logframe> telemetry_frame_buffer;
+        std::vector<system_logframe> system_frame_buffer;
+        std::vector<network_logframe> network_frame_buffer;
+        
+
+
         
 
 };
