@@ -4,7 +4,7 @@
 #include "stateMachine.h"
 #include "States/usbmode.h"
 #include "States/groundstation.h"
-#include "States/countdown.h"
+#include "States/launch.h"
 #include "States/flight.h"
 #include "States/recovery.h"
 
@@ -49,13 +49,13 @@ void CommandHandler::handleCommand(Command command) {
 	} else{
 		switch (command.type) {
 			case COMMANDS::Launch:
-				_sm->changeState(new Countdown(_sm));
+				_sm->changeState(new Launch(_sm));
 				break;
 			case COMMANDS::Reset:
 				_sm->changeState(new Preflight(_sm));
 				break;
 			case COMMANDS::Abort:
-				if(_sm->systemstatus.flag_triggered(system_flag::STATE_COUNTDOWN)){
+				if(_sm->systemstatus.flag_triggered(system_flag::STATE_LAUNCH)){
 					//check if we are in no abort time region
 					//close all valves
 					_sm->changeState(new Preflight(_sm));
@@ -154,7 +154,7 @@ void CommandHandler::handleCommand(Command command) {
 				_sm->changeState(new Groundstation(_sm));
 				break;
 			case COMMANDS::Enter_Countdown:
-				_sm->changeState(new Countdown(_sm));
+				_sm->changeState(new Launch(_sm));
 				break;
 			case COMMANDS::Enter_Flight:
 				_sm->changeState(new Flight(_sm));
@@ -205,7 +205,7 @@ bool CommandHandler::commandAvaliable(Command command) {
 		case COMMANDS::Pyro_info:
     		return true; // all states
 		case COMMANDS::Abort:
-			return _sm->systemstatus.flag_triggered(system_flag::STATE_COUNTDOWN) 
+			return _sm->systemstatus.flag_triggered(system_flag::STATE_LAUNCH) 
 			|| _sm->systemstatus.flag_triggered(system_flag::STATE_FLIGHT);
 		case COMMANDS::Enter_Countdown:
 		case COMMANDS::Enter_Flight:

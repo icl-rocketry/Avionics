@@ -29,7 +29,7 @@ class USB: public Iface{
         bool _incompletePacketReceived;
         uint8_t _firstByte;
 
-        //byte array to store first 8 bytes of incoming packet for decoding
+        //byte array to store first bytes of incoming packet for decoding
         uint8_t _tmp_packet_data[PacketHeader::_header_size];
         //pointer to packet header object
         //PacketHeader* _packetHeader_ptr = nullptr;

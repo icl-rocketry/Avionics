@@ -34,10 +34,10 @@ class StorageController{
 
         SdFat microsd; // microsd card storage object
         
-        Adafruit_FlashTransport_SPI spi_flash;
-        Adafruit_SPIFlash flash;// flash storage object
-        SPIFlash_Device_t flash_config; //specific flash config
-        FatFileSystem flash_fatfs;//flash filesystem
+        //Adafruit_FlashTransport_SPI spi_flash;
+        //Adafruit_SPIFlash flash;// flash storage object
+        //SPIFlash_Device_t flash_config; //specific flash config
+        //FatFileSystem flash_fatfs;//flash filesystem
 
         
         

@@ -10,7 +10,7 @@ Written by the Electronics team, Imperial College London Rocketry
 stateMachine::stateMachine() : 
     vspi(VSPI),
     I2C(0),
-    systemstatus(),
+    systemstatus(this),
     sensors(this),
     estimator(this),
     networkmanager(this),

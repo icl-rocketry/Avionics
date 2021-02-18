@@ -5,7 +5,7 @@ enum class system_flag:uint32_t{
     //state flags
     STATE_USBMODE = (1 << 0), 
     STATE_PREFLIGHT = (1 << 1),
-    STATE_COUNTDOWN = (1 << 2),
+    STATE_LAUNCH = (1 << 2),
     STATE_FLIGHT = (1 << 3),
     STATE_RECOVERY = (1 << 4),
     STATE_SETUP = (1 << 5),

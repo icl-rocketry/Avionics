@@ -1,22 +1,20 @@
 #include "systemstatus.h"
 #include <Arduino.h>
 #include "flags.h"
+#include "stateMachine.h"
 
 #include <string>
 
 
-SystemStatus::SystemStatus():
+SystemStatus::SystemStatus(stateMachine* sm):
+_sm(sm),
 _status(0)
 {};
 
-void SystemStatus::new_message(system_flag flag,std::string reason){
+void SystemStatus::new_message(system_flag flag,std::string info){
 
     _status |= static_cast<uint32_t>(flag);
-    //detect debug mode
-    if (flag_triggered(system_flag::STATE_USBMODE)){
-        //Serial print reason and log it
-       Serial.println(reason.c_str());
-    };
+    _sm->logcontroller.log(_status,static_cast<uint32_t>(flag),info);
 
 };
 
@@ -26,12 +24,22 @@ uint32_t SystemStatus::get_string(){
 
 void SystemStatus::new_message(system_flag flag){
     _status |= static_cast<uint32_t>(flag);
+    _sm->logcontroller.log(_status,static_cast<uint32_t>(flag),"flag raised");
 };
 
 
 void SystemStatus::delete_message(system_flag flag){
     _status &= ~static_cast<uint32_t>(flag);
+    _sm->logcontroller.log(_status,static_cast<uint32_t>(flag),"flag removed");
 };
+
+void SystemStatus::delete_message(system_flag flag,std::string info){
+
+    _status &= ~static_cast<uint32_t>(flag);
+    _sm->logcontroller.log(_status,static_cast<uint32_t>(flag),info);
+
+};
+
 
 bool SystemStatus::flag_triggered(system_flag flag){
     return (_status & static_cast<uint32_t>(flag));
