@@ -4,7 +4,7 @@
 //logframes
 class logframe{
     //serialize method
-    //virtual std::string serialize(); //purley virtaul seralize method
+    virtual std::string serialize(); //purley virtaul seralize method
 
 };
 
