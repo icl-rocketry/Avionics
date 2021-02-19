@@ -52,6 +52,9 @@ class NetworkManager{
     private:
         stateMachine* _sm; //pointer to state machine
 
+        RoutingTable routingtable; // routing table for networking -> maybe move to protected so an be acsesed eaiser??
+        
+
 
         std::vector<std::shared_ptr<uint8_t>> _global_packet_buffer; //packet buffer containing all network packets received
         std::vector<std::shared_ptr<uint8_t>> _local_packet_buffer; //packet buffer containing packets meant for this node
