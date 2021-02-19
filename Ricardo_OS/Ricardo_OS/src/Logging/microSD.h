@@ -8,6 +8,7 @@
 class MicroSD: public Storage {
 
 	public:
+		MicroSD();
 		void deleteFile(const std::string path);
 		void renameFile(const std::string path1, const std::string path2);
 		void appendFile(const std::string path, const std::string msg);

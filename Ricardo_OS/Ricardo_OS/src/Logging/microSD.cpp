@@ -2,7 +2,7 @@
 #include "SD.h"
 
 
-void MicroSD::MicroSD() {
+MicroSD::MicroSD() {
 	if(!SD.begin()) {
 		// Card not mounted, handle this error
 	}
