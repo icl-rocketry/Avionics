@@ -1,1 +1,1 @@
-# Firmware for Ricardo
+# Software for Ricardo
