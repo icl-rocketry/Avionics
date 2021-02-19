@@ -18,7 +18,7 @@
 
 NetworkManager::NetworkManager(stateMachine* sm):
     _sm(sm),
-    routingtable(2,5),
+    routingtable(2,5),//preallocate size
     usbserial(&Serial,&(sm->systemstatus)),
     radio(&(sm->vspi),&(sm->systemstatus)),
     commandhandler(sm)
