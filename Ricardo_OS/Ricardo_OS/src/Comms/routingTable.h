@@ -4,6 +4,7 @@
 #include "nodes.h"
 #include <vector>
 #include <iostream>
+#include <iomanip>
 
 /*currently static routing tables created for ease but could be rewritten to be dynamic later on
 format of routing table
@@ -66,6 +67,17 @@ class RoutingTable{
             _table.push_back(new_row);
         }
 
+        friend std::ostream &operator<<(std::ostream &os, const RoutingTable &rt){
+            for (int i = 0; i < rt._table.size();i++){
+                os << "Node: " << i << " |";
+                std::vector<RoutingTableEntry> entries = rt._table.at(i);
+                for (int j = 0; j< entries.size(); j++){
+                    os << "destination: " << j << " gateway: " << static_cast<uint8_t>(entries.at(j).gateway) << " metric: " << static_cast<uint8_t>(entries.at(j).metric) << " |";
+                }
+                os << "\n";
+            }
+            return os;
+        };
         
 
         template<typename T> bool push_entry(T source_node,RoutingTableEntry new_entry){
