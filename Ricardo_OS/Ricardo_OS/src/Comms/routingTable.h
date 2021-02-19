@@ -89,11 +89,19 @@ class RoutingTable{
             }
         }
 
-        template<typename T> std::vector<RoutingTableEntry> operator()(T source_idx){
+        template<typename T> std::vector<RoutingTableEntry>& operator()(T source_idx) {
+            return _table.at(static_cast<uint8_t>(source_idx));
+        };
+        template<typename T> std::vector<RoutingTableEntry> operator()(T source_idx) const{
             return _table.at(static_cast<uint8_t>(source_idx));
         };
 
-        template<typename T> RoutingTableEntry operator()(T source_idx, T destination_idx){
+        template<typename T> RoutingTableEntry& operator()(T source_idx, T destination_idx) {
+            std::vector<RoutingTableEntry> entries = _table.at(static_cast<uint8_t>(source_idx));
+            return entries.at(static_cast<uint8_t>(destination_idx));
+        };
+
+        template<typename T> RoutingTableEntry operator()(T source_idx, T destination_idx) const{
             std::vector<RoutingTableEntry> entries = _table.at(static_cast<uint8_t>(source_idx));
             return entries.at(static_cast<uint8_t>(destination_idx));
         };
