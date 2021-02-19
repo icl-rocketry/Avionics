@@ -67,7 +67,7 @@ class RoutingTable{
             _table.push_back(new_row);
         }
 
-        friend std::ostream &operator<<(std::ostream &os, const RoutingTable &rt){
+        friend std::ostream &operator<<(std::ostream &os, const RoutingTable &rt){//pretty printing
             for (int i = 0; i < rt._table.size();i++){
                 os << "Node: " << i << " |";
                 std::vector<RoutingTableEntry> entries = rt._table.at(i);
