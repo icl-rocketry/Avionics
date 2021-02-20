@@ -4,8 +4,21 @@
 #include <string>
 
 StorageController::StorageController(stateMachine* sm):
-_sm(sm)
+_sm(sm),
+microsd(&(sm->vspi)),
+flashTransport(FlashCs,&(sm->vspi)),
+flash(&flashTransport)
 {};
+
+StorageController::setup(){
+
+    if(!flash.begin(&flash_config))){
+
+    }
+    if(!flash_fatfs.begin())
+
+};
+
 
 void StorageController::write(std::string path,std::string data,STORAGE_DEVICE device){
     switch(device){
