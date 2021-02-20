@@ -1,6 +1,6 @@
 #include "storageController.h"
 #include "stateMachine.h"
-
+#include "config.h"
 #include <string>
 
 StorageController::StorageController(stateMachine* sm):
@@ -12,10 +12,13 @@ flash(&flashTransport)
 
 StorageController::setup(){
 
-    if(!flash.begin(&flash_config))){
+
+    if(!flash.begin(&flash_config)){
 
     }
-    if(!flash_fatfs.begin())
+    if(!flash_fatfs.begin(&flash)){
+
+    }
 
 };
 
