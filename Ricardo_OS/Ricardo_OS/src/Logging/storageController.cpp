@@ -1,6 +1,6 @@
 #include "storageController.h"
 #include "stateMachine.h"
-#include "config.h"
+#include "ricardo_pins.h"
 #include <string>
 
 StorageController::StorageController(stateMachine* sm):
@@ -10,7 +10,7 @@ flashTransport(FlashCs,&(sm->vspi)),
 flash(&flashTransport)
 {};
 
-StorageController::setup(){
+bool StorageController::setup(){
 
 
     if(!flash.begin(&flash_config)){
