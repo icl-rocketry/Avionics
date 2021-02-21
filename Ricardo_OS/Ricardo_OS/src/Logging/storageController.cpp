@@ -2,6 +2,7 @@
 #include "stateMachine.h"
 #include "ricardo_pins.h"
 #include <string>
+#include <SPI.h>
 
 StorageController::StorageController(stateMachine* sm):
 _sm(sm),
@@ -12,6 +13,9 @@ flash(&flashTransport)
 
 bool StorageController::setup(){
 
+    if(!microsd.begin(SdCs, SD_SCK_MHZ(20))){
+        
+    }
 
     if(!flash.begin(&flash_config)){
 
@@ -19,6 +23,8 @@ bool StorageController::setup(){
     if(!flash_fatfs.begin(&flash)){
 
     }
+
+    
 
 };
 
