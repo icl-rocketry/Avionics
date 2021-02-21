@@ -4,12 +4,12 @@
 #include "Comms/packets.h"
 
 
-stateMachine statemach;
+stateMachine statemachine;
 
 void setup() {
-  statemach.initialise(new Setup(&statemach)); //intialize statemachine with setup state to run all necessary setup tasks.
+  statemachine.initialise(new Setup(&statemachine)); //intialize statemachine with setup state to run all necessary setup tasks.
 }
 void loop() {
-  statemach.update();
+  statemachine.update();
   
 }

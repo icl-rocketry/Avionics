@@ -6,23 +6,11 @@
 #include <iostream>
 #include <iomanip>
 
-/*currently static routing tables created for ease but could be rewritten to be dynamic later on
-format of routing table
-routingtable[Current node][Destination Node]= { Gateway , Metric }
-
-WARNING: IF YOU EDIT THIS TABLE PLEASE MAKE SURE YOU GET IT CORRECT
-IF YOU DONT YOU MAY MAKE PACKETS CYCLE THE NETWORK CONTINOUSLY NOT DOING
-ANYTHING USEFUL....
-
-MAKE SURE YOU GET THE LOOPBACK INTERFACE CORRECT WORSE THINGS COULD HAPPEN LIKE
-REFERECNING A DELETED POINTER... NOT GOOD
-
-might be actually worth implementing ttl in packets to prevent packets looping infitley
+/*
+routing table class implementation using nested vectors with ability to modify during runtime. Also has nice printing.
 
 */
 
-//TODO
-//convert to class maybe a json object type instead??
 
 
 struct RoutingTableEntry{
