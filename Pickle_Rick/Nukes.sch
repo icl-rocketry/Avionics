@@ -111,19 +111,6 @@ $EndComp
 Connection ~ 8600 4150
 Wire Wire Line
 	8600 4150 8600 4200
-$Comp
-L Isolator:LTV-817S U?
-U 1 1 5DE04B23
-P 9450 4700
-AR Path="/5DDE6CFA/5DE04B23" Ref="U?"  Part="1" 
-AR Path="/5DDE1103/5DE04B23" Ref="U10"  Part="1" 
-F 0 "U10" H 9450 5025 50  0000 C CNN
-F 1 "LTV-817S" H 9450 4934 50  0000 C CNN
-F 2 "Package_DIP:SMDIP-4_W9.53mm" H 9450 4400 50  0001 C CNN
-F 3 "http://www.us.liteon.com/downloads/LTV-817-827-847.PDF" H 9100 5000 50  0001 C CNN
-	1    9450 4700
-	-1   0    0    -1  
-$EndComp
 Wire Wire Line
 	9750 4150 9750 4600
 Wire Wire Line
@@ -335,19 +322,6 @@ $EndComp
 Connection ~ 4350 4300
 Wire Wire Line
 	4350 4300 4350 4350
-$Comp
-L Isolator:LTV-817S U?
-U 1 1 5DE32360
-P 5200 4850
-AR Path="/5DDE6CFA/5DE32360" Ref="U?"  Part="1" 
-AR Path="/5DDE1103/5DE32360" Ref="U9"  Part="1" 
-F 0 "U9" H 5200 5175 50  0000 C CNN
-F 1 "LTV-817S" H 5200 5084 50  0000 C CNN
-F 2 "Package_DIP:SMDIP-4_W9.53mm" H 5200 4550 50  0001 C CNN
-F 3 "http://www.us.liteon.com/downloads/LTV-817-827-847.PDF" H 4850 5150 50  0001 C CNN
-	1    5200 4850
-	-1   0    0    -1  
-$EndComp
 Wire Wire Line
 	5500 4300 5500 4750
 Wire Wire Line
@@ -550,4 +524,26 @@ Wire Wire Line
 	4000 3850 4000 4150
 Wire Wire Line
 	5450 2600 6350 2600
+$Comp
+L Isolator:LTV-354T U?
+U 1 1 603DC15B
+P 5200 4850
+F 0 "U?" H 5200 5175 50  0000 C CNN
+F 1 "LTV-354T" H 5200 5084 50  0000 C CNN
+F 2 "Package_SO:SO-4_4.4x3.6mm_P2.54mm" H 5000 4650 50  0001 L CIN
+F 3 "http://optoelectronics.liteon.com/upload/download/DS70-2001-004/S_110_LTV-354T%2020140520.pdf" H 5225 4850 50  0001 L CNN
+	1    5200 4850
+	1    0    0    -1  
+$EndComp
+$Comp
+L Isolator:LTV-354T U?
+U 1 1 603EA371
+P 9450 4700
+F 0 "U?" H 9450 5025 50  0000 C CNN
+F 1 "LTV-354T" H 9450 4934 50  0000 C CNN
+F 2 "Package_SO:SO-4_4.4x3.6mm_P2.54mm" H 9250 4500 50  0001 L CIN
+F 3 "http://optoelectronics.liteon.com/upload/download/DS70-2001-004/S_110_LTV-354T%2020140520.pdf" H 9475 4700 50  0001 L CNN
+	1    9450 4700
+	1    0    0    -1  
+$EndComp
 $EndSCHEMATC

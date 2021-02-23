@@ -2093,14 +2093,14 @@ F 3 "" H 1800 2750 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Sheet
-S 1050 3800 550  800 
+S 850  3800 750  750 
 U 602F075A
 F0 "usb-c" 50
 F1 "usb-c.sch" 50
 F2 "usb_D+" I R 1600 4100 50 
 F3 "usb_D-" I R 1600 4250 50 
-F4 "usb_ID" I R 1600 4400 50 
-F5 "usb_VBUS" I R 1600 3950 50 
+F4 "usb_VBUS" I R 1600 3950 50 
+F5 "usb_DETONATOR" I R 1600 4400 50 
 $EndSheet
 Wire Wire Line
 	1600 4400 2050 4400
