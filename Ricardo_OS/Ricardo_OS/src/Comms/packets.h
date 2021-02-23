@@ -3,6 +3,8 @@
 #ifndef PACKETS_H
 #define PACKETS_H
 #include <Arduino.h>
+#include <vector>
+#include "Logging/iterablevar.h"
 
 enum class packet:uint8_t{
     TELEMETRY = 1,
@@ -70,7 +72,17 @@ public:
     */ 
 
    
-
+    std::vector<iterVar_base*> member_variables{
+        &iterVar<uint8_t>{&start_byte},
+        &iterVar<uint8_t>{&header_len},
+        &iterVar<uint32_t>{&packet_len},
+        &iterVar<uint32_t>{&system_time},
+        &iterVar<uint8_t>{&type},
+        &iterVar<uint8_t>{&source},
+        &iterVar<uint8_t>{&destination},
+        &iterVar<uint8_t>{&src_interface},
+        &iterVar<uint8_t>{&ttl}
+    };
 
 
 };

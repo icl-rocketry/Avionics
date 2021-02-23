@@ -7,10 +7,19 @@
 #include "tostring.h"
 
 
+class iterVar_base{
+    public:     
+        virtual std::string stringify() = 0;
+        virtual std::vector<uint8_t> serialize() = 0;
+        virtual void serialize_to_buffer(std::vector<uint8_t> &buf) = 0;
+        virtual void deserialize(const uint8_t* data) = 0;
+};
+
 template<typename T>
-class iterVar{
+class iterVar:public iterVar_base{
     public:
-        iterVar(T* var):_ptr(var)
+        iterVar(T* var):
+        _ptr(var)
         {};
 
         std::string stringify(){
@@ -34,7 +43,7 @@ class iterVar{
         T* _ptr;
         size_t size = sizeof(T);
 
-}
+};
 
 // F for your deleted code
 
