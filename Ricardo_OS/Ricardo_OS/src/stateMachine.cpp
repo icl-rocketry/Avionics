@@ -13,10 +13,10 @@ stateMachine::stateMachine() :
     systemstatus(this),
     sensors(this),
     estimator(this),
-    networkmanager(this),
+    networkmanager(this)/*,
     storagecontroller(this),
     logcontroller(&storagecontroller),
-    configcontroller(&storagecontroller)   
+    configcontroller(&storagecontroller)   */
 {};
 
 

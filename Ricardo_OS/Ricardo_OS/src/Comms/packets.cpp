@@ -7,8 +7,17 @@ PacketHeader::~PacketHeader() {}
 PacketHeader::PacketHeader(uint8_t packet_type, uint32_t packet_size) : packet_len{packet_size}, type{packet_type} {}
 
 PacketHeader::PacketHeader(const uint8_t* data) {
+	int idx = 0;
+	for (int i = 0; i<member_variables.size();i++){
+		member_variables[i]->deserialize(data + idx);
+		idx += member_variables[i]->type_size();
+	}
+
+	/*
 	int step = 0;
 	for (int i = 0; i < _header_size; ++i) {
+		
+
 		const auto cur_byte = data[i];
 		switch (step) {
 		case 0:
@@ -59,11 +68,16 @@ PacketHeader::PacketHeader(const uint8_t* data) {
 			step++;
 			break;
 		}
-	}
+	}*/
 }
 
 void PacketHeader::serialize(std::vector<uint8_t>& buf) {
+	system_time = static_cast<uint32_t>(millis()); // set systemtime to time at serialization of packet
+	for (int i = 0; i<member_variables.size();i++){
+		member_variables[i]->serialize_to_buffer(buf);
+	};
 
+/*
     buf.push_back(start_byte);
 	buf.push_back(header_len);
 	Packet::serialize_uint32_t(packet_len, buf);
@@ -74,7 +88,7 @@ void PacketHeader::serialize(std::vector<uint8_t>& buf) {
 	buf.push_back(destination);	
 	buf.push_back(src_interface);
 	buf.push_back(ttl);
-
+*/
 }
 
 

@@ -13,6 +13,7 @@ class iterVar_base{
         virtual std::vector<uint8_t> serialize() = 0;
         virtual void serialize_to_buffer(std::vector<uint8_t> &buf) = 0;
         virtual void deserialize(const uint8_t* data) = 0;
+        virtual size_t type_size() = 0;
 };
 
 template<typename T>
@@ -28,7 +29,7 @@ class iterVar:public iterVar_base{
         std::vector<uint8_t> serialize(){//serialization of variable
             std::vector<uint8_t> bytearray(size);//intialize byte array
             memcpy(bytearray.data(), _ptr,size);//copy bytes from variable to byte array
-            return bytearray
+            return bytearray;
         }
         void serialize_to_buffer(std::vector<uint8_t> &buf){
             std::vector<uint8_t> bytearray = this->serialize();
@@ -38,6 +39,9 @@ class iterVar:public iterVar_base{
         }
         void deserialize(const uint8_t* data){
             memcpy(_ptr,data,size);//copy size bytes from data buffer to pointer
+        }
+        size_t type_size(){
+            return size;
         }
     private:
         T* _ptr;

@@ -29,7 +29,7 @@ class PacketHeader {
 private:
     //packet header 15 bytes
     static const uint8_t _header_size = 15; // Change this variable to reflect the number of bytes in the header
-    
+
 public:
     PacketHeader();
     PacketHeader(uint8_t packet_type, uint32_t packet_size); // Initialise a packet
@@ -70,20 +70,27 @@ public:
     /*
     Add new variables after here so nothing gets messed up...
     */ 
+private:
+    iterVar<uint8_t> start_byte_iter{&start_byte};
+    iterVar<uint8_t> header_len_iter{&header_len};
+    iterVar<uint32_t> packet_len_iter{&packet_len};
+    iterVar<uint32_t> system_time_iter{&system_time};
+    iterVar<uint8_t> type_iter{&type};
+    iterVar<uint8_t> source_iter{&source};
+    iterVar<uint8_t> destination_iter{&destination};
+    iterVar<uint8_t> src_interface_iter{&src_interface};
+    iterVar<uint8_t> ttl_iter{&ttl};
 
-   
-    std::vector<iterVar_base*> member_variables{
-        &iterVar<uint8_t>{&start_byte},
-        &iterVar<uint8_t>{&header_len},
-        &iterVar<uint32_t>{&packet_len},
-        &iterVar<uint32_t>{&system_time},
-        &iterVar<uint8_t>{&type},
-        &iterVar<uint8_t>{&source},
-        &iterVar<uint8_t>{&destination},
-        &iterVar<uint8_t>{&src_interface},
-        &iterVar<uint8_t>{&ttl}
-    };
-
+   std::vector<iterVar_base*> member_variables{
+       &start_byte_iter,
+       &header_len_iter,
+       &packet_len_iter,
+       &system_time_iter,
+       &type_iter,
+       &source_iter,
+       &destination_iter,
+       &src_interface_iter,
+       &ttl_iter};
 
 };
 
