@@ -7,6 +7,7 @@ PacketHeader::~PacketHeader() {}
 PacketHeader::PacketHeader(uint8_t packet_type, uint32_t packet_size) : packet_len{packet_size}, type{packet_type} {}
 
 PacketHeader::PacketHeader(const uint8_t* data) {
+	//check size of data input  so make sure header is the correct size
 	int idx = 0;
 	for (int i = 0; i<member_variables.size();i++){
 		member_variables[i]->deserialize(data + idx);
@@ -74,7 +75,7 @@ PacketHeader::PacketHeader(const uint8_t* data) {
 void PacketHeader::serialize(std::vector<uint8_t>& buf) {
 	system_time = static_cast<uint32_t>(millis()); // set systemtime to time at serialization of packet
 	for (int i = 0; i<member_variables.size();i++){
-		member_variables[i]->serialize_to_buffer(buf);
+		member_variables[i]->serialize(buf);
 	};
 
 /*
