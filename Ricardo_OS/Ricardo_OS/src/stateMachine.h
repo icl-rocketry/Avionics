@@ -46,11 +46,11 @@ class stateMachine {
     Estimator estimator;
     
     NetworkManager networkmanager;
-/*
+
     StorageController storagecontroller;
     LogController logcontroller;
     ConfigController configcontroller;
-*/
+
 
 
     
