@@ -1,5 +1,6 @@
 #include "commandHandler.h"
 
+#include <vector>
 
 #include "stateMachine.h"
 #include "States/usbmode.h"

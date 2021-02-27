@@ -8,11 +8,7 @@ PacketHeader::PacketHeader(uint8_t packet_type, uint32_t packet_size) : packet_l
 
 PacketHeader::PacketHeader(const uint8_t* data) {
 	//check size of data input  so make sure header is the correct size
-	int idx = 0;
-	for (int i = 0; i<member_variables.size();i++){
-		member_variables[i]->deserialize(data + idx);
-		idx += member_variables[i]->type_size();
-	}
+	getSerialiser().deserialise(this, buffer);
 
 	/*
 	int step = 0;
