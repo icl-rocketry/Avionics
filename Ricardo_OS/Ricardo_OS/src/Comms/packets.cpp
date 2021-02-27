@@ -67,13 +67,13 @@ PacketHeader::PacketHeader(const uint8_t* data) {
 		}
 	}*/
 }
-
+/*
 void PacketHeader::serialize(std::vector<uint8_t>& buf) {
 	system_time = static_cast<uint32_t>(millis()); // set systemtime to time at serialization of packet
 	for (int i = 0; i<member_variables.size();i++){
 		member_variables[i]->serialize(buf);
 	};
-
+*/
 /*
     buf.push_back(start_byte);
 	buf.push_back(header_len);
@@ -86,7 +86,7 @@ void PacketHeader::serialize(std::vector<uint8_t>& buf) {
 	buf.push_back(src_interface);
 	buf.push_back(ttl);
 */
-}
+//}
 
 
 void TelemetryPacket::serialize(std::vector<uint8_t>& buf) {
