@@ -7,86 +7,21 @@ PacketHeader::~PacketHeader() {}
 PacketHeader::PacketHeader(uint8_t packet_type, uint32_t packet_size) : packet_len{packet_size}, type{packet_type} {}
 
 PacketHeader::PacketHeader(const uint8_t* data) {
-	//check size of data input  so make sure header is the correct size
-	getSerialiser().deserialise(this, buffer);
-
-	/*
-	int step = 0;
-	for (int i = 0; i < _header_size; ++i) {
-		
-
-		const auto cur_byte = data[i];
-		switch (step) {
-		case 0:
-			if (data[i] != this->start_byte) // Look for the start byte in data
-			{
-				step = 0;
-				continue;
-			}
-			step++;
-			break;
-		case 1:
-			this->header_len = cur_byte;
-			step++;
-			header_size_mismatch = (header_len != _header_size);
-			break;
-		case 2:
-			for (int j = sizeof(packet_len) - 1; j >= 0; j--) {
-				this->packet_len |= data[i + j] << j*8;
-			}
-			i+=sizeof(packet_len) - 1; // We've read sizeof(packet_len) bytes
-			step++;
-			break;
-		case 3:
-			for (int j = sizeof(system_time) - 1; j >= 0; j--) {
-				this->system_time |= data[i + j] << j*8;
-			}
-			i+=sizeof(system_time) - 1; // We've read sizeof(packet_len) bytes
-			step++;
-			break;
-		case 4:
-			this->type = cur_byte;
-			step++;
-			break;
-		case 5:
-			this->source = cur_byte;
-			step++;
-			break;
-		case 6:
-			this->destination = cur_byte;
-			step++;
-			break;
-		case 7:
-			this->src_interface = cur_byte;
-			step++;
-			break;
-		case 8:
-			this->ttl = cur_byte;
-			step++;
-			break;
-		}
-	}*/
+	//initalize vector from c array 
+	std::vector<uint8_t> buffer(data,data + _header_size);
+	getSerializer().deserialize(*this, buffer);
 }
-/*
-void PacketHeader::serialize(std::vector<uint8_t>& buf) {
-	system_time = static_cast<uint32_t>(millis()); // set systemtime to time at serialization of packet
-	for (int i = 0; i<member_variables.size();i++){
-		member_variables[i]->serialize(buf);
-	};
-*/
-/*
-    buf.push_back(start_byte);
-	buf.push_back(header_len);
-	Packet::serialize_uint32_t(packet_len, buf);
-	system_time = static_cast<uint32_t>(millis()); // set systemtime to time at serialization of packet
-	Packet::serialize_uint32_t(system_time, buf);
-	buf.push_back(type);
-    buf.push_back(source);
-	buf.push_back(destination);	
-	buf.push_back(src_interface);
-	buf.push_back(ttl);
-*/
-//}
+
+void PacketHeader::serialize(std::vector<uint8_t>& buf) const{
+	std::vector<uint8_t> serialized_data = getSerializer().serialize(*this);
+	size_t bufsize = buf.size();
+	buf.resize(buf.size() + serialized_data.size());
+	memcpy(buf.data() + bufsize,serialized_data.data(),serialized_data.size()); 
+};
+
+std::vector<uint8_t> PacketHeader::serialize() const{
+	return getSerializer().serialize(*this);
+};
 
 
 void TelemetryPacket::serialize(std::vector<uint8_t>& buf) {

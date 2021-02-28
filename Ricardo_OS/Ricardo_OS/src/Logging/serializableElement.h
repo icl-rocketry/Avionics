@@ -10,28 +10,28 @@
 
 
 template <class C, class T>
-class serialisableElement
+class serializableElement
 {
     static constexpr size_t size = sizeof(T);
     T C::* ptr; // member variable pointer to provide instance to pointer - https://riptutorial.com/cplusplus/example/6997/pointers-to-member-variables
     // allows classes to be static and allows pointers to class members to be defined at compile time
 
 public:
-    constexpr serialisableElement(T C::* elem) : ptr(elem) {} // constructor
+    constexpr serializableElement(T C::* elem) : ptr(elem) {} // constructor
 
     void stringify(const C& owner, std::stringstream &buffer) const 
     {
         buffer << owner.*ptr << ',';
     }
 
-    void serialise(const C& owner, std::vector<uint8_t>& buffer) const
+    void serialize(const C& owner, std::vector<uint8_t>& buffer) const
     {
         const size_t bufSize = buffer.size();
         buffer.resize(bufSize + size);
         memcpy(buffer.data() + bufSize, &(owner.*ptr), size);
     }
 
-    size_t deserialise(C& owner, const std::vector<uint8_t>& buffer, size_t offset) const
+    size_t deserialize(C& owner, const std::vector<uint8_t>& buffer, size_t offset) const
     {
         assert(offset + size <= buffer.size()); //dump packet instead?
         memcpy(&(owner.*ptr), buffer.data() + offset, size);
@@ -41,9 +41,9 @@ public:
 };
 
 template <class C, class... T> // variadic template
-class serialiser
+class serializer
 {
-    std::tuple<serialisableElement<C, T>...> elements;
+    std::tuple<serializableElement<C, T>...> elements;
 
     static constexpr size_t member_size()
     {
@@ -51,20 +51,20 @@ class serialiser
     }
 
     template <size_t I>
-    void deserialise_impl(C& owner, const std::vector<uint8_t>& buffer, size_t pos) const
+    void deserialize_impl(C& owner, const std::vector<uint8_t>& buffer, size_t pos) const
     {
         if constexpr (I < sizeof...(T)) // sizeof...(T) gives the number of elements in the pack expression
         {
-            auto element_size = std::get<I>(elements).deserialise(owner, buffer, pos); // gets the I'th element from elements tuple and calls deserialise
-            deserialise_impl<I + 1>(owner, buffer, pos + element_size); // recursion, increment I to process next element
+            auto element_size = std::get<I>(elements).deserialize(owner, buffer, pos); // gets the I'th element from elements tuple and calls deserialize
+            deserialize_impl<I + 1>(owner, buffer, pos + element_size); // recursion, increment I to process next element
         }
     }
 
 public:
-    // Constructor, creates serialisable element for all the member variable pointers
-    constexpr serialiser(T C::* ...ptrs) : elements(std::make_tuple(serialisableElement(ptrs)...)) {} 
+    // Constructor, creates serializable element for all the member variable pointers
+    constexpr serializer(T C::* ...ptrs) : elements(std::make_tuple(serializableElement(ptrs)...)) {} 
 
-    std::vector<uint8_t> serialise(const C& owner) const
+    std::vector<uint8_t> serialize(const C& owner) const
     {
         std::vector<uint8_t> ret; // buffer of serialized objects
         ret.reserve(member_size()); // allocate memory but dont change size so we can easily get the end of buffer in serialize
@@ -74,7 +74,7 @@ public:
                             // to capture all used variables by reference, use a capture value of &.
             [&](auto&&... args)   
             {
-                (..., args.serialise(owner, ret)); //apply serialise on all elements
+                (..., args.serialize(owner, ret)); //apply serialize on all elements
             },
                 elements);
 
@@ -95,9 +95,9 @@ public:
         return ss.str(); // return string bytes
     }
 
-    void deserialise(C& owner, const std::vector<uint8_t>& buffer) const
+    void deserialize(C& owner, const std::vector<uint8_t>& buffer) const
     {
-        deserialise_impl<0>(owner, buffer, 0); // public implmentation of deserializer
+        deserialize_impl<0>(owner, buffer, 0); // public implmentation of deserializer
     }
 
 };
@@ -107,9 +107,9 @@ public:
 
 class myclass {
 
-    static constexpr auto getSerialiser()
+    static constexpr auto getserializer()
     {
-        auto ret = serialiser(&myclass::a, &myclass::b, &myclass::c);
+        auto ret = serializer(&myclass::a, &myclass::b, &myclass::c);
         return ret;
     }
 
@@ -119,15 +119,15 @@ public:
     long c;
 
 
-    std::vector<uint8_t> serialise() const
+    std::vector<uint8_t> serialize() const
     {
-        return getSerialiser().serialise(*this);
+        return getserializer().serialize(*this);
     }
 
-    static myclass deserialise(const std::vector<uint8_t>& buffer)
+    static myclass deserialize(const std::vector<uint8_t>& buffer)
     {
         myclass ret;
-        getSerialiser().deserialise(ret, buffer);
+        getserializer().deserialize(ret, buffer);
         return ret;
     }
 };

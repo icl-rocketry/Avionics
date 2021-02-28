@@ -4,8 +4,7 @@
 #define PACKETS_H
 #include <Arduino.h>
 #include <vector>
-#include "Logging/iterablevar.h"
-#include "Logging/itervar_improved.h"
+#include "Logging/serializableElement.h"
 
 enum class packet:uint8_t{
     TELEMETRY = 1,
@@ -27,25 +26,7 @@ enum class packet:uint8_t{
 
 class PacketHeader {
     friend class USB; //usb class needs to know the expected size of a header
-private:
-    //packet header 15 bytes
-    static const uint8_t _header_size = 15; // Change this variable to reflect the number of bytes in the header
 
-    static constexpr auto getSerialiser()
-    {
-        auto ret = serialiser(
-            &PacketHeader::start_byte,
-            &PacketHeader::header_len,
-            &PacketHeader::packet_len,
-            &PacketHeader::system_time,
-            &PacketHeader::type,
-            &PacketHeader::source,
-            &PacketHeader::destination,
-            &PacketHeader::src_interface,
-            &PacketHeader::ttl
-        );
-        return ret;
-    }
 
 public:
     PacketHeader();
@@ -53,22 +34,13 @@ public:
     PacketHeader(const uint8_t* data); // Deserialization constructor
     ~PacketHeader();
     
-    std::vector<uint8_t> serialise() const
-    {
-        return getSerialiser().serialise(*this);
-    }
-
-    static PacketHeader deserialise(const std::vector<uint8_t>& buffer)
-    {
-        PacketHeader ret;
-        getSerialiser().deserialise(ret, buffer);
-        return ret;
-    }
-
     /*
         Serializes the header for network transport.
     */
-    void serialize(std::vector<uint8_t>& buf);
+   //two serialization methods for testing
+
+    std::vector<uint8_t> serialize() const;
+    void serialize(std::vector<uint8_t>& buf) const;
 
     bool header_size_mismatch;
 
@@ -100,6 +72,27 @@ public:
     Add new variables after here so nothing gets messed up...
     */ 
 
+
+private:
+    //packet header 15 bytes
+    static const uint8_t _header_size = 15; // Change this variable to reflect the number of bytes in the header
+
+    static constexpr auto getSerializer()
+    {
+        auto ret = serializer(
+            &PacketHeader::start_byte,
+            &PacketHeader::header_len,
+            &PacketHeader::packet_len,
+            &PacketHeader::system_time,
+            &PacketHeader::type,
+            &PacketHeader::source,
+            &PacketHeader::destination,
+            &PacketHeader::src_interface,
+            &PacketHeader::ttl
+        );
+        return ret;
+    }
+
 };
 
 class Packet {
@@ -111,30 +104,32 @@ public:
 };
 
 class TelemetryPacket{
-public:
-    //packet header
-    PacketHeader header {static_cast<uint8_t>(packet::TELEMETRY), 9*sizeof(float) + 5};
-    //telemetry data
-    float x,y,z;
-    float vx,vy,vz;
-    float ax,ay,az;
-    //float y,p,r;
+    public:
+        //packet header
+        PacketHeader header {static_cast<uint8_t>(packet::TELEMETRY), 9*sizeof(float) + 5};
+        //telemetry data
+        float x,y,z;
+        float vx,vy,vz;
+        float ax,ay,az;
+        //float y,p,r;
 
-    //system_status
+        //system_status
 
-    //packet details
-    uint8_t lora_rssi;
+        //packet details
+        uint8_t lora_rssi;
 
-    // WARNING!
-    // Check if all the variables that need to be sent over are getting serialized
-    // Whenever a new variable is added to the class it needs to be added to the serialize method
-    void serialize(std::vector<uint8_t>& buf);
-    /*
-        Deserialization constructor
-    */
-    TelemetryPacket(const uint8_t* data);
-    TelemetryPacket();
-    ~TelemetryPacket();
+        // WARNING!
+        // Check if all the variables that need to be sent over are getting serialized
+        // Whenever a new variable is added to the class it needs to be added to the serialize method
+        void serialize(std::vector<uint8_t>& buf);
+        /*
+            Deserialization constructor
+        */
+        TelemetryPacket(const uint8_t* data);
+        TelemetryPacket();
+        ~TelemetryPacket();
+
+
 };
 
 class CommandPacket{
