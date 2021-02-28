@@ -45,11 +45,6 @@ class serializer
 {
     std::tuple<serializableElement<C, T>...> elements;
 
-    static constexpr size_t member_size()
-    {
-        return (0 + ... + sizeof(T)); // unary fold expression, applies sizeof to all members in t and calculated total size
-    }
-
     template <size_t I>
     void deserialize_impl(C& owner, const std::vector<uint8_t>& buffer, size_t pos) const
     {
@@ -63,6 +58,11 @@ class serializer
 public:
     // Constructor, creates serializable element for all the member variable pointers
     constexpr serializer(T C::* ...ptrs) : elements(std::make_tuple(serializableElement(ptrs)...)) {} 
+
+    static constexpr size_t member_size()
+    {
+        return (0 + ... + sizeof(T)); // unary fold expression, applies sizeof to all members in t and calculated total size
+    }
 
     std::vector<uint8_t> serialize(const C& owner) const
     {

@@ -27,6 +27,29 @@ enum class packet:uint8_t{
 class PacketHeader {
     friend class USB; //usb class needs to know the expected size of a header
 
+private:
+    //packet header 15 bytes
+    
+
+    static constexpr auto getSerializer()
+    {
+        auto ret = serializer(
+            &PacketHeader::start_byte,
+            &PacketHeader::header_len,
+            &PacketHeader::packet_len,
+            &PacketHeader::system_time,
+            &PacketHeader::type,
+            &PacketHeader::source,
+            &PacketHeader::destination,
+            &PacketHeader::src_interface,
+            &PacketHeader::ttl
+        );
+        return ret;
+    }
+    static constexpr size_t header_size(){
+            return getSerializer().member_size();
+    }
+   
 
 public:
     PacketHeader();
@@ -46,7 +69,7 @@ public:
 
     //header packet defintion
     uint8_t start_byte = 0xAF; // Marks the begin of `Packet`
-    uint8_t header_len = _header_size;//header len
+    uint8_t header_len = header_size();//header len
     uint32_t packet_len = 0x00000000; // Size of the packet in bytes maybe this should be 32 bit to match size_t and subsequent sizeof() functionality
     uint32_t system_time = 0x00000000; // system time
     uint8_t type = 0x00; // Type of the packet
@@ -73,40 +96,37 @@ public:
     */ 
 
 
-private:
-    //packet header 15 bytes
-    static const uint8_t _header_size = 15; // Change this variable to reflect the number of bytes in the header
 
-    static constexpr auto getSerializer()
-    {
-        auto ret = serializer(
-            &PacketHeader::start_byte,
-            &PacketHeader::header_len,
-            &PacketHeader::packet_len,
-            &PacketHeader::system_time,
-            &PacketHeader::type,
-            &PacketHeader::source,
-            &PacketHeader::destination,
-            &PacketHeader::src_interface,
-            &PacketHeader::ttl
-        );
-        return ret;
-    }
 
-};
-
-class Packet {
-public:
-    static void serialize_float(const float num, std::vector<uint8_t> &buf);
-    static void serialize_floats(const float* nums, int num_floats, std::vector<uint8_t> &buf);
-    static void deserialize_float(float &f, const uint8_t* bytes);
-    static void serialize_uint32_t(const uint32_t &n, std::vector<uint8_t> &buf);
 };
 
 class TelemetryPacket{
+    private:
+    //serializer framework
+        static constexpr auto getSerializer()
+        {
+            auto ret = serializer(
+                &TelemetryPacket::x,
+                &TelemetryPacket::y,
+                &TelemetryPacket::z,
+                &TelemetryPacket::vx,
+                &TelemetryPacket::vy,
+                &TelemetryPacket::vz,
+                &TelemetryPacket::ax,
+                &TelemetryPacket::ay,
+                &TelemetryPacket::az,
+                &TelemetryPacket::lora_rssi
+               
+            );
+            return ret;
+        }
+        static constexpr size_t packet_size(){
+            return getSerializer().member_size();
+        }
+
     public:
         //packet header
-        PacketHeader header {static_cast<uint8_t>(packet::TELEMETRY), 9*sizeof(float) + 5};
+        PacketHeader header{static_cast<uint8_t>(packet::TELEMETRY), packet_size()};
         //telemetry data
         float x,y,z;
         float vx,vy,vz;
@@ -118,17 +138,14 @@ class TelemetryPacket{
         //packet details
         uint8_t lora_rssi;
 
-        // WARNING!
-        // Check if all the variables that need to be sent over are getting serialized
-        // Whenever a new variable is added to the class it needs to be added to the serialize method
-        void serialize(std::vector<uint8_t>& buf);
+    
+        void serialize(std::vector<uint8_t>& buf) const;
         /*
             Deserialization constructor
         */
         TelemetryPacket(const uint8_t* data);
         TelemetryPacket();
         ~TelemetryPacket();
-
 
 };
 
@@ -151,6 +168,35 @@ public:
 };
 
 class DetailedAllPacket{
+private:
+//serializer framework
+        static constexpr auto getSerializer()
+        {
+            auto ret = serializer(
+                &DetailedAllPacket::ax,
+                &DetailedAllPacket::ay,
+                &DetailedAllPacket::az,
+                &DetailedAllPacket::gx,
+                &DetailedAllPacket::gy,
+                &DetailedAllPacket::gz,
+                &DetailedAllPacket::mx,
+                &DetailedAllPacket::my,
+                &DetailedAllPacket::mz,
+                &DetailedAllPacket::gps_lat,
+                &DetailedAllPacket::gps_long,
+                &DetailedAllPacket::gps_speed,
+                &DetailedAllPacket::gps_alt,
+                &DetailedAllPacket::baro_alt,
+                &DetailedAllPacket::baro_temp,
+                &DetailedAllPacket::baro_press,
+                &DetailedAllPacket::batt_volt,
+                &DetailedAllPacket::batt_percent
+            );
+            return ret;
+        }
+        static constexpr size_t packet_size(){
+            return getSerializer().member_size();
+        }
 public:
     PacketHeader header {static_cast<uint8_t>(packet::DETAILED_ALL), 16*sizeof(float) + 2}; // WARNING: Update the size whenever you add/remove variables that are serialized
 
@@ -164,7 +210,7 @@ public:
     // WARNING!
     // Check if all the variables that need to be sent over are getting serialized
     // Whenever a new variable is added to the class it needs to be added to the serialize method
-    void serialize(std::vector<uint8_t>& buf);
+    void serialize(std::vector<uint8_t>& buf) const;
     /*
         Deserialization constructor
     */

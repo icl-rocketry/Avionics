@@ -30,15 +30,15 @@ class USB: public Iface{
         uint8_t _firstByte;
 
         //byte array to store first bytes of incoming packet for decoding
-        uint8_t _tmp_packet_data[PacketHeader::_header_size];
+        uint8_t _tmp_packet_data[PacketHeader::header_size()];
         //pointer to packet header object
         //PacketHeader* _packetHeader_ptr = nullptr;
         
         //Packet size
         uint32_t _packet_len;
         //expected size of header
-        uint8_t _packetHeader_size = PacketHeader::_header_size;
-        //actual header size
+        uint8_t _packetHeader_size = PacketHeader::header_size();
+        //decoded header size
         uint8_t _header_len;
         //size of data including header
         uint32_t _total_len;
