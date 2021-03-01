@@ -22,8 +22,10 @@ void Setup::initialise(){
     _sm->I2C.begin(_SDA,_SCL,I2C_FREQUENCY);
         //initalize spi interface
         //todo find the lowest denominator for the speed of the spi bus.   
-    _sm->vspi.setClockDivider(SPI_CLOCK_DIV8);
     _sm->vspi.begin();
+    _sm->vspi.setClockDivider(SPI_CLOCK_DIV2);
+    _sm->vspi.setBitOrder(MSBFIRST);
+    _sm->vspi.setDataMode(SPI_MODE0);
         //setup cs pins
         //initialise output variables as output
     pinMode(LoraCs, OUTPUT);

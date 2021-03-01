@@ -37,7 +37,7 @@
 #define MAX_PACKET_LENGTH 256
 
 #define ACCEL_SCALE 2
-#define MAG_SCALE 4
+#define MAG_SCALE 12
 #define GYRO_SCALE 245
 
 #endif

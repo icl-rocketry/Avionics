@@ -25,10 +25,31 @@ Imu::Imu(SPIClass* spi, SystemStatus* systemstatus,raw_measurements_t* raw_data)
 void Imu::setup(){
 
     imu.setAccelScale(ACCEL_SCALE);
+    //set samplerate of accel to 952Hz
+    imu.settings.accel.sampleRate = 6;
+    imu.settings.accel.enabled = true; // Enable accelerometer
+    
     imu.setGyroScale(GYRO_SCALE);
-    imu.setMagScale(MAG_SCALE);
+    //set samplerate of gyro to 952Hz
+    imu.settings.gyro.sampleRate = 6;
+    imu.settings.gyro.lowPowerEnable = true;
+    //imu.settings.accel.enabled = false; // Enable accelerometer
+    // [HPFEnable] enables or disables the high-pass filter
+    //imu.settings.gyro.HPFEnable = true; // HPF disabled
+    // [HPFCutoff] sets the HPF cutoff frequency (if enabled)
+    // Allowable values are 0-9. Value depends on ODR.
+    // (Datasheet section 7.14)
+    //imu.settings.gyro.HPFCutoff = 1; // HPF cutoff = 4Hz
 
-    if (!imu.beginSPI(_SCLK, _MISO, _MOSI, ImuCs, MagCs)){
+    imu.setMagScale(MAG_SCALE);
+    //imu.setMagScale(12);
+    imu.settings.mag.XYPerformance = 3; // Ultra-high perform.
+    imu.settings.mag.ZPerformance = 3; // Ultra-high perform.
+    imu.settings.mag.sampleRate = 7;
+    imu.settings.mag.lowPowerEnable = false;
+    imu.settings.mag.operatingMode = 0; // Continuous mode
+
+    if (!imu.beginSPI(ImuCs, MagCs)){
         _systemstatus->new_message(system_flag::ERROR_IMU, "Unable to initialize the imu");
     };
 
@@ -43,30 +64,25 @@ void Imu::update(){
 };
 
 void Imu::read_gyro(){
-  if(imu.gyroAvailable()){
-        imu.readGyro();
-        _raw_data->gx = imu.calcGyro(imu.gx);
-        _raw_data->gy = imu.calcGyro(imu.gy);
-        _raw_data->gz = imu.calcGyro(imu.gz);
+    imu.readGyro();
+    _raw_data->gx = imu.calcGyro(imu.gx);
+    _raw_data->gy = imu.calcGyro(imu.gy);
+    _raw_data->gz = imu.calcGyro(imu.gz);
 
-    }
 }
 void Imu::read_accel(){
-  if(imu.accelAvailable()){
-        imu.readAccel();
-        _raw_data->ax = imu.calcAccel(imu.ax);
-        _raw_data->ay = imu.calcAccel(imu.ay);
-        _raw_data->az = imu.calcAccel(imu.az);
 
-    }
+    imu.readAccel();
+    _raw_data->ax = imu.calcAccel(imu.ax);
+    _raw_data->ay = imu.calcAccel(imu.ay);
+    _raw_data->az = imu.calcAccel(imu.az);
 }
 void Imu::read_mag(){
-  if(imu.magAvailable()){
-        imu.readMag();
-        _raw_data->mx = imu.calcMag(imu.mx);
-        _raw_data->my = imu.calcMag(imu.my);
-        _raw_data->mz = imu.calcMag(imu.mz);
-    }
+    imu.readMag();
+    _raw_data->mx = imu.calcMag(imu.mx);
+    _raw_data->my = imu.calcMag(imu.my);
+    _raw_data->mz = imu.calcMag(imu.mz);
+
 }
 void Imu::read_temp(){
   if(imu.tempAvailable()){
