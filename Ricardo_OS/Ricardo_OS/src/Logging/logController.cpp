@@ -26,9 +26,20 @@ void LogController::log(PacketHeader &header) {
 void LogController::log(std::string message) {
 	//will create a new log frame each time it is called
 }
-void LogController::log(uint32_t status,uint32_t flag,std::string reason) {
+void LogController::log(uint32_t status,uint32_t flag,std::string message) {
     //will create a new log frame each time it is called
-    
+    //check if buffer is filled?
+    if (system_frame_buffer.size() == system_frame_buffer.max_size()){
+        //we need to resize now
+        system_frame_buffer.resize(system_frame_buffer.size() + 10);
+    }
+    //update system_frame with new values
+    system_frame.systemStatus = status;
+    system_frame.systemFlag = flag;
+    system_frame.message = message;
+
+
+    system_frame_buffer.push_back(system_frame); // add frame to end of buffer
 
 	
 }
@@ -39,6 +50,7 @@ void LogController::log(uint32_t status,uint32_t flag) {
 
 void LogController::update(){
 // do we check if buffer is full or time based?
+
 }
 void LogController::write_to_file(){
     

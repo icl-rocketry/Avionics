@@ -34,7 +34,46 @@ private:
             &telemetry_logframe::rawGPSLong,
             &telemetry_logframe::rawGPSLong,
             &telemetry_logframe::rawGPSLat,
-        )
+            &telemetry_logframe::rawGPSSpeed,
+            &telemetry_logframe::rawGPSAlt,
+            &telemetry_logframe::rawGPSsat,
+            &telemetry_logframe::rawGPShdop,
+            &telemetry_logframe::rawIMUAx,
+            &telemetry_logframe::rawIMUAy,
+            &telemetry_logframe::rawIMUAz,
+            &telemetry_logframe::rawIMUGx,
+            &telemetry_logframe::rawIMUGy,
+            &telemetry_logframe::rawIMUGz,
+            &telemetry_logframe::rawIMUMx,
+            &telemetry_logframe::rawIMUMy,
+            &telemetry_logframe::rawIMUMz,
+            &telemetry_logframe::rawIMUTemp,
+            &telemetry_logframe::rawBaroTemp,
+            &telemetry_logframe::rawBaroPres,
+            &telemetry_logframe::rawBaroAlt,
+            &telemetry_logframe::battVolt,
+            &telemetry_logframe::battPercent,
+            &telemetry_logframe::rawTimestamp,
+            &telemetry_logframe::estimatorX,
+            &telemetry_logframe::estimatorY,
+            &telemetry_logframe::estimatorZ,
+            &telemetry_logframe::estimatorVX,
+            &telemetry_logframe::estimatorVY,
+            &telemetry_logframe::estimatorVZ,
+            &telemetry_logframe::estimatorAX,
+            &telemetry_logframe::estimatorAY,
+            &telemetry_logframe::estimatorAZ,
+            &telemetry_logframe::estimatorYaw,
+            &telemetry_logframe::estimatorPitch,
+            &telemetry_logframe::estimatorRoll,
+            &telemetry_logframe::estimatorP,
+            &telemetry_logframe::estimatorQ,
+            &telemetry_logframe::estimatorR, 
+            &telemetry_logframe::estimatorL,
+            &telemetry_logframe::estimatorM,
+            &telemetry_logframe::estimatorN,
+            &telemetry_logframe::estimatorTimestamp
+            )
         return ret;
     }
     
@@ -55,9 +94,9 @@ public:
     double rawIMUGx; //imu.gx
     double rawIMUGy; //imu.gy
     double rawIMUGz; //imu.gz
-    double rawIMUmx; //imu.mx
-    double rawIMUmy; //imu.my
-    double rawIMUmz; //imu.mz
+    double rawIMUMx; //imu.mx
+    double rawIMUMy; //imu.my
+    double rawIMUMz; //imu.mz
     double rawIMUTemp; //imu.temp
     double rawBaroTemp; //baro.temp
     double rawBaroPres; //baro.pres
@@ -86,15 +125,36 @@ public:
     long estimatorTimestamp; //estimator.timestamp
 
 
-    std::string stringfy(){
-        return getSerializer().
+    std::string stringfy()const{
+        return getSerializer().stringify();
     };
 };
 class system_logframe:public logframe{
+private:  
+    static constexpr auto getSerializer()
+    {
+        auto ret = serializer(
+            &system_logframe::systemStatus,
+            &system_logframe::systemFlag,
+            &system_logframe::message
+        
+            )
+        return ret;
+    }
+    
+    static constexpr size_t packet_size() {
+        return getSerializer().member_size();
+    }
+public:
     //global_system_flag
     //verbose_messa
-
-    std::string seralize(){return "hi";};
+    uint32_t systemStatus;
+    uint32_t systemFlag;
+    std::string message;
+    
+    std::string stringfy()const{
+        return getSerializer().stringify();
+    };
 
 };
 class network_logframe:public logframe{

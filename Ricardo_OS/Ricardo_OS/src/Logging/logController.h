@@ -18,7 +18,7 @@ class LogController{
 		void log(PacketHeader &header);
         //system logging
         void log(std::string message);
-        void log(uint32_t status,uint32_t flag,std::string reason);
+        void log(uint32_t status,uint32_t flag,std::string message);
         void log(uint32_t status,uint32_t flag);
 
         //update the buffers
