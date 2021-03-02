@@ -1,0 +1,466 @@
+EESchema Schematic File Version 4
+EELAYER 30 0
+EELAYER END
+$Descr A4 11693 8268
+encoding utf-8
+Sheet 2 2
+Title ""
+Date ""
+Rev ""
+Comp ""
+Comment1 ""
+Comment2 ""
+Comment3 ""
+Comment4 ""
+$EndDescr
+$Comp
+L Connector:Screw_Terminal_01x02 J?
+U 1 1 603A42ED
+P 2600 1950
+F 0 "J?" V 2472 2030 50  0000 L CNN
+F 1 "Screw_Terminal_01x02" V 2563 2030 50  0000 L CNN
+F 2 "" H 2600 1950 50  0001 C CNN
+F 3 "~" H 2600 1950 50  0001 C CNN
+	1    2600 1950
+	0    1    1    0   
+$EndComp
+Wire Wire Line
+	2500 1750 2500 1550
+Wire Wire Line
+	2500 1550 2200 1550
+Wire Wire Line
+	2200 1550 2200 1950
+Wire Wire Line
+	2200 1950 1900 1950
+Wire Wire Line
+	1900 1950 1900 2050
+$Comp
+L Device:LED D?
+U 1 1 603A73D6
+P 1900 2200
+F 0 "D?" V 1939 2082 50  0000 R CNN
+F 1 "LED" V 1848 2082 50  0000 R CNN
+F 2 "" H 1900 2200 50  0001 C CNN
+F 3 "~" H 1900 2200 50  0001 C CNN
+	1    1900 2200
+	0    -1   -1   0   
+$EndComp
+$Comp
+L Device:R R?
+U 1 1 603A9084
+P 1900 2500
+F 0 "R?" H 1970 2546 50  0000 L CNN
+F 1 "1k" H 1970 2455 50  0000 L CNN
+F 2 "" V 1830 2500 50  0001 C CNN
+F 3 "~" H 1900 2500 50  0001 C CNN
+	1    1900 2500
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	2600 1750 2600 1550
+Wire Wire Line
+	2600 1550 3050 1550
+$Comp
+L Device:D_Schottky D?
+U 1 1 603AA2C9
+P 3050 2350
+F 0 "D?" V 3096 2270 50  0000 R CNN
+F 1 "D_Schottky" V 3005 2270 50  0000 R CNN
+F 2 "" H 3050 2350 50  0001 C CNN
+F 3 "~" H 3050 2350 50  0001 C CNN
+	1    3050 2350
+	0    -1   -1   0   
+$EndComp
+Wire Wire Line
+	1900 2650 3050 2650
+Wire Wire Line
+	3050 2500 3050 2650
+$Comp
+L Device:Q_NMOS_GSD Q?
+U 1 1 603AC2C0
+P 2950 2950
+F 0 "Q?" H 3154 2996 50  0000 L CNN
+F 1 "Q_NMOS_GSD" H 3154 2905 50  0000 L CNN
+F 2 "" H 3150 3050 50  0001 C CNN
+F 3 "~" H 2950 2950 50  0001 C CNN
+	1    2950 2950
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	3050 3150 3050 3400
+$Comp
+L power:GND #PWR?
+U 1 1 603AD57D
+P 3050 3400
+F 0 "#PWR?" H 3050 3150 50  0001 C CNN
+F 1 "GND" H 3055 3227 50  0000 C CNN
+F 2 "" H 3050 3400 50  0001 C CNN
+F 3 "" H 3050 3400 50  0001 C CNN
+	1    3050 3400
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	2350 2950 2750 2950
+Text HLabel 2350 2950 0    50   Input ~ 0
+Nuke1
+Wire Wire Line
+	4450 2000 4950 2000
+Wire Wire Line
+	4450 2000 4450 2400
+Wire Wire Line
+	4400 2600 4400 2800
+$Comp
+L Device:R R?
+U 1 1 603BD235
+P 4400 2950
+F 0 "R?" H 4470 2996 50  0000 L CNN
+F 1 "500" H 4470 2905 50  0000 L CNN
+F 2 "" V 4330 2950 50  0001 C CNN
+F 3 "~" H 4400 2950 50  0001 C CNN
+	1    4400 2950
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	4400 3100 4400 3250
+Wire Wire Line
+	4300 2600 4400 2600
+Wire Wire Line
+	4450 2400 4300 2400
+$Comp
+L Isolator:LTV-817S U?
+U 1 1 603B55A8
+P 4000 2500
+F 0 "U?" H 4000 2825 50  0000 C CNN
+F 1 "LTV-817S" H 4000 2734 50  0000 C CNN
+F 2 "Package_DIP:SMDIP-4_W9.53mm" H 4000 2200 50  0001 C CNN
+F 3 "http://www.us.liteon.com/downloads/LTV-817-827-847.PDF" H 3650 2800 50  0001 C CNN
+	1    4000 2500
+	-1   0    0    -1  
+$EndComp
+Wire Wire Line
+	3700 3250 3700 3100
+Connection ~ 3700 2600
+Text HLabel 3450 2600 0    50   Input ~ 0
+Cont1
+Wire Wire Line
+	3700 2600 3450 2600
+$Comp
+L Device:R R?
+U 1 1 603C08B5
+P 3700 2950
+F 0 "R?" H 3770 2996 50  0000 L CNN
+F 1 "500" H 3770 2905 50  0000 L CNN
+F 2 "" V 3630 2950 50  0001 C CNN
+F 3 "~" H 3700 2950 50  0001 C CNN
+	1    3700 2950
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	3700 2800 3700 2600
+Wire Wire Line
+	4400 3250 4050 3250
+Connection ~ 4050 3250
+Wire Wire Line
+	4050 3250 3700 3250
+Wire Wire Line
+	4050 3250 4050 3400
+$Comp
+L power:GND #PWR?
+U 1 1 603C2975
+P 4050 3400
+F 0 "#PWR?" H 4050 3150 50  0001 C CNN
+F 1 "GND" H 4055 3227 50  0000 C CNN
+F 2 "" H 4050 3400 50  0001 C CNN
+F 3 "" H 4050 3400 50  0001 C CNN
+	1    4050 3400
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:LED D?
+U 1 1 603C55BC
+P 4950 2150
+F 0 "D?" V 4989 2032 50  0000 R CNN
+F 1 "LED" V 4898 2032 50  0000 R CNN
+F 2 "" H 4950 2150 50  0001 C CNN
+F 3 "~" H 4950 2150 50  0001 C CNN
+	1    4950 2150
+	0    -1   -1   0   
+$EndComp
+Wire Wire Line
+	4950 2300 4950 2400
+$Comp
+L Device:R R?
+U 1 1 603C7858
+P 4950 2550
+F 0 "R?" H 5020 2596 50  0000 L CNN
+F 1 "1k" H 5020 2505 50  0000 L CNN
+F 2 "" V 4880 2550 50  0001 C CNN
+F 3 "~" H 4950 2550 50  0001 C CNN
+	1    4950 2550
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:GND #PWR?
+U 1 1 603C83CD
+P 4950 2800
+F 0 "#PWR?" H 4950 2550 50  0001 C CNN
+F 1 "GND" H 4955 2627 50  0000 C CNN
+F 2 "" H 4950 2800 50  0001 C CNN
+F 3 "" H 4950 2800 50  0001 C CNN
+	1    4950 2800
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	4950 2700 4950 2800
+$Comp
+L power:+3V3 #PWR?
+U 1 1 603C95D6
+P 3650 2350
+F 0 "#PWR?" H 3650 2200 50  0001 C CNN
+F 1 "+3V3" H 3665 2523 50  0000 C CNN
+F 2 "" H 3650 2350 50  0001 C CNN
+F 3 "" H 3650 2350 50  0001 C CNN
+	1    3650 2350
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	3700 2400 3650 2400
+Wire Wire Line
+	3650 2400 3650 2350
+Connection ~ 3050 2650
+Wire Wire Line
+	3050 2650 3050 2750
+Wire Wire Line
+	3050 1550 3050 2000
+Connection ~ 4450 2000
+Wire Wire Line
+	4450 2000 3050 2000
+Connection ~ 3050 2000
+Wire Wire Line
+	3050 2000 3050 2200
+$Comp
+L Connector:Screw_Terminal_01x02 J?
+U 1 1 603DB3E4
+P 6650 2050
+F 0 "J?" V 6522 2130 50  0000 L CNN
+F 1 "Screw_Terminal_01x02" V 6613 2130 50  0000 L CNN
+F 2 "" H 6650 2050 50  0001 C CNN
+F 3 "~" H 6650 2050 50  0001 C CNN
+	1    6650 2050
+	0    1    1    0   
+$EndComp
+Wire Wire Line
+	6550 1850 6550 1650
+Wire Wire Line
+	6550 1650 6250 1650
+Wire Wire Line
+	6250 1650 6250 2050
+Wire Wire Line
+	6250 2050 5950 2050
+Wire Wire Line
+	5950 2050 5950 2150
+$Comp
+L Device:LED D?
+U 1 1 603DB539
+P 5950 2300
+F 0 "D?" V 5989 2182 50  0000 R CNN
+F 1 "LED" V 5898 2182 50  0000 R CNN
+F 2 "" H 5950 2300 50  0001 C CNN
+F 3 "~" H 5950 2300 50  0001 C CNN
+	1    5950 2300
+	0    -1   -1   0   
+$EndComp
+$Comp
+L Device:R R?
+U 1 1 603DB543
+P 5950 2600
+F 0 "R?" H 6020 2646 50  0000 L CNN
+F 1 "1k" H 6020 2555 50  0000 L CNN
+F 2 "" V 5880 2600 50  0001 C CNN
+F 3 "~" H 5950 2600 50  0001 C CNN
+	1    5950 2600
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	6650 1850 6650 1650
+Wire Wire Line
+	6650 1650 7100 1650
+$Comp
+L Device:D_Schottky D?
+U 1 1 603DB54F
+P 7100 2450
+F 0 "D?" V 7146 2370 50  0000 R CNN
+F 1 "D_Schottky" V 7055 2370 50  0000 R CNN
+F 2 "" H 7100 2450 50  0001 C CNN
+F 3 "~" H 7100 2450 50  0001 C CNN
+	1    7100 2450
+	0    -1   -1   0   
+$EndComp
+Wire Wire Line
+	5950 2750 7100 2750
+Wire Wire Line
+	7100 2600 7100 2750
+$Comp
+L Device:Q_NMOS_GSD Q?
+U 1 1 603DB55B
+P 7000 3050
+F 0 "Q?" H 7204 3096 50  0000 L CNN
+F 1 "Q_NMOS_GSD" H 7204 3005 50  0000 L CNN
+F 2 "" H 7200 3150 50  0001 C CNN
+F 3 "~" H 7000 3050 50  0001 C CNN
+	1    7000 3050
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	7100 3250 7100 3500
+$Comp
+L power:GND #PWR?
+U 1 1 603DB566
+P 7100 3500
+F 0 "#PWR?" H 7100 3250 50  0001 C CNN
+F 1 "GND" H 7105 3327 50  0000 C CNN
+F 2 "" H 7100 3500 50  0001 C CNN
+F 3 "" H 7100 3500 50  0001 C CNN
+	1    7100 3500
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	6400 3050 6800 3050
+Text HLabel 6400 3050 0    50   Input ~ 0
+Nuke2
+Wire Wire Line
+	8500 2100 9000 2100
+Wire Wire Line
+	8500 2100 8500 2500
+Wire Wire Line
+	8450 2700 8450 2900
+$Comp
+L Device:R R?
+U 1 1 603DB575
+P 8450 3050
+F 0 "R?" H 8520 3096 50  0000 L CNN
+F 1 "500" H 8520 3005 50  0000 L CNN
+F 2 "" V 8380 3050 50  0001 C CNN
+F 3 "~" H 8450 3050 50  0001 C CNN
+	1    8450 3050
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	8450 3200 8450 3350
+Wire Wire Line
+	8350 2700 8450 2700
+Wire Wire Line
+	8500 2500 8350 2500
+$Comp
+L Isolator:LTV-817S U?
+U 1 1 603DB582
+P 8050 2600
+F 0 "U?" H 8050 2925 50  0000 C CNN
+F 1 "LTV-817S" H 8050 2834 50  0000 C CNN
+F 2 "Package_DIP:SMDIP-4_W9.53mm" H 8050 2300 50  0001 C CNN
+F 3 "http://www.us.liteon.com/downloads/LTV-817-827-847.PDF" H 7700 2900 50  0001 C CNN
+	1    8050 2600
+	-1   0    0    -1  
+$EndComp
+Wire Wire Line
+	7750 3350 7750 3200
+Connection ~ 7750 2700
+Text HLabel 7500 2700 0    50   Input ~ 0
+Cont2
+Wire Wire Line
+	7750 2700 7500 2700
+$Comp
+L Device:R R?
+U 1 1 603DB590
+P 7750 3050
+F 0 "R?" H 7820 3096 50  0000 L CNN
+F 1 "500" H 7820 3005 50  0000 L CNN
+F 2 "" V 7680 3050 50  0001 C CNN
+F 3 "~" H 7750 3050 50  0001 C CNN
+	1    7750 3050
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	7750 2900 7750 2700
+Wire Wire Line
+	8450 3350 8100 3350
+Connection ~ 8100 3350
+Wire Wire Line
+	8100 3350 7750 3350
+Wire Wire Line
+	8100 3350 8100 3500
+$Comp
+L power:GND #PWR?
+U 1 1 603DB59F
+P 8100 3500
+F 0 "#PWR?" H 8100 3250 50  0001 C CNN
+F 1 "GND" H 8105 3327 50  0000 C CNN
+F 2 "" H 8100 3500 50  0001 C CNN
+F 3 "" H 8100 3500 50  0001 C CNN
+	1    8100 3500
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:LED D?
+U 1 1 603DB5A9
+P 9000 2250
+F 0 "D?" V 9039 2132 50  0000 R CNN
+F 1 "LED" V 8948 2132 50  0000 R CNN
+F 2 "" H 9000 2250 50  0001 C CNN
+F 3 "~" H 9000 2250 50  0001 C CNN
+	1    9000 2250
+	0    -1   -1   0   
+$EndComp
+Wire Wire Line
+	9000 2400 9000 2500
+$Comp
+L Device:R R?
+U 1 1 603DB5B4
+P 9000 2650
+F 0 "R?" H 9070 2696 50  0000 L CNN
+F 1 "1k" H 9070 2605 50  0000 L CNN
+F 2 "" V 8930 2650 50  0001 C CNN
+F 3 "~" H 9000 2650 50  0001 C CNN
+	1    9000 2650
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:GND #PWR?
+U 1 1 603DB5BE
+P 9000 2900
+F 0 "#PWR?" H 9000 2650 50  0001 C CNN
+F 1 "GND" H 9005 2727 50  0000 C CNN
+F 2 "" H 9000 2900 50  0001 C CNN
+F 3 "" H 9000 2900 50  0001 C CNN
+	1    9000 2900
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	9000 2800 9000 2900
+$Comp
+L power:+3V3 #PWR?
+U 1 1 603DB5C9
+P 7700 2450
+F 0 "#PWR?" H 7700 2300 50  0001 C CNN
+F 1 "+3V3" H 7715 2623 50  0000 C CNN
+F 2 "" H 7700 2450 50  0001 C CNN
+F 3 "" H 7700 2450 50  0001 C CNN
+	1    7700 2450
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	7750 2500 7700 2500
+Wire Wire Line
+	7700 2500 7700 2450
+Connection ~ 7100 2750
+Wire Wire Line
+	7100 2750 7100 2850
+Wire Wire Line
+	7100 1650 7100 2100
+Connection ~ 8500 2100
+Wire Wire Line
+	8500 2100 7100 2100
+Connection ~ 7100 2100
+Wire Wire Line
+	7100 2100 7100 2300
+$EndSCHEMATC

@@ -1357,7 +1357,7 @@ Wire Wire Line
 Text Label 2150 2000 0    50   ~ 0
 RADIO_TX
 $Comp
-L Connector:USB_B_Micro J1
+L Mainboard-rescue:USB_B_Micro-Connector J1
 U 1 1 5DF84F1A
 P 750 4200
 F 0 "J1" H 807 4667 50  0000 C CNN
@@ -1367,8 +1367,6 @@ F 3 "~" H 900 4150 50  0001 C CNN
 	1    750  4200
 	1    0    0    -1  
 $EndComp
-Connection ~ 1050 4000
-Connection ~ 750  4600
 Wire Wire Line
 	1050 4400 1300 4400
 Text Label 1300 4400 2    50   ~ 0

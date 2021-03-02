@@ -1357,7 +1357,7 @@ Wire Wire Line
 Text Label 2150 2000 0    50   ~ 0
 RADIO_TX
 $Comp
-L Connector:USB_B_Micro J1
+L Mainboard-rescue:USB_B_Micro-Connector J1
 U 1 1 5DF84F1A
 P 750 4200
 F 0 "J1" H 807 4667 50  0000 C CNN
@@ -1367,8 +1367,6 @@ F 3 "~" H 900 4150 50  0001 C CNN
 	1    750  4200
 	1    0    0    -1  
 $EndComp
-Connection ~ 1050 4000
-Connection ~ 750  4600
 Wire Wire Line
 	1050 4400 1300 4400
 Text Label 1300 4400 2    50   ~ 0
@@ -2110,22 +2108,22 @@ F 3 "~" H 7400 3050 50  0001 C CNN
 	0    1    1    0   
 $EndComp
 $Comp
-L Device:D_Schottky D?
+L Device:D_Schottky D9
 U 1 1 5E667A26
 P 1050 2900
-F 0 "D?" V 1004 2979 50  0000 L CNN
+F 0 "D9" V 1004 2979 50  0000 L CNN
 F 1 "D_Schottky" V 1095 2979 50  0000 L CNN
-F 2 "" H 1050 2900 50  0001 C CNN
+F 2 "Diode_SMD:D_SOD-123F" H 1050 2900 50  0001 C CNN
 F 3 "~" H 1050 2900 50  0001 C CNN
 	1    1050 2900
 	0    1    1    0   
 $EndComp
 Connection ~ 1050 3050
 $Comp
-L power:VDD #PWR?
+L power:VDD #PWR053
 U 1 1 5E668CEC
 P 1050 2750
-F 0 "#PWR?" H 1050 2600 50  0001 C CNN
+F 0 "#PWR053" H 1050 2600 50  0001 C CNN
 F 1 "VDD" H 1067 2923 50  0000 C CNN
 F 2 "" H 1050 2750 50  0001 C CNN
 F 3 "" H 1050 2750 50  0001 C CNN
