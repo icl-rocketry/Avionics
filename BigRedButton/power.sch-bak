@@ -1,0 +1,132 @@
+EESchema Schematic File Version 4
+EELAYER 30 0
+EELAYER END
+$Descr A4 11693 8268
+encoding utf-8
+Sheet 2 2
+Title ""
+Date ""
+Rev ""
+Comp ""
+Comment1 ""
+Comment2 ""
+Comment3 ""
+Comment4 ""
+$EndDescr
+$Comp
+L Connector:USB_C_Receptacle P?
+U 1 1 602C762A
+P 2850 2850
+F 0 "P?" H 2957 4117 50  0000 C CNN
+F 1 "USB_C" H 2957 4026 50  0000 C CNN
+F 2 "Connector_USB:USB_C_Receptacle_GCT_USB4085" H 3000 2850 50  0001 C CNN
+F 3 "https://www.usb.org/sites/default/files/documents/usb_type-c.zip" H 3000 2850 50  0001 C CNN
+	1    2850 2850
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	3450 1850 3600 1850
+Wire Wire Line
+	3600 1850 3600 1750
+$Comp
+L power:+5V #PWR?
+U 1 1 602C9F42
+P 3600 1750
+F 0 "#PWR?" H 3600 1600 50  0001 C CNN
+F 1 "+5V" H 3615 1923 50  0000 C CNN
+F 2 "" H 3600 1750 50  0001 C CNN
+F 3 "" H 3600 1750 50  0001 C CNN
+	1    3600 1750
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	2550 4450 2850 4450
+$Comp
+L power:GND #PWR?
+U 1 1 602CB152
+P 2850 4450
+F 0 "#PWR?" H 2850 4200 50  0001 C CNN
+F 1 "GND" H 2855 4277 50  0000 C CNN
+F 2 "" H 2850 4450 50  0001 C CNN
+F 3 "" H 2850 4450 50  0001 C CNN
+	1    2850 4450
+	1    0    0    -1  
+$EndComp
+Connection ~ 2850 4450
+$Comp
+L Device:R_Small R?
+U 1 1 602CC03A
+P 4150 2250
+F 0 "R?" H 4209 2296 50  0000 L CNN
+F 1 "5k1" H 4209 2205 50  0000 L CNN
+F 2 "" H 4150 2250 50  0001 C CNN
+F 3 "~" H 4150 2250 50  0001 C CNN
+	1    4150 2250
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:GND #PWR?
+U 1 1 602CC390
+P 4150 2350
+F 0 "#PWR?" H 4150 2100 50  0001 C CNN
+F 1 "GND" H 4155 2177 50  0000 C CNN
+F 2 "" H 4150 2350 50  0001 C CNN
+F 3 "" H 4150 2350 50  0001 C CNN
+	1    4150 2350
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	3950 2250 3950 2150
+Wire Wire Line
+	3450 2350 3600 2350
+Wire Wire Line
+	3450 2550 3600 2550
+Text Label 3600 2350 0    50   ~ 0
+D-
+Text Label 3600 2550 0    50   ~ 0
+D+
+Wire Wire Line
+	3450 2450 3450 2350
+Connection ~ 3450 2350
+Wire Wire Line
+	3450 2550 3450 2650
+Connection ~ 3450 2550
+$Comp
+L Device:R_Small R?
+U 1 1 602D0785
+P 3950 2350
+F 0 "R?" H 4009 2396 50  0000 L CNN
+F 1 "5k1" V 3850 2200 50  0000 L CNN
+F 2 "" H 3950 2350 50  0001 C CNN
+F 3 "~" H 3950 2350 50  0001 C CNN
+	1    3950 2350
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:GND #PWR?
+U 1 1 602D078B
+P 3950 2450
+F 0 "#PWR?" H 3950 2200 50  0001 C CNN
+F 1 "GND" H 3955 2277 50  0000 C CNN
+F 2 "" H 3950 2450 50  0001 C CNN
+F 3 "" H 3950 2450 50  0001 C CNN
+	1    3950 2450
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	4150 2150 4150 2050
+Wire Wire Line
+	3450 2050 4150 2050
+Wire Wire Line
+	3950 2150 3450 2150
+NoConn ~ 3450 4050
+NoConn ~ 3450 4150
+NoConn ~ 3450 2850
+NoConn ~ 3450 2950
+NoConn ~ 3450 3150
+NoConn ~ 3450 3250
+NoConn ~ 3450 3450
+NoConn ~ 3450 3550
+NoConn ~ 3450 3750
+NoConn ~ 3450 3850
+$EndSCHEMATC
