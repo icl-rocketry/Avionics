@@ -30,13 +30,14 @@ class LogController{
     private:
         StorageController* _storagecontroller; //pointer to storage controller
 
-        telemetry_logframe telemetry_frame; //telemetry log frame object
-        system_logframe system_frame;   //system log frame object
-        network_logframe network_frame; //network log frame object
+        telemetry_logframe telemetry_frame; //current telemetry log frame object
+        system_logframe system_frame;   //currentsystem log frame object
+        network_logframe network_frame; //current network log frame object
         //log frame buffers to temporarily store log frames before writing to storage devices
         std::vector<telemetry_logframe> telemetry_frame_buffer;
         std::vector<system_logframe> system_frame_buffer;
         std::vector<network_logframe> network_frame_buffer;
+        std::vector<network_logframe> engine_frame_buffer;
         
 
 
