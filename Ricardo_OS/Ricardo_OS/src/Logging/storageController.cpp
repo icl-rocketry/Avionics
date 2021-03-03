@@ -15,14 +15,18 @@ flash(&flashTransport)
 
 bool StorageController::setup(){
  
+    microsd.begin(SdCs,SD_SCK_MHZ(10));
     
+    return true;
+    /*
     if(!microsd.begin(SdCs,SD_SCK_MHZ(10))){
         
-    }
+    }*/
     
+    /*
     if (!microsd.exists("/Logs")){
         microsd.mkdir("/Logs"); // create logs directory
-    }
+    }*/
     
     /*
     if(!flash.begin(&flash_config)){
@@ -41,18 +45,25 @@ void StorageController::write(std::string &path,std::string &data,STORAGE_DEVICE
     switch(device){
         case(STORAGE_DEVICE::ALL):{
             
-            write(path,data,STORAGE_DEVICE::MICROSD);
-            write(path,data,STORAGE_DEVICE::FLASH);
+            //write(path,data,STORAGE_DEVICE::MICROSD);
+            //write(path,data,STORAGE_DEVICE::FLASH);
 
             break;
         }
         case(STORAGE_DEVICE::MICROSD):{
-            file = microsd.open(path.c_str(), (O_WRITE | O_CREAT | O_AT_END));
+            
+            file = microsd.open(path.c_str(), (O_WRITE | O_CREAT | O_AT_END));//
+            Serial.println("opening file");
             if (file){
+                Serial.println("writing");
                 //check if file is okay
-                file.write(data.c_str());
+                file.print(data.c_str());
+                file.close();//close the file
+                Serial.println("write complete");
             }
-            file.close();//close the file
+            
+           
+
             break;
         }
         case(STORAGE_DEVICE::FLASH):{

@@ -182,6 +182,7 @@ class SdSpiLibDriver {
    */
   void setPort(SPIClass* spiPort) {
     m_spi = spiPort ? spiPort : &SDCARD_SPI;
+    //m_spi = spiPort;
   }
  private:
   SPIClass* m_spi;

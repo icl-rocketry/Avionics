@@ -39,8 +39,10 @@ void LogController::log(uint32_t status,uint32_t flag,std::string message) {
     system_frame.systemStatus = status;
     system_frame.systemFlag = flag;
     system_frame.message = message;
+    std::string test = flagLevel(flag) + system_frame.stringify() + "\n";
+    Serial.println(test.c_str());
 
-    //system_log_buffer += flagLevel(flag) + system_frame.stringify() + "\n"; //append string log buffer with new values and add new line character
+    system_log_buffer += flagLevel(flag) + system_frame.stringify() + "\n"; //append string log buffer with new values and add new line character
 
 	
 }
@@ -49,23 +51,25 @@ void LogController::log(uint32_t status,uint32_t flag) {
     system_frame.systemStatus = status;
     system_frame.systemFlag = flag;
     system_frame.message = "";
+    std::string test = flagLevel(flag) + system_frame.stringify() + "\n";
+    Serial.println(test.c_str());
  
-   // system_log_buffer += flagLevel(flag) + system_frame.stringify() + "\n"; //append string log buffer with new values and add new line character
+    system_log_buffer += flagLevel(flag) + system_frame.stringify() + "\n"; //append string log buffer with new values and add new line character
 
 }
 
 void LogController::update(){
-    uint64_t delta_t = millis() - prev_time;
-    if (delta_t > log_frequency[(uint8_t)LOG_TYPE::TELEMETRY]){
-        write_to_file(LOG_TYPE::TELEMETRY);
+    uint64_t dt = millis() - prev_time;
+    if (dt > log_frequency[(uint8_t)LOG_TYPE::TELEMETRY]){
+        //write_to_file(LOG_TYPE::TELEMETRY);
         prev_time = millis(); // update previous time
     }
-    if (delta_t > log_frequency[(uint8_t)LOG_TYPE::SYSTEM]){
+    if (dt > log_frequency[(uint8_t)LOG_TYPE::SYSTEM]){
         write_to_file(LOG_TYPE::SYSTEM);
         prev_time = millis(); // update previous time
     }
-    if (delta_t > log_frequency[(uint8_t)LOG_TYPE::NETWORK]){
-        write_to_file(LOG_TYPE::NETWORK);
+    if (dt > log_frequency[(uint8_t)LOG_TYPE::NETWORK]){
+        //write_to_file(LOG_TYPE::NETWORK);
         prev_time = millis(); // update previous time
     }
 
@@ -83,8 +87,11 @@ void LogController::write_to_file(LOG_TYPE log_type){
         }
         case LOG_TYPE::SYSTEM:
         {
-            log_file_path = "/Logs/system_log.txt";
+            log_file_path = "Logs/system_log.txt";
             log_buffer = system_log_buffer;
+            Serial.println(log_buffer.c_str());
+            _storagecontroller->write(log_file_path,log_buffer,STORAGE_DEVICE::MICROSD);
+            system_log_buffer = "";
             break;
         }
         case LOG_TYPE::NETWORK:
@@ -95,7 +102,7 @@ void LogController::write_to_file(LOG_TYPE log_type){
     //duplicate logs to all avaliable storage - > this might be really slow idk?
     //_storagecontroller->write(log_file_path,data,STORAGE_DEVICE::ALL);
     //for dev only going to write to microsd -> easier to tell if we got it right lol
-    _storagecontroller->write(log_file_path,log_buffer,STORAGE_DEVICE::MICROSD);
+    
 
 }
 
