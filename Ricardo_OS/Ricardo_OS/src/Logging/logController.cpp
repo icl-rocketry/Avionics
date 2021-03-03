@@ -103,6 +103,7 @@ void LogController::write_to_file(LOG_TYPE log_type){
             log_file_path = "Logs/system_log.txt";
             
             for (int i = 0; i< system_log_buffer.size();i++){
+                //processing each frame individually so we dont accidentally use all of heap
                 std::string entry = system_log_buffer[i].stringify();
                 _storagecontroller->write(log_file_path,entry,STORAGE_DEVICE::MICROSD);
             }
@@ -114,9 +115,6 @@ void LogController::write_to_file(LOG_TYPE log_type){
             break;
         }
     }
-    //duplicate logs to all avaliable storage - > this might be really slow idk?
-    //_storagecontroller->write(log_file_path,data,STORAGE_DEVICE::ALL);
-    //for dev only going to write to microsd -> easier to tell if we got it right lol
     
 
 }
