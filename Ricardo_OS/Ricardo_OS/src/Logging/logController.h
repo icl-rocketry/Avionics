@@ -6,6 +6,15 @@
 #include "Comms/packets.h"
 #include "storageController.h"
 #include <vector>
+#include <string>
+#include "flags.h"
+
+
+enum class LOG_TYPE:uint8_t{
+    TELEMETRY = 0,
+    SYSTEM = 1,
+    NETWORK = 2
+};
 
 class LogController{
     public:
@@ -24,21 +33,37 @@ class LogController{
         //update the buffers
         void update();
 
-        void write_to_file();
+        
 
 
     private:
-        StorageController* _storagecontroller; //pointer to storage controller
 
+        StorageController* _storagecontroller; //pointer to storage controller
         telemetry_logframe telemetry_frame; //current telemetry log frame object
         system_logframe system_frame;   //currentsystem log frame object
         network_logframe network_frame; //current network log frame object
         //log frame buffers to temporarily store log frames before writing to storage devices
-        std::vector<telemetry_logframe> telemetry_frame_buffer;
-        std::vector<system_logframe> system_frame_buffer;
-        std::vector<network_logframe> network_frame_buffer;
-        std::vector<network_logframe> engine_frame_buffer;
+        std::string telemetry_log_buffer;
+        std::string system_log_buffer;
+        std::string network_log_buffer;
+
+        bool telemetry_log_updated = false;
+        bool system_log_updated = false;
+        bool network_log_updated = false;
+
+        //std::string engine_log_buffer;
+        //logging frequnecies
+        uint16_t log_frequency[3] = {5000,5000,5000};
         
+
+        //methods to write buffer to file
+        void write_to_file(LOG_TYPE log_type);
+        //inialize previous time at 0
+        uint64_t prev_time = 0;
+        
+        //flag level helper function
+        std::string flagLevel(uint32_t flag);
+        std::string flagLevel(system_flag flag);
 
 
         

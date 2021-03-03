@@ -24,6 +24,7 @@ void stateMachine::initialise(State* initStatePtr) {
   //call setup state before callng individual setups
   changeState(initStatePtr);
   //setup classes 
+  //storagecontroller.setup();
   sensors.setup();
   estimator.setup();
   networkmanager.setup();
@@ -32,6 +33,7 @@ void stateMachine::initialise(State* initStatePtr) {
 
 void stateMachine::update() {
   //call update in classes before state update method so state has most recent information
+  //logcontroller.update();
   sensors.update();
   estimator.update();
 

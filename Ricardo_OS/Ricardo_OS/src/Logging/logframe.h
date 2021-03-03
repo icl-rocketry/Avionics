@@ -2,10 +2,12 @@
 #define LOGFRAME_H
 #include <string>
 #include <array>
+#include "serializableElement.h"
+#include <Arduino.h>
 
 //logframes
 class logframe{
-    virtual std::string serialize(); //purley virtaul seralize method
+    virtual std::string stringify() const; //purley virtaul seralize method
 };
 
 class telemetry_logframe: public logframe{
@@ -13,24 +15,6 @@ private:
     static constexpr auto getSerializer()
     {
         auto ret = serializer(
-            &telemetry_logframe::ax,
-            &telemetry_logframe::ay,
-            &telemetry_logframe::az,
-            &telemetry_logframe::gx,
-            &telemetry_logframe::gy,
-            &telemetry_logframe::gz,
-            &telemetry_logframe::mx,
-            &telemetry_logframe::my,
-            &telemetry_logframe::mz,
-            &telemetry_logframe::gps_lat,
-            &telemetry_logframe::gps_long,
-            &telemetry_logframe::gps_speed,
-            &telemetry_logframe::gps_alt,
-            &telemetry_logframe::baro_alt,
-            &telemetry_logframe::baro_temp,
-            &telemetry_logframe::baro_press,
-            &telemetry_logframe::batt_volt,
-            &telemetry_logframe::batt_percent
             &telemetry_logframe::rawGPSLong,
             &telemetry_logframe::rawGPSLong,
             &telemetry_logframe::rawGPSLat,
@@ -73,13 +57,14 @@ private:
             &telemetry_logframe::estimatorM,
             &telemetry_logframe::estimatorN,
             &telemetry_logframe::estimatorTimestamp
-            )
+            );
         return ret;
     }
     
+    /*
     static constexpr size_t packet_size() {
         return getSerializer().member_size();
-    }
+    }*/
 
 public:   
     double rawGPSLong; //gps.long
@@ -101,33 +86,34 @@ public:
     double rawBaroTemp; //baro.temp
     double rawBaroPres; //baro.pres
     double rawBaroAlt; //baro.alt
-    int battVolt; //batt.volt
+    int battVolt; //batt.volt
     int battPercent; //batt.percent
     long rawTimestamp; //raw.timestamp
     double estimatorX; //estimator.x
-    double estimatorY; //estimator.y
+    double estimatorY; //estimator.y
     double estimatorZ; //estimator.z
     double estimatorVX; //estimator.vx
     double estimatorVY; //estimator.vy
     double estimatorVZ; //estimator.vz
-    double estimatorAX;//estimator.ax
-    double estimatorAY; //estimator.ay
+    double estimatorAX;  //estimator.ax
+    double estimatorAY; //
     double estimatorAZ; //estimator.az
     double estimatorYaw; //estimator.yaw
-    double estimatorPitch; //estimator.pitch
+    double estimatorPitch;
     double estimatorRoll; //estimator.roll
     double estimatorP; //estimator.p
-    double estimatorR; //estimator.r
+    double estimatorR;
     double estimatorQ; //estimator.q
     double estimatorL; //estimator.l
-    double estimatorM; //estimator.m
+    double estimatorM;
     double estimatorN; //estimator.n
-    long estimatorTimestamp; //estimator.timestamp
+    long estimatorTimestamp;
 
 
-    std::string stringfy()const{
-        return getSerializer().stringify();
+    std::string stringify()const{
+        return getSerializer().stringify(*this);
     };
+
 };
 class system_logframe:public logframe{
 private:  
@@ -137,34 +123,44 @@ private:
             &system_logframe::systemStatus,
             &system_logframe::systemFlag,
             &system_logframe::message
-        
-            )
+
+        );
         return ret;
     }
-    
-    static constexpr size_t packet_size() {
-        return getSerializer().member_size();
-    }
+
 public:
     //global_system_flag
-    //verbose_messa
-    uint32_t systemStatus;
-    uint32_t systemFlag;
     std::string message;
+    uint32_t systemFlag;
+    uint32_t systemStatus;
     
-    std::string stringfy()const{
-        return getSerializer().stringify();
+    std::string stringify()const{
+        return getSerializer().stringify(*this);
     };
 
 };
+
 class network_logframe:public logframe{
-    // Packet Header
-    std::string seralize(){return "hi";};
+private:
+    static constexpr auto getSerializer()
+    {
+        auto ret = serializer(
+            &network_logframe::test
+        );
+        return ret;
+    }
+public:
+    // todo
+    double test;
+    
+    std::string stringify()const{
+        return getSerializer().stringify(*this);
+    };
 
 };
 
 class engine_logframe:public logframe{
-
+ // todo
 };
 
 

@@ -24,7 +24,7 @@ class StorageController{
         StorageController(stateMachine *sm);
         bool setup(); //setup storage devices
 
-        void write(std::string path,std::string data,STORAGE_DEVICE device);//missing arguemtn for data -we need to decide 
+        void write(std::string &path,std::string &data,STORAGE_DEVICE device);//missing arguemtn for data -we need to decide 
         void read(std::string path,STORAGE_DEVICE device); // need to figure out return type
     
         bool format(STORAGE_DEVICE device);//format device
@@ -33,6 +33,7 @@ class StorageController{
         stateMachine *_sm;//pointer to state machine
 
         SdFat microsd; // microsd card storage object
+        File file; // file object
         
         Adafruit_FlashTransport_SPI flashTransport;
         Adafruit_SPIFlash flash;// flash storage object

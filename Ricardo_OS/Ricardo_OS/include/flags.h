@@ -1,6 +1,8 @@
 #ifndef FLAGS_H
 #define FLAGS_H
 
+#include <string>
+
 enum class system_flag:uint32_t{
     //state flags
     STATE_USBMODE = (1 << 0), 
@@ -33,5 +35,6 @@ enum class system_flag:uint32_t{
     WARN_PYRO2 = (1 << 23),
     //info 
 };
+
 
 #endif
