@@ -22,6 +22,8 @@ class Battery{
 
         uint8_t _pin;
 
+        
+
 };    
 
 #endif

@@ -27,10 +27,10 @@ void Battery::update(){
 
     _raw_data->batt_volt = uint16_t(floor(float(factor*analogRead(_pin)))); // voltage in mV
 
-    if (_raw_data->batt_volt < warn_battery_voltage){
-        //_systemstatus->new_message(system_flag::WARN_BATT,"Battery at " + tostring(_raw_data->batt_volt) + "mV"); 
-    }else{
-         //_systemstatus->delete_message(system_flag::WARN_BATT);
+    if ((_raw_data->batt_volt < warn_battery_voltage) && (!_systemstatus->flag_triggered(system_flag::WARN_BATT))){
+        _systemstatus->new_message(system_flag::WARN_BATT,"Battery at " + tostring(_raw_data->batt_volt) + "mV"); 
+    }else if ((_raw_data->batt_volt > warn_battery_voltage) && (_systemstatus->flag_triggered(system_flag::WARN_BATT))){
+         _systemstatus->delete_message(system_flag::WARN_BATT);
     }
 
 

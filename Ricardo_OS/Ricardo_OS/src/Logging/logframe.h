@@ -111,7 +111,7 @@ public:
 
 
     std::string stringify()const{
-        return getSerializer().stringify(*this);
+        return getSerializer().stringify(*this) + "\n";
     };
 
 };
@@ -120,9 +120,13 @@ private:
     static constexpr auto getSerializer()
     {
         auto ret = serializer(
-            &system_logframe::systemStatus,
+            &system_logframe::logLevel,
+            &system_logframe::timestamp,
+            &system_logframe::message,
             &system_logframe::systemFlag,
-            &system_logframe::message
+            &system_logframe::systemStatus
+            
+            
 
         );
         return ret;
@@ -130,12 +134,14 @@ private:
 
 public:
     //global_system_flag
+    std::string logLevel;
+    uint64_t timestamp;
     std::string message;
     uint32_t systemFlag;
     uint32_t systemStatus;
     
     std::string stringify()const{
-        return getSerializer().stringify(*this);
+        return getSerializer().stringify(*this) + "\n";
     };
 
 };
@@ -154,7 +160,7 @@ public:
     double test;
     
     std::string stringify()const{
-        return getSerializer().stringify(*this);
+        return getSerializer().stringify(*this) + "\n";
     };
 
 };

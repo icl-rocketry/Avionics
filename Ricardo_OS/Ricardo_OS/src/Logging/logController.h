@@ -43,9 +43,13 @@ class LogController{
         system_logframe system_frame;   //currentsystem log frame object
         network_logframe network_frame; //current network log frame object
         //log frame buffers to temporarily store log frames before writing to storage devices
-        std::string telemetry_log_buffer;
-        std::string system_log_buffer;
-        std::string network_log_buffer;
+        //std::string telemetry_log_buffer;
+        //std::string system_log_buffer;
+        //std::string network_log_buffer;
+
+        std::vector<telemetry_logframe> telemetry_log_buffer;
+        std::vector<system_logframe> system_log_buffer;
+        std::vector<network_logframe> network_log_buffer;
 
         bool telemetry_log_updated = false;
         bool system_log_updated = false;
@@ -58,6 +62,7 @@ class LogController{
 
         //methods to write buffer to file
         void write_to_file(LOG_TYPE log_type);
+        
         //inialize previous time at 0
         uint64_t prev_time = 0;
         

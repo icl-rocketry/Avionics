@@ -53,17 +53,12 @@ void StorageController::write(std::string &path,std::string &data,STORAGE_DEVICE
         case(STORAGE_DEVICE::MICROSD):{
             
             file = microsd.open(path.c_str(), (O_WRITE | O_CREAT | O_AT_END));//
-            Serial.println("opening file");
             if (file){
-                Serial.println("writing");
                 //check if file is okay
                 file.print(data.c_str());
                 file.close();//close the file
-                Serial.println("write complete");
             }
             
-           
-
             break;
         }
         case(STORAGE_DEVICE::FLASH):{
