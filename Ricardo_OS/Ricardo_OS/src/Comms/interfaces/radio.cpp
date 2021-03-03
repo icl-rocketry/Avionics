@@ -31,7 +31,9 @@ void Radio::setup(){
         _systemstatus->new_message(system_flag::ERROR_LORA,"Lora setting up");
         delay(100);       
     };
-    _systemstatus->delete_message(system_flag::ERROR_LORA);
+    if (_systemstatus->flag_triggered(system_flag::ERROR_LORA)){
+        _systemstatus->delete_message(system_flag::ERROR_LORA);
+    }
     
     LoRa.setSyncWord(LORA_SYNC_WORD);
 

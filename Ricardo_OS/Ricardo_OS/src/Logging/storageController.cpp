@@ -58,7 +58,6 @@ void StorageController::write(std::string &path,std::string &data,STORAGE_DEVICE
                 file.print(data.c_str());
                 file.close();//close the file
             }
-            
             break;
         }
         case(STORAGE_DEVICE::FLASH):{
