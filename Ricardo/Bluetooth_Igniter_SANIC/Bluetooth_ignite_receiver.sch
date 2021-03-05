@@ -3,7 +3,7 @@ EELAYER 30 0
 EELAYER END
 $Descr A4 11693 8268
 encoding utf-8
-Sheet 1 2
+Sheet 1 3
 Title ""
 Date ""
 Rev ""
@@ -37,7 +37,7 @@ Wire Wire Line
 Wire Wire Line
 	6400 4300 6750 4300
 $Sheet
-S 7650 5200 1000 600 
+S 9200 4950 1000 600 
 U 603A281D
 F0 "pyros" 50
 F1 "pyros.sch" 50
@@ -50,29 +50,29 @@ Text Label 6550 4500 0    50   ~ 0
 Cont1
 Text Label 6550 4600 0    50   ~ 0
 Cont2
-Text HLabel 7650 5300 2    50   Input ~ 0
+Text HLabel 9200 5050 2    50   Input ~ 0
 Nuke1
-Text HLabel 7650 5400 2    50   Input ~ 0
+Text HLabel 9200 5150 2    50   Input ~ 0
 Nuke2
-Text HLabel 7650 5500 2    50   Input ~ 0
+Text HLabel 9200 5250 2    50   Input ~ 0
 Cont1
-Text HLabel 7650 5600 2    50   Input ~ 0
+Text HLabel 9200 5350 2    50   Input ~ 0
 Cont2
 Wire Wire Line
-	7650 5300 7350 5300
+	9200 5050 8900 5050
 Wire Wire Line
-	7650 5400 7350 5400
+	9200 5150 8900 5150
 Wire Wire Line
-	7650 5500 7350 5500
+	9200 5250 8900 5250
 Wire Wire Line
-	7650 5600 7350 5600
-Text Label 7350 5300 0    50   ~ 0
+	9200 5350 8900 5350
+Text Label 8900 5050 0    50   ~ 0
 Nuke1
-Text Label 7350 5400 0    50   ~ 0
+Text Label 8900 5150 0    50   ~ 0
 Nuke2
-Text Label 7350 5500 0    50   ~ 0
+Text Label 8900 5250 0    50   ~ 0
 Cont1
-Text Label 7350 5600 0    50   ~ 0
+Text Label 8900 5350 0    50   ~ 0
 Cont2
 $Comp
 L power:GND #PWR?
@@ -126,4 +126,10 @@ F 3 "" H 5800 1600 50  0001 C CNN
 $EndComp
 Wire Wire Line
 	5800 2100 5800 1600
+$Sheet
+S 1450 1200 900  300 
+U 603E92A7
+F0 "power" 50
+F1 "power.sch" 50
+$EndSheet
 $EndSCHEMATC

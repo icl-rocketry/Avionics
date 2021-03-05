@@ -24,19 +24,6 @@ F 3 "https://www.espressif.com/sites/default/files/documentation/esp32-wroom-32_
 	1    5800 3500
 	1    0    0    -1  
 $EndComp
-$Comp
-L power:+9V #PWR?
-U 1 1 6039B99C
-P 5800 1600
-F 0 "#PWR?" H 5800 1450 50  0001 C CNN
-F 1 "+9V" H 5815 1773 50  0000 C CNN
-F 2 "" H 5800 1600 50  0001 C CNN
-F 3 "" H 5800 1600 50  0001 C CNN
-	1    5800 1600
-	1    0    0    -1  
-$EndComp
-Wire Wire Line
-	5800 2100 5800 1600
 Wire Wire Line
 	5200 2300 4850 2300
 Text Label 4850 2300 0    50   ~ 0
@@ -126,4 +113,17 @@ NoConn ~ 5200 3900
 NoConn ~ 5200 4000
 NoConn ~ 5200 2500
 NoConn ~ 5200 2600
+$Comp
+L power:+3V3 #PWR?
+U 1 1 603E97E4
+P 5800 1600
+F 0 "#PWR?" H 5800 1450 50  0001 C CNN
+F 1 "+3V3" H 5815 1773 50  0000 C CNN
+F 2 "" H 5800 1600 50  0001 C CNN
+F 3 "" H 5800 1600 50  0001 C CNN
+	1    5800 1600
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	5800 2100 5800 1600
 $EndSCHEMATC
