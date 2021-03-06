@@ -70,10 +70,6 @@ F 3 "~" H 7100 3150 50  0001 C CNN
 	-1   0    0    1   
 $EndComp
 Wire Wire Line
-	6600 3500 6600 3300
-Text HLabel 6850 3900 2    50   Input ~ 0
-usb_DETONATOR
-Wire Wire Line
 	7100 2900 7100 3000
 Wire Wire Line
 	4700 2700 5400 2700
@@ -92,13 +88,64 @@ Wire Wire Line
 	4700 2900 7100 2900
 Wire Wire Line
 	4700 3000 6600 3000
+$Comp
+L power:GND #PWR?
+U 1 1 60488D63
+P 6600 3700
+F 0 "#PWR?" H 6600 3450 50  0001 C CNN
+F 1 "GND" H 6605 3527 50  0000 C CNN
+F 2 "" H 6600 3700 50  0001 C CNN
+F 3 "" H 6600 3700 50  0001 C CNN
+	1    6600 3700
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:GND #PWR?
+U 1 1 60489008
+P 7100 3700
+F 0 "#PWR?" H 7100 3450 50  0001 C CNN
+F 1 "GND" H 7105 3527 50  0000 C CNN
+F 2 "" H 7100 3700 50  0001 C CNN
+F 3 "" H 7100 3700 50  0001 C CNN
+	1    7100 3700
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:LED_Small D?
+U 1 1 6053D295
+P 6600 3500
+AR Path="/6053D295" Ref="D?"  Part="1" 
+AR Path="/602F075A/6053D295" Ref="D?"  Part="1" 
+F 0 "D?" H 6600 3295 50  0000 C CNN
+F 1 "USB_LED" H 6600 3386 50  0000 C CNN
+F 2 "LED_SMD:LED_0603_1608Metric_Castellated" V 6600 3500 50  0001 C CNN
+F 3 "~" V 6600 3500 50  0001 C CNN
+	1    6600 3500
+	0    -1   -1   0   
+$EndComp
 Wire Wire Line
-	6600 3500 6850 3500
+	6600 3300 6600 3400
 Wire Wire Line
-	7100 3300 7100 3500
+	6600 3600 6600 3700
 Wire Wire Line
-	6850 3500 6850 3900
-Connection ~ 6850 3500
+	7100 3700 7100 3600
+$Comp
+L Device:LED_Small D?
+U 1 1 604A9E91
+P 7100 3500
+AR Path="/604A9E91" Ref="D?"  Part="1" 
+AR Path="/602F075A/604A9E91" Ref="D?"  Part="1" 
+F 0 "D?" H 7100 3295 50  0000 C CNN
+F 1 "USB_LED" H 7100 3386 50  0000 C CNN
+F 2 "LED_SMD:LED_0603_1608Metric_Castellated" V 7100 3500 50  0001 C CNN
+F 3 "~" V 7100 3500 50  0001 C CNN
+	1    7100 3500
+	0    -1   -1   0   
+$EndComp
 Wire Wire Line
-	6850 3500 7100 3500
+	7100 3400 7100 3300
+Text Notes 7450 4050 2    50   ~ 0
+Upwards LED
+Text Notes 6150 4050 0    50   ~ 0
+Downwards LED
 $EndSCHEMATC

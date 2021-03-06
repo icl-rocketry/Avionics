@@ -648,17 +648,6 @@ Wire Wire Line
 Text Label 7200 4250 2    50   ~ 0
 SD_CS
 $Comp
-L Sensor_Pressure:MS5607-02BA U5
-U 1 1 5DAF7991
-P 10300 4600
-F 0 "U5" H 10630 4646 50  0000 L CNN
-F 1 "MS5607-02BA" H 10630 4555 50  0000 L CNN
-F 2 "Package_LGA:LGA-8_3x5mm_P1.25mm" H 10300 4600 50  0001 C CNN
-F 3 "https://www.te.com/commerce/DocumentDelivery/DDEController?Action=showdoc&DocId=Data+Sheet%7FMS5607-02BA03%7FB2%7Fpdf%7FEnglish%7FENG_DS_MS5607-02BA03_B2.pdf%7FCAT-BLPS0035" H 10300 4600 50  0001 C CNN
-	1    10300 4600
-	1    0    0    -1  
-$EndComp
-$Comp
 L power:+3.3V #PWR034
 U 1 1 5DAF89F9
 P 10300 4100
@@ -942,7 +931,7 @@ U 1 1 5DBE2F9A
 P 10350 3150
 F 0 "JP2" H 10350 3910 45  0000 C CNN
 F 1 "XBEE" H 10350 3826 45  0000 C CNN
-F 2 "iclr-hw:XBEE" H 10350 3750 20  0001 C CNN
+F 2 "iclr:XBEE" H 10350 3750 20  0001 C CNN
 F 3 "" H 10350 3150 50  0001 C CNN
 F 4 "XXX-00000" H 10350 3731 60  0000 C CNN "Field4"
 	1    10350 3150
@@ -1125,39 +1114,6 @@ Wire Wire Line
 	2150 2000 2500 2000
 Text Label 2150 2000 0    50   ~ 0
 RADIO_TX
-Text Label 2050 4400 2    50   ~ 0
-USB_DET
-$Comp
-L Device:LED_Small D17
-U 1 1 5DFAB0B1
-P 4100 950
-F 0 "D17" H 4100 745 50  0000 C CNN
-F 1 "USB_LED" H 4100 836 50  0000 C CNN
-F 2 "LED_SMD:LED_0603_1608Metric_Castellated" V 4100 950 50  0001 C CNN
-F 3 "~" V 4100 950 50  0001 C CNN
-	1    4100 950 
-	1    0    0    -1  
-$EndComp
-$Comp
-L Device:R_Small R36
-U 1 1 5DFAB0B7
-P 4400 950
-F 0 "R36" V 4204 950 50  0000 C CNN
-F 1 "470" V 4295 950 50  0000 C CNN
-F 2 "Resistor_SMD:R_0603_1608Metric" H 4400 950 50  0001 C CNN
-F 3 "~" H 4400 950 50  0001 C CNN
-	1    4400 950 
-	0    1    1    0   
-$EndComp
-Wire Wire Line
-	4200 950  4300 950 
-Wire Wire Line
-	4000 950  3900 950 
-Connection ~ 3900 950 
-Wire Wire Line
-	4500 950  4900 950 
-Text Label 4900 950  2    50   ~ 0
-USB_DET
 $Comp
 L Connector:Conn_01x02_Male J9
 U 1 1 5DFF606F
@@ -1837,17 +1793,14 @@ F 3 "" H 1800 2750 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Sheet
-S 850  3800 750  750 
+S 1050 3800 550  550 
 U 602F075A
 F0 "usb-c" 50
 F1 "usb-c.sch" 50
 F2 "usb_D+" I R 1600 4100 50 
 F3 "usb_D-" I R 1600 4250 50 
 F4 "usb_VBUS" I R 1600 3950 50 
-F5 "usb_DETONATOR" I R 1600 4400 50 
 $EndSheet
-Wire Wire Line
-	1600 4400 2050 4400
 Wire Wire Line
 	1800 4200 1800 4100
 Wire Wire Line
@@ -2124,5 +2077,16 @@ F 2 "Connector_RJ:RJ45_Amphenol_RJHSE538X" V 5850 7075 50  0001 C CNN
 F 3 "~" V 5850 7075 50  0001 C CNN
 	1    5850 7050
 	-1   0    0    1   
+$EndComp
+$Comp
+L Sensor_Pressure:MS5607-02BA U5
+U 1 1 5DAF7991
+P 10300 4600
+F 0 "U5" H 10630 4646 50  0000 L CNN
+F 1 "MS5607-02BA" H 10630 4555 50  0000 L CNN
+F 2 "Package_LGA:LGA-8_3x5mm_P1.25mm" H 10300 4600 50  0001 C CNN
+F 3 "https://www.te.com/commerce/DocumentDelivery/DDEController?Action=showdoc&DocId=Data+Sheet%7FMS5607-02BA03%7FB2%7Fpdf%7FEnglish%7FENG_DS_MS5607-02BA03_B2.pdf%7FCAT-BLPS0035" H 10300 4600 50  0001 C CNN
+	1    10300 4600
+	1    0    0    -1  
 $EndComp
 $EndSCHEMATC
