@@ -2089,4 +2089,53 @@ F 3 "https://www.te.com/commerce/DocumentDelivery/DDEController?Action=showdoc&D
 	1    10300 4600
 	1    0    0    -1  
 $EndComp
+$Comp
+L Interface_Expansion:PCA9536D U?
+U 1 1 60497087
+P 5350 1350
+F 0 "U?" H 5350 1831 50  0000 C CNN
+F 1 "PCA9536D" H 5350 1740 50  0000 C CNN
+F 2 "Package_SO:SOIC-8_3.9x4.9mm_P1.27mm" H 6350 1000 50  0001 C CNN
+F 3 "http://www.nxp.com/documents/data_sheet/PCA9536.pdf" H 5150 -350 50  0001 C CNN
+	1    5350 1350
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:+3V3 #PWR?
+U 1 1 604BFA09
+P 5350 800
+F 0 "#PWR?" H 5350 650 50  0001 C CNN
+F 1 "+3V3" H 5365 973 50  0000 C CNN
+F 2 "" H 5350 800 50  0001 C CNN
+F 3 "" H 5350 800 50  0001 C CNN
+	1    5350 800 
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:GND #PWR?
+U 1 1 604C1D4C
+P 5350 1750
+F 0 "#PWR?" H 5350 1500 50  0001 C CNN
+F 1 "GND" H 5355 1577 50  0000 C CNN
+F 2 "" H 5350 1750 50  0001 C CNN
+F 3 "" H 5350 1750 50  0001 C CNN
+	1    5350 1750
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	5350 800  5350 1050
+Text Notes 5400 1100 0    50   ~ 0
+RGB Port
+NoConn ~ 5850 1250
+NoConn ~ 5850 1350
+NoConn ~ 5850 1450
+NoConn ~ 5850 1550
+Wire Wire Line
+	4850 1450 4550 1450
+Wire Wire Line
+	4850 1550 4550 1550
+Text Label 4550 1450 0    50   ~ 0
+SDA
+Text Label 4550 1550 0    50   ~ 0
+SCL
 $EndSCHEMATC
