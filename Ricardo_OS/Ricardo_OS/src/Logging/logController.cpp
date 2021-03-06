@@ -15,6 +15,10 @@ _storagecontroller(storagecontroller)
     system_log_buffer.reserve(10); // reserving 255 character buffer
     network_log_buffer.reserve(10); // reserving 255 character buffer
     //engine_log_buffer.reserve(255); // reserving 255 character buffer
+
+    //check with storage controller if log_directory exsists and increment by 1
+    //we care about the sd card directory structure not hte flash structure so on the flash
+    //each time the system reboots we will increment the directory by a number e.g 0 .. 9 -> 00, 01 ...-> 11 etc
     
     
 };
@@ -28,6 +32,8 @@ void LogController::log(raw_measurements_t &raw_sensors) {
 }
 
 void LogController::log(PacketHeader &header) {
+
+
 	
 }
 
@@ -92,6 +98,7 @@ void LogController::update(){
 void LogController::write_to_file(LOG_TYPE log_type){
     std::string log_file_path;
     
+    
     switch(log_type){
         case LOG_TYPE::TELEMETRY:
         {
@@ -100,7 +107,7 @@ void LogController::write_to_file(LOG_TYPE log_type){
         }
         case LOG_TYPE::SYSTEM:
         {
-            log_file_path = "Logs/system_log.txt";
+            log_file_path = log_directory + system_log_filename;
             
             for (int i = 0; i< system_log_buffer.size();i++){
                 //processing each frame individually so we dont accidentally use all of heap
@@ -108,6 +115,7 @@ void LogController::write_to_file(LOG_TYPE log_type){
                 _storagecontroller->write(log_file_path,entry,STORAGE_DEVICE::MICROSD);
             }
             system_log_buffer.clear(); //clear all log frames in buffer
+
             break;
         }
         case LOG_TYPE::NETWORK:

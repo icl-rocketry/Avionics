@@ -39,6 +39,7 @@ class LogController{
     private:
 
         StorageController* _storagecontroller; //pointer to storage controller
+
         telemetry_logframe telemetry_frame; //current telemetry log frame object
         system_logframe system_frame;   //currentsystem log frame object
         network_logframe network_frame; //current network log frame object
@@ -47,6 +48,13 @@ class LogController{
         std::vector<telemetry_logframe> telemetry_log_buffer;
         std::vector<system_logframe> system_log_buffer;
         std::vector<network_logframe> network_log_buffer;
+
+        //loging directory prefix;
+        std::string log_directory = "Logs" ;
+        //log file names
+        const std::string telemetry_log_filename = "/telemetry_log.txt";
+        const std::string system_log_filename = "/system_log.txt";
+        const std::string network_log_filename = "/network_log.txt";
 
         //logging frequnecies
         uint16_t log_frequency[3] = {5000,5000,5000};
