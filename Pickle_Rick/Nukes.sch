@@ -525,25 +525,25 @@ Wire Wire Line
 Wire Wire Line
 	4500 2750 5400 2750
 $Comp
-L Isolator:LTV-354T U9
-U 1 1 603DC15B
+L Isolator:LTV-827S U9
+U 1 1 6045E90E
 P 5200 4850
 F 0 "U9" H 5200 5175 50  0000 C CNN
-F 1 "LTV-354T" H 5200 5084 50  0000 C CNN
-F 2 "Package_SO:SO-4_4.4x3.6mm_P2.54mm" H 5000 4650 50  0001 L CIN
-F 3 "http://optoelectronics.liteon.com/upload/download/DS70-2001-004/S_110_LTV-354T%2020140520.pdf" H 5225 4850 50  0001 L CNN
+F 1 "LTV-827S" H 5200 5084 50  0000 C CNN
+F 2 "Package_DIP:SMDIP-8_W9.53mm" H 5200 4550 50  0001 C CNN
+F 3 "http://www.us.liteon.com/downloads/LTV-817-827-847.PDF" H 4400 5400 50  0001 C CNN
 	1    5200 4850
 	1    0    0    -1  
 $EndComp
 $Comp
-L Isolator:LTV-354T U10
-U 1 1 603EA371
+L Isolator:LTV-827S U9
+U 2 1 604634BA
 P 8550 4800
-F 0 "U10" H 8550 5125 50  0000 C CNN
-F 1 "LTV-354T" H 8550 5034 50  0000 C CNN
-F 2 "Package_SO:SO-4_4.4x3.6mm_P2.54mm" H 8350 4600 50  0001 L CIN
-F 3 "http://optoelectronics.liteon.com/upload/download/DS70-2001-004/S_110_LTV-354T%2020140520.pdf" H 8575 4800 50  0001 L CNN
-	1    8550 4800
+F 0 "U9" H 8550 5125 50  0000 C CNN
+F 1 "LTV-827S" H 8550 5034 50  0000 C CNN
+F 2 "Package_DIP:SMDIP-8_W9.53mm" H 8550 4500 50  0001 C CNN
+F 3 "http://www.us.liteon.com/downloads/LTV-817-827-847.PDF" H 7750 5350 50  0001 C CNN
+	2    8550 4800
 	1    0    0    -1  
 $EndComp
 $EndSCHEMATC
