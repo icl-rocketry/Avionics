@@ -32,9 +32,6 @@ void stateMachine::initialise(State* initStatePtr) {
   sensors.setup();
   estimator.setup();
   networkmanager.setup();
-
-  storagecontroller.printDirectory("/Logs",STORAGE_DEVICE::MICROSD);
-  
   
 };
 
@@ -45,6 +42,8 @@ void stateMachine::update() {
   estimator.update();
 
   networkmanager.update();
+  
+  
 
   State* newStatePtr = _currStatePtr -> update();
 

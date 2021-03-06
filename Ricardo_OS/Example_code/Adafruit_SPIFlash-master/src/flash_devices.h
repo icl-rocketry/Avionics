@@ -78,18 +78,6 @@ typedef struct {
   {                                                                            \
     .total_size = (1UL << 20), /* 1 MiB */                                     \
         .start_up_time_us = 10000, .manufacturer_id = 0x1f,                    \
-    .memory_type = 0x84, .capacity = 0x01, .max_clock_speed_mhz = 85,          \
-    .quad_enable_bit_mask = 0x00, .has_sector_protection = true,               \
-    .supports_fast_read = true, .supports_qspi = false,                        \
-    .supports_qspi_writes = false, .write_status_register_split = false,       \
-    .single_status_byte = false, .is_fram = false,                             \
-  }
-
-// Settings for the Adesto Tech AT25SF041 4MiB SPI flash used in AS7262 sensor
-#define AT25SF041                                                              \
-  {                                                                            \
-    .total_size = (4UL << 20), /* 4 MiB */                                     \
-        .start_up_time_us = 10000, .manufacturer_id = 0x1f,                    \
     .memory_type = 0x45, .capacity = 0x01, .max_clock_speed_mhz = 85,          \
     .quad_enable_bit_mask = 0x00, .has_sector_protection = true,               \
     .supports_fast_read = true, .supports_qspi = false,                        \
@@ -104,21 +92,6 @@ typedef struct {
     .total_size = (1UL << 21), /* 2 MiB */                                     \
         .start_up_time_us = 5000, .manufacturer_id = 0xc8,                     \
     .memory_type = 0x40, .capacity = 0x15,                                     \
-    .max_clock_speed_mhz =                                                     \
-        104, /* if we need 120 then we can turn on high performance mode */    \
-        .quad_enable_bit_mask = 0x02, .has_sector_protection = false,          \
-    .supports_fast_read = true, .supports_qspi = true,                         \
-    .supports_qspi_writes = true, .write_status_register_split = false,        \
-    .single_status_byte = false, .is_fram = false,                             \
-  }
-
-// Settings for the Gigadevice GD25Q32C 4MiB SPI flash.
-// Datasheet: http://www.gigadevice.com/datasheet/gd25q32c/
-#define GD25Q32C                                                               \
-  {                                                                            \
-    .total_size = (1UL << 22), /* 4 MiB */                                     \
-        .start_up_time_us = 5000, .manufacturer_id = 0xc8,                     \
-    .memory_type = 0x40, .capacity = 0x16,                                     \
     .max_clock_speed_mhz =                                                     \
         104, /* if we need 120 then we can turn on high performance mode */    \
         .quad_enable_bit_mask = 0x02, .has_sector_protection = false,          \
@@ -144,55 +117,51 @@ typedef struct {
   }
 
 // https://www.fujitsu.com/uk/Images/MB85RS64V.pdf
-// RDID has continuation code: 04-7F-03-02
 #define MB85RS64V                                                              \
   {                                                                            \
-    .total_size = 8UL * 1024, .start_up_time_us = 5000,                        \
-    .manufacturer_id = 0x04, .memory_type = 0x03, .capacity = 0x02,            \
-    .max_clock_speed_mhz = 20, .quad_enable_bit_mask = 0x00,                   \
-    .has_sector_protection = false, .supports_fast_read = false,               \
-    .supports_qspi = false, .supports_qspi_writes = false,                     \
-    .write_status_register_split = false, .single_status_byte = true,          \
-    .is_fram = true,                                                           \
+    .total_size = 8UL * 1024, /* 8 KiB */                                      \
+        .start_up_time_us = 5000, .manufacturer_id = 0x04,                     \
+    .memory_type = 0x7F, .capacity = 0x03, .max_clock_speed_mhz = 20,          \
+    .quad_enable_bit_mask = 0x00, .has_sector_protection = false,              \
+    .supports_fast_read = false, .supports_qspi = false,                       \
+    .supports_qspi_writes = false, .write_status_register_split = false,       \
+    .single_status_byte = true, .is_fram = true,                               \
   }
 
 // https://www.fujitsu.com/uk/Images/MB85RS1MT.pdf
-// RDID has continuation code: 04-7F-27-03
 #define MB85RS1MT                                                              \
   {                                                                            \
-    .total_size = 128UL * 1024, .start_up_time_us = 5000,                      \
-    .manufacturer_id = 0x04, .memory_type = 0x27, .capacity = 0x03,            \
-    .max_clock_speed_mhz = 40, .quad_enable_bit_mask = 0x00,                   \
-    .has_sector_protection = false, .supports_fast_read = true,                \
-    .supports_qspi = false, .supports_qspi_writes = false,                     \
-    .write_status_register_split = false, .single_status_byte = true,          \
-    .is_fram = true,                                                           \
+    .total_size = (1UL << 17), /* 128 KiB */                                   \
+        .start_up_time_us = 5000, .manufacturer_id = 0x04,                     \
+    .memory_type = 0x7F, .capacity = 0x27, .max_clock_speed_mhz = 40,          \
+    .quad_enable_bit_mask = 0x00, .has_sector_protection = false,              \
+    .supports_fast_read = true, .supports_qspi = false,                        \
+    .supports_qspi_writes = false, .write_status_register_split = false,       \
+    .single_status_byte = true, .is_fram = true,                               \
   }
 
 // https://www.fujitsu.com/uk/Images/MB85RS2MTA.pdf
-// RDID has continuation code: 04-7F-48-03
 #define MB85RS2MTA                                                             \
   {                                                                            \
-    .total_size = 256UL * 1024, .start_up_time_us = 5000,                      \
-    .manufacturer_id = 0x04, .memory_type = 0x48, .capacity = 0x03,            \
-    .max_clock_speed_mhz = 40, .quad_enable_bit_mask = 0x00,                   \
-    .has_sector_protection = false, .supports_fast_read = true,                \
-    .supports_qspi = false, .supports_qspi_writes = false,                     \
-    .write_status_register_split = false, .single_status_byte = true,          \
-    .is_fram = true,                                                           \
+    .total_size = (1UL << 18), /* 256 KiB */                                   \
+        .start_up_time_us = 5000, .manufacturer_id = 0x04,                     \
+    .memory_type = 0x7F, .capacity = 0x48, .max_clock_speed_mhz = 40,          \
+    .quad_enable_bit_mask = 0x00, .has_sector_protection = false,              \
+    .supports_fast_read = true, .supports_qspi = false,                        \
+    .supports_qspi_writes = false, .write_status_register_split = false,       \
+    .single_status_byte = true, .is_fram = true,                               \
   }
 
 // https://www.fujitsu.com/uk/Images/MB85RS4MT.pdf
-// RDID has continuation code: 04-7F-49-03
 #define MB85RS4MT                                                              \
   {                                                                            \
-    .total_size = 512UL * 1024, .start_up_time_us = 5000,                      \
-    .manufacturer_id = 0x04, .memory_type = 0x49, .capacity = 0x03,            \
-    .max_clock_speed_mhz = 40, .quad_enable_bit_mask = 0x00,                   \
-    .has_sector_protection = false, .supports_fast_read = true,                \
-    .supports_qspi = false, .supports_qspi_writes = true,                      \
-    .write_status_register_split = false, .single_status_byte = true,          \
-    .is_fram = true,                                                           \
+    .total_size = (1UL << 19), /* 512 KiB */                                   \
+        .start_up_time_us = 5000, .manufacturer_id = 0x04,                     \
+    .memory_type = 0x7F, .capacity = 0x49, .max_clock_speed_mhz = 40,          \
+    .quad_enable_bit_mask = 0x00, .has_sector_protection = false,              \
+    .supports_fast_read = true, .supports_qspi = false,                        \
+    .supports_qspi_writes = true, .write_status_register_split = false,        \
+    .single_status_byte = true, .is_fram = true,                               \
   }
 
 // Settings for the Macronix MX25L1606 2MiB SPI flash.

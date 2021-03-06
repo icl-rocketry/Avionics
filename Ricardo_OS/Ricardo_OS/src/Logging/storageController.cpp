@@ -5,6 +5,9 @@
 #include <string>
 #include <SPI.h>
 #include <SdFat.h>
+#include "flags.h"
+#include "spiFlashConfig.h"
+
 
 StorageController::StorageController(stateMachine* sm):
 _sm(sm),
@@ -15,28 +18,28 @@ flash(&flashTransport)
 
 bool StorageController::setup(){
  
-    microsd.begin(SdCs,SD_SCK_MHZ(10));
     
-    return true;
-    /*
+
     if(!microsd.begin(SdCs,SD_SCK_MHZ(10))){
-        
-    }*/
-    
-    /*
-    if (!microsd.exists("/Logs")){
-        microsd.mkdir("/Logs"); // create logs directory
-    }*/
-    
-    /*
-    if(!flash.begin(&flash_config)){
-
+        _sm->systemstatus.new_message(system_flag::ERROR_SD,"Error intializing SD card");
+        return false;
     }
-    if(!flash_fatfs.begin(&flash)){
+    _sm->logcontroller.log("SD Initalized");
 
-    }*/
-
+    SPIFlash_Device_t flash_config = W25Q128JV_SM; //pass in spi flash config
     
+    if(!flash.begin(&flash_config)){
+        _sm->systemstatus.new_message(system_flag::ERROR_FLASH,"Error intializing onboard flash");
+        return false;
+    }
+    _sm->logcontroller.log("Flash Initalized");
+    
+    if(!flash_fatfs.begin(&flash)){
+        _sm->systemstatus.new_message(system_flag::ERROR_FLASH,"Error intializing onboard flashfs");
+        return false;
+    }
+    _sm->logcontroller.log("Flash FS Initalized");
+    return true;
 
 };
 
@@ -53,7 +56,7 @@ bool StorageController::ls(std::string path,std::vector<directory_element_t> &di
             break;
         }
         case STORAGE_DEVICE::FLASH:{
-            flash_fatfs.chvol();//change vol to 
+            flash_fatfs.chvol();//change vol to flash
             file = flash_fatfs.open(path.c_str()); // open the path supplied
             break;
         }
@@ -119,7 +122,7 @@ void StorageController::write(std::string &path,std::string &data,STORAGE_DEVICE
             break;
         }
         case(STORAGE_DEVICE::MICROSD):{
-            
+            microsd.chvol();
             file = microsd.open(path.c_str(), (O_WRITE | O_CREAT | O_AT_END));//
             if (file){
                 //check if file is okay
@@ -129,7 +132,13 @@ void StorageController::write(std::string &path,std::string &data,STORAGE_DEVICE
             break;
         }
         case(STORAGE_DEVICE::FLASH):{
-
+            flash_fatfs.chvol();
+            file = flash_fatfs.open(path.c_str(), (O_WRITE | O_CREAT | O_AT_END));//
+            if (file){
+                //check if file is okay
+                file.print(data.c_str());
+                file.close();//close the file
+            }
 
             break;
         }

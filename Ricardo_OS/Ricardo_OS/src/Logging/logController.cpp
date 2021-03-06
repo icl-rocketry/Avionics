@@ -79,6 +79,9 @@ void LogController::log(uint32_t status,uint32_t flag) {
 
 void LogController::update(){
     uint64_t dt = millis() - prev_time;
+    //temporary heart beat log to ensure logging is funtioning
+    
+
     if (dt > log_frequency[(uint8_t)LOG_TYPE::TELEMETRY]){
         //write_to_file(LOG_TYPE::TELEMETRY);
         prev_time = millis(); // update previous time
@@ -113,7 +116,10 @@ void LogController::write_to_file(LOG_TYPE log_type){
                 //processing each frame individually so we dont accidentally use all of heap
                 std::string entry = system_log_buffer[i].stringify();
                 _storagecontroller->write(log_file_path,entry,STORAGE_DEVICE::MICROSD);
+                //_storagecontroller->write(log_file_path,entry,STORAGE_DEVICE::FLASH);
+                
             }
+            
             system_log_buffer.clear(); //clear all log frames in buffer
 
             break;

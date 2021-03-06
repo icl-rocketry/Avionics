@@ -5,11 +5,11 @@
 #include "Adafruit_SPIFlash.h"
 
 // Uncomment to run example with custom SPI and SS e.g with FRAM breakout
-// #define CUSTOM_CS   A5
-// #define CUSTOM_SPI  SPI
+#define CUSTOM_CS   15
+#define CUSTOM_SPI  VSPI
 
 #if defined(CUSTOM_CS) && defined(CUSTOM_SPI)
-  Adafruit_FlashTransport_SPI flashTransport(CUSTOM_CS, CUSTOM_SPI);
+  Adafruit_FlashTransport_SPI flashTransport(15, CUSTOM_SPI);
 
 #elif CONFIG_IDF_TARGET_ESP32S2
   // ESP32-S2 use same flash device that store code.

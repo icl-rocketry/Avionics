@@ -49,7 +49,7 @@ void Imu::setup(){
     imu.settings.mag.lowPowerEnable = false;
     imu.settings.mag.operatingMode = 0; // Continuous mode
 
-    if (!imu.beginSPI(ImuCs, MagCs)){
+    if (!imu.beginSPI(_SCLK,_MISO,_MOSI,ImuCs, MagCs)){
         _systemstatus->new_message(system_flag::ERROR_IMU, "Unable to initialize the imu");
     };
 

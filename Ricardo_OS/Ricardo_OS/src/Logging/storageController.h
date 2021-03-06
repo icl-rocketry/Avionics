@@ -6,7 +6,8 @@
 #include <Adafruit_SPIFlash.h>
 #include <string>
 #include <vector>
-#include "flash_devices.h"//flash_device configuration defintion
+
+
 
 class stateMachine; //forward declaration to prevent ciruclar dependancy
 
@@ -55,7 +56,7 @@ class StorageController{
         Adafruit_SPIFlash flash;// flash storage object
 
         FatFileSystem flash_fatfs;//flash filesystem
-        SPIFlash_Device_t flash_config; //specific flash config
+        
         
 
         
