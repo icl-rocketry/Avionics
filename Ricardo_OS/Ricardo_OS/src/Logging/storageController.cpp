@@ -1,10 +1,14 @@
 #include "storageController.h"
 #include "stateMachine.h"
 #include "ricardo_pins.h"
+#include "utils.h"
+
 #include <Arduino.h>
 #include <string>
 #include <SPI.h>
 #include <SdFat.h>
+#include <cctype>
+
 #include "flags.h"
 #include "spiFlashConfig.h"
 
@@ -24,6 +28,9 @@ bool StorageController::setup(){
         return false;
     }
     _sm->logcontroller.log("SD Initalized");
+    if(!microsd.exists("/Logs")){
+        microsd.mkdir("/Logs");
+    }
 
     SPIFlash_Device_t flash_config = W25Q128JV_SM; //pass in spi flash config
     
@@ -38,16 +45,52 @@ bool StorageController::setup(){
         return false;
     }
     _sm->logcontroller.log("Flash FS Initalized");
+
+    if(!flash_fatfs.exists("/Logs")){
+        flash_fatfs.mkdir("/Logs");
+    }
     return true;
 
 };
 
 std::string StorageController::updateDirectoryName(std::string input_directory,STORAGE_DEVICE device){
-    
+    // Looks for the highest numbered log folder and increments by one
+    std::vector<directory_element_t> fileNames = std::vector<directory_element_t>();
+
+    if (!ls(input_directory, fileNames, device)) {
+        // TODO: there's an error, crash ourseleves
+    }
+// go away u a big poo
+// rude
+// <3
+    int index = 0, maxIndex = 0;
+    for (directory_element_t elem : fileNames) {
+        std::string fName = elem.name;
+
+        index = getFileNameIndex(fName);
+
+        if (index > maxIndex) {
+            maxIndex = index;
+        }
+    }
+
+    return utils::tostring(index + 1);
 }
 
+const int StorageController::getFileNameIndex(const std::string fileName) {
+    int numberStartIdx; // Start index of the character at which the digit index starts
+    for (numberStartIdx = fileName.length() - 1; numberStartIdx >=0; --numberStartIdx) {
+        if (!std::isdigit(fileName.at(numberStartIdx))) {
+            --numberStartIdx;
+            break;
+        }
+    }
+    return utils::intify(fileName.substr(numberStartIdx, fileName.length() - numberStartIdx));
+}
 
 bool StorageController::ls(std::string path,std::vector<directory_element_t> &directory_structure,STORAGE_DEVICE device){
+    File file;
+
     switch(device){
         case STORAGE_DEVICE::MICROSD:{
             microsd.chvol();//change vol to microsd
@@ -112,7 +155,9 @@ bool StorageController::ls(std::vector<directory_element_t> &directory_structure
 
 
 void StorageController::write(std::string &path,std::string &data,STORAGE_DEVICE device){
-    switch(device){
+   File file;
+
+   switch(device){
         case(STORAGE_DEVICE::ALL):{
             
             //write(path,data,STORAGE_DEVICE::MICROSD);
@@ -167,3 +212,27 @@ void StorageController::read(std::string path,STORAGE_DEVICE device){
     }
 }
 
+bool StorageController::format(STORAGE_DEVICE device){
+    switch(device){
+        case(STORAGE_DEVICE::MICROSD):{
+            if(!microsd.wipe()){
+                _sm->systemstatus.new_message(system_flag::ERROR_SD,"Error wiping SD card");
+                return false;
+            }
+            _sm->logcontroller.log("SD Wiped");
+            return true;
+        }
+        case(STORAGE_DEVICE::FLASH):{
+            if(!flash_fatfs.wipe()){
+                _sm->systemstatus.new_message(system_flag::ERROR_FLASH,"Error wiping onboard flash");
+                return false;
+            }   
+            _sm->logcontroller.log("Flash Wiped");
+            return true;       
+        }
+        default:{
+            //no option supplied so dont do anything
+            return false;
+        }
+    }
+}

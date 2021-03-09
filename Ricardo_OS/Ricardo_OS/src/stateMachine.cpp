@@ -32,6 +32,11 @@ void stateMachine::initialise(State* initStatePtr) {
   sensors.setup();
   estimator.setup();
   networkmanager.setup();
+
+  storagecontroller.printDirectory("/",STORAGE_DEVICE::MICROSD);
+  //storagecontroller.format(STORAGE_DEVICE::MICROSD);
+  //storagecontroller.printDirectory("/",STORAGE_DEVICE::MICROSD);
+  
   
 };
 

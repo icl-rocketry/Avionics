@@ -1,5 +1,4 @@
-#ifndef TOSTRING_H
-#define TOSTRING_H
+#pragma once
 
 //templated function to convert numeric value types to std::string
 
@@ -8,11 +7,24 @@
 #include <sstream>
 
 
+namespace utils {
+
+inline int intify(std::string value) {
+    int ret;
+    std::stringstream str(value);
+    str >> ret;
+
+    return ret;
+}
+
+
 template<typename T>
-std::string tostring(T value){
+inline std::string tostring(T value){
     std::ostringstream stm;
     stm << value;
     return stm.str();
 };
 
-#endif
+
+}
+

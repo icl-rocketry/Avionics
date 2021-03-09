@@ -50,14 +50,14 @@ class StorageController{
         stateMachine *_sm;//pointer to state machine
 
         SdFat microsd; // microsd card storage object
-        File file; // file object
+        //File file; // file object
         
         Adafruit_FlashTransport_SPI flashTransport;
         Adafruit_SPIFlash flash;// flash storage object
 
         FatFileSystem flash_fatfs;//flash filesystem
         
-        
+       const int getFileNameIndex(const std::string fileName); // Extracts the index of the file from file name (e.g. returns 4 when input is logs_flight_4)
 
         
         
