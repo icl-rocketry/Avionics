@@ -18,7 +18,6 @@ flash(&flashTransport)
 
 bool StorageController::setup(){
  
-    
 
     if(!microsd.begin(SdCs,SD_SCK_MHZ(10))){
         _sm->systemstatus.new_message(system_flag::ERROR_SD,"Error intializing SD card");
