@@ -891,7 +891,7 @@
   )
 
   (module Package_LGA:LGA-8_3x5mm_P1.25mm (layer F.Cu) (tedit 5A02F217) (tstamp 604A1831)
-    (at 269.24 -195.58)
+    (at 266 -197)
     (descr LGA-8)
     (tags "lga land grid array")
     (path /5DAF7991)
@@ -3890,7 +3890,7 @@
   )
 
   (module Connector_PinHeader_2.54mm:PinHeader_1x02_P2.54mm_Vertical (layer F.Cu) (tedit 59FED5CC) (tstamp 604A1254)
-    (at 226.06 -96.52)
+    (at 229 -113)
     (descr "Through hole straight pin header, 1x02, 2.54mm pitch, single row")
     (tags "Through hole pin header THT 1x02 2.54mm single row")
     (path /5E483BF5)

@@ -889,26 +889,6 @@ Text Label 9200 5900 0    50   ~ 0
 SCLK
 Wire Wire Line
 	7900 1400 7950 1400
-$Comp
-L power:GND #PWR026
-U 1 1 5DBE9FD9
-P 7950 1950
-F 0 "#PWR026" H 7950 1700 50  0001 C CNN
-F 1 "GND" H 8000 1750 50  0000 C CNN
-F 2 "" H 7950 1950 50  0001 C CNN
-F 3 "" H 7950 1950 50  0001 C CNN
-	1    7950 1950
-	1    0    0    -1  
-$EndComp
-Wire Wire Line
-	7200 1700 7150 1700
-Wire Wire Line
-	7150 1700 7150 1950
-Wire Wire Line
-	7150 1950 7550 1950
-Connection ~ 7550 1950
-Wire Wire Line
-	7550 1950 7550 1900
 Wire Wire Line
 	7900 1700 8200 1700
 Wire Wire Line
@@ -1410,17 +1390,6 @@ F 3 "~" H 7400 4250 50  0001 C CNN
 	0    1    1    0   
 $EndComp
 $Comp
-L Connector:TestPoint TP1
-U 1 1 5DF9EC0F
-P 7150 1700
-F 0 "TP1" V 7104 1888 50  0000 L CNN
-F 1 "TestPoint" V 7195 1888 50  0000 L CNN
-F 2 "TestPoint:TestPoint_THTPad_1.0x1.0mm_Drill0.5mm" H 7350 1700 50  0001 C CNN
-F 3 "~" H 7350 1700 50  0001 C CNN
-	1    7150 1700
-	0    -1   -1   0   
-$EndComp
-$Comp
 L Device:R_Small R23
 U 1 1 5E0CD038
 P 8050 1400
@@ -1433,17 +1402,6 @@ F 3 "~" H 8050 1400 50  0001 C CNN
 $EndComp
 Wire Wire Line
 	7950 1200 7950 1400
-$Comp
-L Mainboard-rescue:W25Q64FV-iclr U4
-U 1 1 5E21AD44
-P 7550 1550
-F 0 "U4" H 7550 1965 50  0000 C CNN
-F 1 "W25Q64FV" H 7550 1874 50  0000 C CNN
-F 2 "Package_SO:SOIC-8_3.9x4.9mm_P1.27mm" H 7550 1550 50  0001 C CNN
-F 3 "" H 7550 1550 50  0001 C CNN
-	1    7550 1550
-	1    0    0    -1  
-$EndComp
 Wire Wire Line
 	8050 1200 8050 1300
 Wire Wire Line
@@ -1497,19 +1455,6 @@ Wire Wire Line
 	7300 800  7300 850 
 Wire Wire Line
 	7300 850  7650 850 
-$Comp
-L Jumper:SolderJumper_2_Open JP1
-U 1 1 5E2D684C
-P 7700 1950
-F 0 "JP1" H 7700 2155 50  0000 C CNN
-F 1 "SolderJumper_2_Open" H 7700 2064 50  0000 C CNN
-F 2 "Jumper:SolderJumper-2_P1.3mm_Open_TrianglePad1.0x1.5mm" H 7700 1950 50  0001 C CNN
-F 3 "~" H 7700 1950 50  0001 C CNN
-	1    7700 1950
-	1    0    0    -1  
-$EndComp
-Wire Wire Line
-	7850 1950 7950 1950
 $Comp
 L Connector:TestPoint TP24
 U 1 1 5E31D198
@@ -2090,10 +2035,10 @@ F 3 "https://www.te.com/commerce/DocumentDelivery/DDEController?Action=showdoc&D
 	1    0    0    -1  
 $EndComp
 $Comp
-L Interface_Expansion:PCA9536D U?
+L Interface_Expansion:PCA9536D U10
 U 1 1 60497087
 P 5350 1350
-F 0 "U?" H 5350 1831 50  0000 C CNN
+F 0 "U10" H 5350 1831 50  0000 C CNN
 F 1 "PCA9536D" H 5350 1740 50  0000 C CNN
 F 2 "Package_SO:SOIC-8_3.9x4.9mm_P1.27mm" H 6350 1000 50  0001 C CNN
 F 3 "http://www.nxp.com/documents/data_sheet/PCA9536.pdf" H 5150 -350 50  0001 C CNN
@@ -2101,10 +2046,10 @@ F 3 "http://www.nxp.com/documents/data_sheet/PCA9536.pdf" H 5150 -350 50  0001 C
 	1    0    0    -1  
 $EndComp
 $Comp
-L power:+3V3 #PWR?
+L power:+3V3 #PWR0111
 U 1 1 604BFA09
 P 5350 800
-F 0 "#PWR?" H 5350 650 50  0001 C CNN
+F 0 "#PWR0111" H 5350 650 50  0001 C CNN
 F 1 "+3V3" H 5365 973 50  0000 C CNN
 F 2 "" H 5350 800 50  0001 C CNN
 F 3 "" H 5350 800 50  0001 C CNN
@@ -2112,10 +2057,10 @@ F 3 "" H 5350 800 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L power:GND #PWR?
+L power:GND #PWR0112
 U 1 1 604C1D4C
 P 5350 1750
-F 0 "#PWR?" H 5350 1500 50  0001 C CNN
+F 0 "#PWR0112" H 5350 1500 50  0001 C CNN
 F 1 "GND" H 5355 1577 50  0000 C CNN
 F 2 "" H 5350 1750 50  0001 C CNN
 F 3 "" H 5350 1750 50  0001 C CNN
@@ -2130,4 +2075,64 @@ NoConn ~ 5850 1250
 NoConn ~ 5850 1350
 NoConn ~ 5850 1450
 NoConn ~ 5850 1550
+Wire Wire Line
+	4850 1450 4550 1450
+Wire Wire Line
+	4850 1550 4550 1550
+Text Label 4550 1450 0    50   ~ 0
+SDA
+Text Label 4550 1550 0    50   ~ 0
+SCL
+$Comp
+L iclr:W25Q128JVSIM_TR U4
+U 1 1 60519186
+P 7550 1550
+F 0 "U4" H 7550 1965 50  0000 C CNN
+F 1 "W25Q128JVSIM_TR" H 7550 1874 50  0000 C CNN
+F 2 "Package_SO:SOIC-8_3.9x4.9mm_P1.27mm" H 7550 1550 50  0001 C CNN
+F 3 "" H 7550 1550 50  0001 C CNN
+	1    7550 1550
+	1    0    0    -1  
+$EndComp
+$Comp
+L Connector:TestPoint TP1
+U 1 1 5DF9EC0F
+P 7150 1700
+F 0 "TP1" V 7104 1888 50  0000 L CNN
+F 1 "TestPoint" V 7195 1888 50  0000 L CNN
+F 2 "TestPoint:TestPoint_THTPad_1.0x1.0mm_Drill0.5mm" H 7350 1700 50  0001 C CNN
+F 3 "~" H 7350 1700 50  0001 C CNN
+	1    7150 1700
+	0    -1   -1   0   
+$EndComp
+Wire Wire Line
+	7200 1700 7150 1700
+Wire Wire Line
+	7850 2100 7950 2100
+$Comp
+L Jumper:SolderJumper_2_Open JP1
+U 1 1 5E2D684C
+P 7700 2100
+F 0 "JP1" H 7700 2305 50  0000 C CNN
+F 1 "SolderJumper_2_Open" H 7700 2214 50  0000 C CNN
+F 2 "Jumper:SolderJumper-2_P1.3mm_Open_TrianglePad1.0x1.5mm" H 7700 2100 50  0001 C CNN
+F 3 "~" H 7700 2100 50  0001 C CNN
+	1    7700 2100
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	7150 2100 7550 2100
+$Comp
+L power:GND #PWR026
+U 1 1 5DBE9FD9
+P 7950 2100
+F 0 "#PWR026" H 7950 1850 50  0001 C CNN
+F 1 "GND" H 8000 1900 50  0000 C CNN
+F 2 "" H 7950 2100 50  0001 C CNN
+F 3 "" H 7950 2100 50  0001 C CNN
+	1    7950 2100
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	7150 1700 7150 2100
 $EndSCHEMATC
