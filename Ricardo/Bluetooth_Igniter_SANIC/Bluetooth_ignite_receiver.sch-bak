@@ -286,12 +286,12 @@ $EndComp
 $Comp
 L Interface_USB:CP2102N-A01-GQFN24 U?
 U 1 1 6047F012
-P 2450 3800
-F 0 "U?" H 2450 4881 50  0000 C CNN
-F 1 "CP2102N-A01-GQFN24" H 2450 4790 50  0000 C CNN
-F 2 "Package_DFN_QFN:QFN-24-1EP_4x4mm_P0.5mm_EP2.6x2.6mm" H 2900 3000 50  0001 L CNN
-F 3 "https://www.silabs.com/documents/public/data-sheets/cp2102n-datasheet.pdf" H 2500 2750 50  0001 C CNN
-	1    2450 3800
+P 2150 3800
+F 0 "U?" H 2150 4881 50  0000 C CNN
+F 1 "CP2102N-A01-GQFN24" H 2150 4790 50  0000 C CNN
+F 2 "Package_DFN_QFN:QFN-24-1EP_4x4mm_P0.5mm_EP2.6x2.6mm" H 2600 3000 50  0001 L CNN
+F 3 "https://www.silabs.com/documents/public/data-sheets/cp2102n-datasheet.pdf" H 2200 2750 50  0001 C CNN
+	1    2150 3800
 	1    0    0    -1  
 $EndComp
 Wire Wire Line

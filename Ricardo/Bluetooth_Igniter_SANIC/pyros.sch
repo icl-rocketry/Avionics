@@ -3,7 +3,7 @@ EELAYER 30 0
 EELAYER END
 $Descr A4 11693 8268
 encoding utf-8
-Sheet 2 3
+Sheet 2 4
 Title ""
 Date ""
 Rev ""
@@ -490,6 +490,15 @@ Text Label 6300 3600 2    50   ~ 0
 Ext_supply
 Wire Wire Line
 	3200 1700 2750 1700
-Text GLabel 2750 1700 0    50   Input ~ 0
-9V_supply
+$Comp
+L power:VDD #PWR?
+U 1 1 604B3741
+P 2750 1700
+F 0 "#PWR?" H 2750 1550 50  0001 C CNN
+F 1 "VDD" H 2765 1873 50  0000 C CNN
+F 2 "" H 2750 1700 50  0001 C CNN
+F 3 "" H 2750 1700 50  0001 C CNN
+	1    2750 1700
+	1    0    0    -1  
+$EndComp
 $EndSCHEMATC

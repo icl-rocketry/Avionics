@@ -3,7 +3,7 @@ EELAYER 30 0
 EELAYER END
 $Descr A4 11693 8268
 encoding utf-8
-Sheet 1 3
+Sheet 1 4
 Title ""
 Date ""
 Rev ""
@@ -42,13 +42,13 @@ U 603A281D
 F0 "pyros" 50
 F1 "pyros.sch" 50
 $EndSheet
-Text Label 6550 4300 0    50   ~ 0
+Text Label 6750 4300 0    50   ~ 0
 Nuke1
-Text Label 6550 4400 0    50   ~ 0
+Text Label 6750 4400 0    50   ~ 0
 Nuke2
-Text Label 6550 4500 0    50   ~ 0
+Text Label 6750 4500 0    50   ~ 0
 Cont1
-Text Label 6550 4600 0    50   ~ 0
+Text Label 6750 4600 0    50   ~ 0
 Cont2
 Text HLabel 9350 5450 2    50   Input ~ 0
 Nuke1
@@ -122,7 +122,7 @@ F 3 "" H 5300 1150 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Sheet
-S 1800 1500 900  300 
+S 600  600  900  300 
 U 603E92A7
 F0 "power" 50
 F1 "power.sch" 50
@@ -286,12 +286,12 @@ $EndComp
 $Comp
 L Interface_USB:CP2102N-A01-GQFN24 U?
 U 1 1 6047F012
-P 2150 3800
-F 0 "U?" H 2150 4881 50  0000 C CNN
-F 1 "CP2102N-A01-GQFN24" H 2150 4790 50  0000 C CNN
-F 2 "Package_DFN_QFN:QFN-24-1EP_4x4mm_P0.5mm_EP2.6x2.6mm" H 2600 3000 50  0001 L CNN
-F 3 "https://www.silabs.com/documents/public/data-sheets/cp2102n-datasheet.pdf" H 2200 2750 50  0001 C CNN
-	1    2150 3800
+P 2700 4650
+F 0 "U?" H 2700 5731 50  0000 C CNN
+F 1 "CP2102N-A01-GQFN24" H 2700 5640 50  0000 C CNN
+F 2 "Package_DFN_QFN:QFN-24-1EP_4x4mm_P0.5mm_EP2.6x2.6mm" H 3150 3850 50  0001 L CNN
+F 3 "https://www.silabs.com/documents/public/data-sheets/cp2102n-datasheet.pdf" H 2750 3600 50  0001 C CNN
+	1    2700 4650
 	1    0    0    -1  
 $EndComp
 Wire Wire Line
@@ -303,9 +303,9 @@ Wire Wire Line
 Text Label 6900 2300 0    50   ~ 0
 BOOT
 Text Label 6900 2400 0    50   ~ 0
-TX
+RXD
 Text Label 6900 2600 0    50   ~ 0
-RX
+TXD
 $Comp
 L Switch:SW_Push SW?
 U 1 1 604A2321
@@ -451,4 +451,300 @@ Wire Wire Line
 	8250 2200 8950 2200
 Text Label 8750 2200 0    50   ~ 0
 BOOT
+Wire Wire Line
+	3300 4350 3600 4350
+Wire Wire Line
+	3300 4450 3600 4450
+Text Label 3600 4350 0    50   ~ 0
+RXD
+Text Label 3600 4450 0    50   ~ 0
+TXD
+Wire Wire Line
+	3300 4250 3600 4250
+Wire Wire Line
+	3300 4650 3600 4650
+Wire Wire Line
+	2700 5550 2750 5550
+$Comp
+L power:GND #PWR?
+U 1 1 60485A85
+P 2750 5550
+F 0 "#PWR?" H 2750 5300 50  0001 C CNN
+F 1 "GND" H 2755 5377 50  0000 C CNN
+F 2 "" H 2750 5550 50  0001 C CNN
+F 3 "" H 2750 5550 50  0001 C CNN
+	1    2750 5550
+	1    0    0    -1  
+$EndComp
+Connection ~ 2750 5550
+Wire Wire Line
+	2750 5550 2800 5550
+Wire Wire Line
+	2700 3750 2700 3500
+Wire Wire Line
+	2700 3500 2600 3500
+Wire Wire Line
+	2600 3500 2600 3750
+Wire Wire Line
+	2600 3500 2600 3450
+Connection ~ 2600 3500
+$Comp
+L power:+3V3 #PWR?
+U 1 1 6048C69F
+P 2600 3450
+F 0 "#PWR?" H 2600 3300 50  0001 C CNN
+F 1 "+3V3" H 2615 3623 50  0000 C CNN
+F 2 "" H 2600 3450 50  0001 C CNN
+F 3 "" H 2600 3450 50  0001 C CNN
+	1    2600 3450
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:R_Small R?
+U 1 1 604946B0
+P 2100 3700
+F 0 "R?" H 2159 3746 50  0000 L CNN
+F 1 "1K" H 2159 3655 50  0000 L CNN
+F 2 "" H 2100 3700 50  0001 C CNN
+F 3 "~" H 2100 3700 50  0001 C CNN
+	1    2100 3700
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	2600 3500 2100 3500
+Wire Wire Line
+	2100 3500 2100 3600
+Wire Wire Line
+	2100 3800 2100 4050
+NoConn ~ 3300 4050
+NoConn ~ 3300 4150
+NoConn ~ 3300 4550
+NoConn ~ 3300 4750
+NoConn ~ 3300 4950
+NoConn ~ 3300 5050
+NoConn ~ 3300 5150
+NoConn ~ 3300 5250
+NoConn ~ 2100 4350
+NoConn ~ 2100 4450
+Wire Wire Line
+	1300 4650 1700 4650
+Wire Wire Line
+	1300 3550 1300 4650
+$Comp
+L Device:D_Schottky D?
+U 1 1 604A7675
+P 1300 3400
+F 0 "D?" V 1254 3480 50  0000 L CNN
+F 1 "D_Schottky" V 1345 3480 50  0000 L CNN
+F 2 "" H 1300 3400 50  0001 C CNN
+F 3 "~" H 1300 3400 50  0001 C CNN
+	1    1300 3400
+	0    1    1    0   
+$EndComp
+$Comp
+L power:VDD #PWR?
+U 1 1 604B5A84
+P 1300 3250
+F 0 "#PWR?" H 1300 3100 50  0001 C CNN
+F 1 "VDD" H 1315 3423 50  0000 C CNN
+F 2 "" H 1300 3250 50  0001 C CNN
+F 3 "" H 1300 3250 50  0001 C CNN
+	1    1300 3250
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	1300 3550 1600 3550
+Wire Wire Line
+	1600 3550 1600 3600
+Connection ~ 1300 3550
+$Comp
+L Device:R_Small R?
+U 1 1 604B79F6
+P 1600 3700
+F 0 "R?" H 1659 3746 50  0000 L CNN
+F 1 "22K" H 1659 3655 50  0000 L CNN
+F 2 "" H 1600 3700 50  0001 C CNN
+F 3 "~" H 1600 3700 50  0001 C CNN
+	1    1600 3700
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	1600 3800 1600 3850
+$Comp
+L Device:R_Small R?
+U 1 1 604B99D6
+P 1600 4000
+F 0 "R?" H 1659 4046 50  0000 L CNN
+F 1 "43K" H 1659 3955 50  0000 L CNN
+F 2 "" H 1600 4000 50  0001 C CNN
+F 3 "~" H 1600 4000 50  0001 C CNN
+	1    1600 4000
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:GND #PWR?
+U 1 1 604BA43F
+P 1600 4100
+F 0 "#PWR?" H 1600 3850 50  0001 C CNN
+F 1 "GND" H 1605 3927 50  0000 C CNN
+F 2 "" H 1600 4100 50  0001 C CNN
+F 3 "" H 1600 4100 50  0001 C CNN
+	1    1600 4100
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	2100 4950 1900 4950
+Wire Wire Line
+	1900 4950 1900 3850
+Wire Wire Line
+	1900 3850 1600 3850
+Connection ~ 1600 3850
+Wire Wire Line
+	1600 3850 1600 3900
+$Comp
+L Power_Protection:SP0503BAHT D?
+U 1 1 604BFF73
+P 1800 5450
+F 0 "D?" H 2005 5496 50  0000 L CNN
+F 1 "SP0503BAHT" H 2005 5405 50  0000 L CNN
+F 2 "Package_TO_SOT_SMD:SOT-143" H 2025 5400 50  0001 L CNN
+F 3 "http://www.littelfuse.com/~/media/files/littelfuse/technical%20resources/documents/data%20sheets/sp05xxba.pdf" H 1925 5575 50  0001 C CNN
+	1    1800 5450
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	2100 5150 1800 5150
+Wire Wire Line
+	2100 5050 1900 5050
+Wire Wire Line
+	1800 5150 1800 5250
+Connection ~ 1800 5150
+Wire Wire Line
+	1900 5050 1900 5250
+Connection ~ 1900 5050
+Wire Wire Line
+	1700 4650 1700 5250
+Connection ~ 1700 4650
+Wire Wire Line
+	1700 4650 2100 4650
+$Comp
+L power:GND #PWR?
+U 1 1 604CC07D
+P 1800 5650
+F 0 "#PWR?" H 1800 5400 50  0001 C CNN
+F 1 "GND" H 1805 5477 50  0000 C CNN
+F 2 "" H 1800 5650 50  0001 C CNN
+F 3 "" H 1800 5650 50  0001 C CNN
+	1    1800 5650
+	1    0    0    -1  
+$EndComp
+$Sheet
+S 600  4900 500  350 
+U 604CC72F
+F0 "usb" 50
+F1 "usb.sch" 50
+$EndSheet
+Text HLabel 1100 4950 0    50   Input ~ 0
+VBUS
+Text HLabel 1100 5050 0    50   Input ~ 0
+D+
+Text HLabel 1100 5150 0    50   Input ~ 0
+D-
+Wire Wire Line
+	1300 4650 1300 4950
+Wire Wire Line
+	1300 4950 1100 4950
+Connection ~ 1300 4650
+Wire Wire Line
+	1100 5050 1900 5050
+Wire Wire Line
+	1100 5150 1800 5150
+Text Label 3600 4250 0    50   ~ 0
+RTS
+Text Label 3600 4650 0    50   ~ 0
+DTR
+$Comp
+L Transistor_BJT:MMDT2222A Q?
+U 1 1 604E26C4
+P 1650 6550
+F 0 "Q?" H 1840 6596 50  0000 L CNN
+F 1 "MMDT2222A" H 1840 6505 50  0000 L CNN
+F 2 "Package_TO_SOT_SMD:SOT-363_SC-70-6" H 1850 6650 50  0001 C CNN
+F 3 "http://www.diodes.com/_files/datasheets/ds30125.pdf" H 1650 6550 50  0001 C CNN
+	1    1650 6550
+	1    0    0    -1  
+$EndComp
+$Comp
+L Transistor_BJT:MMDT2222A Q?
+U 1 1 604E3CBA
+P 1650 7400
+F 0 "Q?" H 1840 7354 50  0000 L CNN
+F 1 "MMDT2222A" H 1840 7445 50  0000 L CNN
+F 2 "Package_TO_SOT_SMD:SOT-363_SC-70-6" H 1850 7500 50  0001 C CNN
+F 3 "http://www.diodes.com/_files/datasheets/ds30125.pdf" H 1650 7400 50  0001 C CNN
+	1    1650 7400
+	1    0    0    1   
+$EndComp
+Wire Wire Line
+	1750 7150 900  7150
+Wire Wire Line
+	1450 6550 1250 6550
+Wire Wire Line
+	900  6550 750  6550
+Connection ~ 900  6550
+Wire Wire Line
+	1750 6750 950  6750
+Wire Wire Line
+	950  6750 950  7400
+Wire Wire Line
+	950  7400 750  7400
+Wire Wire Line
+	1450 7400 1250 7400
+Connection ~ 950  7400
+Wire Wire Line
+	1750 7600 1750 7700
+Wire Wire Line
+	1750 7700 2150 7700
+Wire Wire Line
+	1750 6350 1750 6250
+Wire Wire Line
+	1750 6250 2150 6250
+Text Label 2150 6250 0    50   ~ 0
+EN
+Text Label 2150 7700 0    50   ~ 0
+BOOT
+$Comp
+L Device:R_Small R?
+U 1 1 604FBE3D
+P 1150 6550
+F 0 "R?" V 954 6550 50  0000 C CNN
+F 1 "10K" V 1045 6550 50  0000 C CNN
+F 2 "" H 1150 6550 50  0001 C CNN
+F 3 "~" H 1150 6550 50  0001 C CNN
+	1    1150 6550
+	0    1    1    0   
+$EndComp
+Wire Wire Line
+	1050 6550 900  6550
+$Comp
+L Device:R_Small R?
+U 1 1 604FC7BC
+P 1150 7400
+F 0 "R?" V 1346 7400 50  0000 C CNN
+F 1 "10K" V 1255 7400 50  0000 C CNN
+F 2 "" H 1150 7400 50  0001 C CNN
+F 3 "~" H 1150 7400 50  0001 C CNN
+	1    1150 7400
+	0    -1   -1   0   
+$EndComp
+Wire Wire Line
+	1050 7400 950  7400
+Wire Wire Line
+	900  7150 900  6550
+Wire Wire Line
+	1750 7200 1750 7150
+Text Label 750  6550 2    50   ~ 0
+DTR
+Text Label 750  7400 2    50   ~ 0
+RTS
 $EndSCHEMATC
