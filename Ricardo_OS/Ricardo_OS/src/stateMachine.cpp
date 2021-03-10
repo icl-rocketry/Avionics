@@ -26,14 +26,15 @@ stateMachine::stateMachine() :
 void stateMachine::initialise(State* initStatePtr) {
   //call setup state before callng individual setups
   changeState(initStatePtr);
-  //setup classes 
+  //setup objects 
   storagecontroller.setup();
-
+  logcontroller.setup();
+  
   sensors.setup();
   estimator.setup();
   networkmanager.setup();
 
-  storagecontroller.printDirectory("/",STORAGE_DEVICE::MICROSD);
+  //storagecontroller.printDirectory("/",STORAGE_DEVICE::MICROSD);
   //storagecontroller.format(STORAGE_DEVICE::MICROSD);
   //storagecontroller.printDirectory("/",STORAGE_DEVICE::MICROSD);
   

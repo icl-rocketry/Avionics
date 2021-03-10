@@ -28,9 +28,10 @@ bool StorageController::setup(){
         return false;
     }
     _sm->logcontroller.log("SD Initalized");
+    /*
     if(!microsd.exists("/Logs")){
         microsd.mkdir("/Logs");
-    }
+    }*/
 
     SPIFlash_Device_t flash_config = W25Q128JV_SM; //pass in spi flash config
     
@@ -45,10 +46,10 @@ bool StorageController::setup(){
         return false;
     }
     _sm->logcontroller.log("Flash FS Initalized");
-
+    /*
     if(!flash_fatfs.exists("/Logs")){
         flash_fatfs.mkdir("/Logs");
-    }
+    }*/
     return true;
 
 };
@@ -74,7 +75,7 @@ std::string StorageController::updateDirectoryName(std::string input_directory,S
         }
     }
 
-    return utils::tostring(index + 1);
+    return input_directory + utils::tostring(index + 1);
 }
 
 const int StorageController::getFileNameIndex(const std::string fileName) {
@@ -88,19 +89,42 @@ const int StorageController::getFileNameIndex(const std::string fileName) {
     return utils::intify(fileName.substr(numberStartIdx, fileName.length() - numberStartIdx));
 }
 
+void StorageController::mkdir(std::string path,STORAGE_DEVICE device){
+    switch(device){
+        case STORAGE_DEVICE::MICROSD:{
+            if(!microsd.mkdir(path.c_str())){
+                microsd.mkdir(path.c_str());
+            }else{
+                _sm->logcontroller.log(path + " directory already exsists");
+            }
+            break;
+        }
+        case STORAGE_DEVICE::FLASH:{
+            if(!flash_fatfs.mkdir(path.c_str())){
+                flash_fatfs.mkdir(path.c_str());
+            }else{
+                _sm->logcontroller.log(path + " directory already exsists");
+            }
+            break;
+        }
+        default:{
+            break;
+        }
+    }
+}
+
 bool StorageController::ls(std::string path,std::vector<directory_element_t> &directory_structure,STORAGE_DEVICE device){
     File file;
-
     switch(device){
         case STORAGE_DEVICE::MICROSD:{
             microsd.chvol();//change vol to microsd
             file = microsd.open(path.c_str()); // open the path supplied
-            break;
+            return true;
         }
         case STORAGE_DEVICE::FLASH:{
             flash_fatfs.chvol();//change vol to flash
             file = flash_fatfs.open(path.c_str()); // open the path supplied
-            break;
+            return true;
         }
         default:{
             return false; // return nothing 
@@ -195,10 +219,6 @@ void StorageController::write(std::string &path,std::string &data,STORAGE_DEVICE
 
 void StorageController::read(std::string path,STORAGE_DEVICE device){
     switch(device){
-        case(STORAGE_DEVICE::ALL):{
-            //illegal option - do nothing
-            break;
-        }
         case(STORAGE_DEVICE::MICROSD):{
             break;
         }
@@ -212,7 +232,7 @@ void StorageController::read(std::string path,STORAGE_DEVICE device){
     }
 }
 
-bool StorageController::format(STORAGE_DEVICE device){
+bool StorageController::erase(STORAGE_DEVICE device){
     switch(device){
         case(STORAGE_DEVICE::MICROSD):{
             if(!microsd.wipe()){

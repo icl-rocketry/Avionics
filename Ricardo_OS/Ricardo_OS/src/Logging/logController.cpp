@@ -11,17 +11,19 @@ LogController::LogController(StorageController* storagecontroller):
 _storagecontroller(storagecontroller)
 
 {
-    telemetry_log_buffer.reserve(10); // reserving 255 character buffer
-    system_log_buffer.reserve(10); // reserving 255 character buffer
-    network_log_buffer.reserve(10); // reserving 255 character buffer
-    //engine_log_buffer.reserve(255); // reserving 255 character buffer
-
-    //check with storage controller if log_directory exsists and increment by 1
-    //we care about the sd card directory structure not hte flash structure so on the flash
-    //each time the system reboots we will increment the directory by a number e.g 0 .. 9 -> 00, 01 ...-> 11 etc
-    
+    telemetry_log_buffer.reserve(10); 
+    system_log_buffer.reserve(10); 
+    network_log_buffer.reserve(10); 
     
 };
+
+void LogController::setup(){
+    microsd_prefix = _storagecontroller->updateDirectoryName(microsd_prefix,STORAGE_DEVICE::MICROSD); // get updated directory prefix
+    flash_prefix = _storagecontroller->updateDirectoryName(flash_prefix,STORAGE_DEVICE::FLASH); // get updated directory prefix
+    //ensure directory exists
+    _storagecontroller->mkdir(microsd_prefix,STORAGE_DEVICE::MICROSD);
+    _storagecontroller->mkdir(flash_prefix,STORAGE_DEVICE::FLASH);
+}
 
 void LogController::log(state_t &estimator_state) {
 
@@ -99,7 +101,8 @@ void LogController::update(){
 }
 
 void LogController::write_to_file(LOG_TYPE log_type){
-    std::string log_file_path;
+    std::string microsd_file_path;
+    std::string flash_file_path;
     
     
     switch(log_type){
@@ -110,13 +113,14 @@ void LogController::write_to_file(LOG_TYPE log_type){
         }
         case LOG_TYPE::SYSTEM:
         {
-            log_file_path = log_directory + system_log_filename;
+            microsd_file_path = microsd_prefix + system_log_filename;
+            flash_file_path = flash_prefix + system_log_filename;
             
             for (int i = 0; i< system_log_buffer.size();i++){
                 //processing each frame individually so we dont accidentally use all of heap
                 std::string entry = system_log_buffer[i].stringify();
-                _storagecontroller->write(log_file_path,entry,STORAGE_DEVICE::MICROSD);
-                //_storagecontroller->write(log_file_path,entry,STORAGE_DEVICE::FLASH);
+                _storagecontroller->write(microsd_file_path,entry,STORAGE_DEVICE::MICROSD);
+                //_storagecontroller->write(flash_file_path,entry,STORAGE_DEVICE::FLASH);
                 
             }
             

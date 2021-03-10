@@ -19,7 +19,7 @@ enum class LOG_TYPE:uint8_t{
 class LogController{
     public:
         LogController(StorageController* storagecontroller);
-
+        void setup();
         //telemtry logging
         void log(state_t &estimator_state);
         void log(raw_measurements_t &raw_sensors);
@@ -50,7 +50,8 @@ class LogController{
         std::vector<network_logframe> network_log_buffer;
 
         //loging directory prefix;
-        std::string log_directory = "Logs" ;
+        std::string microsd_prefix = "/Logs" ;
+        std::string flash_prefix = "/0";
         //log file names
         const std::string telemetry_log_filename = "/telemetry_log.txt";
         const std::string system_log_filename = "/system_log.txt";
