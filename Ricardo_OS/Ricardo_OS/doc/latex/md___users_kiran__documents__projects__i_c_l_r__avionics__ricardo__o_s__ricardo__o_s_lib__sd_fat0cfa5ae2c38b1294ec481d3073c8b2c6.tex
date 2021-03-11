@@ -1,0 +1,36 @@
+The Arduino \mbox{\hyperlink{class_sd_fat}{Sd\+Fat}} library provides read/write access to FAT16/\+FAT32 file systems on SD/\+SDHC flash cards.
+
+\mbox{\hyperlink{class_sd_fat}{Sd\+Fat}} requires Arduino 1.\+6x or greater.
+
+Key changes\+:
+
+Support for multiple SPI ports now uses a pointer to a SPIClass object.
+
+See the STM32\+Test example. 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{explicit SdFat(SPIClass* spiPort);}
+\DoxyCodeLine{\(\backslash\)\(\backslash\) or}
+\DoxyCodeLine{explicit SdFatEX(SPIClass* spiPort);}
+
+\end{DoxyCode}
+
+
+Open flags now follow POSIX conventions. O\+\_\+\+RDONLY is the same as O\+\_\+\+READ and O\+\_\+\+WRONLY is the same as O\+\_\+\+WRITE. One and only one of of the mode flags, O\+\_\+\+RDONLY, O\+\_\+\+RDWR, or O\+\_\+\+WRONLY is required.
+
+Open flags for Particle Gen3 and ARM boards are now defined by fcntl.\+h. See \mbox{\hyperlink{_sd_fat_config_8h}{Sd\+Fat\+Config.\+h}} for options.
+
+Support for particle Gen3 devices.
+
+New cluster allocation algorithm.
+
+Please read changes.\+txt and the html documentation in the extras folder for more information.
+
+Please report problems as issues.
+
+A number of configuration options can be set by editing \mbox{\hyperlink{_sd_fat_config_8h}{Sd\+Fat\+Config.\+h}} define macros. See the html documentation for details
+
+Please read the html documentation for this library. Start with html/index.\+html and read the Main Page. Next go to the Classes tab and read the documentation for the classes \mbox{\hyperlink{class_sd_fat}{Sd\+Fat}}, Sd\+Fat\+EX, \mbox{\hyperlink{class_sd_base_file}{Sd\+Base\+File}}, Sd\+File, File, \mbox{\hyperlink{class_stdio_stream}{Stdio\+Stream}}, ifstream, ofstream, and others.
+
+Please continue by reading the html documentation in Sd\+Fat/extras/html
+
+Updated 28 Dec 2018 

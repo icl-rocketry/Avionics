@@ -1,0 +1,19 @@
+var searchData=
+[
+  ['datastartblock_1606',['dataStartBlock',['../class_fat_volume.html#a55906112e0d151db3b144d29630f5066',1,'FatVolume']]],
+  ['datastartsector_1607',['dataStartSector',['../class_fat_volume.html#a6421327a4f6990ba46a479a7baad4cf8',1,'FatVolume']]],
+  ['datetimecallback_1608',['dateTimeCallback',['../class_fat_file.html#a29a623f50df057e8b49045ba6611ec2b',1,'FatFile']]],
+  ['datetimecallbackcancel_1609',['dateTimeCallbackCancel',['../class_fat_file.html#a5df02f1d037e6091375488af25244ebc',1,'FatFile']]],
+  ['dbgclearstats_1610',['dbgClearStats',['../class_sd_spi_card.html#ab6cf8283dee415d9217eb758e75a98ef',1,'SdSpiCard']]],
+  ['dbgfat_1611',['dbgFat',['../class_fat_volume.html#a25c6311b70fa274b3be94ff25fdebba7',1,'FatVolume']]],
+  ['dbgprintstats_1612',['dbgPrintStats',['../class_sd_spi_card.html#abdb02df511072aefb465a22858d92e06',1,'SdSpiCard']]],
+  ['deactivate_1613',['deactivate',['../class_sd_spi_base_driver.html#a1768309c7ba4f8d78c2ba62383462de2',1,'SdSpiBaseDriver::deactivate()'],['../class_sd_spi_lib_driver.html#a120d6b78f9dad6837d10b45b76d32c82',1,'SdSpiLibDriver::deactivate()'],['../class_sd_spi_alt_driver.html#ae6ce25d124e31a8762375ae548a92818',1,'SdSpiAltDriver::deactivate()']]],
+  ['dec_1614',['dec',['../ios_8h.html#ada38ab90e22f0ebb638cb864a35c562d',1,'ios.h']]],
+  ['digitalpin_1615',['DigitalPin',['../class_digital_pin.html#ab68480b09df5c4794c95cdf2230d4c55',1,'DigitalPin']]],
+  ['direntry_1616',['dirEntry',['../class_fat_file.html#a6858d18c807411a071fd6d1b39d50087',1,'FatFile']]],
+  ['dirindex_1617',['dirIndex',['../class_fat_file.html#ae5ec24d4a94d3780384d3f2b731c7eb9',1,'FatFile']]],
+  ['dirname_1618',['dirName',['../class_fat_file.html#a648461081fe07578780f4cd3f246cb66',1,'FatFile']]],
+  ['dirsize_1619',['dirSize',['../class_fat_file.html#ae2ed15f05c9ccbce355e7a8d3ce8382d',1,'FatFile']]],
+  ['dirty_1620',['dirty',['../class_fat_cache.html#ab4d3b0c16bb6a116c7d01afff2dcb307',1,'FatCache']]],
+  ['dmpfile_1621',['dmpFile',['../class_fat_file.html#a4f01d27954ae49aeb6888ac7302f55d9',1,'FatFile']]]
+];

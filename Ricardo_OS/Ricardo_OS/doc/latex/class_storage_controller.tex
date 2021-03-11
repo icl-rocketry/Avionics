@@ -1,0 +1,41 @@
+\hypertarget{class_storage_controller}{}\doxysection{Storage\+Controller Class Reference}
+\label{class_storage_controller}\index{StorageController@{StorageController}}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_storage_controller_a68285e89bb715975a36e6b6b891ae9dc}\label{class_storage_controller_a68285e89bb715975a36e6b6b891ae9dc}} 
+{\bfseries Storage\+Controller} (\mbox{\hyperlink{classstate_machine}{state\+Machine}} $\ast$sm)
+\item 
+\mbox{\Hypertarget{class_storage_controller_a0b346fe54c8f2253697f86926fa5eb90}\label{class_storage_controller_a0b346fe54c8f2253697f86926fa5eb90}} 
+bool {\bfseries setup} ()
+\item 
+\mbox{\Hypertarget{class_storage_controller_a570540f0344421a0af1087f473329286}\label{class_storage_controller_a570540f0344421a0af1087f473329286}} 
+void {\bfseries write} (std\+::string \&path, std\+::string \&data, STORAGE\+\_\+\+DEVICE device)
+\item 
+\mbox{\Hypertarget{class_storage_controller_ac275c89a86d43a29114d5bd04c7158c1}\label{class_storage_controller_ac275c89a86d43a29114d5bd04c7158c1}} 
+void {\bfseries read} (std\+::string path, STORAGE\+\_\+\+DEVICE device)
+\item 
+\mbox{\Hypertarget{class_storage_controller_a87d4665b5ef9041aea21649463c895d0}\label{class_storage_controller_a87d4665b5ef9041aea21649463c895d0}} 
+std\+::string {\bfseries update\+Directory\+Name} (std\+::string input\+\_\+directory, STORAGE\+\_\+\+DEVICE device)
+\item 
+\mbox{\Hypertarget{class_storage_controller_a1c88bf9602ab25ddceac9503d880a9f9}\label{class_storage_controller_a1c88bf9602ab25ddceac9503d880a9f9}} 
+void {\bfseries mkdir} (std\+::string path, STORAGE\+\_\+\+DEVICE device)
+\item 
+\mbox{\Hypertarget{class_storage_controller_aeff6ec755ddf2df758b273691a1b662f}\label{class_storage_controller_aeff6ec755ddf2df758b273691a1b662f}} 
+bool {\bfseries ls} (std\+::string path, std\+::vector$<$ \mbox{\hyperlink{structdirectory__element__t}{directory\+\_\+element\+\_\+t}} $>$ \&directory\+\_\+structure, STORAGE\+\_\+\+DEVICE device)
+\item 
+\mbox{\Hypertarget{class_storage_controller_a27d3d4b24ca02ef0edc6c53868612832}\label{class_storage_controller_a27d3d4b24ca02ef0edc6c53868612832}} 
+bool {\bfseries ls} (std\+::vector$<$ \mbox{\hyperlink{structdirectory__element__t}{directory\+\_\+element\+\_\+t}} $>$ \&directory\+\_\+structure, STORAGE\+\_\+\+DEVICE device)
+\item 
+\mbox{\Hypertarget{class_storage_controller_a118abfa6ab0520474ccc47c78827f843}\label{class_storage_controller_a118abfa6ab0520474ccc47c78827f843}} 
+void {\bfseries print\+Directory} (std\+::string path, STORAGE\+\_\+\+DEVICE device)
+\item 
+\mbox{\Hypertarget{class_storage_controller_a8d50450acbe1b423a367b13d17f4d375}\label{class_storage_controller_a8d50450acbe1b423a367b13d17f4d375}} 
+bool {\bfseries erase} (STORAGE\+\_\+\+DEVICE device)
+\end{DoxyCompactItemize}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+/\+Users/kiran/\+Documents/\+Projects/\+ICLR/\+Avionics/\+Ricardo\+\_\+\+OS/\+Ricardo\+\_\+\+OS/src/\+Logging/storage\+Controller.\+h\item 
+/\+Users/kiran/\+Documents/\+Projects/\+ICLR/\+Avionics/\+Ricardo\+\_\+\+OS/\+Ricardo\+\_\+\+OS/src/\+Logging/storage\+Controller.\+cpp\end{DoxyCompactItemize}

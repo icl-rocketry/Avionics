@@ -1,0 +1,84 @@
+\hypertarget{classcpplint_1_1___function_state}{}\doxysection{cpplint.\+\_\+\+Function\+State Class Reference}
+\label{classcpplint_1_1___function_state}\index{cpplint.\_FunctionState@{cpplint.\_FunctionState}}
+Inheritance diagram for cpplint.\+\_\+\+Function\+State\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classcpplint_1_1___function_state}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classcpplint_1_1___function_state_a3f6a865710852cc74c6a7085180458ae}\label{classcpplint_1_1___function_state_a3f6a865710852cc74c6a7085180458ae}} 
+def {\bfseries \+\_\+\+\_\+init\+\_\+\+\_\+} (self)
+\item 
+def \mbox{\hyperlink{classcpplint_1_1___function_state_a41215c4d73baccbb340f6d0df1c1f4b3}{Begin}} (self, function\+\_\+name)
+\item 
+def \mbox{\hyperlink{classcpplint_1_1___function_state_ac25c9711911ae181b091b52619cf2701}{Count}} (self)
+\item 
+def \mbox{\hyperlink{classcpplint_1_1___function_state_a5e4ad7d7b104038b45204ab4abf527b2}{Check}} (self, error, filename, linenum)
+\item 
+def \mbox{\hyperlink{classcpplint_1_1___function_state_a1ab6b0a575c25c135f9004b7fb12dc4a}{End}} (self)
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classcpplint_1_1___function_state_a8362d472591f60462184bf68b49c0efb}\label{classcpplint_1_1___function_state_a8362d472591f60462184bf68b49c0efb}} 
+{\bfseries in\+\_\+a\+\_\+function}
+\item 
+\mbox{\Hypertarget{classcpplint_1_1___function_state_a886f5d476adc81f499a711750a399aa2}\label{classcpplint_1_1___function_state_a886f5d476adc81f499a711750a399aa2}} 
+{\bfseries lines\+\_\+in\+\_\+function}
+\item 
+\mbox{\Hypertarget{classcpplint_1_1___function_state_a320674f54bd75087febc8f0d83620569}\label{classcpplint_1_1___function_state_a320674f54bd75087febc8f0d83620569}} 
+{\bfseries current\+\_\+function}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\begin{DoxyVerb}Tracks current function name and the number of lines in its body.\end{DoxyVerb}
+ 
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classcpplint_1_1___function_state_a41215c4d73baccbb340f6d0df1c1f4b3}\label{classcpplint_1_1___function_state_a41215c4d73baccbb340f6d0df1c1f4b3}} 
+\index{cpplint.\_FunctionState@{cpplint.\_FunctionState}!Begin@{Begin}}
+\index{Begin@{Begin}!cpplint.\_FunctionState@{cpplint.\_FunctionState}}
+\doxysubsubsection{\texorpdfstring{Begin()}{Begin()}}
+{\footnotesize\ttfamily def cpplint.\+\_\+\+Function\+State.\+Begin (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{function\+\_\+name }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Start analyzing function body.
+
+Args:
+  function_name: The name of the function being tracked.
+\end{DoxyVerb}
+ \mbox{\Hypertarget{classcpplint_1_1___function_state_a5e4ad7d7b104038b45204ab4abf527b2}\label{classcpplint_1_1___function_state_a5e4ad7d7b104038b45204ab4abf527b2}} 
+\index{cpplint.\_FunctionState@{cpplint.\_FunctionState}!Check@{Check}}
+\index{Check@{Check}!cpplint.\_FunctionState@{cpplint.\_FunctionState}}
+\doxysubsubsection{\texorpdfstring{Check()}{Check()}}
+{\footnotesize\ttfamily def cpplint.\+\_\+\+Function\+State.\+Check (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{error,  }\item[{}]{filename,  }\item[{}]{linenum }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Report if too many lines in function body.
+
+Args:
+  error: The function to call with any errors found.
+  filename: The name of the current file.
+  linenum: The number of the line to check.
+\end{DoxyVerb}
+ \mbox{\Hypertarget{classcpplint_1_1___function_state_ac25c9711911ae181b091b52619cf2701}\label{classcpplint_1_1___function_state_ac25c9711911ae181b091b52619cf2701}} 
+\index{cpplint.\_FunctionState@{cpplint.\_FunctionState}!Count@{Count}}
+\index{Count@{Count}!cpplint.\_FunctionState@{cpplint.\_FunctionState}}
+\doxysubsubsection{\texorpdfstring{Count()}{Count()}}
+{\footnotesize\ttfamily def cpplint.\+\_\+\+Function\+State.\+Count (\begin{DoxyParamCaption}\item[{}]{self }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Count line in current function body.\end{DoxyVerb}
+ \mbox{\Hypertarget{classcpplint_1_1___function_state_a1ab6b0a575c25c135f9004b7fb12dc4a}\label{classcpplint_1_1___function_state_a1ab6b0a575c25c135f9004b7fb12dc4a}} 
+\index{cpplint.\_FunctionState@{cpplint.\_FunctionState}!End@{End}}
+\index{End@{End}!cpplint.\_FunctionState@{cpplint.\_FunctionState}}
+\doxysubsubsection{\texorpdfstring{End()}{End()}}
+{\footnotesize\ttfamily def cpplint.\+\_\+\+Function\+State.\+End (\begin{DoxyParamCaption}\item[{}]{self }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Stop analyzing function body.\end{DoxyVerb}
+ 
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+/\+Users/kiran/\+Documents/\+Projects/\+ICLR/\+Avionics/\+Ricardo\+\_\+\+OS/\+Ricardo\+\_\+\+OS/lib/\+Sd\+Fat-\/master-\/adafruit\+\_\+fork/extras/cpplint.\+py\end{DoxyCompactItemize}

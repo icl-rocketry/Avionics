@@ -1,0 +1,61 @@
+\hypertarget{class_state}{}\doxysection{State Class Reference}
+\label{class_state}\index{State@{State}}
+
+
+Inheritance diagram for State\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_state__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for State\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_state__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_state_a681f937a91a707d782afbf172be22067}\label{class_state_a681f937a91a707d782afbf172be22067}} 
+{\bfseries State} (\mbox{\hyperlink{classstate_machine}{state\+Machine}} $\ast$sm)
+\item 
+\mbox{\Hypertarget{class_state_a14770d571ff70a1e5c8572eade7843cf}\label{class_state_a14770d571ff70a1e5c8572eade7843cf}} 
+virtual void {\bfseries initialise} ()
+\item 
+\mbox{\Hypertarget{class_state_afe1684e9770bc65ce5d3b262efa574ca}\label{class_state_afe1684e9770bc65ce5d3b262efa574ca}} 
+virtual \mbox{\hyperlink{class_state}{State}} $\ast$ {\bfseries update} ()=0
+\item 
+\mbox{\Hypertarget{class_state_a6154140cc1da5795d696a076d53b51d9}\label{class_state_a6154140cc1da5795d696a076d53b51d9}} 
+virtual void {\bfseries exitstate} ()
+\end{DoxyCompactItemize}
+\doxysubsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_state_a2af8ee4fe8086fe585d354f756c63595}\label{class_state_a2af8ee4fe8086fe585d354f756c63595}} 
+\mbox{\hyperlink{classstate_machine}{state\+Machine}} $\ast$ {\bfseries \+\_\+sm}
+\item 
+\mbox{\Hypertarget{class_state_a6ddbd407bdbc7618d3f9d26083aca5a9}\label{class_state_a6ddbd407bdbc7618d3f9d26083aca5a9}} 
+system\+\_\+flag {\bfseries \+\_\+curr\+\_\+state\+ID}
+\item 
+\mbox{\Hypertarget{class_state_ab7d3cbb49c6b925374be62a095f6e3b1}\label{class_state_ab7d3cbb49c6b925374be62a095f6e3b1}} 
+uint64\+\_\+t {\bfseries time\+\_\+entered\+\_\+state}
+\item 
+\mbox{\Hypertarget{class_state_afb8dae4fa97af9680d18f5f7673b0787}\label{class_state_afb8dae4fa97af9680d18f5f7673b0787}} 
+uint64\+\_\+t {\bfseries time\+\_\+exited\+\_\+state}
+\item 
+\mbox{\Hypertarget{class_state_ae8a73335ba15859e7fccab7d17604df1}\label{class_state_ae8a73335ba15859e7fccab7d17604df1}} 
+uint64\+\_\+t {\bfseries time\+\_\+duration\+\_\+state}
+\end{DoxyCompactItemize}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+/\+Users/kiran/\+Documents/\+Projects/\+ICLR/\+Avionics/\+Ricardo\+\_\+\+OS/\+Ricardo\+\_\+\+OS/src/\+States/state.\+h\item 
+/\+Users/kiran/\+Documents/\+Projects/\+ICLR/\+Avionics/\+Ricardo\+\_\+\+OS/\+Ricardo\+\_\+\+OS/src/\+States/state.\+cpp\end{DoxyCompactItemize}

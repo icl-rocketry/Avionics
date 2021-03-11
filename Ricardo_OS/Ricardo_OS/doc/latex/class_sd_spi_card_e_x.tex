@@ -1,0 +1,157 @@
+\hypertarget{class_sd_spi_card_e_x}{}\doxysection{Sd\+Spi\+Card\+EX Class Reference}
+\label{class_sd_spi_card_e_x}\index{SdSpiCardEX@{SdSpiCardEX}}
+
+
+Extended SD I/O block driver.  
+
+
+
+
+{\ttfamily \#include $<$Sd\+Spi\+Card.\+h$>$}
+
+Inheritance diagram for Sd\+Spi\+Card\+EX\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_sd_spi_card_e_x}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+bool \mbox{\hyperlink{class_sd_spi_card_e_x_a4fd0b23d230c6ad7dc406e798bbd5470}{begin}} (\mbox{\hyperlink{_sd_spi_driver_8h_abf391604c1ecfed19cdcb6c8bd626972}{Sd\+Spi\+Driver}} $\ast$spi, uint8\+\_\+t cs\+Pin, SPISettings spi\+Settings)
+\item 
+bool \mbox{\hyperlink{class_sd_spi_card_e_x_abb69c8bd538dafed1e7f33382ee48d61}{read\+Block}} (uint32\+\_\+t block, uint8\+\_\+t $\ast$dst)
+\item 
+bool \mbox{\hyperlink{class_sd_spi_card_e_x_af4a7c15bae6add50d66d066c0927a021}{sync\+Blocks}} ()
+\item 
+bool \mbox{\hyperlink{class_sd_spi_card_e_x_a6bd5e6bcfc2ab9574daa11bdd342be7b}{write\+Block}} (uint32\+\_\+t block, const uint8\+\_\+t $\ast$src)
+\item 
+bool \mbox{\hyperlink{class_sd_spi_card_e_x_a9e158cda94fadd12267fe7e63d06622a}{read\+Blocks}} (uint32\+\_\+t block, uint8\+\_\+t $\ast$dst, size\+\_\+t nb)
+\item 
+bool \mbox{\hyperlink{class_sd_spi_card_e_x_a9a7a5815b56c2cc77590a72635593762}{write\+Blocks}} (uint32\+\_\+t block, const uint8\+\_\+t $\ast$src, size\+\_\+t nb)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Extended SD I/O block driver. 
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_sd_spi_card_e_x_a4fd0b23d230c6ad7dc406e798bbd5470}\label{class_sd_spi_card_e_x_a4fd0b23d230c6ad7dc406e798bbd5470}} 
+\index{SdSpiCardEX@{SdSpiCardEX}!begin@{begin}}
+\index{begin@{begin}!SdSpiCardEX@{SdSpiCardEX}}
+\doxysubsubsection{\texorpdfstring{begin()}{begin()}}
+{\footnotesize\ttfamily bool Sd\+Spi\+Card\+EX\+::begin (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{_sd_spi_driver_8h_abf391604c1ecfed19cdcb6c8bd626972}{Sd\+Spi\+Driver}} $\ast$}]{spi,  }\item[{uint8\+\_\+t}]{cs\+Pin,  }\item[{SPISettings}]{spi\+Settings }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Initialize the SD card
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em spi} & SPI driver. \\
+\hline
+\mbox{\texttt{ in}}  & {\em cs\+Pin} & Card chip select pin number. \\
+\hline
+\mbox{\texttt{ in}}  & {\em spi\+Settings} & SPI speed, mode, and bit order. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The value true is returned for success and the value false is returned for failure. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_sd_spi_card_e_x_abb69c8bd538dafed1e7f33382ee48d61}\label{class_sd_spi_card_e_x_abb69c8bd538dafed1e7f33382ee48d61}} 
+\index{SdSpiCardEX@{SdSpiCardEX}!readBlock@{readBlock}}
+\index{readBlock@{readBlock}!SdSpiCardEX@{SdSpiCardEX}}
+\doxysubsubsection{\texorpdfstring{readBlock()}{readBlock()}}
+{\footnotesize\ttfamily bool Sd\+Spi\+Card\+EX\+::read\+Block (\begin{DoxyParamCaption}\item[{uint32\+\_\+t}]{block,  }\item[{uint8\+\_\+t $\ast$}]{dst }\end{DoxyParamCaption})}
+
+Read a 512 byte block from an SD card.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em block} & Logical block to be read. \\
+\hline
+\mbox{\texttt{ out}}  & {\em dst} & Pointer to the location that will receive the data. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The value true is returned for success and the value false is returned for failure.
+\end{DoxyReturn}
+Copyright (c) 2011-\/2018 Bill Greiman This file is part of the \mbox{\hyperlink{class_sd_fat}{Sd\+Fat}} library for SD memory cards.
+
+MIT License
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the \char`\"{}\+Software\char`\"{}), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions\+:
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED \char`\"{}\+AS IS\char`\"{}, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE. \mbox{\Hypertarget{class_sd_spi_card_e_x_a9e158cda94fadd12267fe7e63d06622a}\label{class_sd_spi_card_e_x_a9e158cda94fadd12267fe7e63d06622a}} 
+\index{SdSpiCardEX@{SdSpiCardEX}!readBlocks@{readBlocks}}
+\index{readBlocks@{readBlocks}!SdSpiCardEX@{SdSpiCardEX}}
+\doxysubsubsection{\texorpdfstring{readBlocks()}{readBlocks()}}
+{\footnotesize\ttfamily bool Sd\+Spi\+Card\+EX\+::read\+Blocks (\begin{DoxyParamCaption}\item[{uint32\+\_\+t}]{block,  }\item[{uint8\+\_\+t $\ast$}]{dst,  }\item[{size\+\_\+t}]{nb }\end{DoxyParamCaption})}
+
+Read multiple 512 byte blocks from an SD card.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em block} & Logical block to be read. \\
+\hline
+\mbox{\texttt{ in}}  & {\em nb} & Number of blocks to be read. \\
+\hline
+\mbox{\texttt{ out}}  & {\em dst} & Pointer to the location that will receive the data. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The value true is returned for success and the value false is returned for failure. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_sd_spi_card_e_x_af4a7c15bae6add50d66d066c0927a021}\label{class_sd_spi_card_e_x_af4a7c15bae6add50d66d066c0927a021}} 
+\index{SdSpiCardEX@{SdSpiCardEX}!syncBlocks@{syncBlocks}}
+\index{syncBlocks@{syncBlocks}!SdSpiCardEX@{SdSpiCardEX}}
+\doxysubsubsection{\texorpdfstring{syncBlocks()}{syncBlocks()}}
+{\footnotesize\ttfamily bool Sd\+Spi\+Card\+EX\+::sync\+Blocks (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+End multi-\/block transfer and go to idle state. \begin{DoxyReturn}{Returns}
+The value true is returned for success and the value false is returned for failure. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_sd_spi_card_e_x_a6bd5e6bcfc2ab9574daa11bdd342be7b}\label{class_sd_spi_card_e_x_a6bd5e6bcfc2ab9574daa11bdd342be7b}} 
+\index{SdSpiCardEX@{SdSpiCardEX}!writeBlock@{writeBlock}}
+\index{writeBlock@{writeBlock}!SdSpiCardEX@{SdSpiCardEX}}
+\doxysubsubsection{\texorpdfstring{writeBlock()}{writeBlock()}}
+{\footnotesize\ttfamily bool Sd\+Spi\+Card\+EX\+::write\+Block (\begin{DoxyParamCaption}\item[{uint32\+\_\+t}]{block,  }\item[{const uint8\+\_\+t $\ast$}]{src }\end{DoxyParamCaption})}
+
+Writes a 512 byte block to an SD card.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em block} & Logical block to be written. \\
+\hline
+\mbox{\texttt{ in}}  & {\em src} & Pointer to the location of the data to be written. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The value true is returned for success and the value false is returned for failure. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_sd_spi_card_e_x_a9a7a5815b56c2cc77590a72635593762}\label{class_sd_spi_card_e_x_a9a7a5815b56c2cc77590a72635593762}} 
+\index{SdSpiCardEX@{SdSpiCardEX}!writeBlocks@{writeBlocks}}
+\index{writeBlocks@{writeBlocks}!SdSpiCardEX@{SdSpiCardEX}}
+\doxysubsubsection{\texorpdfstring{writeBlocks()}{writeBlocks()}}
+{\footnotesize\ttfamily bool Sd\+Spi\+Card\+EX\+::write\+Blocks (\begin{DoxyParamCaption}\item[{uint32\+\_\+t}]{block,  }\item[{const uint8\+\_\+t $\ast$}]{src,  }\item[{size\+\_\+t}]{nb }\end{DoxyParamCaption})}
+
+Write multiple 512 byte blocks to an SD card.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em block} & Logical block to be written. \\
+\hline
+\mbox{\texttt{ in}}  & {\em nb} & Number of blocks to be written. \\
+\hline
+\mbox{\texttt{ in}}  & {\em src} & Pointer to the location of the data to be written. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The value true is returned for success and the value false is returned for failure. 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+/\+Users/kiran/\+Documents/\+Projects/\+ICLR/\+Avionics/\+Ricardo\+\_\+\+OS/\+Ricardo\+\_\+\+OS/lib/\+Sd\+Fat-\/master-\/adafruit\+\_\+fork/src/\+Sd\+Card/\mbox{\hyperlink{_sd_spi_card_8h}{Sd\+Spi\+Card.\+h}}\item 
+/\+Users/kiran/\+Documents/\+Projects/\+ICLR/\+Avionics/\+Ricardo\+\_\+\+OS/\+Ricardo\+\_\+\+OS/lib/\+Sd\+Fat-\/master-\/adafruit\+\_\+fork/src/\+Sd\+Card/Sd\+Spi\+Card\+EX.\+cpp\end{DoxyCompactItemize}

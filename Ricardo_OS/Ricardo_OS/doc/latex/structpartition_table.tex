@@ -1,0 +1,123 @@
+\hypertarget{structpartition_table}{}\doxysection{partition\+Table Struct Reference}
+\label{structpartition_table}\index{partitionTable@{partitionTable}}
+
+
+MBR partition table entry.  
+
+
+
+
+{\ttfamily \#include $<$Fat\+Structs.\+h$>$}
+
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+uint8\+\_\+t \mbox{\hyperlink{structpartition_table_adf386afb1f33046d8b6a1a0afa780ec9}{boot}}
+\item 
+uint8\+\_\+t \mbox{\hyperlink{structpartition_table_a7d426694b8cf2151ae38568670a8c845}{begin\+Head}}
+\item 
+unsigned \mbox{\hyperlink{structpartition_table_ae201c11d9671c9efc307c654a2b6c026}{begin\+Sector}}\+: 6
+\item 
+unsigned \mbox{\hyperlink{structpartition_table_a744f0c7f9ad4c426b10de085b4f52392}{begin\+Cylinder\+High}}\+: 2
+\item 
+uint8\+\_\+t \mbox{\hyperlink{structpartition_table_a941fcb4df298f5f73ccca011bf40787a}{begin\+Cylinder\+Low}}
+\item 
+uint8\+\_\+t \mbox{\hyperlink{structpartition_table_a3861cf276c728c4dd30ca04e74197ee8}{type}}
+\item 
+uint8\+\_\+t \mbox{\hyperlink{structpartition_table_a4a3945bfd3a29f474984cb9f180dbd51}{end\+Head}}
+\item 
+unsigned \mbox{\hyperlink{structpartition_table_a27cdc4320c418ed0d833ab163ed77ad7}{end\+Sector}}\+: 6
+\item 
+unsigned \mbox{\hyperlink{structpartition_table_a32fea225b8ffd925ad919ffc56e9abda}{end\+Cylinder\+High}}\+: 2
+\item 
+uint8\+\_\+t \mbox{\hyperlink{structpartition_table_ad7829e34be70084abe145227b0d18274}{end\+Cylinder\+Low}}
+\item 
+uint32\+\_\+t \mbox{\hyperlink{structpartition_table_a02bbdff840c854dc96fa0b6da8589d86}{first\+Sector}}
+\item 
+uint32\+\_\+t \mbox{\hyperlink{structpartition_table_acf96e59ce648a9a0cf35751c3b6d7730}{total\+Sectors}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+MBR partition table entry. 
+
+A partition table entry for a MBR formatted storage device. The MBR partition table has four entries. 
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{structpartition_table_a744f0c7f9ad4c426b10de085b4f52392}\label{structpartition_table_a744f0c7f9ad4c426b10de085b4f52392}} 
+\index{partitionTable@{partitionTable}!beginCylinderHigh@{beginCylinderHigh}}
+\index{beginCylinderHigh@{beginCylinderHigh}!partitionTable@{partitionTable}}
+\doxysubsubsection{\texorpdfstring{beginCylinderHigh}{beginCylinderHigh}}
+{\footnotesize\ttfamily unsigned partition\+Table\+::begin\+Cylinder\+High}
+
+High bits cylinder for first block in partition. \mbox{\Hypertarget{structpartition_table_a941fcb4df298f5f73ccca011bf40787a}\label{structpartition_table_a941fcb4df298f5f73ccca011bf40787a}} 
+\index{partitionTable@{partitionTable}!beginCylinderLow@{beginCylinderLow}}
+\index{beginCylinderLow@{beginCylinderLow}!partitionTable@{partitionTable}}
+\doxysubsubsection{\texorpdfstring{beginCylinderLow}{beginCylinderLow}}
+{\footnotesize\ttfamily uint8\+\_\+t partition\+Table\+::begin\+Cylinder\+Low}
+
+Combine begin\+Cylinder\+Low with begin\+Cylinder\+High. Legal values are 0-\/1023. Only used in old PC BIOS. \mbox{\Hypertarget{structpartition_table_a7d426694b8cf2151ae38568670a8c845}\label{structpartition_table_a7d426694b8cf2151ae38568670a8c845}} 
+\index{partitionTable@{partitionTable}!beginHead@{beginHead}}
+\index{beginHead@{beginHead}!partitionTable@{partitionTable}}
+\doxysubsubsection{\texorpdfstring{beginHead}{beginHead}}
+{\footnotesize\ttfamily uint8\+\_\+t partition\+Table\+::begin\+Head}
+
+Head part of Cylinder-\/head-\/sector address of the first block in the partition. Legal values are 0-\/255. Only used in old PC BIOS. \mbox{\Hypertarget{structpartition_table_ae201c11d9671c9efc307c654a2b6c026}\label{structpartition_table_ae201c11d9671c9efc307c654a2b6c026}} 
+\index{partitionTable@{partitionTable}!beginSector@{beginSector}}
+\index{beginSector@{beginSector}!partitionTable@{partitionTable}}
+\doxysubsubsection{\texorpdfstring{beginSector}{beginSector}}
+{\footnotesize\ttfamily unsigned partition\+Table\+::begin\+Sector}
+
+Sector part of Cylinder-\/head-\/sector address of the first block in the partition. Legal values are 1-\/63. Only used in old PC BIOS. \mbox{\Hypertarget{structpartition_table_adf386afb1f33046d8b6a1a0afa780ec9}\label{structpartition_table_adf386afb1f33046d8b6a1a0afa780ec9}} 
+\index{partitionTable@{partitionTable}!boot@{boot}}
+\index{boot@{boot}!partitionTable@{partitionTable}}
+\doxysubsubsection{\texorpdfstring{boot}{boot}}
+{\footnotesize\ttfamily uint8\+\_\+t partition\+Table\+::boot}
+
+Boot Indicator . Indicates whether the volume is the active partition. Legal values include\+: 0X00. Do not use for booting. 0X80 Active partition. \mbox{\Hypertarget{structpartition_table_a32fea225b8ffd925ad919ffc56e9abda}\label{structpartition_table_a32fea225b8ffd925ad919ffc56e9abda}} 
+\index{partitionTable@{partitionTable}!endCylinderHigh@{endCylinderHigh}}
+\index{endCylinderHigh@{endCylinderHigh}!partitionTable@{partitionTable}}
+\doxysubsubsection{\texorpdfstring{endCylinderHigh}{endCylinderHigh}}
+{\footnotesize\ttfamily unsigned partition\+Table\+::end\+Cylinder\+High}
+
+High bits of end cylinder \mbox{\Hypertarget{structpartition_table_ad7829e34be70084abe145227b0d18274}\label{structpartition_table_ad7829e34be70084abe145227b0d18274}} 
+\index{partitionTable@{partitionTable}!endCylinderLow@{endCylinderLow}}
+\index{endCylinderLow@{endCylinderLow}!partitionTable@{partitionTable}}
+\doxysubsubsection{\texorpdfstring{endCylinderLow}{endCylinderLow}}
+{\footnotesize\ttfamily uint8\+\_\+t partition\+Table\+::end\+Cylinder\+Low}
+
+Combine end\+Cylinder\+Low with end\+Cylinder\+High. Legal values are 0-\/1023. Only used in old PC BIOS. \mbox{\Hypertarget{structpartition_table_a4a3945bfd3a29f474984cb9f180dbd51}\label{structpartition_table_a4a3945bfd3a29f474984cb9f180dbd51}} 
+\index{partitionTable@{partitionTable}!endHead@{endHead}}
+\index{endHead@{endHead}!partitionTable@{partitionTable}}
+\doxysubsubsection{\texorpdfstring{endHead}{endHead}}
+{\footnotesize\ttfamily uint8\+\_\+t partition\+Table\+::end\+Head}
+
+head part of cylinder-\/head-\/sector address of the last sector in the partition. Legal values are 0-\/255. Only used in old PC BIOS. \mbox{\Hypertarget{structpartition_table_a27cdc4320c418ed0d833ab163ed77ad7}\label{structpartition_table_a27cdc4320c418ed0d833ab163ed77ad7}} 
+\index{partitionTable@{partitionTable}!endSector@{endSector}}
+\index{endSector@{endSector}!partitionTable@{partitionTable}}
+\doxysubsubsection{\texorpdfstring{endSector}{endSector}}
+{\footnotesize\ttfamily unsigned partition\+Table\+::end\+Sector}
+
+Sector part of cylinder-\/head-\/sector address of the last sector in the partition. Legal values are 1-\/63. Only used in old PC BIOS. \mbox{\Hypertarget{structpartition_table_a02bbdff840c854dc96fa0b6da8589d86}\label{structpartition_table_a02bbdff840c854dc96fa0b6da8589d86}} 
+\index{partitionTable@{partitionTable}!firstSector@{firstSector}}
+\index{firstSector@{firstSector}!partitionTable@{partitionTable}}
+\doxysubsubsection{\texorpdfstring{firstSector}{firstSector}}
+{\footnotesize\ttfamily uint32\+\_\+t partition\+Table\+::first\+Sector}
+
+Logical block address of the first block in the partition. \mbox{\Hypertarget{structpartition_table_acf96e59ce648a9a0cf35751c3b6d7730}\label{structpartition_table_acf96e59ce648a9a0cf35751c3b6d7730}} 
+\index{partitionTable@{partitionTable}!totalSectors@{totalSectors}}
+\index{totalSectors@{totalSectors}!partitionTable@{partitionTable}}
+\doxysubsubsection{\texorpdfstring{totalSectors}{totalSectors}}
+{\footnotesize\ttfamily uint32\+\_\+t partition\+Table\+::total\+Sectors}
+
+Length of the partition, in blocks. \mbox{\Hypertarget{structpartition_table_a3861cf276c728c4dd30ca04e74197ee8}\label{structpartition_table_a3861cf276c728c4dd30ca04e74197ee8}} 
+\index{partitionTable@{partitionTable}!type@{type}}
+\index{type@{type}!partitionTable@{partitionTable}}
+\doxysubsubsection{\texorpdfstring{type}{type}}
+{\footnotesize\ttfamily uint8\+\_\+t partition\+Table\+::type}
+
+Partition type. See defines that begin with PART\+\_\+\+TYPE\+\_\+ for some Microsoft partition types. 
+
+The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+/\+Users/kiran/\+Documents/\+Projects/\+ICLR/\+Avionics/\+Ricardo\+\_\+\+OS/\+Ricardo\+\_\+\+OS/lib/\+Sd\+Fat-\/master-\/adafruit\+\_\+fork/src/\+Fat\+Lib/\mbox{\hyperlink{_fat_structs_8h}{Fat\+Structs.\+h}}\end{DoxyCompactItemize}

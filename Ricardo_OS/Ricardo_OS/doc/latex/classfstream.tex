@@ -1,0 +1,111 @@
+\hypertarget{classfstream}{}\doxysection{fstream Class Reference}
+\label{classfstream}\index{fstream@{fstream}}
+
+
+file input/output stream.  
+
+
+
+
+{\ttfamily \#include $<$fstream.\+h$>$}
+
+Inheritance diagram for fstream\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=5.000000cm]{classfstream}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classfstream_aed23877c52f828cab8de7a23603b3b6c}{fstream}} (const char $\ast$path, \mbox{\hyperlink{classios__base_aaa192ec0dccc43050715553a34644523}{openmode}} mode=\mbox{\hyperlink{classios__base_ae5432e3c269064480652c4602f5f74ad}{in}}$\vert$\mbox{\hyperlink{classios__base_a4c1d517774c0d11af3424e90395f26ae}{out}})
+\item 
+void \mbox{\hyperlink{classfstream_a682b278a6a299ffb21b8737717ff12bf}{clear}} (\mbox{\hyperlink{classios__base_aef19291eeae0f072ac42c6ba1fe3033c}{iostate}} state=\mbox{\hyperlink{classios__base_a07a00996a6e525b88bdfe7935d5ead05}{goodbit}})
+\item 
+void \mbox{\hyperlink{classfstream_ac5720ee620c09d63dd186823e688ea9a}{close}} ()
+\item 
+void \mbox{\hyperlink{classfstream_a85b24d94552991f33caf4c3a83420879}{open}} (const char $\ast$path, \mbox{\hyperlink{classios__base_aaa192ec0dccc43050715553a34644523}{openmode}} mode=\mbox{\hyperlink{classios__base_ae5432e3c269064480652c4602f5f74ad}{in}}$\vert$\mbox{\hyperlink{classios__base_a4c1d517774c0d11af3424e90395f26ae}{out}})
+\item 
+bool \mbox{\hyperlink{classfstream_ae4a71c6f3da2f168ec222739d796fc8b}{is\+\_\+open}} ()
+\end{DoxyCompactItemize}
+\doxysubsection*{Additional Inherited Members}
+
+
+\doxysubsection{Detailed Description}
+file input/output stream. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classfstream_aed23877c52f828cab8de7a23603b3b6c}\label{classfstream_aed23877c52f828cab8de7a23603b3b6c}} 
+\index{fstream@{fstream}!fstream@{fstream}}
+\index{fstream@{fstream}!fstream@{fstream}}
+\doxysubsubsection{\texorpdfstring{fstream()}{fstream()}}
+{\footnotesize\ttfamily fstream\+::fstream (\begin{DoxyParamCaption}\item[{const char $\ast$}]{path,  }\item[{\mbox{\hyperlink{classios__base_aaa192ec0dccc43050715553a34644523}{openmode}}}]{mode = {\ttfamily \mbox{\hyperlink{classios__base_ae5432e3c269064480652c4602f5f74ad}{in}}~$\vert$~\mbox{\hyperlink{classios__base_a4c1d517774c0d11af3424e90395f26ae}{out}}} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [explicit]}}
+
+Constructor with open
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em path} & path to open \\
+\hline
+\mbox{\texttt{ in}}  & {\em mode} & open mode \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classfstream_a682b278a6a299ffb21b8737717ff12bf}\label{classfstream_a682b278a6a299ffb21b8737717ff12bf}} 
+\index{fstream@{fstream}!clear@{clear}}
+\index{clear@{clear}!fstream@{fstream}}
+\doxysubsubsection{\texorpdfstring{clear()}{clear()}}
+{\footnotesize\ttfamily void fstream\+::clear (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classios__base_aef19291eeae0f072ac42c6ba1fe3033c}{iostate}}}]{state = {\ttfamily \mbox{\hyperlink{classios__base_a07a00996a6e525b88bdfe7935d5ead05}{goodbit}}} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Clear state and write\+Error 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em state} & new state for stream \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classfstream_ac5720ee620c09d63dd186823e688ea9a}\label{classfstream_ac5720ee620c09d63dd186823e688ea9a}} 
+\index{fstream@{fstream}!close@{close}}
+\index{close@{close}!fstream@{fstream}}
+\doxysubsubsection{\texorpdfstring{close()}{close()}}
+{\footnotesize\ttfamily void fstream\+::close (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Close a file and force cached data and directory information to be written to the storage device. \mbox{\Hypertarget{classfstream_ae4a71c6f3da2f168ec222739d796fc8b}\label{classfstream_ae4a71c6f3da2f168ec222739d796fc8b}} 
+\index{fstream@{fstream}!is\_open@{is\_open}}
+\index{is\_open@{is\_open}!fstream@{fstream}}
+\doxysubsubsection{\texorpdfstring{is\_open()}{is\_open()}}
+{\footnotesize\ttfamily bool fstream\+::is\+\_\+open (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\begin{DoxyReturn}{Returns}
+True if stream is open else false. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classfstream_a85b24d94552991f33caf4c3a83420879}\label{classfstream_a85b24d94552991f33caf4c3a83420879}} 
+\index{fstream@{fstream}!open@{open}}
+\index{open@{open}!fstream@{fstream}}
+\doxysubsubsection{\texorpdfstring{open()}{open()}}
+{\footnotesize\ttfamily void fstream\+::open (\begin{DoxyParamCaption}\item[{const char $\ast$}]{path,  }\item[{\mbox{\hyperlink{classios__base_aaa192ec0dccc43050715553a34644523}{openmode}}}]{mode = {\ttfamily \mbox{\hyperlink{classios__base_ae5432e3c269064480652c4602f5f74ad}{in}}~$\vert$~\mbox{\hyperlink{classios__base_a4c1d517774c0d11af3424e90395f26ae}{out}}} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Open a fstream 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em path} & file to open \\
+\hline
+\mbox{\texttt{ in}}  & {\em mode} & open mode\\
+\hline
+\end{DoxyParams}
+Valid open modes are (at end, \mbox{\hyperlink{classios__base_aa434355c165500065276d955d8b36e99}{ios\+::ate}}, and/or \mbox{\hyperlink{classios__base_ac99947c17c2936d15243671366605602}{ios\+::binary}} may be added)\+:
+
+\mbox{\hyperlink{classios__base_ae5432e3c269064480652c4602f5f74ad}{ios\+::in}} -\/ Open file for reading.
+
+\mbox{\hyperlink{classios__base_a4c1d517774c0d11af3424e90395f26ae}{ios\+::out}} or \mbox{\hyperlink{classios__base_a4c1d517774c0d11af3424e90395f26ae}{ios\+::out}} $\vert$ \mbox{\hyperlink{classios__base_ae62b8972f37509819e1384214071194b}{ios\+::trunc}} -\/ Truncate to 0 length, if existent, or create a file for writing only.
+
+\mbox{\hyperlink{classios__base_a8380aac3c405730708888fdc68905820}{ios\+::app}} or \mbox{\hyperlink{classios__base_a4c1d517774c0d11af3424e90395f26ae}{ios\+::out}} $\vert$ \mbox{\hyperlink{classios__base_a8380aac3c405730708888fdc68905820}{ios\+::app}} -\/ Append; open or create file for writing at end-\/of-\/file.
+
+\mbox{\hyperlink{classios__base_ae5432e3c269064480652c4602f5f74ad}{ios\+::in}} $\vert$ \mbox{\hyperlink{classios__base_a4c1d517774c0d11af3424e90395f26ae}{ios\+::out}} -\/ Open file for update (reading and writing).
+
+\mbox{\hyperlink{classios__base_ae5432e3c269064480652c4602f5f74ad}{ios\+::in}} $\vert$ \mbox{\hyperlink{classios__base_a4c1d517774c0d11af3424e90395f26ae}{ios\+::out}} $\vert$ \mbox{\hyperlink{classios__base_ae62b8972f37509819e1384214071194b}{ios\+::trunc}} -\/ Truncate to zero length, if existent, or create file for update.
+
+\mbox{\hyperlink{classios__base_ae5432e3c269064480652c4602f5f74ad}{ios\+::in}} $\vert$ \mbox{\hyperlink{classios__base_a8380aac3c405730708888fdc68905820}{ios\+::app}} or \mbox{\hyperlink{classios__base_ae5432e3c269064480652c4602f5f74ad}{ios\+::in}} $\vert$ \mbox{\hyperlink{classios__base_a4c1d517774c0d11af3424e90395f26ae}{ios\+::out}} $\vert$ \mbox{\hyperlink{classios__base_a8380aac3c405730708888fdc68905820}{ios\+::app}} -\/ Append; open or create text file for update, writing at end of file. 
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+/\+Users/kiran/\+Documents/\+Projects/\+ICLR/\+Avionics/\+Ricardo\+\_\+\+OS/\+Ricardo\+\_\+\+OS/lib/\+Sd\+Fat-\/master-\/adafruit\+\_\+fork/src/\+Fat\+Lib/\mbox{\hyperlink{fstream_8h}{fstream.\+h}}\end{DoxyCompactItemize}

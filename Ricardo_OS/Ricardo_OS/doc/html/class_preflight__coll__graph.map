@@ -1,0 +1,14 @@
+<map id="Preflight" name="Preflight">
+<area shape="rect" id="node1" title=" " alt="" coords="831,157,901,184"/>
+<area shape="rect" id="node2" href="$class_state.html" title=" " alt="" coords="728,157,781,184"/>
+<area shape="rect" id="node3" href="$classstate_machine.html" title=" " alt="" coords="551,157,651,184"/>
+<area shape="rect" id="node4" href="$class_system_status.html" title=" " alt="" coords="287,5,393,32"/>
+<area shape="rect" id="node5" href="$class_storage_controller.html" title=" " alt="" coords="279,56,401,83"/>
+<area shape="rect" id="node6" href="$class_sensors.html" title=" " alt="" coords="305,107,375,133"/>
+<area shape="rect" id="node7" href="$structraw__measurements__t.html" title=" " alt="" coords="5,107,152,133"/>
+<area shape="rect" id="node8" href="$class_log_controller.html" title=" " alt="" coords="291,157,389,184"/>
+<area shape="rect" id="node9" href="$class_network_manager.html" title=" " alt="" coords="279,208,401,235"/>
+<area shape="rect" id="node10" href="$class_config_controller.html" title=" " alt="" coords="282,259,398,285"/>
+<area shape="rect" id="node11" href="$class_estimator.html" title=" " alt="" coords="301,309,379,336"/>
+<area shape="rect" id="node12" href="$structstate__t.html" title=" " alt="" coords="47,309,110,336"/>
+</map>

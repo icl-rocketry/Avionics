@@ -1,0 +1,187 @@
+\hypertarget{class_fat_cache}{}\doxysection{Fat\+Cache Class Reference}
+\label{class_fat_cache}\index{FatCache@{FatCache}}
+
+
+Block cache.  
+
+
+
+
+{\ttfamily \#include $<$Fat\+Volume.\+h$>$}
+
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{unioncache__t}{cache\+\_\+t}} $\ast$ \mbox{\hyperlink{class_fat_cache_ab3d9c4f94af61065b6d6d0892827fd8a}{block}} ()
+\item 
+void \mbox{\hyperlink{class_fat_cache_ab4d3b0c16bb6a116c7d01afff2dcb307}{dirty}} ()
+\item 
+void \mbox{\hyperlink{class_fat_cache_ae1d8a2da1493b5ffca0520184daaddf1}{init}} (\mbox{\hyperlink{class_fat_volume}{Fat\+Volume}} $\ast$vol)
+\item 
+void \mbox{\hyperlink{class_fat_cache_a70071a128d647b49b523dbb2f5f944a5}{invalidate}} ()
+\item 
+bool \mbox{\hyperlink{class_fat_cache_ae50287d95bd78558db1e4aa97d7b2c06}{is\+Dirty}} ()
+\item 
+uint32\+\_\+t \mbox{\hyperlink{class_fat_cache_a9f981b53e212f79937e5f6381b169374}{lbn}} ()
+\item 
+\mbox{\hyperlink{unioncache__t}{cache\+\_\+t}} $\ast$ \mbox{\hyperlink{class_fat_cache_ac2bb0b8f2ce3ab5cd86cf30b4a663cea}{read}} (uint32\+\_\+t \mbox{\hyperlink{class_fat_cache_a9f981b53e212f79937e5f6381b169374}{lbn}}, uint8\+\_\+t option)
+\item 
+bool \mbox{\hyperlink{class_fat_cache_a4d76d4f46ce5994f6fc4678a7b4f8cf1}{sync}} ()
+\end{DoxyCompactItemize}
+\doxysubsection*{Static Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+static const uint8\+\_\+t \mbox{\hyperlink{class_fat_cache_aac8c38e5c545d0f80b13d816117f626e}{CACHE\+\_\+\+STATUS\+\_\+\+DIRTY}} = 1
+\item 
+static const uint8\+\_\+t \mbox{\hyperlink{class_fat_cache_a45236e1c0a2a098f08d3add0e4b1467a}{CACHE\+\_\+\+STATUS\+\_\+\+MIRROR\+\_\+\+FAT}} = 2
+\item 
+static const uint8\+\_\+t \mbox{\hyperlink{class_fat_cache_ab70dc4a2e387f0e9bf392044c702ae32}{CACHE\+\_\+\+STATUS\+\_\+\+MASK}} = \mbox{\hyperlink{class_fat_cache_aac8c38e5c545d0f80b13d816117f626e}{CACHE\+\_\+\+STATUS\+\_\+\+DIRTY}} $\vert$ \mbox{\hyperlink{class_fat_cache_a45236e1c0a2a098f08d3add0e4b1467a}{CACHE\+\_\+\+STATUS\+\_\+\+MIRROR\+\_\+\+FAT}}
+\item 
+static const uint8\+\_\+t \mbox{\hyperlink{class_fat_cache_adf974f55e53ee0aaa85abb0d7d67181c}{CACHE\+\_\+\+OPTION\+\_\+\+NO\+\_\+\+READ}} = 4
+\item 
+static const uint8\+\_\+t \mbox{\hyperlink{class_fat_cache_ab4b446515ff9a0cebc747630ddd10c93}{CACHE\+\_\+\+FOR\+\_\+\+READ}} = 0
+\item 
+static const uint8\+\_\+t \mbox{\hyperlink{class_fat_cache_a81cb572f33443bd6aee9aa33ec395d0f}{CACHE\+\_\+\+FOR\+\_\+\+WRITE}} = \mbox{\hyperlink{class_fat_cache_aac8c38e5c545d0f80b13d816117f626e}{CACHE\+\_\+\+STATUS\+\_\+\+DIRTY}}
+\item 
+static const uint8\+\_\+t \mbox{\hyperlink{class_fat_cache_a49d2896ff525ab77852f76df5c2a09c2}{CACHE\+\_\+\+RESERVE\+\_\+\+FOR\+\_\+\+WRITE}} = \mbox{\hyperlink{class_fat_cache_aac8c38e5c545d0f80b13d816117f626e}{CACHE\+\_\+\+STATUS\+\_\+\+DIRTY}} $\vert$ \mbox{\hyperlink{class_fat_cache_adf974f55e53ee0aaa85abb0d7d67181c}{CACHE\+\_\+\+OPTION\+\_\+\+NO\+\_\+\+READ}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Block cache. 
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_fat_cache_ab3d9c4f94af61065b6d6d0892827fd8a}\label{class_fat_cache_ab3d9c4f94af61065b6d6d0892827fd8a}} 
+\index{FatCache@{FatCache}!block@{block}}
+\index{block@{block}!FatCache@{FatCache}}
+\doxysubsubsection{\texorpdfstring{block()}{block()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{unioncache__t}{cache\+\_\+t}}$\ast$ Fat\+Cache\+::block (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\begin{DoxyReturn}{Returns}
+Cache block address. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_fat_cache_ab4d3b0c16bb6a116c7d01afff2dcb307}\label{class_fat_cache_ab4d3b0c16bb6a116c7d01afff2dcb307}} 
+\index{FatCache@{FatCache}!dirty@{dirty}}
+\index{dirty@{dirty}!FatCache@{FatCache}}
+\doxysubsubsection{\texorpdfstring{dirty()}{dirty()}}
+{\footnotesize\ttfamily void Fat\+Cache\+::dirty (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Set current block dirty. \mbox{\Hypertarget{class_fat_cache_ae1d8a2da1493b5ffca0520184daaddf1}\label{class_fat_cache_ae1d8a2da1493b5ffca0520184daaddf1}} 
+\index{FatCache@{FatCache}!init@{init}}
+\index{init@{init}!FatCache@{FatCache}}
+\doxysubsubsection{\texorpdfstring{init()}{init()}}
+{\footnotesize\ttfamily void Fat\+Cache\+::init (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_fat_volume}{Fat\+Volume}} $\ast$}]{vol }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Initialize the cache. 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em vol} & \mbox{\hyperlink{class_fat_volume}{Fat\+Volume}} that owns this \mbox{\hyperlink{class_fat_cache}{Fat\+Cache}}. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_fat_cache_a70071a128d647b49b523dbb2f5f944a5}\label{class_fat_cache_a70071a128d647b49b523dbb2f5f944a5}} 
+\index{FatCache@{FatCache}!invalidate@{invalidate}}
+\index{invalidate@{invalidate}!FatCache@{FatCache}}
+\doxysubsubsection{\texorpdfstring{invalidate()}{invalidate()}}
+{\footnotesize\ttfamily void Fat\+Cache\+::invalidate (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Invalidate current cache block. \mbox{\Hypertarget{class_fat_cache_ae50287d95bd78558db1e4aa97d7b2c06}\label{class_fat_cache_ae50287d95bd78558db1e4aa97d7b2c06}} 
+\index{FatCache@{FatCache}!isDirty@{isDirty}}
+\index{isDirty@{isDirty}!FatCache@{FatCache}}
+\doxysubsubsection{\texorpdfstring{isDirty()}{isDirty()}}
+{\footnotesize\ttfamily bool Fat\+Cache\+::is\+Dirty (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\begin{DoxyReturn}{Returns}
+dirty status 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_fat_cache_a9f981b53e212f79937e5f6381b169374}\label{class_fat_cache_a9f981b53e212f79937e5f6381b169374}} 
+\index{FatCache@{FatCache}!lbn@{lbn}}
+\index{lbn@{lbn}!FatCache@{FatCache}}
+\doxysubsubsection{\texorpdfstring{lbn()}{lbn()}}
+{\footnotesize\ttfamily uint32\+\_\+t Fat\+Cache\+::lbn (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\begin{DoxyReturn}{Returns}
+Logical block number for cached block. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_fat_cache_ac2bb0b8f2ce3ab5cd86cf30b4a663cea}\label{class_fat_cache_ac2bb0b8f2ce3ab5cd86cf30b4a663cea}} 
+\index{FatCache@{FatCache}!read@{read}}
+\index{read@{read}!FatCache@{FatCache}}
+\doxysubsubsection{\texorpdfstring{read()}{read()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{unioncache__t}{cache\+\_\+t}} $\ast$ Fat\+Cache\+::read (\begin{DoxyParamCaption}\item[{uint32\+\_\+t}]{lbn,  }\item[{uint8\+\_\+t}]{option }\end{DoxyParamCaption})}
+
+Read a block into the cache. 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em lbn} & Block to read. \\
+\hline
+\mbox{\texttt{ in}}  & {\em option} & mode for cached block. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Address of cached block.
+\end{DoxyReturn}
+Copyright (c) 2011-\/2018 Bill Greiman This file is part of the \mbox{\hyperlink{class_sd_fat}{Sd\+Fat}} library for SD memory cards.
+
+MIT License
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the \char`\"{}\+Software\char`\"{}), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions\+:
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED \char`\"{}\+AS IS\char`\"{}, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE. \mbox{\Hypertarget{class_fat_cache_a4d76d4f46ce5994f6fc4678a7b4f8cf1}\label{class_fat_cache_a4d76d4f46ce5994f6fc4678a7b4f8cf1}} 
+\index{FatCache@{FatCache}!sync@{sync}}
+\index{sync@{sync}!FatCache@{FatCache}}
+\doxysubsubsection{\texorpdfstring{sync()}{sync()}}
+{\footnotesize\ttfamily bool Fat\+Cache\+::sync (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Write current block if dirty. \begin{DoxyReturn}{Returns}
+true for success else false. 
+\end{DoxyReturn}
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{class_fat_cache_ab4b446515ff9a0cebc747630ddd10c93}\label{class_fat_cache_ab4b446515ff9a0cebc747630ddd10c93}} 
+\index{FatCache@{FatCache}!CACHE\_FOR\_READ@{CACHE\_FOR\_READ}}
+\index{CACHE\_FOR\_READ@{CACHE\_FOR\_READ}!FatCache@{FatCache}}
+\doxysubsubsection{\texorpdfstring{CACHE\_FOR\_READ}{CACHE\_FOR\_READ}}
+{\footnotesize\ttfamily const uint8\+\_\+t Fat\+Cache\+::\+CACHE\+\_\+\+FOR\+\_\+\+READ = 0\hspace{0.3cm}{\ttfamily [static]}}
+
+Cache block for read. \mbox{\Hypertarget{class_fat_cache_a81cb572f33443bd6aee9aa33ec395d0f}\label{class_fat_cache_a81cb572f33443bd6aee9aa33ec395d0f}} 
+\index{FatCache@{FatCache}!CACHE\_FOR\_WRITE@{CACHE\_FOR\_WRITE}}
+\index{CACHE\_FOR\_WRITE@{CACHE\_FOR\_WRITE}!FatCache@{FatCache}}
+\doxysubsubsection{\texorpdfstring{CACHE\_FOR\_WRITE}{CACHE\_FOR\_WRITE}}
+{\footnotesize\ttfamily const uint8\+\_\+t Fat\+Cache\+::\+CACHE\+\_\+\+FOR\+\_\+\+WRITE = \mbox{\hyperlink{class_fat_cache_aac8c38e5c545d0f80b13d816117f626e}{CACHE\+\_\+\+STATUS\+\_\+\+DIRTY}}\hspace{0.3cm}{\ttfamily [static]}}
+
+Cache block for write. \mbox{\Hypertarget{class_fat_cache_adf974f55e53ee0aaa85abb0d7d67181c}\label{class_fat_cache_adf974f55e53ee0aaa85abb0d7d67181c}} 
+\index{FatCache@{FatCache}!CACHE\_OPTION\_NO\_READ@{CACHE\_OPTION\_NO\_READ}}
+\index{CACHE\_OPTION\_NO\_READ@{CACHE\_OPTION\_NO\_READ}!FatCache@{FatCache}}
+\doxysubsubsection{\texorpdfstring{CACHE\_OPTION\_NO\_READ}{CACHE\_OPTION\_NO\_READ}}
+{\footnotesize\ttfamily const uint8\+\_\+t Fat\+Cache\+::\+CACHE\+\_\+\+OPTION\+\_\+\+NO\+\_\+\+READ = 4\hspace{0.3cm}{\ttfamily [static]}}
+
+Sync existing block but do not read new block. \mbox{\Hypertarget{class_fat_cache_a49d2896ff525ab77852f76df5c2a09c2}\label{class_fat_cache_a49d2896ff525ab77852f76df5c2a09c2}} 
+\index{FatCache@{FatCache}!CACHE\_RESERVE\_FOR\_WRITE@{CACHE\_RESERVE\_FOR\_WRITE}}
+\index{CACHE\_RESERVE\_FOR\_WRITE@{CACHE\_RESERVE\_FOR\_WRITE}!FatCache@{FatCache}}
+\doxysubsubsection{\texorpdfstring{CACHE\_RESERVE\_FOR\_WRITE}{CACHE\_RESERVE\_FOR\_WRITE}}
+{\footnotesize\ttfamily const uint8\+\_\+t Fat\+Cache\+::\+CACHE\+\_\+\+RESERVE\+\_\+\+FOR\+\_\+\+WRITE = \mbox{\hyperlink{class_fat_cache_aac8c38e5c545d0f80b13d816117f626e}{CACHE\+\_\+\+STATUS\+\_\+\+DIRTY}} $\vert$ \mbox{\hyperlink{class_fat_cache_adf974f55e53ee0aaa85abb0d7d67181c}{CACHE\+\_\+\+OPTION\+\_\+\+NO\+\_\+\+READ}}\hspace{0.3cm}{\ttfamily [static]}}
+
+Reserve cache block for write -\/ do not read from block device. \mbox{\Hypertarget{class_fat_cache_aac8c38e5c545d0f80b13d816117f626e}\label{class_fat_cache_aac8c38e5c545d0f80b13d816117f626e}} 
+\index{FatCache@{FatCache}!CACHE\_STATUS\_DIRTY@{CACHE\_STATUS\_DIRTY}}
+\index{CACHE\_STATUS\_DIRTY@{CACHE\_STATUS\_DIRTY}!FatCache@{FatCache}}
+\doxysubsubsection{\texorpdfstring{CACHE\_STATUS\_DIRTY}{CACHE\_STATUS\_DIRTY}}
+{\footnotesize\ttfamily const uint8\+\_\+t Fat\+Cache\+::\+CACHE\+\_\+\+STATUS\+\_\+\+DIRTY = 1\hspace{0.3cm}{\ttfamily [static]}}
+
+Cached block is dirty \mbox{\Hypertarget{class_fat_cache_ab70dc4a2e387f0e9bf392044c702ae32}\label{class_fat_cache_ab70dc4a2e387f0e9bf392044c702ae32}} 
+\index{FatCache@{FatCache}!CACHE\_STATUS\_MASK@{CACHE\_STATUS\_MASK}}
+\index{CACHE\_STATUS\_MASK@{CACHE\_STATUS\_MASK}!FatCache@{FatCache}}
+\doxysubsubsection{\texorpdfstring{CACHE\_STATUS\_MASK}{CACHE\_STATUS\_MASK}}
+{\footnotesize\ttfamily const uint8\+\_\+t Fat\+Cache\+::\+CACHE\+\_\+\+STATUS\+\_\+\+MASK = \mbox{\hyperlink{class_fat_cache_aac8c38e5c545d0f80b13d816117f626e}{CACHE\+\_\+\+STATUS\+\_\+\+DIRTY}} $\vert$ \mbox{\hyperlink{class_fat_cache_a45236e1c0a2a098f08d3add0e4b1467a}{CACHE\+\_\+\+STATUS\+\_\+\+MIRROR\+\_\+\+FAT}}\hspace{0.3cm}{\ttfamily [static]}}
+
+Cache block status bits \mbox{\Hypertarget{class_fat_cache_a45236e1c0a2a098f08d3add0e4b1467a}\label{class_fat_cache_a45236e1c0a2a098f08d3add0e4b1467a}} 
+\index{FatCache@{FatCache}!CACHE\_STATUS\_MIRROR\_FAT@{CACHE\_STATUS\_MIRROR\_FAT}}
+\index{CACHE\_STATUS\_MIRROR\_FAT@{CACHE\_STATUS\_MIRROR\_FAT}!FatCache@{FatCache}}
+\doxysubsubsection{\texorpdfstring{CACHE\_STATUS\_MIRROR\_FAT}{CACHE\_STATUS\_MIRROR\_FAT}}
+{\footnotesize\ttfamily const uint8\+\_\+t Fat\+Cache\+::\+CACHE\+\_\+\+STATUS\+\_\+\+MIRROR\+\_\+\+FAT = 2\hspace{0.3cm}{\ttfamily [static]}}
+
+Cashed block is FAT entry and must be mirrored in second FAT. 
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+/\+Users/kiran/\+Documents/\+Projects/\+ICLR/\+Avionics/\+Ricardo\+\_\+\+OS/\+Ricardo\+\_\+\+OS/lib/\+Sd\+Fat-\/master-\/adafruit\+\_\+fork/src/\+Fat\+Lib/\mbox{\hyperlink{_fat_volume_8h}{Fat\+Volume.\+h}}\item 
+/\+Users/kiran/\+Documents/\+Projects/\+ICLR/\+Avionics/\+Ricardo\+\_\+\+OS/\+Ricardo\+\_\+\+OS/lib/\+Sd\+Fat-\/master-\/adafruit\+\_\+fork/src/\+Fat\+Lib/Fat\+Volume.\+cpp\end{DoxyCompactItemize}

@@ -1,0 +1,261 @@
+\hypertarget{struct_c_s_d_v2}{}\doxysection{CSDV2 Class Reference}
+\label{struct_c_s_d_v2}\index{CSDV2@{CSDV2}}
+
+
+CSD register for version 2.\+00 cards.  
+
+
+
+
+{\ttfamily \#include $<$Sd\+Info.\+h$>$}
+
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{struct_c_s_d_v2_a2403be1c47bc762aa1a0cc0cc70ed766}\label{struct_c_s_d_v2_a2403be1c47bc762aa1a0cc0cc70ed766}} 
+unsigned char {\bfseries reserved1}\+: 6
+\item 
+\mbox{\Hypertarget{struct_c_s_d_v2_a2d6789ba630dbb1732806ff527188f72}\label{struct_c_s_d_v2_a2d6789ba630dbb1732806ff527188f72}} 
+unsigned char {\bfseries csd\+\_\+ver}\+: 2
+\item 
+unsigned char \mbox{\hyperlink{struct_c_s_d_v2_aba414a2887ea57a9715e17b3bb4f6030}{taac}}
+\item 
+unsigned char \mbox{\hyperlink{struct_c_s_d_v2_aa94bece488dd8683b532069d97d8b764}{nsac}}
+\item 
+\mbox{\Hypertarget{struct_c_s_d_v2_a0442dc542c769ea0b0dba63127958bd9}\label{struct_c_s_d_v2_a0442dc542c769ea0b0dba63127958bd9}} 
+unsigned char {\bfseries tran\+\_\+speed}
+\item 
+\mbox{\Hypertarget{struct_c_s_d_v2_a10655e27874c467c7d93b75342b23ebf}\label{struct_c_s_d_v2_a10655e27874c467c7d93b75342b23ebf}} 
+unsigned char {\bfseries ccc\+\_\+high}
+\item 
+unsigned char \mbox{\hyperlink{struct_c_s_d_v2_a660d402b75b24435ebc73863dabaa176}{read\+\_\+bl\+\_\+len}}\+: 4
+\item 
+\mbox{\Hypertarget{struct_c_s_d_v2_a550cac901699b824b861852136fc4747}\label{struct_c_s_d_v2_a550cac901699b824b861852136fc4747}} 
+unsigned char {\bfseries ccc\+\_\+low}\+: 4
+\item 
+unsigned char \mbox{\hyperlink{struct_c_s_d_v2_a01c91890e37265b96efa7cd3bde25d2c}{reserved2}}\+: 4
+\item 
+\mbox{\Hypertarget{struct_c_s_d_v2_a16e521025f7277d53eeaf7ab576dd692}\label{struct_c_s_d_v2_a16e521025f7277d53eeaf7ab576dd692}} 
+unsigned char {\bfseries dsr\+\_\+imp}\+: 1
+\item 
+unsigned char \mbox{\hyperlink{struct_c_s_d_v2_ab66c3e7d5735885b0b3799870e6caf20}{read\+\_\+blk\+\_\+misalign}}\+: 1
+\item 
+unsigned char \mbox{\hyperlink{struct_c_s_d_v2_ab80757f726c43476d311c5a0be8351e0}{write\+\_\+blk\+\_\+misalign}}\+: 1
+\item 
+unsigned char \mbox{\hyperlink{struct_c_s_d_v2_ac65ab71e8c96fd52f91431762c2b4bd8}{read\+\_\+bl\+\_\+partial}}\+: 1
+\item 
+unsigned char \mbox{\hyperlink{struct_c_s_d_v2_a18b212514052366ee8cc2f28bd945f83}{c\+\_\+size\+\_\+high}}\+: 6
+\item 
+unsigned char \mbox{\hyperlink{struct_c_s_d_v2_a0887f10de0b3c907a56f8a89d925e1a1}{reserved3}}\+: 2
+\item 
+unsigned char \mbox{\hyperlink{struct_c_s_d_v2_a18a7efb31f3db1178cb5fb5be7111a43}{c\+\_\+size\+\_\+mid}}
+\item 
+unsigned char \mbox{\hyperlink{struct_c_s_d_v2_a51f11aace6d410815922936272328ca9}{c\+\_\+size\+\_\+low}}
+\item 
+unsigned char \mbox{\hyperlink{struct_c_s_d_v2_a09c942079f7d4e1a26d26d4cfe9d15c5}{sector\+\_\+size\+\_\+high}}\+: 6
+\item 
+unsigned char \mbox{\hyperlink{struct_c_s_d_v2_a968e8021601578943a05e7a0397a2040}{erase\+\_\+blk\+\_\+en}}\+: 1
+\item 
+unsigned char \mbox{\hyperlink{struct_c_s_d_v2_a50b06e2c85cc95c0adc08b18c97d7cb3}{reserved4}}\+: 1
+\item 
+\mbox{\Hypertarget{struct_c_s_d_v2_a8e3d189a715bd9797b1fa1aa32e24c72}\label{struct_c_s_d_v2_a8e3d189a715bd9797b1fa1aa32e24c72}} 
+unsigned char {\bfseries wp\+\_\+grp\+\_\+size}\+: 7
+\item 
+unsigned char \mbox{\hyperlink{struct_c_s_d_v2_acd516f06ea0b926fa1580034a6efb9c6}{sector\+\_\+size\+\_\+low}}\+: 1
+\item 
+unsigned char \mbox{\hyperlink{struct_c_s_d_v2_af6592d240bf4b0c0d8b8a034d9fb1041}{write\+\_\+bl\+\_\+len\+\_\+high}}\+: 2
+\item 
+unsigned char \mbox{\hyperlink{struct_c_s_d_v2_a72c641974e9b6e4c8877454c4a378c6a}{r2w\+\_\+factor}}\+: 3
+\item 
+unsigned char \mbox{\hyperlink{struct_c_s_d_v2_acb8d47b0517908d08d12f0d8f3b2cc74}{reserved5}}\+: 2
+\item 
+unsigned char \mbox{\hyperlink{struct_c_s_d_v2_a98cf0c80369604ba372c22a0453f9e76}{wp\+\_\+grp\+\_\+enable}}\+: 1
+\item 
+\mbox{\Hypertarget{struct_c_s_d_v2_aa38e8b793eb8d8629956bb8ffbd6c4cc}\label{struct_c_s_d_v2_aa38e8b793eb8d8629956bb8ffbd6c4cc}} 
+unsigned char {\bfseries reserved6}\+: 5
+\item 
+unsigned char \mbox{\hyperlink{struct_c_s_d_v2_a3aa87bccca13deac8c91464b8d0cd6b9}{write\+\_\+partial}}\+: 1
+\item 
+unsigned char \mbox{\hyperlink{struct_c_s_d_v2_a1d64afb6ea52bea58bdcc583ebd1d90f}{write\+\_\+bl\+\_\+len\+\_\+low}}\+: 2
+\item 
+\mbox{\Hypertarget{struct_c_s_d_v2_a1f4b39bbcb0a11e8faff76f3e0009507}\label{struct_c_s_d_v2_a1f4b39bbcb0a11e8faff76f3e0009507}} 
+unsigned char {\bfseries reserved7}\+: 2
+\item 
+unsigned char \mbox{\hyperlink{struct_c_s_d_v2_a9b62ba9447a21e359aef85441755500e}{file\+\_\+format}}\+: 2
+\item 
+\mbox{\Hypertarget{struct_c_s_d_v2_adbfe402ab90de708b34d0c54aa644764}\label{struct_c_s_d_v2_adbfe402ab90de708b34d0c54aa644764}} 
+unsigned char {\bfseries tmp\+\_\+write\+\_\+protect}\+: 1
+\item 
+\mbox{\Hypertarget{struct_c_s_d_v2_a0aa606189952beb4a6c30d95fb4be64a}\label{struct_c_s_d_v2_a0aa606189952beb4a6c30d95fb4be64a}} 
+unsigned char {\bfseries perm\+\_\+write\+\_\+protect}\+: 1
+\item 
+\mbox{\Hypertarget{struct_c_s_d_v2_a28e87b4139d304eb4ddddadd9ae3d547}\label{struct_c_s_d_v2_a28e87b4139d304eb4ddddadd9ae3d547}} 
+unsigned char {\bfseries copy}\+: 1
+\item 
+unsigned char \mbox{\hyperlink{struct_c_s_d_v2_af21c794c85486d738e4b8bff3a6d9317}{file\+\_\+format\+\_\+grp}}\+: 1
+\item 
+unsigned char \mbox{\hyperlink{struct_c_s_d_v2_ab7031b6fc7926ecc0acd6cff50c2c5d1}{always1}}\+: 1
+\item 
+unsigned char \mbox{\hyperlink{struct_c_s_d_v2_ac5b251d008704ff292ea77b55e4bc97d}{crc}}\+: 7
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+CSD register for version 2.\+00 cards. 
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{struct_c_s_d_v2_ab7031b6fc7926ecc0acd6cff50c2c5d1}\label{struct_c_s_d_v2_ab7031b6fc7926ecc0acd6cff50c2c5d1}} 
+\index{CSDV2@{CSDV2}!always1@{always1}}
+\index{always1@{always1}!CSDV2@{CSDV2}}
+\doxysubsubsection{\texorpdfstring{always1}{always1}}
+{\footnotesize\ttfamily unsigned char CSDV2\+::always1}
+
+not used always 1 \mbox{\Hypertarget{struct_c_s_d_v2_a18b212514052366ee8cc2f28bd945f83}\label{struct_c_s_d_v2_a18b212514052366ee8cc2f28bd945f83}} 
+\index{CSDV2@{CSDV2}!c\_size\_high@{c\_size\_high}}
+\index{c\_size\_high@{c\_size\_high}!CSDV2@{CSDV2}}
+\doxysubsubsection{\texorpdfstring{c\_size\_high}{c\_size\_high}}
+{\footnotesize\ttfamily unsigned char CSDV2\+::c\+\_\+size\+\_\+high}
+
+high part of card size \mbox{\Hypertarget{struct_c_s_d_v2_a51f11aace6d410815922936272328ca9}\label{struct_c_s_d_v2_a51f11aace6d410815922936272328ca9}} 
+\index{CSDV2@{CSDV2}!c\_size\_low@{c\_size\_low}}
+\index{c\_size\_low@{c\_size\_low}!CSDV2@{CSDV2}}
+\doxysubsubsection{\texorpdfstring{c\_size\_low}{c\_size\_low}}
+{\footnotesize\ttfamily unsigned char CSDV2\+::c\+\_\+size\+\_\+low}
+
+low part of card size \mbox{\Hypertarget{struct_c_s_d_v2_a18a7efb31f3db1178cb5fb5be7111a43}\label{struct_c_s_d_v2_a18a7efb31f3db1178cb5fb5be7111a43}} 
+\index{CSDV2@{CSDV2}!c\_size\_mid@{c\_size\_mid}}
+\index{c\_size\_mid@{c\_size\_mid}!CSDV2@{CSDV2}}
+\doxysubsubsection{\texorpdfstring{c\_size\_mid}{c\_size\_mid}}
+{\footnotesize\ttfamily unsigned char CSDV2\+::c\+\_\+size\+\_\+mid}
+
+middle part of card size \mbox{\Hypertarget{struct_c_s_d_v2_ac5b251d008704ff292ea77b55e4bc97d}\label{struct_c_s_d_v2_ac5b251d008704ff292ea77b55e4bc97d}} 
+\index{CSDV2@{CSDV2}!crc@{crc}}
+\index{crc@{crc}!CSDV2@{CSDV2}}
+\doxysubsubsection{\texorpdfstring{crc}{crc}}
+{\footnotesize\ttfamily unsigned char CSDV2\+::crc}
+
+checksum \mbox{\Hypertarget{struct_c_s_d_v2_a968e8021601578943a05e7a0397a2040}\label{struct_c_s_d_v2_a968e8021601578943a05e7a0397a2040}} 
+\index{CSDV2@{CSDV2}!erase\_blk\_en@{erase\_blk\_en}}
+\index{erase\_blk\_en@{erase\_blk\_en}!CSDV2@{CSDV2}}
+\doxysubsubsection{\texorpdfstring{erase\_blk\_en}{erase\_blk\_en}}
+{\footnotesize\ttfamily unsigned char CSDV2\+::erase\+\_\+blk\+\_\+en}
+
+fixed to 1 -\/ erase single is supported \mbox{\Hypertarget{struct_c_s_d_v2_a9b62ba9447a21e359aef85441755500e}\label{struct_c_s_d_v2_a9b62ba9447a21e359aef85441755500e}} 
+\index{CSDV2@{CSDV2}!file\_format@{file\_format}}
+\index{file\_format@{file\_format}!CSDV2@{CSDV2}}
+\doxysubsubsection{\texorpdfstring{file\_format}{file\_format}}
+{\footnotesize\ttfamily unsigned char CSDV2\+::file\+\_\+format}
+
+Do not use always 0 \mbox{\Hypertarget{struct_c_s_d_v2_af21c794c85486d738e4b8bff3a6d9317}\label{struct_c_s_d_v2_af21c794c85486d738e4b8bff3a6d9317}} 
+\index{CSDV2@{CSDV2}!file\_format\_grp@{file\_format\_grp}}
+\index{file\_format\_grp@{file\_format\_grp}!CSDV2@{CSDV2}}
+\doxysubsubsection{\texorpdfstring{file\_format\_grp}{file\_format\_grp}}
+{\footnotesize\ttfamily unsigned char CSDV2\+::file\+\_\+format\+\_\+grp}
+
+Do not use always 0 \mbox{\Hypertarget{struct_c_s_d_v2_aa94bece488dd8683b532069d97d8b764}\label{struct_c_s_d_v2_aa94bece488dd8683b532069d97d8b764}} 
+\index{CSDV2@{CSDV2}!nsac@{nsac}}
+\index{nsac@{nsac}!CSDV2@{CSDV2}}
+\doxysubsubsection{\texorpdfstring{nsac}{nsac}}
+{\footnotesize\ttfamily unsigned char CSDV2\+::nsac}
+
+fixed to 0 \mbox{\Hypertarget{struct_c_s_d_v2_a72c641974e9b6e4c8877454c4a378c6a}\label{struct_c_s_d_v2_a72c641974e9b6e4c8877454c4a378c6a}} 
+\index{CSDV2@{CSDV2}!r2w\_factor@{r2w\_factor}}
+\index{r2w\_factor@{r2w\_factor}!CSDV2@{CSDV2}}
+\doxysubsubsection{\texorpdfstring{r2w\_factor}{r2w\_factor}}
+{\footnotesize\ttfamily unsigned char CSDV2\+::r2w\+\_\+factor}
+
+fixed value of 2 \mbox{\Hypertarget{struct_c_s_d_v2_a660d402b75b24435ebc73863dabaa176}\label{struct_c_s_d_v2_a660d402b75b24435ebc73863dabaa176}} 
+\index{CSDV2@{CSDV2}!read\_bl\_len@{read\_bl\_len}}
+\index{read\_bl\_len@{read\_bl\_len}!CSDV2@{CSDV2}}
+\doxysubsubsection{\texorpdfstring{read\_bl\_len}{read\_bl\_len}}
+{\footnotesize\ttfamily unsigned char CSDV2\+::read\+\_\+bl\+\_\+len}
+
+This field is fixed to 9h, which indicates READ\+\_\+\+BL\+\_\+\+LEN=512 Byte \mbox{\Hypertarget{struct_c_s_d_v2_ac65ab71e8c96fd52f91431762c2b4bd8}\label{struct_c_s_d_v2_ac65ab71e8c96fd52f91431762c2b4bd8}} 
+\index{CSDV2@{CSDV2}!read\_bl\_partial@{read\_bl\_partial}}
+\index{read\_bl\_partial@{read\_bl\_partial}!CSDV2@{CSDV2}}
+\doxysubsubsection{\texorpdfstring{read\_bl\_partial}{read\_bl\_partial}}
+{\footnotesize\ttfamily unsigned char CSDV2\+::read\+\_\+bl\+\_\+partial}
+
+fixed to 0 -\/ no partial read \mbox{\Hypertarget{struct_c_s_d_v2_ab66c3e7d5735885b0b3799870e6caf20}\label{struct_c_s_d_v2_ab66c3e7d5735885b0b3799870e6caf20}} 
+\index{CSDV2@{CSDV2}!read\_blk\_misalign@{read\_blk\_misalign}}
+\index{read\_blk\_misalign@{read\_blk\_misalign}!CSDV2@{CSDV2}}
+\doxysubsubsection{\texorpdfstring{read\_blk\_misalign}{read\_blk\_misalign}}
+{\footnotesize\ttfamily unsigned char CSDV2\+::read\+\_\+blk\+\_\+misalign}
+
+fixed to 0 \mbox{\Hypertarget{struct_c_s_d_v2_a01c91890e37265b96efa7cd3bde25d2c}\label{struct_c_s_d_v2_a01c91890e37265b96efa7cd3bde25d2c}} 
+\index{CSDV2@{CSDV2}!reserved2@{reserved2}}
+\index{reserved2@{reserved2}!CSDV2@{CSDV2}}
+\doxysubsubsection{\texorpdfstring{reserved2}{reserved2}}
+{\footnotesize\ttfamily unsigned char CSDV2\+::reserved2}
+
+not used \mbox{\Hypertarget{struct_c_s_d_v2_a0887f10de0b3c907a56f8a89d925e1a1}\label{struct_c_s_d_v2_a0887f10de0b3c907a56f8a89d925e1a1}} 
+\index{CSDV2@{CSDV2}!reserved3@{reserved3}}
+\index{reserved3@{reserved3}!CSDV2@{CSDV2}}
+\doxysubsubsection{\texorpdfstring{reserved3}{reserved3}}
+{\footnotesize\ttfamily unsigned char CSDV2\+::reserved3}
+
+not used \mbox{\Hypertarget{struct_c_s_d_v2_a50b06e2c85cc95c0adc08b18c97d7cb3}\label{struct_c_s_d_v2_a50b06e2c85cc95c0adc08b18c97d7cb3}} 
+\index{CSDV2@{CSDV2}!reserved4@{reserved4}}
+\index{reserved4@{reserved4}!CSDV2@{CSDV2}}
+\doxysubsubsection{\texorpdfstring{reserved4}{reserved4}}
+{\footnotesize\ttfamily unsigned char CSDV2\+::reserved4}
+
+not used \mbox{\Hypertarget{struct_c_s_d_v2_acb8d47b0517908d08d12f0d8f3b2cc74}\label{struct_c_s_d_v2_acb8d47b0517908d08d12f0d8f3b2cc74}} 
+\index{CSDV2@{CSDV2}!reserved5@{reserved5}}
+\index{reserved5@{reserved5}!CSDV2@{CSDV2}}
+\doxysubsubsection{\texorpdfstring{reserved5}{reserved5}}
+{\footnotesize\ttfamily unsigned char CSDV2\+::reserved5}
+
+not used \mbox{\Hypertarget{struct_c_s_d_v2_a09c942079f7d4e1a26d26d4cfe9d15c5}\label{struct_c_s_d_v2_a09c942079f7d4e1a26d26d4cfe9d15c5}} 
+\index{CSDV2@{CSDV2}!sector\_size\_high@{sector\_size\_high}}
+\index{sector\_size\_high@{sector\_size\_high}!CSDV2@{CSDV2}}
+\doxysubsubsection{\texorpdfstring{sector\_size\_high}{sector\_size\_high}}
+{\footnotesize\ttfamily unsigned char CSDV2\+::sector\+\_\+size\+\_\+high}
+
+sector size is fixed at 64 KB \mbox{\Hypertarget{struct_c_s_d_v2_acd516f06ea0b926fa1580034a6efb9c6}\label{struct_c_s_d_v2_acd516f06ea0b926fa1580034a6efb9c6}} 
+\index{CSDV2@{CSDV2}!sector\_size\_low@{sector\_size\_low}}
+\index{sector\_size\_low@{sector\_size\_low}!CSDV2@{CSDV2}}
+\doxysubsubsection{\texorpdfstring{sector\_size\_low}{sector\_size\_low}}
+{\footnotesize\ttfamily unsigned char CSDV2\+::sector\+\_\+size\+\_\+low}
+
+sector size is fixed at 64 KB \mbox{\Hypertarget{struct_c_s_d_v2_aba414a2887ea57a9715e17b3bb4f6030}\label{struct_c_s_d_v2_aba414a2887ea57a9715e17b3bb4f6030}} 
+\index{CSDV2@{CSDV2}!taac@{taac}}
+\index{taac@{taac}!CSDV2@{CSDV2}}
+\doxysubsubsection{\texorpdfstring{taac}{taac}}
+{\footnotesize\ttfamily unsigned char CSDV2\+::taac}
+
+fixed to 0X0E \mbox{\Hypertarget{struct_c_s_d_v2_a98cf0c80369604ba372c22a0453f9e76}\label{struct_c_s_d_v2_a98cf0c80369604ba372c22a0453f9e76}} 
+\index{CSDV2@{CSDV2}!wp\_grp\_enable@{wp\_grp\_enable}}
+\index{wp\_grp\_enable@{wp\_grp\_enable}!CSDV2@{CSDV2}}
+\doxysubsubsection{\texorpdfstring{wp\_grp\_enable}{wp\_grp\_enable}}
+{\footnotesize\ttfamily unsigned char CSDV2\+::wp\+\_\+grp\+\_\+enable}
+
+fixed value of 0 -\/ no write protect groups \mbox{\Hypertarget{struct_c_s_d_v2_af6592d240bf4b0c0d8b8a034d9fb1041}\label{struct_c_s_d_v2_af6592d240bf4b0c0d8b8a034d9fb1041}} 
+\index{CSDV2@{CSDV2}!write\_bl\_len\_high@{write\_bl\_len\_high}}
+\index{write\_bl\_len\_high@{write\_bl\_len\_high}!CSDV2@{CSDV2}}
+\doxysubsubsection{\texorpdfstring{write\_bl\_len\_high}{write\_bl\_len\_high}}
+{\footnotesize\ttfamily unsigned char CSDV2\+::write\+\_\+bl\+\_\+len\+\_\+high}
+
+write\+\_\+bl\+\_\+len fixed for 512 byte blocks \mbox{\Hypertarget{struct_c_s_d_v2_a1d64afb6ea52bea58bdcc583ebd1d90f}\label{struct_c_s_d_v2_a1d64afb6ea52bea58bdcc583ebd1d90f}} 
+\index{CSDV2@{CSDV2}!write\_bl\_len\_low@{write\_bl\_len\_low}}
+\index{write\_bl\_len\_low@{write\_bl\_len\_low}!CSDV2@{CSDV2}}
+\doxysubsubsection{\texorpdfstring{write\_bl\_len\_low}{write\_bl\_len\_low}}
+{\footnotesize\ttfamily unsigned char CSDV2\+::write\+\_\+bl\+\_\+len\+\_\+low}
+
+write\+\_\+bl\+\_\+len fixed for 512 byte blocks \mbox{\Hypertarget{struct_c_s_d_v2_ab80757f726c43476d311c5a0be8351e0}\label{struct_c_s_d_v2_ab80757f726c43476d311c5a0be8351e0}} 
+\index{CSDV2@{CSDV2}!write\_blk\_misalign@{write\_blk\_misalign}}
+\index{write\_blk\_misalign@{write\_blk\_misalign}!CSDV2@{CSDV2}}
+\doxysubsubsection{\texorpdfstring{write\_blk\_misalign}{write\_blk\_misalign}}
+{\footnotesize\ttfamily unsigned char CSDV2\+::write\+\_\+blk\+\_\+misalign}
+
+fixed to 0 \mbox{\Hypertarget{struct_c_s_d_v2_a3aa87bccca13deac8c91464b8d0cd6b9}\label{struct_c_s_d_v2_a3aa87bccca13deac8c91464b8d0cd6b9}} 
+\index{CSDV2@{CSDV2}!write\_partial@{write\_partial}}
+\index{write\_partial@{write\_partial}!CSDV2@{CSDV2}}
+\doxysubsubsection{\texorpdfstring{write\_partial}{write\_partial}}
+{\footnotesize\ttfamily unsigned char CSDV2\+::write\+\_\+partial}
+
+always zero -\/ no partial block read 
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+/\+Users/kiran/\+Documents/\+Projects/\+ICLR/\+Avionics/\+Ricardo\+\_\+\+OS/\+Ricardo\+\_\+\+OS/lib/\+Sd\+Fat-\/master-\/adafruit\+\_\+fork/src/\+Sd\+Card/Sd\+Info.\+h\end{DoxyCompactItemize}

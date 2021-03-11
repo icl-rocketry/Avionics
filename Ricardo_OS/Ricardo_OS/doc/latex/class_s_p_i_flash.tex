@@ -1,0 +1,151 @@
+\hypertarget{class_s_p_i_flash}{}\doxysection{SPIFlash Class Reference}
+\label{class_s_p_i_flash}\index{SPIFlash@{SPIFlash}}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_s_p_i_flash_a4f04a18cf3cd7ffa69f542182bdafd44}\label{class_s_p_i_flash_a4f04a18cf3cd7ffa69f542182bdafd44}} 
+{\bfseries SPIFlash} (uint8\+\_\+t cs=CS)
+\item 
+\mbox{\Hypertarget{class_s_p_i_flash_a8aaed054094b25f00ddc2a27531e7994}\label{class_s_p_i_flash_a8aaed054094b25f00ddc2a27531e7994}} 
+{\bfseries SPIFlash} (int8\+\_\+t $\ast$SPIPins\+Array)
+\item 
+\mbox{\Hypertarget{class_s_p_i_flash_aca5f3632c13ad55596d31aa9a8b61efa}\label{class_s_p_i_flash_aca5f3632c13ad55596d31aa9a8b61efa}} 
+bool {\bfseries begin} (uint32\+\_\+t flash\+Chip\+Size=0)
+\item 
+\mbox{\Hypertarget{class_s_p_i_flash_a7c35bec10de0acb4ee3c888a6c3e2b8f}\label{class_s_p_i_flash_a7c35bec10de0acb4ee3c888a6c3e2b8f}} 
+void {\bfseries set\+Clock} (uint8\+\_\+t clockdiv)
+\item 
+\mbox{\Hypertarget{class_s_p_i_flash_a9cc9e50f11b54e87eb5f3a07db1a12ff}\label{class_s_p_i_flash_a9cc9e50f11b54e87eb5f3a07db1a12ff}} 
+bool {\bfseries libver} (uint8\+\_\+t $\ast$b1, uint8\+\_\+t $\ast$b2, uint8\+\_\+t $\ast$b3)
+\item 
+\mbox{\Hypertarget{class_s_p_i_flash_a02b1a579f6563df24c172f00da3540dd}\label{class_s_p_i_flash_a02b1a579f6563df24c172f00da3540dd}} 
+bool {\bfseries sfdp\+Present} (void)
+\item 
+\mbox{\Hypertarget{class_s_p_i_flash_af06abaceddbda435bd4387ae2d7f02f2}\label{class_s_p_i_flash_af06abaceddbda435bd4387ae2d7f02f2}} 
+uint8\+\_\+t {\bfseries error} (bool verbosity=false)
+\item 
+\mbox{\Hypertarget{class_s_p_i_flash_a6fc9cf5d59ae6e8b04db73f212bb935e}\label{class_s_p_i_flash_a6fc9cf5d59ae6e8b04db73f212bb935e}} 
+uint16\+\_\+t {\bfseries get\+Man\+ID} (void)
+\item 
+\mbox{\Hypertarget{class_s_p_i_flash_ab59b4d57925193d4b0e0c17dfc3ea136}\label{class_s_p_i_flash_ab59b4d57925193d4b0e0c17dfc3ea136}} 
+uint32\+\_\+t {\bfseries get\+JEDECID} (void)
+\item 
+\mbox{\Hypertarget{class_s_p_i_flash_aa6b53b36e3d7460e9c32ce4932be4331}\label{class_s_p_i_flash_aa6b53b36e3d7460e9c32ce4932be4331}} 
+uint64\+\_\+t {\bfseries get\+Unique\+ID} (void)
+\item 
+\mbox{\Hypertarget{class_s_p_i_flash_ab3b4575414f1b208d8e1d5d38bbd6245}\label{class_s_p_i_flash_ab3b4575414f1b208d8e1d5d38bbd6245}} 
+uint32\+\_\+t {\bfseries get\+Address} (uint16\+\_\+t size)
+\item 
+\mbox{\Hypertarget{class_s_p_i_flash_a016380bd7a4dcee73f77c2996ef0ef29}\label{class_s_p_i_flash_a016380bd7a4dcee73f77c2996ef0ef29}} 
+uint16\+\_\+t {\bfseries sizeof\+Str} (\mbox{\hyperlink{class_string}{String}} \&input\+Str)
+\item 
+\mbox{\Hypertarget{class_s_p_i_flash_a30b946c78350c62992d57b4cdcb7c4d9}\label{class_s_p_i_flash_a30b946c78350c62992d57b4cdcb7c4d9}} 
+uint32\+\_\+t {\bfseries get\+Capacity} (void)
+\item 
+\mbox{\Hypertarget{class_s_p_i_flash_a42da89ac8cf50d0bf20e476bdf345a08}\label{class_s_p_i_flash_a42da89ac8cf50d0bf20e476bdf345a08}} 
+uint32\+\_\+t {\bfseries get\+Max\+Page} (void)
+\item 
+\mbox{\Hypertarget{class_s_p_i_flash_a24158fe3f8db4283e9acf6269166c997}\label{class_s_p_i_flash_a24158fe3f8db4283e9acf6269166c997}} 
+float {\bfseries function\+Run\+Time} (void)
+\item 
+\mbox{\Hypertarget{class_s_p_i_flash_afecb3783963f68081818c11dc5a1fb35}\label{class_s_p_i_flash_afecb3783963f68081818c11dc5a1fb35}} 
+bool {\bfseries write\+Byte} (uint32\+\_\+t \+\_\+addr, uint8\+\_\+t data, bool error\+Check=true)
+\item 
+\mbox{\Hypertarget{class_s_p_i_flash_a32eb65e3d6bf3148b12572acd610a333}\label{class_s_p_i_flash_a32eb65e3d6bf3148b12572acd610a333}} 
+uint8\+\_\+t {\bfseries read\+Byte} (uint32\+\_\+t \+\_\+addr, bool fast\+Read=false)
+\item 
+\mbox{\Hypertarget{class_s_p_i_flash_af68f5fca1b880fa898aafeb639441279}\label{class_s_p_i_flash_af68f5fca1b880fa898aafeb639441279}} 
+bool {\bfseries write\+Byte\+Array} (uint32\+\_\+t \+\_\+addr, uint8\+\_\+t $\ast$data\+\_\+buffer, size\+\_\+t buffer\+Size, bool error\+Check=true)
+\item 
+\mbox{\Hypertarget{class_s_p_i_flash_af932964a83a933754bf03787aad30c00}\label{class_s_p_i_flash_af932964a83a933754bf03787aad30c00}} 
+bool {\bfseries read\+Byte\+Array} (uint32\+\_\+t \+\_\+addr, uint8\+\_\+t $\ast$data\+\_\+buffer, size\+\_\+t buffer\+Size, bool fast\+Read=false)
+\item 
+\mbox{\Hypertarget{class_s_p_i_flash_a3eb7348ce25be5257ee1a3b24c424be4}\label{class_s_p_i_flash_a3eb7348ce25be5257ee1a3b24c424be4}} 
+bool {\bfseries write\+Char} (uint32\+\_\+t \+\_\+addr, int8\+\_\+t data, bool error\+Check=true)
+\item 
+\mbox{\Hypertarget{class_s_p_i_flash_af9cf40e0ee6139228b6a8b65065e141f}\label{class_s_p_i_flash_af9cf40e0ee6139228b6a8b65065e141f}} 
+int8\+\_\+t {\bfseries read\+Char} (uint32\+\_\+t \+\_\+addr, bool fast\+Read=false)
+\item 
+\mbox{\Hypertarget{class_s_p_i_flash_aa5ab30f2aec737c36012856cf527dd07}\label{class_s_p_i_flash_aa5ab30f2aec737c36012856cf527dd07}} 
+bool {\bfseries write\+Char\+Array} (uint32\+\_\+t \+\_\+addr, char $\ast$data\+\_\+buffer, size\+\_\+t buffer\+Size, bool error\+Check=true)
+\item 
+\mbox{\Hypertarget{class_s_p_i_flash_a77a4f419627247cc591be34159ed76bb}\label{class_s_p_i_flash_a77a4f419627247cc591be34159ed76bb}} 
+bool {\bfseries read\+Char\+Array} (uint32\+\_\+t \+\_\+addr, char $\ast$data\+\_\+buffer, size\+\_\+t buffer\+\_\+size, bool fast\+Read=false)
+\item 
+\mbox{\Hypertarget{class_s_p_i_flash_a3ecc67b4da600a1b5658ec704c2ac267}\label{class_s_p_i_flash_a3ecc67b4da600a1b5658ec704c2ac267}} 
+bool {\bfseries write\+Short} (uint32\+\_\+t \+\_\+addr, int16\+\_\+t data, bool error\+Check=true)
+\item 
+\mbox{\Hypertarget{class_s_p_i_flash_a55c019387f96ccaded520a7fbeb16d65}\label{class_s_p_i_flash_a55c019387f96ccaded520a7fbeb16d65}} 
+int16\+\_\+t {\bfseries read\+Short} (uint32\+\_\+t \+\_\+addr, bool fast\+Read=false)
+\item 
+\mbox{\Hypertarget{class_s_p_i_flash_acd4808447a6ab52153fdbb6bd2cc4379}\label{class_s_p_i_flash_acd4808447a6ab52153fdbb6bd2cc4379}} 
+bool {\bfseries write\+Word} (uint32\+\_\+t \+\_\+addr, uint16\+\_\+t data, bool error\+Check=true)
+\item 
+\mbox{\Hypertarget{class_s_p_i_flash_aa00cd77703b7f9e1f830a8555b264868}\label{class_s_p_i_flash_aa00cd77703b7f9e1f830a8555b264868}} 
+uint16\+\_\+t {\bfseries read\+Word} (uint32\+\_\+t \+\_\+addr, bool fast\+Read=false)
+\item 
+\mbox{\Hypertarget{class_s_p_i_flash_a4556d65f00dee08f8130bf99f989dfc5}\label{class_s_p_i_flash_a4556d65f00dee08f8130bf99f989dfc5}} 
+bool {\bfseries write\+Long} (uint32\+\_\+t \+\_\+addr, int32\+\_\+t data, bool error\+Check=true)
+\item 
+\mbox{\Hypertarget{class_s_p_i_flash_acbcd6729319b285d25fb641f05c8cc29}\label{class_s_p_i_flash_acbcd6729319b285d25fb641f05c8cc29}} 
+int32\+\_\+t {\bfseries read\+Long} (uint32\+\_\+t \+\_\+addr, bool fast\+Read=false)
+\item 
+\mbox{\Hypertarget{class_s_p_i_flash_a59f836a258d0a0892d4df00ad9af5f05}\label{class_s_p_i_flash_a59f836a258d0a0892d4df00ad9af5f05}} 
+bool {\bfseries write\+ULong} (uint32\+\_\+t \+\_\+addr, uint32\+\_\+t data, bool error\+Check=true)
+\item 
+\mbox{\Hypertarget{class_s_p_i_flash_acebabf5d59ff01380f7523253ea032e9}\label{class_s_p_i_flash_acebabf5d59ff01380f7523253ea032e9}} 
+uint32\+\_\+t {\bfseries read\+ULong} (uint32\+\_\+t \+\_\+addr, bool fast\+Read=false)
+\item 
+\mbox{\Hypertarget{class_s_p_i_flash_a35e7cafb0d36a9d7999e5ba42b4cdb09}\label{class_s_p_i_flash_a35e7cafb0d36a9d7999e5ba42b4cdb09}} 
+bool {\bfseries write\+Float} (uint32\+\_\+t \+\_\+addr, float data, bool error\+Check=true)
+\item 
+\mbox{\Hypertarget{class_s_p_i_flash_a3089f14ae1a5b77046741719e1e94b53}\label{class_s_p_i_flash_a3089f14ae1a5b77046741719e1e94b53}} 
+float {\bfseries read\+Float} (uint32\+\_\+t \+\_\+addr, bool fast\+Read=false)
+\item 
+\mbox{\Hypertarget{class_s_p_i_flash_aa484168362e1e6848493e6acbc112189}\label{class_s_p_i_flash_aa484168362e1e6848493e6acbc112189}} 
+bool {\bfseries write\+Str} (uint32\+\_\+t \+\_\+addr, \mbox{\hyperlink{class_string}{String}} \&data, bool error\+Check=true)
+\item 
+\mbox{\Hypertarget{class_s_p_i_flash_ad3733af4af708f6629186e592bf7ee0a}\label{class_s_p_i_flash_ad3733af4af708f6629186e592bf7ee0a}} 
+bool {\bfseries read\+Str} (uint32\+\_\+t \+\_\+addr, \mbox{\hyperlink{class_string}{String}} \&data, bool fast\+Read=false)
+\item 
+\mbox{\Hypertarget{class_s_p_i_flash_ab59ed63355c47af99863a10fe6502e3f}\label{class_s_p_i_flash_ab59ed63355c47af99863a10fe6502e3f}} 
+{\footnotesize template$<$class T $>$ }\\bool {\bfseries write\+Anything} (uint32\+\_\+t \+\_\+addr, const T \&data, bool error\+Check=true)
+\item 
+\mbox{\Hypertarget{class_s_p_i_flash_a4e2add5e025b6f420f40c1aee90f6bf3}\label{class_s_p_i_flash_a4e2add5e025b6f420f40c1aee90f6bf3}} 
+{\footnotesize template$<$class T $>$ }\\bool {\bfseries read\+Anything} (uint32\+\_\+t \+\_\+addr, T \&data, bool fast\+Read=false)
+\item 
+\mbox{\Hypertarget{class_s_p_i_flash_a0a2f8cd40e98994d7aa5b0643affc19d}\label{class_s_p_i_flash_a0a2f8cd40e98994d7aa5b0643affc19d}} 
+bool {\bfseries erase\+Section} (uint32\+\_\+t \+\_\+addr, uint32\+\_\+t \+\_\+sz)
+\item 
+\mbox{\Hypertarget{class_s_p_i_flash_a88b47bcb19bbdc3e73d2b45fa8333cec}\label{class_s_p_i_flash_a88b47bcb19bbdc3e73d2b45fa8333cec}} 
+bool {\bfseries erase\+Sector} (uint32\+\_\+t \+\_\+addr)
+\item 
+\mbox{\Hypertarget{class_s_p_i_flash_aac4c41732ad3ff07bc454a8605691442}\label{class_s_p_i_flash_aac4c41732ad3ff07bc454a8605691442}} 
+bool {\bfseries erase\+Block32K} (uint32\+\_\+t \+\_\+addr)
+\item 
+\mbox{\Hypertarget{class_s_p_i_flash_a5e6d23821530f9ad86c27b2467f463c1}\label{class_s_p_i_flash_a5e6d23821530f9ad86c27b2467f463c1}} 
+bool {\bfseries erase\+Block64K} (uint32\+\_\+t \+\_\+addr)
+\item 
+\mbox{\Hypertarget{class_s_p_i_flash_ae409c9fbb5baff650b6c87e93cd7f6cd}\label{class_s_p_i_flash_ae409c9fbb5baff650b6c87e93cd7f6cd}} 
+bool {\bfseries erase\+Chip} (void)
+\item 
+\mbox{\Hypertarget{class_s_p_i_flash_a8c0b08613962a94b03392064b9e97e02}\label{class_s_p_i_flash_a8c0b08613962a94b03392064b9e97e02}} 
+bool {\bfseries suspend\+Prog} (void)
+\item 
+\mbox{\Hypertarget{class_s_p_i_flash_a84c4d312c73d1d81fad58b3265a41cdd}\label{class_s_p_i_flash_a84c4d312c73d1d81fad58b3265a41cdd}} 
+bool {\bfseries resume\+Prog} (void)
+\item 
+\mbox{\Hypertarget{class_s_p_i_flash_a16fa88e062e8729fc6d69c476150f9f2}\label{class_s_p_i_flash_a16fa88e062e8729fc6d69c476150f9f2}} 
+bool {\bfseries power\+Down} (void)
+\item 
+\mbox{\Hypertarget{class_s_p_i_flash_a23830059323e3550b51bae1ec77b9859}\label{class_s_p_i_flash_a23830059323e3550b51bae1ec77b9859}} 
+bool {\bfseries power\+Up} (void)
+\end{DoxyCompactItemize}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+/\+Users/kiran/\+Documents/\+Projects/\+ICLR/\+Avionics/\+Ricardo\+\_\+\+OS/\+Ricardo\+\_\+\+OS/lib/\+SPIMemory-\/master/src/SPIFlash.\+h\item 
+/\+Users/kiran/\+Documents/\+Projects/\+ICLR/\+Avionics/\+Ricardo\+\_\+\+OS/\+Ricardo\+\_\+\+OS/lib/\+SPIMemory-\/master/src/SPIFlash.\+cpp\item 
+/\+Users/kiran/\+Documents/\+Projects/\+ICLR/\+Avionics/\+Ricardo\+\_\+\+OS/\+Ricardo\+\_\+\+OS/lib/\+SPIMemory-\/master/src/SPIFlash\+IO.\+cpp\item 
+/\+Users/kiran/\+Documents/\+Projects/\+ICLR/\+Avionics/\+Ricardo\+\_\+\+OS/\+Ricardo\+\_\+\+OS/lib/\+SPIMemory-\/master/src/SPIFlash\+SFDP.\+cpp\end{DoxyCompactItemize}

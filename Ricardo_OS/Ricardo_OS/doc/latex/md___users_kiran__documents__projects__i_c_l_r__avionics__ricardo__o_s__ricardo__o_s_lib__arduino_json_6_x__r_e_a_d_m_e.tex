@@ -1,0 +1,155 @@
+
+
+\DoxyHorRuler{0}
+
+
+\href{https://www.ardu-badge.com/ArduinoJson/6.17.2}{\texttt{ }} \href{https://ci.appveyor.com/project/bblanchon/arduinojson/branch/6.x}{\texttt{ }} \href{https://travis-ci.org/bblanchon/ArduinoJson}{\texttt{ }} \href{https://bugs.chromium.org/p/oss-fuzz/issues/list?sort=-opened&can=1&q=proj:arduinojson}{\texttt{ }} \href{https://coveralls.io/github/bblanchon/ArduinoJson?branch=6.x}{\texttt{ }} \href{https://github.com/bblanchon/ArduinoJson/stargazers}{\texttt{ }}
+
+Arduino\+Json is a C++ JSON library for Arduino and IoT (Internet Of Things).\hypertarget{md___users_kiran__documents__projects__i_c_l_r__avionics__ricardo__o_s__ricardo__o_s_lib__arduino_json_6_x__r_e_a_d_m_e_autotoc_md95}{}\doxysubsection{Features}\label{md___users_kiran__documents__projects__i_c_l_r__avionics__ricardo__o_s__ricardo__o_s_lib__arduino_json_6_x__r_e_a_d_m_e_autotoc_md95}
+
+\begin{DoxyItemize}
+\item \href{https://arduinojson.org/v6/api/json/deserializejson/?utm_source=github&utm_medium=readme}{\texttt{ JSON deserialization}}
+\begin{DoxyItemize}
+\item \href{https://arduinojson.org/v6/api/config/decode_unicode/?utm_source=github&utm_medium=readme}{\texttt{ Optionally decodes UTF-\/16 escape sequences to UTF-\/8}}
+\item \href{https://arduinojson.org/v6/api/json/deserializejson/?utm_source=github&utm_medium=readme}{\texttt{ Optionally stores links to the input buffer (zero-\/copy)}}
+\item \href{https://arduinojson.org/v6/api/config/enable_comments/?utm_source=github&utm_medium=readme}{\texttt{ Optionally supports comments in the input}}
+\item \href{https://arduinojson.org/v6/api/json/deserializejson/?utm_source=github&utm_medium=readme\#filtering}{\texttt{ Optionally filters the input to keep only desired values}}
+\item Supports single quotes as a string delimiter
+\item Compatible with NDJSON and JSON Lines
+\end{DoxyItemize}
+\item \href{https://arduinojson.org/v6/api/json/serializejson/?utm_source=github&utm_medium=readme}{\texttt{ JSON serialization}}
+\begin{DoxyItemize}
+\item \href{https://arduinojson.org/v6/api/json/serializejson/?utm_source=github&utm_medium=readme}{\texttt{ Can write to a buffer or a stream}}
+\item \href{https://arduinojson.org/v6/api/json/serializejsonpretty/?utm_source=github&utm_medium=readme}{\texttt{ Optionally indents the document (prettified JSON)}}
+\end{DoxyItemize}
+\item \href{https://arduinojson.org/v6/api/msgpack/serializemsgpack/?utm_source=github&utm_medium=readme}{\texttt{ Message\+Pack serialization}}
+\item \href{https://arduinojson.org/v6/api/msgpack/deserializemsgpack/?utm_source=github&utm_medium=readme}{\texttt{ Message\+Pack deserialization}}
+\item Efficient
+\begin{DoxyItemize}
+\item \href{https://arduinojson.org/2019/11/19/arduinojson-vs-arduino_json/?utm_source=github&utm_medium=readme}{\texttt{ Twice smaller than the \char`\"{}official\char`\"{} Arduino\+\_\+\+JSON library}}
+\item \href{https://arduinojson.org/2019/11/19/arduinojson-vs-arduino_json/?utm_source=github&utm_medium=readme}{\texttt{ Almost 10\% faster than the \char`\"{}official\char`\"{} Arduino\+\_\+\+JSON library}}
+\item \href{https://arduinojson.org/2019/11/19/arduinojson-vs-arduino_json/?utm_source=github&utm_medium=readme}{\texttt{ Consumes roughly 10\% less RAM than the \char`\"{}official\char`\"{} Arduino\+\_\+\+JSON library}}
+\item \href{https://arduinojson.org/v6/api/jsondocument/?utm_source=github&utm_medium=readme}{\texttt{ Fixed memory allocation, no heap fragmentation}}
+\item \href{https://arduinojson.org/v6/api/staticjsondocument/?utm_source=github&utm_medium=readme}{\texttt{ Optionally works without heap memory (zero malloc)}}
+\item Deduplicates strings
+\end{DoxyItemize}
+\item Versatile
+\begin{DoxyItemize}
+\item \href{https://arduinojson.org/v6/how-to/use-external-ram-on-esp32/?utm_source=github&utm_medium=readme}{\texttt{ Supports custom allocators (to use external RAM chip, for example)}}
+\item Supports \href{https://arduinojson.org/v6/api/config/enable_arduino_string/}{\texttt{ Arduino\textquotesingle{}s {\ttfamily String}}} and \href{https://arduinojson.org/v6/api/config/enable_std_string/?utm_source=github&utm_medium=readme}{\texttt{ STL\textquotesingle{}s {\ttfamily std\+::string}}}
+\item Supports Arduino\textquotesingle{}s {\ttfamily \mbox{\hyperlink{struct_stream}{Stream}}} and \href{https://arduinojson.org/v6/api/config/enable_std_stream/?utm_source=github&utm_medium=readme}{\texttt{ STL\textquotesingle{}s {\ttfamily std\+::istream}/{\ttfamily std\+::ostream}}}
+\item \href{https://arduinojson.org/v6/api/config/enable_progmem/?utm_source=github&utm_medium=readme}{\texttt{ Supports Flash strings}}
+\item Supports \href{https://arduinojson.org/v6/api/json/deserializejson/?utm_source=github&utm_medium=readme\#custom-reader}{\texttt{ custom readers}} and \href{https://arduinojson.org/v6/api/json/serializejson/?utm_source=github&utm_medium=readme\#custom-writer}{\texttt{ custom writers}}
+\end{DoxyItemize}
+\item Portable
+\begin{DoxyItemize}
+\item Usable on any C++ project (not limited to Arduino)
+\item Compatible with C++98
+\item Zero warnings with {\ttfamily -\/Wall -\/Wextra -\/pedantic} and {\ttfamily /\+W4}
+\item \href{https://en.wikipedia.org/wiki/Header-only}{\texttt{ Header-\/only library}}
+\item Works with virtually any board
+\begin{DoxyItemize}
+\item Arduino boards\+: \href{https://amzn.to/38aL2ik}{\texttt{ Uno}}, \href{https://amzn.to/36YkWi2}{\texttt{ Due}}, \href{https://amzn.to/35WkdwG}{\texttt{ Micro}}, \href{https://amzn.to/2QTvwRX}{\texttt{ Nano}}, \href{https://amzn.to/36XWhuf}{\texttt{ Mega}}, \href{https://amzn.to/30odURc}{\texttt{ Yun}}, \href{https://amzn.to/36XWjlR}{\texttt{ Leonardo}}...
+\item Espressif chips\+: \href{https://amzn.to/36YluV8}{\texttt{ ESP8266}}, \href{https://amzn.to/2G4pRCB}{\texttt{ ESP32}}
+\item Lolin (We\+Mos) boards\+: \href{https://amzn.to/2QUpz7q}{\texttt{ D1 mini}}, \href{https://amzn.to/36UsGSs}{\texttt{ D1 Mini Pro}}...
+\item Teensy boards\+: \href{https://amzn.to/30ljXGq}{\texttt{ 4.\+0}}, \href{https://amzn.to/2FT0EuC}{\texttt{ 3.\+2}}, \href{https://amzn.to/2QXUMXj}{\texttt{ 2.\+0}}
+\item Particle boards\+: \href{https://amzn.to/2FQHa9X}{\texttt{ Argon}}, \href{https://amzn.to/36WgLUd}{\texttt{ Boron}}, \href{https://amzn.to/30vEc4k}{\texttt{ Electron}}, \href{https://amzn.to/387F9Cd}{\texttt{ Photon}}...
+\item Texas Instruments boards\+: \href{https://amzn.to/30nJWgg}{\texttt{ MSP430}}...
+\end{DoxyItemize}
+\item Tested on all major development environments
+\begin{DoxyItemize}
+\item \href{https://www.arduino.cc/en/Main/Software}{\texttt{ Arduino IDE}}
+\item \href{http://www.atmel.com/microsite/atmel-studio/}{\texttt{ Atmel Studio}}
+\item \href{https://atollic.com/truestudio/}{\texttt{ Atollic True\+STUDIO}}
+\item \href{http://energia.nu/}{\texttt{ Energia}}
+\item \href{https://www.iar.com/iar-embedded-workbench/}{\texttt{ IAR Embedded Workbench}}
+\item \href{http://www.keil.com/}{\texttt{ Keil u\+Vision}}
+\item \href{http://www.microchip.com/mplab/mplab-x-ide}{\texttt{ MPLAB X IDE}}
+\item \href{http://platformio.org/}{\texttt{ Platform\+IO}}
+\item \href{https://eclipse.baeyens.it/}{\texttt{ Sloeber plugin for Eclipse}}
+\item \href{http://www.visualmicro.com/}{\texttt{ Visual Micro}}
+\item \href{https://www.visualstudio.com/}{\texttt{ Visual Studio}}
+\end{DoxyItemize}
+\item \href{https://wandbox.org/permlink/t7KP7I6dVuLhqzDl}{\texttt{ Even works with online compilers like wandbox.\+org}}
+\item \href{https://arduinojson.org/v6/how-to/use-arduinojson-with-cmake/?utm_source=github&utm_medium=readme}{\texttt{ CMake friendly}}
+\end{DoxyItemize}
+\item Well designed
+\begin{DoxyItemize}
+\item \href{http://arduinojson.org/v6/example/?utm_source=github&utm_medium=readme}{\texttt{ Elegant API}}
+\item \href{https://en.wikipedia.org/wiki/Thread_safety}{\texttt{ Thread-\/safe}}
+\item Self-\/contained (no external dependency)
+\item {\ttfamily const} friendly
+\item \href{https://arduinojson.org/v6/api/jsonobject/begin_end/?utm_source=github&utm_medium=readme}{\texttt{ {\ttfamily for} friendly}}
+\item \href{https://en.wikipedia.org/wiki/Template_metaprogramming}{\texttt{ TMP friendly}}
+\item Handles \href{https://arduinojson.org/v6/api/jsonvariant/as/?utm_source=github&utm_medium=readme\#integer-overflows}{\texttt{ integer overflows}}
+\end{DoxyItemize}
+\item Well tested
+\begin{DoxyItemize}
+\item \href{https://coveralls.io/github/bblanchon/ArduinoJson?branch=6.x}{\texttt{ Unit test coverage close to 100\%}}
+\item Continuously tested on
+\begin{DoxyItemize}
+\item \href{https://ci.appveyor.com/project/bblanchon/arduinojson/branch/6.x}{\texttt{ Visual Studio 2010, 2012, 2013, 2015, 2017, 2019}}
+\item \href{https://travis-ci.org/bblanchon/ArduinoJson}{\texttt{ GCC 4.\+4, 4.\+6, 4.\+7, 4.\+8, 4.\+9, 5, 6, 7, 8}}
+\item \href{https://travis-ci.org/bblanchon/ArduinoJson}{\texttt{ Clang 3.\+5, 3.\+6, 3.\+7, 3.\+8, 3.\+9, 4.\+0, 5.\+0, 6.\+0, 7, 8}}
+\end{DoxyItemize}
+\item \href{https://bugs.chromium.org/p/oss-fuzz/issues/list?sort=-opened&can=1&q=proj:arduinojson}{\texttt{ Continuously fuzzed with Google OSS Fuzz}}
+\end{DoxyItemize}
+\item Well documented
+\begin{DoxyItemize}
+\item \href{https://arduinojson.org/v6/doc/deserialization/?utm_source=github&utm_medium=readme}{\texttt{ Tutorials}}
+\item \href{https://arduinojson.org/v6/example/?utm_source=github&utm_medium=readme}{\texttt{ Examples}}
+\item \href{https://arduinojson.org/v6/example/?utm_source=github&utm_medium=readme}{\texttt{ How-\/tos}}
+\item \href{https://arduinojson.org/v6/faq/?utm_source=github&utm_medium=readme}{\texttt{ FAQ}}
+\item \href{https://arduinojson.org/book/?utm_source=github&utm_medium=readme}{\texttt{ Book}}
+\end{DoxyItemize}
+\item Vibrant user community
+\begin{DoxyItemize}
+\item Most popular of all Arduino libraries on \href{https://github.com/search?o=desc&q=arduino+library&s=stars&type=Repositories}{\texttt{ Git\+Hub}} and \href{https://platformio.org/lib/search}{\texttt{ Platform\+IO}}
+\item \href{https://www.hackster.io/search?i=projects&q=arduinojson}{\texttt{ Used in hundreds of projects}}
+\item \href{https://github.com/bblanchon/ArduinoJson/issues?q=is\%3Aissue+is\%3Aclosed}{\texttt{ Responsive support}}
+\end{DoxyItemize}
+\end{DoxyItemize}\hypertarget{md___users_kiran__documents__projects__i_c_l_r__avionics__ricardo__o_s__ricardo__o_s_lib__arduino_json_6_x__r_e_a_d_m_e_autotoc_md96}{}\doxysubsection{Quickstart}\label{md___users_kiran__documents__projects__i_c_l_r__avionics__ricardo__o_s__ricardo__o_s_lib__arduino_json_6_x__r_e_a_d_m_e_autotoc_md96}
+\hypertarget{md___users_kiran__documents__projects__i_c_l_r__avionics__ricardo__o_s__ricardo__o_s_lib__arduino_json_6_x__r_e_a_d_m_e_autotoc_md97}{}\doxysubsubsection{Deserialization}\label{md___users_kiran__documents__projects__i_c_l_r__avionics__ricardo__o_s__ricardo__o_s_lib__arduino_json_6_x__r_e_a_d_m_e_autotoc_md97}
+Here is a program that parses a JSON document with Arduino\+Json.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{ \{c++\}}
+\DoxyCodeLine{char json[] = "{}\{\(\backslash\)"{}sensor\(\backslash\)"{}:\(\backslash\)"{}gps\(\backslash\)"{},\(\backslash\)"{}time\(\backslash\)"{}:1351824120,\(\backslash\)"{}data\(\backslash\)"{}:[48.756080,2.302038]\}"{};}
+\DoxyCodeLine{}
+\DoxyCodeLine{DynamicJsonDocument doc(1024);}
+\DoxyCodeLine{deserializeJson(doc, json);}
+\DoxyCodeLine{}
+\DoxyCodeLine{const char* sensor = doc["{}sensor"{}];}
+\DoxyCodeLine{long time          = doc["{}time"{}];}
+\DoxyCodeLine{double latitude    = doc["{}data"{}][0];}
+\DoxyCodeLine{double longitude   = doc["{}data"{}][1];}
+
+\end{DoxyCode}
+
+
+See the \href{https://arduinojson.org/doc/decoding/?utm_source=github&utm_medium=readme}{\texttt{ tutorial on arduinojson.\+org}}\hypertarget{md___users_kiran__documents__projects__i_c_l_r__avionics__ricardo__o_s__ricardo__o_s_lib__arduino_json_6_x__r_e_a_d_m_e_autotoc_md98}{}\doxysubsubsection{Serialization}\label{md___users_kiran__documents__projects__i_c_l_r__avionics__ricardo__o_s__ricardo__o_s_lib__arduino_json_6_x__r_e_a_d_m_e_autotoc_md98}
+Here is a program that generates a JSON document with Arduino\+Json\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{ \{c++\}}
+\DoxyCodeLine{DynamicJsonDocument doc(1024);}
+\DoxyCodeLine{}
+\DoxyCodeLine{doc["{}sensor"{}] = "{}gps"{};}
+\DoxyCodeLine{doc["{}time"{}]   = 1351824120;}
+\DoxyCodeLine{doc["{}data"{}][0] = 48.756080;}
+\DoxyCodeLine{doc["{}data"{}][1] = 2.302038;}
+\DoxyCodeLine{}
+\DoxyCodeLine{serializeJson(doc, Serial);}
+\DoxyCodeLine{// This prints:}
+\DoxyCodeLine{// \{"{}sensor"{}:"{}gps"{},"{}time"{}:1351824120,"{}data"{}:[48.756080,2.302038]\}}
+
+\end{DoxyCode}
+
+
+See the \href{https://arduinojson.org/doc/encoding/?utm_source=github&utm_medium=readme}{\texttt{ tutorial on arduinojson.\+org}}\hypertarget{md___users_kiran__documents__projects__i_c_l_r__avionics__ricardo__o_s__ricardo__o_s_lib__arduino_json_6_x__r_e_a_d_m_e_autotoc_md99}{}\doxysubsection{Support the project}\label{md___users_kiran__documents__projects__i_c_l_r__avionics__ricardo__o_s__ricardo__o_s_lib__arduino_json_6_x__r_e_a_d_m_e_autotoc_md99}
+Do you like this library? Please \href{https://github.com/bblanchon/ArduinoJson/stargazers}{\texttt{ star this project on Git\+Hub}}!
+
+What? You don\textquotesingle{}t like it but you {\itshape love} it? ~\newline
+ We don\textquotesingle{}t take donations anymore, but \href{https://arduinojson.org/book/?utm_source=github&utm_medium=readme}{\texttt{ we sell a book}}, so you can help and learn at the same time. 

@@ -1,0 +1,798 @@
+\hypertarget{class_stdio_stream}{}\doxysection{Stdio\+Stream Class Reference}
+\label{class_stdio_stream}\index{StdioStream@{StdioStream}}
+
+
+\mbox{\hyperlink{class_stdio_stream}{Stdio\+Stream}} implements a minimal stdio stream.  
+
+
+
+
+{\ttfamily \#include $<$Stdio\+Stream.\+h$>$}
+
+Inheritance diagram for Stdio\+Stream\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_stdio_stream}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_stdio_stream_a96b2c027e76bfca6d6835c9ae1be2ad2}{Stdio\+Stream}} ()
+\item 
+void \mbox{\hyperlink{class_stdio_stream_aa737e5680fc2808a03a603ea8559d82b}{clearerr}} ()
+\item 
+int \mbox{\hyperlink{class_stdio_stream_a4ddd4658d49182013d2fa2a181e96c5a}{fclose}} ()
+\item 
+int \mbox{\hyperlink{class_stdio_stream_acb38c3211feedbf2206eb1d9a3a9d24f}{feof}} ()
+\item 
+int \mbox{\hyperlink{class_stdio_stream_afd64cec6440b923660b444f6d5f0586e}{ferror}} ()
+\item 
+int \mbox{\hyperlink{class_stdio_stream_a7ce32ec7ea3f2fd8ea42b9633890f1c0}{fflush}} ()
+\item 
+int \mbox{\hyperlink{class_stdio_stream_a160bd2828cb7e7370cffe1046eff8899}{fgetc}} ()
+\item 
+char $\ast$ \mbox{\hyperlink{class_stdio_stream_aa240c1021a1aad1cc57f63a483541dc7}{fgets}} (char $\ast$str, size\+\_\+t num, size\+\_\+t $\ast$len=0)
+\item 
+bool \mbox{\hyperlink{class_stdio_stream_a4ffc37225fb6deed98905aa71d1f9c4b}{fopen}} (const char $\ast$path, const char $\ast$mode)
+\item 
+int \mbox{\hyperlink{class_stdio_stream_a9f23cfa6b112a5da6ae08340af23c57b}{fputc}} (int c)
+\item 
+int \mbox{\hyperlink{class_stdio_stream_a6adea52f55ef7d97cdb54e9e11fc2daa}{fputs}} (const char $\ast$str)
+\item 
+size\+\_\+t \mbox{\hyperlink{class_stdio_stream_a2d363b02abcef82b25ff025d50375bce}{fread}} (void $\ast$ptr, size\+\_\+t size, size\+\_\+t count)
+\item 
+int \mbox{\hyperlink{class_stdio_stream_a71584fd5c5cda3c31ce6cdbcc56f104d}{fseek}} (int32\+\_\+t offset, int origin)
+\item 
+int32\+\_\+t \mbox{\hyperlink{class_stdio_stream_a809639fc5fb4fa5b6789dc121659f386}{ftell}} ()
+\item 
+size\+\_\+t \mbox{\hyperlink{class_stdio_stream_ad79465afb52579cbc801f4585c3f9c25}{fwrite}} (const void $\ast$ptr, size\+\_\+t size, size\+\_\+t count)
+\item 
+\mbox{\hyperlink{class_stdio_stream_a40db6bac09edd73f80a3800ac4534bf7}{\+\_\+\+\_\+attribute\+\_\+\+\_\+}} ((always\+\_\+inline)) int getc()
+\item 
+\mbox{\hyperlink{class_stdio_stream_a2fb979112a06a62281a8a64105e5ea0b}{\+\_\+\+\_\+attribute\+\_\+\+\_\+}} ((always\+\_\+inline)) int putc(int c)
+\item 
+\mbox{\hyperlink{class_stdio_stream_a3a84b42d51f30209eb35e9137c32b945}{\+\_\+\+\_\+attribute\+\_\+\+\_\+}} ((always\+\_\+inline)) int put\+CRLF()
+\item 
+size\+\_\+t \mbox{\hyperlink{class_stdio_stream_ad3f6ee8e8ca5dcf6dabfd88199b172e2}{print}} (char c)
+\item 
+size\+\_\+t \mbox{\hyperlink{class_stdio_stream_a1158ea5f9bf041f21b1733b7811c9bb9}{print}} (const char $\ast$str)
+\item 
+size\+\_\+t \mbox{\hyperlink{class_stdio_stream_a26f5b98560b6771225005b073166108b}{print}} (double val, uint8\+\_\+t prec=2)
+\item 
+size\+\_\+t \mbox{\hyperlink{class_stdio_stream_a06b6eb9f0a7000fdcc73cd6af8d40560}{print}} (float val, uint8\+\_\+t prec=2)
+\item 
+{\footnotesize template$<$typename T $>$ }\\size\+\_\+t \mbox{\hyperlink{class_stdio_stream_a7129f85c7c5f16867f467731ef84dee9}{print}} (T val)
+\item 
+size\+\_\+t \mbox{\hyperlink{class_stdio_stream_ad0cd3acc05a91456f505752377bd405a}{println}} ()
+\item 
+size\+\_\+t \mbox{\hyperlink{class_stdio_stream_a3793dd66cf347a1ca0b7b167e948cce9}{println}} (double val, uint8\+\_\+t prec=2)
+\item 
+size\+\_\+t \mbox{\hyperlink{class_stdio_stream_aac250d041a7844c8db1cbd2d97ecfdaa}{println}} (float val, uint8\+\_\+t prec=2)
+\item 
+{\footnotesize template$<$typename T $>$ }\\size\+\_\+t \mbox{\hyperlink{class_stdio_stream_a3b14532768d07e6ed89c762d04792c12}{println}} (T val)
+\item 
+int \mbox{\hyperlink{class_stdio_stream_ac0a907feb1e4b7e00de99857b4c0a470}{print\+Dec}} (char n)
+\item 
+int \mbox{\hyperlink{class_stdio_stream_a2707ea97f6113c226781469f4f39ff62}{print\+Dec}} (signed char n)
+\item 
+int \mbox{\hyperlink{class_stdio_stream_a6e6ac78caa6259a4c4934707bf497a2b}{print\+Dec}} (unsigned char n)
+\item 
+int \mbox{\hyperlink{class_stdio_stream_a218af88db35f38babf01d6e0a9cdceeb}{print\+Dec}} (int16\+\_\+t n)
+\item 
+int \mbox{\hyperlink{class_stdio_stream_a90b2999af94a3578fff7579c2acf8e35}{print\+Dec}} (uint16\+\_\+t n)
+\item 
+int \mbox{\hyperlink{class_stdio_stream_ad4591f1234b57f63c1acf0f3392099ac}{print\+Dec}} (int32\+\_\+t n)
+\item 
+int \mbox{\hyperlink{class_stdio_stream_a8b6c2c80342abe45e6f564e9bd5bb7ea}{print\+Dec}} (uint32\+\_\+t n)
+\item 
+int \mbox{\hyperlink{class_stdio_stream_aaa8921947d4dbbae840d285cb633e8aa}{print\+Dec}} (double value, uint8\+\_\+t prec)
+\item 
+int \mbox{\hyperlink{class_stdio_stream_a6a09284b1c6d0769c27916a2e131e749}{print\+Dec}} (float value, uint8\+\_\+t prec)
+\item 
+int \mbox{\hyperlink{class_stdio_stream_a4988592ada39c4b4c603b061f84d183f}{print\+Field}} (double value, char term, uint8\+\_\+t prec=2)
+\item 
+int \mbox{\hyperlink{class_stdio_stream_a3b90b2317cc391f94784a847f5313c08}{print\+Field}} (float value, char term, uint8\+\_\+t prec=2)
+\item 
+{\footnotesize template$<$typename T $>$ }\\int \mbox{\hyperlink{class_stdio_stream_a02c2ad1a2e71e82d238b8386cf3e6c41}{print\+Field}} (T value, char term)
+\item 
+int \mbox{\hyperlink{class_stdio_stream_add39b2b4ec3daa7c8922e96ce5d368bc}{print\+Hex}} (uint32\+\_\+t n)
+\item 
+int \mbox{\hyperlink{class_stdio_stream_aec6ebea511489b0ef6b61d9132d93af9}{print\+Hexln}} (uint32\+\_\+t n)
+\item 
+bool \mbox{\hyperlink{class_stdio_stream_ad985866675193d2ee1dde9e27b0d08da}{rewind}} ()
+\item 
+int \mbox{\hyperlink{class_stdio_stream_ac00e0dd906c2e857ece53794c6c92786}{ungetc}} (int c)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\mbox{\hyperlink{class_stdio_stream}{Stdio\+Stream}} implements a minimal stdio stream. 
+
+\mbox{\hyperlink{class_stdio_stream}{Stdio\+Stream}} does not support subdirectories or long file names. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_stdio_stream_a96b2c027e76bfca6d6835c9ae1be2ad2}\label{class_stdio_stream_a96b2c027e76bfca6d6835c9ae1be2ad2}} 
+\index{StdioStream@{StdioStream}!StdioStream@{StdioStream}}
+\index{StdioStream@{StdioStream}!StdioStream@{StdioStream}}
+\doxysubsubsection{\texorpdfstring{StdioStream()}{StdioStream()}}
+{\footnotesize\ttfamily Stdio\+Stream\+::\+Stdio\+Stream (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Constructor 
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_stdio_stream_a40db6bac09edd73f80a3800ac4534bf7}\label{class_stdio_stream_a40db6bac09edd73f80a3800ac4534bf7}} 
+\index{StdioStream@{StdioStream}!\_\_attribute\_\_@{\_\_attribute\_\_}}
+\index{\_\_attribute\_\_@{\_\_attribute\_\_}!StdioStream@{StdioStream}}
+\doxysubsubsection{\texorpdfstring{\_\_attribute\_\_()}{\_\_attribute\_\_()}\hspace{0.1cm}{\footnotesize\ttfamily [1/3]}}
+{\footnotesize\ttfamily Stdio\+Stream\+::\+\_\+\+\_\+attribute\+\_\+\+\_\+ (\begin{DoxyParamCaption}\item[{(always\+\_\+inline)}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Get a byte from the stream.
+
+getc and fgetc are equivalent but getc is in-\/line so it is faster but require more flash memory.
+
+\begin{DoxyReturn}{Returns}
+If the end-\/of-\/file indicator for the stream is set, or if the stream is at end-\/of-\/file, the end-\/of-\/file indicator for the stream is set and the fgetc function returns EOF. Otherwise, the fgetc function returns the next character from the input stream. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_stdio_stream_a2fb979112a06a62281a8a64105e5ea0b}\label{class_stdio_stream_a2fb979112a06a62281a8a64105e5ea0b}} 
+\index{StdioStream@{StdioStream}!\_\_attribute\_\_@{\_\_attribute\_\_}}
+\index{\_\_attribute\_\_@{\_\_attribute\_\_}!StdioStream@{StdioStream}}
+\doxysubsubsection{\texorpdfstring{\_\_attribute\_\_()}{\_\_attribute\_\_()}\hspace{0.1cm}{\footnotesize\ttfamily [2/3]}}
+{\footnotesize\ttfamily Stdio\+Stream\+::\+\_\+\+\_\+attribute\+\_\+\+\_\+ (\begin{DoxyParamCaption}\item[{(always\+\_\+inline)}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Write a byte to a stream.
+
+putc and fputc are equivalent but putc is in-\/line so it is faster but require more flash memory.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em c} & the byte to be written (converted to an unsigned char).\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Upon successful completion, \mbox{\hyperlink{class_stdio_stream_a9f23cfa6b112a5da6ae08340af23c57b}{fputc()}} returns the value it has written. Otherwise, it returns EOF and sets the error indicator for the stream. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_stdio_stream_a3a84b42d51f30209eb35e9137c32b945}\label{class_stdio_stream_a3a84b42d51f30209eb35e9137c32b945}} 
+\index{StdioStream@{StdioStream}!\_\_attribute\_\_@{\_\_attribute\_\_}}
+\index{\_\_attribute\_\_@{\_\_attribute\_\_}!StdioStream@{StdioStream}}
+\doxysubsubsection{\texorpdfstring{\_\_attribute\_\_()}{\_\_attribute\_\_()}\hspace{0.1cm}{\footnotesize\ttfamily [3/3]}}
+{\footnotesize\ttfamily Stdio\+Stream\+::\+\_\+\+\_\+attribute\+\_\+\+\_\+ (\begin{DoxyParamCaption}\item[{(always\+\_\+inline)}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Write a CR/\+LF.
+
+\begin{DoxyReturn}{Returns}
+two, the number of bytes written, for success or -\/1 for failure. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_stdio_stream_aa737e5680fc2808a03a603ea8559d82b}\label{class_stdio_stream_aa737e5680fc2808a03a603ea8559d82b}} 
+\index{StdioStream@{StdioStream}!clearerr@{clearerr}}
+\index{clearerr@{clearerr}!StdioStream@{StdioStream}}
+\doxysubsubsection{\texorpdfstring{clearerr()}{clearerr()}}
+{\footnotesize\ttfamily void Stdio\+Stream\+::clearerr (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Clear the stream\textquotesingle{}s end-\/of-\/file and error indicators. \mbox{\Hypertarget{class_stdio_stream_a4ddd4658d49182013d2fa2a181e96c5a}\label{class_stdio_stream_a4ddd4658d49182013d2fa2a181e96c5a}} 
+\index{StdioStream@{StdioStream}!fclose@{fclose}}
+\index{fclose@{fclose}!StdioStream@{StdioStream}}
+\doxysubsubsection{\texorpdfstring{fclose()}{fclose()}}
+{\footnotesize\ttfamily int Stdio\+Stream\+::fclose (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Close a stream.
+
+A successful call to the fclose function causes the stream to be flushed and the associated file to be closed. Any unwritten buffered data is written to the file; any unread buffered data is discarded. Whether or not the call succeeds, the stream is disassociated from the file.
+
+\begin{DoxyReturn}{Returns}
+zero if the stream was successfully closed, or EOF if any any errors are detected.
+\end{DoxyReturn}
+Copyright (c) 2011-\/2018 Bill Greiman This file is part of the \mbox{\hyperlink{class_sd_fat}{Sd\+Fat}} library for SD memory cards.
+
+MIT License
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the \char`\"{}\+Software\char`\"{}), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions\+:
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED \char`\"{}\+AS IS\char`\"{}, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE. \mbox{\Hypertarget{class_stdio_stream_acb38c3211feedbf2206eb1d9a3a9d24f}\label{class_stdio_stream_acb38c3211feedbf2206eb1d9a3a9d24f}} 
+\index{StdioStream@{StdioStream}!feof@{feof}}
+\index{feof@{feof}!StdioStream@{StdioStream}}
+\doxysubsubsection{\texorpdfstring{feof()}{feof()}}
+{\footnotesize\ttfamily int Stdio\+Stream\+::feof (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Test the stream\textquotesingle{}s end-\/of-\/file indicator. \begin{DoxyReturn}{Returns}
+non-\/zero if and only if the end-\/of-\/file indicator is set. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_stdio_stream_afd64cec6440b923660b444f6d5f0586e}\label{class_stdio_stream_afd64cec6440b923660b444f6d5f0586e}} 
+\index{StdioStream@{StdioStream}!ferror@{ferror}}
+\index{ferror@{ferror}!StdioStream@{StdioStream}}
+\doxysubsubsection{\texorpdfstring{ferror()}{ferror()}}
+{\footnotesize\ttfamily int Stdio\+Stream\+::ferror (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Test the stream\textquotesingle{}s error indicator. \begin{DoxyReturn}{Returns}
+return non-\/zero if and only if the error indicator is set. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_stdio_stream_a7ce32ec7ea3f2fd8ea42b9633890f1c0}\label{class_stdio_stream_a7ce32ec7ea3f2fd8ea42b9633890f1c0}} 
+\index{StdioStream@{StdioStream}!fflush@{fflush}}
+\index{fflush@{fflush}!StdioStream@{StdioStream}}
+\doxysubsubsection{\texorpdfstring{fflush()}{fflush()}}
+{\footnotesize\ttfamily int Stdio\+Stream\+::fflush (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Flush the stream.
+
+If stream is an output stream or an update stream in which the most recent operation was not input, any unwritten data is written to the file; otherwise the call is an error since any buffered input data would be lost.
+
+\begin{DoxyReturn}{Returns}
+sets the error indicator for the stream and returns EOF if an error occurs, otherwise it returns zero. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_stdio_stream_a160bd2828cb7e7370cffe1046eff8899}\label{class_stdio_stream_a160bd2828cb7e7370cffe1046eff8899}} 
+\index{StdioStream@{StdioStream}!fgetc@{fgetc}}
+\index{fgetc@{fgetc}!StdioStream@{StdioStream}}
+\doxysubsubsection{\texorpdfstring{fgetc()}{fgetc()}}
+{\footnotesize\ttfamily int Stdio\+Stream\+::fgetc (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Get a byte from the stream.
+
+\begin{DoxyReturn}{Returns}
+If the end-\/of-\/file indicator for the stream is set, or if the stream is at end-\/of-\/file, the end-\/of-\/file indicator for the stream is set and the fgetc function returns EOF. Otherwise, the fgetc function returns the next character from the input stream. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_stdio_stream_aa240c1021a1aad1cc57f63a483541dc7}\label{class_stdio_stream_aa240c1021a1aad1cc57f63a483541dc7}} 
+\index{StdioStream@{StdioStream}!fgets@{fgets}}
+\index{fgets@{fgets}!StdioStream@{StdioStream}}
+\doxysubsubsection{\texorpdfstring{fgets()}{fgets()}}
+{\footnotesize\ttfamily char $\ast$ Stdio\+Stream\+::fgets (\begin{DoxyParamCaption}\item[{char $\ast$}]{str,  }\item[{size\+\_\+t}]{num,  }\item[{size\+\_\+t $\ast$}]{len = {\ttfamily 0} }\end{DoxyParamCaption})}
+
+Get a string from a stream.
+
+The fgets function reads at most one less than the number of characters specified by num from the stream into the array pointed to by str. No additional characters are read after a new-\/line character (which is retained) or after end-\/of-\/file. A null character is written immediately after the last character read into the array.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ out}}  & {\em str} & Pointer to an array of where the string is copied.\\
+\hline
+\mbox{\texttt{ in}}  & {\em num} & Maximum number of characters including the null character.\\
+\hline
+\mbox{\texttt{ out}}  & {\em len} & If len is not null and fgets is successful, the length of the string is returned.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+str if successful. If end-\/of-\/file is encountered and no characters have been read into the array, the contents of the array remain unchanged and a null pointer is returned. If a read error occurs during the operation, the array contents are indeterminate and a null pointer is returned. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_stdio_stream_a4ffc37225fb6deed98905aa71d1f9c4b}\label{class_stdio_stream_a4ffc37225fb6deed98905aa71d1f9c4b}} 
+\index{StdioStream@{StdioStream}!fopen@{fopen}}
+\index{fopen@{fopen}!StdioStream@{StdioStream}}
+\doxysubsubsection{\texorpdfstring{fopen()}{fopen()}}
+{\footnotesize\ttfamily bool Stdio\+Stream\+::fopen (\begin{DoxyParamCaption}\item[{const char $\ast$}]{path,  }\item[{const char $\ast$}]{mode }\end{DoxyParamCaption})}
+
+Open a stream.
+
+Open a file and associates the stream with it.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em path} & file to be opened.\\
+\hline
+\mbox{\texttt{ in}}  & {\em mode} & a string that indicates the open mode.\\
+\hline
+\end{DoxyParams}
+\tabulinesep=1mm
+\begin{longtabu}spread 0pt [c]{*{2}{|X[-1]}|}
+\hline
+\char`\"{}r\char`\"{} or \char`\"{}rb\char`\"{} &Open a file for reading. The file must exist.  \\\cline{1-2}
+\char`\"{}w\char`\"{} or \char`\"{}wb\char`\"{} &Truncate an existing to zero length or create an empty file for writing.  \\\cline{1-2}
+\char`\"{}wx\char`\"{} or \char`\"{}wbx\char`\"{} &Create a file for writing. Fails if the file already exists.  \\\cline{1-2}
+\char`\"{}a\char`\"{} or \char`\"{}ab\char`\"{} &Append; open or create file for writing at end-\/of-\/file.  \\\cline{1-2}
+\char`\"{}r+\char`\"{} or \char`\"{}rb+\char`\"{} or \char`\"{}r+b\char`\"{} &Open a file for update (reading and writing).  \\\cline{1-2}
+\char`\"{}w+\char`\"{} or \char`\"{}w+b\char`\"{} or \char`\"{}wb+\char`\"{} &Truncate an existing to zero length or create a file for update.  \\\cline{1-2}
+\char`\"{}w+x\char`\"{} or \char`\"{}w+bx\char`\"{} or \char`\"{}wb+x\char`\"{} &Create a file for update. Fails if the file already exists.  \\\cline{1-2}
+\char`\"{}a+\char`\"{} or \char`\"{}a+b\char`\"{} or \char`\"{}ab+\char`\"{} &Append; open or create a file for update, writing at end-\/of-\/file.  \\\cline{1-2}
+\end{longtabu}
+The character \textquotesingle{}b\textquotesingle{} shall have no effect, but is allowed for ISO C standard conformance.
+
+Opening a file with append mode causes all subsequent writes to the file to be forced to the then current end-\/of-\/file, regardless of intervening calls to the fseek function.
+
+When a file is opened with update mode, both input and output may be performed on the associated stream. However, output shall not be directly followed by input without an intervening call to the fflush function or to a file positioning function (fseek, or rewind), and input shall not be directly followed by output without an intervening call to a file positioning function, unless the input operation encounters end-\/of-\/file.
+
+\begin{DoxyReturn}{Returns}
+true for success or false for failure. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_stdio_stream_a9f23cfa6b112a5da6ae08340af23c57b}\label{class_stdio_stream_a9f23cfa6b112a5da6ae08340af23c57b}} 
+\index{StdioStream@{StdioStream}!fputc@{fputc}}
+\index{fputc@{fputc}!StdioStream@{StdioStream}}
+\doxysubsubsection{\texorpdfstring{fputc()}{fputc()}}
+{\footnotesize\ttfamily int Stdio\+Stream\+::fputc (\begin{DoxyParamCaption}\item[{int}]{c }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Write a byte to a stream.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em c} & the byte to be written (converted to an unsigned char).\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Upon successful completion, \mbox{\hyperlink{class_stdio_stream_a9f23cfa6b112a5da6ae08340af23c57b}{fputc()}} returns the value it has written. Otherwise, it returns EOF and sets the error indicator for the stream. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_stdio_stream_a6adea52f55ef7d97cdb54e9e11fc2daa}\label{class_stdio_stream_a6adea52f55ef7d97cdb54e9e11fc2daa}} 
+\index{StdioStream@{StdioStream}!fputs@{fputs}}
+\index{fputs@{fputs}!StdioStream@{StdioStream}}
+\doxysubsubsection{\texorpdfstring{fputs()}{fputs()}}
+{\footnotesize\ttfamily int Stdio\+Stream\+::fputs (\begin{DoxyParamCaption}\item[{const char $\ast$}]{str }\end{DoxyParamCaption})}
+
+Write a string to a stream.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em str} & a pointer to the string to be written.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+for success, \mbox{\hyperlink{class_stdio_stream_a6adea52f55ef7d97cdb54e9e11fc2daa}{fputs()}} returns a non-\/negative number. Otherwise, it returns EOF and sets the error indicator for the stream. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_stdio_stream_a2d363b02abcef82b25ff025d50375bce}\label{class_stdio_stream_a2d363b02abcef82b25ff025d50375bce}} 
+\index{StdioStream@{StdioStream}!fread@{fread}}
+\index{fread@{fread}!StdioStream@{StdioStream}}
+\doxysubsubsection{\texorpdfstring{fread()}{fread()}}
+{\footnotesize\ttfamily size\+\_\+t Stdio\+Stream\+::fread (\begin{DoxyParamCaption}\item[{void $\ast$}]{ptr,  }\item[{size\+\_\+t}]{size,  }\item[{size\+\_\+t}]{count }\end{DoxyParamCaption})}
+
+Binary input.
+
+Reads an array of up to count elements, each one with a size of size bytes. 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ out}}  & {\em ptr} & pointer to area of at least (size$\ast$count) bytes where the data will be stored.\\
+\hline
+\mbox{\texttt{ in}}  & {\em size} & the size, in bytes, of each element to be read.\\
+\hline
+\mbox{\texttt{ in}}  & {\em count} & the number of elements to be read.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+number of elements successfully read, which may be less than count if a read error or end-\/of-\/file is encountered. If size or count is zero, fread returns zero and the contents of the array and the state of the stream remain unchanged. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_stdio_stream_a71584fd5c5cda3c31ce6cdbcc56f104d}\label{class_stdio_stream_a71584fd5c5cda3c31ce6cdbcc56f104d}} 
+\index{StdioStream@{StdioStream}!fseek@{fseek}}
+\index{fseek@{fseek}!StdioStream@{StdioStream}}
+\doxysubsubsection{\texorpdfstring{fseek()}{fseek()}}
+{\footnotesize\ttfamily int Stdio\+Stream\+::fseek (\begin{DoxyParamCaption}\item[{int32\+\_\+t}]{offset,  }\item[{int}]{origin }\end{DoxyParamCaption})}
+
+Set the file position for the stream.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em offset} & number of offset from the origin.\\
+\hline
+\mbox{\texttt{ in}}  & {\em origin} & position used as reference for the offset. It is specified by one of the following constants.\\
+\hline
+\end{DoxyParams}
+SEEK\+\_\+\+SET -\/ Beginning of file.
+
+SEEK\+\_\+\+CUR -\/ Current position of the file pointer.
+
+SEEK\+\_\+\+END -\/ End of file.
+
+\begin{DoxyReturn}{Returns}
+zero for success. Otherwise, it returns non-\/zero and sets the error indicator for the stream. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_stdio_stream_a809639fc5fb4fa5b6789dc121659f386}\label{class_stdio_stream_a809639fc5fb4fa5b6789dc121659f386}} 
+\index{StdioStream@{StdioStream}!ftell@{ftell}}
+\index{ftell@{ftell}!StdioStream@{StdioStream}}
+\doxysubsubsection{\texorpdfstring{ftell()}{ftell()}}
+{\footnotesize\ttfamily int32\+\_\+t Stdio\+Stream\+::ftell (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Get the current position in a stream.
+
+\begin{DoxyReturn}{Returns}
+If successful, ftell return the current value of the position indicator. On failure, ftell returns −1L. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_stdio_stream_ad79465afb52579cbc801f4585c3f9c25}\label{class_stdio_stream_ad79465afb52579cbc801f4585c3f9c25}} 
+\index{StdioStream@{StdioStream}!fwrite@{fwrite}}
+\index{fwrite@{fwrite}!StdioStream@{StdioStream}}
+\doxysubsubsection{\texorpdfstring{fwrite()}{fwrite()}}
+{\footnotesize\ttfamily size\+\_\+t Stdio\+Stream\+::fwrite (\begin{DoxyParamCaption}\item[{const void $\ast$}]{ptr,  }\item[{size\+\_\+t}]{size,  }\item[{size\+\_\+t}]{count }\end{DoxyParamCaption})}
+
+Binary output.
+
+Writes an array of up to count elements, each one with a size of size bytes. 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em ptr} & pointer to (size$\ast$count) bytes of data to be written.\\
+\hline
+\mbox{\texttt{ in}}  & {\em size} & the size, in bytes, of each element to be written.\\
+\hline
+\mbox{\texttt{ in}}  & {\em count} & the number of elements to be written.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+number of elements successfully written. if this number is less than count, an error has occurred. If size or count is zero, fwrite returns zero. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_stdio_stream_ad3f6ee8e8ca5dcf6dabfd88199b172e2}\label{class_stdio_stream_ad3f6ee8e8ca5dcf6dabfd88199b172e2}} 
+\index{StdioStream@{StdioStream}!print@{print}}
+\index{print@{print}!StdioStream@{StdioStream}}
+\doxysubsubsection{\texorpdfstring{print()}{print()}\hspace{0.1cm}{\footnotesize\ttfamily [1/5]}}
+{\footnotesize\ttfamily size\+\_\+t Stdio\+Stream\+::print (\begin{DoxyParamCaption}\item[{char}]{c }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Write a character. 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em c} & the character to write. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the number of bytes written. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_stdio_stream_a1158ea5f9bf041f21b1733b7811c9bb9}\label{class_stdio_stream_a1158ea5f9bf041f21b1733b7811c9bb9}} 
+\index{StdioStream@{StdioStream}!print@{print}}
+\index{print@{print}!StdioStream@{StdioStream}}
+\doxysubsubsection{\texorpdfstring{print()}{print()}\hspace{0.1cm}{\footnotesize\ttfamily [2/5]}}
+{\footnotesize\ttfamily size\+\_\+t Stdio\+Stream\+::print (\begin{DoxyParamCaption}\item[{const char $\ast$}]{str }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Write a string.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em str} & the string to be written.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the number of bytes written. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_stdio_stream_a26f5b98560b6771225005b073166108b}\label{class_stdio_stream_a26f5b98560b6771225005b073166108b}} 
+\index{StdioStream@{StdioStream}!print@{print}}
+\index{print@{print}!StdioStream@{StdioStream}}
+\doxysubsubsection{\texorpdfstring{print()}{print()}\hspace{0.1cm}{\footnotesize\ttfamily [3/5]}}
+{\footnotesize\ttfamily size\+\_\+t Stdio\+Stream\+::print (\begin{DoxyParamCaption}\item[{double}]{val,  }\item[{uint8\+\_\+t}]{prec = {\ttfamily 2} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Print a floating point number.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em prec} & Number of digits after decimal point.\\
+\hline
+\mbox{\texttt{ in}}  & {\em val} & the number to be printed.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the number of bytes written. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_stdio_stream_a06b6eb9f0a7000fdcc73cd6af8d40560}\label{class_stdio_stream_a06b6eb9f0a7000fdcc73cd6af8d40560}} 
+\index{StdioStream@{StdioStream}!print@{print}}
+\index{print@{print}!StdioStream@{StdioStream}}
+\doxysubsubsection{\texorpdfstring{print()}{print()}\hspace{0.1cm}{\footnotesize\ttfamily [4/5]}}
+{\footnotesize\ttfamily size\+\_\+t Stdio\+Stream\+::print (\begin{DoxyParamCaption}\item[{float}]{val,  }\item[{uint8\+\_\+t}]{prec = {\ttfamily 2} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Print a floating point number.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em prec} & Number of digits after decimal point.\\
+\hline
+\mbox{\texttt{ in}}  & {\em val} & the number to be printed.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the number of bytes written. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_stdio_stream_a7129f85c7c5f16867f467731ef84dee9}\label{class_stdio_stream_a7129f85c7c5f16867f467731ef84dee9}} 
+\index{StdioStream@{StdioStream}!print@{print}}
+\index{print@{print}!StdioStream@{StdioStream}}
+\doxysubsubsection{\texorpdfstring{print()}{print()}\hspace{0.1cm}{\footnotesize\ttfamily [5/5]}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+size\+\_\+t Stdio\+Stream\+::print (\begin{DoxyParamCaption}\item[{T}]{val }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Print a number.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em val} & the number to be printed.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the number of bytes written. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_stdio_stream_ac0a907feb1e4b7e00de99857b4c0a470}\label{class_stdio_stream_ac0a907feb1e4b7e00de99857b4c0a470}} 
+\index{StdioStream@{StdioStream}!printDec@{printDec}}
+\index{printDec@{printDec}!StdioStream@{StdioStream}}
+\doxysubsubsection{\texorpdfstring{printDec()}{printDec()}\hspace{0.1cm}{\footnotesize\ttfamily [1/9]}}
+{\footnotesize\ttfamily int Stdio\+Stream\+::print\+Dec (\begin{DoxyParamCaption}\item[{char}]{n }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Print a char as a number. 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em n} & number to be printed. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The number of bytes written or -\/1 if an error occurs. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_stdio_stream_aaa8921947d4dbbae840d285cb633e8aa}\label{class_stdio_stream_aaa8921947d4dbbae840d285cb633e8aa}} 
+\index{StdioStream@{StdioStream}!printDec@{printDec}}
+\index{printDec@{printDec}!StdioStream@{StdioStream}}
+\doxysubsubsection{\texorpdfstring{printDec()}{printDec()}\hspace{0.1cm}{\footnotesize\ttfamily [2/9]}}
+{\footnotesize\ttfamily int Stdio\+Stream\+::print\+Dec (\begin{DoxyParamCaption}\item[{double}]{value,  }\item[{uint8\+\_\+t}]{prec }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Print a double. 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em value} & The number to be printed. \\
+\hline
+\mbox{\texttt{ in}}  & {\em prec} & Number of digits after decimal point. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The number of bytes written or -\/1 if an error occurs. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_stdio_stream_a6a09284b1c6d0769c27916a2e131e749}\label{class_stdio_stream_a6a09284b1c6d0769c27916a2e131e749}} 
+\index{StdioStream@{StdioStream}!printDec@{printDec}}
+\index{printDec@{printDec}!StdioStream@{StdioStream}}
+\doxysubsubsection{\texorpdfstring{printDec()}{printDec()}\hspace{0.1cm}{\footnotesize\ttfamily [3/9]}}
+{\footnotesize\ttfamily int Stdio\+Stream\+::print\+Dec (\begin{DoxyParamCaption}\item[{float}]{value,  }\item[{uint8\+\_\+t}]{prec }\end{DoxyParamCaption})}
+
+Print a float. 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em value} & The number to be printed. \\
+\hline
+\mbox{\texttt{ in}}  & {\em prec} & Number of digits after decimal point. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The number of bytes written or -\/1 if an error occurs. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_stdio_stream_a218af88db35f38babf01d6e0a9cdceeb}\label{class_stdio_stream_a218af88db35f38babf01d6e0a9cdceeb}} 
+\index{StdioStream@{StdioStream}!printDec@{printDec}}
+\index{printDec@{printDec}!StdioStream@{StdioStream}}
+\doxysubsubsection{\texorpdfstring{printDec()}{printDec()}\hspace{0.1cm}{\footnotesize\ttfamily [4/9]}}
+{\footnotesize\ttfamily int Stdio\+Stream\+::print\+Dec (\begin{DoxyParamCaption}\item[{int16\+\_\+t}]{n }\end{DoxyParamCaption})}
+
+Print a int16\+\_\+t 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em n} & number to be printed. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The number of bytes written or -\/1 if an error occurs. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_stdio_stream_ad4591f1234b57f63c1acf0f3392099ac}\label{class_stdio_stream_ad4591f1234b57f63c1acf0f3392099ac}} 
+\index{StdioStream@{StdioStream}!printDec@{printDec}}
+\index{printDec@{printDec}!StdioStream@{StdioStream}}
+\doxysubsubsection{\texorpdfstring{printDec()}{printDec()}\hspace{0.1cm}{\footnotesize\ttfamily [5/9]}}
+{\footnotesize\ttfamily int Stdio\+Stream\+::print\+Dec (\begin{DoxyParamCaption}\item[{int32\+\_\+t}]{n }\end{DoxyParamCaption})}
+
+Print a signed 32-\/bit integer. 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em n} & number to be printed. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The number of bytes written or -\/1 if an error occurs. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_stdio_stream_a2707ea97f6113c226781469f4f39ff62}\label{class_stdio_stream_a2707ea97f6113c226781469f4f39ff62}} 
+\index{StdioStream@{StdioStream}!printDec@{printDec}}
+\index{printDec@{printDec}!StdioStream@{StdioStream}}
+\doxysubsubsection{\texorpdfstring{printDec()}{printDec()}\hspace{0.1cm}{\footnotesize\ttfamily [6/9]}}
+{\footnotesize\ttfamily int Stdio\+Stream\+::print\+Dec (\begin{DoxyParamCaption}\item[{signed char}]{n }\end{DoxyParamCaption})}
+
+print a signed 8-\/bit integer 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em n} & number to be printed. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The number of bytes written or -\/1 if an error occurs. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_stdio_stream_a90b2999af94a3578fff7579c2acf8e35}\label{class_stdio_stream_a90b2999af94a3578fff7579c2acf8e35}} 
+\index{StdioStream@{StdioStream}!printDec@{printDec}}
+\index{printDec@{printDec}!StdioStream@{StdioStream}}
+\doxysubsubsection{\texorpdfstring{printDec()}{printDec()}\hspace{0.1cm}{\footnotesize\ttfamily [7/9]}}
+{\footnotesize\ttfamily int Stdio\+Stream\+::print\+Dec (\begin{DoxyParamCaption}\item[{uint16\+\_\+t}]{n }\end{DoxyParamCaption})}
+
+print a uint16\+\_\+t. 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em n} & number to be printed. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The number of bytes written or -\/1 if an error occurs. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_stdio_stream_a8b6c2c80342abe45e6f564e9bd5bb7ea}\label{class_stdio_stream_a8b6c2c80342abe45e6f564e9bd5bb7ea}} 
+\index{StdioStream@{StdioStream}!printDec@{printDec}}
+\index{printDec@{printDec}!StdioStream@{StdioStream}}
+\doxysubsubsection{\texorpdfstring{printDec()}{printDec()}\hspace{0.1cm}{\footnotesize\ttfamily [8/9]}}
+{\footnotesize\ttfamily int Stdio\+Stream\+::print\+Dec (\begin{DoxyParamCaption}\item[{uint32\+\_\+t}]{n }\end{DoxyParamCaption})}
+
+Write an unsigned 32-\/bit number. 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em n} & number to be printed. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The number of bytes written or -\/1 if an error occurs. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_stdio_stream_a6e6ac78caa6259a4c4934707bf497a2b}\label{class_stdio_stream_a6e6ac78caa6259a4c4934707bf497a2b}} 
+\index{StdioStream@{StdioStream}!printDec@{printDec}}
+\index{printDec@{printDec}!StdioStream@{StdioStream}}
+\doxysubsubsection{\texorpdfstring{printDec()}{printDec()}\hspace{0.1cm}{\footnotesize\ttfamily [9/9]}}
+{\footnotesize\ttfamily int Stdio\+Stream\+::print\+Dec (\begin{DoxyParamCaption}\item[{unsigned char}]{n }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Print an unsigned 8-\/bit number. 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em n} & number to be print. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The number of bytes written or -\/1 if an error occurs. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_stdio_stream_a4988592ada39c4b4c603b061f84d183f}\label{class_stdio_stream_a4988592ada39c4b4c603b061f84d183f}} 
+\index{StdioStream@{StdioStream}!printField@{printField}}
+\index{printField@{printField}!StdioStream@{StdioStream}}
+\doxysubsubsection{\texorpdfstring{printField()}{printField()}\hspace{0.1cm}{\footnotesize\ttfamily [1/3]}}
+{\footnotesize\ttfamily int Stdio\+Stream\+::print\+Field (\begin{DoxyParamCaption}\item[{double}]{value,  }\item[{char}]{term,  }\item[{uint8\+\_\+t}]{prec = {\ttfamily 2} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Print a number followed by a field terminator. 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em value} & The number to be printed. \\
+\hline
+\mbox{\texttt{ in}}  & {\em term} & The field terminator. \\
+\hline
+\mbox{\texttt{ in}}  & {\em prec} & Number of digits after decimal point. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The number of bytes written or -\/1 if an error occurs. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_stdio_stream_a3b90b2317cc391f94784a847f5313c08}\label{class_stdio_stream_a3b90b2317cc391f94784a847f5313c08}} 
+\index{StdioStream@{StdioStream}!printField@{printField}}
+\index{printField@{printField}!StdioStream@{StdioStream}}
+\doxysubsubsection{\texorpdfstring{printField()}{printField()}\hspace{0.1cm}{\footnotesize\ttfamily [2/3]}}
+{\footnotesize\ttfamily int Stdio\+Stream\+::print\+Field (\begin{DoxyParamCaption}\item[{float}]{value,  }\item[{char}]{term,  }\item[{uint8\+\_\+t}]{prec = {\ttfamily 2} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Print a number followed by a field terminator. 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em value} & The number to be printed. \\
+\hline
+\mbox{\texttt{ in}}  & {\em term} & The field terminator. \\
+\hline
+\mbox{\texttt{ in}}  & {\em prec} & Number of digits after decimal point. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The number of bytes written or -\/1 if an error occurs. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_stdio_stream_a02c2ad1a2e71e82d238b8386cf3e6c41}\label{class_stdio_stream_a02c2ad1a2e71e82d238b8386cf3e6c41}} 
+\index{StdioStream@{StdioStream}!printField@{printField}}
+\index{printField@{printField}!StdioStream@{StdioStream}}
+\doxysubsubsection{\texorpdfstring{printField()}{printField()}\hspace{0.1cm}{\footnotesize\ttfamily [3/3]}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+int Stdio\+Stream\+::print\+Field (\begin{DoxyParamCaption}\item[{T}]{value,  }\item[{char}]{term }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Print a number followed by a field terminator. 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em value} & The number to be printed. \\
+\hline
+\mbox{\texttt{ in}}  & {\em term} & The field terminator. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The number of bytes written or -\/1 if an error occurs. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_stdio_stream_add39b2b4ec3daa7c8922e96ce5d368bc}\label{class_stdio_stream_add39b2b4ec3daa7c8922e96ce5d368bc}} 
+\index{StdioStream@{StdioStream}!printHex@{printHex}}
+\index{printHex@{printHex}!StdioStream@{StdioStream}}
+\doxysubsubsection{\texorpdfstring{printHex()}{printHex()}}
+{\footnotesize\ttfamily int Stdio\+Stream\+::print\+Hex (\begin{DoxyParamCaption}\item[{uint32\+\_\+t}]{n }\end{DoxyParamCaption})}
+
+Print HEX 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em n} & number to be printed as HEX.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The number of bytes written or -\/1 if an error occurs. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_stdio_stream_aec6ebea511489b0ef6b61d9132d93af9}\label{class_stdio_stream_aec6ebea511489b0ef6b61d9132d93af9}} 
+\index{StdioStream@{StdioStream}!printHexln@{printHexln}}
+\index{printHexln@{printHexln}!StdioStream@{StdioStream}}
+\doxysubsubsection{\texorpdfstring{printHexln()}{printHexln()}}
+{\footnotesize\ttfamily int Stdio\+Stream\+::print\+Hexln (\begin{DoxyParamCaption}\item[{uint32\+\_\+t}]{n }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Print HEX with CRLF 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em n} & number to be printed as HEX.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The number of bytes written or -\/1 if an error occurs. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_stdio_stream_ad0cd3acc05a91456f505752377bd405a}\label{class_stdio_stream_ad0cd3acc05a91456f505752377bd405a}} 
+\index{StdioStream@{StdioStream}!println@{println}}
+\index{println@{println}!StdioStream@{StdioStream}}
+\doxysubsubsection{\texorpdfstring{println()}{println()}\hspace{0.1cm}{\footnotesize\ttfamily [1/4]}}
+{\footnotesize\ttfamily size\+\_\+t Stdio\+Stream\+::println (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Write a CR/\+LF.
+
+\begin{DoxyReturn}{Returns}
+two, the number of bytes written, for success or zero for failure. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_stdio_stream_a3793dd66cf347a1ca0b7b167e948cce9}\label{class_stdio_stream_a3793dd66cf347a1ca0b7b167e948cce9}} 
+\index{StdioStream@{StdioStream}!println@{println}}
+\index{println@{println}!StdioStream@{StdioStream}}
+\doxysubsubsection{\texorpdfstring{println()}{println()}\hspace{0.1cm}{\footnotesize\ttfamily [2/4]}}
+{\footnotesize\ttfamily size\+\_\+t Stdio\+Stream\+::println (\begin{DoxyParamCaption}\item[{double}]{val,  }\item[{uint8\+\_\+t}]{prec = {\ttfamily 2} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Print a floating point number followed by CR/\+LF.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em val} & the number to be printed.\\
+\hline
+\mbox{\texttt{ in}}  & {\em prec} & Number of digits after decimal point.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the number of bytes written. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_stdio_stream_aac250d041a7844c8db1cbd2d97ecfdaa}\label{class_stdio_stream_aac250d041a7844c8db1cbd2d97ecfdaa}} 
+\index{StdioStream@{StdioStream}!println@{println}}
+\index{println@{println}!StdioStream@{StdioStream}}
+\doxysubsubsection{\texorpdfstring{println()}{println()}\hspace{0.1cm}{\footnotesize\ttfamily [3/4]}}
+{\footnotesize\ttfamily size\+\_\+t Stdio\+Stream\+::println (\begin{DoxyParamCaption}\item[{float}]{val,  }\item[{uint8\+\_\+t}]{prec = {\ttfamily 2} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Print a floating point number followed by CR/\+LF.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em val} & the number to be printed.\\
+\hline
+\mbox{\texttt{ in}}  & {\em prec} & Number of digits after decimal point.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the number of bytes written. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_stdio_stream_a3b14532768d07e6ed89c762d04792c12}\label{class_stdio_stream_a3b14532768d07e6ed89c762d04792c12}} 
+\index{StdioStream@{StdioStream}!println@{println}}
+\index{println@{println}!StdioStream@{StdioStream}}
+\doxysubsubsection{\texorpdfstring{println()}{println()}\hspace{0.1cm}{\footnotesize\ttfamily [4/4]}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+size\+\_\+t Stdio\+Stream\+::println (\begin{DoxyParamCaption}\item[{T}]{val }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Print an item followed by CR/\+LF
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em val} & the item to be printed.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the number of bytes written. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_stdio_stream_ad985866675193d2ee1dde9e27b0d08da}\label{class_stdio_stream_ad985866675193d2ee1dde9e27b0d08da}} 
+\index{StdioStream@{StdioStream}!rewind@{rewind}}
+\index{rewind@{rewind}!StdioStream@{StdioStream}}
+\doxysubsubsection{\texorpdfstring{rewind()}{rewind()}}
+{\footnotesize\ttfamily bool Stdio\+Stream\+::rewind (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Set position of a stream to the beginning.
+
+The rewind function sets the file position to the beginning of the file. It is equivalent to fseek(0\+L, SEEK\+\_\+\+SET) except that the error indicator for the stream is also cleared.
+
+\begin{DoxyReturn}{Returns}
+true for success or false for failure. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_stdio_stream_ac00e0dd906c2e857ece53794c6c92786}\label{class_stdio_stream_ac00e0dd906c2e857ece53794c6c92786}} 
+\index{StdioStream@{StdioStream}!ungetc@{ungetc}}
+\index{ungetc@{ungetc}!StdioStream@{StdioStream}}
+\doxysubsubsection{\texorpdfstring{ungetc()}{ungetc()}}
+{\footnotesize\ttfamily int Stdio\+Stream\+::ungetc (\begin{DoxyParamCaption}\item[{int}]{c }\end{DoxyParamCaption})}
+
+Push a byte back into an input stream.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em c} & the byte (converted to an unsigned char) to be pushed back.\\
+\hline
+\end{DoxyParams}
+One character of push-\/back is guaranteed. If the ungetc function is called too many times without an intervening read or file positioning operation on that stream, the operation may fail.
+
+A successful intervening call to a file positioning function (fseek, fsetpos, or rewind) discards any pushed-\/back characters for the stream.
+
+\begin{DoxyReturn}{Returns}
+Upon successful completion, \mbox{\hyperlink{class_stdio_stream_ac00e0dd906c2e857ece53794c6c92786}{ungetc()}} returns the byte pushed back after conversion. Otherwise it returns EOF. 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+/\+Users/kiran/\+Documents/\+Projects/\+ICLR/\+Avionics/\+Ricardo\+\_\+\+OS/\+Ricardo\+\_\+\+OS/lib/\+Sd\+Fat-\/master-\/adafruit\+\_\+fork/src/\+Fat\+Lib/\mbox{\hyperlink{_stdio_stream_8h}{Stdio\+Stream.\+h}}\item 
+/\+Users/kiran/\+Documents/\+Projects/\+ICLR/\+Avionics/\+Ricardo\+\_\+\+OS/\+Ricardo\+\_\+\+OS/lib/\+Sd\+Fat-\/master-\/adafruit\+\_\+fork/src/\+Fat\+Lib/Stdio\+Stream.\+cpp\end{DoxyCompactItemize}

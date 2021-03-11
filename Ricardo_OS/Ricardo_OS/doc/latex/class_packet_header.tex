@@ -1,0 +1,62 @@
+\hypertarget{class_packet_header}{}\doxysection{Packet\+Header Class Reference}
+\label{class_packet_header}\index{PacketHeader@{PacketHeader}}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_packet_header_ac821c6e8c0d14e59f92d6a4408feb3de}\label{class_packet_header_ac821c6e8c0d14e59f92d6a4408feb3de}} 
+{\bfseries Packet\+Header} (uint8\+\_\+t packet\+\_\+type, uint32\+\_\+t packet\+\_\+size)
+\item 
+\mbox{\Hypertarget{class_packet_header_a475cd6f2ce12956628181b7dbf01ea2b}\label{class_packet_header_a475cd6f2ce12956628181b7dbf01ea2b}} 
+{\bfseries Packet\+Header} (const uint8\+\_\+t $\ast$data)
+\item 
+\mbox{\Hypertarget{class_packet_header_a77e1156dbd831df7a2e8c412adbaecd3}\label{class_packet_header_a77e1156dbd831df7a2e8c412adbaecd3}} 
+std\+::vector$<$ uint8\+\_\+t $>$ {\bfseries serialize} () const
+\item 
+\mbox{\Hypertarget{class_packet_header_a085eb8780789576253589724818bc8d3}\label{class_packet_header_a085eb8780789576253589724818bc8d3}} 
+void {\bfseries serialize} (std\+::vector$<$ uint8\+\_\+t $>$ \&buf) const
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_packet_header_a9b41bad3493c52967899bd750465c238}\label{class_packet_header_a9b41bad3493c52967899bd750465c238}} 
+bool {\bfseries header\+\_\+size\+\_\+mismatch}
+\item 
+\mbox{\Hypertarget{class_packet_header_a0a27191dab044da810e1a1889020d333}\label{class_packet_header_a0a27191dab044da810e1a1889020d333}} 
+uint8\+\_\+t {\bfseries start\+\_\+byte} = 0x\+AF
+\item 
+\mbox{\Hypertarget{class_packet_header_af930dc96d866874b6fe8edfb3bce3d89}\label{class_packet_header_af930dc96d866874b6fe8edfb3bce3d89}} 
+uint8\+\_\+t {\bfseries header\+\_\+len} = header\+\_\+size()
+\item 
+\mbox{\Hypertarget{class_packet_header_a4d21c282bc6df162eaf67e9d13b4953a}\label{class_packet_header_a4d21c282bc6df162eaf67e9d13b4953a}} 
+uint32\+\_\+t {\bfseries packet\+\_\+len} = 0x00000000
+\item 
+\mbox{\Hypertarget{class_packet_header_a4f1a7d5e67ff2356183e4e1af12cac66}\label{class_packet_header_a4f1a7d5e67ff2356183e4e1af12cac66}} 
+uint32\+\_\+t {\bfseries system\+\_\+time} = 0x00000000
+\item 
+\mbox{\Hypertarget{class_packet_header_a76c5031c8115a17ec011d3af8046aeef}\label{class_packet_header_a76c5031c8115a17ec011d3af8046aeef}} 
+uint8\+\_\+t {\bfseries type} = 0x00
+\item 
+\mbox{\Hypertarget{class_packet_header_a9f3fe9022c36622c66f9d2fa543a904f}\label{class_packet_header_a9f3fe9022c36622c66f9d2fa543a904f}} 
+uint8\+\_\+t {\bfseries source} = 0x00
+\item 
+\mbox{\Hypertarget{class_packet_header_ad71894c4d5107834f25ee5a4e2664f1e}\label{class_packet_header_ad71894c4d5107834f25ee5a4e2664f1e}} 
+uint8\+\_\+t {\bfseries destination} = 0x00
+\item 
+\mbox{\Hypertarget{class_packet_header_ad958f9d1c378e64ef845244576d7db5f}\label{class_packet_header_ad958f9d1c378e64ef845244576d7db5f}} 
+uint8\+\_\+t {\bfseries src\+\_\+interface} = 0x00
+\item 
+\mbox{\Hypertarget{class_packet_header_a8a2e4a283eb6eb6cea4ecb750b1c36e5}\label{class_packet_header_a8a2e4a283eb6eb6cea4ecb750b1c36e5}} 
+uint8\+\_\+t {\bfseries ttl} = 10
+\end{DoxyCompactItemize}
+\doxysubsection*{Friends}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_packet_header_a04dbcd95d420556b0b42e93203b0dcb6}\label{class_packet_header_a04dbcd95d420556b0b42e93203b0dcb6}} 
+class {\bfseries USB}
+\end{DoxyCompactItemize}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+/\+Users/kiran/\+Documents/\+Projects/\+ICLR/\+Avionics/\+Ricardo\+\_\+\+OS/\+Ricardo\+\_\+\+OS/src/\+Comms/packets.\+h\item 
+/\+Users/kiran/\+Documents/\+Projects/\+ICLR/\+Avionics/\+Ricardo\+\_\+\+OS/\+Ricardo\+\_\+\+OS/src/\+Comms/packets.\+cpp\end{DoxyCompactItemize}

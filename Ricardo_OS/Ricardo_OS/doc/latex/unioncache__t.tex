@@ -1,0 +1,89 @@
+\hypertarget{unioncache__t}{}\doxysection{cache\+\_\+t Union Reference}
+\label{unioncache__t}\index{cache\_t@{cache\_t}}
+
+
+Cache for an raw data block.  
+
+
+
+
+{\ttfamily \#include $<$Fat\+Volume.\+h$>$}
+
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+uint8\+\_\+t \mbox{\hyperlink{unioncache__t_ae675b7a3a87d809070de111d1d1f1d81}{data}} \mbox{[}512\mbox{]}
+\item 
+uint16\+\_\+t \mbox{\hyperlink{unioncache__t_a8f3a4e9392a7d8ace954fc44c57df887}{fat16}} \mbox{[}256\mbox{]}
+\item 
+uint32\+\_\+t \mbox{\hyperlink{unioncache__t_a57e16421bf460d1ba6cb9ce9a23a4a83}{fat32}} \mbox{[}128\mbox{]}
+\item 
+\mbox{\hyperlink{_fat_structs_8h_a803db59d4e16a0c54a647afc6a7954e3}{dir\+\_\+t}} \mbox{\hyperlink{unioncache__t_a7396fdbdb7c52bd1d72c5329ff32acd1}{dir}} \mbox{[}16\mbox{]}
+\item 
+\mbox{\hyperlink{_fat_structs_8h_a7c429e5097f101c8c97663d6c4155bd9}{mbr\+\_\+t}} \mbox{\hyperlink{unioncache__t_a6ac10bfb1ebb1139c448456679663bb6}{mbr}}
+\item 
+\mbox{\hyperlink{_fat_structs_8h_aedac4595ee08198da26c14b9891a07d5}{fat\+\_\+boot\+\_\+t}} \mbox{\hyperlink{unioncache__t_ad1a4f1c0e8b8ca4d530427dbc920c764}{fbs}}
+\item 
+\mbox{\hyperlink{_fat_structs_8h_a38fa081d004647a828095d31b07ec491}{fat32\+\_\+boot\+\_\+t}} \mbox{\hyperlink{unioncache__t_ad0613173ed4e83920eedfeb33102848a}{fbs32}}
+\item 
+\mbox{\hyperlink{_fat_structs_8h_a6030ed0fce3a819326a2548407fc8556}{fat32\+\_\+fsinfo\+\_\+t}} \mbox{\hyperlink{unioncache__t_a46c7b14586a6248824a97101111cbae1}{fsinfo}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Cache for an raw data block. 
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{unioncache__t_ae675b7a3a87d809070de111d1d1f1d81}\label{unioncache__t_ae675b7a3a87d809070de111d1d1f1d81}} 
+\index{cache\_t@{cache\_t}!data@{data}}
+\index{data@{data}!cache\_t@{cache\_t}}
+\doxysubsubsection{\texorpdfstring{data}{data}}
+{\footnotesize\ttfamily uint8\+\_\+t cache\+\_\+t\+::data\mbox{[}512\mbox{]}}
+
+Used to access cached file data blocks. \mbox{\Hypertarget{unioncache__t_a7396fdbdb7c52bd1d72c5329ff32acd1}\label{unioncache__t_a7396fdbdb7c52bd1d72c5329ff32acd1}} 
+\index{cache\_t@{cache\_t}!dir@{dir}}
+\index{dir@{dir}!cache\_t@{cache\_t}}
+\doxysubsubsection{\texorpdfstring{dir}{dir}}
+{\footnotesize\ttfamily \mbox{\hyperlink{_fat_structs_8h_a803db59d4e16a0c54a647afc6a7954e3}{dir\+\_\+t}} cache\+\_\+t\+::dir\mbox{[}16\mbox{]}}
+
+Used to access cached directory entries. \mbox{\Hypertarget{unioncache__t_a8f3a4e9392a7d8ace954fc44c57df887}\label{unioncache__t_a8f3a4e9392a7d8ace954fc44c57df887}} 
+\index{cache\_t@{cache\_t}!fat16@{fat16}}
+\index{fat16@{fat16}!cache\_t@{cache\_t}}
+\doxysubsubsection{\texorpdfstring{fat16}{fat16}}
+{\footnotesize\ttfamily uint16\+\_\+t cache\+\_\+t\+::fat16\mbox{[}256\mbox{]}}
+
+Used to access cached FAT16 entries. \mbox{\Hypertarget{unioncache__t_a57e16421bf460d1ba6cb9ce9a23a4a83}\label{unioncache__t_a57e16421bf460d1ba6cb9ce9a23a4a83}} 
+\index{cache\_t@{cache\_t}!fat32@{fat32}}
+\index{fat32@{fat32}!cache\_t@{cache\_t}}
+\doxysubsubsection{\texorpdfstring{fat32}{fat32}}
+{\footnotesize\ttfamily uint32\+\_\+t cache\+\_\+t\+::fat32\mbox{[}128\mbox{]}}
+
+Used to access cached FAT32 entries. \mbox{\Hypertarget{unioncache__t_ad1a4f1c0e8b8ca4d530427dbc920c764}\label{unioncache__t_ad1a4f1c0e8b8ca4d530427dbc920c764}} 
+\index{cache\_t@{cache\_t}!fbs@{fbs}}
+\index{fbs@{fbs}!cache\_t@{cache\_t}}
+\doxysubsubsection{\texorpdfstring{fbs}{fbs}}
+{\footnotesize\ttfamily \mbox{\hyperlink{_fat_structs_8h_aedac4595ee08198da26c14b9891a07d5}{fat\+\_\+boot\+\_\+t}} cache\+\_\+t\+::fbs}
+
+Used to access to a cached FAT boot sector. \mbox{\Hypertarget{unioncache__t_ad0613173ed4e83920eedfeb33102848a}\label{unioncache__t_ad0613173ed4e83920eedfeb33102848a}} 
+\index{cache\_t@{cache\_t}!fbs32@{fbs32}}
+\index{fbs32@{fbs32}!cache\_t@{cache\_t}}
+\doxysubsubsection{\texorpdfstring{fbs32}{fbs32}}
+{\footnotesize\ttfamily \mbox{\hyperlink{_fat_structs_8h_a38fa081d004647a828095d31b07ec491}{fat32\+\_\+boot\+\_\+t}} cache\+\_\+t\+::fbs32}
+
+Used to access to a cached FAT32 boot sector. \mbox{\Hypertarget{unioncache__t_a46c7b14586a6248824a97101111cbae1}\label{unioncache__t_a46c7b14586a6248824a97101111cbae1}} 
+\index{cache\_t@{cache\_t}!fsinfo@{fsinfo}}
+\index{fsinfo@{fsinfo}!cache\_t@{cache\_t}}
+\doxysubsubsection{\texorpdfstring{fsinfo}{fsinfo}}
+{\footnotesize\ttfamily \mbox{\hyperlink{_fat_structs_8h_a6030ed0fce3a819326a2548407fc8556}{fat32\+\_\+fsinfo\+\_\+t}} cache\+\_\+t\+::fsinfo}
+
+Used to access to a cached FAT32 FSINFO sector. \mbox{\Hypertarget{unioncache__t_a6ac10bfb1ebb1139c448456679663bb6}\label{unioncache__t_a6ac10bfb1ebb1139c448456679663bb6}} 
+\index{cache\_t@{cache\_t}!mbr@{mbr}}
+\index{mbr@{mbr}!cache\_t@{cache\_t}}
+\doxysubsubsection{\texorpdfstring{mbr}{mbr}}
+{\footnotesize\ttfamily \mbox{\hyperlink{_fat_structs_8h_a7c429e5097f101c8c97663d6c4155bd9}{mbr\+\_\+t}} cache\+\_\+t\+::mbr}
+
+Used to access a cached Master Boot Record. 
+
+The documentation for this union was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+/\+Users/kiran/\+Documents/\+Projects/\+ICLR/\+Avionics/\+Ricardo\+\_\+\+OS/\+Ricardo\+\_\+\+OS/lib/\+Sd\+Fat-\/master-\/adafruit\+\_\+fork/src/\+Fat\+Lib/\mbox{\hyperlink{_fat_volume_8h}{Fat\+Volume.\+h}}\end{DoxyCompactItemize}

@@ -1,0 +1,135 @@
+\hypertarget{_fat_file_8h}{}\doxysection{/\+Users/kiran/\+Documents/\+Projects/\+ICLR/\+Avionics/\+Ricardo\+\_\+\+OS/\+Ricardo\+\_\+\+OS/lib/\+Sd\+Fat-\/master-\/adafruit\+\_\+fork/src/\+Fat\+Lib/\+Fat\+File.h File Reference}
+\label{_fat_file_8h}\index{/Users/kiran/Documents/Projects/ICLR/Avionics/Ricardo\_OS/Ricardo\_OS/lib/SdFat-\/master-\/adafruit\_fork/src/FatLib/FatFile.h@{/Users/kiran/Documents/Projects/ICLR/Avionics/Ricardo\_OS/Ricardo\_OS/lib/SdFat-\/master-\/adafruit\_fork/src/FatLib/FatFile.h}}
+
+
+\mbox{\hyperlink{class_fat_file}{Fat\+File}} class.  
+
+
+{\ttfamily \#include $<$string.\+h$>$}\newline
+{\ttfamily \#include $<$stddef.\+h$>$}\newline
+{\ttfamily \#include $<$limits.\+h$>$}\newline
+{\ttfamily \#include \char`\"{}Fat\+Lib\+Config.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}Fat\+Api\+Constants.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}Fat\+Structs.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}Fat\+Volume.\+h\char`\"{}}\newline
+\doxysubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{struct_fat_pos__t}{Fat\+Pos\+\_\+t}}
+\begin{DoxyCompactList}\small\item\em Internal type for file position -\/ do not use in user apps. \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{structfname__t}{fname\+\_\+t}}
+\begin{DoxyCompactList}\small\item\em Internal type for Short File Name -\/ do not use in user apps. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{class_fat_file}{Fat\+File}}
+\begin{DoxyCompactList}\small\item\em Basic file class. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{_fat_file_8h_a9c00057fd19e916cc1aa0a5949336beb}{PSTR}}(x)~(x)
+\item 
+\#define \mbox{\hyperlink{_fat_file_8h_a48c60b057902adf805797f183286728d}{pgm\+\_\+read\+\_\+byte}}(addr)~($\ast$(const unsigned char$\ast$)(addr))
+\item 
+\#define \mbox{\hyperlink{_fat_file_8h_a910fb5f01313d339d3b835d45e1e5ad0}{pgm\+\_\+read\+\_\+word}}(addr)~($\ast$(const uint16\+\_\+t$\ast$)(addr))
+\item 
+\#define \mbox{\hyperlink{_fat_file_8h_a75acaba9e781937468d0911423bc0c35}{PROGMEM}}
+\item 
+\#define \mbox{\hyperlink{_fat_file_8h_a9f85580ad6f1dfc86fff09a58ff0a1c0}{is\+Dir\+Separator}}(c)~((c) == \textquotesingle{}/\textquotesingle{})
+\end{DoxyCompactItemize}
+\doxysubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+const uint8\+\_\+t \mbox{\hyperlink{_fat_file_8h_acd45286b7dfc5ba68be18c8c3a9d298d}{FNAME\+\_\+\+FLAG\+\_\+\+LOST\+\_\+\+CHARS}} = 0\+X01
+\item 
+const uint8\+\_\+t \mbox{\hyperlink{_fat_file_8h_a63994c21f3b723a55247f063a1b01c9c}{FNAME\+\_\+\+FLAG\+\_\+\+MIXED\+\_\+\+CASE}} = 0\+X02
+\item 
+const uint8\+\_\+t \mbox{\hyperlink{_fat_file_8h_a1a041207a19d2fd9a1e2739343ccb29b}{FNAME\+\_\+\+FLAG\+\_\+\+NEED\+\_\+\+LFN}}
+\item 
+const uint8\+\_\+t \mbox{\hyperlink{_fat_file_8h_a79e43960e1b4eecf274f5faea9c3168c}{FNAME\+\_\+\+FLAG\+\_\+\+LC\+\_\+\+BASE}} = \mbox{\hyperlink{_fat_structs_8h_a39f9b8960dba007b537e9b71c25384fe}{DIR\+\_\+\+NT\+\_\+\+LC\+\_\+\+BASE}}
+\item 
+const uint8\+\_\+t \mbox{\hyperlink{_fat_file_8h_a135b7572768b09661aa38afaceec7296}{FNAME\+\_\+\+FLAG\+\_\+\+LC\+\_\+\+EXT}} = \mbox{\hyperlink{_fat_structs_8h_a8766a8bbab6ad3da38c1b308545d7572}{DIR\+\_\+\+NT\+\_\+\+LC\+\_\+\+EXT}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\mbox{\hyperlink{class_fat_file}{Fat\+File}} class. 
+
+Copyright (c) 2011-\/2018 Bill Greiman This file is part of the \mbox{\hyperlink{class_sd_fat}{Sd\+Fat}} library for SD memory cards.
+
+MIT License
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the \char`\"{}\+Software\char`\"{}), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions\+:
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED \char`\"{}\+AS IS\char`\"{}, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE. 
+
+\doxysubsection{Macro Definition Documentation}
+\mbox{\Hypertarget{_fat_file_8h_a9f85580ad6f1dfc86fff09a58ff0a1c0}\label{_fat_file_8h_a9f85580ad6f1dfc86fff09a58ff0a1c0}} 
+\index{FatFile.h@{FatFile.h}!isDirSeparator@{isDirSeparator}}
+\index{isDirSeparator@{isDirSeparator}!FatFile.h@{FatFile.h}}
+\doxysubsubsection{\texorpdfstring{isDirSeparator}{isDirSeparator}}
+{\footnotesize\ttfamily \#define is\+Dir\+Separator(\begin{DoxyParamCaption}\item[{}]{c }\end{DoxyParamCaption})~((c) == \textquotesingle{}/\textquotesingle{})}
+
+Expression for path name separator. \mbox{\Hypertarget{_fat_file_8h_a48c60b057902adf805797f183286728d}\label{_fat_file_8h_a48c60b057902adf805797f183286728d}} 
+\index{FatFile.h@{FatFile.h}!pgm\_read\_byte@{pgm\_read\_byte}}
+\index{pgm\_read\_byte@{pgm\_read\_byte}!FatFile.h@{FatFile.h}}
+\doxysubsubsection{\texorpdfstring{pgm\_read\_byte}{pgm\_read\_byte}}
+{\footnotesize\ttfamily \#define pgm\+\_\+read\+\_\+byte(\begin{DoxyParamCaption}\item[{}]{addr }\end{DoxyParamCaption})~($\ast$(const unsigned char$\ast$)(addr))}
+
+read 8-\/bits from flash for ARM \mbox{\Hypertarget{_fat_file_8h_a910fb5f01313d339d3b835d45e1e5ad0}\label{_fat_file_8h_a910fb5f01313d339d3b835d45e1e5ad0}} 
+\index{FatFile.h@{FatFile.h}!pgm\_read\_word@{pgm\_read\_word}}
+\index{pgm\_read\_word@{pgm\_read\_word}!FatFile.h@{FatFile.h}}
+\doxysubsubsection{\texorpdfstring{pgm\_read\_word}{pgm\_read\_word}}
+{\footnotesize\ttfamily \#define pgm\+\_\+read\+\_\+word(\begin{DoxyParamCaption}\item[{}]{addr }\end{DoxyParamCaption})~($\ast$(const uint16\+\_\+t$\ast$)(addr))}
+
+read 16-\/bits from flash for ARM \mbox{\Hypertarget{_fat_file_8h_a75acaba9e781937468d0911423bc0c35}\label{_fat_file_8h_a75acaba9e781937468d0911423bc0c35}} 
+\index{FatFile.h@{FatFile.h}!PROGMEM@{PROGMEM}}
+\index{PROGMEM@{PROGMEM}!FatFile.h@{FatFile.h}}
+\doxysubsubsection{\texorpdfstring{PROGMEM}{PROGMEM}}
+{\footnotesize\ttfamily \#define PROGMEM}
+
+store in flash for ARM \mbox{\Hypertarget{_fat_file_8h_a9c00057fd19e916cc1aa0a5949336beb}\label{_fat_file_8h_a9c00057fd19e916cc1aa0a5949336beb}} 
+\index{FatFile.h@{FatFile.h}!PSTR@{PSTR}}
+\index{PSTR@{PSTR}!FatFile.h@{FatFile.h}}
+\doxysubsubsection{\texorpdfstring{PSTR}{PSTR}}
+{\footnotesize\ttfamily \#define PSTR(\begin{DoxyParamCaption}\item[{}]{x }\end{DoxyParamCaption})~(x)}
+
+store literal string in flash for ARM 
+
+\doxysubsection{Variable Documentation}
+\mbox{\Hypertarget{_fat_file_8h_a79e43960e1b4eecf274f5faea9c3168c}\label{_fat_file_8h_a79e43960e1b4eecf274f5faea9c3168c}} 
+\index{FatFile.h@{FatFile.h}!FNAME\_FLAG\_LC\_BASE@{FNAME\_FLAG\_LC\_BASE}}
+\index{FNAME\_FLAG\_LC\_BASE@{FNAME\_FLAG\_LC\_BASE}!FatFile.h@{FatFile.h}}
+\doxysubsubsection{\texorpdfstring{FNAME\_FLAG\_LC\_BASE}{FNAME\_FLAG\_LC\_BASE}}
+{\footnotesize\ttfamily const uint8\+\_\+t FNAME\+\_\+\+FLAG\+\_\+\+LC\+\_\+\+BASE = \mbox{\hyperlink{_fat_structs_8h_a39f9b8960dba007b537e9b71c25384fe}{DIR\+\_\+\+NT\+\_\+\+LC\+\_\+\+BASE}}}
+
+Filename base-\/name is all lower case \mbox{\Hypertarget{_fat_file_8h_a135b7572768b09661aa38afaceec7296}\label{_fat_file_8h_a135b7572768b09661aa38afaceec7296}} 
+\index{FatFile.h@{FatFile.h}!FNAME\_FLAG\_LC\_EXT@{FNAME\_FLAG\_LC\_EXT}}
+\index{FNAME\_FLAG\_LC\_EXT@{FNAME\_FLAG\_LC\_EXT}!FatFile.h@{FatFile.h}}
+\doxysubsubsection{\texorpdfstring{FNAME\_FLAG\_LC\_EXT}{FNAME\_FLAG\_LC\_EXT}}
+{\footnotesize\ttfamily const uint8\+\_\+t FNAME\+\_\+\+FLAG\+\_\+\+LC\+\_\+\+EXT = \mbox{\hyperlink{_fat_structs_8h_a8766a8bbab6ad3da38c1b308545d7572}{DIR\+\_\+\+NT\+\_\+\+LC\+\_\+\+EXT}}}
+
+Filename extension is all lower case. \mbox{\Hypertarget{_fat_file_8h_acd45286b7dfc5ba68be18c8c3a9d298d}\label{_fat_file_8h_acd45286b7dfc5ba68be18c8c3a9d298d}} 
+\index{FatFile.h@{FatFile.h}!FNAME\_FLAG\_LOST\_CHARS@{FNAME\_FLAG\_LOST\_CHARS}}
+\index{FNAME\_FLAG\_LOST\_CHARS@{FNAME\_FLAG\_LOST\_CHARS}!FatFile.h@{FatFile.h}}
+\doxysubsubsection{\texorpdfstring{FNAME\_FLAG\_LOST\_CHARS}{FNAME\_FLAG\_LOST\_CHARS}}
+{\footnotesize\ttfamily const uint8\+\_\+t FNAME\+\_\+\+FLAG\+\_\+\+LOST\+\_\+\+CHARS = 0\+X01}
+
+Derived from a LFN with loss or conversion of characters. \mbox{\Hypertarget{_fat_file_8h_a63994c21f3b723a55247f063a1b01c9c}\label{_fat_file_8h_a63994c21f3b723a55247f063a1b01c9c}} 
+\index{FatFile.h@{FatFile.h}!FNAME\_FLAG\_MIXED\_CASE@{FNAME\_FLAG\_MIXED\_CASE}}
+\index{FNAME\_FLAG\_MIXED\_CASE@{FNAME\_FLAG\_MIXED\_CASE}!FatFile.h@{FatFile.h}}
+\doxysubsubsection{\texorpdfstring{FNAME\_FLAG\_MIXED\_CASE}{FNAME\_FLAG\_MIXED\_CASE}}
+{\footnotesize\ttfamily const uint8\+\_\+t FNAME\+\_\+\+FLAG\+\_\+\+MIXED\+\_\+\+CASE = 0\+X02}
+
+Base-\/name or extension has mixed case. \mbox{\Hypertarget{_fat_file_8h_a1a041207a19d2fd9a1e2739343ccb29b}\label{_fat_file_8h_a1a041207a19d2fd9a1e2739343ccb29b}} 
+\index{FatFile.h@{FatFile.h}!FNAME\_FLAG\_NEED\_LFN@{FNAME\_FLAG\_NEED\_LFN}}
+\index{FNAME\_FLAG\_NEED\_LFN@{FNAME\_FLAG\_NEED\_LFN}!FatFile.h@{FatFile.h}}
+\doxysubsubsection{\texorpdfstring{FNAME\_FLAG\_NEED\_LFN}{FNAME\_FLAG\_NEED\_LFN}}
+{\footnotesize\ttfamily const uint8\+\_\+t FNAME\+\_\+\+FLAG\+\_\+\+NEED\+\_\+\+LFN}
+
+{\bfseries Initial value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{=}
+\DoxyCodeLine{  \mbox{\hyperlink{_fat_file_8h_acd45286b7dfc5ba68be18c8c3a9d298d}{FNAME\_FLAG\_LOST\_CHARS}} | \mbox{\hyperlink{_fat_file_8h_a63994c21f3b723a55247f063a1b01c9c}{FNAME\_FLAG\_MIXED\_CASE}}}
+
+\end{DoxyCode}
+LFN entries are required for file name. 

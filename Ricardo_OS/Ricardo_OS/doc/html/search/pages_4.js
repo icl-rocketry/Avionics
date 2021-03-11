@@ -1,0 +1,7 @@
+var searchData=
+[
+  ['sparkfun_20lsm9ds1_20arduino_20library_2114',['SparkFun LSM9DS1 Arduino Library',['../md___users_kiran__documents__projects__i_c_l_r__avionics__ricardo__o_s__ricardo__o_s_lib__spark_dd69be4a2b6f08032aeb6b5c83f63b73.html',1,'']]],
+  ['spi_20pinouts_2115',['SPI pinouts',['../md___users_kiran__documents__projects__i_c_l_r__avionics__ricardo__o_s__ricardo__o_s_lib__s_p_i_22f8c4bf4f51d7c1157be117952adc8c.html',1,'']]],
+  ['spimemory_2116',['SPIMemory',['../md___users_kiran__documents__projects__i_c_l_r__avionics__ricardo__o_s__ricardo__o_s_lib__s_p_i_memory_master__change_log.html',1,'']]],
+  ['spimemory_20_3ca_20href_3d_22https_3a_2f_2ftravis_2dci_2eorg_2fmarzogh_2fspimemory_22_3e_3cimg_20src_3d_22https_3a_2f_2ftravis_2dci_2eorg_2fmarzogh_2fspimemory_2esvg_3fbranch_3dmaster_22_20alt_3d_22build_20status_22_2f_3e_3c_2fa_3e_20_3ca_20href_3d_22https_3a_2f_2fzenodo_2eorg_2fbadge_2flatestdoi_2f35823047_22_3e_3cimg_20src_3d_22https_3a_2f_2fzenodo_2eorg_2fbadge_2f35823047_2esvg_22_20alt_3d_22doi_22_2f_3e_3c_2fa_3e_2117',['SPIMemory &lt;a href=&quot;https://travis-ci.org/Marzogh/SPIMemory&quot;&gt;&lt;img src=&quot;https://travis-ci.org/Marzogh/SPIMemory.svg?branch=master&quot; alt=&quot;Build Status&quot;/&gt;&lt;/a&gt; &lt;a href=&quot;https://zenodo.org/badge/latestdoi/35823047&quot;&gt;&lt;img src=&quot;https://zenodo.org/badge/35823047.svg&quot; alt=&quot;DOI&quot;/&gt;&lt;/a&gt;',['../md___users_kiran__documents__projects__i_c_l_r__avionics__ricardo__o_s__ricardo__o_s_lib__s_p_i_memory_master__r_e_a_d_m_e.html',1,'']]]
+];

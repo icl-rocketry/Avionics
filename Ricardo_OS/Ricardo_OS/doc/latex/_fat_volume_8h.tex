@@ -1,0 +1,65 @@
+\hypertarget{_fat_volume_8h}{}\doxysection{/\+Users/kiran/\+Documents/\+Projects/\+ICLR/\+Avionics/\+Ricardo\+\_\+\+OS/\+Ricardo\+\_\+\+OS/lib/\+Sd\+Fat-\/master-\/adafruit\+\_\+fork/src/\+Fat\+Lib/\+Fat\+Volume.h File Reference}
+\label{_fat_volume_8h}\index{/Users/kiran/Documents/Projects/ICLR/Avionics/Ricardo\_OS/Ricardo\_OS/lib/SdFat-\/master-\/adafruit\_fork/src/FatLib/FatVolume.h@{/Users/kiran/Documents/Projects/ICLR/Avionics/Ricardo\_OS/Ricardo\_OS/lib/SdFat-\/master-\/adafruit\_fork/src/FatLib/FatVolume.h}}
+
+
+\mbox{\hyperlink{class_fat_volume}{Fat\+Volume}} class.  
+
+
+{\ttfamily \#include $<$stddef.\+h$>$}\newline
+{\ttfamily \#include \char`\"{}Fat\+Lib\+Config.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}Fat\+Structs.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}Block\+Driver.\+h\char`\"{}}\newline
+\doxysubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \mbox{\hyperlink{class_char_writer}{Char\+Writer}}
+\begin{DoxyCompactList}\small\item\em Character output -\/ often serial port. \end{DoxyCompactList}\item 
+union \mbox{\hyperlink{unioncache__t}{cache\+\_\+t}}
+\begin{DoxyCompactList}\small\item\em Cache for an raw data block. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{class_fat_cache}{Fat\+Cache}}
+\begin{DoxyCompactList}\small\item\em Block cache. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{class_fat_volume}{Fat\+Volume}}
+\begin{DoxyCompactList}\small\item\em Access FAT16 and FAT32 volumes on raw file devices. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{_fat_volume_8h_ac80a3592e72fd96b772ee47a7d8e0d0a}{DEBUG\+\_\+\+MODE}}~0
+\item 
+\mbox{\Hypertarget{_fat_volume_8h_a37bec5b50aeab45dfcad2149552d73fc}\label{_fat_volume_8h_a37bec5b50aeab45dfcad2149552d73fc}} 
+\#define {\bfseries DBG\+\_\+\+FAIL\+\_\+\+MACRO}
+\item 
+\mbox{\Hypertarget{_fat_volume_8h_adc232438e628384713028049bd176321}\label{_fat_volume_8h_adc232438e628384713028049bd176321}} 
+\#define {\bfseries DBG\+\_\+\+PRINT\+\_\+\+IF}(b)
+\item 
+\mbox{\Hypertarget{_fat_volume_8h_a16c6f27b57f4567579f4524cbf4c5ede}\label{_fat_volume_8h_a16c6f27b57f4567579f4524cbf4c5ede}} 
+\#define {\bfseries DBG\+\_\+\+HALT\+\_\+\+IF}(b)
+\end{DoxyCompactItemize}
+\doxysubsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{_fat_volume_8h_ac29695884eac60ba8243dd23f7c27984}\label{_fat_volume_8h_ac29695884eac60ba8243dd23f7c27984}} 
+typedef \mbox{\hyperlink{class_char_writer}{Char\+Writer}} {\bfseries print\+\_\+t}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\mbox{\hyperlink{class_fat_volume}{Fat\+Volume}} class. 
+
+Copyright (c) 2011-\/2018 Bill Greiman This file is part of the \mbox{\hyperlink{class_sd_fat}{Sd\+Fat}} library for SD memory cards.
+
+MIT License
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the \char`\"{}\+Software\char`\"{}), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions\+:
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED \char`\"{}\+AS IS\char`\"{}, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE. 
+
+\doxysubsection{Macro Definition Documentation}
+\mbox{\Hypertarget{_fat_volume_8h_ac80a3592e72fd96b772ee47a7d8e0d0a}\label{_fat_volume_8h_ac80a3592e72fd96b772ee47a7d8e0d0a}} 
+\index{FatVolume.h@{FatVolume.h}!DEBUG\_MODE@{DEBUG\_MODE}}
+\index{DEBUG\_MODE@{DEBUG\_MODE}!FatVolume.h@{FatVolume.h}}
+\doxysubsubsection{\texorpdfstring{DEBUG\_MODE}{DEBUG\_MODE}}
+{\footnotesize\ttfamily \#define DEBUG\+\_\+\+MODE~0}
+
+Macro for debug. 
