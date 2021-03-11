@@ -9,9 +9,18 @@
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+  $(document).ready(function() { init_search(); });
+/* @license-end */
+</script>
 <link href="doxygen.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
@@ -25,6 +34,21 @@
    &#160;<span id="projectnumber">1</span>
    </div>
   </td>
+   <td>        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <img id="MSearchSelect" src="search/mag_sel.svg"
+               onmouseover="return searchBox.OnSearchSelectShow()"
+               onmouseout="return searchBox.OnSearchSelectHide()"
+               alt=""/>
+          <input type="text" id="MSearchField" value="Search" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.svg" alt=""/></a>
+          </span>
+        </div>
+</td>
  </tr>
  </tbody>
 </table>
@@ -36,16 +60,23 @@
 var searchBox = new SearchBox("searchBox", "search",false,'Search','.html');
 /* @license-end */
 </script>
-<script type="text/javascript" src="menudata.js"></script>
-<script type="text/javascript" src="menu.js"></script>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
 <script type="text/javascript">
 /* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
-$(function() {
-  initMenu('',true,false,'search.php','Search');
-  $(document).ready(function() { init_search(); });
-});
-/* @license-end */</script>
-<div id="main-nav"></div>
+$(document).ready(function(){initNavTree('class_iface.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
      onmouseover="return searchBox.OnSearchSelectShow()"
@@ -60,7 +91,6 @@ $(function() {
 </iframe>
 </div>
 
-</div><!-- top -->
 <div class="header">
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
@@ -69,6 +99,8 @@ $(function() {
 <div class="title">Iface Class Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p><code>#include &lt;<a class="el" href="iface_8h_source.html">iface.h</a>&gt;</code></p>
 <div class="dynheader">
 Inheritance diagram for Iface:</div>
 <div class="dyncontent">
@@ -78,27 +110,122 @@ Inheritance diagram for Iface:</div>
 <area shape="rect" href="class_radio.html" title=" " alt="" coords="5,80,61,107"/>
 <area shape="rect" href="class_u_s_b.html" title=" " alt="" coords="85,80,136,107"/>
 </map>
-<center><span class="legend">[<a href="graph_legend.html">legend</a>]</span></center></div>
+<center><span class="legend">[<a target="top" href="graph_legend.html">legend</a>]</span></center></div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a5a89ff5d5f8f05467a55c5811a4ebe3f"><td class="memItemLeft" align="right" valign="top"><a id="a5a89ff5d5f8f05467a55c5811a4ebe3f"></a>
-virtual void&#160;</td><td class="memItemRight" valign="bottom"><b>setup</b> ()</td></tr>
+<tr class="memitem:a5a89ff5d5f8f05467a55c5811a4ebe3f"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_iface.html#a5a89ff5d5f8f05467a55c5811a4ebe3f">setup</a> ()</td></tr>
 <tr class="separator:a5a89ff5d5f8f05467a55c5811a4ebe3f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac8e727db8cba7c955c223b9685934568"><td class="memItemLeft" align="right" valign="top"><a id="ac8e727db8cba7c955c223b9685934568"></a>
-virtual void&#160;</td><td class="memItemRight" valign="bottom"><b>send_packet</b> (uint8_t *txpacket, size_t packet_len)</td></tr>
+<tr class="memitem:ac8e727db8cba7c955c223b9685934568"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_iface.html#ac8e727db8cba7c955c223b9685934568">send_packet</a> (uint8_t *txpacket, size_t packet_len)</td></tr>
 <tr class="separator:ac8e727db8cba7c955c223b9685934568"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5128895a25b9e35e18f6ab37d7e4b399"><td class="memItemLeft" align="right" valign="top"><a id="a5128895a25b9e35e18f6ab37d7e4b399"></a>
-virtual void&#160;</td><td class="memItemRight" valign="bottom"><b>get_packet</b> (std::vector&lt; std::shared_ptr&lt; uint8_t &gt;&gt; *buf)</td></tr>
+<tr class="memitem:a5128895a25b9e35e18f6ab37d7e4b399"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_iface.html#a5128895a25b9e35e18f6ab37d7e4b399">get_packet</a> (std::vector&lt; std::shared_ptr&lt; uint8_t &gt;&gt; *buf)</td></tr>
 <tr class="separator:a5128895a25b9e35e18f6ab37d7e4b399"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
+<h2 class="groupheader">Member Function Documentation</h2>
+<a id="a5128895a25b9e35e18f6ab37d7e4b399"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5128895a25b9e35e18f6ab37d7e4b399">&#9670;&nbsp;</a></span>get_packet()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual void Iface::get_packet </td>
+          <td>(</td>
+          <td class="paramtype">std::vector&lt; std::shared_ptr&lt; uint8_t &gt;&gt; *&#160;</td>
+          <td class="paramname"><em>buf</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Reimplemented in <a class="el" href="class_u_s_b.html#af3cdaec9cd19dbdf093b207a377ecae4">USB</a>, and <a class="el" href="class_radio.html#a322bf1bab2e4441abc970de4fe2f563f">Radio</a>.</p>
+
+</div>
+</div>
+<a id="ac8e727db8cba7c955c223b9685934568"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac8e727db8cba7c955c223b9685934568">&#9670;&nbsp;</a></span>send_packet()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual void Iface::send_packet </td>
+          <td>(</td>
+          <td class="paramtype">uint8_t *&#160;</td>
+          <td class="paramname"><em>txpacket</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t&#160;</td>
+          <td class="paramname"><em>packet_len</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Reimplemented in <a class="el" href="class_radio.html#a219437f42cd31f1373c7192b3c5fc19c">Radio</a>, and <a class="el" href="class_u_s_b.html#a404c09e9e90a8df1011d4aca3a13c5d1">USB</a>.</p>
+
+</div>
+</div>
+<a id="a5a89ff5d5f8f05467a55c5811a4ebe3f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5a89ff5d5f8f05467a55c5811a4ebe3f">&#9670;&nbsp;</a></span>setup()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual void Iface::setup </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Reimplemented in <a class="el" href="class_u_s_b.html#ac1ff137bb999158ee6266ec936665399">USB</a>, and <a class="el" href="class_radio.html#a46f079f86ab0e7e83a4521c35eaa9aff">Radio</a>.</p>
+
+</div>
+</div>
 <hr/>The documentation for this class was generated from the following file:<ul>
 <li>/Users/kiran/Documents/Projects/ICLR/Avionics/Ricardo_OS/Ricardo_OS/src/Comms/interfaces/<a class="el" href="iface_8h_source.html">iface.h</a></li>
 </ul>
 </div><!-- contents -->
+</div><!-- doc-content -->
 <!-- start footer part -->
-<hr class="footer"/><address class="footer"><small>
-Generated by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1
-</small></address>
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="class_iface.html">Iface</a></li>
+    <li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
+  </ul>
+</div>
 </body>
 </html>

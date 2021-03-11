@@ -2,8 +2,11 @@
 \label{class_iface}\index{Iface@{Iface}}
 
 
-Inheritance diagram for Iface\+:
-\nopagebreak
+{\ttfamily \#include $<$iface.\+h$>$}
+
+
+
+Inheritance diagram for Iface\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -13,17 +16,47 @@ Inheritance diagram for Iface\+:
 \doxysubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\Hypertarget{class_iface_a5a89ff5d5f8f05467a55c5811a4ebe3f}\label{class_iface_a5a89ff5d5f8f05467a55c5811a4ebe3f}} 
-virtual void {\bfseries setup} ()
+virtual void \mbox{\hyperlink{class_iface_a5a89ff5d5f8f05467a55c5811a4ebe3f}{setup}} ()
 \item 
-\mbox{\Hypertarget{class_iface_ac8e727db8cba7c955c223b9685934568}\label{class_iface_ac8e727db8cba7c955c223b9685934568}} 
-virtual void {\bfseries send\+\_\+packet} (uint8\+\_\+t $\ast$txpacket, size\+\_\+t packet\+\_\+len)
+virtual void \mbox{\hyperlink{class_iface_ac8e727db8cba7c955c223b9685934568}{send\+\_\+packet}} (uint8\+\_\+t $\ast$txpacket, size\+\_\+t packet\+\_\+len)
 \item 
-\mbox{\Hypertarget{class_iface_a5128895a25b9e35e18f6ab37d7e4b399}\label{class_iface_a5128895a25b9e35e18f6ab37d7e4b399}} 
-virtual void {\bfseries get\+\_\+packet} (std\+::vector$<$ std\+::shared\+\_\+ptr$<$ uint8\+\_\+t $>$$>$ $\ast$buf)
+virtual void \mbox{\hyperlink{class_iface_a5128895a25b9e35e18f6ab37d7e4b399}{get\+\_\+packet}} (std\+::vector$<$ std\+::shared\+\_\+ptr$<$ uint8\+\_\+t $>$$>$ $\ast$buf)
 \end{DoxyCompactItemize}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_iface_a5128895a25b9e35e18f6ab37d7e4b399}\label{class_iface_a5128895a25b9e35e18f6ab37d7e4b399}} 
+\index{Iface@{Iface}!get\_packet@{get\_packet}}
+\index{get\_packet@{get\_packet}!Iface@{Iface}}
+\doxysubsubsection{\texorpdfstring{get\_packet()}{get\_packet()}}
+{\footnotesize\ttfamily virtual void Iface\+::get\+\_\+packet (\begin{DoxyParamCaption}\item[{std\+::vector$<$ std\+::shared\+\_\+ptr$<$ uint8\+\_\+t $>$$>$ $\ast$}]{buf }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Reimplemented in \mbox{\hyperlink{class_u_s_b_af3cdaec9cd19dbdf093b207a377ecae4}{USB}}, and \mbox{\hyperlink{class_radio_a322bf1bab2e4441abc970de4fe2f563f}{Radio}}.
+
+\mbox{\Hypertarget{class_iface_ac8e727db8cba7c955c223b9685934568}\label{class_iface_ac8e727db8cba7c955c223b9685934568}} 
+\index{Iface@{Iface}!send\_packet@{send\_packet}}
+\index{send\_packet@{send\_packet}!Iface@{Iface}}
+\doxysubsubsection{\texorpdfstring{send\_packet()}{send\_packet()}}
+{\footnotesize\ttfamily virtual void Iface\+::send\+\_\+packet (\begin{DoxyParamCaption}\item[{uint8\+\_\+t $\ast$}]{txpacket,  }\item[{size\+\_\+t}]{packet\+\_\+len }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Reimplemented in \mbox{\hyperlink{class_radio_a219437f42cd31f1373c7192b3c5fc19c}{Radio}}, and \mbox{\hyperlink{class_u_s_b_a404c09e9e90a8df1011d4aca3a13c5d1}{USB}}.
+
+\mbox{\Hypertarget{class_iface_a5a89ff5d5f8f05467a55c5811a4ebe3f}\label{class_iface_a5a89ff5d5f8f05467a55c5811a4ebe3f}} 
+\index{Iface@{Iface}!setup@{setup}}
+\index{setup@{setup}!Iface@{Iface}}
+\doxysubsubsection{\texorpdfstring{setup()}{setup()}}
+{\footnotesize\ttfamily virtual void Iface\+::setup (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Reimplemented in \mbox{\hyperlink{class_u_s_b_ac1ff137bb999158ee6266ec936665399}{USB}}, and \mbox{\hyperlink{class_radio_a46f079f86ab0e7e83a4521c35eaa9aff}{Radio}}.
+
 
 
 The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
 \item 
-/\+Users/kiran/\+Documents/\+Projects/\+ICLR/\+Avionics/\+Ricardo\+\_\+\+OS/\+Ricardo\+\_\+\+OS/src/\+Comms/interfaces/iface.\+h\end{DoxyCompactItemize}
+/\+Users/kiran/\+Documents/\+Projects/\+ICLR/\+Avionics/\+Ricardo\+\_\+\+OS/\+Ricardo\+\_\+\+OS/src/\+Comms/interfaces/\mbox{\hyperlink{iface_8h}{iface.\+h}}\end{DoxyCompactItemize}

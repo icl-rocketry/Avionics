@@ -9,9 +9,18 @@
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+  $(document).ready(function() { init_search(); });
+/* @license-end */
+</script>
 <link href="doxygen.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
@@ -25,6 +34,21 @@
    &#160;<span id="projectnumber">1</span>
    </div>
   </td>
+   <td>        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <img id="MSearchSelect" src="search/mag_sel.svg"
+               onmouseover="return searchBox.OnSearchSelectShow()"
+               onmouseout="return searchBox.OnSearchSelectHide()"
+               alt=""/>
+          <input type="text" id="MSearchField" value="Search" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.svg" alt=""/></a>
+          </span>
+        </div>
+</td>
  </tr>
  </tbody>
 </table>
@@ -36,16 +60,23 @@
 var searchBox = new SearchBox("searchBox", "search",false,'Search','.html');
 /* @license-end */
 </script>
-<script type="text/javascript" src="menudata.js"></script>
-<script type="text/javascript" src="menu.js"></script>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
 <script type="text/javascript">
 /* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
-$(function() {
-  initMenu('',true,false,'search.php','Search');
-  $(document).ready(function() { init_search(); });
-});
-/* @license-end */</script>
-<div id="main-nav"></div>
+$(document).ready(function(){initNavTree('class_storage_controller.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
      onmouseover="return searchBox.OnSearchSelectShow()"
@@ -60,7 +91,6 @@ $(function() {
 </iframe>
 </div>
 
-</div><!-- top -->
 <div class="header">
   <div class="headertitle">
 <div class="title">StorageController Member List</div>  </div>
@@ -69,20 +99,29 @@ $(function() {
 
 <p>This is the complete list of members for <a class="el" href="class_storage_controller.html">StorageController</a>, including all inherited members.</p>
 <table class="directory">
-  <tr bgcolor="#f0f0f0" class="even"><td class="entry"><b>erase</b>(STORAGE_DEVICE device) (defined in <a class="el" href="class_storage_controller.html">StorageController</a>)</td><td class="entry"><a class="el" href="class_storage_controller.html">StorageController</a></td><td class="entry"></td></tr>
-  <tr bgcolor="#f0f0f0"><td class="entry"><b>ls</b>(std::string path, std::vector&lt; directory_element_t &gt; &amp;directory_structure, STORAGE_DEVICE device) (defined in <a class="el" href="class_storage_controller.html">StorageController</a>)</td><td class="entry"><a class="el" href="class_storage_controller.html">StorageController</a></td><td class="entry"></td></tr>
-  <tr bgcolor="#f0f0f0" class="even"><td class="entry"><b>ls</b>(std::vector&lt; directory_element_t &gt; &amp;directory_structure, STORAGE_DEVICE device) (defined in <a class="el" href="class_storage_controller.html">StorageController</a>)</td><td class="entry"><a class="el" href="class_storage_controller.html">StorageController</a></td><td class="entry"></td></tr>
-  <tr bgcolor="#f0f0f0"><td class="entry"><b>mkdir</b>(std::string path, STORAGE_DEVICE device) (defined in <a class="el" href="class_storage_controller.html">StorageController</a>)</td><td class="entry"><a class="el" href="class_storage_controller.html">StorageController</a></td><td class="entry"></td></tr>
-  <tr bgcolor="#f0f0f0" class="even"><td class="entry"><b>printDirectory</b>(std::string path, STORAGE_DEVICE device) (defined in <a class="el" href="class_storage_controller.html">StorageController</a>)</td><td class="entry"><a class="el" href="class_storage_controller.html">StorageController</a></td><td class="entry"></td></tr>
-  <tr bgcolor="#f0f0f0"><td class="entry"><b>read</b>(std::string path, STORAGE_DEVICE device) (defined in <a class="el" href="class_storage_controller.html">StorageController</a>)</td><td class="entry"><a class="el" href="class_storage_controller.html">StorageController</a></td><td class="entry"></td></tr>
-  <tr bgcolor="#f0f0f0" class="even"><td class="entry"><b>setup</b>() (defined in <a class="el" href="class_storage_controller.html">StorageController</a>)</td><td class="entry"><a class="el" href="class_storage_controller.html">StorageController</a></td><td class="entry"></td></tr>
-  <tr bgcolor="#f0f0f0"><td class="entry"><b>StorageController</b>(stateMachine *sm) (defined in <a class="el" href="class_storage_controller.html">StorageController</a>)</td><td class="entry"><a class="el" href="class_storage_controller.html">StorageController</a></td><td class="entry"></td></tr>
-  <tr bgcolor="#f0f0f0" class="even"><td class="entry"><b>updateDirectoryName</b>(std::string input_directory, STORAGE_DEVICE device) (defined in <a class="el" href="class_storage_controller.html">StorageController</a>)</td><td class="entry"><a class="el" href="class_storage_controller.html">StorageController</a></td><td class="entry"></td></tr>
-  <tr bgcolor="#f0f0f0"><td class="entry"><b>write</b>(std::string &amp;path, std::string &amp;data, STORAGE_DEVICE device) (defined in <a class="el" href="class_storage_controller.html">StorageController</a>)</td><td class="entry"><a class="el" href="class_storage_controller.html">StorageController</a></td><td class="entry"></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="class_storage_controller.html#a193c5de038c90eaca0cae0418f39e661">_sm</a></td><td class="entry"><a class="el" href="class_storage_controller.html">StorageController</a></td><td class="entry"><span class="mlabel">private</span></td></tr>
+  <tr><td class="entry"><a class="el" href="class_storage_controller.html#a8d50450acbe1b423a367b13d17f4d375">erase</a>(STORAGE_DEVICE device)</td><td class="entry"><a class="el" href="class_storage_controller.html">StorageController</a></td><td class="entry"></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="class_storage_controller.html#ad302278a1f554b2bdcced6149c0f6ad3">flash</a></td><td class="entry"><a class="el" href="class_storage_controller.html">StorageController</a></td><td class="entry"><span class="mlabel">private</span></td></tr>
+  <tr><td class="entry"><a class="el" href="class_storage_controller.html#abee9c9104024d8820a22c63673b9673c">flash_fatfs</a></td><td class="entry"><a class="el" href="class_storage_controller.html">StorageController</a></td><td class="entry"><span class="mlabel">private</span></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="class_storage_controller.html#a315c9595def59e88d2ccdb5fa94df6c8">flashTransport</a></td><td class="entry"><a class="el" href="class_storage_controller.html">StorageController</a></td><td class="entry"><span class="mlabel">private</span></td></tr>
+  <tr><td class="entry"><a class="el" href="class_storage_controller.html#adae9673eb8ed76ad4711b4d6bb7a02f7">getFileNameIndex</a>(const std::string fileName)</td><td class="entry"><a class="el" href="class_storage_controller.html">StorageController</a></td><td class="entry"><span class="mlabel">private</span></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="class_storage_controller.html#aeff6ec755ddf2df758b273691a1b662f">ls</a>(std::string path, std::vector&lt; directory_element_t &gt; &amp;directory_structure, STORAGE_DEVICE device)</td><td class="entry"><a class="el" href="class_storage_controller.html">StorageController</a></td><td class="entry"></td></tr>
+  <tr><td class="entry"><a class="el" href="class_storage_controller.html#a27d3d4b24ca02ef0edc6c53868612832">ls</a>(std::vector&lt; directory_element_t &gt; &amp;directory_structure, STORAGE_DEVICE device)</td><td class="entry"><a class="el" href="class_storage_controller.html">StorageController</a></td><td class="entry"></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="class_storage_controller.html#a0a6342fa9f3905d56ece169cc1cc316a">microsd</a></td><td class="entry"><a class="el" href="class_storage_controller.html">StorageController</a></td><td class="entry"><span class="mlabel">private</span></td></tr>
+  <tr><td class="entry"><a class="el" href="class_storage_controller.html#a1c88bf9602ab25ddceac9503d880a9f9">mkdir</a>(std::string path, STORAGE_DEVICE device)</td><td class="entry"><a class="el" href="class_storage_controller.html">StorageController</a></td><td class="entry"></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="class_storage_controller.html#a118abfa6ab0520474ccc47c78827f843">printDirectory</a>(std::string path, STORAGE_DEVICE device)</td><td class="entry"><a class="el" href="class_storage_controller.html">StorageController</a></td><td class="entry"></td></tr>
+  <tr><td class="entry"><a class="el" href="class_storage_controller.html#ac275c89a86d43a29114d5bd04c7158c1">read</a>(std::string path, STORAGE_DEVICE device)</td><td class="entry"><a class="el" href="class_storage_controller.html">StorageController</a></td><td class="entry"></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="class_storage_controller.html#a0b346fe54c8f2253697f86926fa5eb90">setup</a>()</td><td class="entry"><a class="el" href="class_storage_controller.html">StorageController</a></td><td class="entry"></td></tr>
+  <tr><td class="entry"><a class="el" href="class_storage_controller.html#a68285e89bb715975a36e6b6b891ae9dc">StorageController</a>(stateMachine *sm)</td><td class="entry"><a class="el" href="class_storage_controller.html">StorageController</a></td><td class="entry"></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="class_storage_controller.html#a87d4665b5ef9041aea21649463c895d0">updateDirectoryName</a>(std::string input_directory, STORAGE_DEVICE device)</td><td class="entry"><a class="el" href="class_storage_controller.html">StorageController</a></td><td class="entry"></td></tr>
+  <tr><td class="entry"><a class="el" href="class_storage_controller.html#a570540f0344421a0af1087f473329286">write</a>(std::string &amp;path, std::string &amp;data, STORAGE_DEVICE device)</td><td class="entry"><a class="el" href="class_storage_controller.html">StorageController</a></td><td class="entry"></td></tr>
 </table></div><!-- contents -->
+</div><!-- doc-content -->
 <!-- start footer part -->
-<hr class="footer"/><address class="footer"><small>
-Generated by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1
-</small></address>
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
+  </ul>
+</div>
 </body>
 </html>

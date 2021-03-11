@@ -9,9 +9,18 @@
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+  $(document).ready(function() { init_search(); });
+/* @license-end */
+</script>
 <link href="doxygen.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
@@ -25,6 +34,21 @@
    &#160;<span id="projectnumber">1</span>
    </div>
   </td>
+   <td>        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <img id="MSearchSelect" src="search/mag_sel.svg"
+               onmouseover="return searchBox.OnSearchSelectShow()"
+               onmouseout="return searchBox.OnSearchSelectHide()"
+               alt=""/>
+          <input type="text" id="MSearchField" value="Search" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.svg" alt=""/></a>
+          </span>
+        </div>
+</td>
  </tr>
  </tbody>
 </table>
@@ -36,16 +60,23 @@
 var searchBox = new SearchBox("searchBox", "search",false,'Search','.html');
 /* @license-end */
 </script>
-<script type="text/javascript" src="menudata.js"></script>
-<script type="text/javascript" src="menu.js"></script>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
 <script type="text/javascript">
 /* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
-$(function() {
-  initMenu('',true,false,'search.php','Search');
-  $(document).ready(function() { init_search(); });
-});
-/* @license-end */</script>
-<div id="main-nav"></div>
+$(document).ready(function(){initNavTree('groundstation_8h_source.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
      onmouseover="return searchBox.OnSearchSelectShow()"
@@ -60,41 +91,45 @@ $(function() {
 </iframe>
 </div>
 
-<div id="nav-path" class="navpath">
-  <ul>
-<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_418f1c0c7a7af3f93e93ef60c934c206.html">States</a></li>  </ul>
-</div>
-</div><!-- top -->
 <div class="header">
   <div class="headertitle">
 <div class="title">groundstation.h</div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">/* </span></div>
+<a href="groundstation_8h.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">/* </span></div>
 <div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment">state for groundstation use as reciever</span></div>
 <div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment">*/</span></div>
 <div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#ifndef GROUNDSTATION_H</span></div>
 <div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor">#define GROUNDSTATION_H</span></div>
 <div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="preprocessor">#include &lt;Arduino.h&gt;</span></div>
-<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="preprocessor">#include &quot;state.h&quot;</span></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="state_8h.html">state.h</a>&quot;</span></div>
 <div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160; </div>
 <div class="line"><a name="l00009"></a><span class="lineno"><a class="line" href="class_groundstation.html">    9</a></span>&#160;<span class="keyword">class </span><a class="code" href="class_groundstation.html">Groundstation</a>: <span class="keyword">public</span> <a class="code" href="class_state.html">State</a> {</div>
 <div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;    <span class="keyword">public</span>:</div>
-<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;        <a class="code" href="class_groundstation.html">Groundstation</a>(<a class="code" href="classstate_machine.html">stateMachine</a>* sm);</div>
-<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;        <span class="keywordtype">void</span> initialise();</div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;        <a class="code" href="class_state.html">State</a>* update();</div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;        <span class="keywordtype">void</span> exitstate();</div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;        <a class="code" href="class_groundstation.html#a357ae1790921356177a8dbbf98e22dc6">Groundstation</a>(<a class="code" href="classstate_machine.html">stateMachine</a>* sm);</div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;        <span class="keywordtype">void</span> <a class="code" href="class_groundstation.html#a530ac31955e79f2e35380788d4efa0ec">initialise</a>();</div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;        <a class="code" href="class_state.html">State</a>* <a class="code" href="class_groundstation.html#a0873b0defd56532bbf036621e4250fe9">update</a>();</div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;        <span class="keywordtype">void</span> <a class="code" href="class_groundstation.html#a666dd3f7c52b302e2676fe8fbc734416">exitstate</a>();</div>
 <div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160; </div>
 <div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;};</div>
 <div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160; </div>
 <div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="preprocessor">#endif</span></div>
 <div class="ttc" id="aclass_groundstation_html"><div class="ttname"><a href="class_groundstation.html">Groundstation</a></div><div class="ttdef"><b>Definition:</b> groundstation.h:9</div></div>
+<div class="ttc" id="aclass_groundstation_html_a0873b0defd56532bbf036621e4250fe9"><div class="ttname"><a href="class_groundstation.html#a0873b0defd56532bbf036621e4250fe9">Groundstation::update</a></div><div class="ttdeci">State * update()</div><div class="ttdef"><b>Definition:</b> groundstation.cpp:18</div></div>
+<div class="ttc" id="aclass_groundstation_html_a357ae1790921356177a8dbbf98e22dc6"><div class="ttname"><a href="class_groundstation.html#a357ae1790921356177a8dbbf98e22dc6">Groundstation::Groundstation</a></div><div class="ttdeci">Groundstation(stateMachine *sm)</div><div class="ttdef"><b>Definition:</b> groundstation.cpp:8</div></div>
+<div class="ttc" id="aclass_groundstation_html_a530ac31955e79f2e35380788d4efa0ec"><div class="ttname"><a href="class_groundstation.html#a530ac31955e79f2e35380788d4efa0ec">Groundstation::initialise</a></div><div class="ttdeci">void initialise()</div><div class="ttdef"><b>Definition:</b> groundstation.cpp:13</div></div>
+<div class="ttc" id="aclass_groundstation_html_a666dd3f7c52b302e2676fe8fbc734416"><div class="ttname"><a href="class_groundstation.html#a666dd3f7c52b302e2676fe8fbc734416">Groundstation::exitstate</a></div><div class="ttdeci">void exitstate()</div><div class="ttdef"><b>Definition:</b> groundstation.cpp:23</div></div>
 <div class="ttc" id="aclass_state_html"><div class="ttname"><a href="class_state.html">State</a></div><div class="ttdef"><b>Definition:</b> state.h:10</div></div>
 <div class="ttc" id="aclassstate_machine_html"><div class="ttname"><a href="classstate_machine.html">stateMachine</a></div><div class="ttdef"><b>Definition:</b> stateMachine.h:30</div></div>
+<div class="ttc" id="astate_8h_html"><div class="ttname"><a href="state_8h.html">state.h</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
 <!-- start footer part -->
-<hr class="footer"/><address class="footer"><small>
-Generated by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1
-</small></address>
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_418f1c0c7a7af3f93e93ef60c934c206.html">States</a></li><li class="navelem"><a class="el" href="groundstation_8h.html">groundstation.h</a></li>
+    <li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
+  </ul>
+</div>
 </body>
 </html>

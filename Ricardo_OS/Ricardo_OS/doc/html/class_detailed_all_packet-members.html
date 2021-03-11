@@ -9,9 +9,18 @@
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+  $(document).ready(function() { init_search(); });
+/* @license-end */
+</script>
 <link href="doxygen.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
@@ -25,6 +34,21 @@
    &#160;<span id="projectnumber">1</span>
    </div>
   </td>
+   <td>        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <img id="MSearchSelect" src="search/mag_sel.svg"
+               onmouseover="return searchBox.OnSearchSelectShow()"
+               onmouseout="return searchBox.OnSearchSelectHide()"
+               alt=""/>
+          <input type="text" id="MSearchField" value="Search" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.svg" alt=""/></a>
+          </span>
+        </div>
+</td>
  </tr>
  </tbody>
 </table>
@@ -36,16 +60,23 @@
 var searchBox = new SearchBox("searchBox", "search",false,'Search','.html');
 /* @license-end */
 </script>
-<script type="text/javascript" src="menudata.js"></script>
-<script type="text/javascript" src="menu.js"></script>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
 <script type="text/javascript">
 /* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
-$(function() {
-  initMenu('',true,false,'search.php','Search');
-  $(document).ready(function() { init_search(); });
-});
-/* @license-end */</script>
-<div id="main-nav"></div>
+$(document).ready(function(){initNavTree('class_detailed_all_packet.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
      onmouseover="return searchBox.OnSearchSelectShow()"
@@ -60,7 +91,6 @@ $(function() {
 </iframe>
 </div>
 
-</div><!-- top -->
 <div class="header">
   <div class="headertitle">
 <div class="title">DetailedAllPacket Member List</div>  </div>
@@ -69,33 +99,38 @@ $(function() {
 
 <p>This is the complete list of members for <a class="el" href="class_detailed_all_packet.html">DetailedAllPacket</a>, including all inherited members.</p>
 <table class="directory">
-  <tr bgcolor="#f0f0f0" class="even"><td class="entry"><b>ax</b> (defined in <a class="el" href="class_detailed_all_packet.html">DetailedAllPacket</a>)</td><td class="entry"><a class="el" href="class_detailed_all_packet.html">DetailedAllPacket</a></td><td class="entry"></td></tr>
-  <tr bgcolor="#f0f0f0"><td class="entry"><b>ay</b> (defined in <a class="el" href="class_detailed_all_packet.html">DetailedAllPacket</a>)</td><td class="entry"><a class="el" href="class_detailed_all_packet.html">DetailedAllPacket</a></td><td class="entry"></td></tr>
-  <tr bgcolor="#f0f0f0" class="even"><td class="entry"><b>az</b> (defined in <a class="el" href="class_detailed_all_packet.html">DetailedAllPacket</a>)</td><td class="entry"><a class="el" href="class_detailed_all_packet.html">DetailedAllPacket</a></td><td class="entry"></td></tr>
-  <tr bgcolor="#f0f0f0"><td class="entry"><b>baro_alt</b> (defined in <a class="el" href="class_detailed_all_packet.html">DetailedAllPacket</a>)</td><td class="entry"><a class="el" href="class_detailed_all_packet.html">DetailedAllPacket</a></td><td class="entry"></td></tr>
-  <tr bgcolor="#f0f0f0" class="even"><td class="entry"><b>baro_press</b> (defined in <a class="el" href="class_detailed_all_packet.html">DetailedAllPacket</a>)</td><td class="entry"><a class="el" href="class_detailed_all_packet.html">DetailedAllPacket</a></td><td class="entry"></td></tr>
-  <tr bgcolor="#f0f0f0"><td class="entry"><b>baro_temp</b> (defined in <a class="el" href="class_detailed_all_packet.html">DetailedAllPacket</a>)</td><td class="entry"><a class="el" href="class_detailed_all_packet.html">DetailedAllPacket</a></td><td class="entry"></td></tr>
-  <tr bgcolor="#f0f0f0" class="even"><td class="entry"><b>batt_percent</b> (defined in <a class="el" href="class_detailed_all_packet.html">DetailedAllPacket</a>)</td><td class="entry"><a class="el" href="class_detailed_all_packet.html">DetailedAllPacket</a></td><td class="entry"></td></tr>
-  <tr bgcolor="#f0f0f0"><td class="entry"><b>batt_volt</b> (defined in <a class="el" href="class_detailed_all_packet.html">DetailedAllPacket</a>)</td><td class="entry"><a class="el" href="class_detailed_all_packet.html">DetailedAllPacket</a></td><td class="entry"></td></tr>
-  <tr bgcolor="#f0f0f0" class="even"><td class="entry"><b>DetailedAllPacket</b>(const uint8_t *data) (defined in <a class="el" href="class_detailed_all_packet.html">DetailedAllPacket</a>)</td><td class="entry"><a class="el" href="class_detailed_all_packet.html">DetailedAllPacket</a></td><td class="entry"></td></tr>
-  <tr bgcolor="#f0f0f0"><td class="entry"><b>DetailedAllPacket</b>() (defined in <a class="el" href="class_detailed_all_packet.html">DetailedAllPacket</a>)</td><td class="entry"><a class="el" href="class_detailed_all_packet.html">DetailedAllPacket</a></td><td class="entry"></td></tr>
-  <tr bgcolor="#f0f0f0" class="even"><td class="entry"><b>gps_alt</b> (defined in <a class="el" href="class_detailed_all_packet.html">DetailedAllPacket</a>)</td><td class="entry"><a class="el" href="class_detailed_all_packet.html">DetailedAllPacket</a></td><td class="entry"></td></tr>
-  <tr bgcolor="#f0f0f0"><td class="entry"><b>gps_lat</b> (defined in <a class="el" href="class_detailed_all_packet.html">DetailedAllPacket</a>)</td><td class="entry"><a class="el" href="class_detailed_all_packet.html">DetailedAllPacket</a></td><td class="entry"></td></tr>
-  <tr bgcolor="#f0f0f0" class="even"><td class="entry"><b>gps_long</b> (defined in <a class="el" href="class_detailed_all_packet.html">DetailedAllPacket</a>)</td><td class="entry"><a class="el" href="class_detailed_all_packet.html">DetailedAllPacket</a></td><td class="entry"></td></tr>
-  <tr bgcolor="#f0f0f0"><td class="entry"><b>gps_speed</b> (defined in <a class="el" href="class_detailed_all_packet.html">DetailedAllPacket</a>)</td><td class="entry"><a class="el" href="class_detailed_all_packet.html">DetailedAllPacket</a></td><td class="entry"></td></tr>
-  <tr bgcolor="#f0f0f0" class="even"><td class="entry"><b>gx</b> (defined in <a class="el" href="class_detailed_all_packet.html">DetailedAllPacket</a>)</td><td class="entry"><a class="el" href="class_detailed_all_packet.html">DetailedAllPacket</a></td><td class="entry"></td></tr>
-  <tr bgcolor="#f0f0f0"><td class="entry"><b>gy</b> (defined in <a class="el" href="class_detailed_all_packet.html">DetailedAllPacket</a>)</td><td class="entry"><a class="el" href="class_detailed_all_packet.html">DetailedAllPacket</a></td><td class="entry"></td></tr>
-  <tr bgcolor="#f0f0f0" class="even"><td class="entry"><b>gz</b> (defined in <a class="el" href="class_detailed_all_packet.html">DetailedAllPacket</a>)</td><td class="entry"><a class="el" href="class_detailed_all_packet.html">DetailedAllPacket</a></td><td class="entry"></td></tr>
-  <tr bgcolor="#f0f0f0"><td class="entry"><b>header</b> (defined in <a class="el" href="class_detailed_all_packet.html">DetailedAllPacket</a>)</td><td class="entry"><a class="el" href="class_detailed_all_packet.html">DetailedAllPacket</a></td><td class="entry"></td></tr>
-  <tr bgcolor="#f0f0f0" class="even"><td class="entry"><b>mx</b> (defined in <a class="el" href="class_detailed_all_packet.html">DetailedAllPacket</a>)</td><td class="entry"><a class="el" href="class_detailed_all_packet.html">DetailedAllPacket</a></td><td class="entry"></td></tr>
-  <tr bgcolor="#f0f0f0"><td class="entry"><b>my</b> (defined in <a class="el" href="class_detailed_all_packet.html">DetailedAllPacket</a>)</td><td class="entry"><a class="el" href="class_detailed_all_packet.html">DetailedAllPacket</a></td><td class="entry"></td></tr>
-  <tr bgcolor="#f0f0f0" class="even"><td class="entry"><b>mz</b> (defined in <a class="el" href="class_detailed_all_packet.html">DetailedAllPacket</a>)</td><td class="entry"><a class="el" href="class_detailed_all_packet.html">DetailedAllPacket</a></td><td class="entry"></td></tr>
-  <tr bgcolor="#f0f0f0"><td class="entry"><b>serialize</b>(std::vector&lt; uint8_t &gt; &amp;buf) const (defined in <a class="el" href="class_detailed_all_packet.html">DetailedAllPacket</a>)</td><td class="entry"><a class="el" href="class_detailed_all_packet.html">DetailedAllPacket</a></td><td class="entry"></td></tr>
-  <tr bgcolor="#f0f0f0" class="even"><td class="entry"><b>~DetailedAllPacket</b>() (defined in <a class="el" href="class_detailed_all_packet.html">DetailedAllPacket</a>)</td><td class="entry"><a class="el" href="class_detailed_all_packet.html">DetailedAllPacket</a></td><td class="entry"></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="class_detailed_all_packet.html#a4c2a7891d574a32f76bf2a6898b8fc39">ax</a></td><td class="entry"><a class="el" href="class_detailed_all_packet.html">DetailedAllPacket</a></td><td class="entry"></td></tr>
+  <tr><td class="entry"><a class="el" href="class_detailed_all_packet.html#adf2d56a6c81f22c372eab42f6146c4d6">ay</a></td><td class="entry"><a class="el" href="class_detailed_all_packet.html">DetailedAllPacket</a></td><td class="entry"></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="class_detailed_all_packet.html#a41d389192ad63e6273049cc90fb3ee17">az</a></td><td class="entry"><a class="el" href="class_detailed_all_packet.html">DetailedAllPacket</a></td><td class="entry"></td></tr>
+  <tr><td class="entry"><a class="el" href="class_detailed_all_packet.html#a2297f7091df832e540a13b98a86be714">baro_alt</a></td><td class="entry"><a class="el" href="class_detailed_all_packet.html">DetailedAllPacket</a></td><td class="entry"></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="class_detailed_all_packet.html#a6cb59b729d5f72accab9134a18c45191">baro_press</a></td><td class="entry"><a class="el" href="class_detailed_all_packet.html">DetailedAllPacket</a></td><td class="entry"></td></tr>
+  <tr><td class="entry"><a class="el" href="class_detailed_all_packet.html#a808ac0f0779b3c4ba8f98b6ab5aad956">baro_temp</a></td><td class="entry"><a class="el" href="class_detailed_all_packet.html">DetailedAllPacket</a></td><td class="entry"></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="class_detailed_all_packet.html#a8c700777fb23a6943d1bd47d4213bea0">batt_percent</a></td><td class="entry"><a class="el" href="class_detailed_all_packet.html">DetailedAllPacket</a></td><td class="entry"></td></tr>
+  <tr><td class="entry"><a class="el" href="class_detailed_all_packet.html#ab0a65488409595b46e311f64f3358697">batt_volt</a></td><td class="entry"><a class="el" href="class_detailed_all_packet.html">DetailedAllPacket</a></td><td class="entry"></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="class_detailed_all_packet.html#a468729995f026863a29739ed9471522f">DetailedAllPacket</a>(const uint8_t *data)</td><td class="entry"><a class="el" href="class_detailed_all_packet.html">DetailedAllPacket</a></td><td class="entry"></td></tr>
+  <tr><td class="entry"><a class="el" href="class_detailed_all_packet.html#acb22d658d90bb75c4c168b8f19aeaaf2">DetailedAllPacket</a>()</td><td class="entry"><a class="el" href="class_detailed_all_packet.html">DetailedAllPacket</a></td><td class="entry"></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="class_detailed_all_packet.html#a79d839d7b9fb6af7d852efb9821a867d">getSerializer</a>()</td><td class="entry"><a class="el" href="class_detailed_all_packet.html">DetailedAllPacket</a></td><td class="entry"><span class="mlabel">inline</span><span class="mlabel">private</span><span class="mlabel">static</span></td></tr>
+  <tr><td class="entry"><a class="el" href="class_detailed_all_packet.html#ac3ab288e0281945e2268f564fb16c163">gps_alt</a></td><td class="entry"><a class="el" href="class_detailed_all_packet.html">DetailedAllPacket</a></td><td class="entry"></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="class_detailed_all_packet.html#a019bd107a208d0a62ab40e51a92f8977">gps_lat</a></td><td class="entry"><a class="el" href="class_detailed_all_packet.html">DetailedAllPacket</a></td><td class="entry"></td></tr>
+  <tr><td class="entry"><a class="el" href="class_detailed_all_packet.html#aaaf0b987ea8da73fe37a99c182b15090">gps_long</a></td><td class="entry"><a class="el" href="class_detailed_all_packet.html">DetailedAllPacket</a></td><td class="entry"></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="class_detailed_all_packet.html#a9770d0d705195bfcf856e82587799f82">gps_speed</a></td><td class="entry"><a class="el" href="class_detailed_all_packet.html">DetailedAllPacket</a></td><td class="entry"></td></tr>
+  <tr><td class="entry"><a class="el" href="class_detailed_all_packet.html#a87ec2740a34395fc0f90f386fbb6cdb8">gx</a></td><td class="entry"><a class="el" href="class_detailed_all_packet.html">DetailedAllPacket</a></td><td class="entry"></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="class_detailed_all_packet.html#ac2e7768a49638c89b4366d935a25ca5d">gy</a></td><td class="entry"><a class="el" href="class_detailed_all_packet.html">DetailedAllPacket</a></td><td class="entry"></td></tr>
+  <tr><td class="entry"><a class="el" href="class_detailed_all_packet.html#a9f918034caf7ec288d4e408c2869b8e0">gz</a></td><td class="entry"><a class="el" href="class_detailed_all_packet.html">DetailedAllPacket</a></td><td class="entry"></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="class_detailed_all_packet.html#ab7b57299e144e8618d7dc265ce8c4c2a">header</a></td><td class="entry"><a class="el" href="class_detailed_all_packet.html">DetailedAllPacket</a></td><td class="entry"></td></tr>
+  <tr><td class="entry"><a class="el" href="class_detailed_all_packet.html#acada845035ac620d43cd1c93c204008f">mx</a></td><td class="entry"><a class="el" href="class_detailed_all_packet.html">DetailedAllPacket</a></td><td class="entry"></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="class_detailed_all_packet.html#a88ad117efb7480be6b42127a31128dee">my</a></td><td class="entry"><a class="el" href="class_detailed_all_packet.html">DetailedAllPacket</a></td><td class="entry"></td></tr>
+  <tr><td class="entry"><a class="el" href="class_detailed_all_packet.html#a48ec4ac5e1132e89b5c0c448ac421f26">mz</a></td><td class="entry"><a class="el" href="class_detailed_all_packet.html">DetailedAllPacket</a></td><td class="entry"></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="class_detailed_all_packet.html#a9bc0e677ab448701831326ea3a69c2e6">packet_size</a>()</td><td class="entry"><a class="el" href="class_detailed_all_packet.html">DetailedAllPacket</a></td><td class="entry"><span class="mlabel">inline</span><span class="mlabel">private</span><span class="mlabel">static</span></td></tr>
+  <tr><td class="entry"><a class="el" href="class_detailed_all_packet.html#aaad75cfa0344ab75e70aecfc518fad82">serialize</a>(std::vector&lt; uint8_t &gt; &amp;buf) const</td><td class="entry"><a class="el" href="class_detailed_all_packet.html">DetailedAllPacket</a></td><td class="entry"></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="class_detailed_all_packet.html#aa9b1e1f0cfd7b464160a69bbadbde0c4">~DetailedAllPacket</a>()</td><td class="entry"><a class="el" href="class_detailed_all_packet.html">DetailedAllPacket</a></td><td class="entry"></td></tr>
 </table></div><!-- contents -->
+</div><!-- doc-content -->
 <!-- start footer part -->
-<hr class="footer"/><address class="footer"><small>
-Generated by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1
-</small></address>
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
+  </ul>
+</div>
 </body>
 </html>

@@ -2,8 +2,11 @@
 \label{class_preflight}\index{Preflight@{Preflight}}
 
 
-Inheritance diagram for Preflight\+:
-\nopagebreak
+{\ttfamily \#include $<$preflight.\+h$>$}
+
+
+
+Inheritance diagram for Preflight\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -23,22 +26,76 @@ Collaboration diagram for Preflight\+:
 \doxysubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\Hypertarget{class_preflight_a28882002ff590a87ee9a1f888f5b7cf1}\label{class_preflight_a28882002ff590a87ee9a1f888f5b7cf1}} 
-{\bfseries Preflight} (\mbox{\hyperlink{classstate_machine}{state\+Machine}} $\ast$sm)
+\mbox{\hyperlink{class_preflight_a28882002ff590a87ee9a1f888f5b7cf1}{Preflight}} (\mbox{\hyperlink{classstate_machine}{state\+Machine}} $\ast$sm)
 \item 
-\mbox{\Hypertarget{class_preflight_aaabf52a2dd5f36765fd3ebe5a685242d}\label{class_preflight_aaabf52a2dd5f36765fd3ebe5a685242d}} 
-void {\bfseries initialise} ()
+void \mbox{\hyperlink{class_preflight_aaabf52a2dd5f36765fd3ebe5a685242d}{initialise}} ()
 \item 
-\mbox{\Hypertarget{class_preflight_a5bc5d846710091142b9da2652ebbc43f}\label{class_preflight_a5bc5d846710091142b9da2652ebbc43f}} 
-\mbox{\hyperlink{class_state}{State}} $\ast$ {\bfseries update} ()
+\mbox{\hyperlink{class_state}{State}} $\ast$ \mbox{\hyperlink{class_preflight_a5bc5d846710091142b9da2652ebbc43f}{update}} ()
 \item 
-\mbox{\Hypertarget{class_preflight_a824ea4ba3ae889eceb77d0165ff16e8c}\label{class_preflight_a824ea4ba3ae889eceb77d0165ff16e8c}} 
-void {\bfseries exitstate} ()
+void \mbox{\hyperlink{class_preflight_a824ea4ba3ae889eceb77d0165ff16e8c}{exitstate}} ()
 \end{DoxyCompactItemize}
 \doxysubsection*{Additional Inherited Members}
 
 
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_preflight_a28882002ff590a87ee9a1f888f5b7cf1}\label{class_preflight_a28882002ff590a87ee9a1f888f5b7cf1}} 
+\index{Preflight@{Preflight}!Preflight@{Preflight}}
+\index{Preflight@{Preflight}!Preflight@{Preflight}}
+\doxysubsubsection{\texorpdfstring{Preflight()}{Preflight()}}
+{\footnotesize\ttfamily Preflight\+::\+Preflight (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classstate_machine}{state\+Machine}} $\ast$}]{sm }\end{DoxyParamCaption})}
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_preflight_a824ea4ba3ae889eceb77d0165ff16e8c}\label{class_preflight_a824ea4ba3ae889eceb77d0165ff16e8c}} 
+\index{Preflight@{Preflight}!exitstate@{exitstate}}
+\index{exitstate@{exitstate}!Preflight@{Preflight}}
+\doxysubsubsection{\texorpdfstring{exitstate()}{exitstate()}}
+{\footnotesize\ttfamily void Preflight\+::exitstate (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Reimplemented from \mbox{\hyperlink{class_state_a6154140cc1da5795d696a076d53b51d9}{State}}.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_preflight_a824ea4ba3ae889eceb77d0165ff16e8c_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_preflight_aaabf52a2dd5f36765fd3ebe5a685242d}\label{class_preflight_aaabf52a2dd5f36765fd3ebe5a685242d}} 
+\index{Preflight@{Preflight}!initialise@{initialise}}
+\index{initialise@{initialise}!Preflight@{Preflight}}
+\doxysubsubsection{\texorpdfstring{initialise()}{initialise()}}
+{\footnotesize\ttfamily void Preflight\+::initialise (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Reimplemented from \mbox{\hyperlink{class_state_a14770d571ff70a1e5c8572eade7843cf}{State}}.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_preflight_aaabf52a2dd5f36765fd3ebe5a685242d_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_preflight_a5bc5d846710091142b9da2652ebbc43f}\label{class_preflight_a5bc5d846710091142b9da2652ebbc43f}} 
+\index{Preflight@{Preflight}!update@{update}}
+\index{update@{update}!Preflight@{Preflight}}
+\doxysubsubsection{\texorpdfstring{update()}{update()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_state}{State}} $\ast$ Preflight\+::update (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{class_state_afe1684e9770bc65ce5d3b262efa574ca}{State}}.
+
+
+
 The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
 \item 
-/\+Users/kiran/\+Documents/\+Projects/\+ICLR/\+Avionics/\+Ricardo\+\_\+\+OS/\+Ricardo\+\_\+\+OS/src/\+States/preflight.\+h\item 
-/\+Users/kiran/\+Documents/\+Projects/\+ICLR/\+Avionics/\+Ricardo\+\_\+\+OS/\+Ricardo\+\_\+\+OS/src/\+States/preflight.\+cpp\end{DoxyCompactItemize}
+/\+Users/kiran/\+Documents/\+Projects/\+ICLR/\+Avionics/\+Ricardo\+\_\+\+OS/\+Ricardo\+\_\+\+OS/src/\+States/\mbox{\hyperlink{preflight_8h}{preflight.\+h}}\item 
+/\+Users/kiran/\+Documents/\+Projects/\+ICLR/\+Avionics/\+Ricardo\+\_\+\+OS/\+Ricardo\+\_\+\+OS/src/\+States/\mbox{\hyperlink{preflight_8cpp}{preflight.\+cpp}}\end{DoxyCompactItemize}

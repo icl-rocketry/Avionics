@@ -9,9 +9,18 @@
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+  $(document).ready(function() { init_search(); });
+/* @license-end */
+</script>
 <link href="doxygen.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
@@ -25,6 +34,21 @@
    &#160;<span id="projectnumber">1</span>
    </div>
   </td>
+   <td>        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <img id="MSearchSelect" src="search/mag_sel.svg"
+               onmouseover="return searchBox.OnSearchSelectShow()"
+               onmouseout="return searchBox.OnSearchSelectHide()"
+               alt=""/>
+          <input type="text" id="MSearchField" value="Search" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.svg" alt=""/></a>
+          </span>
+        </div>
+</td>
  </tr>
  </tbody>
 </table>
@@ -36,16 +60,23 @@
 var searchBox = new SearchBox("searchBox", "search",false,'Search','.html');
 /* @license-end */
 </script>
-<script type="text/javascript" src="menudata.js"></script>
-<script type="text/javascript" src="menu.js"></script>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
 <script type="text/javascript">
 /* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
-$(function() {
-  initMenu('',true,false,'search.php','Search');
-  $(document).ready(function() { init_search(); });
-});
-/* @license-end */</script>
-<div id="main-nav"></div>
+$(document).ready(function(){initNavTree('dir_68267d1309a1af8e8297ef4c3efbcdba.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
      onmouseover="return searchBox.OnSearchSelectShow()"
@@ -60,24 +91,74 @@ $(function() {
 </iframe>
 </div>
 
-<div id="nav-path" class="navpath">
-  <ul>
-<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li>  </ul>
-</div>
-</div><!-- top -->
 <div class="header">
   <div class="headertitle">
 <div class="title">src Directory Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
+<div class="dynheader">
+Directory dependency graph for src:</div>
+<div class="dyncontent">
+<div class="center"><img src="dir_68267d1309a1af8e8297ef4c3efbcdba_dep.png" border="0" usemap="#adir__68267d1309a1af8e8297ef4c3efbcdba__dep" alt="/Users/kiran/Documents/Projects/ICLR/Avionics/Ricardo_OS/Ricardo_OS/src"/></div>
+<map name="adir__68267d1309a1af8e8297ef4c3efbcdba__dep" id="adir__68267d1309a1af8e8297ef4c3efbcdba__dep">
+<area shape="rect" href="dir_2728a19ac4d342276b17ec9828d0d8ad.html" title="Comms" alt="" coords="124,123,196,171"/>
+<area shape="rect" href="dir_ac55354187c8c6c264902bc62bdefbb0.html" title="Logging" alt="" coords="64,315,136,363"/>
+<area shape="rect" href="dir_000002_000005.html" title="5" alt="" coords="94,288,102,303"/>
+<area shape="rect" href="dir_418f1c0c7a7af3f93e93ef60c934c206.html" title="States" alt="" coords="125,219,197,267"/>
+<area shape="rect" href="dir_000002_000009.html" title="7" alt="" coords="156,192,164,207"/>
+<area shape="rect" href="dir_d44c64559bbebec7f509842c48db8b23.html" title="include" alt="" coords="125,507,197,555"/>
+<area shape="rect" href="dir_000002_000000.html" title="5" alt="" coords="183,486,191,500"/>
+<area shape="rect" href="dir_3072bc1f55ed1280fe4fbe6b21c78379.html" title="Engine" alt="" coords="219,27,291,75"/>
+<area shape="rect" href="dir_000005_000002.html" title="1" alt="" coords="131,174,139,189"/>
+<area shape="rect" href="dir_afe58f6d0ef7eec69c2706509daaefe7.html" title="Sensors" alt="" coords="27,411,99,459"/>
+<area shape="rect" href="dir_000005_000007.html" title="1" alt="" coords="74,389,82,403"/>
+<area shape="rect" href="dir_000005_000000.html" title="7" alt="" coords="152,479,160,494"/>
+<area shape="rect" href="dir_4f4a5f4d87f3684ddeb1eff4b7c65fdf.html" title="Pyros" alt="" coords="123,27,195,75"/>
+<area shape="rect" href="dir_000006_000002.html" title="4" alt="" coords="164,97,172,112"/>
+<area shape="rect" href="dir_000007_000005.html" title="9" alt="" coords="81,370,89,385"/>
+<area shape="rect" href="dir_000007_000000.html" title="10" alt="" coords="123,481,137,495"/>
+<area shape="rect" href="dir_82b982d516238035871f41a6fcf0f4fb.html" title="Sound" alt="" coords="27,27,99,75"/>
+<area shape="rect" href="dir_000009_000002.html" title="2" alt="" coords="157,183,165,197"/>
+<area shape="rect" href="dir_000009_000005.html" title="1" alt="" coords="128,297,136,311"/>
+<area shape="rect" href="dir_000009_000000.html" title="10" alt="" coords="162,481,177,496"/>
+<area shape="rect" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html" alt="" coords="16,16,397,469"/>
+</map>
+</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="subdirs"></a>
 Directories</h2></td></tr>
+<tr class="memitem:dir_2728a19ac4d342276b17ec9828d0d8ad"><td class="memItemLeft" align="right" valign="top">directory &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="dir_2728a19ac4d342276b17ec9828d0d8ad.html">Comms</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:dir_3072bc1f55ed1280fe4fbe6b21c78379"><td class="memItemLeft" align="right" valign="top">directory &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="dir_3072bc1f55ed1280fe4fbe6b21c78379.html">Engine</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:dir_ac55354187c8c6c264902bc62bdefbb0"><td class="memItemLeft" align="right" valign="top">directory &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="dir_ac55354187c8c6c264902bc62bdefbb0.html">Logging</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:dir_4f4a5f4d87f3684ddeb1eff4b7c65fdf"><td class="memItemLeft" align="right" valign="top">directory &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="dir_4f4a5f4d87f3684ddeb1eff4b7c65fdf.html">Pyros</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:dir_afe58f6d0ef7eec69c2706509daaefe7"><td class="memItemLeft" align="right" valign="top">directory &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="dir_afe58f6d0ef7eec69c2706509daaefe7.html">Sensors</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:dir_82b982d516238035871f41a6fcf0f4fb"><td class="memItemLeft" align="right" valign="top">directory &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="dir_82b982d516238035871f41a6fcf0f4fb.html">Sound</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:dir_418f1c0c7a7af3f93e93ef60c934c206"><td class="memItemLeft" align="right" valign="top">directory &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="dir_418f1c0c7a7af3f93e93ef60c934c206.html">States</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="files"></a>
+Files</h2></td></tr>
+<tr class="memitem:main_8cpp"><td class="memItemLeft" align="right" valign="top">file &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="main_8cpp.html">main.cpp</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:state_machine_8cpp"><td class="memItemLeft" align="right" valign="top">file &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="state_machine_8cpp.html">stateMachine.cpp</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:state_machine_8h"><td class="memItemLeft" align="right" valign="top">file &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="state_machine_8h.html">stateMachine.h</a> <a href="state_machine_8h_source.html">[code]</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 </div><!-- contents -->
+</div><!-- doc-content -->
 <!-- start footer part -->
-<hr class="footer"/><address class="footer"><small>
-Generated by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1
-</small></address>
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li>
+    <li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
+  </ul>
+</div>
 </body>
 </html>

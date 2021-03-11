@@ -9,9 +9,18 @@
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+  $(document).ready(function() { init_search(); });
+/* @license-end */
+</script>
 <link href="doxygen.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
@@ -25,6 +34,21 @@
    &#160;<span id="projectnumber">1</span>
    </div>
   </td>
+   <td>        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <img id="MSearchSelect" src="search/mag_sel.svg"
+               onmouseover="return searchBox.OnSearchSelectShow()"
+               onmouseout="return searchBox.OnSearchSelectHide()"
+               alt=""/>
+          <input type="text" id="MSearchField" value="Search" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.svg" alt=""/></a>
+          </span>
+        </div>
+</td>
  </tr>
  </tbody>
 </table>
@@ -36,17 +60,23 @@
 var searchBox = new SearchBox("searchBox", "search",false,'Search','.html');
 /* @license-end */
 </script>
-<script type="text/javascript" src="menudata.js"></script>
-<script type="text/javascript" src="menu.js"></script>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
 <script type="text/javascript">
 /* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
-$(function() {
-  initMenu('',true,false,'search.php','Search');
-  $(document).ready(function() { init_search(); });
-});
-/* @license-end */</script>
-<div id="main-nav"></div>
-</div><!-- top -->
+$(document).ready(function(){initNavTree('functions_b.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
      onmouseover="return searchBox.OnSearchSelectShow()"
@@ -62,108 +92,64 @@ $(function() {
 </div>
 
 <div class="contents">
-<div class="textblock">Here is a list of all documented class members with links to the class documentation for each member:</div>
+<div class="textblock">Here is a list of all class members with links to the classes they belong to:</div>
 
 <h3><a id="index_b"></a>- b -</h3><ul>
-<li>BackupFilters()
-: <a class="el" href="classcpplint_1_1___cpp_lint_state.html#a2444e784910e03681de22f43d4077dd1">cpplint._CppLintState</a>
+<li>Baro()
+: <a class="el" href="class_baro.html#a076a3723ffe8b5191b54685860f53636">Baro</a>
 </li>
-<li>bad()
-: <a class="el" href="classios.html#a78be4e3069a644ff36d83a70b080c321">ios</a>
+<li>baro
+: <a class="el" href="class_sensors.html#a952bcff8ebe8920f3625844e83255538">Sensors</a>
 </li>
-<li>badbit
-: <a class="el" href="classios__base.html#ac8c2c8f2f6bc9e6ce101c20e88ebce35">ios_base</a>
+<li>baro_alt
+: <a class="el" href="class_detailed_all_packet.html#a2297f7091df832e540a13b98a86be714">DetailedAllPacket</a>
+, <a class="el" href="structraw__measurements__t.html#af4c47a349f87a6238ae9042360f282f2">raw_measurements_t</a>
 </li>
-<li>basefield
-: <a class="el" href="classios__base.html#a75ce5482aa207d7aa0265d138b50a102">ios_base</a>
+<li>baro_press
+: <a class="el" href="class_detailed_all_packet.html#a6cb59b729d5f72accab9134a18c45191">DetailedAllPacket</a>
+, <a class="el" href="structraw__measurements__t.html#ae4e6331f376d756730d04dbe8910f558">raw_measurements_t</a>
 </li>
-<li>BaseName()
-: <a class="el" href="classcpplint_1_1_file_info.html#a1a12ed63ddc2ffd8f6a105e3ab4d6289">cpplint.FileInfo</a>
+<li>baro_temp
+: <a class="el" href="class_detailed_all_packet.html#a808ac0f0779b3c4ba8f98b6ab5aad956">DetailedAllPacket</a>
+, <a class="el" href="structraw__measurements__t.html#afefdff57b2db247311f83e1a95afeccf">raw_measurements_t</a>
 </li>
-<li>beg
-: <a class="el" href="classios__base.html#ab01103ba35f6ba93a704b3ec0c86191ea6639b4dd9e9b57ffef4a176cd1a1e7bb">ios_base</a>
+<li>batt
+: <a class="el" href="class_sensors.html#a8a936258472dd6b58125cd6c11ea24b0">Sensors</a>
 </li>
-<li>Begin()
-: <a class="el" href="classcpplint_1_1___function_state.html#a41215c4d73baccbb340f6d0df1c1f4b3">cpplint._FunctionState</a>
+<li>batt_percent
+: <a class="el" href="class_detailed_all_packet.html#a8c700777fb23a6943d1bd47d4213bea0">DetailedAllPacket</a>
+, <a class="el" href="structraw__measurements__t.html#aa452a5f8121ef56cca490f895811c519">raw_measurements_t</a>
 </li>
-<li>begin()
-: <a class="el" href="class_fat_file_system.html#a5dda20d3dcbfc8c641babbb2c9aac382">FatFileSystem</a>
-, <a class="el" href="class_l_s_m9_d_s1.html#a4797209f69313d748a180d23197a8aa0">LSM9DS1</a>
-, <a class="el" href="class_minimum_serial.html#a5c56beb3472bb97f949defeecacda52c">MinimumSerial</a>
-, <a class="el" href="class_sd2_card.html#a8506e1a2d7c4d8ec3f26e8b62ea81cd7">Sd2Card</a>
-, <a class="el" href="class_sd_fat.html#abfafe10a64b28e6c1698ed82d340f624">SdFat</a>
-, <a class="el" href="class_sd_file_system.html#ad94237ef45c52698e97b04e8c131f21e">SdFileSystem&lt; SdDriverClass &gt;</a>
-, <a class="el" href="class_sdio_card.html#ac749bdad92a4465d062f5d21a7f4faf5">SdioCard</a>
-, <a class="el" href="class_sdio_card_e_x.html#adf877d2c8641cdbd52657004c34ec18a">SdioCardEX</a>
-, <a class="el" href="class_sd_spi_alt_driver.html#ae7fc7ae005002e9a1de3e0b7440e971e">SdSpiAltDriver</a>
-, <a class="el" href="class_sd_spi_base_driver.html#a287ec377c2a214bdb964f59a25ad7dd4">SdSpiBaseDriver</a>
-, <a class="el" href="class_sd_spi_card.html#a824cd60ef8ac2b06262597d6f30a4ea7">SdSpiCard</a>
-, <a class="el" href="class_sd_spi_card_e_x.html#a4fd0b23d230c6ad7dc406e798bbd5470">SdSpiCardEX</a>
-, <a class="el" href="class_sd_spi_lib_driver.html#a5863b84f8f277b7a926e915cdc378957">SdSpiLibDriver</a>
-, <a class="el" href="class_soft_s_p_i.html#a8086e47eeb663d943e2281c814af67eb">SoftSPI&lt; MisoPin, MosiPin, SckPin, Mode &gt;</a>
+<li>batt_volt
+: <a class="el" href="class_detailed_all_packet.html#ab0a65488409595b46e311f64f3358697">DetailedAllPacket</a>
+, <a class="el" href="structraw__measurements__t.html#a540fb38a3605975f5eead339fda89312">raw_measurements_t</a>
 </li>
-<li>beginCylinderHigh
-: <a class="el" href="structpartition_table.html#a744f0c7f9ad4c426b10de085b4f52392">partitionTable</a>
+<li>Battery()
+: <a class="el" href="class_battery.html#a44169aa692325f24c89d7284a4ebfe06">Battery</a>
 </li>
-<li>beginCylinderLow
-: <a class="el" href="structpartition_table.html#a941fcb4df298f5f73ccca011bf40787a">partitionTable</a>
+<li>battPercent
+: <a class="el" href="classtelemetry__logframe.html#a3e354e8d44799cf5180fdab819ed9004">telemetry_logframe</a>
 </li>
-<li>beginHead
-: <a class="el" href="structpartition_table.html#a7d426694b8cf2151ae38568670a8c845">partitionTable</a>
+<li>battVolt
+: <a class="el" href="classtelemetry__logframe.html#adf91389e746abca489849f524de22c4d">telemetry_logframe</a>
 </li>
-<li>beginSector
-: <a class="el" href="structpartition_table.html#ae201c11d9671c9efc307c654a2b6c026">partitionTable</a>
+<li>BTPyro()
+: <a class="el" href="class_b_t_pyro.html#acfaa36cd4b4d86a7a428ec25633b6ac3">BTPyro</a>
 </li>
-<li>beginSPI()
-: <a class="el" href="class_l_s_m9_d_s1.html#a2a59bd9a2860171228bc95e356a5c86e">LSM9DS1</a>
+<li>buf_
+: <a class="el" href="class_circular_buffer.html#aa2b9389da6cd912b4dd54d89ca1d69ee">CircularBuffer&lt; T &gt;</a>
 </li>
-<li>binary
-: <a class="el" href="classios__base.html#ac99947c17c2936d15243671366605602">ios_base</a>
-</li>
-<li>block()
-: <a class="el" href="class_fat_cache.html#ab3d9c4f94af61065b6d6d0892827fd8a">FatCache</a>
-</li>
-<li>blocksPerCluster()
-: <a class="el" href="class_fat_volume.html#af6ab43bc0853febb38298406c4067a43">FatVolume</a>
-</li>
-<li>blocksPerFat()
-: <a class="el" href="class_fat_volume.html#adb87da3b10344f28a92dfade492b8398">FatVolume</a>
-</li>
-<li>boolalpha
-: <a class="el" href="classios__base.html#afa74acd95d4bbc7cc3551251aac2bf00">ios_base</a>
-</li>
-<li>boot
-: <a class="el" href="structpartition_table.html#adf386afb1f33046d8b6a1a0afa780ec9">partitionTable</a>
-</li>
-<li>bootCode
-: <a class="el" href="structfat32__boot.html#a7a74880066860140386edf3d9278b9f7">fat32_boot</a>
-, <a class="el" href="structfat__boot.html#acf9f5d9f61a6e680e11849f957ecf782">fat_boot</a>
-</li>
-<li>bootSectorSig0
-: <a class="el" href="structfat32__boot.html#a1cb46a5427b641a6017a082bc56df1be">fat32_boot</a>
-, <a class="el" href="structfat__boot.html#a7951b888af4f357b84dd40af2ef7f29d">fat_boot</a>
-</li>
-<li>bootSectorSig1
-: <a class="el" href="structfat32__boot.html#a53bc302a398f02a86d3b28f25a5ec8e2">fat32_boot</a>
-, <a class="el" href="structfat__boot.html#afe8f58668ff594bb2022ce7c06b7726c">fat_boot</a>
-</li>
-<li>bootSignature
-: <a class="el" href="structfat32__boot.html#ab79a1205277ecab05526fb0bac6e42f6">fat32_boot</a>
-, <a class="el" href="structfat__boot.html#a712dc388c530e91e4a692e7102d6bdc8">fat_boot</a>
-</li>
-<li>buf()
-: <a class="el" href="classobufstream.html#a4f699181bd3727f4288f4f95a5ce207f">obufstream</a>
-</li>
-<li>bytesPerSector
-: <a class="el" href="structbios_parm_block.html#aec24d316af486445d55da14cbbfa6bf4">biosParmBlock</a>
-, <a class="el" href="structfat32__boot.html#a03c7086a8c988257a6678179a67a3fee">fat32_boot</a>
-, <a class="el" href="structfat__boot.html#a60b2461f8ebf0ad295a95094e1bd7d65">fat_boot</a>
+<li>Buzzer()
+: <a class="el" href="class_buzzer.html#a8faf4fbbb7085ebdbb24d3681a727733">Buzzer</a>
 </li>
 </ul>
 </div><!-- contents -->
+</div><!-- doc-content -->
 <!-- start footer part -->
-<hr class="footer"/><address class="footer"><small>
-Generated by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1
-</small></address>
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
+  </ul>
+</div>
 </body>
 </html>

@@ -9,9 +9,18 @@
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+  $(document).ready(function() { init_search(); });
+/* @license-end */
+</script>
 <link href="doxygen.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
@@ -25,6 +34,21 @@
    &#160;<span id="projectnumber">1</span>
    </div>
   </td>
+   <td>        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <img id="MSearchSelect" src="search/mag_sel.svg"
+               onmouseover="return searchBox.OnSearchSelectShow()"
+               onmouseout="return searchBox.OnSearchSelectHide()"
+               alt=""/>
+          <input type="text" id="MSearchField" value="Search" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.svg" alt=""/></a>
+          </span>
+        </div>
+</td>
  </tr>
  </tbody>
 </table>
@@ -36,16 +60,23 @@
 var searchBox = new SearchBox("searchBox", "search",false,'Search','.html');
 /* @license-end */
 </script>
-<script type="text/javascript" src="menudata.js"></script>
-<script type="text/javascript" src="menu.js"></script>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
 <script type="text/javascript">
 /* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
-$(function() {
-  initMenu('',true,false,'search.php','Search');
-  $(document).ready(function() { init_search(); });
-});
-/* @license-end */</script>
-<div id="main-nav"></div>
+$(document).ready(function(){initNavTree('logframe_8h_source.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
      onmouseover="return searchBox.OnSearchSelectShow()"
@@ -60,75 +91,70 @@ $(function() {
 </iframe>
 </div>
 
-<div id="nav-path" class="navpath">
-  <ul>
-<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_ac55354187c8c6c264902bc62bdefbb0.html">Logging</a></li>  </ul>
-</div>
-</div><!-- top -->
 <div class="header">
   <div class="headertitle">
 <div class="title">logframe.h</div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#ifndef LOGFRAME_H</span></div>
+<a href="logframe_8h.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#ifndef LOGFRAME_H</span></div>
 <div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor">#define LOGFRAME_H</span></div>
 <div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor">#include &lt;string&gt;</span></div>
 <div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &lt;array&gt;</span></div>
-<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor">#include &quot;serializableElement.h&quot;</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="serializable_element_8h.html">serializableElement.h</a>&quot;</span></div>
 <div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="preprocessor">#include &lt;Arduino.h&gt;</span></div>
 <div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160; </div>
 <div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="comment">//logframes</span></div>
 <div class="line"><a name="l00009"></a><span class="lineno"><a class="line" href="classlogframe.html">    9</a></span>&#160;<span class="keyword">class </span><a class="code" href="classlogframe.html">logframe</a>{</div>
-<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;    <span class="keyword">virtual</span> std::string stringify() <span class="keyword">const</span>; <span class="comment">//purley virtaul seralize method</span></div>
+<div class="line"><a name="l00010"></a><span class="lineno"><a class="line" href="classlogframe.html#a552d7438907dc9dba908829915a4dd67">   10</a></span>&#160;    <span class="keyword">virtual</span> std::string <a class="code" href="classlogframe.html#a552d7438907dc9dba908829915a4dd67">stringify</a>() <span class="keyword">const</span>; <span class="comment">//purley virtaul seralize method</span></div>
 <div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;};</div>
 <div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160; </div>
 <div class="line"><a name="l00013"></a><span class="lineno"><a class="line" href="classtelemetry__logframe.html">   13</a></span>&#160;<span class="keyword">class </span><a class="code" href="classtelemetry__logframe.html">telemetry_logframe</a>: <span class="keyword">public</span> <a class="code" href="classlogframe.html">logframe</a>{</div>
 <div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="keyword">private</span>:  </div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;    <span class="keyword">static</span> constexpr <span class="keyword">auto</span> getSerializer()</div>
+<div class="line"><a name="l00015"></a><span class="lineno"><a class="line" href="classtelemetry__logframe.html#ad8ce2864d5faaf045a0ff812c029a4b4">   15</a></span>&#160;    <span class="keyword">static</span> constexpr <span class="keyword">auto</span> <a class="code" href="classtelemetry__logframe.html#ad8ce2864d5faaf045a0ff812c029a4b4">getSerializer</a>()</div>
 <div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;    {</div>
 <div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;        <span class="keyword">auto</span> ret = <a class="code" href="classserializer.html">serializer</a>(</div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;            &amp;telemetry_logframe::rawGPSLong,</div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;            &amp;telemetry_logframe::rawGPSLong,</div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;            &amp;telemetry_logframe::rawGPSLat,</div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;            &amp;telemetry_logframe::rawGPSSpeed,</div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;            &amp;telemetry_logframe::rawGPSAlt,</div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;            &amp;telemetry_logframe::rawGPSsat,</div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;            &amp;telemetry_logframe::rawGPShdop,</div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;            &amp;telemetry_logframe::rawIMUAx,</div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;            &amp;telemetry_logframe::rawIMUAy,</div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;            &amp;telemetry_logframe::rawIMUAz,</div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;            &amp;telemetry_logframe::rawIMUGx,</div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;            &amp;telemetry_logframe::rawIMUGy,</div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;            &amp;telemetry_logframe::rawIMUGz,</div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;            &amp;telemetry_logframe::rawIMUMx,</div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;            &amp;telemetry_logframe::rawIMUMy,</div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;            &amp;telemetry_logframe::rawIMUMz,</div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;            &amp;telemetry_logframe::rawIMUTemp,</div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;            &amp;telemetry_logframe::rawBaroTemp,</div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;            &amp;telemetry_logframe::rawBaroPres,</div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;            &amp;telemetry_logframe::rawBaroAlt,</div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;            &amp;telemetry_logframe::battVolt,</div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;            &amp;telemetry_logframe::battPercent,</div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;            &amp;telemetry_logframe::rawTimestamp,</div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;            &amp;telemetry_logframe::estimatorX,</div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;            &amp;telemetry_logframe::estimatorY,</div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;            &amp;telemetry_logframe::estimatorZ,</div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;            &amp;telemetry_logframe::estimatorVX,</div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;            &amp;telemetry_logframe::estimatorVY,</div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;            &amp;telemetry_logframe::estimatorVZ,</div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;            &amp;telemetry_logframe::estimatorAX,</div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;            &amp;telemetry_logframe::estimatorAY,</div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;            &amp;telemetry_logframe::estimatorAZ,</div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;            &amp;telemetry_logframe::estimatorYaw,</div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;            &amp;telemetry_logframe::estimatorPitch,</div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;            &amp;telemetry_logframe::estimatorRoll,</div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;            &amp;telemetry_logframe::estimatorP,</div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;            &amp;telemetry_logframe::estimatorQ,</div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;            &amp;telemetry_logframe::estimatorR, </div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;            &amp;telemetry_logframe::estimatorL,</div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;            &amp;telemetry_logframe::estimatorM,</div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;            &amp;telemetry_logframe::estimatorN,</div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;            &amp;telemetry_logframe::estimatorTimestamp</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;            &amp;<a class="code" href="classtelemetry__logframe.html#abfcb82eda7a276ed3d76a2110ee9f366">telemetry_logframe::rawGPSLong</a>,</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;            &amp;<a class="code" href="classtelemetry__logframe.html#abfcb82eda7a276ed3d76a2110ee9f366">telemetry_logframe::rawGPSLong</a>,</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;            &amp;<a class="code" href="classtelemetry__logframe.html#a19ac82e4d2e69b7cbcef96a97c6e66b1">telemetry_logframe::rawGPSLat</a>,</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;            &amp;<a class="code" href="classtelemetry__logframe.html#a3695abc86a0031daca6489a73c62283b">telemetry_logframe::rawGPSSpeed</a>,</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;            &amp;<a class="code" href="classtelemetry__logframe.html#abed3f7ccf22675644174928f5ed6aeca">telemetry_logframe::rawGPSAlt</a>,</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;            &amp;<a class="code" href="classtelemetry__logframe.html#ad8bf7db3943276e354d14ed17ef8b141">telemetry_logframe::rawGPSsat</a>,</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;            &amp;<a class="code" href="classtelemetry__logframe.html#a2018e686f2b853ecc4dd2ee245aa6b8d">telemetry_logframe::rawGPShdop</a>,</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;            &amp;<a class="code" href="classtelemetry__logframe.html#a5f2e45dcf0f53024dc333c3c0c1c8770">telemetry_logframe::rawIMUAx</a>,</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;            &amp;<a class="code" href="classtelemetry__logframe.html#ad3c0c61ecf6022a3994a9b849c4dc7ab">telemetry_logframe::rawIMUAy</a>,</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;            &amp;<a class="code" href="classtelemetry__logframe.html#a6dbdddb10fe6b4663422ec0153175a7e">telemetry_logframe::rawIMUAz</a>,</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;            &amp;<a class="code" href="classtelemetry__logframe.html#a0bae1017e4b802d7a7b2275da49abb35">telemetry_logframe::rawIMUGx</a>,</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;            &amp;<a class="code" href="classtelemetry__logframe.html#a4c31ca9a97493b97905f4609f8a1ff51">telemetry_logframe::rawIMUGy</a>,</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;            &amp;<a class="code" href="classtelemetry__logframe.html#a39d7e6ecd2524c18003df65903fd77e2">telemetry_logframe::rawIMUGz</a>,</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;            &amp;<a class="code" href="classtelemetry__logframe.html#a60f8de4ac8c1efcaa2cebe0fc9b80244">telemetry_logframe::rawIMUMx</a>,</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;            &amp;<a class="code" href="classtelemetry__logframe.html#a34fa15a676e3270383be3700979f169d">telemetry_logframe::rawIMUMy</a>,</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;            &amp;<a class="code" href="classtelemetry__logframe.html#a494b7e8225f4f616726821a1fd99377d">telemetry_logframe::rawIMUMz</a>,</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;            &amp;<a class="code" href="classtelemetry__logframe.html#af2b256b4b8b80f7fc2f3a577f1b687dd">telemetry_logframe::rawIMUTemp</a>,</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;            &amp;<a class="code" href="classtelemetry__logframe.html#ab8815c9e9dd8604fcf2a596eee982721">telemetry_logframe::rawBaroTemp</a>,</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;            &amp;<a class="code" href="classtelemetry__logframe.html#ac8b180854780128e00737cfcd3d5b5fd">telemetry_logframe::rawBaroPres</a>,</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;            &amp;<a class="code" href="classtelemetry__logframe.html#af07b363717e1d60a0fad5578f77590be">telemetry_logframe::rawBaroAlt</a>,</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;            &amp;<a class="code" href="classtelemetry__logframe.html#adf91389e746abca489849f524de22c4d">telemetry_logframe::battVolt</a>,</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;            &amp;<a class="code" href="classtelemetry__logframe.html#a3e354e8d44799cf5180fdab819ed9004">telemetry_logframe::battPercent</a>,</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;            &amp;<a class="code" href="classtelemetry__logframe.html#aa0d6dc5c0d1396c47ff73888e958aaca">telemetry_logframe::rawTimestamp</a>,</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;            &amp;<a class="code" href="classtelemetry__logframe.html#a50caa40a1d26f41d1b2f72537591d4bb">telemetry_logframe::estimatorX</a>,</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;            &amp;<a class="code" href="classtelemetry__logframe.html#a4111b52d4ae341459ed786ff55a93ff4">telemetry_logframe::estimatorY</a>,</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;            &amp;<a class="code" href="classtelemetry__logframe.html#a62a020307f0c8fc953a512caf0ae9ed7">telemetry_logframe::estimatorZ</a>,</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;            &amp;<a class="code" href="classtelemetry__logframe.html#a9dfe53c017460644890341b50fb6a1b4">telemetry_logframe::estimatorVX</a>,</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;            &amp;<a class="code" href="classtelemetry__logframe.html#a6491163af1278e4adee716cc31c96c31">telemetry_logframe::estimatorVY</a>,</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;            &amp;<a class="code" href="classtelemetry__logframe.html#a394cc0b05a1f43fb44ca7005847b2da5">telemetry_logframe::estimatorVZ</a>,</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;            &amp;<a class="code" href="classtelemetry__logframe.html#adf39bab0bb4591dd27cb61acaec3dbbf">telemetry_logframe::estimatorAX</a>,</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;            &amp;<a class="code" href="classtelemetry__logframe.html#a1571a61e084a43a4d8dc386d415dff7b">telemetry_logframe::estimatorAY</a>,</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;            &amp;<a class="code" href="classtelemetry__logframe.html#a56c9227a1cc5c7f929fe6a1d0b94b237">telemetry_logframe::estimatorAZ</a>,</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;            &amp;<a class="code" href="classtelemetry__logframe.html#ad91dd5cae5551d775fc310c3355e76d2">telemetry_logframe::estimatorYaw</a>,</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;            &amp;<a class="code" href="classtelemetry__logframe.html#a7a738de350a9d77b14b0b66c81535fe1">telemetry_logframe::estimatorPitch</a>,</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;            &amp;<a class="code" href="classtelemetry__logframe.html#a188e0ff3e6cd0f46605c4d0bff0bcf4f">telemetry_logframe::estimatorRoll</a>,</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;            &amp;<a class="code" href="classtelemetry__logframe.html#a8e4b6db13271e203af45c5b0fe8d7f01">telemetry_logframe::estimatorP</a>,</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;            &amp;<a class="code" href="classtelemetry__logframe.html#a8e3e94085df1edbefb96335b706921ad">telemetry_logframe::estimatorQ</a>,</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;            &amp;<a class="code" href="classtelemetry__logframe.html#aa3f9e7815b1d89367d1794012a0d7087">telemetry_logframe::estimatorR</a>, </div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;            &amp;<a class="code" href="classtelemetry__logframe.html#a3928b4b4db39ccffd39722e4660457e0">telemetry_logframe::estimatorL</a>,</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;            &amp;<a class="code" href="classtelemetry__logframe.html#a2e6f352e110432a49d01249095e337cb">telemetry_logframe::estimatorM</a>,</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;            &amp;<a class="code" href="classtelemetry__logframe.html#a0d5bb58bc04207a07dc93ecf5f9f5462">telemetry_logframe::estimatorN</a>,</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;            &amp;<a class="code" href="classtelemetry__logframe.html#a0aaa30b41d8e744fc1fc4ed0974154db">telemetry_logframe::estimatorTimestamp</a></div>
 <div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;            );</div>
 <div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;        <span class="keywordflow">return</span> ret;</div>
 <div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;    }</div>
@@ -139,64 +165,64 @@ $(function() {
 <div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;<span class="comment">    }*/</span></div>
 <div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160; </div>
 <div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;<span class="keyword">public</span>:   </div>
-<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;    <span class="keywordtype">double</span> rawGPSLong; <span class="comment">//gps.long</span></div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;    <span class="keywordtype">double</span> rawGPSLat; <span class="comment">//gps.lat</span></div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;    <span class="keywordtype">double</span> rawGPSSpeed; <span class="comment">//gps.speed</span></div>
-<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;    <span class="keywordtype">double</span> rawGPSAlt; <span class="comment">//gps.alt</span></div>
-<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;    uint8_t rawGPSsat; <span class="comment">//gps.sat</span></div>
-<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;    <span class="keywordtype">double</span> rawGPShdop; <span class="comment">//gps.hdop</span></div>
-<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;    <span class="keywordtype">double</span> rawIMUAx; <span class="comment">//imu.ax</span></div>
-<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;    <span class="keywordtype">double</span> rawIMUAy; <span class="comment">//imu.ay</span></div>
-<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;    <span class="keywordtype">double</span> rawIMUAz; <span class="comment">//imu.az</span></div>
-<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;    <span class="keywordtype">double</span> rawIMUGx; <span class="comment">//imu.gx</span></div>
-<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;    <span class="keywordtype">double</span> rawIMUGy; <span class="comment">//imu.gy</span></div>
-<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;    <span class="keywordtype">double</span> rawIMUGz; <span class="comment">//imu.gz</span></div>
-<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;    <span class="keywordtype">double</span> rawIMUMx; <span class="comment">//imu.mx</span></div>
-<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;    <span class="keywordtype">double</span> rawIMUMy; <span class="comment">//imu.my</span></div>
-<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;    <span class="keywordtype">double</span> rawIMUMz; <span class="comment">//imu.mz</span></div>
-<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;    <span class="keywordtype">double</span> rawIMUTemp; <span class="comment">//imu.temp</span></div>
-<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;    <span class="keywordtype">double</span> rawBaroTemp; <span class="comment">//baro.temp</span></div>
-<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;    <span class="keywordtype">double</span> rawBaroPres; <span class="comment">//baro.pres</span></div>
-<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;    <span class="keywordtype">double</span> rawBaroAlt; <span class="comment">//baro.alt</span></div>
-<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;    <span class="keywordtype">int</span> battVolt; <span class="comment">//batt.volt</span></div>
-<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;    <span class="keywordtype">int</span> battPercent; <span class="comment">//batt.percent</span></div>
-<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;    <span class="keywordtype">long</span> rawTimestamp; <span class="comment">//raw.timestamp</span></div>
-<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;    <span class="keywordtype">double</span> estimatorX; <span class="comment">//estimator.x</span></div>
-<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;    <span class="keywordtype">double</span> estimatorY; <span class="comment">//estimator.y</span></div>
-<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;    <span class="keywordtype">double</span> estimatorZ; <span class="comment">//estimator.z</span></div>
-<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;    <span class="keywordtype">double</span> estimatorVX; <span class="comment">//estimator.vx</span></div>
-<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;    <span class="keywordtype">double</span> estimatorVY; <span class="comment">//estimator.vy</span></div>
-<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;    <span class="keywordtype">double</span> estimatorVZ; <span class="comment">//estimator.vz</span></div>
-<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;    <span class="keywordtype">double</span> estimatorAX;  <span class="comment">//estimator.ax</span></div>
-<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;    <span class="keywordtype">double</span> estimatorAY; <span class="comment">//</span></div>
-<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;    <span class="keywordtype">double</span> estimatorAZ; <span class="comment">//estimator.az</span></div>
-<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;    <span class="keywordtype">double</span> estimatorYaw; <span class="comment">//estimator.yaw</span></div>
-<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;    <span class="keywordtype">double</span> estimatorPitch;</div>
-<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;    <span class="keywordtype">double</span> estimatorRoll; <span class="comment">//estimator.roll</span></div>
-<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;    <span class="keywordtype">double</span> estimatorP; <span class="comment">//estimator.p</span></div>
-<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;    <span class="keywordtype">double</span> estimatorR;</div>
-<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;    <span class="keywordtype">double</span> estimatorQ; <span class="comment">//estimator.q</span></div>
-<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;    <span class="keywordtype">double</span> estimatorL; <span class="comment">//estimator.l</span></div>
-<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;    <span class="keywordtype">double</span> estimatorM;</div>
-<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;    <span class="keywordtype">double</span> estimatorN; <span class="comment">//estimator.n</span></div>
-<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;    <span class="keywordtype">long</span> estimatorTimestamp;</div>
+<div class="line"><a name="l00070"></a><span class="lineno"><a class="line" href="classtelemetry__logframe.html#abfcb82eda7a276ed3d76a2110ee9f366">   70</a></span>&#160;    <span class="keywordtype">double</span> <a class="code" href="classtelemetry__logframe.html#abfcb82eda7a276ed3d76a2110ee9f366">rawGPSLong</a>; <span class="comment">//gps.long</span></div>
+<div class="line"><a name="l00071"></a><span class="lineno"><a class="line" href="classtelemetry__logframe.html#a19ac82e4d2e69b7cbcef96a97c6e66b1">   71</a></span>&#160;    <span class="keywordtype">double</span> <a class="code" href="classtelemetry__logframe.html#a19ac82e4d2e69b7cbcef96a97c6e66b1">rawGPSLat</a>; <span class="comment">//gps.lat</span></div>
+<div class="line"><a name="l00072"></a><span class="lineno"><a class="line" href="classtelemetry__logframe.html#a3695abc86a0031daca6489a73c62283b">   72</a></span>&#160;    <span class="keywordtype">double</span> <a class="code" href="classtelemetry__logframe.html#a3695abc86a0031daca6489a73c62283b">rawGPSSpeed</a>; <span class="comment">//gps.speed</span></div>
+<div class="line"><a name="l00073"></a><span class="lineno"><a class="line" href="classtelemetry__logframe.html#abed3f7ccf22675644174928f5ed6aeca">   73</a></span>&#160;    <span class="keywordtype">double</span> <a class="code" href="classtelemetry__logframe.html#abed3f7ccf22675644174928f5ed6aeca">rawGPSAlt</a>; <span class="comment">//gps.alt</span></div>
+<div class="line"><a name="l00074"></a><span class="lineno"><a class="line" href="classtelemetry__logframe.html#ad8bf7db3943276e354d14ed17ef8b141">   74</a></span>&#160;    uint8_t <a class="code" href="classtelemetry__logframe.html#ad8bf7db3943276e354d14ed17ef8b141">rawGPSsat</a>; <span class="comment">//gps.sat</span></div>
+<div class="line"><a name="l00075"></a><span class="lineno"><a class="line" href="classtelemetry__logframe.html#a2018e686f2b853ecc4dd2ee245aa6b8d">   75</a></span>&#160;    <span class="keywordtype">double</span> <a class="code" href="classtelemetry__logframe.html#a2018e686f2b853ecc4dd2ee245aa6b8d">rawGPShdop</a>; <span class="comment">//gps.hdop</span></div>
+<div class="line"><a name="l00076"></a><span class="lineno"><a class="line" href="classtelemetry__logframe.html#a5f2e45dcf0f53024dc333c3c0c1c8770">   76</a></span>&#160;    <span class="keywordtype">double</span> <a class="code" href="classtelemetry__logframe.html#a5f2e45dcf0f53024dc333c3c0c1c8770">rawIMUAx</a>; <span class="comment">//imu.ax</span></div>
+<div class="line"><a name="l00077"></a><span class="lineno"><a class="line" href="classtelemetry__logframe.html#ad3c0c61ecf6022a3994a9b849c4dc7ab">   77</a></span>&#160;    <span class="keywordtype">double</span> <a class="code" href="classtelemetry__logframe.html#ad3c0c61ecf6022a3994a9b849c4dc7ab">rawIMUAy</a>; <span class="comment">//imu.ay</span></div>
+<div class="line"><a name="l00078"></a><span class="lineno"><a class="line" href="classtelemetry__logframe.html#a6dbdddb10fe6b4663422ec0153175a7e">   78</a></span>&#160;    <span class="keywordtype">double</span> <a class="code" href="classtelemetry__logframe.html#a6dbdddb10fe6b4663422ec0153175a7e">rawIMUAz</a>; <span class="comment">//imu.az</span></div>
+<div class="line"><a name="l00079"></a><span class="lineno"><a class="line" href="classtelemetry__logframe.html#a0bae1017e4b802d7a7b2275da49abb35">   79</a></span>&#160;    <span class="keywordtype">double</span> <a class="code" href="classtelemetry__logframe.html#a0bae1017e4b802d7a7b2275da49abb35">rawIMUGx</a>; <span class="comment">//imu.gx</span></div>
+<div class="line"><a name="l00080"></a><span class="lineno"><a class="line" href="classtelemetry__logframe.html#a4c31ca9a97493b97905f4609f8a1ff51">   80</a></span>&#160;    <span class="keywordtype">double</span> <a class="code" href="classtelemetry__logframe.html#a4c31ca9a97493b97905f4609f8a1ff51">rawIMUGy</a>; <span class="comment">//imu.gy</span></div>
+<div class="line"><a name="l00081"></a><span class="lineno"><a class="line" href="classtelemetry__logframe.html#a39d7e6ecd2524c18003df65903fd77e2">   81</a></span>&#160;    <span class="keywordtype">double</span> <a class="code" href="classtelemetry__logframe.html#a39d7e6ecd2524c18003df65903fd77e2">rawIMUGz</a>; <span class="comment">//imu.gz</span></div>
+<div class="line"><a name="l00082"></a><span class="lineno"><a class="line" href="classtelemetry__logframe.html#a60f8de4ac8c1efcaa2cebe0fc9b80244">   82</a></span>&#160;    <span class="keywordtype">double</span> <a class="code" href="classtelemetry__logframe.html#a60f8de4ac8c1efcaa2cebe0fc9b80244">rawIMUMx</a>; <span class="comment">//imu.mx</span></div>
+<div class="line"><a name="l00083"></a><span class="lineno"><a class="line" href="classtelemetry__logframe.html#a34fa15a676e3270383be3700979f169d">   83</a></span>&#160;    <span class="keywordtype">double</span> <a class="code" href="classtelemetry__logframe.html#a34fa15a676e3270383be3700979f169d">rawIMUMy</a>; <span class="comment">//imu.my</span></div>
+<div class="line"><a name="l00084"></a><span class="lineno"><a class="line" href="classtelemetry__logframe.html#a494b7e8225f4f616726821a1fd99377d">   84</a></span>&#160;    <span class="keywordtype">double</span> <a class="code" href="classtelemetry__logframe.html#a494b7e8225f4f616726821a1fd99377d">rawIMUMz</a>; <span class="comment">//imu.mz</span></div>
+<div class="line"><a name="l00085"></a><span class="lineno"><a class="line" href="classtelemetry__logframe.html#af2b256b4b8b80f7fc2f3a577f1b687dd">   85</a></span>&#160;    <span class="keywordtype">double</span> <a class="code" href="classtelemetry__logframe.html#af2b256b4b8b80f7fc2f3a577f1b687dd">rawIMUTemp</a>; <span class="comment">//imu.temp</span></div>
+<div class="line"><a name="l00086"></a><span class="lineno"><a class="line" href="classtelemetry__logframe.html#ab8815c9e9dd8604fcf2a596eee982721">   86</a></span>&#160;    <span class="keywordtype">double</span> <a class="code" href="classtelemetry__logframe.html#ab8815c9e9dd8604fcf2a596eee982721">rawBaroTemp</a>; <span class="comment">//baro.temp</span></div>
+<div class="line"><a name="l00087"></a><span class="lineno"><a class="line" href="classtelemetry__logframe.html#ac8b180854780128e00737cfcd3d5b5fd">   87</a></span>&#160;    <span class="keywordtype">double</span> <a class="code" href="classtelemetry__logframe.html#ac8b180854780128e00737cfcd3d5b5fd">rawBaroPres</a>; <span class="comment">//baro.pres</span></div>
+<div class="line"><a name="l00088"></a><span class="lineno"><a class="line" href="classtelemetry__logframe.html#af07b363717e1d60a0fad5578f77590be">   88</a></span>&#160;    <span class="keywordtype">double</span> <a class="code" href="classtelemetry__logframe.html#af07b363717e1d60a0fad5578f77590be">rawBaroAlt</a>; <span class="comment">//baro.alt</span></div>
+<div class="line"><a name="l00089"></a><span class="lineno"><a class="line" href="classtelemetry__logframe.html#adf91389e746abca489849f524de22c4d">   89</a></span>&#160;    <span class="keywordtype">int</span> <a class="code" href="classtelemetry__logframe.html#adf91389e746abca489849f524de22c4d">battVolt</a>; <span class="comment">//batt.volt</span></div>
+<div class="line"><a name="l00090"></a><span class="lineno"><a class="line" href="classtelemetry__logframe.html#a3e354e8d44799cf5180fdab819ed9004">   90</a></span>&#160;    <span class="keywordtype">int</span> <a class="code" href="classtelemetry__logframe.html#a3e354e8d44799cf5180fdab819ed9004">battPercent</a>; <span class="comment">//batt.percent</span></div>
+<div class="line"><a name="l00091"></a><span class="lineno"><a class="line" href="classtelemetry__logframe.html#aa0d6dc5c0d1396c47ff73888e958aaca">   91</a></span>&#160;    <span class="keywordtype">long</span> <a class="code" href="classtelemetry__logframe.html#aa0d6dc5c0d1396c47ff73888e958aaca">rawTimestamp</a>; <span class="comment">//raw.timestamp</span></div>
+<div class="line"><a name="l00092"></a><span class="lineno"><a class="line" href="classtelemetry__logframe.html#a50caa40a1d26f41d1b2f72537591d4bb">   92</a></span>&#160;    <span class="keywordtype">double</span> <a class="code" href="classtelemetry__logframe.html#a50caa40a1d26f41d1b2f72537591d4bb">estimatorX</a>; <span class="comment">//estimator.x</span></div>
+<div class="line"><a name="l00093"></a><span class="lineno"><a class="line" href="classtelemetry__logframe.html#a4111b52d4ae341459ed786ff55a93ff4">   93</a></span>&#160;    <span class="keywordtype">double</span> <a class="code" href="classtelemetry__logframe.html#a4111b52d4ae341459ed786ff55a93ff4">estimatorY</a>; <span class="comment">//estimator.y</span></div>
+<div class="line"><a name="l00094"></a><span class="lineno"><a class="line" href="classtelemetry__logframe.html#a62a020307f0c8fc953a512caf0ae9ed7">   94</a></span>&#160;    <span class="keywordtype">double</span> <a class="code" href="classtelemetry__logframe.html#a62a020307f0c8fc953a512caf0ae9ed7">estimatorZ</a>; <span class="comment">//estimator.z</span></div>
+<div class="line"><a name="l00095"></a><span class="lineno"><a class="line" href="classtelemetry__logframe.html#a9dfe53c017460644890341b50fb6a1b4">   95</a></span>&#160;    <span class="keywordtype">double</span> <a class="code" href="classtelemetry__logframe.html#a9dfe53c017460644890341b50fb6a1b4">estimatorVX</a>; <span class="comment">//estimator.vx</span></div>
+<div class="line"><a name="l00096"></a><span class="lineno"><a class="line" href="classtelemetry__logframe.html#a6491163af1278e4adee716cc31c96c31">   96</a></span>&#160;    <span class="keywordtype">double</span> <a class="code" href="classtelemetry__logframe.html#a6491163af1278e4adee716cc31c96c31">estimatorVY</a>; <span class="comment">//estimator.vy</span></div>
+<div class="line"><a name="l00097"></a><span class="lineno"><a class="line" href="classtelemetry__logframe.html#a394cc0b05a1f43fb44ca7005847b2da5">   97</a></span>&#160;    <span class="keywordtype">double</span> <a class="code" href="classtelemetry__logframe.html#a394cc0b05a1f43fb44ca7005847b2da5">estimatorVZ</a>; <span class="comment">//estimator.vz</span></div>
+<div class="line"><a name="l00098"></a><span class="lineno"><a class="line" href="classtelemetry__logframe.html#adf39bab0bb4591dd27cb61acaec3dbbf">   98</a></span>&#160;    <span class="keywordtype">double</span> <a class="code" href="classtelemetry__logframe.html#adf39bab0bb4591dd27cb61acaec3dbbf">estimatorAX</a>;  <span class="comment">//estimator.ax</span></div>
+<div class="line"><a name="l00099"></a><span class="lineno"><a class="line" href="classtelemetry__logframe.html#a1571a61e084a43a4d8dc386d415dff7b">   99</a></span>&#160;    <span class="keywordtype">double</span> <a class="code" href="classtelemetry__logframe.html#a1571a61e084a43a4d8dc386d415dff7b">estimatorAY</a>; <span class="comment">//</span></div>
+<div class="line"><a name="l00100"></a><span class="lineno"><a class="line" href="classtelemetry__logframe.html#a56c9227a1cc5c7f929fe6a1d0b94b237">  100</a></span>&#160;    <span class="keywordtype">double</span> <a class="code" href="classtelemetry__logframe.html#a56c9227a1cc5c7f929fe6a1d0b94b237">estimatorAZ</a>; <span class="comment">//estimator.az</span></div>
+<div class="line"><a name="l00101"></a><span class="lineno"><a class="line" href="classtelemetry__logframe.html#ad91dd5cae5551d775fc310c3355e76d2">  101</a></span>&#160;    <span class="keywordtype">double</span> <a class="code" href="classtelemetry__logframe.html#ad91dd5cae5551d775fc310c3355e76d2">estimatorYaw</a>; <span class="comment">//estimator.yaw</span></div>
+<div class="line"><a name="l00102"></a><span class="lineno"><a class="line" href="classtelemetry__logframe.html#a7a738de350a9d77b14b0b66c81535fe1">  102</a></span>&#160;    <span class="keywordtype">double</span> <a class="code" href="classtelemetry__logframe.html#a7a738de350a9d77b14b0b66c81535fe1">estimatorPitch</a>;</div>
+<div class="line"><a name="l00103"></a><span class="lineno"><a class="line" href="classtelemetry__logframe.html#a188e0ff3e6cd0f46605c4d0bff0bcf4f">  103</a></span>&#160;    <span class="keywordtype">double</span> <a class="code" href="classtelemetry__logframe.html#a188e0ff3e6cd0f46605c4d0bff0bcf4f">estimatorRoll</a>; <span class="comment">//estimator.roll</span></div>
+<div class="line"><a name="l00104"></a><span class="lineno"><a class="line" href="classtelemetry__logframe.html#a8e4b6db13271e203af45c5b0fe8d7f01">  104</a></span>&#160;    <span class="keywordtype">double</span> <a class="code" href="classtelemetry__logframe.html#a8e4b6db13271e203af45c5b0fe8d7f01">estimatorP</a>; <span class="comment">//estimator.p</span></div>
+<div class="line"><a name="l00105"></a><span class="lineno"><a class="line" href="classtelemetry__logframe.html#aa3f9e7815b1d89367d1794012a0d7087">  105</a></span>&#160;    <span class="keywordtype">double</span> <a class="code" href="classtelemetry__logframe.html#aa3f9e7815b1d89367d1794012a0d7087">estimatorR</a>;</div>
+<div class="line"><a name="l00106"></a><span class="lineno"><a class="line" href="classtelemetry__logframe.html#a8e3e94085df1edbefb96335b706921ad">  106</a></span>&#160;    <span class="keywordtype">double</span> <a class="code" href="classtelemetry__logframe.html#a8e3e94085df1edbefb96335b706921ad">estimatorQ</a>; <span class="comment">//estimator.q</span></div>
+<div class="line"><a name="l00107"></a><span class="lineno"><a class="line" href="classtelemetry__logframe.html#a3928b4b4db39ccffd39722e4660457e0">  107</a></span>&#160;    <span class="keywordtype">double</span> <a class="code" href="classtelemetry__logframe.html#a3928b4b4db39ccffd39722e4660457e0">estimatorL</a>; <span class="comment">//estimator.l</span></div>
+<div class="line"><a name="l00108"></a><span class="lineno"><a class="line" href="classtelemetry__logframe.html#a2e6f352e110432a49d01249095e337cb">  108</a></span>&#160;    <span class="keywordtype">double</span> <a class="code" href="classtelemetry__logframe.html#a2e6f352e110432a49d01249095e337cb">estimatorM</a>;</div>
+<div class="line"><a name="l00109"></a><span class="lineno"><a class="line" href="classtelemetry__logframe.html#a0d5bb58bc04207a07dc93ecf5f9f5462">  109</a></span>&#160;    <span class="keywordtype">double</span> <a class="code" href="classtelemetry__logframe.html#a0d5bb58bc04207a07dc93ecf5f9f5462">estimatorN</a>; <span class="comment">//estimator.n</span></div>
+<div class="line"><a name="l00110"></a><span class="lineno"><a class="line" href="classtelemetry__logframe.html#a0aaa30b41d8e744fc1fc4ed0974154db">  110</a></span>&#160;    <span class="keywordtype">long</span> <a class="code" href="classtelemetry__logframe.html#a0aaa30b41d8e744fc1fc4ed0974154db">estimatorTimestamp</a>;</div>
 <div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160; </div>
 <div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160; </div>
-<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;    std::string stringify()<span class="keyword">const</span>{</div>
-<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;        <span class="keywordflow">return</span> getSerializer().stringify(*<span class="keyword">this</span>) + <span class="stringliteral">&quot;\n&quot;</span>;</div>
+<div class="line"><a name="l00113"></a><span class="lineno"><a class="line" href="classtelemetry__logframe.html#add67dbfbf886bf1b322628962a03c0de">  113</a></span>&#160;    std::string <a class="code" href="classtelemetry__logframe.html#add67dbfbf886bf1b322628962a03c0de">stringify</a>()<span class="keyword">const</span>{</div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;        <span class="keywordflow">return</span> <a class="code" href="classtelemetry__logframe.html#ad8ce2864d5faaf045a0ff812c029a4b4">getSerializer</a>().stringify(*<span class="keyword">this</span>) + <span class="stringliteral">&quot;\n&quot;</span>;</div>
 <div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;    };</div>
 <div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160; </div>
 <div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;};</div>
 <div class="line"><a name="l00118"></a><span class="lineno"><a class="line" href="classsystem__logframe.html">  118</a></span>&#160;<span class="keyword">class </span><a class="code" href="classsystem__logframe.html">system_logframe</a>:<span class="keyword">public</span> <a class="code" href="classlogframe.html">logframe</a>{</div>
 <div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;<span class="keyword">private</span>:  </div>
-<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;    <span class="keyword">static</span> constexpr <span class="keyword">auto</span> getSerializer()</div>
+<div class="line"><a name="l00120"></a><span class="lineno"><a class="line" href="classsystem__logframe.html#aff345706bc232c9303550e98e0a94ff0">  120</a></span>&#160;    <span class="keyword">static</span> constexpr <span class="keyword">auto</span> <a class="code" href="classsystem__logframe.html#aff345706bc232c9303550e98e0a94ff0">getSerializer</a>()</div>
 <div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;    {</div>
 <div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;        <span class="keyword">auto</span> ret = <a class="code" href="classserializer.html">serializer</a>(</div>
-<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;            &amp;system_logframe::logLevel,</div>
-<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;            &amp;system_logframe::timestamp,</div>
-<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;            &amp;system_logframe::message,</div>
-<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;            &amp;system_logframe::systemFlag,</div>
-<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;            &amp;system_logframe::systemStatus</div>
+<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;            &amp;<a class="code" href="classsystem__logframe.html#a10f730b96505c4fef6ea69123c730590">system_logframe::logLevel</a>,</div>
+<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;            &amp;<a class="code" href="classsystem__logframe.html#aca597363f2fc7888e7a275c19b99cd0f">system_logframe::timestamp</a>,</div>
+<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;            &amp;<a class="code" href="classsystem__logframe.html#a285b45433e152e3a37c817a5f5ee337b">system_logframe::message</a>,</div>
+<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;            &amp;<a class="code" href="classsystem__logframe.html#aeeee54a23d04a0c3484317113b266b4b">system_logframe::systemFlag</a>,</div>
+<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;            &amp;<a class="code" href="classsystem__logframe.html#a433bfc0529dbba3170c3ce11e3094518">system_logframe::systemStatus</a></div>
 <div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;            </div>
 <div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;            </div>
 <div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160; </div>
@@ -206,33 +232,33 @@ $(function() {
 <div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160; </div>
 <div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;<span class="keyword">public</span>:</div>
 <div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;    <span class="comment">//global_system_flag</span></div>
-<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;    std::string logLevel;</div>
-<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;    uint64_t timestamp;</div>
-<div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;    std::string message;</div>
-<div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160;    uint32_t systemFlag;</div>
-<div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160;    uint32_t systemStatus;</div>
+<div class="line"><a name="l00137"></a><span class="lineno"><a class="line" href="classsystem__logframe.html#a10f730b96505c4fef6ea69123c730590">  137</a></span>&#160;    std::string <a class="code" href="classsystem__logframe.html#a10f730b96505c4fef6ea69123c730590">logLevel</a>;</div>
+<div class="line"><a name="l00138"></a><span class="lineno"><a class="line" href="classsystem__logframe.html#aca597363f2fc7888e7a275c19b99cd0f">  138</a></span>&#160;    uint64_t <a class="code" href="classsystem__logframe.html#aca597363f2fc7888e7a275c19b99cd0f">timestamp</a>;</div>
+<div class="line"><a name="l00139"></a><span class="lineno"><a class="line" href="classsystem__logframe.html#a285b45433e152e3a37c817a5f5ee337b">  139</a></span>&#160;    std::string <a class="code" href="classsystem__logframe.html#a285b45433e152e3a37c817a5f5ee337b">message</a>;</div>
+<div class="line"><a name="l00140"></a><span class="lineno"><a class="line" href="classsystem__logframe.html#aeeee54a23d04a0c3484317113b266b4b">  140</a></span>&#160;    uint32_t <a class="code" href="classsystem__logframe.html#aeeee54a23d04a0c3484317113b266b4b">systemFlag</a>;</div>
+<div class="line"><a name="l00141"></a><span class="lineno"><a class="line" href="classsystem__logframe.html#a433bfc0529dbba3170c3ce11e3094518">  141</a></span>&#160;    uint32_t <a class="code" href="classsystem__logframe.html#a433bfc0529dbba3170c3ce11e3094518">systemStatus</a>;</div>
 <div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160;    </div>
-<div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160;    std::string stringify()<span class="keyword">const</span>{</div>
-<div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160;        <span class="keywordflow">return</span> getSerializer().stringify(*<span class="keyword">this</span>) + <span class="stringliteral">&quot;\n&quot;</span>;</div>
+<div class="line"><a name="l00143"></a><span class="lineno"><a class="line" href="classsystem__logframe.html#a49366e0408b1e52b41604b8ee7bcc295">  143</a></span>&#160;    std::string <a class="code" href="classsystem__logframe.html#a49366e0408b1e52b41604b8ee7bcc295">stringify</a>()<span class="keyword">const</span>{</div>
+<div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160;        <span class="keywordflow">return</span> <a class="code" href="classsystem__logframe.html#aff345706bc232c9303550e98e0a94ff0">getSerializer</a>().stringify(*<span class="keyword">this</span>) + <span class="stringliteral">&quot;\n&quot;</span>;</div>
 <div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;    };</div>
 <div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160; </div>
 <div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;};</div>
 <div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160; </div>
 <div class="line"><a name="l00149"></a><span class="lineno"><a class="line" href="classnetwork__logframe.html">  149</a></span>&#160;<span class="keyword">class </span><a class="code" href="classnetwork__logframe.html">network_logframe</a>:<span class="keyword">public</span> <a class="code" href="classlogframe.html">logframe</a>{</div>
 <div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;<span class="keyword">private</span>:</div>
-<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;    <span class="keyword">static</span> constexpr <span class="keyword">auto</span> getSerializer()</div>
+<div class="line"><a name="l00151"></a><span class="lineno"><a class="line" href="classnetwork__logframe.html#a9ba5424a7b8b670ec4a994c08c1dd3e9">  151</a></span>&#160;    <span class="keyword">static</span> constexpr <span class="keyword">auto</span> <a class="code" href="classnetwork__logframe.html#a9ba5424a7b8b670ec4a994c08c1dd3e9">getSerializer</a>()</div>
 <div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;    {</div>
 <div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;        <span class="keyword">auto</span> ret = <a class="code" href="classserializer.html">serializer</a>(</div>
-<div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;            &amp;network_logframe::test</div>
+<div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;            &amp;<a class="code" href="classnetwork__logframe.html#a3993fab458fe41e49ac139a85198f2a1">network_logframe::test</a></div>
 <div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;        );</div>
 <div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;        <span class="keywordflow">return</span> ret;</div>
 <div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;    }</div>
 <div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;<span class="keyword">public</span>:</div>
 <div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;    <span class="comment">// todo</span></div>
-<div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;    <span class="keywordtype">double</span> test;</div>
+<div class="line"><a name="l00160"></a><span class="lineno"><a class="line" href="classnetwork__logframe.html#a3993fab458fe41e49ac139a85198f2a1">  160</a></span>&#160;    <span class="keywordtype">double</span> <a class="code" href="classnetwork__logframe.html#a3993fab458fe41e49ac139a85198f2a1">test</a>;</div>
 <div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;    </div>
-<div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;    std::string stringify()<span class="keyword">const</span>{</div>
-<div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;        <span class="keywordflow">return</span> getSerializer().stringify(*<span class="keyword">this</span>) + <span class="stringliteral">&quot;\n&quot;</span>;</div>
+<div class="line"><a name="l00162"></a><span class="lineno"><a class="line" href="classnetwork__logframe.html#ac0c8be1847d48fee9e34a2b17c6c3eca">  162</a></span>&#160;    std::string <a class="code" href="classnetwork__logframe.html#ac0c8be1847d48fee9e34a2b17c6c3eca">stringify</a>()<span class="keyword">const</span>{</div>
+<div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;        <span class="keywordflow">return</span> <a class="code" href="classnetwork__logframe.html#a9ba5424a7b8b670ec4a994c08c1dd3e9">getSerializer</a>().stringify(*<span class="keyword">this</span>) + <span class="stringliteral">&quot;\n&quot;</span>;</div>
 <div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;    };</div>
 <div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160; </div>
 <div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;};</div>
@@ -252,14 +278,73 @@ $(function() {
 <div class="line"><a name="l00180"></a><span class="lineno">  180</span>&#160;<span class="preprocessor">#endif</span></div>
 <div class="ttc" id="aclassengine__logframe_html"><div class="ttname"><a href="classengine__logframe.html">engine_logframe</a></div><div class="ttdef"><b>Definition:</b> logframe.h:168</div></div>
 <div class="ttc" id="aclasslogframe_html"><div class="ttname"><a href="classlogframe.html">logframe</a></div><div class="ttdef"><b>Definition:</b> logframe.h:9</div></div>
+<div class="ttc" id="aclasslogframe_html_a552d7438907dc9dba908829915a4dd67"><div class="ttname"><a href="classlogframe.html#a552d7438907dc9dba908829915a4dd67">logframe::stringify</a></div><div class="ttdeci">virtual std::string stringify() const</div></div>
 <div class="ttc" id="aclassnetwork__logframe_html"><div class="ttname"><a href="classnetwork__logframe.html">network_logframe</a></div><div class="ttdef"><b>Definition:</b> logframe.h:149</div></div>
+<div class="ttc" id="aclassnetwork__logframe_html_a3993fab458fe41e49ac139a85198f2a1"><div class="ttname"><a href="classnetwork__logframe.html#a3993fab458fe41e49ac139a85198f2a1">network_logframe::test</a></div><div class="ttdeci">double test</div><div class="ttdef"><b>Definition:</b> logframe.h:160</div></div>
+<div class="ttc" id="aclassnetwork__logframe_html_a9ba5424a7b8b670ec4a994c08c1dd3e9"><div class="ttname"><a href="classnetwork__logframe.html#a9ba5424a7b8b670ec4a994c08c1dd3e9">network_logframe::getSerializer</a></div><div class="ttdeci">static constexpr auto getSerializer()</div><div class="ttdef"><b>Definition:</b> logframe.h:151</div></div>
+<div class="ttc" id="aclassnetwork__logframe_html_ac0c8be1847d48fee9e34a2b17c6c3eca"><div class="ttname"><a href="classnetwork__logframe.html#ac0c8be1847d48fee9e34a2b17c6c3eca">network_logframe::stringify</a></div><div class="ttdeci">std::string stringify() const</div><div class="ttdef"><b>Definition:</b> logframe.h:162</div></div>
 <div class="ttc" id="aclassserializer_html"><div class="ttname"><a href="classserializer.html">serializer</a></div><div class="ttdef"><b>Definition:</b> serializableElement.h:45</div></div>
 <div class="ttc" id="aclasssystem__logframe_html"><div class="ttname"><a href="classsystem__logframe.html">system_logframe</a></div><div class="ttdef"><b>Definition:</b> logframe.h:118</div></div>
+<div class="ttc" id="aclasssystem__logframe_html_a10f730b96505c4fef6ea69123c730590"><div class="ttname"><a href="classsystem__logframe.html#a10f730b96505c4fef6ea69123c730590">system_logframe::logLevel</a></div><div class="ttdeci">std::string logLevel</div><div class="ttdef"><b>Definition:</b> logframe.h:137</div></div>
+<div class="ttc" id="aclasssystem__logframe_html_a285b45433e152e3a37c817a5f5ee337b"><div class="ttname"><a href="classsystem__logframe.html#a285b45433e152e3a37c817a5f5ee337b">system_logframe::message</a></div><div class="ttdeci">std::string message</div><div class="ttdef"><b>Definition:</b> logframe.h:139</div></div>
+<div class="ttc" id="aclasssystem__logframe_html_a433bfc0529dbba3170c3ce11e3094518"><div class="ttname"><a href="classsystem__logframe.html#a433bfc0529dbba3170c3ce11e3094518">system_logframe::systemStatus</a></div><div class="ttdeci">uint32_t systemStatus</div><div class="ttdef"><b>Definition:</b> logframe.h:141</div></div>
+<div class="ttc" id="aclasssystem__logframe_html_a49366e0408b1e52b41604b8ee7bcc295"><div class="ttname"><a href="classsystem__logframe.html#a49366e0408b1e52b41604b8ee7bcc295">system_logframe::stringify</a></div><div class="ttdeci">std::string stringify() const</div><div class="ttdef"><b>Definition:</b> logframe.h:143</div></div>
+<div class="ttc" id="aclasssystem__logframe_html_aca597363f2fc7888e7a275c19b99cd0f"><div class="ttname"><a href="classsystem__logframe.html#aca597363f2fc7888e7a275c19b99cd0f">system_logframe::timestamp</a></div><div class="ttdeci">uint64_t timestamp</div><div class="ttdef"><b>Definition:</b> logframe.h:138</div></div>
+<div class="ttc" id="aclasssystem__logframe_html_aeeee54a23d04a0c3484317113b266b4b"><div class="ttname"><a href="classsystem__logframe.html#aeeee54a23d04a0c3484317113b266b4b">system_logframe::systemFlag</a></div><div class="ttdeci">uint32_t systemFlag</div><div class="ttdef"><b>Definition:</b> logframe.h:140</div></div>
+<div class="ttc" id="aclasssystem__logframe_html_aff345706bc232c9303550e98e0a94ff0"><div class="ttname"><a href="classsystem__logframe.html#aff345706bc232c9303550e98e0a94ff0">system_logframe::getSerializer</a></div><div class="ttdeci">static constexpr auto getSerializer()</div><div class="ttdef"><b>Definition:</b> logframe.h:120</div></div>
 <div class="ttc" id="aclasstelemetry__logframe_html"><div class="ttname"><a href="classtelemetry__logframe.html">telemetry_logframe</a></div><div class="ttdef"><b>Definition:</b> logframe.h:13</div></div>
+<div class="ttc" id="aclasstelemetry__logframe_html_a0aaa30b41d8e744fc1fc4ed0974154db"><div class="ttname"><a href="classtelemetry__logframe.html#a0aaa30b41d8e744fc1fc4ed0974154db">telemetry_logframe::estimatorTimestamp</a></div><div class="ttdeci">long estimatorTimestamp</div><div class="ttdef"><b>Definition:</b> logframe.h:110</div></div>
+<div class="ttc" id="aclasstelemetry__logframe_html_a0bae1017e4b802d7a7b2275da49abb35"><div class="ttname"><a href="classtelemetry__logframe.html#a0bae1017e4b802d7a7b2275da49abb35">telemetry_logframe::rawIMUGx</a></div><div class="ttdeci">double rawIMUGx</div><div class="ttdef"><b>Definition:</b> logframe.h:79</div></div>
+<div class="ttc" id="aclasstelemetry__logframe_html_a0d5bb58bc04207a07dc93ecf5f9f5462"><div class="ttname"><a href="classtelemetry__logframe.html#a0d5bb58bc04207a07dc93ecf5f9f5462">telemetry_logframe::estimatorN</a></div><div class="ttdeci">double estimatorN</div><div class="ttdef"><b>Definition:</b> logframe.h:109</div></div>
+<div class="ttc" id="aclasstelemetry__logframe_html_a1571a61e084a43a4d8dc386d415dff7b"><div class="ttname"><a href="classtelemetry__logframe.html#a1571a61e084a43a4d8dc386d415dff7b">telemetry_logframe::estimatorAY</a></div><div class="ttdeci">double estimatorAY</div><div class="ttdef"><b>Definition:</b> logframe.h:99</div></div>
+<div class="ttc" id="aclasstelemetry__logframe_html_a188e0ff3e6cd0f46605c4d0bff0bcf4f"><div class="ttname"><a href="classtelemetry__logframe.html#a188e0ff3e6cd0f46605c4d0bff0bcf4f">telemetry_logframe::estimatorRoll</a></div><div class="ttdeci">double estimatorRoll</div><div class="ttdef"><b>Definition:</b> logframe.h:103</div></div>
+<div class="ttc" id="aclasstelemetry__logframe_html_a19ac82e4d2e69b7cbcef96a97c6e66b1"><div class="ttname"><a href="classtelemetry__logframe.html#a19ac82e4d2e69b7cbcef96a97c6e66b1">telemetry_logframe::rawGPSLat</a></div><div class="ttdeci">double rawGPSLat</div><div class="ttdef"><b>Definition:</b> logframe.h:71</div></div>
+<div class="ttc" id="aclasstelemetry__logframe_html_a2018e686f2b853ecc4dd2ee245aa6b8d"><div class="ttname"><a href="classtelemetry__logframe.html#a2018e686f2b853ecc4dd2ee245aa6b8d">telemetry_logframe::rawGPShdop</a></div><div class="ttdeci">double rawGPShdop</div><div class="ttdef"><b>Definition:</b> logframe.h:75</div></div>
+<div class="ttc" id="aclasstelemetry__logframe_html_a2e6f352e110432a49d01249095e337cb"><div class="ttname"><a href="classtelemetry__logframe.html#a2e6f352e110432a49d01249095e337cb">telemetry_logframe::estimatorM</a></div><div class="ttdeci">double estimatorM</div><div class="ttdef"><b>Definition:</b> logframe.h:108</div></div>
+<div class="ttc" id="aclasstelemetry__logframe_html_a34fa15a676e3270383be3700979f169d"><div class="ttname"><a href="classtelemetry__logframe.html#a34fa15a676e3270383be3700979f169d">telemetry_logframe::rawIMUMy</a></div><div class="ttdeci">double rawIMUMy</div><div class="ttdef"><b>Definition:</b> logframe.h:83</div></div>
+<div class="ttc" id="aclasstelemetry__logframe_html_a3695abc86a0031daca6489a73c62283b"><div class="ttname"><a href="classtelemetry__logframe.html#a3695abc86a0031daca6489a73c62283b">telemetry_logframe::rawGPSSpeed</a></div><div class="ttdeci">double rawGPSSpeed</div><div class="ttdef"><b>Definition:</b> logframe.h:72</div></div>
+<div class="ttc" id="aclasstelemetry__logframe_html_a3928b4b4db39ccffd39722e4660457e0"><div class="ttname"><a href="classtelemetry__logframe.html#a3928b4b4db39ccffd39722e4660457e0">telemetry_logframe::estimatorL</a></div><div class="ttdeci">double estimatorL</div><div class="ttdef"><b>Definition:</b> logframe.h:107</div></div>
+<div class="ttc" id="aclasstelemetry__logframe_html_a394cc0b05a1f43fb44ca7005847b2da5"><div class="ttname"><a href="classtelemetry__logframe.html#a394cc0b05a1f43fb44ca7005847b2da5">telemetry_logframe::estimatorVZ</a></div><div class="ttdeci">double estimatorVZ</div><div class="ttdef"><b>Definition:</b> logframe.h:97</div></div>
+<div class="ttc" id="aclasstelemetry__logframe_html_a39d7e6ecd2524c18003df65903fd77e2"><div class="ttname"><a href="classtelemetry__logframe.html#a39d7e6ecd2524c18003df65903fd77e2">telemetry_logframe::rawIMUGz</a></div><div class="ttdeci">double rawIMUGz</div><div class="ttdef"><b>Definition:</b> logframe.h:81</div></div>
+<div class="ttc" id="aclasstelemetry__logframe_html_a3e354e8d44799cf5180fdab819ed9004"><div class="ttname"><a href="classtelemetry__logframe.html#a3e354e8d44799cf5180fdab819ed9004">telemetry_logframe::battPercent</a></div><div class="ttdeci">int battPercent</div><div class="ttdef"><b>Definition:</b> logframe.h:90</div></div>
+<div class="ttc" id="aclasstelemetry__logframe_html_a4111b52d4ae341459ed786ff55a93ff4"><div class="ttname"><a href="classtelemetry__logframe.html#a4111b52d4ae341459ed786ff55a93ff4">telemetry_logframe::estimatorY</a></div><div class="ttdeci">double estimatorY</div><div class="ttdef"><b>Definition:</b> logframe.h:93</div></div>
+<div class="ttc" id="aclasstelemetry__logframe_html_a494b7e8225f4f616726821a1fd99377d"><div class="ttname"><a href="classtelemetry__logframe.html#a494b7e8225f4f616726821a1fd99377d">telemetry_logframe::rawIMUMz</a></div><div class="ttdeci">double rawIMUMz</div><div class="ttdef"><b>Definition:</b> logframe.h:84</div></div>
+<div class="ttc" id="aclasstelemetry__logframe_html_a4c31ca9a97493b97905f4609f8a1ff51"><div class="ttname"><a href="classtelemetry__logframe.html#a4c31ca9a97493b97905f4609f8a1ff51">telemetry_logframe::rawIMUGy</a></div><div class="ttdeci">double rawIMUGy</div><div class="ttdef"><b>Definition:</b> logframe.h:80</div></div>
+<div class="ttc" id="aclasstelemetry__logframe_html_a50caa40a1d26f41d1b2f72537591d4bb"><div class="ttname"><a href="classtelemetry__logframe.html#a50caa40a1d26f41d1b2f72537591d4bb">telemetry_logframe::estimatorX</a></div><div class="ttdeci">double estimatorX</div><div class="ttdef"><b>Definition:</b> logframe.h:92</div></div>
+<div class="ttc" id="aclasstelemetry__logframe_html_a56c9227a1cc5c7f929fe6a1d0b94b237"><div class="ttname"><a href="classtelemetry__logframe.html#a56c9227a1cc5c7f929fe6a1d0b94b237">telemetry_logframe::estimatorAZ</a></div><div class="ttdeci">double estimatorAZ</div><div class="ttdef"><b>Definition:</b> logframe.h:100</div></div>
+<div class="ttc" id="aclasstelemetry__logframe_html_a5f2e45dcf0f53024dc333c3c0c1c8770"><div class="ttname"><a href="classtelemetry__logframe.html#a5f2e45dcf0f53024dc333c3c0c1c8770">telemetry_logframe::rawIMUAx</a></div><div class="ttdeci">double rawIMUAx</div><div class="ttdef"><b>Definition:</b> logframe.h:76</div></div>
+<div class="ttc" id="aclasstelemetry__logframe_html_a60f8de4ac8c1efcaa2cebe0fc9b80244"><div class="ttname"><a href="classtelemetry__logframe.html#a60f8de4ac8c1efcaa2cebe0fc9b80244">telemetry_logframe::rawIMUMx</a></div><div class="ttdeci">double rawIMUMx</div><div class="ttdef"><b>Definition:</b> logframe.h:82</div></div>
+<div class="ttc" id="aclasstelemetry__logframe_html_a62a020307f0c8fc953a512caf0ae9ed7"><div class="ttname"><a href="classtelemetry__logframe.html#a62a020307f0c8fc953a512caf0ae9ed7">telemetry_logframe::estimatorZ</a></div><div class="ttdeci">double estimatorZ</div><div class="ttdef"><b>Definition:</b> logframe.h:94</div></div>
+<div class="ttc" id="aclasstelemetry__logframe_html_a6491163af1278e4adee716cc31c96c31"><div class="ttname"><a href="classtelemetry__logframe.html#a6491163af1278e4adee716cc31c96c31">telemetry_logframe::estimatorVY</a></div><div class="ttdeci">double estimatorVY</div><div class="ttdef"><b>Definition:</b> logframe.h:96</div></div>
+<div class="ttc" id="aclasstelemetry__logframe_html_a6dbdddb10fe6b4663422ec0153175a7e"><div class="ttname"><a href="classtelemetry__logframe.html#a6dbdddb10fe6b4663422ec0153175a7e">telemetry_logframe::rawIMUAz</a></div><div class="ttdeci">double rawIMUAz</div><div class="ttdef"><b>Definition:</b> logframe.h:78</div></div>
+<div class="ttc" id="aclasstelemetry__logframe_html_a7a738de350a9d77b14b0b66c81535fe1"><div class="ttname"><a href="classtelemetry__logframe.html#a7a738de350a9d77b14b0b66c81535fe1">telemetry_logframe::estimatorPitch</a></div><div class="ttdeci">double estimatorPitch</div><div class="ttdef"><b>Definition:</b> logframe.h:102</div></div>
+<div class="ttc" id="aclasstelemetry__logframe_html_a8e3e94085df1edbefb96335b706921ad"><div class="ttname"><a href="classtelemetry__logframe.html#a8e3e94085df1edbefb96335b706921ad">telemetry_logframe::estimatorQ</a></div><div class="ttdeci">double estimatorQ</div><div class="ttdef"><b>Definition:</b> logframe.h:106</div></div>
+<div class="ttc" id="aclasstelemetry__logframe_html_a8e4b6db13271e203af45c5b0fe8d7f01"><div class="ttname"><a href="classtelemetry__logframe.html#a8e4b6db13271e203af45c5b0fe8d7f01">telemetry_logframe::estimatorP</a></div><div class="ttdeci">double estimatorP</div><div class="ttdef"><b>Definition:</b> logframe.h:104</div></div>
+<div class="ttc" id="aclasstelemetry__logframe_html_a9dfe53c017460644890341b50fb6a1b4"><div class="ttname"><a href="classtelemetry__logframe.html#a9dfe53c017460644890341b50fb6a1b4">telemetry_logframe::estimatorVX</a></div><div class="ttdeci">double estimatorVX</div><div class="ttdef"><b>Definition:</b> logframe.h:95</div></div>
+<div class="ttc" id="aclasstelemetry__logframe_html_aa0d6dc5c0d1396c47ff73888e958aaca"><div class="ttname"><a href="classtelemetry__logframe.html#aa0d6dc5c0d1396c47ff73888e958aaca">telemetry_logframe::rawTimestamp</a></div><div class="ttdeci">long rawTimestamp</div><div class="ttdef"><b>Definition:</b> logframe.h:91</div></div>
+<div class="ttc" id="aclasstelemetry__logframe_html_aa3f9e7815b1d89367d1794012a0d7087"><div class="ttname"><a href="classtelemetry__logframe.html#aa3f9e7815b1d89367d1794012a0d7087">telemetry_logframe::estimatorR</a></div><div class="ttdeci">double estimatorR</div><div class="ttdef"><b>Definition:</b> logframe.h:105</div></div>
+<div class="ttc" id="aclasstelemetry__logframe_html_ab8815c9e9dd8604fcf2a596eee982721"><div class="ttname"><a href="classtelemetry__logframe.html#ab8815c9e9dd8604fcf2a596eee982721">telemetry_logframe::rawBaroTemp</a></div><div class="ttdeci">double rawBaroTemp</div><div class="ttdef"><b>Definition:</b> logframe.h:86</div></div>
+<div class="ttc" id="aclasstelemetry__logframe_html_abed3f7ccf22675644174928f5ed6aeca"><div class="ttname"><a href="classtelemetry__logframe.html#abed3f7ccf22675644174928f5ed6aeca">telemetry_logframe::rawGPSAlt</a></div><div class="ttdeci">double rawGPSAlt</div><div class="ttdef"><b>Definition:</b> logframe.h:73</div></div>
+<div class="ttc" id="aclasstelemetry__logframe_html_abfcb82eda7a276ed3d76a2110ee9f366"><div class="ttname"><a href="classtelemetry__logframe.html#abfcb82eda7a276ed3d76a2110ee9f366">telemetry_logframe::rawGPSLong</a></div><div class="ttdeci">double rawGPSLong</div><div class="ttdef"><b>Definition:</b> logframe.h:70</div></div>
+<div class="ttc" id="aclasstelemetry__logframe_html_ac8b180854780128e00737cfcd3d5b5fd"><div class="ttname"><a href="classtelemetry__logframe.html#ac8b180854780128e00737cfcd3d5b5fd">telemetry_logframe::rawBaroPres</a></div><div class="ttdeci">double rawBaroPres</div><div class="ttdef"><b>Definition:</b> logframe.h:87</div></div>
+<div class="ttc" id="aclasstelemetry__logframe_html_ad3c0c61ecf6022a3994a9b849c4dc7ab"><div class="ttname"><a href="classtelemetry__logframe.html#ad3c0c61ecf6022a3994a9b849c4dc7ab">telemetry_logframe::rawIMUAy</a></div><div class="ttdeci">double rawIMUAy</div><div class="ttdef"><b>Definition:</b> logframe.h:77</div></div>
+<div class="ttc" id="aclasstelemetry__logframe_html_ad8bf7db3943276e354d14ed17ef8b141"><div class="ttname"><a href="classtelemetry__logframe.html#ad8bf7db3943276e354d14ed17ef8b141">telemetry_logframe::rawGPSsat</a></div><div class="ttdeci">uint8_t rawGPSsat</div><div class="ttdef"><b>Definition:</b> logframe.h:74</div></div>
+<div class="ttc" id="aclasstelemetry__logframe_html_ad8ce2864d5faaf045a0ff812c029a4b4"><div class="ttname"><a href="classtelemetry__logframe.html#ad8ce2864d5faaf045a0ff812c029a4b4">telemetry_logframe::getSerializer</a></div><div class="ttdeci">static constexpr auto getSerializer()</div><div class="ttdef"><b>Definition:</b> logframe.h:15</div></div>
+<div class="ttc" id="aclasstelemetry__logframe_html_ad91dd5cae5551d775fc310c3355e76d2"><div class="ttname"><a href="classtelemetry__logframe.html#ad91dd5cae5551d775fc310c3355e76d2">telemetry_logframe::estimatorYaw</a></div><div class="ttdeci">double estimatorYaw</div><div class="ttdef"><b>Definition:</b> logframe.h:101</div></div>
+<div class="ttc" id="aclasstelemetry__logframe_html_add67dbfbf886bf1b322628962a03c0de"><div class="ttname"><a href="classtelemetry__logframe.html#add67dbfbf886bf1b322628962a03c0de">telemetry_logframe::stringify</a></div><div class="ttdeci">std::string stringify() const</div><div class="ttdef"><b>Definition:</b> logframe.h:113</div></div>
+<div class="ttc" id="aclasstelemetry__logframe_html_adf39bab0bb4591dd27cb61acaec3dbbf"><div class="ttname"><a href="classtelemetry__logframe.html#adf39bab0bb4591dd27cb61acaec3dbbf">telemetry_logframe::estimatorAX</a></div><div class="ttdeci">double estimatorAX</div><div class="ttdef"><b>Definition:</b> logframe.h:98</div></div>
+<div class="ttc" id="aclasstelemetry__logframe_html_adf91389e746abca489849f524de22c4d"><div class="ttname"><a href="classtelemetry__logframe.html#adf91389e746abca489849f524de22c4d">telemetry_logframe::battVolt</a></div><div class="ttdeci">int battVolt</div><div class="ttdef"><b>Definition:</b> logframe.h:89</div></div>
+<div class="ttc" id="aclasstelemetry__logframe_html_af07b363717e1d60a0fad5578f77590be"><div class="ttname"><a href="classtelemetry__logframe.html#af07b363717e1d60a0fad5578f77590be">telemetry_logframe::rawBaroAlt</a></div><div class="ttdeci">double rawBaroAlt</div><div class="ttdef"><b>Definition:</b> logframe.h:88</div></div>
+<div class="ttc" id="aclasstelemetry__logframe_html_af2b256b4b8b80f7fc2f3a577f1b687dd"><div class="ttname"><a href="classtelemetry__logframe.html#af2b256b4b8b80f7fc2f3a577f1b687dd">telemetry_logframe::rawIMUTemp</a></div><div class="ttdeci">double rawIMUTemp</div><div class="ttdef"><b>Definition:</b> logframe.h:85</div></div>
+<div class="ttc" id="aserializable_element_8h_html"><div class="ttname"><a href="serializable_element_8h.html">serializableElement.h</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
 <!-- start footer part -->
-<hr class="footer"/><address class="footer"><small>
-Generated by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1
-</small></address>
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_ac55354187c8c6c264902bc62bdefbb0.html">Logging</a></li><li class="navelem"><a class="el" href="logframe_8h.html">logframe.h</a></li>
+    <li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
+  </ul>
+</div>
 </body>
 </html>

@@ -1,0 +1,26 @@
+<map id="stateMachine::initialise" name="stateMachine::initialise">
+<area shape="rect" id="node1" title=" " alt="" coords="5,259,160,286"/>
+<area shape="rect" id="node2" href="$classstate_machine.html#a5d7b94f00a94721921b3b100fa234fb4" title=" " alt="" coords="208,209,389,235"/>
+<area shape="rect" id="node7" href="$class_network_manager.html#a87b64dafa618fac138addfac9c47edab" title=" " alt="" coords="218,313,379,339"/>
+<area shape="rect" id="node12" href="$class_log_controller.html#a691c1ff90609fcbd1c95a791fbec30bb" title=" " alt="" coords="229,146,368,173"/>
+<area shape="rect" id="node18" href="$class_storage_controller.html#a0b346fe54c8f2253697f86926fa5eb90" title=" " alt="" coords="447,248,577,289"/>
+<area shape="rect" id="node19" href="$class_estimator.html#a28cc6199ece59c166c0268ebc3edcf9d" title=" " alt="" coords="239,363,358,390"/>
+<area shape="rect" id="node20" href="$class_sensors.html#a53a14d2dc2f063893ba275aa6be2ffc0" title=" " alt="" coords="243,470,354,497"/>
+<area shape="rect" id="node3" href="$class_state.html#a6154140cc1da5795d696a076d53b51d9" title=" " alt="" coords="457,197,567,223"/>
+<area shape="rect" id="node4" href="$class_system_status.html#abaa2a5b6a72c67ae890fd47ebb19cf0c" title=" " alt="" coords="659,291,807,332"/>
+<area shape="rect" id="node6" href="$namespaceutils.html#a80b01b2df5fab1766ccdbfa4fb2ce79d" title=" " alt="" coords="685,122,782,149"/>
+<area shape="rect" id="node5" href="$class_log_controller.html#a355de792d40fbdffb4dd694482a0bd2f" title=" " alt="" coords="880,269,1004,295"/>
+<area shape="rect" id="node8" href="$class_radio.html#a46f079f86ab0e7e83a4521c35eaa9aff" title=" " alt="" coords="464,365,560,391"/>
+<area shape="rect" id="node11" href="$class_u_s_b.html#ac1ff137bb999158ee6266ec936665399" title=" " alt="" coords="467,314,557,341"/>
+<area shape="rect" id="node9" href="$class_system_status.html#acdbe5c478512869887c5b07779773a1b" title=" " alt="" coords="666,356,801,397"/>
+<area shape="rect" id="node10" href="$class_system_status.html#a872912293f3c93e87eb69c9a70f7743a" title=" " alt="" coords="635,422,832,449"/>
+<area shape="rect" id="node13" href="$class_storage_controller.html#a1c88bf9602ab25ddceac9503d880a9f9" title=" " alt="" coords="668,173,799,215"/>
+<area shape="rect" id="node14" href="$class_storage_controller.html#a87d4665b5ef9041aea21649463c895d0" title=" " alt="" coords="437,72,587,113"/>
+<area shape="rect" id="node15" href="$class_storage_controller.html#adae9673eb8ed76ad4711b4d6bb7a02f7" title=" " alt="" coords="668,5,799,47"/>
+<area shape="rect" id="node17" href="$class_storage_controller.html#aeff6ec755ddf2df758b273691a1b662f" title=" " alt="" coords="663,71,804,98"/>
+<area shape="rect" id="node16" href="$namespaceutils.html#a5c6e8f8bd74a1e526654d925c0ae2249" title=" " alt="" coords="901,13,983,39"/>
+<area shape="rect" id="node21" href="$class_baro.html#a54bc23ca90c603a8d0f83beebda6d635" title=" " alt="" coords="467,521,557,547"/>
+<area shape="rect" id="node22" href="$class_battery.html#afc45ec8a22fac60f19fe189e4c21d313" title=" " alt="" coords="460,571,564,598"/>
+<area shape="rect" id="node23" href="$class_g_p_s.html#a29556f8e05c9175ca2147c8c648bd023" title=" " alt="" coords="467,470,557,497"/>
+<area shape="rect" id="node24" href="$class_imu.html#af2fba9f67a4449e503374a5ca10b1832" title=" " alt="" coords="470,419,554,446"/>
+</map>

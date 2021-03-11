@@ -1,4 +1,26 @@
 <map id="Sensors" name="Sensors">
-<area shape="rect" id="node1" title=" " alt="" coords="43,95,114,121"/>
-<area shape="rect" id="node2" href="$structraw__measurements__t.html" title=" " alt="" coords="5,5,152,32"/>
+<area shape="rect" id="node1" title=" " alt="" coords="279,669,349,696"/>
+<area shape="rect" id="node2" href="$classstate_machine.html" title=" " alt="" coords="448,477,548,504"/>
+<area shape="rect" id="node3" href="$class_system_status.html" title=" " alt="" coords="711,335,817,361"/>
+<area shape="rect" id="node4" href="$class_storage_controller.html" title=" " alt="" coords="703,619,825,645"/>
+<area shape="rect" id="node10" href="$class_network_manager.html" title=" " alt="" coords="1241,291,1363,317"/>
+<area shape="rect" id="node15" href="$class_command_handler.html" title=" " alt="" coords="855,152,981,179"/>
+<area shape="rect" id="node16" href="$class_state.html" title=" " alt="" coords="737,395,791,421"/>
+<area shape="rect" id="node18" href="$class_estimator.html" title=" " alt="" coords="725,252,803,279"/>
+<area shape="rect" id="node11" href="$class_u_s_b.html" title=" " alt="" coords="1038,319,1089,345"/>
+<area shape="rect" id="node14" href="$class_radio.html" title=" " alt="" coords="1035,217,1091,244"/>
+<area shape="rect" id="node20" href="$class_g_p_s.html" title=" " alt="" coords="1038,713,1089,740"/>
+<area shape="rect" id="node22" href="$class_battery.html" title=" " alt="" coords="1031,68,1095,95"/>
+<area shape="rect" id="node23" href="$class_baro.html" title=" " alt="" coords="1039,663,1088,689"/>
+<area shape="rect" id="node24" href="$class_imu.html" title=" " alt="" coords="1041,875,1085,901"/>
+<area shape="rect" id="node5" href="$class_log_controller.html" title=" " alt="" coords="1014,1039,1113,1065"/>
+<area shape="rect" id="node17" href="$class_config_controller.html" title=" " alt="" coords="1005,581,1121,608"/>
+<area shape="rect" id="node6" href="$classtelemetry__logframe.html" title=" " alt="" coords="697,1039,831,1065"/>
+<area shape="rect" id="node7" href="$classlogframe.html" title=" " alt="" coords="462,1089,534,1116"/>
+<area shape="rect" id="node8" href="$classsystem__logframe.html" title=" " alt="" coords="703,1089,825,1116"/>
+<area shape="rect" id="node9" href="$classnetwork__logframe.html" title=" " alt="" coords="701,1140,827,1167"/>
+<area shape="rect" id="node12" href="$class_iface.html" title=" " alt="" coords="739,201,789,228"/>
+<area shape="rect" id="node13" href="$class_routing_table.html" title=" " alt="" coords="1014,268,1113,295"/>
+<area shape="rect" id="node19" href="$structstate__t.html" title=" " alt="" coords="467,161,529,188"/>
+<area shape="rect" id="node21" href="$structraw__measurements__t.html" title=" " alt="" coords="5,772,152,799"/>
 </map>

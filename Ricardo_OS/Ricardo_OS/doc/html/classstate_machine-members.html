@@ -9,9 +9,18 @@
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+  $(document).ready(function() { init_search(); });
+/* @license-end */
+</script>
 <link href="doxygen.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
@@ -25,6 +34,21 @@
    &#160;<span id="projectnumber">1</span>
    </div>
   </td>
+   <td>        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <img id="MSearchSelect" src="search/mag_sel.svg"
+               onmouseover="return searchBox.OnSearchSelectShow()"
+               onmouseout="return searchBox.OnSearchSelectHide()"
+               alt=""/>
+          <input type="text" id="MSearchField" value="Search" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.svg" alt=""/></a>
+          </span>
+        </div>
+</td>
  </tr>
  </tbody>
 </table>
@@ -36,16 +60,23 @@
 var searchBox = new SearchBox("searchBox", "search",false,'Search','.html');
 /* @license-end */
 </script>
-<script type="text/javascript" src="menudata.js"></script>
-<script type="text/javascript" src="menu.js"></script>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
 <script type="text/javascript">
 /* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
-$(function() {
-  initMenu('',true,false,'search.php','Search');
-  $(document).ready(function() { init_search(); });
-});
-/* @license-end */</script>
-<div id="main-nav"></div>
+$(document).ready(function(){initNavTree('classstate_machine.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
      onmouseover="return searchBox.OnSearchSelectShow()"
@@ -60,7 +91,6 @@ $(function() {
 </iframe>
 </div>
 
-</div><!-- top -->
 <div class="header">
   <div class="headertitle">
 <div class="title">stateMachine Member List</div>  </div>
@@ -69,23 +99,27 @@ $(function() {
 
 <p>This is the complete list of members for <a class="el" href="classstate_machine.html">stateMachine</a>, including all inherited members.</p>
 <table class="directory">
-  <tr bgcolor="#f0f0f0" class="even"><td class="entry"><b>changeState</b>(State *newStatePtr) (defined in <a class="el" href="classstate_machine.html">stateMachine</a>)</td><td class="entry"><a class="el" href="classstate_machine.html">stateMachine</a></td><td class="entry"></td></tr>
-  <tr bgcolor="#f0f0f0"><td class="entry"><b>configcontroller</b> (defined in <a class="el" href="classstate_machine.html">stateMachine</a>)</td><td class="entry"><a class="el" href="classstate_machine.html">stateMachine</a></td><td class="entry"></td></tr>
-  <tr bgcolor="#f0f0f0" class="even"><td class="entry"><b>estimator</b> (defined in <a class="el" href="classstate_machine.html">stateMachine</a>)</td><td class="entry"><a class="el" href="classstate_machine.html">stateMachine</a></td><td class="entry"></td></tr>
-  <tr bgcolor="#f0f0f0"><td class="entry"><b>I2C</b> (defined in <a class="el" href="classstate_machine.html">stateMachine</a>)</td><td class="entry"><a class="el" href="classstate_machine.html">stateMachine</a></td><td class="entry"></td></tr>
-  <tr bgcolor="#f0f0f0" class="even"><td class="entry"><b>initialise</b>(State *initStatePtr) (defined in <a class="el" href="classstate_machine.html">stateMachine</a>)</td><td class="entry"><a class="el" href="classstate_machine.html">stateMachine</a></td><td class="entry"></td></tr>
-  <tr bgcolor="#f0f0f0"><td class="entry"><b>logcontroller</b> (defined in <a class="el" href="classstate_machine.html">stateMachine</a>)</td><td class="entry"><a class="el" href="classstate_machine.html">stateMachine</a></td><td class="entry"></td></tr>
-  <tr bgcolor="#f0f0f0" class="even"><td class="entry"><b>networkmanager</b> (defined in <a class="el" href="classstate_machine.html">stateMachine</a>)</td><td class="entry"><a class="el" href="classstate_machine.html">stateMachine</a></td><td class="entry"></td></tr>
-  <tr bgcolor="#f0f0f0"><td class="entry"><b>sensors</b> (defined in <a class="el" href="classstate_machine.html">stateMachine</a>)</td><td class="entry"><a class="el" href="classstate_machine.html">stateMachine</a></td><td class="entry"></td></tr>
-  <tr bgcolor="#f0f0f0" class="even"><td class="entry"><b>stateMachine</b>() (defined in <a class="el" href="classstate_machine.html">stateMachine</a>)</td><td class="entry"><a class="el" href="classstate_machine.html">stateMachine</a></td><td class="entry"></td></tr>
-  <tr bgcolor="#f0f0f0"><td class="entry"><b>storagecontroller</b> (defined in <a class="el" href="classstate_machine.html">stateMachine</a>)</td><td class="entry"><a class="el" href="classstate_machine.html">stateMachine</a></td><td class="entry"></td></tr>
-  <tr bgcolor="#f0f0f0" class="even"><td class="entry"><b>systemstatus</b> (defined in <a class="el" href="classstate_machine.html">stateMachine</a>)</td><td class="entry"><a class="el" href="classstate_machine.html">stateMachine</a></td><td class="entry"></td></tr>
-  <tr bgcolor="#f0f0f0"><td class="entry"><b>update</b>() (defined in <a class="el" href="classstate_machine.html">stateMachine</a>)</td><td class="entry"><a class="el" href="classstate_machine.html">stateMachine</a></td><td class="entry"></td></tr>
-  <tr bgcolor="#f0f0f0" class="even"><td class="entry"><b>vspi</b> (defined in <a class="el" href="classstate_machine.html">stateMachine</a>)</td><td class="entry"><a class="el" href="classstate_machine.html">stateMachine</a></td><td class="entry"></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="classstate_machine.html#a6539b239bcf31ec86fc4f3e69f6e4f88">_currStatePtr</a></td><td class="entry"><a class="el" href="classstate_machine.html">stateMachine</a></td><td class="entry"><span class="mlabel">private</span></td></tr>
+  <tr><td class="entry"><a class="el" href="classstate_machine.html#a5d7b94f00a94721921b3b100fa234fb4">changeState</a>(State *newStatePtr)</td><td class="entry"><a class="el" href="classstate_machine.html">stateMachine</a></td><td class="entry"></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="classstate_machine.html#adb1385794ad6d198279b62d0aa64701a">configcontroller</a></td><td class="entry"><a class="el" href="classstate_machine.html">stateMachine</a></td><td class="entry"></td></tr>
+  <tr><td class="entry"><a class="el" href="classstate_machine.html#a347dd01f161a37bb7080aa7b29835002">estimator</a></td><td class="entry"><a class="el" href="classstate_machine.html">stateMachine</a></td><td class="entry"></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="classstate_machine.html#aa85b424f16cdc441a63eed018658736d">I2C</a></td><td class="entry"><a class="el" href="classstate_machine.html">stateMachine</a></td><td class="entry"></td></tr>
+  <tr><td class="entry"><a class="el" href="classstate_machine.html#ab9275b38265e4166367b4f3d2aa0e474">initialise</a>(State *initStatePtr)</td><td class="entry"><a class="el" href="classstate_machine.html">stateMachine</a></td><td class="entry"></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="classstate_machine.html#a27e4d19e1dcff45fb0e8930971898750">logcontroller</a></td><td class="entry"><a class="el" href="classstate_machine.html">stateMachine</a></td><td class="entry"></td></tr>
+  <tr><td class="entry"><a class="el" href="classstate_machine.html#a5392d553305ccc5282a6cd61159c9829">networkmanager</a></td><td class="entry"><a class="el" href="classstate_machine.html">stateMachine</a></td><td class="entry"></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="classstate_machine.html#ae950d1a20842e52c87668bbb72371163">sensors</a></td><td class="entry"><a class="el" href="classstate_machine.html">stateMachine</a></td><td class="entry"></td></tr>
+  <tr><td class="entry"><a class="el" href="classstate_machine.html#a762e2219cbcdf5a2d17a7aa1fcb59d89">stateMachine</a>()</td><td class="entry"><a class="el" href="classstate_machine.html">stateMachine</a></td><td class="entry"></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="classstate_machine.html#ab4c73b5e0fda3a705bad93d5ab45a3a1">storagecontroller</a></td><td class="entry"><a class="el" href="classstate_machine.html">stateMachine</a></td><td class="entry"></td></tr>
+  <tr><td class="entry"><a class="el" href="classstate_machine.html#aafb1576c55658672886391e9e94d2e0c">systemstatus</a></td><td class="entry"><a class="el" href="classstate_machine.html">stateMachine</a></td><td class="entry"></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="classstate_machine.html#a5f4f54735cb0a13393227e3af6863cdd">update</a>()</td><td class="entry"><a class="el" href="classstate_machine.html">stateMachine</a></td><td class="entry"></td></tr>
+  <tr><td class="entry"><a class="el" href="classstate_machine.html#ac0e2bf50a0069df384195e64f9e69652">vspi</a></td><td class="entry"><a class="el" href="classstate_machine.html">stateMachine</a></td><td class="entry"></td></tr>
 </table></div><!-- contents -->
+</div><!-- doc-content -->
 <!-- start footer part -->
-<hr class="footer"/><address class="footer"><small>
-Generated by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1
-</small></address>
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
+  </ul>
+</div>
 </body>
 </html>

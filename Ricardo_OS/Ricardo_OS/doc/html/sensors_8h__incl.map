@@ -1,0 +1,16 @@
+<map id="/Users/kiran/Documents/Projects/ICLR/Avionics/Ricardo_OS/Ricardo_OS/src/Sensors/sensors.h" name="/Users/kiran/Documents/Projects/ICLR/Avionics/Ricardo_OS/Ricardo_OS/src/Sensors/sensors.h">
+<area shape="rect" id="node1" title=" " alt="" coords="336,5,531,76"/>
+<area shape="rect" id="node2" title=" " alt="" coords="229,273,307,300"/>
+<area shape="rect" id="node3" href="$sensor_structs_8h.html" title=" " alt="" coords="583,199,697,225"/>
+<area shape="rect" id="node4" href="$gps_8h.html" title=" " alt="" coords="651,124,706,151"/>
+<area shape="rect" id="node10" href="$baro_8h.html" title=" " alt="" coords="280,124,339,151"/>
+<area shape="rect" id="node12" href="$imu_8h.html" title=" " alt="" coords="363,124,418,151"/>
+<area shape="rect" id="node14" href="$battery_8h.html" title=" " alt="" coords="442,124,513,151"/>
+<area shape="rect" id="node5" title=" " alt="" coords="857,199,959,225"/>
+<area shape="rect" id="node6" title=" " alt="" coords="773,199,833,225"/>
+<area shape="rect" id="node7" href="$systemstatus_8h.html" title=" " alt="" coords="397,199,558,225"/>
+<area shape="rect" id="node8" href="$flags_8h.html" title=" " alt="" coords="480,273,541,300"/>
+<area shape="rect" id="node9" title=" " alt="" coords="449,348,503,375"/>
+<area shape="rect" id="node11" title=" " alt="" coords="42,199,97,225"/>
+<area shape="rect" id="node13" title=" " alt="" coords="172,199,321,225"/>
+</map>

@@ -9,9 +9,18 @@
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+  $(document).ready(function() { init_search(); });
+/* @license-end */
+</script>
 <link href="doxygen.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
@@ -25,6 +34,21 @@
    &#160;<span id="projectnumber">1</span>
    </div>
   </td>
+   <td>        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <img id="MSearchSelect" src="search/mag_sel.svg"
+               onmouseover="return searchBox.OnSearchSelectShow()"
+               onmouseout="return searchBox.OnSearchSelectHide()"
+               alt=""/>
+          <input type="text" id="MSearchField" value="Search" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.svg" alt=""/></a>
+          </span>
+        </div>
+</td>
  </tr>
  </tbody>
 </table>
@@ -36,17 +60,23 @@
 var searchBox = new SearchBox("searchBox", "search",false,'Search','.html');
 /* @license-end */
 </script>
-<script type="text/javascript" src="menudata.js"></script>
-<script type="text/javascript" src="menu.js"></script>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
 <script type="text/javascript">
 /* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
-$(function() {
-  initMenu('',true,false,'search.php','Search');
-  $(document).ready(function() { init_search(); });
-});
-/* @license-end */</script>
-<div id="main-nav"></div>
-</div><!-- top -->
+$(document).ready(function(){initNavTree('functions_vars_c.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
      onmouseover="return searchBox.OnSearchSelectShow()"
@@ -65,66 +95,26 @@ $(function() {
 &#160;
 
 <h3><a id="index_c"></a>- c -</h3><ul>
-<li>c
-: <a class="el" href="structsetfill.html#a42ffb4e6135c1274ae827cfed7793a82">setfill</a>
+<li>command
+: <a class="el" href="class_command_packet.html#a0050ef232e8c77740fd9c5930aaa4462">CommandPacket</a>
 </li>
-<li>c_size_high
-: <a class="el" href="struct_c_s_d_v2.html#a18b212514052366ee8cc2f28bd945f83">CSDV2</a>
+<li>commandbuffer
+: <a class="el" href="class_command_handler.html#a8ae50b25a5f7919da291b3a5bfb4e6e4">CommandHandler</a>
 </li>
-<li>c_size_low
-: <a class="el" href="struct_c_s_d_v2.html#a51f11aace6d410815922936272328ca9">CSDV2</a>
+<li>commandhandler
+: <a class="el" href="class_network_manager.html#aa543111d508b9b63e5cdd5f5c3f2a3c3">NetworkManager</a>
 </li>
-<li>c_size_mid
-: <a class="el" href="struct_c_s_d_v2.html#a18a7efb31f3db1178cb5fb5be7111a43">CSDV2</a>
-</li>
-<li>CACHE_FOR_READ
-: <a class="el" href="class_fat_cache.html#ab4b446515ff9a0cebc747630ddd10c93">FatCache</a>
-</li>
-<li>CACHE_FOR_WRITE
-: <a class="el" href="class_fat_cache.html#a81cb572f33443bd6aee9aa33ec395d0f">FatCache</a>
-</li>
-<li>CACHE_OPTION_NO_READ
-: <a class="el" href="class_fat_cache.html#adf974f55e53ee0aaa85abb0d7d67181c">FatCache</a>
-</li>
-<li>CACHE_RESERVE_FOR_WRITE
-: <a class="el" href="class_fat_cache.html#a49d2896ff525ab77852f76df5c2a09c2">FatCache</a>
-</li>
-<li>CACHE_STATUS_DIRTY
-: <a class="el" href="class_fat_cache.html#aac8c38e5c545d0f80b13d816117f626e">FatCache</a>
-</li>
-<li>CACHE_STATUS_MASK
-: <a class="el" href="class_fat_cache.html#ab70dc4a2e387f0e9bf392044c702ae32">FatCache</a>
-</li>
-<li>CACHE_STATUS_MIRROR_FAT
-: <a class="el" href="class_fat_cache.html#a45236e1c0a2a098f08d3add0e4b1467a">FatCache</a>
-</li>
-<li>chksum
-: <a class="el" href="structlong_directory_entry.html#a60c35531bc0e12f2d764d290244f8cc9">longDirectoryEntry</a>
-</li>
-<li>cluster
-: <a class="el" href="struct_fat_pos__t.html#a7b50657b0debaf0e6231af2c74a655fe">FatPos_t</a>
-</li>
-<li>codeArea
-: <a class="el" href="structmaster_boot_record.html#a26ca1fb4ebbff2cc1a54153b1dfcd688">masterBootRecord</a>
-</li>
-<li>crc
-: <a class="el" href="struct_c_i_d.html#aa10cfc5aef8e979e47009474dfa3d940">CID</a>
-, <a class="el" href="struct_c_s_d_v2.html#ac5b251d008704ff292ea77b55e4bc97d">CSDV2</a>
-</li>
-<li>creationDate
-: <a class="el" href="structdirectory_entry.html#a7b43372794655fe6604d3c17c02302fe">directoryEntry</a>
-</li>
-<li>creationTime
-: <a class="el" href="structdirectory_entry.html#a622bfa70c2cd9006108d7473d737a953">directoryEntry</a>
-</li>
-<li>creationTimeTenths
-: <a class="el" href="structdirectory_entry.html#aa5e1ce5b411b88f005b28a3e7c7c5af6">directoryEntry</a>
+<li>configcontroller
+: <a class="el" href="classstate_machine.html#adb1385794ad6d198279b62d0aa64701a">stateMachine</a>
 </li>
 </ul>
 </div><!-- contents -->
+</div><!-- doc-content -->
 <!-- start footer part -->
-<hr class="footer"/><address class="footer"><small>
-Generated by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1
-</small></address>
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
+  </ul>
+</div>
 </body>
 </html>

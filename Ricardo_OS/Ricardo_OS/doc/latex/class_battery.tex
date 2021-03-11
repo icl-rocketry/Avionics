@@ -1,20 +1,109 @@
 \hypertarget{class_battery}{}\doxysection{Battery Class Reference}
 \label{class_battery}\index{Battery@{Battery}}
+
+
+{\ttfamily \#include $<$battery.\+h$>$}
+
+
+
+Collaboration diagram for Battery\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_battery__coll__graph}
+\end{center}
+\end{figure}
 \doxysubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\Hypertarget{class_battery_a44169aa692325f24c89d7284a4ebfe06}\label{class_battery_a44169aa692325f24c89d7284a4ebfe06}} 
-{\bfseries Battery} (uint8\+\_\+t pin, \mbox{\hyperlink{class_system_status}{System\+Status}} $\ast$systemstatus, \mbox{\hyperlink{structraw__measurements__t}{raw\+\_\+measurements\+\_\+t}} $\ast$raw\+\_\+data)
+\mbox{\hyperlink{class_battery_a44169aa692325f24c89d7284a4ebfe06}{Battery}} (uint8\+\_\+t pin, \mbox{\hyperlink{class_system_status}{System\+Status}} $\ast$systemstatus, \mbox{\hyperlink{structraw__measurements__t}{raw\+\_\+measurements\+\_\+t}} $\ast$raw\+\_\+data)
 \item 
-\mbox{\Hypertarget{class_battery_afc45ec8a22fac60f19fe189e4c21d313}\label{class_battery_afc45ec8a22fac60f19fe189e4c21d313}} 
-void {\bfseries setup} ()
+void \mbox{\hyperlink{class_battery_afc45ec8a22fac60f19fe189e4c21d313}{setup}} ()
 \item 
-\mbox{\Hypertarget{class_battery_a85dcc13e31dfb66ce3ce217b78a7df7c}\label{class_battery_a85dcc13e31dfb66ce3ce217b78a7df7c}} 
-void {\bfseries update} ()
+void \mbox{\hyperlink{class_battery_a85dcc13e31dfb66ce3ce217b78a7df7c}{update}} ()
 \end{DoxyCompactItemize}
+\doxysubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_system_status}{System\+Status}} $\ast$ \mbox{\hyperlink{class_battery_afdc0ac13d459105f35e8d79b38a0e415}{\+\_\+systemstatus}}
+\item 
+\mbox{\hyperlink{structraw__measurements__t}{raw\+\_\+measurements\+\_\+t}} $\ast$ \mbox{\hyperlink{class_battery_a820d2552b93ab622cad06682e41d0b91}{\+\_\+raw\+\_\+data}}
+\item 
+uint8\+\_\+t \mbox{\hyperlink{class_battery_a7585667ba6d27c2d126b5d41af3b7c72}{\+\_\+pin}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_battery_a44169aa692325f24c89d7284a4ebfe06}\label{class_battery_a44169aa692325f24c89d7284a4ebfe06}} 
+\index{Battery@{Battery}!Battery@{Battery}}
+\index{Battery@{Battery}!Battery@{Battery}}
+\doxysubsubsection{\texorpdfstring{Battery()}{Battery()}}
+{\footnotesize\ttfamily Battery\+::\+Battery (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{pin,  }\item[{\mbox{\hyperlink{class_system_status}{System\+Status}} $\ast$}]{systemstatus,  }\item[{\mbox{\hyperlink{structraw__measurements__t}{raw\+\_\+measurements\+\_\+t}} $\ast$}]{raw\+\_\+data }\end{DoxyParamCaption})}
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_battery_afc45ec8a22fac60f19fe189e4c21d313}\label{class_battery_afc45ec8a22fac60f19fe189e4c21d313}} 
+\index{Battery@{Battery}!setup@{setup}}
+\index{setup@{setup}!Battery@{Battery}}
+\doxysubsubsection{\texorpdfstring{setup()}{setup()}}
+{\footnotesize\ttfamily void Battery\+::setup (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_battery_afc45ec8a22fac60f19fe189e4c21d313_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_battery_a85dcc13e31dfb66ce3ce217b78a7df7c}\label{class_battery_a85dcc13e31dfb66ce3ce217b78a7df7c}} 
+\index{Battery@{Battery}!update@{update}}
+\index{update@{update}!Battery@{Battery}}
+\doxysubsubsection{\texorpdfstring{update()}{update()}}
+{\footnotesize\ttfamily void Battery\+::update (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_battery_a85dcc13e31dfb66ce3ce217b78a7df7c_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_battery_a85dcc13e31dfb66ce3ce217b78a7df7c_icgraph}
+\end{center}
+\end{figure}
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{class_battery_a7585667ba6d27c2d126b5d41af3b7c72}\label{class_battery_a7585667ba6d27c2d126b5d41af3b7c72}} 
+\index{Battery@{Battery}!\_pin@{\_pin}}
+\index{\_pin@{\_pin}!Battery@{Battery}}
+\doxysubsubsection{\texorpdfstring{\_pin}{\_pin}}
+{\footnotesize\ttfamily uint8\+\_\+t Battery\+::\+\_\+pin\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{class_battery_a820d2552b93ab622cad06682e41d0b91}\label{class_battery_a820d2552b93ab622cad06682e41d0b91}} 
+\index{Battery@{Battery}!\_raw\_data@{\_raw\_data}}
+\index{\_raw\_data@{\_raw\_data}!Battery@{Battery}}
+\doxysubsubsection{\texorpdfstring{\_raw\_data}{\_raw\_data}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structraw__measurements__t}{raw\+\_\+measurements\+\_\+t}}$\ast$ Battery\+::\+\_\+raw\+\_\+data\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{class_battery_afdc0ac13d459105f35e8d79b38a0e415}\label{class_battery_afdc0ac13d459105f35e8d79b38a0e415}} 
+\index{Battery@{Battery}!\_systemstatus@{\_systemstatus}}
+\index{\_systemstatus@{\_systemstatus}!Battery@{Battery}}
+\doxysubsubsection{\texorpdfstring{\_systemstatus}{\_systemstatus}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_system_status}{System\+Status}}$\ast$ Battery\+::\+\_\+systemstatus\hspace{0.3cm}{\ttfamily [private]}}
+
 
 
 The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
 \item 
-/\+Users/kiran/\+Documents/\+Projects/\+ICLR/\+Avionics/\+Ricardo\+\_\+\+OS/\+Ricardo\+\_\+\+OS/src/\+Sensors/battery.\+h\item 
-/\+Users/kiran/\+Documents/\+Projects/\+ICLR/\+Avionics/\+Ricardo\+\_\+\+OS/\+Ricardo\+\_\+\+OS/src/\+Sensors/battery.\+cpp\end{DoxyCompactItemize}
+/\+Users/kiran/\+Documents/\+Projects/\+ICLR/\+Avionics/\+Ricardo\+\_\+\+OS/\+Ricardo\+\_\+\+OS/src/\+Sensors/\mbox{\hyperlink{battery_8h}{battery.\+h}}\item 
+/\+Users/kiran/\+Documents/\+Projects/\+ICLR/\+Avionics/\+Ricardo\+\_\+\+OS/\+Ricardo\+\_\+\+OS/src/\+Sensors/\mbox{\hyperlink{battery_8cpp}{battery.\+cpp}}\end{DoxyCompactItemize}

@@ -1,0 +1,26 @@
+var structraw__measurements__t =
+[
+    [ "ax", "structraw__measurements__t.html#adbac29071ee6bfb27e02f78f11afb145", null ],
+    [ "ay", "structraw__measurements__t.html#afc23f6645e6d8379f24cf489c73f60fa", null ],
+    [ "az", "structraw__measurements__t.html#a201ae5378f9248cc5f1f290e663e896d", null ],
+    [ "baro_alt", "structraw__measurements__t.html#af4c47a349f87a6238ae9042360f282f2", null ],
+    [ "baro_press", "structraw__measurements__t.html#ae4e6331f376d756730d04dbe8910f558", null ],
+    [ "baro_temp", "structraw__measurements__t.html#afefdff57b2db247311f83e1a95afeccf", null ],
+    [ "batt_percent", "structraw__measurements__t.html#aa452a5f8121ef56cca490f895811c519", null ],
+    [ "batt_volt", "structraw__measurements__t.html#a540fb38a3605975f5eead339fda89312", null ],
+    [ "gps_alt", "structraw__measurements__t.html#a4f68396bbe707f49cab31eb55e550d73", null ],
+    [ "gps_course", "structraw__measurements__t.html#ab97b64d567ea0e1007409c794f66fc15", null ],
+    [ "gps_hdop", "structraw__measurements__t.html#a0777d42b0abeee7c433fe1143aad35e5", null ],
+    [ "gps_lat", "structraw__measurements__t.html#a46c700b055e6b64705def8f838ec5b47", null ],
+    [ "gps_long", "structraw__measurements__t.html#aeef8ef3188e647a761475b7f1814ab66", null ],
+    [ "gps_sat", "structraw__measurements__t.html#ad32300404d256c5b494cddc37c6d917d", null ],
+    [ "gps_speed", "structraw__measurements__t.html#a9f926b466e17f6548f78d80d04da01cf", null ],
+    [ "gx", "structraw__measurements__t.html#a2ef1cca699123ea9e82faed286500cf1", null ],
+    [ "gy", "structraw__measurements__t.html#aa4155c467cf1533455c396b14410eabc", null ],
+    [ "gz", "structraw__measurements__t.html#ab2983bb7aade4a03c19baf1498f06c9d", null ],
+    [ "imu_temp", "structraw__measurements__t.html#a0329e1410bffcda37f9186ef5423d73f", null ],
+    [ "mx", "structraw__measurements__t.html#a11f0f6933b140baf745dd7734ea487f3", null ],
+    [ "my", "structraw__measurements__t.html#a6eecb9621f12e4dc6e33f9be97c014ef", null ],
+    [ "mz", "structraw__measurements__t.html#a17b929c5b59c04e9fa5d508fc0b34d51", null ],
+    [ "system_time", "structraw__measurements__t.html#a4ca91d9057a37c15ce47fa668eadf110", null ]
+];

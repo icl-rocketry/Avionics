@@ -1,0 +1,10 @@
+<map id="State::initialise" name="State::initialise">
+<area shape="rect" id="node1" title=" " alt="" coords="212,157,320,184"/>
+<area shape="rect" id="node2" href="$class_flight.html#ac084f4f6b3b28031b4dd9448eb89ee55" title=" " alt="" coords="30,5,139,32"/>
+<area shape="rect" id="node3" href="$class_groundstation.html#a530ac31955e79f2e35380788d4efa0ec" title=" " alt="" coords="5,56,164,83"/>
+<area shape="rect" id="node4" href="$class_launch.html#ae682b58b792296f05dc9bd84b1d5e2dd" title=" " alt="" coords="25,107,144,133"/>
+<area shape="rect" id="node5" href="$class_preflight.html#aaabf52a2dd5f36765fd3ebe5a685242d" title=" " alt="" coords="22,157,147,184"/>
+<area shape="rect" id="node6" href="$class_recovery.html#a7e419b95fa6e7274d1bc40cb1257625c" title=" " alt="" coords="18,208,151,235"/>
+<area shape="rect" id="node7" href="$class_setup.html#a315e788a23a012d5993613c627f15302" title=" " alt="" coords="29,259,140,285"/>
+<area shape="rect" id="node8" href="$class_u_s_bmode.html#a7501182d7e44699e7fdd795da026b770" title=" " alt="" coords="16,309,153,336"/>
+</map>

@@ -9,9 +9,18 @@
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+  $(document).ready(function() { init_search(); });
+/* @license-end */
+</script>
 <link href="doxygen.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
@@ -25,6 +34,21 @@
    &#160;<span id="projectnumber">1</span>
    </div>
   </td>
+   <td>        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <img id="MSearchSelect" src="search/mag_sel.svg"
+               onmouseover="return searchBox.OnSearchSelectShow()"
+               onmouseout="return searchBox.OnSearchSelectHide()"
+               alt=""/>
+          <input type="text" id="MSearchField" value="Search" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.svg" alt=""/></a>
+          </span>
+        </div>
+</td>
  </tr>
  </tbody>
 </table>
@@ -36,17 +60,23 @@
 var searchBox = new SearchBox("searchBox", "search",false,'Search','.html');
 /* @license-end */
 </script>
-<script type="text/javascript" src="menudata.js"></script>
-<script type="text/javascript" src="menu.js"></script>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
 <script type="text/javascript">
 /* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
-$(function() {
-  initMenu('',true,false,'search.php','Search');
-  $(document).ready(function() { init_search(); });
-});
-/* @license-end */</script>
-<div id="main-nav"></div>
-</div><!-- top -->
+$(document).ready(function(){initNavTree('functions_vars_s.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
      onmouseover="return searchBox.OnSearchSelectShow()"
@@ -65,59 +95,64 @@ $(function() {
 &#160;
 
 <h3><a id="index_s"></a>- s -</h3><ul>
-<li>sector_size_high
-: <a class="el" href="struct_c_s_d_v2.html#a09c942079f7d4e1a26d26d4cfe9d15c5">CSDV2</a>
+<li>sensors
+: <a class="el" href="classstate_machine.html#ae950d1a20842e52c87668bbb72371163">stateMachine</a>
 </li>
-<li>sector_size_low
-: <a class="el" href="struct_c_s_d_v2.html#acd516f06ea0b926fa1580034a6efb9c6">CSDV2</a>
+<li>sensors_raw
+: <a class="el" href="class_sensors.html#a3295a49b109e68e6934d0b7068557e8d">Sensors</a>
 </li>
-<li>sectorsPerCluster
-: <a class="el" href="structbios_parm_block.html#a45d5e2d8c93a028a074e8ce3dc751ab5">biosParmBlock</a>
-, <a class="el" href="structfat32__boot.html#a63ded2780732f166f7b7d36bc6aed702">fat32_boot</a>
-, <a class="el" href="structfat__boot.html#ab3063726125b16a2ccad719548d79abd">fat_boot</a>
+<li>size
+: <a class="el" href="structdirectory__element__t.html#a5b9e64ab029d6c714a660c7b453ba024">directory_element_t</a>
+, <a class="el" href="classserializable_element.html#a00c3a7462fa2833b23ebbeeff36fa9ef">serializableElement&lt; C, T &gt;</a>
 </li>
-<li>sectorsPerFat16
-: <a class="el" href="structbios_parm_block.html#a24d6e5a9069491d5db6dbe747336985b">biosParmBlock</a>
-, <a class="el" href="structfat32__boot.html#aeaa78272cd42b162ea448e1642f75cab">fat32_boot</a>
-, <a class="el" href="structfat__boot.html#a0d5ab13399759acfa571e49b85600db1">fat_boot</a>
+<li>source
+: <a class="el" href="class_packet_header.html#a9f3fe9022c36622c66f9d2fa543a904f">PacketHeader</a>
 </li>
-<li>sectorsPerFat32
-: <a class="el" href="structbios_parm_block.html#ad80429df03a6b80f79b18cb6e1008d64">biosParmBlock</a>
-, <a class="el" href="structfat32__boot.html#aa00db084ff2f7e25febef321469adeb9">fat32_boot</a>
+<li>source_node
+: <a class="el" href="struct_command.html#acb53c7c67b94303ffb3723f624d464a4">Command</a>
 </li>
-<li>sectorsPerTrack
-: <a class="el" href="structfat32__boot.html#a9525b2e63f84a5cf62ea20199cedf5de">fat32_boot</a>
-, <a class="el" href="structfat__boot.html#a6d5ceaf374e0607be8b8162bf657f282">fat_boot</a>
+<li>src_interface
+: <a class="el" href="class_packet_header.html#ad958f9d1c378e64ef845244576d7db5f">PacketHeader</a>
 </li>
-<li>sectorsPerTrtack
-: <a class="el" href="structbios_parm_block.html#a7c27cb7f66c2c9d5266d896e8df227c7">biosParmBlock</a>
+<li>start_byte
+: <a class="el" href="class_packet_header.html#a0a27191dab044da810e1a1889020d333">PacketHeader</a>
 </li>
-<li>seqPos
-: <a class="el" href="structfname__t.html#a96b7c779dec8dd568be3290451078a4e">fname_t</a>
+<li>state
+: <a class="el" href="class_estimator.html#a7938048d38e901e262c0fa6952259c9d">Estimator</a>
 </li>
-<li>sfn
-: <a class="el" href="structfname__t.html#a37ed0c108b1feb81be4f8c041a4336bd">fname_t</a>
+<li>storagecontroller
+: <a class="el" href="classstate_machine.html#ab4c73b5e0fda3a705bad93d5ab45a3a1">stateMachine</a>
 </li>
-<li>showbase
-: <a class="el" href="classios__base.html#a7e3373ab307feecfc228bc9bdb29cd01">ios_base</a>
+<li>system_frame
+: <a class="el" href="class_log_controller.html#aaa86f9eb61d7f0b5f7c962626fc1d03c">LogController</a>
 </li>
-<li>showpoint
-: <a class="el" href="classios__base.html#ac9bb172682e157f037bd7fb82a236ee6">ios_base</a>
+<li>system_log_buffer
+: <a class="el" href="class_log_controller.html#af55fb21bb37175e7c7896d4ba0146361">LogController</a>
 </li>
-<li>showpos
-: <a class="el" href="classios__base.html#a7bfa4a883933105d10f8ce2693cb9f21">ios_base</a>
+<li>system_log_filename
+: <a class="el" href="class_log_controller.html#aeeee39c0f958c751a1cd0c2ad1697e9a">LogController</a>
 </li>
-<li>skipws
-: <a class="el" href="classios__base.html#a64977c777d6e45826d1be9763f17f824">ios_base</a>
+<li>system_time
+: <a class="el" href="class_packet_header.html#a4f1a7d5e67ff2356183e4e1af12cac66">PacketHeader</a>
+, <a class="el" href="structraw__measurements__t.html#a4ca91d9057a37c15ce47fa668eadf110">raw_measurements_t</a>
 </li>
-<li>structSignature
-: <a class="el" href="structfat32__fsinfo.html#aa4a9ed657a0f58a7a1c75760c3a79fd4">fat32_fsinfo</a>
+<li>systemFlag
+: <a class="el" href="classsystem__logframe.html#aeeee54a23d04a0c3484317113b266b4b">system_logframe</a>
+</li>
+<li>systemstatus
+: <a class="el" href="classstate_machine.html#aafb1576c55658672886391e9e94d2e0c">stateMachine</a>
+</li>
+<li>systemStatus
+: <a class="el" href="classsystem__logframe.html#a433bfc0529dbba3170c3ce11e3094518">system_logframe</a>
 </li>
 </ul>
 </div><!-- contents -->
+</div><!-- doc-content -->
 <!-- start footer part -->
-<hr class="footer"/><address class="footer"><small>
-Generated by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1
-</small></address>
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
+  </ul>
+</div>
 </body>
 </html>

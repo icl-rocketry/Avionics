@@ -1,0 +1,26 @@
+var ricardo__pins_8h =
+[
+    [ "_MISO", "ricardo__pins_8h.html#ad982c31c535019a2c62544d72809887e", null ],
+    [ "_MOSI", "ricardo__pins_8h.html#a89521fc433083b3d1a9e72cb3f7fbc70", null ],
+    [ "_SCL", "ricardo__pins_8h.html#a88e4e03d5809e4878c3cdb362cd2ad7c", null ],
+    [ "_SCLK", "ricardo__pins_8h.html#a4cea87b2f4f1fa5b2f5e97e84c24f76e", null ],
+    [ "_SDA", "ricardo__pins_8h.html#a94b418b926b40aee4245ed0e2263f01c", null ],
+    [ "BaroCs", "ricardo__pins_8h.html#aea284661eda02c313d9c444c4eea4a15", null ],
+    [ "BattVolt", "ricardo__pins_8h.html#a99a133e759823d56d3a601904ac00b68", null ],
+    [ "Buzzer", "ricardo__pins_8h.html#a92f04683a25906bc612649e986a8072a", null ],
+    [ "Cont_1", "ricardo__pins_8h.html#aee4bfdc4f1a2c5b50961bc86e6551732", null ],
+    [ "Cont_2", "ricardo__pins_8h.html#a159fe7952c1915e789626048d68568b8", null ],
+    [ "FlashCs", "ricardo__pins_8h.html#ac2e1a928b492aa77bff9898c83cc7a47", null ],
+    [ "ImuCs", "ricardo__pins_8h.html#ab3adb85cecf3763241f5356d55012d27", null ],
+    [ "LoraCs", "ricardo__pins_8h.html#af4f34b1493b6889424ce314673ed6f2c", null ],
+    [ "LoraInt", "ricardo__pins_8h.html#ab8a14ce2f2dc4b7bd47782382fc53213", null ],
+    [ "LoraReset", "ricardo__pins_8h.html#a32900a36c1539ce036fbd16172548771", null ],
+    [ "MagCs", "ricardo__pins_8h.html#ae2661a087b618c8ad297bad03f1f1bd8", null ],
+    [ "Nuke_1", "ricardo__pins_8h.html#a885a0ddbb54931b1501ed5c478393474", null ],
+    [ "Nuke_2", "ricardo__pins_8h.html#acb97f4e79b00c0a8b131e4b22caafce2", null ],
+    [ "RxCan", "ricardo__pins_8h.html#ae5509ca46c75cd1e9aa02b99a17732fb", null ],
+    [ "RxRadio", "ricardo__pins_8h.html#aa301da2fb564486da83f87301ff0ecba", null ],
+    [ "SdCs", "ricardo__pins_8h.html#a2ab0614fc448439a66970a873d7640b3", null ],
+    [ "TxCan", "ricardo__pins_8h.html#aefb57fd8aac3205471b968d58c334268", null ],
+    [ "TxRadio", "ricardo__pins_8h.html#a919b596b9b45d5deb815b5a30c19f21b", null ]
+];

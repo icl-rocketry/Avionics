@@ -1,9 +1,5 @@
 var searchData=
 [
-  ['lastcluster_1714',['lastCluster',['../class_fat_volume.html#afffa7f3cb47dfff8b4f506d737140208',1,'FatVolume']]],
-  ['lbn_1715',['lbn',['../class_fat_cache.html#a9f981b53e212f79937e5f6381b169374',1,'FatCache']]],
-  ['left_1716',['left',['../ios_8h.html#a24a80a73f0a0d2d72d1cb74f49ff4759',1,'ios.h']]],
-  ['legal83char_1717',['legal83Char',['../class_fat_file.html#a94df8090f16e9666cdc53ca20f6aff90',1,'FatFile']]],
-  ['length_1718',['length',['../classobufstream.html#ac650708e968b0c0545a3badeb809cf15',1,'obufstream']]],
-  ['ls_1719',['ls',['../class_fat_file.html#a60ab9d16bcc778150a364c26de467de1',1,'FatFile::ls()'],['../class_fat_file_system.html#ac281c164ab376648c31a168817d1d3c2',1,'FatFileSystem::ls(print_t *pr, uint8_t flags=0)'],['../class_fat_file_system.html#a3bc01f735d956fff9ad00f932bc827f7',1,'FatFileSystem::ls(print_t *pr, const char *path, uint8_t flags)']]]
+  ['networkmanager_798',['NetworkManager',['../class_network_manager.html#aa1832d9cbe09178014f299fb1dce404c',1,'NetworkManager']]],
+  ['new_5fmessage_799',['new_message',['../class_system_status.html#a872912293f3c93e87eb69c9a70f7743a',1,'SystemStatus::new_message(system_flag flag, std::string info)'],['../class_system_status.html#a3d8704fc48feda4f5186925f15be5d66',1,'SystemStatus::new_message(system_flag flag)']]]
 ];

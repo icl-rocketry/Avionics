@@ -1,0 +1,161 @@
+\hypertarget{flags_8h}{}\doxysection{/\+Users/kiran/\+Documents/\+Projects/\+ICLR/\+Avionics/\+Ricardo\+\_\+\+OS/\+Ricardo\+\_\+\+OS/include/flags.h File Reference}
+\label{flags_8h}\index{/Users/kiran/Documents/Projects/ICLR/Avionics/Ricardo\_OS/Ricardo\_OS/include/flags.h@{/Users/kiran/Documents/Projects/ICLR/Avionics/Ricardo\_OS/Ricardo\_OS/include/flags.h}}
+{\ttfamily \#include $<$string$>$}\newline
+Include dependency graph for flags.\+h\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=243pt]{flags_8h__incl}
+\end{center}
+\end{figure}
+This graph shows which files directly or indirectly include this file\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{flags_8h__dep__incl}
+\end{center}
+\end{figure}
+\doxysubsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+enum class \mbox{\hyperlink{flags_8h_a1cb315cc6ae6368d46a819d952b416ad}{system\+\_\+flag}} \+: uint32\+\_\+t \{ \newline
+\mbox{\hyperlink{flags_8h_a1cb315cc6ae6368d46a819d952b416ada79aec7f75910f482e28f26c0de589f66}{STATE\+\_\+\+USBMODE}} = (1 $<$$<$ 0)
+, \mbox{\hyperlink{flags_8h_a1cb315cc6ae6368d46a819d952b416ada9f86e1f52f2609a5efc01b00c0a46b09}{STATE\+\_\+\+PREFLIGHT}} = (1 $<$$<$ 1)
+, \mbox{\hyperlink{flags_8h_a1cb315cc6ae6368d46a819d952b416ada2adcbc5b857a4bac54d6d7ee2803e139}{STATE\+\_\+\+LAUNCH}} = (1 $<$$<$ 2)
+, \mbox{\hyperlink{flags_8h_a1cb315cc6ae6368d46a819d952b416adad3bf25e476521e608176dbfed3492179}{STATE\+\_\+\+FLIGHT}} = (1 $<$$<$ 3)
+, \newline
+\mbox{\hyperlink{flags_8h_a1cb315cc6ae6368d46a819d952b416ada54b9bd74976cb18f2d63edfaeacd096c}{STATE\+\_\+\+RECOVERY}} = (1 $<$$<$ 4)
+, \mbox{\hyperlink{flags_8h_a1cb315cc6ae6368d46a819d952b416adad811404ac7c2b58bf3f040c91f4c84d6}{STATE\+\_\+\+SETUP}} = (1 $<$$<$ 5)
+, \mbox{\hyperlink{flags_8h_a1cb315cc6ae6368d46a819d952b416ada0b662da38786da59b544e537882be8da}{STATE\+\_\+\+GROUNDSTATION}} = (1 $<$$<$ 6)
+, \mbox{\hyperlink{flags_8h_a1cb315cc6ae6368d46a819d952b416adadc30ec20708ef7b0f641ef78b7880a15}{DEBUG}} = (1 $<$$<$ 7)
+, \newline
+\mbox{\hyperlink{flags_8h_a1cb315cc6ae6368d46a819d952b416ada92235188529415cd079de6860df9650f}{ERROR\+\_\+\+SPI}} = (1 $<$$<$ 8)
+, \mbox{\hyperlink{flags_8h_a1cb315cc6ae6368d46a819d952b416ada95b012693c2262275de056845de38553}{ERROR\+\_\+\+I2C}} = (1 $<$$<$ 9)
+, \mbox{\hyperlink{flags_8h_a1cb315cc6ae6368d46a819d952b416ada3483b6b06d13f28f773f79146a38880e}{ERROR\+\_\+\+SERIAL}} = (1 $<$$<$ 10)
+, \mbox{\hyperlink{flags_8h_a1cb315cc6ae6368d46a819d952b416ada6d9d93f75ee064aa357b5022ef5ac9c5}{ERROR\+\_\+\+LORA}} = (1 $<$$<$ 11)
+, \newline
+\mbox{\hyperlink{flags_8h_a1cb315cc6ae6368d46a819d952b416ada0f2093e5b4ae751f2081d3e77f227df4}{ERROR\+\_\+\+BARO}} = (1 $<$$<$ 12)
+, \mbox{\hyperlink{flags_8h_a1cb315cc6ae6368d46a819d952b416ada25764ec3f9029eb62f3108e132682349}{ERROR\+\_\+\+BATT}} = (1 $<$$<$ 13)
+, \mbox{\hyperlink{flags_8h_a1cb315cc6ae6368d46a819d952b416adae49044c73ab31fb19fb04870d3480c13}{ERROR\+\_\+\+GPS}} = (1 $<$$<$ 14)
+, \mbox{\hyperlink{flags_8h_a1cb315cc6ae6368d46a819d952b416ada21d5f216e6310a84daaf0eeaa97e705e}{ERROR\+\_\+\+IMU}} = (1 $<$$<$ 15)
+, \newline
+\mbox{\hyperlink{flags_8h_a1cb315cc6ae6368d46a819d952b416ada4b847feca597f11f429536662f7e2024}{ERROR\+\_\+\+KALMAN}} = (1 $<$$<$ 16)
+, \mbox{\hyperlink{flags_8h_a1cb315cc6ae6368d46a819d952b416ada6c7eaa13dfabee5021f6dc87d63217fa}{ERROR\+\_\+\+SD}} = (1 $<$$<$ 17)
+, \mbox{\hyperlink{flags_8h_a1cb315cc6ae6368d46a819d952b416adacd6e34879a5c4b6563e2a4fa3ba3a516}{ERROR\+\_\+\+FLASH}} = (1 $<$$<$ 18)
+, \mbox{\hyperlink{flags_8h_a1cb315cc6ae6368d46a819d952b416ada036e1407c43ecdbb4b52259dc81e2858}{ERROR\+\_\+\+CAN}} = (1 $<$$<$ 19)
+, \newline
+\mbox{\hyperlink{flags_8h_a1cb315cc6ae6368d46a819d952b416adaff9377ad39ba7b17e500dfb02b015c99}{ERROR\+\_\+\+ORIENTATION}} = (1 $<$$<$ 20)
+, \mbox{\hyperlink{flags_8h_a1cb315cc6ae6368d46a819d952b416ada81895150b981150663d3b99cd2161098}{WARN\+\_\+\+BATT}} = (1 $<$$<$ 21)
+, \mbox{\hyperlink{flags_8h_a1cb315cc6ae6368d46a819d952b416ada408549849152d60db26d09e88708fa71}{WARN\+\_\+\+PYRO1}} = (1 $<$$<$ 22)
+, \mbox{\hyperlink{flags_8h_a1cb315cc6ae6368d46a819d952b416ada2a3547e0c1acdfd854c06c90387cd628}{WARN\+\_\+\+PYRO2}} = (1 $<$$<$ 23)
+ \}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Enumeration Type Documentation}
+\mbox{\Hypertarget{flags_8h_a1cb315cc6ae6368d46a819d952b416ad}\label{flags_8h_a1cb315cc6ae6368d46a819d952b416ad}} 
+\index{flags.h@{flags.h}!system\_flag@{system\_flag}}
+\index{system\_flag@{system\_flag}!flags.h@{flags.h}}
+\doxysubsubsection{\texorpdfstring{system\_flag}{system\_flag}}
+{\footnotesize\ttfamily enum \mbox{\hyperlink{flags_8h_a1cb315cc6ae6368d46a819d952b416ad}{system\+\_\+flag}} \+: uint32\+\_\+t\hspace{0.3cm}{\ttfamily [strong]}}
+
+\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{STATE\_USBMODE@{STATE\_USBMODE}!flags.h@{flags.h}}\index{flags.h@{flags.h}!STATE\_USBMODE@{STATE\_USBMODE}}}\mbox{\Hypertarget{flags_8h_a1cb315cc6ae6368d46a819d952b416ada79aec7f75910f482e28f26c0de589f66}\label{flags_8h_a1cb315cc6ae6368d46a819d952b416ada79aec7f75910f482e28f26c0de589f66}} 
+STATE\+\_\+\+USBMODE&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{STATE\_PREFLIGHT@{STATE\_PREFLIGHT}!flags.h@{flags.h}}\index{flags.h@{flags.h}!STATE\_PREFLIGHT@{STATE\_PREFLIGHT}}}\mbox{\Hypertarget{flags_8h_a1cb315cc6ae6368d46a819d952b416ada9f86e1f52f2609a5efc01b00c0a46b09}\label{flags_8h_a1cb315cc6ae6368d46a819d952b416ada9f86e1f52f2609a5efc01b00c0a46b09}} 
+STATE\+\_\+\+PREFLIGHT&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{STATE\_LAUNCH@{STATE\_LAUNCH}!flags.h@{flags.h}}\index{flags.h@{flags.h}!STATE\_LAUNCH@{STATE\_LAUNCH}}}\mbox{\Hypertarget{flags_8h_a1cb315cc6ae6368d46a819d952b416ada2adcbc5b857a4bac54d6d7ee2803e139}\label{flags_8h_a1cb315cc6ae6368d46a819d952b416ada2adcbc5b857a4bac54d6d7ee2803e139}} 
+STATE\+\_\+\+LAUNCH&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{STATE\_FLIGHT@{STATE\_FLIGHT}!flags.h@{flags.h}}\index{flags.h@{flags.h}!STATE\_FLIGHT@{STATE\_FLIGHT}}}\mbox{\Hypertarget{flags_8h_a1cb315cc6ae6368d46a819d952b416adad3bf25e476521e608176dbfed3492179}\label{flags_8h_a1cb315cc6ae6368d46a819d952b416adad3bf25e476521e608176dbfed3492179}} 
+STATE\+\_\+\+FLIGHT&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{STATE\_RECOVERY@{STATE\_RECOVERY}!flags.h@{flags.h}}\index{flags.h@{flags.h}!STATE\_RECOVERY@{STATE\_RECOVERY}}}\mbox{\Hypertarget{flags_8h_a1cb315cc6ae6368d46a819d952b416ada54b9bd74976cb18f2d63edfaeacd096c}\label{flags_8h_a1cb315cc6ae6368d46a819d952b416ada54b9bd74976cb18f2d63edfaeacd096c}} 
+STATE\+\_\+\+RECOVERY&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{STATE\_SETUP@{STATE\_SETUP}!flags.h@{flags.h}}\index{flags.h@{flags.h}!STATE\_SETUP@{STATE\_SETUP}}}\mbox{\Hypertarget{flags_8h_a1cb315cc6ae6368d46a819d952b416adad811404ac7c2b58bf3f040c91f4c84d6}\label{flags_8h_a1cb315cc6ae6368d46a819d952b416adad811404ac7c2b58bf3f040c91f4c84d6}} 
+STATE\+\_\+\+SETUP&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{STATE\_GROUNDSTATION@{STATE\_GROUNDSTATION}!flags.h@{flags.h}}\index{flags.h@{flags.h}!STATE\_GROUNDSTATION@{STATE\_GROUNDSTATION}}}\mbox{\Hypertarget{flags_8h_a1cb315cc6ae6368d46a819d952b416ada0b662da38786da59b544e537882be8da}\label{flags_8h_a1cb315cc6ae6368d46a819d952b416ada0b662da38786da59b544e537882be8da}} 
+STATE\+\_\+\+GROUNDSTATION&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{DEBUG@{DEBUG}!flags.h@{flags.h}}\index{flags.h@{flags.h}!DEBUG@{DEBUG}}}\mbox{\Hypertarget{flags_8h_a1cb315cc6ae6368d46a819d952b416adadc30ec20708ef7b0f641ef78b7880a15}\label{flags_8h_a1cb315cc6ae6368d46a819d952b416adadc30ec20708ef7b0f641ef78b7880a15}} 
+DEBUG&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{ERROR\_SPI@{ERROR\_SPI}!flags.h@{flags.h}}\index{flags.h@{flags.h}!ERROR\_SPI@{ERROR\_SPI}}}\mbox{\Hypertarget{flags_8h_a1cb315cc6ae6368d46a819d952b416ada92235188529415cd079de6860df9650f}\label{flags_8h_a1cb315cc6ae6368d46a819d952b416ada92235188529415cd079de6860df9650f}} 
+ERROR\+\_\+\+SPI&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{ERROR\_I2C@{ERROR\_I2C}!flags.h@{flags.h}}\index{flags.h@{flags.h}!ERROR\_I2C@{ERROR\_I2C}}}\mbox{\Hypertarget{flags_8h_a1cb315cc6ae6368d46a819d952b416ada95b012693c2262275de056845de38553}\label{flags_8h_a1cb315cc6ae6368d46a819d952b416ada95b012693c2262275de056845de38553}} 
+ERROR\+\_\+\+I2C&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{ERROR\_SERIAL@{ERROR\_SERIAL}!flags.h@{flags.h}}\index{flags.h@{flags.h}!ERROR\_SERIAL@{ERROR\_SERIAL}}}\mbox{\Hypertarget{flags_8h_a1cb315cc6ae6368d46a819d952b416ada3483b6b06d13f28f773f79146a38880e}\label{flags_8h_a1cb315cc6ae6368d46a819d952b416ada3483b6b06d13f28f773f79146a38880e}} 
+ERROR\+\_\+\+SERIAL&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{ERROR\_LORA@{ERROR\_LORA}!flags.h@{flags.h}}\index{flags.h@{flags.h}!ERROR\_LORA@{ERROR\_LORA}}}\mbox{\Hypertarget{flags_8h_a1cb315cc6ae6368d46a819d952b416ada6d9d93f75ee064aa357b5022ef5ac9c5}\label{flags_8h_a1cb315cc6ae6368d46a819d952b416ada6d9d93f75ee064aa357b5022ef5ac9c5}} 
+ERROR\+\_\+\+LORA&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{ERROR\_BARO@{ERROR\_BARO}!flags.h@{flags.h}}\index{flags.h@{flags.h}!ERROR\_BARO@{ERROR\_BARO}}}\mbox{\Hypertarget{flags_8h_a1cb315cc6ae6368d46a819d952b416ada0f2093e5b4ae751f2081d3e77f227df4}\label{flags_8h_a1cb315cc6ae6368d46a819d952b416ada0f2093e5b4ae751f2081d3e77f227df4}} 
+ERROR\+\_\+\+BARO&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{ERROR\_BATT@{ERROR\_BATT}!flags.h@{flags.h}}\index{flags.h@{flags.h}!ERROR\_BATT@{ERROR\_BATT}}}\mbox{\Hypertarget{flags_8h_a1cb315cc6ae6368d46a819d952b416ada25764ec3f9029eb62f3108e132682349}\label{flags_8h_a1cb315cc6ae6368d46a819d952b416ada25764ec3f9029eb62f3108e132682349}} 
+ERROR\+\_\+\+BATT&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{ERROR\_GPS@{ERROR\_GPS}!flags.h@{flags.h}}\index{flags.h@{flags.h}!ERROR\_GPS@{ERROR\_GPS}}}\mbox{\Hypertarget{flags_8h_a1cb315cc6ae6368d46a819d952b416adae49044c73ab31fb19fb04870d3480c13}\label{flags_8h_a1cb315cc6ae6368d46a819d952b416adae49044c73ab31fb19fb04870d3480c13}} 
+ERROR\+\_\+\+GPS&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{ERROR\_IMU@{ERROR\_IMU}!flags.h@{flags.h}}\index{flags.h@{flags.h}!ERROR\_IMU@{ERROR\_IMU}}}\mbox{\Hypertarget{flags_8h_a1cb315cc6ae6368d46a819d952b416ada21d5f216e6310a84daaf0eeaa97e705e}\label{flags_8h_a1cb315cc6ae6368d46a819d952b416ada21d5f216e6310a84daaf0eeaa97e705e}} 
+ERROR\+\_\+\+IMU&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{ERROR\_KALMAN@{ERROR\_KALMAN}!flags.h@{flags.h}}\index{flags.h@{flags.h}!ERROR\_KALMAN@{ERROR\_KALMAN}}}\mbox{\Hypertarget{flags_8h_a1cb315cc6ae6368d46a819d952b416ada4b847feca597f11f429536662f7e2024}\label{flags_8h_a1cb315cc6ae6368d46a819d952b416ada4b847feca597f11f429536662f7e2024}} 
+ERROR\+\_\+\+KALMAN&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{ERROR\_SD@{ERROR\_SD}!flags.h@{flags.h}}\index{flags.h@{flags.h}!ERROR\_SD@{ERROR\_SD}}}\mbox{\Hypertarget{flags_8h_a1cb315cc6ae6368d46a819d952b416ada6c7eaa13dfabee5021f6dc87d63217fa}\label{flags_8h_a1cb315cc6ae6368d46a819d952b416ada6c7eaa13dfabee5021f6dc87d63217fa}} 
+ERROR\+\_\+\+SD&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{ERROR\_FLASH@{ERROR\_FLASH}!flags.h@{flags.h}}\index{flags.h@{flags.h}!ERROR\_FLASH@{ERROR\_FLASH}}}\mbox{\Hypertarget{flags_8h_a1cb315cc6ae6368d46a819d952b416adacd6e34879a5c4b6563e2a4fa3ba3a516}\label{flags_8h_a1cb315cc6ae6368d46a819d952b416adacd6e34879a5c4b6563e2a4fa3ba3a516}} 
+ERROR\+\_\+\+FLASH&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{ERROR\_CAN@{ERROR\_CAN}!flags.h@{flags.h}}\index{flags.h@{flags.h}!ERROR\_CAN@{ERROR\_CAN}}}\mbox{\Hypertarget{flags_8h_a1cb315cc6ae6368d46a819d952b416ada036e1407c43ecdbb4b52259dc81e2858}\label{flags_8h_a1cb315cc6ae6368d46a819d952b416ada036e1407c43ecdbb4b52259dc81e2858}} 
+ERROR\+\_\+\+CAN&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{ERROR\_ORIENTATION@{ERROR\_ORIENTATION}!flags.h@{flags.h}}\index{flags.h@{flags.h}!ERROR\_ORIENTATION@{ERROR\_ORIENTATION}}}\mbox{\Hypertarget{flags_8h_a1cb315cc6ae6368d46a819d952b416adaff9377ad39ba7b17e500dfb02b015c99}\label{flags_8h_a1cb315cc6ae6368d46a819d952b416adaff9377ad39ba7b17e500dfb02b015c99}} 
+ERROR\+\_\+\+ORIENTATION&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{WARN\_BATT@{WARN\_BATT}!flags.h@{flags.h}}\index{flags.h@{flags.h}!WARN\_BATT@{WARN\_BATT}}}\mbox{\Hypertarget{flags_8h_a1cb315cc6ae6368d46a819d952b416ada81895150b981150663d3b99cd2161098}\label{flags_8h_a1cb315cc6ae6368d46a819d952b416ada81895150b981150663d3b99cd2161098}} 
+WARN\+\_\+\+BATT&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{WARN\_PYRO1@{WARN\_PYRO1}!flags.h@{flags.h}}\index{flags.h@{flags.h}!WARN\_PYRO1@{WARN\_PYRO1}}}\mbox{\Hypertarget{flags_8h_a1cb315cc6ae6368d46a819d952b416ada408549849152d60db26d09e88708fa71}\label{flags_8h_a1cb315cc6ae6368d46a819d952b416ada408549849152d60db26d09e88708fa71}} 
+WARN\+\_\+\+PYRO1&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{WARN\_PYRO2@{WARN\_PYRO2}!flags.h@{flags.h}}\index{flags.h@{flags.h}!WARN\_PYRO2@{WARN\_PYRO2}}}\mbox{\Hypertarget{flags_8h_a1cb315cc6ae6368d46a819d952b416ada2a3547e0c1acdfd854c06c90387cd628}\label{flags_8h_a1cb315cc6ae6368d46a819d952b416ada2a3547e0c1acdfd854c06c90387cd628}} 
+WARN\+\_\+\+PYRO2&\\
+\hline
+
+\end{DoxyEnumFields}

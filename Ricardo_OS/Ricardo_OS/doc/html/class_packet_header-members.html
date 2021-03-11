@@ -9,9 +9,18 @@
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+  $(document).ready(function() { init_search(); });
+/* @license-end */
+</script>
 <link href="doxygen.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
@@ -25,6 +34,21 @@
    &#160;<span id="projectnumber">1</span>
    </div>
   </td>
+   <td>        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <img id="MSearchSelect" src="search/mag_sel.svg"
+               onmouseover="return searchBox.OnSearchSelectShow()"
+               onmouseout="return searchBox.OnSearchSelectHide()"
+               alt=""/>
+          <input type="text" id="MSearchField" value="Search" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.svg" alt=""/></a>
+          </span>
+        </div>
+</td>
  </tr>
  </tbody>
 </table>
@@ -36,16 +60,23 @@
 var searchBox = new SearchBox("searchBox", "search",false,'Search','.html');
 /* @license-end */
 </script>
-<script type="text/javascript" src="menudata.js"></script>
-<script type="text/javascript" src="menu.js"></script>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
 <script type="text/javascript">
 /* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
-$(function() {
-  initMenu('',true,false,'search.php','Search');
-  $(document).ready(function() { init_search(); });
-});
-/* @license-end */</script>
-<div id="main-nav"></div>
+$(document).ready(function(){initNavTree('class_packet_header.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
      onmouseover="return searchBox.OnSearchSelectShow()"
@@ -60,7 +91,6 @@ $(function() {
 </iframe>
 </div>
 
-</div><!-- top -->
 <div class="header">
   <div class="headertitle">
 <div class="title">PacketHeader Member List</div>  </div>
@@ -69,27 +99,32 @@ $(function() {
 
 <p>This is the complete list of members for <a class="el" href="class_packet_header.html">PacketHeader</a>, including all inherited members.</p>
 <table class="directory">
-  <tr bgcolor="#f0f0f0" class="even"><td class="entry"><b>destination</b> (defined in <a class="el" href="class_packet_header.html">PacketHeader</a>)</td><td class="entry"><a class="el" href="class_packet_header.html">PacketHeader</a></td><td class="entry"></td></tr>
-  <tr bgcolor="#f0f0f0"><td class="entry"><b>header_len</b> (defined in <a class="el" href="class_packet_header.html">PacketHeader</a>)</td><td class="entry"><a class="el" href="class_packet_header.html">PacketHeader</a></td><td class="entry"></td></tr>
-  <tr bgcolor="#f0f0f0" class="even"><td class="entry"><b>header_size_mismatch</b> (defined in <a class="el" href="class_packet_header.html">PacketHeader</a>)</td><td class="entry"><a class="el" href="class_packet_header.html">PacketHeader</a></td><td class="entry"></td></tr>
-  <tr bgcolor="#f0f0f0"><td class="entry"><b>packet_len</b> (defined in <a class="el" href="class_packet_header.html">PacketHeader</a>)</td><td class="entry"><a class="el" href="class_packet_header.html">PacketHeader</a></td><td class="entry"></td></tr>
-  <tr bgcolor="#f0f0f0" class="even"><td class="entry"><b>PacketHeader</b>() (defined in <a class="el" href="class_packet_header.html">PacketHeader</a>)</td><td class="entry"><a class="el" href="class_packet_header.html">PacketHeader</a></td><td class="entry"></td></tr>
-  <tr bgcolor="#f0f0f0"><td class="entry"><b>PacketHeader</b>(uint8_t packet_type, uint32_t packet_size) (defined in <a class="el" href="class_packet_header.html">PacketHeader</a>)</td><td class="entry"><a class="el" href="class_packet_header.html">PacketHeader</a></td><td class="entry"></td></tr>
-  <tr bgcolor="#f0f0f0" class="even"><td class="entry"><b>PacketHeader</b>(const uint8_t *data) (defined in <a class="el" href="class_packet_header.html">PacketHeader</a>)</td><td class="entry"><a class="el" href="class_packet_header.html">PacketHeader</a></td><td class="entry"></td></tr>
-  <tr bgcolor="#f0f0f0"><td class="entry"><b>serialize</b>() const (defined in <a class="el" href="class_packet_header.html">PacketHeader</a>)</td><td class="entry"><a class="el" href="class_packet_header.html">PacketHeader</a></td><td class="entry"></td></tr>
-  <tr bgcolor="#f0f0f0" class="even"><td class="entry"><b>serialize</b>(std::vector&lt; uint8_t &gt; &amp;buf) const (defined in <a class="el" href="class_packet_header.html">PacketHeader</a>)</td><td class="entry"><a class="el" href="class_packet_header.html">PacketHeader</a></td><td class="entry"></td></tr>
-  <tr bgcolor="#f0f0f0"><td class="entry"><b>source</b> (defined in <a class="el" href="class_packet_header.html">PacketHeader</a>)</td><td class="entry"><a class="el" href="class_packet_header.html">PacketHeader</a></td><td class="entry"></td></tr>
-  <tr bgcolor="#f0f0f0" class="even"><td class="entry"><b>src_interface</b> (defined in <a class="el" href="class_packet_header.html">PacketHeader</a>)</td><td class="entry"><a class="el" href="class_packet_header.html">PacketHeader</a></td><td class="entry"></td></tr>
-  <tr bgcolor="#f0f0f0"><td class="entry"><b>start_byte</b> (defined in <a class="el" href="class_packet_header.html">PacketHeader</a>)</td><td class="entry"><a class="el" href="class_packet_header.html">PacketHeader</a></td><td class="entry"></td></tr>
-  <tr bgcolor="#f0f0f0" class="even"><td class="entry"><b>system_time</b> (defined in <a class="el" href="class_packet_header.html">PacketHeader</a>)</td><td class="entry"><a class="el" href="class_packet_header.html">PacketHeader</a></td><td class="entry"></td></tr>
-  <tr bgcolor="#f0f0f0"><td class="entry"><b>ttl</b> (defined in <a class="el" href="class_packet_header.html">PacketHeader</a>)</td><td class="entry"><a class="el" href="class_packet_header.html">PacketHeader</a></td><td class="entry"></td></tr>
-  <tr bgcolor="#f0f0f0" class="even"><td class="entry"><b>type</b> (defined in <a class="el" href="class_packet_header.html">PacketHeader</a>)</td><td class="entry"><a class="el" href="class_packet_header.html">PacketHeader</a></td><td class="entry"></td></tr>
-  <tr bgcolor="#f0f0f0"><td class="entry"><b>USB</b> (defined in <a class="el" href="class_packet_header.html">PacketHeader</a>)</td><td class="entry"><a class="el" href="class_packet_header.html">PacketHeader</a></td><td class="entry"><span class="mlabel">friend</span></td></tr>
-  <tr bgcolor="#f0f0f0" class="even"><td class="entry"><b>~PacketHeader</b>() (defined in <a class="el" href="class_packet_header.html">PacketHeader</a>)</td><td class="entry"><a class="el" href="class_packet_header.html">PacketHeader</a></td><td class="entry"></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="class_packet_header.html#ad71894c4d5107834f25ee5a4e2664f1e">destination</a></td><td class="entry"><a class="el" href="class_packet_header.html">PacketHeader</a></td><td class="entry"></td></tr>
+  <tr><td class="entry"><a class="el" href="class_packet_header.html#acf9c5c5c063bf6ed809d8d6144a5aa56">getSerializer</a>()</td><td class="entry"><a class="el" href="class_packet_header.html">PacketHeader</a></td><td class="entry"><span class="mlabel">inline</span><span class="mlabel">private</span><span class="mlabel">static</span></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="class_packet_header.html#af930dc96d866874b6fe8edfb3bce3d89">header_len</a></td><td class="entry"><a class="el" href="class_packet_header.html">PacketHeader</a></td><td class="entry"></td></tr>
+  <tr><td class="entry"><a class="el" href="class_packet_header.html#ae0c16331969378456fa7c606e694c926">header_size</a>()</td><td class="entry"><a class="el" href="class_packet_header.html">PacketHeader</a></td><td class="entry"><span class="mlabel">inline</span><span class="mlabel">private</span><span class="mlabel">static</span></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="class_packet_header.html#a9b41bad3493c52967899bd750465c238">header_size_mismatch</a></td><td class="entry"><a class="el" href="class_packet_header.html">PacketHeader</a></td><td class="entry"></td></tr>
+  <tr><td class="entry"><a class="el" href="class_packet_header.html#a4d21c282bc6df162eaf67e9d13b4953a">packet_len</a></td><td class="entry"><a class="el" href="class_packet_header.html">PacketHeader</a></td><td class="entry"></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="class_packet_header.html#a269a8be760b8f5785bf822758770d738">PacketHeader</a>()</td><td class="entry"><a class="el" href="class_packet_header.html">PacketHeader</a></td><td class="entry"></td></tr>
+  <tr><td class="entry"><a class="el" href="class_packet_header.html#ac821c6e8c0d14e59f92d6a4408feb3de">PacketHeader</a>(uint8_t packet_type, uint32_t packet_size)</td><td class="entry"><a class="el" href="class_packet_header.html">PacketHeader</a></td><td class="entry"></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="class_packet_header.html#a475cd6f2ce12956628181b7dbf01ea2b">PacketHeader</a>(const uint8_t *data)</td><td class="entry"><a class="el" href="class_packet_header.html">PacketHeader</a></td><td class="entry"></td></tr>
+  <tr><td class="entry"><a class="el" href="class_packet_header.html#a77e1156dbd831df7a2e8c412adbaecd3">serialize</a>() const</td><td class="entry"><a class="el" href="class_packet_header.html">PacketHeader</a></td><td class="entry"></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="class_packet_header.html#a085eb8780789576253589724818bc8d3">serialize</a>(std::vector&lt; uint8_t &gt; &amp;buf) const</td><td class="entry"><a class="el" href="class_packet_header.html">PacketHeader</a></td><td class="entry"></td></tr>
+  <tr><td class="entry"><a class="el" href="class_packet_header.html#a9f3fe9022c36622c66f9d2fa543a904f">source</a></td><td class="entry"><a class="el" href="class_packet_header.html">PacketHeader</a></td><td class="entry"></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="class_packet_header.html#ad958f9d1c378e64ef845244576d7db5f">src_interface</a></td><td class="entry"><a class="el" href="class_packet_header.html">PacketHeader</a></td><td class="entry"></td></tr>
+  <tr><td class="entry"><a class="el" href="class_packet_header.html#a0a27191dab044da810e1a1889020d333">start_byte</a></td><td class="entry"><a class="el" href="class_packet_header.html">PacketHeader</a></td><td class="entry"></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="class_packet_header.html#a4f1a7d5e67ff2356183e4e1af12cac66">system_time</a></td><td class="entry"><a class="el" href="class_packet_header.html">PacketHeader</a></td><td class="entry"></td></tr>
+  <tr><td class="entry"><a class="el" href="class_packet_header.html#a8a2e4a283eb6eb6cea4ecb750b1c36e5">ttl</a></td><td class="entry"><a class="el" href="class_packet_header.html">PacketHeader</a></td><td class="entry"></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="class_packet_header.html#a76c5031c8115a17ec011d3af8046aeef">type</a></td><td class="entry"><a class="el" href="class_packet_header.html">PacketHeader</a></td><td class="entry"></td></tr>
+  <tr><td class="entry"><a class="el" href="class_packet_header.html#a04dbcd95d420556b0b42e93203b0dcb6">USB</a> class</td><td class="entry"><a class="el" href="class_packet_header.html">PacketHeader</a></td><td class="entry"><span class="mlabel">friend</span></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="class_packet_header.html#a6d1ec34fd9e3a472cc758be32d583845">~PacketHeader</a>()</td><td class="entry"><a class="el" href="class_packet_header.html">PacketHeader</a></td><td class="entry"></td></tr>
 </table></div><!-- contents -->
+</div><!-- doc-content -->
 <!-- start footer part -->
-<hr class="footer"/><address class="footer"><small>
-Generated by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1
-</small></address>
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
+  </ul>
+</div>
 </body>
 </html>

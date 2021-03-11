@@ -1,9 +1,9 @@
 var searchData=
 [
-  ['name_1982',['name',['../structdirectory_entry.html#a05dc993ea55a1a742de5970541a31ecb',1,'directoryEntry::name()'],['../_fat_structs_8h.html#a30308c9b983377042fd2cc8900454fb1',1,'name():&#160;FatStructs.h']]],
-  ['name1_1983',['name1',['../structlong_directory_entry.html#a629f1ca5ba2ccce6cac5295578b6e7b4',1,'longDirectoryEntry::name1()'],['../_fat_structs_8h.html#a07da96089c18c8a0d602b7928da0911b',1,'name1():&#160;FatStructs.h']]],
-  ['name2_1984',['name2',['../structlong_directory_entry.html#ad763b5a3da4b8d326d9888493fbb819a',1,'longDirectoryEntry::name2()'],['../_fat_structs_8h.html#a131c8b991ced6a7727162f48679f546b',1,'name2():&#160;FatStructs.h']]],
-  ['name3_1985',['name3',['../structlong_directory_entry.html#a6f14c81b7d224dc4431217f92601257a',1,'longDirectoryEntry::name3()'],['../_fat_structs_8h.html#a36c0f9ceab93f09fe49f5dc2549258ba',1,'name3():&#160;FatStructs.h']]],
-  ['nextfree_1986',['nextFree',['../structfat32__fsinfo.html#a539b3bb0a2ead9df417df9ac8b6b1606',1,'fat32_fsinfo::nextFree()'],['../_fat_structs_8h.html#a456cdbc01678df5d05eabb80f5aac9b0',1,'nextFree():&#160;FatStructs.h']]],
-  ['nsac_1987',['nsac',['../struct_c_s_d_v2.html#aa94bece488dd8683b532069d97d8b764',1,'CSDV2']]]
+  ['name_961',['name',['../structdirectory__element__t.html#abeef13527d061ea7392bbda7fad95ec4',1,'directory_element_t']]],
+  ['network_5fframe_962',['network_frame',['../class_log_controller.html#a7e90156517ab8b010c8ad57e396873be',1,'LogController']]],
+  ['network_5flog_5fbuffer_963',['network_log_buffer',['../class_log_controller.html#ac953b13f7d276f7a2719de60ac075418',1,'LogController']]],
+  ['network_5flog_5ffilename_964',['network_log_filename',['../class_log_controller.html#acfa8f09f193f02e12ce64c6e5c6a4189',1,'LogController']]],
+  ['networkmanager_965',['networkmanager',['../classstate_machine.html#a5392d553305ccc5282a6cd61159c9829',1,'stateMachine']]],
+  ['node_5ftype_966',['node_type',['../class_network_manager.html#a260d13785b90f5854dd7d4173379860f',1,'NetworkManager']]]
 ];

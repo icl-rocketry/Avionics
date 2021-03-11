@@ -9,9 +9,18 @@
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+  $(document).ready(function() { init_search(); });
+/* @license-end */
+</script>
 <link href="doxygen.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
@@ -25,6 +34,21 @@
    &#160;<span id="projectnumber">1</span>
    </div>
   </td>
+   <td>        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <img id="MSearchSelect" src="search/mag_sel.svg"
+               onmouseover="return searchBox.OnSearchSelectShow()"
+               onmouseout="return searchBox.OnSearchSelectHide()"
+               alt=""/>
+          <input type="text" id="MSearchField" value="Search" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.svg" alt=""/></a>
+          </span>
+        </div>
+</td>
  </tr>
  </tbody>
 </table>
@@ -36,16 +60,23 @@
 var searchBox = new SearchBox("searchBox", "search",false,'Search','.html');
 /* @license-end */
 </script>
-<script type="text/javascript" src="menudata.js"></script>
-<script type="text/javascript" src="menu.js"></script>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
 <script type="text/javascript">
 /* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
-$(function() {
-  initMenu('',true,false,'search.php','Search');
-  $(document).ready(function() { init_search(); });
-});
-/* @license-end */</script>
-<div id="main-nav"></div>
+$(document).ready(function(){initNavTree('storage_controller_8h_source.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
      onmouseover="return searchBox.OnSearchSelectShow()"
@@ -60,17 +91,12 @@ $(function() {
 </iframe>
 </div>
 
-<div id="nav-path" class="navpath">
-  <ul>
-<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_ac55354187c8c6c264902bc62bdefbb0.html">Logging</a></li>  </ul>
-</div>
-</div><!-- top -->
 <div class="header">
   <div class="headertitle">
 <div class="title">storageController.h</div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#ifndef STORAGECONTROLLER_H</span></div>
+<a href="storage_controller_8h.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#ifndef STORAGECONTROLLER_H</span></div>
 <div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor">#define STORAGECONTROLLER_H</span></div>
 <div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160; </div>
 <div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160; </div>
@@ -83,52 +109,52 @@ $(function() {
 <div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160; </div>
 <div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="keyword">class </span><a class="code" href="classstate_machine.html">stateMachine</a>; <span class="comment">//forward declaration to prevent ciruclar dependancy</span></div>
 <div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160; </div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="keyword">enum class</span> STORAGE_DEVICE:uint8_t{</div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;    ALL, <span class="comment">//all writes to all avalibale memory devices to backup</span></div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;    MICROSD,</div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;    FLASH </div>
+<div class="line"><a name="l00014"></a><span class="lineno"><a class="line" href="storage_controller_8h.html#a9539e551e6a3b5229703f97c65f94bae">   14</a></span>&#160;<span class="keyword">enum class</span> <a class="code" href="storage_controller_8h.html#a9539e551e6a3b5229703f97c65f94bae">STORAGE_DEVICE</a>:uint8_t{</div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;    <a class="code" href="storage_controller_8h.html#a9539e551e6a3b5229703f97c65f94baea5fb1f955b45e38e31789286a1790398d">ALL</a>, <span class="comment">//all writes to all avalibale memory devices to backup</span></div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;    <a class="code" href="storage_controller_8h.html#a9539e551e6a3b5229703f97c65f94baea12e06b08b2eca71ace052b129c0baa7b">MICROSD</a>,</div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;    <a class="code" href="storage_controller_8h.html#a9539e551e6a3b5229703f97c65f94baea227b519e83a8b99329302ad2d37d0bbb">FLASH</a> </div>
 <div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;};</div>
 <div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160; </div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="keyword">enum class</span> FILE_TYPE:uint8_t{</div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;    FILE,</div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;    DIRECTORY</div>
+<div class="line"><a name="l00020"></a><span class="lineno"><a class="line" href="storage_controller_8h.html#a720eb3494260f3225ea9b9c1f9ee18e7">   20</a></span>&#160;<span class="keyword">enum class</span> <a class="code" href="storage_controller_8h.html#a720eb3494260f3225ea9b9c1f9ee18e7">FILE_TYPE</a>:uint8_t{</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;    <a class="code" href="storage_controller_8h.html#a720eb3494260f3225ea9b9c1f9ee18e7a9fc5887c030f7a3e19821ebec457e719">FILE</a>,</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;    <a class="code" href="storage_controller_8h.html#a720eb3494260f3225ea9b9c1f9ee18e7a28766b4be065d0c806c2e9c9d914af48">DIRECTORY</a></div>
 <div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;};</div>
 <div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160; </div>
 <div class="line"><a name="l00025"></a><span class="lineno"><a class="line" href="structdirectory__element__t.html">   25</a></span>&#160;<span class="keyword">struct </span><a class="code" href="structdirectory__element__t.html">directory_element_t</a>{</div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;    std::string name;</div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;    uint32_t size; <span class="comment">//?</span></div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;    FILE_TYPE type;</div>
+<div class="line"><a name="l00026"></a><span class="lineno"><a class="line" href="structdirectory__element__t.html#abeef13527d061ea7392bbda7fad95ec4">   26</a></span>&#160;    std::string <a class="code" href="structdirectory__element__t.html#abeef13527d061ea7392bbda7fad95ec4">name</a>;</div>
+<div class="line"><a name="l00027"></a><span class="lineno"><a class="line" href="structdirectory__element__t.html#a5b9e64ab029d6c714a660c7b453ba024">   27</a></span>&#160;    uint32_t <a class="code" href="structdirectory__element__t.html#a5b9e64ab029d6c714a660c7b453ba024">size</a>; <span class="comment">//?</span></div>
+<div class="line"><a name="l00028"></a><span class="lineno"><a class="line" href="structdirectory__element__t.html#a7c40d94f98c5839420b742519b2e0c9a">   28</a></span>&#160;    <a class="code" href="storage_controller_8h.html#a720eb3494260f3225ea9b9c1f9ee18e7">FILE_TYPE</a> <a class="code" href="structdirectory__element__t.html#a7c40d94f98c5839420b742519b2e0c9a">type</a>;</div>
 <div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;};</div>
 <div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160; </div>
 <div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160; </div>
 <div class="line"><a name="l00032"></a><span class="lineno"><a class="line" href="class_storage_controller.html">   32</a></span>&#160;<span class="keyword">class </span><a class="code" href="class_storage_controller.html">StorageController</a>{</div>
 <div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;    <span class="keyword">public</span>:</div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;        <a class="code" href="class_storage_controller.html">StorageController</a>(<a class="code" href="classstate_machine.html">stateMachine</a> *sm);</div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;        <span class="keywordtype">bool</span> setup(); <span class="comment">//setup storage devices</span></div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;        <a class="code" href="class_storage_controller.html#a68285e89bb715975a36e6b6b891ae9dc">StorageController</a>(<a class="code" href="classstate_machine.html">stateMachine</a> *sm);</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;        <span class="keywordtype">bool</span> <a class="code" href="class_storage_controller.html#a0b346fe54c8f2253697f86926fa5eb90">setup</a>(); <span class="comment">//setup storage devices</span></div>
 <div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160; </div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;        <span class="keywordtype">void</span> write(std::string &amp;path,std::string &amp;data,STORAGE_DEVICE device);<span class="comment">//missing arguemtn for data -we need to decide </span></div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;        <span class="keywordtype">void</span> read(std::string path,STORAGE_DEVICE device); <span class="comment">// need to figure out return type</span></div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;        <span class="keywordtype">void</span> <a class="code" href="class_storage_controller.html#a570540f0344421a0af1087f473329286">write</a>(std::string &amp;path,std::string &amp;data,<a class="code" href="storage_controller_8h.html#a9539e551e6a3b5229703f97c65f94bae">STORAGE_DEVICE</a> device);<span class="comment">//missing arguemtn for data -we need to decide </span></div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;        <span class="keywordtype">void</span> <a class="code" href="class_storage_controller.html#ac275c89a86d43a29114d5bd04c7158c1">read</a>(std::string path,<a class="code" href="storage_controller_8h.html#a9539e551e6a3b5229703f97c65f94bae">STORAGE_DEVICE</a> device); <span class="comment">// need to figure out return type</span></div>
 <div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160; </div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;        std::string updateDirectoryName(std::string input_directory,STORAGE_DEVICE device); <span class="comment">//checks and updates directory name so that it is unique</span></div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;        std::string <a class="code" href="class_storage_controller.html#a87d4665b5ef9041aea21649463c895d0">updateDirectoryName</a>(std::string input_directory,<a class="code" href="storage_controller_8h.html#a9539e551e6a3b5229703f97c65f94bae">STORAGE_DEVICE</a> device); <span class="comment">//checks and updates directory name so that it is unique</span></div>
 <div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;        </div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;        <span class="keywordtype">void</span> mkdir(std::string path, STORAGE_DEVICE device);</div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;        <span class="keywordtype">bool</span> ls(std::string path,std::vector&lt;directory_element_t&gt; &amp;directory_structure,STORAGE_DEVICE device);</div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;        <span class="keywordtype">bool</span> ls(std::vector&lt;directory_element_t&gt; &amp;directory_structure,STORAGE_DEVICE device);</div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;        <span class="keywordtype">void</span> printDirectory(std::string path,STORAGE_DEVICE device);</div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;        <span class="keywordtype">bool</span> erase(STORAGE_DEVICE device);<span class="comment">//format device</span></div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;        <span class="keywordtype">void</span> <a class="code" href="class_storage_controller.html#a1c88bf9602ab25ddceac9503d880a9f9">mkdir</a>(std::string path, <a class="code" href="storage_controller_8h.html#a9539e551e6a3b5229703f97c65f94bae">STORAGE_DEVICE</a> device);</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;        <span class="keywordtype">bool</span> <a class="code" href="class_storage_controller.html#aeff6ec755ddf2df758b273691a1b662f">ls</a>(std::string path,std::vector&lt;directory_element_t&gt; &amp;directory_structure,<a class="code" href="storage_controller_8h.html#a9539e551e6a3b5229703f97c65f94bae">STORAGE_DEVICE</a> device);</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;        <span class="keywordtype">bool</span> <a class="code" href="class_storage_controller.html#aeff6ec755ddf2df758b273691a1b662f">ls</a>(std::vector&lt;directory_element_t&gt; &amp;directory_structure,<a class="code" href="storage_controller_8h.html#a9539e551e6a3b5229703f97c65f94bae">STORAGE_DEVICE</a> device);</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;        <span class="keywordtype">void</span> <a class="code" href="class_storage_controller.html#a118abfa6ab0520474ccc47c78827f843">printDirectory</a>(std::string path,<a class="code" href="storage_controller_8h.html#a9539e551e6a3b5229703f97c65f94bae">STORAGE_DEVICE</a> device);</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;        <span class="keywordtype">bool</span> <a class="code" href="class_storage_controller.html#a8d50450acbe1b423a367b13d17f4d375">erase</a>(<a class="code" href="storage_controller_8h.html#a9539e551e6a3b5229703f97c65f94bae">STORAGE_DEVICE</a> device);<span class="comment">//format device</span></div>
 <div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160; </div>
 <div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;    <span class="keyword">private</span>:</div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;        <a class="code" href="classstate_machine.html">stateMachine</a> *_sm;<span class="comment">//pointer to state machine</span></div>
+<div class="line"><a name="l00049"></a><span class="lineno"><a class="line" href="class_storage_controller.html#a193c5de038c90eaca0cae0418f39e661">   49</a></span>&#160;        <a class="code" href="classstate_machine.html">stateMachine</a> *<a class="code" href="class_storage_controller.html#a193c5de038c90eaca0cae0418f39e661">_sm</a>;<span class="comment">//pointer to state machine</span></div>
 <div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160; </div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;        SdFat microsd; <span class="comment">// microsd card storage object</span></div>
+<div class="line"><a name="l00051"></a><span class="lineno"><a class="line" href="class_storage_controller.html#a0a6342fa9f3905d56ece169cc1cc316a">   51</a></span>&#160;        SdFat <a class="code" href="class_storage_controller.html#a0a6342fa9f3905d56ece169cc1cc316a">microsd</a>; <span class="comment">// microsd card storage object</span></div>
 <div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;        <span class="comment">//File file; // file object</span></div>
 <div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;        </div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;        Adafruit_FlashTransport_SPI flashTransport;</div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;        Adafruit_SPIFlash flash;<span class="comment">// flash storage object</span></div>
+<div class="line"><a name="l00054"></a><span class="lineno"><a class="line" href="class_storage_controller.html#a315c9595def59e88d2ccdb5fa94df6c8">   54</a></span>&#160;        Adafruit_FlashTransport_SPI <a class="code" href="class_storage_controller.html#a315c9595def59e88d2ccdb5fa94df6c8">flashTransport</a>;</div>
+<div class="line"><a name="l00055"></a><span class="lineno"><a class="line" href="class_storage_controller.html#ad302278a1f554b2bdcced6149c0f6ad3">   55</a></span>&#160;        Adafruit_SPIFlash <a class="code" href="class_storage_controller.html#ad302278a1f554b2bdcced6149c0f6ad3">flash</a>;<span class="comment">// flash storage object</span></div>
 <div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160; </div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;        FatFileSystem flash_fatfs;<span class="comment">//flash filesystem</span></div>
+<div class="line"><a name="l00057"></a><span class="lineno"><a class="line" href="class_storage_controller.html#abee9c9104024d8820a22c63673b9673c">   57</a></span>&#160;        FatFileSystem <a class="code" href="class_storage_controller.html#abee9c9104024d8820a22c63673b9673c">flash_fatfs</a>;<span class="comment">//flash filesystem</span></div>
 <div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;        </div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;       <span class="keyword">const</span> <span class="keywordtype">int</span> getFileNameIndex(<span class="keyword">const</span> std::string fileName); <span class="comment">// Extracts the index of the file from file name (e.g. returns 4 when input is logs_flight_4)</span></div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;       <span class="keyword">const</span> <span class="keywordtype">int</span> <a class="code" href="class_storage_controller.html#adae9673eb8ed76ad4711b4d6bb7a02f7">getFileNameIndex</a>(<span class="keyword">const</span> std::string fileName); <span class="comment">// Extracts the index of the file from file name (e.g. returns 4 when input is logs_flight_4)</span></div>
 <div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160; </div>
 <div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;        </div>
 <div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;        </div>
@@ -137,12 +163,41 @@ $(function() {
 <div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160; </div>
 <div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;<span class="preprocessor">#endif</span></div>
 <div class="ttc" id="aclass_storage_controller_html"><div class="ttname"><a href="class_storage_controller.html">StorageController</a></div><div class="ttdef"><b>Definition:</b> storageController.h:32</div></div>
+<div class="ttc" id="aclass_storage_controller_html_a0a6342fa9f3905d56ece169cc1cc316a"><div class="ttname"><a href="class_storage_controller.html#a0a6342fa9f3905d56ece169cc1cc316a">StorageController::microsd</a></div><div class="ttdeci">SdFat microsd</div><div class="ttdef"><b>Definition:</b> storageController.h:51</div></div>
+<div class="ttc" id="aclass_storage_controller_html_a0b346fe54c8f2253697f86926fa5eb90"><div class="ttname"><a href="class_storage_controller.html#a0b346fe54c8f2253697f86926fa5eb90">StorageController::setup</a></div><div class="ttdeci">bool setup()</div><div class="ttdef"><b>Definition:</b> storageController.cpp:23</div></div>
+<div class="ttc" id="aclass_storage_controller_html_a118abfa6ab0520474ccc47c78827f843"><div class="ttname"><a href="class_storage_controller.html#a118abfa6ab0520474ccc47c78827f843">StorageController::printDirectory</a></div><div class="ttdeci">void printDirectory(std::string path, STORAGE_DEVICE device)</div><div class="ttdef"><b>Definition:</b> storageController.cpp:160</div></div>
+<div class="ttc" id="aclass_storage_controller_html_a193c5de038c90eaca0cae0418f39e661"><div class="ttname"><a href="class_storage_controller.html#a193c5de038c90eaca0cae0418f39e661">StorageController::_sm</a></div><div class="ttdeci">stateMachine * _sm</div><div class="ttdef"><b>Definition:</b> storageController.h:49</div></div>
+<div class="ttc" id="aclass_storage_controller_html_a1c88bf9602ab25ddceac9503d880a9f9"><div class="ttname"><a href="class_storage_controller.html#a1c88bf9602ab25ddceac9503d880a9f9">StorageController::mkdir</a></div><div class="ttdeci">void mkdir(std::string path, STORAGE_DEVICE device)</div><div class="ttdef"><b>Definition:</b> storageController.cpp:92</div></div>
+<div class="ttc" id="aclass_storage_controller_html_a315c9595def59e88d2ccdb5fa94df6c8"><div class="ttname"><a href="class_storage_controller.html#a315c9595def59e88d2ccdb5fa94df6c8">StorageController::flashTransport</a></div><div class="ttdeci">Adafruit_FlashTransport_SPI flashTransport</div><div class="ttdef"><b>Definition:</b> storageController.h:54</div></div>
+<div class="ttc" id="aclass_storage_controller_html_a570540f0344421a0af1087f473329286"><div class="ttname"><a href="class_storage_controller.html#a570540f0344421a0af1087f473329286">StorageController::write</a></div><div class="ttdeci">void write(std::string &amp;path, std::string &amp;data, STORAGE_DEVICE device)</div><div class="ttdef"><b>Definition:</b> storageController.cpp:181</div></div>
+<div class="ttc" id="aclass_storage_controller_html_a68285e89bb715975a36e6b6b891ae9dc"><div class="ttname"><a href="class_storage_controller.html#a68285e89bb715975a36e6b6b891ae9dc">StorageController::StorageController</a></div><div class="ttdeci">StorageController(stateMachine *sm)</div><div class="ttdef"><b>Definition:</b> storageController.cpp:16</div></div>
+<div class="ttc" id="aclass_storage_controller_html_a87d4665b5ef9041aea21649463c895d0"><div class="ttname"><a href="class_storage_controller.html#a87d4665b5ef9041aea21649463c895d0">StorageController::updateDirectoryName</a></div><div class="ttdeci">std::string updateDirectoryName(std::string input_directory, STORAGE_DEVICE device)</div><div class="ttdef"><b>Definition:</b> storageController.cpp:57</div></div>
+<div class="ttc" id="aclass_storage_controller_html_a8d50450acbe1b423a367b13d17f4d375"><div class="ttname"><a href="class_storage_controller.html#a8d50450acbe1b423a367b13d17f4d375">StorageController::erase</a></div><div class="ttdeci">bool erase(STORAGE_DEVICE device)</div><div class="ttdef"><b>Definition:</b> storageController.cpp:235</div></div>
+<div class="ttc" id="aclass_storage_controller_html_abee9c9104024d8820a22c63673b9673c"><div class="ttname"><a href="class_storage_controller.html#abee9c9104024d8820a22c63673b9673c">StorageController::flash_fatfs</a></div><div class="ttdeci">FatFileSystem flash_fatfs</div><div class="ttdef"><b>Definition:</b> storageController.h:57</div></div>
+<div class="ttc" id="aclass_storage_controller_html_ac275c89a86d43a29114d5bd04c7158c1"><div class="ttname"><a href="class_storage_controller.html#ac275c89a86d43a29114d5bd04c7158c1">StorageController::read</a></div><div class="ttdeci">void read(std::string path, STORAGE_DEVICE device)</div><div class="ttdef"><b>Definition:</b> storageController.cpp:220</div></div>
+<div class="ttc" id="aclass_storage_controller_html_ad302278a1f554b2bdcced6149c0f6ad3"><div class="ttname"><a href="class_storage_controller.html#ad302278a1f554b2bdcced6149c0f6ad3">StorageController::flash</a></div><div class="ttdeci">Adafruit_SPIFlash flash</div><div class="ttdef"><b>Definition:</b> storageController.h:55</div></div>
+<div class="ttc" id="aclass_storage_controller_html_adae9673eb8ed76ad4711b4d6bb7a02f7"><div class="ttname"><a href="class_storage_controller.html#adae9673eb8ed76ad4711b4d6bb7a02f7">StorageController::getFileNameIndex</a></div><div class="ttdeci">const int getFileNameIndex(const std::string fileName)</div><div class="ttdef"><b>Definition:</b> storageController.cpp:81</div></div>
+<div class="ttc" id="aclass_storage_controller_html_aeff6ec755ddf2df758b273691a1b662f"><div class="ttname"><a href="class_storage_controller.html#aeff6ec755ddf2df758b273691a1b662f">StorageController::ls</a></div><div class="ttdeci">bool ls(std::string path, std::vector&lt; directory_element_t &gt; &amp;directory_structure, STORAGE_DEVICE device)</div><div class="ttdef"><b>Definition:</b> storageController.cpp:116</div></div>
 <div class="ttc" id="aclassstate_machine_html"><div class="ttname"><a href="classstate_machine.html">stateMachine</a></div><div class="ttdef"><b>Definition:</b> stateMachine.h:30</div></div>
+<div class="ttc" id="astorage_controller_8h_html_a720eb3494260f3225ea9b9c1f9ee18e7"><div class="ttname"><a href="storage_controller_8h.html#a720eb3494260f3225ea9b9c1f9ee18e7">FILE_TYPE</a></div><div class="ttdeci">FILE_TYPE</div><div class="ttdef"><b>Definition:</b> storageController.h:20</div></div>
+<div class="ttc" id="astorage_controller_8h_html_a720eb3494260f3225ea9b9c1f9ee18e7a28766b4be065d0c806c2e9c9d914af48"><div class="ttname"><a href="storage_controller_8h.html#a720eb3494260f3225ea9b9c1f9ee18e7a28766b4be065d0c806c2e9c9d914af48">FILE_TYPE::DIRECTORY</a></div><div class="ttdeci">@ DIRECTORY</div></div>
+<div class="ttc" id="astorage_controller_8h_html_a720eb3494260f3225ea9b9c1f9ee18e7a9fc5887c030f7a3e19821ebec457e719"><div class="ttname"><a href="storage_controller_8h.html#a720eb3494260f3225ea9b9c1f9ee18e7a9fc5887c030f7a3e19821ebec457e719">FILE_TYPE::FILE</a></div><div class="ttdeci">@ FILE</div></div>
+<div class="ttc" id="astorage_controller_8h_html_a9539e551e6a3b5229703f97c65f94bae"><div class="ttname"><a href="storage_controller_8h.html#a9539e551e6a3b5229703f97c65f94bae">STORAGE_DEVICE</a></div><div class="ttdeci">STORAGE_DEVICE</div><div class="ttdef"><b>Definition:</b> storageController.h:14</div></div>
+<div class="ttc" id="astorage_controller_8h_html_a9539e551e6a3b5229703f97c65f94baea12e06b08b2eca71ace052b129c0baa7b"><div class="ttname"><a href="storage_controller_8h.html#a9539e551e6a3b5229703f97c65f94baea12e06b08b2eca71ace052b129c0baa7b">STORAGE_DEVICE::MICROSD</a></div><div class="ttdeci">@ MICROSD</div></div>
+<div class="ttc" id="astorage_controller_8h_html_a9539e551e6a3b5229703f97c65f94baea227b519e83a8b99329302ad2d37d0bbb"><div class="ttname"><a href="storage_controller_8h.html#a9539e551e6a3b5229703f97c65f94baea227b519e83a8b99329302ad2d37d0bbb">STORAGE_DEVICE::FLASH</a></div><div class="ttdeci">@ FLASH</div></div>
+<div class="ttc" id="astorage_controller_8h_html_a9539e551e6a3b5229703f97c65f94baea5fb1f955b45e38e31789286a1790398d"><div class="ttname"><a href="storage_controller_8h.html#a9539e551e6a3b5229703f97c65f94baea5fb1f955b45e38e31789286a1790398d">STORAGE_DEVICE::ALL</a></div><div class="ttdeci">@ ALL</div></div>
 <div class="ttc" id="astructdirectory__element__t_html"><div class="ttname"><a href="structdirectory__element__t.html">directory_element_t</a></div><div class="ttdef"><b>Definition:</b> storageController.h:25</div></div>
+<div class="ttc" id="astructdirectory__element__t_html_a5b9e64ab029d6c714a660c7b453ba024"><div class="ttname"><a href="structdirectory__element__t.html#a5b9e64ab029d6c714a660c7b453ba024">directory_element_t::size</a></div><div class="ttdeci">uint32_t size</div><div class="ttdef"><b>Definition:</b> storageController.h:27</div></div>
+<div class="ttc" id="astructdirectory__element__t_html_a7c40d94f98c5839420b742519b2e0c9a"><div class="ttname"><a href="structdirectory__element__t.html#a7c40d94f98c5839420b742519b2e0c9a">directory_element_t::type</a></div><div class="ttdeci">FILE_TYPE type</div><div class="ttdef"><b>Definition:</b> storageController.h:28</div></div>
+<div class="ttc" id="astructdirectory__element__t_html_abeef13527d061ea7392bbda7fad95ec4"><div class="ttname"><a href="structdirectory__element__t.html#abeef13527d061ea7392bbda7fad95ec4">directory_element_t::name</a></div><div class="ttdeci">std::string name</div><div class="ttdef"><b>Definition:</b> storageController.h:26</div></div>
 </div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
 <!-- start footer part -->
-<hr class="footer"/><address class="footer"><small>
-Generated by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1
-</small></address>
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_ac55354187c8c6c264902bc62bdefbb0.html">Logging</a></li><li class="navelem"><a class="el" href="storage_controller_8h.html">storageController.h</a></li>
+    <li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
+  </ul>
+</div>
 </body>
 </html>

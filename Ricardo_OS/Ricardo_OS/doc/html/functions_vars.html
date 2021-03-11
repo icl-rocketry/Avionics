@@ -9,9 +9,18 @@
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+  $(document).ready(function() { init_search(); });
+/* @license-end */
+</script>
 <link href="doxygen.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
@@ -25,6 +34,21 @@
    &#160;<span id="projectnumber">1</span>
    </div>
   </td>
+   <td>        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <img id="MSearchSelect" src="search/mag_sel.svg"
+               onmouseover="return searchBox.OnSearchSelectShow()"
+               onmouseout="return searchBox.OnSearchSelectHide()"
+               alt=""/>
+          <input type="text" id="MSearchField" value="Search" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.svg" alt=""/></a>
+          </span>
+        </div>
+</td>
  </tr>
  </tbody>
 </table>
@@ -36,17 +60,23 @@
 var searchBox = new SearchBox("searchBox", "search",false,'Search','.html');
 /* @license-end */
 </script>
-<script type="text/javascript" src="menudata.js"></script>
-<script type="text/javascript" src="menu.js"></script>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
 <script type="text/javascript">
 /* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
-$(function() {
-  initMenu('',true,false,'search.php','Search');
-  $(document).ready(function() { init_search(); });
-});
-/* @license-end */</script>
-<div id="main-nav"></div>
-</div><!-- top -->
+$(document).ready(function(){initNavTree('functions_vars.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
      onmouseover="return searchBox.OnSearchSelectShow()"
@@ -64,31 +94,121 @@ $(function() {
 <div class="contents">
 &#160;
 
-<h3><a id="index_a"></a>- a -</h3><ul>
-<li>adjustfield
-: <a class="el" href="classios__base.html#adaaf735381254aa096ebe3605e8bbd0a">ios_base</a>
+<h3><a id="index__5F"></a>- _ -</h3><ul>
+<li>_continuity
+: <a class="el" href="class_pyro.html#a36a94ee600d201dcd10c917c30f2db21">Pyro</a>
 </li>
-<li>always1
-: <a class="el" href="struct_c_i_d.html#ae9d4ba51ed4102255aa87bb92882f119">CID</a>
-, <a class="el" href="struct_c_s_d_v2.html#ab7031b6fc7926ecc0acd6cff50c2c5d1">CSDV2</a>
+<li>_continuity_pin
+: <a class="el" href="class_local_pyro.html#a06a8fea989cb4d4d92eb90364435dd96">LocalPyro</a>
 </li>
-<li>app
-: <a class="el" href="classios__base.html#a8380aac3c405730708888fdc68905820">ios_base</a>
+<li>_curr_stateID
+: <a class="el" href="class_state.html#a6ddbd407bdbc7618d3f9d26083aca5a9">State</a>
 </li>
-<li>ate
-: <a class="el" href="classios__base.html#aa434355c165500065276d955d8b36e99">ios_base</a>
+<li>_currStatePtr
+: <a class="el" href="classstate_machine.html#a6539b239bcf31ec86fc4f3e69f6e4f88">stateMachine</a>
 </li>
-<li>attr
-: <a class="el" href="structlong_directory_entry.html#aa36bf1210d0c2b3b80948e5f697eb02e">longDirectoryEntry</a>
+<li>_engine_state
+: <a class="el" href="class_engine.html#abe7951d5ee1e74aa9d28201aced6f347">Engine</a>
 </li>
-<li>attributes
-: <a class="el" href="structdirectory_entry.html#a16c6cde55c8175c90935c386f1cfb21a">directoryEntry</a>
+<li>_fire_pin
+: <a class="el" href="class_local_pyro.html#a6aa89da8b5506aa7cfad08a31897e61c">LocalPyro</a>
+</li>
+<li>_firstByte
+: <a class="el" href="class_u_s_b.html#a5e1e663020e18e9f131f2d670518f6a4">USB</a>
+</li>
+<li>_global_packet_buffer
+: <a class="el" href="class_network_manager.html#a6801306c088f3f54e85f91dbdac3082a">NetworkManager</a>
+</li>
+<li>_header_len
+: <a class="el" href="class_u_s_b.html#ad6de59a2d807406a636042ba4e598410">USB</a>
+</li>
+<li>_incompletePacketReceived
+: <a class="el" href="class_u_s_b.html#abdf6d51fd4d91150dbf54bae92601705">USB</a>
+</li>
+<li>_local_packet_buffer
+: <a class="el" href="class_network_manager.html#a0d55da0b49eef51d33323f8a15ab44bc">NetworkManager</a>
+</li>
+<li>_melody
+: <a class="el" href="class_buzzer.html#ad0a27c411503f3949d7a710e9a478958">Buzzer</a>
+</li>
+<li>_networkmanager
+: <a class="el" href="class_b_t_pyro.html#a1bbdc68a8f1eb8d8fe7e7d88169bf67a">BTPyro</a>
+</li>
+<li>_packet_len
+: <a class="el" href="class_u_s_b.html#a309095f57d9bb2c05d2806ed9e1515b2">USB</a>
+</li>
+<li>_packetHeader_size
+: <a class="el" href="class_u_s_b.html#a9774760fdf1f03807f61eb2dec63c0c7">USB</a>
+</li>
+<li>_pin
+: <a class="el" href="class_battery.html#a7585667ba6d27c2d126b5d41af3b7c72">Battery</a>
+</li>
+<li>_raw_data
+: <a class="el" href="class_baro.html#a012b899da1af8dba17c6b92697fb79d8">Baro</a>
+, <a class="el" href="class_battery.html#a820d2552b93ab622cad06682e41d0b91">Battery</a>
+, <a class="el" href="class_g_p_s.html#ae0cc0228e3283b7c2028dfd875efc397">GPS</a>
+, <a class="el" href="class_imu.html#a841b5561b9b72207f919d37f19a80b59">Imu</a>
+</li>
+<li>_sm
+: <a class="el" href="class_command_handler.html#ae0ee0cc2b5b8a64321ff595b66c278f8">CommandHandler</a>
+, <a class="el" href="class_engine.html#a09bc1f3f461069dc99a737bc2d432f44">Engine</a>
+, <a class="el" href="class_estimator.html#ae1c2b700d8d29173b2e74eab06df59fd">Estimator</a>
+, <a class="el" href="class_network_manager.html#a65252299213785eb2d99ba159f04ad8f">NetworkManager</a>
+, <a class="el" href="class_pyro_handler.html#a61590edd24d2cf677daa237052f92b5e">PyroHandler</a>
+, <a class="el" href="class_sensors.html#a12693f171ad16b3abed526e54c50dc75">Sensors</a>
+, <a class="el" href="class_state.html#a2af8ee4fe8086fe585d354f756c63595">State</a>
+, <a class="el" href="class_storage_controller.html#a193c5de038c90eaca0cae0418f39e661">StorageController</a>
+, <a class="el" href="class_system_status.html#a5c5eccc925ef8b7642e2cad273938d94">SystemStatus</a>
+</li>
+<li>_spi
+: <a class="el" href="class_baro.html#a07853997e4940f4764b5fb483d9b7697">Baro</a>
+, <a class="el" href="class_imu.html#afaacc86e5ba550168d702f98603b24bd">Imu</a>
+, <a class="el" href="class_radio.html#a12b07fdb3eb87ff8f38c7168194d597b">Radio</a>
+</li>
+<li>_status
+: <a class="el" href="class_system_status.html#a7d9720fc337db625c3eec296053fd8b9">SystemStatus</a>
+</li>
+<li>_storagecontroller
+: <a class="el" href="class_config_controller.html#a6af8c4054d18a3ad4f81257713db77a6">ConfigController</a>
+, <a class="el" href="class_log_controller.html#a15debc42bbac0000e42fc77fd0b1fdf2">LogController</a>
+</li>
+<li>_stream
+: <a class="el" href="class_u_s_b.html#a717896e72794ffe97cfd519b56d151a8">USB</a>
+</li>
+<li>_systemstatus
+: <a class="el" href="class_baro.html#a6aa4b1ad14b0fc8e6ef3c14b546400cf">Baro</a>
+, <a class="el" href="class_battery.html#afdc0ac13d459105f35e8d79b38a0e415">Battery</a>
+, <a class="el" href="class_g_p_s.html#a7481afdcf015eb9570f6a13b3cf84a5b">GPS</a>
+, <a class="el" href="class_imu.html#a2dca3cfb1dba3aeba8d85e601f88f0c0">Imu</a>
+, <a class="el" href="class_radio.html#a868614909d4c8fdec10f3037f8827132">Radio</a>
+, <a class="el" href="class_u_s_b.html#a3b3697b3626b9f9c803b5b5de52117eb">USB</a>
+</li>
+<li>_table
+: <a class="el" href="class_routing_table.html#a436cfb60e620d25cc26ed76ab628c5ec">RoutingTable</a>
+</li>
+<li>_timeoutCounter
+: <a class="el" href="class_u_s_b.html#af57d3e0996846f11995e392cfc88620c">USB</a>
+</li>
+<li>_tmp_packet_data
+: <a class="el" href="class_u_s_b.html#ab2830f2c994a3d8481ac033fc0fe8631">USB</a>
+</li>
+<li>_total_len
+: <a class="el" href="class_u_s_b.html#af4131e483eebfe507dab46cfd2fd82cd">USB</a>
+</li>
+<li>_type
+: <a class="el" href="class_pyro.html#ad03097b0caf7c6e74796bc6c3e849cf1">Pyro</a>
+</li>
+<li>_wire
+: <a class="el" href="class_g_p_s.html#ac500858e46c16e9d974c579732c48de1">GPS</a>
 </li>
 </ul>
 </div><!-- contents -->
+</div><!-- doc-content -->
 <!-- start footer part -->
-<hr class="footer"/><address class="footer"><small>
-Generated by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1
-</small></address>
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
+  </ul>
+</div>
 </body>
 </html>

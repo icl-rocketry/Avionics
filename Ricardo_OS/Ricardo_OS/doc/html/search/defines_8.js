@@ -1,9 +1,8 @@
 var searchData=
 [
-  ['sd_5ffat_5fversion_2091',['SD_FAT_VERSION',['../_sd_fat_8h.html#aca25ecce379f446043bdee2c55304210',1,'SdFat.h']]],
-  ['sd_5fhas_5fcustom_5fspi_2092',['SD_HAS_CUSTOM_SPI',['../_sd_fat_config_8h.html#a838861a01379e94361148d22e62b1977',1,'SdFatConfig.h']]],
-  ['sdcard_5fspi_2093',['SDCARD_SPI',['../_sd_spi_driver_8h.html#a41630a112b576cb232294bff4e8790c9',1,'SdSpiDriver.h']]],
-  ['seek_5fcur_2094',['SEEK_CUR',['../_stdio_stream_8h.html#a4c8d0b76b470ba65a43ca46a88320f39',1,'StdioStream.h']]],
-  ['seek_5fend_2095',['SEEK_END',['../_stdio_stream_8h.html#ad2a2e6c114780c3071efd24f16c7f7d8',1,'StdioStream.h']]],
-  ['seek_5fset_2096',['SEEK_SET',['../_stdio_stream_8h.html#a0d112bae8fd35be772185b6ec6bcbe64',1,'StdioStream.h']]]
+  ['lora_5fregion_1160',['LORA_REGION',['../config_8h.html#a9b87dd195a194afd8ed95f9c26c8966e',1,'config.h']]],
+  ['lora_5fsync_5fword_1161',['LORA_SYNC_WORD',['../config_8h.html#aa48f422f9def809ba8aeb7d5492b193f',1,'config.h']]],
+  ['loracs_1162',['LoraCs',['../ricardo__pins_8h.html#af4f34b1493b6889424ce314673ed6f2c',1,'ricardo_pins.h']]],
+  ['loraint_1163',['LoraInt',['../ricardo__pins_8h.html#ab8a14ce2f2dc4b7bd47782382fc53213',1,'ricardo_pins.h']]],
+  ['lorareset_1164',['LoraReset',['../ricardo__pins_8h.html#a32900a36c1539ce036fbd16172548771',1,'ricardo_pins.h']]]
 ];

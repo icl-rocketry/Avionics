@@ -9,9 +9,18 @@
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+  $(document).ready(function() { init_search(); });
+/* @license-end */
+</script>
 <link href="doxygen.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
@@ -25,6 +34,21 @@
    &#160;<span id="projectnumber">1</span>
    </div>
   </td>
+   <td>        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <img id="MSearchSelect" src="search/mag_sel.svg"
+               onmouseover="return searchBox.OnSearchSelectShow()"
+               onmouseout="return searchBox.OnSearchSelectHide()"
+               alt=""/>
+          <input type="text" id="MSearchField" value="Search" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.svg" alt=""/></a>
+          </span>
+        </div>
+</td>
  </tr>
  </tbody>
 </table>
@@ -36,16 +60,23 @@
 var searchBox = new SearchBox("searchBox", "search",false,'Search','.html');
 /* @license-end */
 </script>
-<script type="text/javascript" src="menudata.js"></script>
-<script type="text/javascript" src="menu.js"></script>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
 <script type="text/javascript">
 /* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
-$(function() {
-  initMenu('',true,false,'search.php','Search');
-  $(document).ready(function() { init_search(); });
-});
-/* @license-end */</script>
-<div id="main-nav"></div>
+$(document).ready(function(){initNavTree('class_u_s_b.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
      onmouseover="return searchBox.OnSearchSelectShow()"
@@ -60,7 +91,6 @@ $(function() {
 </iframe>
 </div>
 
-</div><!-- top -->
 <div class="header">
   <div class="headertitle">
 <div class="title">USB Member List</div>  </div>
@@ -69,14 +99,27 @@ $(function() {
 
 <p>This is the complete list of members for <a class="el" href="class_u_s_b.html">USB</a>, including all inherited members.</p>
 <table class="directory">
-  <tr bgcolor="#f0f0f0" class="even"><td class="entry"><b>get_packet</b>(std::vector&lt; std::shared_ptr&lt; uint8_t &gt;&gt; *buf) (defined in <a class="el" href="class_u_s_b.html">USB</a>)</td><td class="entry"><a class="el" href="class_u_s_b.html">USB</a></td><td class="entry"><span class="mlabel">virtual</span></td></tr>
-  <tr bgcolor="#f0f0f0"><td class="entry"><b>send_packet</b>(uint8_t *data, size_t size) (defined in <a class="el" href="class_u_s_b.html">USB</a>)</td><td class="entry"><a class="el" href="class_u_s_b.html">USB</a></td><td class="entry"><span class="mlabel">virtual</span></td></tr>
-  <tr bgcolor="#f0f0f0" class="even"><td class="entry"><b>setup</b>() (defined in <a class="el" href="class_u_s_b.html">USB</a>)</td><td class="entry"><a class="el" href="class_u_s_b.html">USB</a></td><td class="entry"><span class="mlabel">virtual</span></td></tr>
-  <tr bgcolor="#f0f0f0"><td class="entry"><b>USB</b>(Stream *stream, SystemStatus *systemstatus) (defined in <a class="el" href="class_u_s_b.html">USB</a>)</td><td class="entry"><a class="el" href="class_u_s_b.html">USB</a></td><td class="entry"></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="class_u_s_b.html#a5e1e663020e18e9f131f2d670518f6a4">_firstByte</a></td><td class="entry"><a class="el" href="class_u_s_b.html">USB</a></td><td class="entry"><span class="mlabel">private</span></td></tr>
+  <tr><td class="entry"><a class="el" href="class_u_s_b.html#ad6de59a2d807406a636042ba4e598410">_header_len</a></td><td class="entry"><a class="el" href="class_u_s_b.html">USB</a></td><td class="entry"><span class="mlabel">private</span></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="class_u_s_b.html#abdf6d51fd4d91150dbf54bae92601705">_incompletePacketReceived</a></td><td class="entry"><a class="el" href="class_u_s_b.html">USB</a></td><td class="entry"><span class="mlabel">private</span></td></tr>
+  <tr><td class="entry"><a class="el" href="class_u_s_b.html#a309095f57d9bb2c05d2806ed9e1515b2">_packet_len</a></td><td class="entry"><a class="el" href="class_u_s_b.html">USB</a></td><td class="entry"><span class="mlabel">private</span></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="class_u_s_b.html#a9774760fdf1f03807f61eb2dec63c0c7">_packetHeader_size</a></td><td class="entry"><a class="el" href="class_u_s_b.html">USB</a></td><td class="entry"><span class="mlabel">private</span></td></tr>
+  <tr><td class="entry"><a class="el" href="class_u_s_b.html#a717896e72794ffe97cfd519b56d151a8">_stream</a></td><td class="entry"><a class="el" href="class_u_s_b.html">USB</a></td><td class="entry"><span class="mlabel">private</span></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="class_u_s_b.html#a3b3697b3626b9f9c803b5b5de52117eb">_systemstatus</a></td><td class="entry"><a class="el" href="class_u_s_b.html">USB</a></td><td class="entry"><span class="mlabel">private</span></td></tr>
+  <tr><td class="entry"><a class="el" href="class_u_s_b.html#af57d3e0996846f11995e392cfc88620c">_timeoutCounter</a></td><td class="entry"><a class="el" href="class_u_s_b.html">USB</a></td><td class="entry"><span class="mlabel">private</span></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="class_u_s_b.html#ab2830f2c994a3d8481ac033fc0fe8631">_tmp_packet_data</a></td><td class="entry"><a class="el" href="class_u_s_b.html">USB</a></td><td class="entry"><span class="mlabel">private</span></td></tr>
+  <tr><td class="entry"><a class="el" href="class_u_s_b.html#af4131e483eebfe507dab46cfd2fd82cd">_total_len</a></td><td class="entry"><a class="el" href="class_u_s_b.html">USB</a></td><td class="entry"><span class="mlabel">private</span></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="class_u_s_b.html#af3cdaec9cd19dbdf093b207a377ecae4">get_packet</a>(std::vector&lt; std::shared_ptr&lt; uint8_t &gt;&gt; *buf)</td><td class="entry"><a class="el" href="class_u_s_b.html">USB</a></td><td class="entry"><span class="mlabel">virtual</span></td></tr>
+  <tr><td class="entry"><a class="el" href="class_u_s_b.html#a404c09e9e90a8df1011d4aca3a13c5d1">send_packet</a>(uint8_t *data, size_t size)</td><td class="entry"><a class="el" href="class_u_s_b.html">USB</a></td><td class="entry"><span class="mlabel">virtual</span></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="class_u_s_b.html#ac1ff137bb999158ee6266ec936665399">setup</a>()</td><td class="entry"><a class="el" href="class_u_s_b.html">USB</a></td><td class="entry"><span class="mlabel">virtual</span></td></tr>
+  <tr><td class="entry"><a class="el" href="class_u_s_b.html#a74816ff3dd58a3dcc98e98bf323320e1">USB</a>(Stream *stream, SystemStatus *systemstatus)</td><td class="entry"><a class="el" href="class_u_s_b.html">USB</a></td><td class="entry"></td></tr>
 </table></div><!-- contents -->
+</div><!-- doc-content -->
 <!-- start footer part -->
-<hr class="footer"/><address class="footer"><small>
-Generated by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1
-</small></address>
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
+  </ul>
+</div>
 </body>
 </html>

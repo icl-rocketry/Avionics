@@ -9,9 +9,18 @@
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+  $(document).ready(function() { init_search(); });
+/* @license-end */
+</script>
 <link href="doxygen.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
@@ -25,6 +34,21 @@
    &#160;<span id="projectnumber">1</span>
    </div>
   </td>
+   <td>        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <img id="MSearchSelect" src="search/mag_sel.svg"
+               onmouseover="return searchBox.OnSearchSelectShow()"
+               onmouseout="return searchBox.OnSearchSelectHide()"
+               alt=""/>
+          <input type="text" id="MSearchField" value="Search" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.svg" alt=""/></a>
+          </span>
+        </div>
+</td>
  </tr>
  </tbody>
 </table>
@@ -36,17 +60,23 @@
 var searchBox = new SearchBox("searchBox", "search",false,'Search','.html');
 /* @license-end */
 </script>
-<script type="text/javascript" src="menudata.js"></script>
-<script type="text/javascript" src="menu.js"></script>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
 <script type="text/javascript">
 /* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
-$(function() {
-  initMenu('',true,false,'search.php','Search');
-  $(document).ready(function() { init_search(); });
-});
-/* @license-end */</script>
-<div id="main-nav"></div>
-</div><!-- top -->
+$(document).ready(function(){initNavTree('globals.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
      onmouseover="return searchBox.OnSearchSelectShow()"
@@ -62,661 +92,522 @@ $(function() {
 </div>
 
 <div class="contents">
-<div class="textblock">Here is a list of all documented file members with links to the documentation:</div>
+<div class="textblock">Here is a list of all file members with links to the files they belong to:</div>
+
+<h3><a id="index__5F"></a>- _ -</h3><ul>
+<li>_MISO
+: <a class="el" href="ricardo__pins_8h.html#ad982c31c535019a2c62544d72809887e">ricardo_pins.h</a>
+</li>
+<li>_MOSI
+: <a class="el" href="ricardo__pins_8h.html#a89521fc433083b3d1a9e72cb3f7fbc70">ricardo_pins.h</a>
+</li>
+<li>_SCL
+: <a class="el" href="ricardo__pins_8h.html#a88e4e03d5809e4878c3cdb362cd2ad7c">ricardo_pins.h</a>
+</li>
+<li>_SCLK
+: <a class="el" href="ricardo__pins_8h.html#a4cea87b2f4f1fa5b2f5e97e84c24f76e">ricardo_pins.h</a>
+</li>
+<li>_SDA
+: <a class="el" href="ricardo__pins_8h.html#a94b418b926b40aee4245ed0e2263f01c">ricardo_pins.h</a>
+</li>
+</ul>
+
 
 <h3><a id="index_a"></a>- a -</h3><ul>
-<li>attr
-: <a class="el" href="_fat_structs_8h.html#a28478ea2856f6286899bc90b2c6a1ec4">FatStructs.h</a>
-</li>
-<li>attributes
-: <a class="el" href="_fat_structs_8h.html#a983149395439fbc9ca8497076b75fd6b">FatStructs.h</a>
+<li>ACCEL_SCALE
+: <a class="el" href="config_8h.html#a5dcd67c887f0009e1ec2675a7ebe8b73">config.h</a>
 </li>
 </ul>
 
 
 <h3><a id="index_b"></a>- b -</h3><ul>
-<li>beginCylinderHigh
-: <a class="el" href="_fat_structs_8h.html#aae20759e6c6dbfa51368964f8fe095c7">FatStructs.h</a>
+<li>BaroCs
+: <a class="el" href="ricardo__pins_8h.html#aea284661eda02c313d9c444c4eea4a15">ricardo_pins.h</a>
 </li>
-<li>beginCylinderLow
-: <a class="el" href="_fat_structs_8h.html#afefdee23280567f8434f9c31610e0a3b">FatStructs.h</a>
+<li>BattVolt
+: <a class="el" href="ricardo__pins_8h.html#a99a133e759823d56d3a601904ac00b68">ricardo_pins.h</a>
 </li>
-<li>beginHead
-: <a class="el" href="_fat_structs_8h.html#ab27b713d70d01c43e31fc67e08f876bf">FatStructs.h</a>
-</li>
-<li>beginSector
-: <a class="el" href="_fat_structs_8h.html#a3ef026d5e8a9c697e414cf773b129db4">FatStructs.h</a>
-</li>
-<li>BlockDriver
-: <a class="el" href="_block_driver_8h.html#ace97f2377acdc471a01f9f7ec1fd6bbb">BlockDriver.h</a>
-</li>
-<li>boolalpha()
-: <a class="el" href="ios_8h.html#a0016daaaf730481e2ad36972fa7abb17">ios.h</a>
-</li>
-<li>boot
-: <a class="el" href="_fat_structs_8h.html#ad2acb7fab9ef33a6f00c834401250229">FatStructs.h</a>
-</li>
-<li>bootCode
-: <a class="el" href="_fat_structs_8h.html#a2f3c72b78dbeeeb61d543df3c9d1cefd">FatStructs.h</a>
-</li>
-<li>bootSectorSig0
-: <a class="el" href="_fat_structs_8h.html#abdaf2cc75b74800944ede557442ca5bd">FatStructs.h</a>
-</li>
-<li>bootSectorSig1
-: <a class="el" href="_fat_structs_8h.html#a44983e94ecddbdcb7ab691e493a13d94">FatStructs.h</a>
-</li>
-<li>BOOTSIG0
-: <a class="el" href="_fat_structs_8h.html#acb7f0c892eb84c121c5698b2605e95e3">FatStructs.h</a>
-</li>
-<li>BOOTSIG1
-: <a class="el" href="_fat_structs_8h.html#a52f90172e11e828b411c803f29853753">FatStructs.h</a>
-</li>
-<li>bootSignature
-: <a class="el" href="_fat_structs_8h.html#acc4a4e4c22b630d12c1b2c2b8c7eb366">FatStructs.h</a>
-</li>
-<li>bpb_t
-: <a class="el" href="_fat_structs_8h.html#a5c8af240713e05e7e6c959006ced35fb">FatStructs.h</a>
-</li>
-<li>bytesPerSector
-: <a class="el" href="_fat_structs_8h.html#adb2ddeae74baf681103d21d724814a63">FatStructs.h</a>
+<li>Buzzer
+: <a class="el" href="ricardo__pins_8h.html#a92f04683a25906bc612649e986a8072a">ricardo_pins.h</a>
 </li>
 </ul>
 
 
 <h3><a id="index_c"></a>- c -</h3><ul>
-<li>CHECK_FLASH_PROGRAMMING
-: <a class="el" href="_sd_fat_config_8h.html#a63747c9ac4e3d78579690cf9eb38c4df">SdFatConfig.h</a>
+<li>COMMANDS
+: <a class="el" href="commands_8h.html#a73b52bb10772a6ec22fce9998c6549aa">commands.h</a>
 </li>
-<li>chksum
-: <a class="el" href="_fat_structs_8h.html#a385e330c40b5fc7d8aa0619183f6705a">FatStructs.h</a>
+<li>Cont_1
+: <a class="el" href="ricardo__pins_8h.html#aee4bfdc4f1a2c5b50961bc86e6551732">ricardo_pins.h</a>
 </li>
-<li>codeArea
-: <a class="el" href="_fat_structs_8h.html#a714f552faf0b0f09ffc53e2ba52ddbc3">FatStructs.h</a>
-</li>
-<li>creationDate
-: <a class="el" href="_fat_structs_8h.html#ab00be6268bf4c4f4b6014f056e27ba45">FatStructs.h</a>
-</li>
-<li>creationTime
-: <a class="el" href="_fat_structs_8h.html#a2b2b18a3fb988470278b1217abe946ab">FatStructs.h</a>
-</li>
-<li>creationTimeTenths
-: <a class="el" href="_fat_structs_8h.html#a088ac767e59feb38599e0a53e6aacb82">FatStructs.h</a>
-</li>
-<li>curTimeMS()
-: <a class="el" href="_sys_call_8h.html#a7a1c5babdcf00c78d4d2e6a012bd9e68">SysCall.h</a>
-</li>
-</ul>
-
-
-<h3><a id="index_d"></a>- d -</h3><ul>
-<li>DEBUG_MODE
-: <a class="el" href="_fat_volume_8h.html#ac80a3592e72fd96b772ee47a7d8e0d0a">FatVolume.h</a>
-</li>
-<li>dec()
-: <a class="el" href="ios_8h.html#ada38ab90e22f0ebb638cb864a35c562d">ios.h</a>
-</li>
-<li>DESTRUCTOR_CLOSES_FILE
-: <a class="el" href="_fat_lib_config_8h.html#a9a2b1ca4d91cff876f48deeaacbc33da">FatLibConfig.h</a>
-, <a class="el" href="_sd_fat_config_8h.html#a9a2b1ca4d91cff876f48deeaacbc33da">SdFatConfig.h</a>
-</li>
-<li>DIR_ATT_ARCHIVE
-: <a class="el" href="_fat_structs_8h.html#a0d0745a2bc191d12f6e3294a890c4b13">FatStructs.h</a>
-</li>
-<li>DIR_ATT_DEFINED_BITS
-: <a class="el" href="_fat_structs_8h.html#ad0c6ed5cf186a40f98cc3929b52cf8ee">FatStructs.h</a>
-</li>
-<li>DIR_ATT_DIRECTORY
-: <a class="el" href="_fat_structs_8h.html#a5fe039a9af7304fc97a0e903acd217f7">FatStructs.h</a>
-</li>
-<li>DIR_ATT_FILE_TYPE_MASK
-: <a class="el" href="_fat_structs_8h.html#af006ada1b85a9761dd9538273c1ee97f">FatStructs.h</a>
-</li>
-<li>DIR_ATT_HIDDEN
-: <a class="el" href="_fat_structs_8h.html#aed394afe98ff4b7876a5815319b6ef94">FatStructs.h</a>
-</li>
-<li>DIR_ATT_LONG_NAME
-: <a class="el" href="_fat_structs_8h.html#a0039e1903007eb7383a9fe4b80a3569e">FatStructs.h</a>
-</li>
-<li>DIR_ATT_LONG_NAME_MASK
-: <a class="el" href="_fat_structs_8h.html#a74ddbd24c315a682449a51a2a35adf39">FatStructs.h</a>
-</li>
-<li>DIR_ATT_READ_ONLY
-: <a class="el" href="_fat_structs_8h.html#ae5efa2fd21e8a563a3a45f8a52538cde">FatStructs.h</a>
-</li>
-<li>DIR_ATT_SYSTEM
-: <a class="el" href="_fat_structs_8h.html#a31c7e5c119c9ebc1237746c985cf385d">FatStructs.h</a>
-</li>
-<li>DIR_ATT_VOLUME_ID
-: <a class="el" href="_fat_structs_8h.html#a410501be78b30a75224dd4e81a4a1105">FatStructs.h</a>
-</li>
-<li>DIR_NAME_0XE5
-: <a class="el" href="_fat_structs_8h.html#a1696d3db9949d6e22d1c2c595fd14669">FatStructs.h</a>
-</li>
-<li>DIR_NAME_DELETED
-: <a class="el" href="_fat_structs_8h.html#a8c08d4823047505f3231e86c5033d08c">FatStructs.h</a>
-</li>
-<li>DIR_NAME_FREE
-: <a class="el" href="_fat_structs_8h.html#a0f1f0001102ae59b9e7c9e3b04cc06d8">FatStructs.h</a>
-</li>
-<li>DIR_NT_LC_BASE
-: <a class="el" href="_fat_structs_8h.html#a39f9b8960dba007b537e9b71c25384fe">FatStructs.h</a>
-</li>
-<li>DIR_NT_LC_EXT
-: <a class="el" href="_fat_structs_8h.html#a8766a8bbab6ad3da38c1b308545d7572">FatStructs.h</a>
-</li>
-<li>dir_t
-: <a class="el" href="_fat_structs_8h.html#a803db59d4e16a0c54a647afc6a7954e3">FatStructs.h</a>
-</li>
-<li>diskSignature
-: <a class="el" href="_fat_structs_8h.html#a6a40348b3b308847ba21a75829d91871">FatStructs.h</a>
-</li>
-<li>driveNumber
-: <a class="el" href="_fat_structs_8h.html#aa7c65fdb4f759fca094105d1c870bcb2">FatStructs.h</a>
+<li>Cont_2
+: <a class="el" href="ricardo__pins_8h.html#a159fe7952c1915e789626048d68568b8">ricardo_pins.h</a>
 </li>
 </ul>
 
 
 <h3><a id="index_e"></a>- e -</h3><ul>
-<li>ENABLE_ARDUINO_FEATURES
-: <a class="el" href="_fat_lib_config_8h.html#a9a8c1ea8596f35f7f33a24b642567206">FatLibConfig.h</a>
+<li>empty_battery_voltage
+: <a class="el" href="config_8h.html#ab371233fb2dcb9f977a7b102d6530cb4">config.h</a>
 </li>
-<li>ENABLE_EXTENDED_TRANSFER_CLASS
-: <a class="el" href="_sd_fat_config_8h.html#aad4f0ecbc65cdc3a7be544225b44f86a">SdFatConfig.h</a>
-</li>
-<li>ENABLE_SDIO_CLASS
-: <a class="el" href="_sd_fat_config_8h.html#a1d106f3a0ba8577abdcc9ce3961ef90b">SdFatConfig.h</a>
-</li>
-<li>ENABLE_SOFTWARE_SPI_CLASS
-: <a class="el" href="_sd_fat_config_8h.html#acc3d779d87b785bb7236b9b3acf7e619">SdFatConfig.h</a>
-</li>
-<li>endCylinderHigh
-: <a class="el" href="_fat_structs_8h.html#adeccbdcad0d989d1e33a07b435ab7300">FatStructs.h</a>
-</li>
-<li>endCylinderLow
-: <a class="el" href="_fat_structs_8h.html#a3eb4b87675075500899edbb9296e0435">FatStructs.h</a>
-</li>
-<li>endHead
-: <a class="el" href="_fat_structs_8h.html#a248e6a8c42872744129b8b85a864a7a6">FatStructs.h</a>
-</li>
-<li>endl()
-: <a class="el" href="iostream_8h.html#ab9868f8e151efc1705646437dbb59bb2">iostream.h</a>
-</li>
-<li>ENDL_CALLS_FLUSH
-: <a class="el" href="_fat_lib_config_8h.html#a270eefdaec4778f2a491658f34f61b17">FatLibConfig.h</a>
-, <a class="el" href="_sd_fat_config_8h.html#a270eefdaec4778f2a491658f34f61b17">SdFatConfig.h</a>
-</li>
-<li>endSector
-: <a class="el" href="_fat_structs_8h.html#a1412f3c5116885eb7d4a047e432c9cdd">FatStructs.h</a>
-</li>
-<li>EOF
-: <a class="el" href="_stdio_stream_8h.html#a59adc4c82490d23754cd39c2fb99b0da">StdioStream.h</a>
-</li>
-<li>EXTENDED_BOOT_SIG
-: <a class="el" href="_fat_structs_8h.html#aefadfae26e4cc8d57c1ff727a9d1cd20">FatStructs.h</a>
+<li>ENGINE_STATE
+: <a class="el" href="engine_8h.html#ad73eb68367e8a8e5f90b200a50121168">engine.h</a>
 </li>
 </ul>
 
 
 <h3><a id="index_f"></a>- f -</h3><ul>
-<li>F
-: <a class="el" href="_sys_call_8h.html#a0e3009529aac180ed5f48296d6670d6b">SysCall.h</a>
+<li>FILE_TYPE
+: <a class="el" href="storage_controller_8h.html#a720eb3494260f3225ea9b9c1f9ee18e7">storageController.h</a>
 </li>
-<li>fastPinConfig
-: <a class="el" href="group__digital_pin.html#gaeea7c59480c0a4e25aad3890545cef52">DigitalPin.h</a>
+<li>FlashCs
+: <a class="el" href="ricardo__pins_8h.html#ac2e1a928b492aa77bff9898c83cc7a47">ricardo_pins.h</a>
 </li>
-<li>FAT12_SUPPORT
-: <a class="el" href="_fat_lib_config_8h.html#a28998c5daf4bd038f4f93172698320b1">FatLibConfig.h</a>
-, <a class="el" href="_sd_fat_config_8h.html#a28998c5daf4bd038f4f93172698320b1">SdFatConfig.h</a>
-</li>
-<li>FAT12EOC
-: <a class="el" href="_fat_structs_8h.html#af314c45d1d37d09c9e44847326232466">FatStructs.h</a>
-</li>
-<li>FAT12EOC_MIN
-: <a class="el" href="_fat_structs_8h.html#a48951911b522ebf72bf5561c3402aa15">FatStructs.h</a>
-</li>
-<li>FAT16EOC
-: <a class="el" href="_fat_structs_8h.html#afcd95ebc621a46c82b9997c8b9208550">FatStructs.h</a>
-</li>
-<li>FAT16EOC_MIN
-: <a class="el" href="_fat_structs_8h.html#a2f549b850b74666ba7d922bcb373896e">FatStructs.h</a>
-</li>
-<li>fat32_boot_t
-: <a class="el" href="_fat_structs_8h.html#a38fa081d004647a828095d31b07ec491">FatStructs.h</a>
-</li>
-<li>fat32_fsinfo_t
-: <a class="el" href="_fat_structs_8h.html#a6030ed0fce3a819326a2548407fc8556">FatStructs.h</a>
-</li>
-<li>fat32BackBootBlock
-: <a class="el" href="_fat_structs_8h.html#a1914baf34756efd18072059dccfcf40f">FatStructs.h</a>
-</li>
-<li>FAT32EOC
-: <a class="el" href="_fat_structs_8h.html#a67a9dbf970f43fadd41a6a9fede60c47">FatStructs.h</a>
-</li>
-<li>FAT32EOC_MIN
-: <a class="el" href="_fat_structs_8h.html#a8f97a312e990c3f4faf7e98c3256aae5">FatStructs.h</a>
-</li>
-<li>fat32Flags
-: <a class="el" href="_fat_structs_8h.html#a4f864cefb7f1b004d5739ffab9a65ae1">FatStructs.h</a>
-</li>
-<li>fat32FSInfo
-: <a class="el" href="_fat_structs_8h.html#aad3222ea255af06d09734e96a93c82ed">FatStructs.h</a>
-</li>
-<li>FAT32MASK
-: <a class="el" href="_fat_structs_8h.html#a7491c79fff0bda3b026ffa098a28d6df">FatStructs.h</a>
-</li>
-<li>fat32Reserved
-: <a class="el" href="_fat_structs_8h.html#a6894c520facd5a61acc317e16099f693">FatStructs.h</a>
-</li>
-<li>fat32RootCluster
-: <a class="el" href="_fat_structs_8h.html#a58249ed4ed0f92d5768f2342f248af82">FatStructs.h</a>
-</li>
-<li>fat32Version
-: <a class="el" href="_fat_structs_8h.html#a8f27235fa3dee48a4b4e099135fc81d6">FatStructs.h</a>
-</li>
-<li>fat_boot_t
-: <a class="el" href="_fat_structs_8h.html#aedac4595ee08198da26c14b9891a07d5">FatStructs.h</a>
-</li>
-<li>FAT_DEFAULT_DATE
-: <a class="el" href="_fat_structs_8h.html#a42eeb0322bced1f7b527c707f8bd54a4">FatStructs.h</a>
-</li>
-<li>FAT_DEFAULT_TIME
-: <a class="el" href="_fat_structs_8h.html#a23c2510407ec3be457e0e4807644deb2">FatStructs.h</a>
-</li>
-<li>fatCount
-: <a class="el" href="_fat_structs_8h.html#a624e9eb125b4fc8aeaebcccf79e17aa8">FatStructs.h</a>
-</li>
-<li>fileSize
-: <a class="el" href="_fat_structs_8h.html#a48f46ad02b77a00b795d15626ba1d42e">FatStructs.h</a>
-</li>
-<li>fileSystemType
-: <a class="el" href="_fat_structs_8h.html#a14bc72c09ec28729b9907aab215e5fe3">FatStructs.h</a>
-</li>
-<li>firstClusterHigh
-: <a class="el" href="_fat_structs_8h.html#ad6224dfa27a1c558703f158e93ceafe0">FatStructs.h</a>
-</li>
-<li>firstClusterLow
-: <a class="el" href="_fat_structs_8h.html#a3a4f70fb49494208d7eb349969a8acaa">FatStructs.h</a>
-</li>
-<li>firstSector
-: <a class="el" href="_fat_structs_8h.html#a5951cd74127d45180071909972899c0e">FatStructs.h</a>
-</li>
-<li>flush()
-: <a class="el" href="iostream_8h.html#a2f6f5344fca38fd4fe7b6231fd992a0d">iostream.h</a>
-</li>
-<li>FNAME_FLAG_LC_BASE
-: <a class="el" href="_fat_file_8h.html#a79e43960e1b4eecf274f5faea9c3168c">FatFile.h</a>
-</li>
-<li>FNAME_FLAG_LC_EXT
-: <a class="el" href="_fat_file_8h.html#a135b7572768b09661aa38afaceec7296">FatFile.h</a>
-</li>
-<li>FNAME_FLAG_LOST_CHARS
-: <a class="el" href="_fat_file_8h.html#acd45286b7dfc5ba68be18c8c3a9d298d">FatFile.h</a>
-</li>
-<li>FNAME_FLAG_MIXED_CASE
-: <a class="el" href="_fat_file_8h.html#a63994c21f3b723a55247f063a1b01c9c">FatFile.h</a>
-</li>
-<li>FNAME_FLAG_NEED_LFN
-: <a class="el" href="_fat_file_8h.html#a1a041207a19d2fd9a1e2739343ccb29b">FatFile.h</a>
-</li>
-<li>freeCount
-: <a class="el" href="_fat_structs_8h.html#af5d9e0aff08147617a09dc19d207eafe">FatStructs.h</a>
-</li>
-<li>FSINFO_LEAD_SIG
-: <a class="el" href="_fat_structs_8h.html#a7a7a74a7315ad523e3b0c9dbd44d9a32">FatStructs.h</a>
-</li>
-<li>FSINFO_STRUCT_SIG
-: <a class="el" href="_fat_structs_8h.html#a9bf6b77df7bec6c49d81562c54371e81">FatStructs.h</a>
+<li>full_battery_voltage
+: <a class="el" href="config_8h.html#a0dd4f018cf6ee09930a6388254038329">config.h</a>
 </li>
 </ul>
 
 
-<h3><a id="index_h"></a>- h -</h3><ul>
-<li>headCount
-: <a class="el" href="_fat_structs_8h.html#a57cb7e16b9969fa87c9f1ca43a87d217">FatStructs.h</a>
+<h3><a id="index_g"></a>- g -</h3><ul>
+<li>GPS_DATASTREAM_REGISTER
+: <a class="el" href="config_8h.html#a1e4af0b6af094848144d6202f01f992f">config.h</a>
 </li>
-<li>hex()
-: <a class="el" href="ios_8h.html#ace2036d970905192360d622140bfe336">ios.h</a>
+<li>GPS_NUM_AVAILABLE_BYTES_REGISTER
+: <a class="el" href="config_8h.html#aa1efffe71c4fbd5caa6b0b8ce13605d8">config.h</a>
 </li>
-<li>hidddenSectors
-: <a class="el" href="_fat_structs_8h.html#a454fd6cc3f063c86b7fe65c367da7cdd">FatStructs.h</a>
+<li>GYRO_SCALE
+: <a class="el" href="config_8h.html#abdeac7f9288bf09fd6e1739d22ff8bea">config.h</a>
 </li>
 </ul>
 
 
 <h3><a id="index_i"></a>- i -</h3><ul>
-<li>IMPLEMENT_SPI_PORT_SELECTION
-: <a class="el" href="_sd_fat_config_8h.html#aa13678c06fd801cb8f00b497a517d91e">SdFatConfig.h</a>
+<li>I2C_FREQUENCY
+: <a class="el" href="config_8h.html#afd74d0ddc5d78f0d7957c5bbe90eb222">config.h</a>
 </li>
-<li>INCLUDE_SDIOS
-: <a class="el" href="_sd_fat_config_8h.html#a7cc6c9647297d65f8e823de70740630b">SdFatConfig.h</a>
+<li>I2C_GPS_ADDRESS
+: <a class="el" href="config_8h.html#a4dd9463d04aa8e869a87eedd6b682396">config.h</a>
 </li>
-<li>internal()
-: <a class="el" href="ios_8h.html#a8dd76c1ce8fced364a98428ca1eea7a6">ios.h</a>
+<li>ImuCs
+: <a class="el" href="ricardo__pins_8h.html#ab3adb85cecf3763241f5356d55012d27">ricardo_pins.h</a>
 </li>
-<li>isDirSeparator
-: <a class="el" href="_fat_file_8h.html#a9f85580ad6f1dfc86fff09a58ff0a1c0">FatFile.h</a>
-</li>
-</ul>
-
-
-<h3><a id="index_j"></a>- j -</h3><ul>
-<li>jump
-: <a class="el" href="_fat_structs_8h.html#ad29ce39fde11e3efe207f3cc71924c01">FatStructs.h</a>
+<li>Interface
+: <a class="el" href="interfaces_8h.html#af0cd30ccfa4f4fe2bd0fdc3cfc4d34cf">interfaces.h</a>
 </li>
 </ul>
 
 
 <h3><a id="index_l"></a>- l -</h3><ul>
-<li>lastAccessDate
-: <a class="el" href="_fat_structs_8h.html#a5635857642ec25e070355257115dafd1">FatStructs.h</a>
+<li>LOG_TYPE
+: <a class="el" href="log_controller_8h.html#a3fe34aa18aae383b0dedd08b476f3844">logController.h</a>
 </li>
-<li>lastWriteDate
-: <a class="el" href="_fat_structs_8h.html#a26f462d6e4410d502149973ee6c216fd">FatStructs.h</a>
+<li>loop()
+: <a class="el" href="main_8cpp.html#afe461d27b9c48d5921c00d521181f12f">main.cpp</a>
 </li>
-<li>lastWriteTime
-: <a class="el" href="_fat_structs_8h.html#ab140bb773b2ff0ddf7199efc083ce037">FatStructs.h</a>
+<li>LORA_REGION
+: <a class="el" href="config_8h.html#a9b87dd195a194afd8ed95f9c26c8966e">config.h</a>
 </li>
-<li>LDIR_NAME1_DIM
-: <a class="el" href="_fat_structs_8h.html#af843af29c67dd30ca7c5684806bf02fc">FatStructs.h</a>
+<li>LORA_SYNC_WORD
+: <a class="el" href="config_8h.html#aa48f422f9def809ba8aeb7d5492b193f">config.h</a>
 </li>
-<li>LDIR_NAME2_DIM
-: <a class="el" href="_fat_structs_8h.html#a99cae591c59e261f54617617e173e7e0">FatStructs.h</a>
+<li>LoraCs
+: <a class="el" href="ricardo__pins_8h.html#af4f34b1493b6889424ce314673ed6f2c">ricardo_pins.h</a>
 </li>
-<li>LDIR_NAME3_DIM
-: <a class="el" href="_fat_structs_8h.html#a99fbd27fa9e5003a8d77ca7fc14d2090">FatStructs.h</a>
+<li>LoraInt
+: <a class="el" href="ricardo__pins_8h.html#ab8a14ce2f2dc4b7bd47782382fc53213">ricardo_pins.h</a>
 </li>
-<li>LDIR_ORD_LAST_LONG_ENTRY
-: <a class="el" href="_fat_structs_8h.html#a8cfb60b9eaf04dcdc6e4f5a466af5540">FatStructs.h</a>
-</li>
-<li>ldir_t
-: <a class="el" href="_fat_structs_8h.html#aa1b540ee1eedd1aa9b267d11cba0d9e2">FatStructs.h</a>
-</li>
-<li>leadSignature
-: <a class="el" href="_fat_structs_8h.html#a19196eeae2525130bdb0d39607860743">FatStructs.h</a>
-</li>
-<li>left()
-: <a class="el" href="ios_8h.html#a24a80a73f0a0d2d72d1cb74f49ff4759">ios.h</a>
+<li>LoraReset
+: <a class="el" href="ricardo__pins_8h.html#a32900a36c1539ce036fbd16172548771">ricardo_pins.h</a>
 </li>
 </ul>
 
 
 <h3><a id="index_m"></a>- m -</h3><ul>
-<li>MAINTAIN_FREE_CLUSTER_COUNT
-: <a class="el" href="_fat_lib_config_8h.html#ac2865dac8fdbb4fff47105db32ddf05b">FatLibConfig.h</a>
-, <a class="el" href="_sd_fat_config_8h.html#ac2865dac8fdbb4fff47105db32ddf05b">SdFatConfig.h</a>
+<li>MAG_SCALE
+: <a class="el" href="config_8h.html#af91ea782523c15cb13ede694b43d1510">config.h</a>
 </li>
-<li>mbr_t
-: <a class="el" href="_fat_structs_8h.html#a7c429e5097f101c8c97663d6c4155bd9">FatStructs.h</a>
+<li>MagCs
+: <a class="el" href="ricardo__pins_8h.html#ae2661a087b618c8ad297bad03f1f1bd8">ricardo_pins.h</a>
 </li>
-<li>mbrSig0
-: <a class="el" href="_fat_structs_8h.html#aa5633d8ea0049be26315e7627e32bb4e">FatStructs.h</a>
+<li>MAX_PACKET_LENGTH
+: <a class="el" href="config_8h.html#a973c680573b37fc359fc68d0707da355">config.h</a>
 </li>
-<li>mbrSig1
-: <a class="el" href="_fat_structs_8h.html#af106928fafe93a641c06cfb87b0d24e3">FatStructs.h</a>
-</li>
-<li>mediaType
-: <a class="el" href="_fat_structs_8h.html#ab88738f9cb91c882cb91d5e83a19a73f">FatStructs.h</a>
-</li>
-<li>MISO_LEVEL
-: <a class="el" href="group__soft_s_p_i.html#gad26f209553f49afaa7cc789af2446ea6">SoftSPI.h</a>
-</li>
-<li>MISO_MODE
-: <a class="el" href="group__soft_s_p_i.html#ga4f2c19a684a848b1e3b08cf475cded11">SoftSPI.h</a>
-</li>
-<li>MOSI_MODE
-: <a class="el" href="group__soft_s_p_i.html#gaee641e839770c70643f380501c3e3986">SoftSPI.h</a>
-</li>
-<li>mustBeZero
-: <a class="el" href="_fat_structs_8h.html#a06b092a772e5358228eaf0c01eb73838">FatStructs.h</a>
+<li>MAX_SERIAL_TIMEOUT
+: <a class="el" href="config_8h.html#a9ddcfdd4db871c4dff34d6a3b4c26ffb">config.h</a>
 </li>
 </ul>
 
 
 <h3><a id="index_n"></a>- n -</h3><ul>
-<li>name
-: <a class="el" href="_fat_structs_8h.html#a30308c9b983377042fd2cc8900454fb1">FatStructs.h</a>
+<li>Nodes
+: <a class="el" href="nodes_8h.html#a898f2e294c3f9fc053e921a46dd52dce">nodes.h</a>
 </li>
-<li>name1
-: <a class="el" href="_fat_structs_8h.html#a07da96089c18c8a0d602b7928da0911b">FatStructs.h</a>
+<li>NOTE_A1
+: <a class="el" href="pitches_8h.html#ae7263a79e9675b3bae2b73d2c8b7d0f8">pitches.h</a>
 </li>
-<li>name2
-: <a class="el" href="_fat_structs_8h.html#a131c8b991ced6a7727162f48679f546b">FatStructs.h</a>
+<li>NOTE_A2
+: <a class="el" href="pitches_8h.html#ad8c52bd098530d4253e7433c8cc29ee9">pitches.h</a>
 </li>
-<li>name3
-: <a class="el" href="_fat_structs_8h.html#a36c0f9ceab93f09fe49f5dc2549258ba">FatStructs.h</a>
+<li>NOTE_A3
+: <a class="el" href="pitches_8h.html#a934b0ccc182054ca8da5c67c0e78a04c">pitches.h</a>
 </li>
-<li>nextFree
-: <a class="el" href="_fat_structs_8h.html#a456cdbc01678df5d05eabb80f5aac9b0">FatStructs.h</a>
+<li>NOTE_A4
+: <a class="el" href="pitches_8h.html#a4ede898d3fa744ffb02d5e9b66994ef3">pitches.h</a>
 </li>
-<li>noboolalpha()
-: <a class="el" href="ios_8h.html#aa6a1ec04992fc8090ca775a39678be01">ios.h</a>
+<li>NOTE_A5
+: <a class="el" href="pitches_8h.html#a304d30fa9be20c63c38c57787d037855">pitches.h</a>
 </li>
-<li>nop
-: <a class="el" href="group__soft_s_p_i.html#ga51158539d4d6022c9a445e78b0abfa94">SoftSPI.h</a>
+<li>NOTE_A6
+: <a class="el" href="pitches_8h.html#a398204aee459448c88756450dec5917e">pitches.h</a>
 </li>
-<li>noshowbase()
-: <a class="el" href="ios_8h.html#ab861ff5f863de0ae002b65390dde36b0">ios.h</a>
+<li>NOTE_A7
+: <a class="el" href="pitches_8h.html#a8d2565a45b2dc04fdd20d687ba9a2adf">pitches.h</a>
 </li>
-<li>noshowpoint()
-: <a class="el" href="ios_8h.html#ad85399d1b75151cf9e2436f2a1ccfc13">ios.h</a>
+<li>NOTE_AS1
+: <a class="el" href="pitches_8h.html#acfcb8b2ac851e6f7b76610b28d21cf85">pitches.h</a>
 </li>
-<li>noshowpos()
-: <a class="el" href="ios_8h.html#a985805b22ffb4ce2f5298168662bd2d7">ios.h</a>
+<li>NOTE_AS2
+: <a class="el" href="pitches_8h.html#af0d7a5be59334bf1985cbddde34b95bb">pitches.h</a>
 </li>
-<li>noskipws()
-: <a class="el" href="ios_8h.html#a773b847300db776fde08a0b562792131">ios.h</a>
+<li>NOTE_AS3
+: <a class="el" href="pitches_8h.html#a33992ffb6f31579b376cef8c5858b9f0">pitches.h</a>
 </li>
-<li>nouppercase()
-: <a class="el" href="ios_8h.html#a24b96fb317e056b34aa84c4bb965a79a">ios.h</a>
+<li>NOTE_AS4
+: <a class="el" href="pitches_8h.html#aaf4ee3ef21f5803c75089341e7e3f50d">pitches.h</a>
 </li>
-<li>NULL
-: <a class="el" href="_stdio_stream_8h.html#a070d2ce7b6bb7e5c05602aa8c308d0c4">StdioStream.h</a>
+<li>NOTE_AS5
+: <a class="el" href="pitches_8h.html#a9eb288f3153b75a074d08dce3765298e">pitches.h</a>
 </li>
-</ul>
-
-
-<h3><a id="index_o"></a>- o -</h3><ul>
-<li>oct()
-: <a class="el" href="ios_8h.html#ae661b435df22f8e8e643817f4f915123">ios.h</a>
+<li>NOTE_AS6
+: <a class="el" href="pitches_8h.html#aa79cf5cf202add769c2b5e3bac36b07e">pitches.h</a>
 </li>
-<li>oemId
-: <a class="el" href="_fat_structs_8h.html#a9c423397154f11b5108165f058d64c03">FatStructs.h</a>
+<li>NOTE_AS7
+: <a class="el" href="pitches_8h.html#a3cf820bf5e8bac30a1d1d6f5b0a80278">pitches.h</a>
 </li>
-<li>operator&lt;&lt;()
-: <a class="el" href="iostream_8h.html#aa125ac928f3377cbc6e3cf288b9378fd">iostream.h</a>
+<li>NOTE_B0
+: <a class="el" href="pitches_8h.html#a75daabb2226536982e7cd233cd1e6f39">pitches.h</a>
 </li>
-<li>operator&gt;&gt;()
-: <a class="el" href="iostream_8h.html#a4a4079de901e0f3f10c743115bd345b2">iostream.h</a>
+<li>NOTE_B1
+: <a class="el" href="pitches_8h.html#a05b80b905f142f5ffc29b52f4e92fda1">pitches.h</a>
 </li>
-<li>ord
-: <a class="el" href="_fat_structs_8h.html#ae204655dc23be1d048e8bebf2dfa5089">FatStructs.h</a>
+<li>NOTE_B2
+: <a class="el" href="pitches_8h.html#a49bbf78568a8e133862a1c84b825b678">pitches.h</a>
+</li>
+<li>NOTE_B3
+: <a class="el" href="pitches_8h.html#aa5207dfb3103215cdb89a40c1753eea8">pitches.h</a>
+</li>
+<li>NOTE_B4
+: <a class="el" href="pitches_8h.html#a9ed6d5c8563ae60e6d2716e13d261386">pitches.h</a>
+</li>
+<li>NOTE_B5
+: <a class="el" href="pitches_8h.html#a88aac44b58d74d5aa5749e17a22b8cdd">pitches.h</a>
+</li>
+<li>NOTE_B6
+: <a class="el" href="pitches_8h.html#a918042b793d057bd1038d859bc769ec0">pitches.h</a>
+</li>
+<li>NOTE_B7
+: <a class="el" href="pitches_8h.html#a65fb6be656e33eec5ebd43f99bdde43c">pitches.h</a>
+</li>
+<li>NOTE_C1
+: <a class="el" href="pitches_8h.html#a3967a2d455ebdbe5e51db21bfb17fe85">pitches.h</a>
+</li>
+<li>NOTE_C2
+: <a class="el" href="pitches_8h.html#a83e1f6d716a3f6560aa1d43b8245855d">pitches.h</a>
+</li>
+<li>NOTE_C3
+: <a class="el" href="pitches_8h.html#aa0630dbc2c704089b77bda35dfea855b">pitches.h</a>
+</li>
+<li>NOTE_C4
+: <a class="el" href="pitches_8h.html#adbed706152a3d7114327fc5af3c7e07c">pitches.h</a>
+</li>
+<li>NOTE_C5
+: <a class="el" href="pitches_8h.html#a8afb484cf5507628f20dd2822a5b2e79">pitches.h</a>
+</li>
+<li>NOTE_C6
+: <a class="el" href="pitches_8h.html#a54087ffb7da518f038a39025b2a9ee7e">pitches.h</a>
+</li>
+<li>NOTE_C7
+: <a class="el" href="pitches_8h.html#a4a673e851d3b7e3b56a7cd83fba56cc3">pitches.h</a>
+</li>
+<li>NOTE_C8
+: <a class="el" href="pitches_8h.html#a86f99256baa62c00acf33ae49078a161">pitches.h</a>
+</li>
+<li>NOTE_CS1
+: <a class="el" href="pitches_8h.html#a860b429370d8c2d7a1c4dbd66b4bcfaa">pitches.h</a>
+</li>
+<li>NOTE_CS2
+: <a class="el" href="pitches_8h.html#a0e1ed6d231ab36b54a5a894e76836872">pitches.h</a>
+</li>
+<li>NOTE_CS3
+: <a class="el" href="pitches_8h.html#a8086c9cb19cdacd01d2f0ffde5885f8b">pitches.h</a>
+</li>
+<li>NOTE_CS4
+: <a class="el" href="pitches_8h.html#ae9a1fa0e819ea29161a72b6840dd0ffc">pitches.h</a>
+</li>
+<li>NOTE_CS5
+: <a class="el" href="pitches_8h.html#a8f01a2997f769170cc4f20287aca5339">pitches.h</a>
+</li>
+<li>NOTE_CS6
+: <a class="el" href="pitches_8h.html#a469d61024f06d70e36b5a201e02290dd">pitches.h</a>
+</li>
+<li>NOTE_CS7
+: <a class="el" href="pitches_8h.html#a9a1638b00a6bdc7d49ca174d866506d8">pitches.h</a>
+</li>
+<li>NOTE_CS8
+: <a class="el" href="pitches_8h.html#a3c916049f18564b32af9294a26a80c28">pitches.h</a>
+</li>
+<li>NOTE_D1
+: <a class="el" href="pitches_8h.html#a6fccac36e451f74157b234d64260b92e">pitches.h</a>
+</li>
+<li>NOTE_D2
+: <a class="el" href="pitches_8h.html#ad219c7bf8aee3d671c24c760d1eac336">pitches.h</a>
+</li>
+<li>NOTE_D3
+: <a class="el" href="pitches_8h.html#a9e892b1e2743a11f7a4ce61f1b15688f">pitches.h</a>
+</li>
+<li>NOTE_D4
+: <a class="el" href="pitches_8h.html#a6162f78ec6fc3457a077602a77e36992">pitches.h</a>
+</li>
+<li>NOTE_D5
+: <a class="el" href="pitches_8h.html#a37abdd5b16959e6265e7de75022f5dde">pitches.h</a>
+</li>
+<li>NOTE_D6
+: <a class="el" href="pitches_8h.html#a811db0f526f36b57a6798aaf31c8d70c">pitches.h</a>
+</li>
+<li>NOTE_D7
+: <a class="el" href="pitches_8h.html#aedb563ef21585da30f0b764af28c0756">pitches.h</a>
+</li>
+<li>NOTE_D8
+: <a class="el" href="pitches_8h.html#ac016caf952a32a4414a0ac8cffa4b194">pitches.h</a>
+</li>
+<li>NOTE_DS1
+: <a class="el" href="pitches_8h.html#ac9a118b2bfc4c7208afc2db45c80b5a0">pitches.h</a>
+</li>
+<li>NOTE_DS2
+: <a class="el" href="pitches_8h.html#a189cef9016942455b464b47faec10f7c">pitches.h</a>
+</li>
+<li>NOTE_DS3
+: <a class="el" href="pitches_8h.html#a233fdbde84ffdd12523bf1c0bef152eb">pitches.h</a>
+</li>
+<li>NOTE_DS4
+: <a class="el" href="pitches_8h.html#a638f884f0226cff11eff97ba96fbce88">pitches.h</a>
+</li>
+<li>NOTE_DS5
+: <a class="el" href="pitches_8h.html#a7943ad2d66e53367906e04e8af1c086a">pitches.h</a>
+</li>
+<li>NOTE_DS6
+: <a class="el" href="pitches_8h.html#a24a650a77ce62398dafbd1bcce98eb59">pitches.h</a>
+</li>
+<li>NOTE_DS7
+: <a class="el" href="pitches_8h.html#a45831ac60d64e86e43e199135ea76716">pitches.h</a>
+</li>
+<li>NOTE_DS8
+: <a class="el" href="pitches_8h.html#acff3ddde7bdccfa2dfd9f2dfc3671d26">pitches.h</a>
+</li>
+<li>NOTE_E1
+: <a class="el" href="pitches_8h.html#a0132d10523bb1a91b0aac0a47aee4dbe">pitches.h</a>
+</li>
+<li>NOTE_E2
+: <a class="el" href="pitches_8h.html#a9a021ea5eaee62fd52d4f67250712abb">pitches.h</a>
+</li>
+<li>NOTE_E3
+: <a class="el" href="pitches_8h.html#a31913cf742bcbe91a39a47e819ac289c">pitches.h</a>
+</li>
+<li>NOTE_E4
+: <a class="el" href="pitches_8h.html#a147e4663d8161df841c418859a70f66f">pitches.h</a>
+</li>
+<li>NOTE_E5
+: <a class="el" href="pitches_8h.html#a441475178599565b3dd4572cebbdf28c">pitches.h</a>
+</li>
+<li>NOTE_E6
+: <a class="el" href="pitches_8h.html#a857f52119eedaadce999e3918ae9959f">pitches.h</a>
+</li>
+<li>NOTE_E7
+: <a class="el" href="pitches_8h.html#a94435ecff4dd7454e8f12714c3bddd32">pitches.h</a>
+</li>
+<li>NOTE_F1
+: <a class="el" href="pitches_8h.html#a8b7abe19db306650a9c0e5e2c7fd98e2">pitches.h</a>
+</li>
+<li>NOTE_F2
+: <a class="el" href="pitches_8h.html#a55ebff842099b32c7e80f0870df9730e">pitches.h</a>
+</li>
+<li>NOTE_F3
+: <a class="el" href="pitches_8h.html#a2533a6044529da9ea46ea98e76ee50ad">pitches.h</a>
+</li>
+<li>NOTE_F4
+: <a class="el" href="pitches_8h.html#aff20d9abb2ef6f25afeb44245129eba6">pitches.h</a>
+</li>
+<li>NOTE_F5
+: <a class="el" href="pitches_8h.html#a88cbd6246f212e3bcbecbb032c8e2000">pitches.h</a>
+</li>
+<li>NOTE_F6
+: <a class="el" href="pitches_8h.html#adfe1a899865ae2952aa2d9ed5e790b79">pitches.h</a>
+</li>
+<li>NOTE_F7
+: <a class="el" href="pitches_8h.html#a9e4b9940ccfc472459ccc30f2b4292f8">pitches.h</a>
+</li>
+<li>NOTE_FS1
+: <a class="el" href="pitches_8h.html#a9ab5c314120ca69e5547b6848b5f2220">pitches.h</a>
+</li>
+<li>NOTE_FS2
+: <a class="el" href="pitches_8h.html#a3926c1af05e2876f1e9870566c09049e">pitches.h</a>
+</li>
+<li>NOTE_FS3
+: <a class="el" href="pitches_8h.html#a2c1622ffe3f5cd463de2964742571e02">pitches.h</a>
+</li>
+<li>NOTE_FS4
+: <a class="el" href="pitches_8h.html#a3ca197d6b74ace12c6cc9e53f47b7a6a">pitches.h</a>
+</li>
+<li>NOTE_FS5
+: <a class="el" href="pitches_8h.html#a84727bb42a42a0b6af92403750f91557">pitches.h</a>
+</li>
+<li>NOTE_FS6
+: <a class="el" href="pitches_8h.html#ab4ebb3f662ea22dd29c2887d1d217af6">pitches.h</a>
+</li>
+<li>NOTE_FS7
+: <a class="el" href="pitches_8h.html#a7de2a8e90d9295b995d63190ec927532">pitches.h</a>
+</li>
+<li>NOTE_G1
+: <a class="el" href="pitches_8h.html#a45789d849fd75408a30c5cfb35e164d9">pitches.h</a>
+</li>
+<li>NOTE_G2
+: <a class="el" href="pitches_8h.html#a0a94df54731934347951149740d9eac0">pitches.h</a>
+</li>
+<li>NOTE_G3
+: <a class="el" href="pitches_8h.html#a60b70b4fe537257e776eafd46d25e49b">pitches.h</a>
+</li>
+<li>NOTE_G4
+: <a class="el" href="pitches_8h.html#a588324691d836c7cdf1dd8cc071eeecc">pitches.h</a>
+</li>
+<li>NOTE_G5
+: <a class="el" href="pitches_8h.html#af71ac5d772736db7a12fd9f9521dd475">pitches.h</a>
+</li>
+<li>NOTE_G6
+: <a class="el" href="pitches_8h.html#abc6a20319564cb37b2de2d3ef3b90c56">pitches.h</a>
+</li>
+<li>NOTE_G7
+: <a class="el" href="pitches_8h.html#afabef1046812185e7c9b348c4ed42ff0">pitches.h</a>
+</li>
+<li>NOTE_GS1
+: <a class="el" href="pitches_8h.html#a6cb0879026575ff13753e45023f98c54">pitches.h</a>
+</li>
+<li>NOTE_GS2
+: <a class="el" href="pitches_8h.html#a70347f8b8ad83fde025d45d0692286f6">pitches.h</a>
+</li>
+<li>NOTE_GS3
+: <a class="el" href="pitches_8h.html#ae2b3de8c17ba8ae7e2e758c6b15576ca">pitches.h</a>
+</li>
+<li>NOTE_GS4
+: <a class="el" href="pitches_8h.html#ac446a7c56b75b56451b6712833bfd31f">pitches.h</a>
+</li>
+<li>NOTE_GS5
+: <a class="el" href="pitches_8h.html#a1d0d4526c7554185499a7207359bda67">pitches.h</a>
+</li>
+<li>NOTE_GS6
+: <a class="el" href="pitches_8h.html#a97b306e8336c0e303e366ad2cdacbee0">pitches.h</a>
+</li>
+<li>NOTE_GS7
+: <a class="el" href="pitches_8h.html#a2103012b7aab268027be083fb9527aef">pitches.h</a>
+</li>
+<li>Nuke_1
+: <a class="el" href="ricardo__pins_8h.html#a885a0ddbb54931b1501ed5c478393474">ricardo_pins.h</a>
+</li>
+<li>Nuke_2
+: <a class="el" href="ricardo__pins_8h.html#acb97f4e79b00c0a8b131e4b22caafce2">ricardo_pins.h</a>
 </li>
 </ul>
 
 
 <h3><a id="index_p"></a>- p -</h3><ul>
-<li>part
-: <a class="el" href="_fat_structs_8h.html#aa65f87792f271fc6cfa70980af6ac3dd">FatStructs.h</a>
+<li>packet
+: <a class="el" href="packets_8h.html#a6e7ce8216c5aef0179ed98af26b7d557">packets.h</a>
 </li>
-<li>part_t
-: <a class="el" href="_fat_structs_8h.html#a37251e7d5c69a159be727a3fc8c9d0e6">FatStructs.h</a>
+<li>PITCHES_H
+: <a class="el" href="pitches_8h.html#ad5bd2700a44ad69f5e9a7f6a045121fc">pitches.h</a>
 </li>
-<li>pgm_read_byte
-: <a class="el" href="_fat_file_8h.html#a48c60b057902adf805797f183286728d">FatFile.h</a>
-</li>
-<li>pgm_read_word
-: <a class="el" href="_fat_file_8h.html#a910fb5f01313d339d3b835d45e1e5ad0">FatFile.h</a>
-</li>
-<li>PROGMEM
-: <a class="el" href="_fat_file_8h.html#a75acaba9e781937468d0911423bc0c35">FatFile.h</a>
-</li>
-<li>PSTR
-: <a class="el" href="_fat_file_8h.html#a9c00057fd19e916cc1aa0a5949336beb">FatFile.h</a>
+<li>PYRO_TYPE
+: <a class="el" href="pyro_8h.html#a45e0753574b76ce184eb9caa73f63f8a">pyro.h</a>
 </li>
 </ul>
 
 
 <h3><a id="index_r"></a>- r -</h3><ul>
-<li>reserved1
-: <a class="el" href="_fat_structs_8h.html#affe215a7220b2d52fb9dacf3b35e56dc">FatStructs.h</a>
+<li>RUAIRIDH_TEST_BOARD
+: <a class="el" href="imu_8h.html#ad6f279c653b424b736eb264f5b249e7d">imu.h</a>
 </li>
-<li>reserved2
-: <a class="el" href="_fat_structs_8h.html#a2d2f4821102b812b81b15f5e713dd8e8">FatStructs.h</a>
+<li>RxCan
+: <a class="el" href="ricardo__pins_8h.html#ae5509ca46c75cd1e9aa02b99a17732fb">ricardo_pins.h</a>
 </li>
-<li>reservedNT
-: <a class="el" href="_fat_structs_8h.html#a937b2d2e4b78ddf9e42b19c754e4f31a">FatStructs.h</a>
-</li>
-<li>reservedSectorCount
-: <a class="el" href="_fat_structs_8h.html#a16c854faf567331bbbfb383e6c8df6f5">FatStructs.h</a>
-</li>
-<li>right()
-: <a class="el" href="ios_8h.html#aee80fd600c5c58a2bebbd48afdcf8280">ios.h</a>
-</li>
-<li>rootDirEntryCount
-: <a class="el" href="_fat_structs_8h.html#aabe25e54b9c06a9a7393fc6c475d9fa1">FatStructs.h</a>
+<li>RxRadio
+: <a class="el" href="ricardo__pins_8h.html#aa301da2fb564486da83f87301ff0ecba">ricardo_pins.h</a>
 </li>
 </ul>
 
 
 <h3><a id="index_s"></a>- s -</h3><ul>
-<li>SCK_MODE
-: <a class="el" href="group__soft_s_p_i.html#gac9d2cd28bbc5b023abb24fc1ab56d34e">SoftSPI.h</a>
+<li>SdCs
+: <a class="el" href="ricardo__pins_8h.html#a2ab0614fc448439a66970a873d7640b3">ricardo_pins.h</a>
 </li>
-<li>SD_FAT_VERSION
-: <a class="el" href="_sd_fat_8h.html#aca25ecce379f446043bdee2c55304210">SdFat.h</a>
+<li>SENSOR
+: <a class="el" href="sensors_8h.html#a4841defb3c5d614dc03fc588f4c03fe1">sensors.h</a>
 </li>
-<li>SD_HAS_CUSTOM_SPI
-: <a class="el" href="_sd_fat_config_8h.html#a838861a01379e94361148d22e62b1977">SdFatConfig.h</a>
+<li>Serial_baud
+: <a class="el" href="config_8h.html#ae91a94a71a3b0fdc477925ca022b5c52">config.h</a>
 </li>
-<li>SDCARD_SPI
-: <a class="el" href="_sd_spi_driver_8h.html#a41630a112b576cb232294bff4e8790c9">SdSpiDriver.h</a>
+<li>SERIAL_SIZE_RX
+: <a class="el" href="config_8h.html#add44a099dbdadf2a30122080d18aa8a2">config.h</a>
 </li>
-<li>SdFatSpiDriver
-: <a class="el" href="_sd_spi_driver_8h.html#af7a2666e5d6cab16c0a99adf5115f38d">SdSpiDriver.h</a>
+<li>setup()
+: <a class="el" href="main_8cpp.html#a4fc01d736fe50cf5b977f755b675f11d">main.cpp</a>
 </li>
-<li>SdSpiDriver
-: <a class="el" href="_sd_spi_driver_8h.html#abf391604c1ecfed19cdcb6c8bd626972">SdSpiDriver.h</a>
+<li>SPI_CLOCK_DIV8
+: <a class="el" href="config_8h.html#a1c17812f1dcf847c8c5f97ea58659663">config.h</a>
 </li>
-<li>sectorsPerCluster
-: <a class="el" href="_fat_structs_8h.html#a3ce07376c286acd8393a18a32d7ca4c0">FatStructs.h</a>
+<li>statemachine
+: <a class="el" href="main_8cpp.html#af458a1d9874524343f6f8f759a07150d">main.cpp</a>
 </li>
-<li>sectorsPerFat16
-: <a class="el" href="_fat_structs_8h.html#abf85d1c57b01c8901a0cdcd0ac1babc2">FatStructs.h</a>
+<li>STORAGE_DEVICE
+: <a class="el" href="storage_controller_8h.html#a9539e551e6a3b5229703f97c65f94bae">storageController.h</a>
 </li>
-<li>sectorsPerFat32
-: <a class="el" href="_fat_structs_8h.html#a687653b3b71ab0de1f27f8ab8f331a1c">FatStructs.h</a>
-</li>
-<li>sectorsPerTrack
-: <a class="el" href="_fat_structs_8h.html#a42886f9109ee1759d5972e871f0689a8">FatStructs.h</a>
-</li>
-<li>sectorsPerTrtack
-: <a class="el" href="_fat_structs_8h.html#ae1928fd953f5d0f198826c93c320f2b2">FatStructs.h</a>
-</li>
-<li>SEEK_CUR
-: <a class="el" href="_stdio_stream_8h.html#a4c8d0b76b470ba65a43ca46a88320f39">StdioStream.h</a>
-</li>
-<li>SEEK_END
-: <a class="el" href="_stdio_stream_8h.html#ad2a2e6c114780c3071efd24f16c7f7d8">StdioStream.h</a>
-</li>
-<li>SEEK_SET
-: <a class="el" href="_stdio_stream_8h.html#a0d112bae8fd35be772185b6ec6bcbe64">StdioStream.h</a>
-</li>
-<li>showbase()
-: <a class="el" href="ios_8h.html#a73159e1398939807aeae6015dd86f2f4">ios.h</a>
-</li>
-<li>showpoint()
-: <a class="el" href="ios_8h.html#a322f5897ace09768cd782f0c8f222770">ios.h</a>
-</li>
-<li>showpos()
-: <a class="el" href="ios_8h.html#a80798554dbfece679adb0e05eb855943">ios.h</a>
-</li>
-<li>skipws()
-: <a class="el" href="ios_8h.html#a972282e5d9d894f61c8a54423858c0a4">ios.h</a>
-</li>
-<li>STREAM_BUF_SIZE
-: <a class="el" href="_stdio_stream_8h.html#ad9a6150ef11e2616c1a99bc777df17d3">StdioStream.h</a>
-</li>
-<li>structSignature
-: <a class="el" href="_fat_structs_8h.html#a31ea8ae6a8d32f61dd576d0d4921f015">FatStructs.h</a>
+<li>system_flag
+: <a class="el" href="flags_8h.html#a1cb315cc6ae6368d46a819d952b416ad">flags.h</a>
 </li>
 </ul>
 
 
 <h3><a id="index_t"></a>- t -</h3><ul>
-<li>tailSignature
-: <a class="el" href="_fat_structs_8h.html#a89944902cc4effcd8568575786c3a084">FatStructs.h</a>
+<li>TxCan
+: <a class="el" href="ricardo__pins_8h.html#aefb57fd8aac3205471b968d58c334268">ricardo_pins.h</a>
 </li>
-<li>totalSectors
-: <a class="el" href="_fat_structs_8h.html#ab3559f69d4a46a945bd4c037070585f2">FatStructs.h</a>
-</li>
-<li>totalSectors16
-: <a class="el" href="_fat_structs_8h.html#ad717f5b9af13f8ec9d0d6d1337174dfa">FatStructs.h</a>
-</li>
-<li>totalSectors32
-: <a class="el" href="_fat_structs_8h.html#a64d5902f9e900ecc745b1c0b325d875f">FatStructs.h</a>
-</li>
-<li>type
-: <a class="el" href="_fat_structs_8h.html#a1d127017fb298b889f4ba24752d08b8e">FatStructs.h</a>
-</li>
-</ul>
-
-
-<h3><a id="index_u"></a>- u -</h3><ul>
-<li>UNGETC_BUF_SIZE
-: <a class="el" href="_stdio_stream_8h.html#a785dd413c0d7b05f95df82d3453ecacd">StdioStream.h</a>
-</li>
-<li>uppercase()
-: <a class="el" href="ios_8h.html#af5d5e1a0effa1b500bb882feed5a2061">ios.h</a>
-</li>
-<li>USE_FCNTL_H
-: <a class="el" href="_sd_fat_config_8h.html#ab4b7255422e65730612f1f6af1a26752">SdFatConfig.h</a>
-</li>
-<li>USE_LONG_FILE_NAMES
-: <a class="el" href="_fat_lib_config_8h.html#a2536b194b3b007604a39e8526e108b52">FatLibConfig.h</a>
-, <a class="el" href="_sd_fat_config_8h.html#a2536b194b3b007604a39e8526e108b52">SdFatConfig.h</a>
-</li>
-<li>USE_MULTI_BLOCK_IO
-: <a class="el" href="_fat_lib_config_8h.html#afc3ef382d3ab8d7e6f8fc134ef21d487">FatLibConfig.h</a>
-, <a class="el" href="_sd_fat_config_8h.html#afc3ef382d3ab8d7e6f8fc134ef21d487">SdFatConfig.h</a>
-</li>
-<li>USE_SD_CRC
-: <a class="el" href="_sd_fat_config_8h.html#af2e76ffb2fdb830175abf513dd640fdd">SdFatConfig.h</a>
-</li>
-<li>USE_SEPARATE_FAT_CACHE
-: <a class="el" href="_fat_lib_config_8h.html#a23f662882413dcb017ebd8107473b8c3">FatLibConfig.h</a>
-, <a class="el" href="_sd_fat_config_8h.html#a23f662882413dcb017ebd8107473b8c3">SdFatConfig.h</a>
-</li>
-<li>USE_STANDARD_SPI_LIBRARY
-: <a class="el" href="_sd_fat_config_8h.html#a3dc42547ca4567cb789bec55759afeb2">SdFatConfig.h</a>
-</li>
-<li>usuallyZero
-: <a class="el" href="_fat_structs_8h.html#aefe56bef1bc942c24bc7eefc4a7aefcc">FatStructs.h</a>
+<li>TxRadio
+: <a class="el" href="ricardo__pins_8h.html#a919b596b9b45d5deb815b5a30c19f21b">ricardo_pins.h</a>
 </li>
 </ul>
 
 
 <h3><a id="index_v"></a>- v -</h3><ul>
-<li>volumeLabel
-: <a class="el" href="_fat_structs_8h.html#a4c67f30c214795e34070d3402de94f41">FatStructs.h</a>
-</li>
-<li>volumeSerialNumber
-: <a class="el" href="_fat_structs_8h.html#a7c9ffcee12051cefe1724e8024af25f8">FatStructs.h</a>
+<li>VERBOSE
+: <a class="el" href="config_8h.html#a42f8c497a1968074f38bf5055c650dca">config.h</a>
 </li>
 </ul>
 
 
 <h3><a id="index_w"></a>- w -</h3><ul>
-<li>WDT_YIELD_TIME_MICROS
-: <a class="el" href="_sd_fat_config_8h.html#a4e8a928d86c50c91c0bfc9a442373e14">SdFatConfig.h</a>
+<li>W25Q128JV_SM
+: <a class="el" href="spi_flash_config_8h.html#a3016430f64f617ff7b328876812491f9">spiFlashConfig.h</a>
 </li>
-<li>ws()
-: <a class="el" href="iostream_8h.html#a8adf4c714b8c8f201dedc83ee04556b1">iostream.h</a>
+<li>warn_battery_voltage
+: <a class="el" href="config_8h.html#a95854a38c19a88e82357e45030770964">config.h</a>
 </li>
 </ul>
 </div><!-- contents -->
+</div><!-- doc-content -->
 <!-- start footer part -->
-<hr class="footer"/><address class="footer"><small>
-Generated by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1
-</small></address>
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
+  </ul>
+</div>
 </body>
 </html>

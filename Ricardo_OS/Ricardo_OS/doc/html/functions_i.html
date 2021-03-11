@@ -9,9 +9,18 @@
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+  $(document).ready(function() { init_search(); });
+/* @license-end */
+</script>
 <link href="doxygen.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
@@ -25,6 +34,21 @@
    &#160;<span id="projectnumber">1</span>
    </div>
   </td>
+   <td>        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <img id="MSearchSelect" src="search/mag_sel.svg"
+               onmouseover="return searchBox.OnSearchSelectShow()"
+               onmouseout="return searchBox.OnSearchSelectHide()"
+               alt=""/>
+          <input type="text" id="MSearchField" value="Search" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.svg" alt=""/></a>
+          </span>
+        </div>
+</td>
  </tr>
  </tbody>
 </table>
@@ -36,17 +60,23 @@
 var searchBox = new SearchBox("searchBox", "search",false,'Search','.html');
 /* @license-end */
 </script>
-<script type="text/javascript" src="menudata.js"></script>
-<script type="text/javascript" src="menu.js"></script>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
 <script type="text/javascript">
 /* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
-$(function() {
-  initMenu('',true,false,'search.php','Search');
-  $(document).ready(function() { init_search(); });
-});
-/* @license-end */</script>
-<div id="main-nav"></div>
-</div><!-- top -->
+$(document).ready(function(){initNavTree('functions_i.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
      onmouseover="return searchBox.OnSearchSelectShow()"
@@ -62,125 +92,46 @@ $(function() {
 </div>
 
 <div class="contents">
-<div class="textblock">Here is a list of all documented class members with links to the class documentation for each member:</div>
+<div class="textblock">Here is a list of all class members with links to the classes they belong to:</div>
 
 <h3><a id="index_i"></a>- i -</h3><ul>
-<li>ibufstream()
-: <a class="el" href="classibufstream.html#afe28f27d24a62a21428b60fe8834dd05">ibufstream</a>
+<li>I2C
+: <a class="el" href="classstate_machine.html#aa85b424f16cdc441a63eed018658736d">stateMachine</a>
 </li>
-<li>ifstream()
-: <a class="el" href="classifstream.html#a11f4bfaa5c37cfcf8878c367fd861a88">ifstream</a>
+<li>iginition()
+: <a class="el" href="class_engine.html#a59b8bed1cf924774b871c6f2029de46d">Engine</a>
 </li>
-<li>ignore()
-: <a class="el" href="classistream.html#a12597b03d86b66047a5581bbd26eb032">istream</a>
+<li>imu
+: <a class="el" href="class_imu.html#ab9c174aca19b97517abf02607f6d667d">Imu</a>
 </li>
-<li>in
-: <a class="el" href="classios__base.html#ae5432e3c269064480652c4602f5f74ad">ios_base</a>
+<li>Imu()
+: <a class="el" href="class_imu.html#a1aabcb869851b5cee17cbdd5d9e5512f">Imu</a>
 </li>
-<li>InAsmBlock()
-: <a class="el" href="classcpplint_1_1_nesting_state.html#aa35a529052e4863a477eae649ce778d2">cpplint.NestingState</a>
+<li>imu
+: <a class="el" href="class_sensors.html#a92a68db24df154bd09eca4fd0ece6b3f">Sensors</a>
 </li>
-<li>InClassDeclaration()
-: <a class="el" href="classcpplint_1_1_nesting_state.html#a8e111c25149c41bd8927606244965b3c">cpplint.NestingState</a>
+<li>imu_temp
+: <a class="el" href="structraw__measurements__t.html#a0329e1410bffcda37f9186ef5423d73f">raw_measurements_t</a>
 </li>
-<li>IncrementErrorCount()
-: <a class="el" href="classcpplint_1_1___cpp_lint_state.html#a27a33a5049850d52cc8aef3478ca445a">cpplint._CppLintState</a>
-</li>
-<li>InExternC()
-: <a class="el" href="classcpplint_1_1_nesting_state.html#a67aa1907d42b8408c227ff18537071c7">cpplint.NestingState</a>
-</li>
-<li>init()
-: <a class="el" href="class_fat_cache.html#ae1d8a2da1493b5ffca0520184daaddf1">FatCache</a>
-, <a class="el" href="class_fat_volume.html#acab819fa25a91dad1cc698a7e1e0eb32">FatVolume</a>
-, <a class="el" href="classibufstream.html#a1d7bae17d9d2c79218085251946f322a">ibufstream</a>
-, <a class="el" href="classobufstream.html#a8f75dbadab2fed7770d01a2cc2628258">obufstream</a>
-</li>
-<li>initErrorHalt()
-: <a class="el" href="class_sd_file_system.html#a8e1f26486bb878a24fa9868e59dbbbc2">SdFileSystem&lt; SdDriverClass &gt;</a>
-</li>
-<li>initErrorPrint()
-: <a class="el" href="class_sd_file_system.html#ae31c9cbd7e1c03129d6c99b25f73cd50">SdFileSystem&lt; SdDriverClass &gt;</a>
-</li>
-<li>InNamespaceBody()
-: <a class="el" href="classcpplint_1_1_nesting_state.html#a1a06f50d53cfe11b1f78d45b531e0c32">cpplint.NestingState</a>
-</li>
-<li>InnermostClass()
-: <a class="el" href="classcpplint_1_1_nesting_state.html#a4141768e75b16698463670caaa587120">cpplint.NestingState</a>
-</li>
-<li>InTemplateArgumentList()
-: <a class="el" href="classcpplint_1_1_nesting_state.html#a8f4e9ba1aaa0459de2bedd966e7a2b54">cpplint.NestingState</a>
-</li>
-<li>internal
-: <a class="el" href="classios__base.html#afc720b7f6f461ec8e9cf5505059e5d7c">ios_base</a>
-</li>
-<li>invalidate()
-: <a class="el" href="class_fat_cache.html#a70071a128d647b49b523dbb2f5f944a5">FatCache</a>
-</li>
-<li>ios()
-: <a class="el" href="classios.html#adc5dbd7b69da79493ebc84aa1e681aaa">ios</a>
-</li>
-<li>iostate
-: <a class="el" href="classios__base.html#aef19291eeae0f072ac42c6ba1fe3033c">ios_base</a>
-</li>
-<li>is_open()
-: <a class="el" href="classfstream.html#ae4a71c6f3da2f168ec222739d796fc8b">fstream</a>
-, <a class="el" href="classifstream.html#aaa16c6422ea371995d02159f2e6707b2">ifstream</a>
-, <a class="el" href="classofstream.html#a9c97eb2eb6e35ae87cf7f7453a67e70a">ofstream</a>
-</li>
-<li>IsBlockInfo()
-: <a class="el" href="classcpplint_1_1___block_info.html#ab3e06a94a38d7397ce6a4faa094010d4">cpplint._BlockInfo</a>
-</li>
-<li>isBusy()
-: <a class="el" href="class_sdio_card.html#a560bdfc96932d073c2b0610600560f78">SdioCard</a>
-, <a class="el" href="class_sd_spi_card.html#aa3cb9139dbc1e6596c6717da2b486328">SdSpiCard</a>
-</li>
-<li>isDir()
-: <a class="el" href="class_fat_file.html#a933360b20b496421b2bd9ee7a95563a6">FatFile</a>
-</li>
-<li>isDirty()
-: <a class="el" href="class_fat_cache.html#ae50287d95bd78558db1e4aa97d7b2c06">FatCache</a>
-</li>
-<li>isFile()
-: <a class="el" href="class_fat_file.html#acc5a87da1a5c8cb9758bfeaa7ae47b57">FatFile</a>
-</li>
-<li>isHidden()
-: <a class="el" href="class_fat_file.html#ae216b4a2bc44a9cfb88478fa051a1fd8">FatFile</a>
-</li>
-<li>IsInAlphabeticalOrder()
-: <a class="el" href="classcpplint_1_1___include_state.html#abfda27324121ab0bf9d29866d975274b">cpplint._IncludeState</a>
-</li>
-<li>isLFN()
-: <a class="el" href="class_fat_file.html#af8f456ab790e818bfdd225cf6ffd40f3">FatFile</a>
-</li>
-<li>isOpen()
-: <a class="el" href="class_fat_file.html#a8b8a2850c086d3ce79bee64a23fbf7a6">FatFile</a>
-</li>
-<li>isReadOnly()
-: <a class="el" href="class_fat_file.html#abaf639ec8f86f34aeb7e6b3615526f0b">FatFile</a>
-</li>
-<li>isRoot()
-: <a class="el" href="class_fat_file.html#a03421a0c28649332f55e6ca06d3aeedb">FatFile</a>
-</li>
-<li>isRoot32()
-: <a class="el" href="class_fat_file.html#a8fda8004720ec4cc55710869dbb52e35">FatFile</a>
-</li>
-<li>isRootFixed()
-: <a class="el" href="class_fat_file.html#a0cc65089f7ce6c1ff92edbf0bff59dee">FatFile</a>
-</li>
-<li>IsSource()
-: <a class="el" href="classcpplint_1_1_file_info.html#a157f8d3266d7291321db88cdad3b2879">cpplint.FileInfo</a>
-</li>
-<li>isSubDir()
-: <a class="el" href="class_fat_file.html#abfd02c5d26f7d4f8739a8610116a6660">FatFile</a>
-</li>
-<li>isSystem()
-: <a class="el" href="class_fat_file.html#a48087bdeb6b94fc27e0f74c3d90af5a9">FatFile</a>
+<li>initialise()
+: <a class="el" href="class_flight.html#ac084f4f6b3b28031b4dd9448eb89ee55">Flight</a>
+, <a class="el" href="class_groundstation.html#a530ac31955e79f2e35380788d4efa0ec">Groundstation</a>
+, <a class="el" href="class_launch.html#ae682b58b792296f05dc9bd84b1d5e2dd">Launch</a>
+, <a class="el" href="class_preflight.html#aaabf52a2dd5f36765fd3ebe5a685242d">Preflight</a>
+, <a class="el" href="class_recovery.html#a7e419b95fa6e7274d1bc40cb1257625c">Recovery</a>
+, <a class="el" href="class_setup.html#a315e788a23a012d5993613c627f15302">Setup</a>
+, <a class="el" href="class_state.html#a14770d571ff70a1e5c8572eade7843cf">State</a>
+, <a class="el" href="classstate_machine.html#ab9275b38265e4166367b4f3d2aa0e474">stateMachine</a>
+, <a class="el" href="class_u_s_bmode.html#a7501182d7e44699e7fdd795da026b770">USBmode</a>
 </li>
 </ul>
 </div><!-- contents -->
+</div><!-- doc-content -->
 <!-- start footer part -->
-<hr class="footer"/><address class="footer"><small>
-Generated by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1
-</small></address>
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
+  </ul>
+</div>
 </body>
 </html>

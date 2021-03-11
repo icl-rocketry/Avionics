@@ -9,9 +9,18 @@
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+  $(document).ready(function() { init_search(); });
+/* @license-end */
+</script>
 <link href="doxygen.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
@@ -25,6 +34,21 @@
    &#160;<span id="projectnumber">1</span>
    </div>
   </td>
+   <td>        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <img id="MSearchSelect" src="search/mag_sel.svg"
+               onmouseover="return searchBox.OnSearchSelectShow()"
+               onmouseout="return searchBox.OnSearchSelectHide()"
+               alt=""/>
+          <input type="text" id="MSearchField" value="Search" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.svg" alt=""/></a>
+          </span>
+        </div>
+</td>
  </tr>
  </tbody>
 </table>
@@ -36,16 +60,23 @@
 var searchBox = new SearchBox("searchBox", "search",false,'Search','.html');
 /* @license-end */
 </script>
-<script type="text/javascript" src="menudata.js"></script>
-<script type="text/javascript" src="menu.js"></script>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
 <script type="text/javascript">
 /* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
-$(function() {
-  initMenu('',true,false,'search.php','Search');
-  $(document).ready(function() { init_search(); });
-});
-/* @license-end */</script>
-<div id="main-nav"></div>
+$(document).ready(function(){initNavTree('class_storage_controller.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
      onmouseover="return searchBox.OnSearchSelectShow()"
@@ -60,57 +91,671 @@ $(function() {
 </iframe>
 </div>
 
-</div><!-- top -->
 <div class="header">
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="#pri-methods">Private Member Functions</a> &#124;
+<a href="#pri-attribs">Private Attributes</a> &#124;
 <a href="class_storage_controller-members.html">List of all members</a>  </div>
   <div class="headertitle">
 <div class="title">StorageController Class Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p><code>#include &lt;<a class="el" href="storage_controller_8h_source.html">storageController.h</a>&gt;</code></p>
+<div class="dynheader">
+Collaboration diagram for StorageController:</div>
+<div class="dyncontent">
+<div class="center"><img src="class_storage_controller__coll__graph.png" border="0" usemap="#a_storage_controller_coll__map" alt="Collaboration graph"/></div>
+<map name="a_storage_controller_coll__map" id="a_storage_controller_coll__map">
+<area shape="rect" title=" " alt="" coords="132,676,255,703"/>
+<area shape="rect" href="classstate_machine.html" title=" " alt="" coords="673,676,773,703"/>
+<area shape="rect" href="class_log_controller.html" title=" " alt="" coords="425,780,523,807"/>
+<area shape="rect" href="class_config_controller.html" title=" " alt="" coords="416,648,532,675"/>
+<area shape="rect" href="class_system_status.html" title=" " alt="" coords="926,379,1031,405"/>
+<area shape="rect" href="class_sensors.html" title=" " alt="" coords="1476,167,1547,193"/>
+<area shape="rect" href="class_network_manager.html" title=" " alt="" coords="1451,645,1572,672"/>
+<area shape="rect" href="class_command_handler.html" title=" " alt="" coords="1076,625,1203,652"/>
+<area shape="rect" href="class_state.html" title=" " alt="" coords="952,787,1005,813"/>
+<area shape="rect" href="class_estimator.html" title=" " alt="" coords="939,880,1018,907"/>
+<area shape="rect" href="class_g_p_s.html" title=" " alt="" coords="1253,217,1304,244"/>
+<area shape="rect" href="class_battery.html" title=" " alt="" coords="1247,167,1311,193"/>
+<area shape="rect" href="class_baro.html" title=" " alt="" coords="1254,116,1303,143"/>
+<area shape="rect" href="class_imu.html" title=" " alt="" coords="1257,288,1301,315"/>
+<area shape="rect" href="class_u_s_b.html" title=" " alt="" coords="1253,512,1304,539"/>
+<area shape="rect" href="class_radio.html" title=" " alt="" coords="1251,563,1307,589"/>
+<area shape="rect" href="structraw__measurements__t.html" title=" " alt="" coords="905,107,1052,133"/>
+<area shape="rect" href="classtelemetry__logframe.html" title=" " alt="" coords="127,775,260,801"/>
+<area shape="rect" href="classlogframe.html" title=" " alt="" coords="5,825,77,852"/>
+<area shape="rect" href="classsystem__logframe.html" title=" " alt="" coords="132,825,255,852"/>
+<area shape="rect" href="classnetwork__logframe.html" title=" " alt="" coords="131,876,256,903"/>
+<area shape="rect" href="class_iface.html" title=" " alt="" coords="953,567,1004,593"/>
+<area shape="rect" href="class_routing_table.html" title=" " alt="" coords="1229,727,1328,753"/>
+<area shape="rect" href="structstate__t.html" title=" " alt="" coords="692,925,755,952"/>
+</map>
+<center><span class="legend">[<a target="top" href="graph_legend.html">legend</a>]</span></center></div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a68285e89bb715975a36e6b6b891ae9dc"><td class="memItemLeft" align="right" valign="top"><a id="a68285e89bb715975a36e6b6b891ae9dc"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>StorageController</b> (<a class="el" href="classstate_machine.html">stateMachine</a> *sm)</td></tr>
+<tr class="memitem:a68285e89bb715975a36e6b6b891ae9dc"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_storage_controller.html#a68285e89bb715975a36e6b6b891ae9dc">StorageController</a> (<a class="el" href="classstate_machine.html">stateMachine</a> *sm)</td></tr>
 <tr class="separator:a68285e89bb715975a36e6b6b891ae9dc"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0b346fe54c8f2253697f86926fa5eb90"><td class="memItemLeft" align="right" valign="top"><a id="a0b346fe54c8f2253697f86926fa5eb90"></a>
-bool&#160;</td><td class="memItemRight" valign="bottom"><b>setup</b> ()</td></tr>
+<tr class="memitem:a0b346fe54c8f2253697f86926fa5eb90"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_storage_controller.html#a0b346fe54c8f2253697f86926fa5eb90">setup</a> ()</td></tr>
 <tr class="separator:a0b346fe54c8f2253697f86926fa5eb90"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a570540f0344421a0af1087f473329286"><td class="memItemLeft" align="right" valign="top"><a id="a570540f0344421a0af1087f473329286"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>write</b> (std::string &amp;path, std::string &amp;data, STORAGE_DEVICE device)</td></tr>
+<tr class="memitem:a570540f0344421a0af1087f473329286"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_storage_controller.html#a570540f0344421a0af1087f473329286">write</a> (std::string &amp;path, std::string &amp;data, <a class="el" href="storage_controller_8h.html#a9539e551e6a3b5229703f97c65f94bae">STORAGE_DEVICE</a> device)</td></tr>
 <tr class="separator:a570540f0344421a0af1087f473329286"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac275c89a86d43a29114d5bd04c7158c1"><td class="memItemLeft" align="right" valign="top"><a id="ac275c89a86d43a29114d5bd04c7158c1"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>read</b> (std::string path, STORAGE_DEVICE device)</td></tr>
+<tr class="memitem:ac275c89a86d43a29114d5bd04c7158c1"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_storage_controller.html#ac275c89a86d43a29114d5bd04c7158c1">read</a> (std::string path, <a class="el" href="storage_controller_8h.html#a9539e551e6a3b5229703f97c65f94bae">STORAGE_DEVICE</a> device)</td></tr>
 <tr class="separator:ac275c89a86d43a29114d5bd04c7158c1"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a87d4665b5ef9041aea21649463c895d0"><td class="memItemLeft" align="right" valign="top"><a id="a87d4665b5ef9041aea21649463c895d0"></a>
-std::string&#160;</td><td class="memItemRight" valign="bottom"><b>updateDirectoryName</b> (std::string input_directory, STORAGE_DEVICE device)</td></tr>
+<tr class="memitem:a87d4665b5ef9041aea21649463c895d0"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_storage_controller.html#a87d4665b5ef9041aea21649463c895d0">updateDirectoryName</a> (std::string input_directory, <a class="el" href="storage_controller_8h.html#a9539e551e6a3b5229703f97c65f94bae">STORAGE_DEVICE</a> device)</td></tr>
 <tr class="separator:a87d4665b5ef9041aea21649463c895d0"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1c88bf9602ab25ddceac9503d880a9f9"><td class="memItemLeft" align="right" valign="top"><a id="a1c88bf9602ab25ddceac9503d880a9f9"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>mkdir</b> (std::string path, STORAGE_DEVICE device)</td></tr>
+<tr class="memitem:a1c88bf9602ab25ddceac9503d880a9f9"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_storage_controller.html#a1c88bf9602ab25ddceac9503d880a9f9">mkdir</a> (std::string path, <a class="el" href="storage_controller_8h.html#a9539e551e6a3b5229703f97c65f94bae">STORAGE_DEVICE</a> device)</td></tr>
 <tr class="separator:a1c88bf9602ab25ddceac9503d880a9f9"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aeff6ec755ddf2df758b273691a1b662f"><td class="memItemLeft" align="right" valign="top"><a id="aeff6ec755ddf2df758b273691a1b662f"></a>
-bool&#160;</td><td class="memItemRight" valign="bottom"><b>ls</b> (std::string path, std::vector&lt; <a class="el" href="structdirectory__element__t.html">directory_element_t</a> &gt; &amp;directory_structure, STORAGE_DEVICE device)</td></tr>
+<tr class="memitem:aeff6ec755ddf2df758b273691a1b662f"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_storage_controller.html#aeff6ec755ddf2df758b273691a1b662f">ls</a> (std::string path, std::vector&lt; <a class="el" href="structdirectory__element__t.html">directory_element_t</a> &gt; &amp;directory_structure, <a class="el" href="storage_controller_8h.html#a9539e551e6a3b5229703f97c65f94bae">STORAGE_DEVICE</a> device)</td></tr>
 <tr class="separator:aeff6ec755ddf2df758b273691a1b662f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a27d3d4b24ca02ef0edc6c53868612832"><td class="memItemLeft" align="right" valign="top"><a id="a27d3d4b24ca02ef0edc6c53868612832"></a>
-bool&#160;</td><td class="memItemRight" valign="bottom"><b>ls</b> (std::vector&lt; <a class="el" href="structdirectory__element__t.html">directory_element_t</a> &gt; &amp;directory_structure, STORAGE_DEVICE device)</td></tr>
+<tr class="memitem:a27d3d4b24ca02ef0edc6c53868612832"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_storage_controller.html#a27d3d4b24ca02ef0edc6c53868612832">ls</a> (std::vector&lt; <a class="el" href="structdirectory__element__t.html">directory_element_t</a> &gt; &amp;directory_structure, <a class="el" href="storage_controller_8h.html#a9539e551e6a3b5229703f97c65f94bae">STORAGE_DEVICE</a> device)</td></tr>
 <tr class="separator:a27d3d4b24ca02ef0edc6c53868612832"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a118abfa6ab0520474ccc47c78827f843"><td class="memItemLeft" align="right" valign="top"><a id="a118abfa6ab0520474ccc47c78827f843"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>printDirectory</b> (std::string path, STORAGE_DEVICE device)</td></tr>
+<tr class="memitem:a118abfa6ab0520474ccc47c78827f843"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_storage_controller.html#a118abfa6ab0520474ccc47c78827f843">printDirectory</a> (std::string path, <a class="el" href="storage_controller_8h.html#a9539e551e6a3b5229703f97c65f94bae">STORAGE_DEVICE</a> device)</td></tr>
 <tr class="separator:a118abfa6ab0520474ccc47c78827f843"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8d50450acbe1b423a367b13d17f4d375"><td class="memItemLeft" align="right" valign="top"><a id="a8d50450acbe1b423a367b13d17f4d375"></a>
-bool&#160;</td><td class="memItemRight" valign="bottom"><b>erase</b> (STORAGE_DEVICE device)</td></tr>
+<tr class="memitem:a8d50450acbe1b423a367b13d17f4d375"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_storage_controller.html#a8d50450acbe1b423a367b13d17f4d375">erase</a> (<a class="el" href="storage_controller_8h.html#a9539e551e6a3b5229703f97c65f94bae">STORAGE_DEVICE</a> device)</td></tr>
 <tr class="separator:a8d50450acbe1b423a367b13d17f4d375"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-methods"></a>
+Private Member Functions</h2></td></tr>
+<tr class="memitem:adae9673eb8ed76ad4711b4d6bb7a02f7"><td class="memItemLeft" align="right" valign="top">const int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_storage_controller.html#adae9673eb8ed76ad4711b4d6bb7a02f7">getFileNameIndex</a> (const std::string fileName)</td></tr>
+<tr class="separator:adae9673eb8ed76ad4711b4d6bb7a02f7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-attribs"></a>
+Private Attributes</h2></td></tr>
+<tr class="memitem:a193c5de038c90eaca0cae0418f39e661"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classstate_machine.html">stateMachine</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_storage_controller.html#a193c5de038c90eaca0cae0418f39e661">_sm</a></td></tr>
+<tr class="separator:a193c5de038c90eaca0cae0418f39e661"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0a6342fa9f3905d56ece169cc1cc316a"><td class="memItemLeft" align="right" valign="top">SdFat&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_storage_controller.html#a0a6342fa9f3905d56ece169cc1cc316a">microsd</a></td></tr>
+<tr class="separator:a0a6342fa9f3905d56ece169cc1cc316a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a315c9595def59e88d2ccdb5fa94df6c8"><td class="memItemLeft" align="right" valign="top">Adafruit_FlashTransport_SPI&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_storage_controller.html#a315c9595def59e88d2ccdb5fa94df6c8">flashTransport</a></td></tr>
+<tr class="separator:a315c9595def59e88d2ccdb5fa94df6c8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad302278a1f554b2bdcced6149c0f6ad3"><td class="memItemLeft" align="right" valign="top">Adafruit_SPIFlash&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_storage_controller.html#ad302278a1f554b2bdcced6149c0f6ad3">flash</a></td></tr>
+<tr class="separator:ad302278a1f554b2bdcced6149c0f6ad3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abee9c9104024d8820a22c63673b9673c"><td class="memItemLeft" align="right" valign="top">FatFileSystem&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_storage_controller.html#abee9c9104024d8820a22c63673b9673c">flash_fatfs</a></td></tr>
+<tr class="separator:abee9c9104024d8820a22c63673b9673c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
+<h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a id="a68285e89bb715975a36e6b6b891ae9dc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a68285e89bb715975a36e6b6b891ae9dc">&#9670;&nbsp;</a></span>StorageController()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">StorageController::StorageController </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classstate_machine.html">stateMachine</a> *&#160;</td>
+          <td class="paramname"><em>sm</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<h2 class="groupheader">Member Function Documentation</h2>
+<a id="a8d50450acbe1b423a367b13d17f4d375"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8d50450acbe1b423a367b13d17f4d375">&#9670;&nbsp;</a></span>erase()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool StorageController::erase </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="storage_controller_8h.html#a9539e551e6a3b5229703f97c65f94bae">STORAGE_DEVICE</a>&#160;</td>
+          <td class="paramname"><em>device</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="class_storage_controller_a8d50450acbe1b423a367b13d17f4d375_cgraph.png" border="0" usemap="#aclass_storage_controller_a8d50450acbe1b423a367b13d17f4d375_cgraph" alt=""/></div>
+<map name="aclass_storage_controller_a8d50450acbe1b423a367b13d17f4d375_cgraph" id="aclass_storage_controller_a8d50450acbe1b423a367b13d17f4d375_cgraph">
+<area shape="rect" title=" " alt="" coords="5,5,136,47"/>
+<area shape="rect" href="class_log_controller.html#a355de792d40fbdffb4dd694482a0bd2f" title=" " alt="" coords="429,13,553,39"/>
+<area shape="rect" href="class_system_status.html#a872912293f3c93e87eb69c9a70f7743a" title=" " alt="" coords="184,38,381,65"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="adae9673eb8ed76ad4711b4d6bb7a02f7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#adae9673eb8ed76ad4711b4d6bb7a02f7">&#9670;&nbsp;</a></span>getFileNameIndex()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const int StorageController::getFileNameIndex </td>
+          <td>(</td>
+          <td class="paramtype">const std::string&#160;</td>
+          <td class="paramname"><em>fileName</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="class_storage_controller_adae9673eb8ed76ad4711b4d6bb7a02f7_cgraph.png" border="0" usemap="#aclass_storage_controller_adae9673eb8ed76ad4711b4d6bb7a02f7_cgraph" alt=""/></div>
+<map name="aclass_storage_controller_adae9673eb8ed76ad4711b4d6bb7a02f7_cgraph" id="aclass_storage_controller_adae9673eb8ed76ad4711b4d6bb7a02f7_cgraph">
+<area shape="rect" title=" " alt="" coords="5,5,136,47"/>
+<area shape="rect" href="namespaceutils.html#a5c6e8f8bd74a1e526654d925c0ae2249" title=" " alt="" coords="184,13,267,39"/>
+</map>
+</div>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="class_storage_controller_adae9673eb8ed76ad4711b4d6bb7a02f7_icgraph.png" border="0" usemap="#aclass_storage_controller_adae9673eb8ed76ad4711b4d6bb7a02f7_icgraph" alt=""/></div>
+<map name="aclass_storage_controller_adae9673eb8ed76ad4711b4d6bb7a02f7_icgraph" id="aclass_storage_controller_adae9673eb8ed76ad4711b4d6bb7a02f7_icgraph">
+<area shape="rect" title=" " alt="" coords="1831,23,1961,65"/>
+<area shape="rect" href="class_storage_controller.html#a87d4665b5ef9041aea21649463c895d0" title=" " alt="" coords="1633,23,1783,65"/>
+<area shape="rect" href="class_log_controller.html#a691c1ff90609fcbd1c95a791fbec30bb" title=" " alt="" coords="1447,31,1585,57"/>
+<area shape="rect" href="classstate_machine.html#ab9275b38265e4166367b4f3d2aa0e474" title=" " alt="" coords="1244,31,1399,57"/>
+<area shape="rect" href="classstate_machine.html#a5d7b94f00a94721921b3b100fa234fb4" title=" " alt="" coords="1015,31,1196,57"/>
+<area shape="rect" href="main_8cpp.html#a4fc01d736fe50cf5b977f755b675f11d" title=" " alt="" coords="1078,81,1133,108"/>
+<area shape="rect" href="class_command_handler.html#a54c1b7e2f1a6d0365ef36a0c738d7e02" title=" " alt="" coords="733,5,967,32"/>
+<area shape="rect" href="classstate_machine.html#a5f4f54735cb0a13393227e3af6863cdd" title=" " alt="" coords="100,31,247,57"/>
+<area shape="rect" href="class_command_handler.html#a6c61c87a0ad0045aa6133dd69112a72b" title=" " alt="" coords="511,5,685,32"/>
+<area shape="rect" href="class_network_manager.html#a0d4ea7d4f0b395249151d0a28af79cd5" title=" " alt="" coords="295,5,463,32"/>
+<area shape="rect" href="main_8cpp.html#afe461d27b9c48d5921c00d521181f12f" title=" " alt="" coords="5,31,52,57"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="aeff6ec755ddf2df758b273691a1b662f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aeff6ec755ddf2df758b273691a1b662f">&#9670;&nbsp;</a></span>ls() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool StorageController::ls </td>
+          <td>(</td>
+          <td class="paramtype">std::string&#160;</td>
+          <td class="paramname"><em>path</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::vector&lt; <a class="el" href="structdirectory__element__t.html">directory_element_t</a> &gt; &amp;&#160;</td>
+          <td class="paramname"><em>directory_structure</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="storage_controller_8h.html#a9539e551e6a3b5229703f97c65f94bae">STORAGE_DEVICE</a>&#160;</td>
+          <td class="paramname"><em>device</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="class_storage_controller_aeff6ec755ddf2df758b273691a1b662f_icgraph.png" border="0" usemap="#aclass_storage_controller_aeff6ec755ddf2df758b273691a1b662f_icgraph" alt=""/></div>
+<map name="aclass_storage_controller_aeff6ec755ddf2df758b273691a1b662f_icgraph" id="aclass_storage_controller_aeff6ec755ddf2df758b273691a1b662f_icgraph">
+<area shape="rect" title=" " alt="" coords="1831,64,1972,91"/>
+<area shape="rect" href="class_storage_controller.html#a27d3d4b24ca02ef0edc6c53868612832" title=" " alt="" coords="1637,5,1779,32"/>
+<area shape="rect" href="class_storage_controller.html#a118abfa6ab0520474ccc47c78827f843" title=" " alt="" coords="1643,57,1773,98"/>
+<area shape="rect" href="class_storage_controller.html#a87d4665b5ef9041aea21649463c895d0" title=" " alt="" coords="1633,122,1783,163"/>
+<area shape="rect" href="class_log_controller.html#a691c1ff90609fcbd1c95a791fbec30bb" title=" " alt="" coords="1447,129,1585,156"/>
+<area shape="rect" href="classstate_machine.html#ab9275b38265e4166367b4f3d2aa0e474" title=" " alt="" coords="1244,129,1399,156"/>
+<area shape="rect" href="classstate_machine.html#a5d7b94f00a94721921b3b100fa234fb4" title=" " alt="" coords="1015,129,1196,156"/>
+<area shape="rect" href="main_8cpp.html#a4fc01d736fe50cf5b977f755b675f11d" title=" " alt="" coords="1078,180,1133,207"/>
+<area shape="rect" href="class_command_handler.html#a54c1b7e2f1a6d0365ef36a0c738d7e02" title=" " alt="" coords="733,104,967,131"/>
+<area shape="rect" href="classstate_machine.html#a5f4f54735cb0a13393227e3af6863cdd" title=" " alt="" coords="100,129,247,156"/>
+<area shape="rect" href="class_command_handler.html#a6c61c87a0ad0045aa6133dd69112a72b" title=" " alt="" coords="511,104,685,131"/>
+<area shape="rect" href="class_network_manager.html#a0d4ea7d4f0b395249151d0a28af79cd5" title=" " alt="" coords="295,104,463,131"/>
+<area shape="rect" href="main_8cpp.html#afe461d27b9c48d5921c00d521181f12f" title=" " alt="" coords="5,129,52,156"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a27d3d4b24ca02ef0edc6c53868612832"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a27d3d4b24ca02ef0edc6c53868612832">&#9670;&nbsp;</a></span>ls() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool StorageController::ls </td>
+          <td>(</td>
+          <td class="paramtype">std::vector&lt; <a class="el" href="structdirectory__element__t.html">directory_element_t</a> &gt; &amp;&#160;</td>
+          <td class="paramname"><em>directory_structure</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="storage_controller_8h.html#a9539e551e6a3b5229703f97c65f94bae">STORAGE_DEVICE</a>&#160;</td>
+          <td class="paramname"><em>device</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="class_storage_controller_a27d3d4b24ca02ef0edc6c53868612832_cgraph.png" border="0" usemap="#aclass_storage_controller_a27d3d4b24ca02ef0edc6c53868612832_cgraph" alt=""/></div>
+<map name="aclass_storage_controller_a27d3d4b24ca02ef0edc6c53868612832_cgraph" id="aclass_storage_controller_a27d3d4b24ca02ef0edc6c53868612832_cgraph">
+<area shape="rect" title=" " alt="" coords="5,5,147,32"/>
+<area shape="rect" href="class_storage_controller.html#aeff6ec755ddf2df758b273691a1b662f" title=" " alt="" coords="195,5,336,32"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a1c88bf9602ab25ddceac9503d880a9f9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1c88bf9602ab25ddceac9503d880a9f9">&#9670;&nbsp;</a></span>mkdir()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void StorageController::mkdir </td>
+          <td>(</td>
+          <td class="paramtype">std::string&#160;</td>
+          <td class="paramname"><em>path</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="storage_controller_8h.html#a9539e551e6a3b5229703f97c65f94bae">STORAGE_DEVICE</a>&#160;</td>
+          <td class="paramname"><em>device</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="class_storage_controller_a1c88bf9602ab25ddceac9503d880a9f9_cgraph.png" border="0" usemap="#aclass_storage_controller_a1c88bf9602ab25ddceac9503d880a9f9_cgraph" alt=""/></div>
+<map name="aclass_storage_controller_a1c88bf9602ab25ddceac9503d880a9f9_cgraph" id="aclass_storage_controller_a1c88bf9602ab25ddceac9503d880a9f9_cgraph">
+<area shape="rect" title=" " alt="" coords="5,5,136,47"/>
+<area shape="rect" href="class_log_controller.html#a355de792d40fbdffb4dd694482a0bd2f" title=" " alt="" coords="184,13,308,39"/>
+</map>
+</div>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="class_storage_controller_a1c88bf9602ab25ddceac9503d880a9f9_icgraph.png" border="0" usemap="#aclass_storage_controller_a1c88bf9602ab25ddceac9503d880a9f9_icgraph" alt=""/></div>
+<map name="aclass_storage_controller_a1c88bf9602ab25ddceac9503d880a9f9_icgraph" id="aclass_storage_controller_a1c88bf9602ab25ddceac9503d880a9f9_icgraph">
+<area shape="rect" title=" " alt="" coords="1633,23,1764,65"/>
+<area shape="rect" href="class_log_controller.html#a691c1ff90609fcbd1c95a791fbec30bb" title=" " alt="" coords="1447,31,1585,57"/>
+<area shape="rect" href="classstate_machine.html#ab9275b38265e4166367b4f3d2aa0e474" title=" " alt="" coords="1244,31,1399,57"/>
+<area shape="rect" href="classstate_machine.html#a5d7b94f00a94721921b3b100fa234fb4" title=" " alt="" coords="1015,31,1196,57"/>
+<area shape="rect" href="main_8cpp.html#a4fc01d736fe50cf5b977f755b675f11d" title=" " alt="" coords="1078,81,1133,108"/>
+<area shape="rect" href="class_command_handler.html#a54c1b7e2f1a6d0365ef36a0c738d7e02" title=" " alt="" coords="733,5,967,32"/>
+<area shape="rect" href="classstate_machine.html#a5f4f54735cb0a13393227e3af6863cdd" title=" " alt="" coords="100,31,247,57"/>
+<area shape="rect" href="class_command_handler.html#a6c61c87a0ad0045aa6133dd69112a72b" title=" " alt="" coords="511,5,685,32"/>
+<area shape="rect" href="class_network_manager.html#a0d4ea7d4f0b395249151d0a28af79cd5" title=" " alt="" coords="295,5,463,32"/>
+<area shape="rect" href="main_8cpp.html#afe461d27b9c48d5921c00d521181f12f" title=" " alt="" coords="5,31,52,57"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a118abfa6ab0520474ccc47c78827f843"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a118abfa6ab0520474ccc47c78827f843">&#9670;&nbsp;</a></span>printDirectory()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void StorageController::printDirectory </td>
+          <td>(</td>
+          <td class="paramtype">std::string&#160;</td>
+          <td class="paramname"><em>path</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="storage_controller_8h.html#a9539e551e6a3b5229703f97c65f94bae">STORAGE_DEVICE</a>&#160;</td>
+          <td class="paramname"><em>device</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="class_storage_controller_a118abfa6ab0520474ccc47c78827f843_cgraph.png" border="0" usemap="#aclass_storage_controller_a118abfa6ab0520474ccc47c78827f843_cgraph" alt=""/></div>
+<map name="aclass_storage_controller_a118abfa6ab0520474ccc47c78827f843_cgraph" id="aclass_storage_controller_a118abfa6ab0520474ccc47c78827f843_cgraph">
+<area shape="rect" title=" " alt="" coords="5,5,136,47"/>
+<area shape="rect" href="class_storage_controller.html#aeff6ec755ddf2df758b273691a1b662f" title=" " alt="" coords="184,13,325,39"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="ac275c89a86d43a29114d5bd04c7158c1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac275c89a86d43a29114d5bd04c7158c1">&#9670;&nbsp;</a></span>read()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void StorageController::read </td>
+          <td>(</td>
+          <td class="paramtype">std::string&#160;</td>
+          <td class="paramname"><em>path</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="storage_controller_8h.html#a9539e551e6a3b5229703f97c65f94bae">STORAGE_DEVICE</a>&#160;</td>
+          <td class="paramname"><em>device</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a0b346fe54c8f2253697f86926fa5eb90"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0b346fe54c8f2253697f86926fa5eb90">&#9670;&nbsp;</a></span>setup()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool StorageController::setup </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="class_storage_controller_a0b346fe54c8f2253697f86926fa5eb90_cgraph.png" border="0" usemap="#aclass_storage_controller_a0b346fe54c8f2253697f86926fa5eb90_cgraph" alt=""/></div>
+<map name="aclass_storage_controller_a0b346fe54c8f2253697f86926fa5eb90_cgraph" id="aclass_storage_controller_a0b346fe54c8f2253697f86926fa5eb90_cgraph">
+<area shape="rect" title=" " alt="" coords="5,5,136,47"/>
+<area shape="rect" href="class_log_controller.html#a355de792d40fbdffb4dd694482a0bd2f" title=" " alt="" coords="429,13,553,39"/>
+<area shape="rect" href="class_system_status.html#a872912293f3c93e87eb69c9a70f7743a" title=" " alt="" coords="184,38,381,65"/>
+</map>
+</div>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="class_storage_controller_a0b346fe54c8f2253697f86926fa5eb90_icgraph.png" border="0" usemap="#aclass_storage_controller_a0b346fe54c8f2253697f86926fa5eb90_icgraph" alt=""/></div>
+<map name="aclass_storage_controller_a0b346fe54c8f2253697f86926fa5eb90_icgraph" id="aclass_storage_controller_a0b346fe54c8f2253697f86926fa5eb90_icgraph">
+<area shape="rect" title=" " alt="" coords="1447,23,1577,65"/>
+<area shape="rect" href="classstate_machine.html#ab9275b38265e4166367b4f3d2aa0e474" title=" " alt="" coords="1244,31,1399,57"/>
+<area shape="rect" href="classstate_machine.html#a5d7b94f00a94721921b3b100fa234fb4" title=" " alt="" coords="1015,31,1196,57"/>
+<area shape="rect" href="main_8cpp.html#a4fc01d736fe50cf5b977f755b675f11d" title=" " alt="" coords="1078,81,1133,108"/>
+<area shape="rect" href="class_command_handler.html#a54c1b7e2f1a6d0365ef36a0c738d7e02" title=" " alt="" coords="733,5,967,32"/>
+<area shape="rect" href="classstate_machine.html#a5f4f54735cb0a13393227e3af6863cdd" title=" " alt="" coords="100,31,247,57"/>
+<area shape="rect" href="class_command_handler.html#a6c61c87a0ad0045aa6133dd69112a72b" title=" " alt="" coords="511,5,685,32"/>
+<area shape="rect" href="class_network_manager.html#a0d4ea7d4f0b395249151d0a28af79cd5" title=" " alt="" coords="295,5,463,32"/>
+<area shape="rect" href="main_8cpp.html#afe461d27b9c48d5921c00d521181f12f" title=" " alt="" coords="5,31,52,57"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a87d4665b5ef9041aea21649463c895d0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a87d4665b5ef9041aea21649463c895d0">&#9670;&nbsp;</a></span>updateDirectoryName()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::string StorageController::updateDirectoryName </td>
+          <td>(</td>
+          <td class="paramtype">std::string&#160;</td>
+          <td class="paramname"><em>input_directory</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="storage_controller_8h.html#a9539e551e6a3b5229703f97c65f94bae">STORAGE_DEVICE</a>&#160;</td>
+          <td class="paramname"><em>device</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="class_storage_controller_a87d4665b5ef9041aea21649463c895d0_cgraph.png" border="0" usemap="#aclass_storage_controller_a87d4665b5ef9041aea21649463c895d0_cgraph" alt=""/></div>
+<map name="aclass_storage_controller_a87d4665b5ef9041aea21649463c895d0_cgraph" id="aclass_storage_controller_a87d4665b5ef9041aea21649463c895d0_cgraph">
+<area shape="rect" title=" " alt="" coords="5,64,155,105"/>
+<area shape="rect" href="class_storage_controller.html#adae9673eb8ed76ad4711b4d6bb7a02f7" title=" " alt="" coords="208,5,339,47"/>
+<area shape="rect" href="class_storage_controller.html#aeff6ec755ddf2df758b273691a1b662f" title=" " alt="" coords="203,71,344,98"/>
+<area shape="rect" href="namespaceutils.html#a80b01b2df5fab1766ccdbfa4fb2ce79d" title=" " alt="" coords="225,122,322,149"/>
+<area shape="rect" href="namespaceutils.html#a5c6e8f8bd74a1e526654d925c0ae2249" title=" " alt="" coords="392,13,475,39"/>
+</map>
+</div>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="class_storage_controller_a87d4665b5ef9041aea21649463c895d0_icgraph.png" border="0" usemap="#aclass_storage_controller_a87d4665b5ef9041aea21649463c895d0_icgraph" alt=""/></div>
+<map name="aclass_storage_controller_a87d4665b5ef9041aea21649463c895d0_icgraph" id="aclass_storage_controller_a87d4665b5ef9041aea21649463c895d0_icgraph">
+<area shape="rect" title=" " alt="" coords="1633,23,1783,65"/>
+<area shape="rect" href="class_log_controller.html#a691c1ff90609fcbd1c95a791fbec30bb" title=" " alt="" coords="1447,31,1585,57"/>
+<area shape="rect" href="classstate_machine.html#ab9275b38265e4166367b4f3d2aa0e474" title=" " alt="" coords="1244,31,1399,57"/>
+<area shape="rect" href="classstate_machine.html#a5d7b94f00a94721921b3b100fa234fb4" title=" " alt="" coords="1015,31,1196,57"/>
+<area shape="rect" href="main_8cpp.html#a4fc01d736fe50cf5b977f755b675f11d" title=" " alt="" coords="1078,81,1133,108"/>
+<area shape="rect" href="class_command_handler.html#a54c1b7e2f1a6d0365ef36a0c738d7e02" title=" " alt="" coords="733,5,967,32"/>
+<area shape="rect" href="classstate_machine.html#a5f4f54735cb0a13393227e3af6863cdd" title=" " alt="" coords="100,31,247,57"/>
+<area shape="rect" href="class_command_handler.html#a6c61c87a0ad0045aa6133dd69112a72b" title=" " alt="" coords="511,5,685,32"/>
+<area shape="rect" href="class_network_manager.html#a0d4ea7d4f0b395249151d0a28af79cd5" title=" " alt="" coords="295,5,463,32"/>
+<area shape="rect" href="main_8cpp.html#afe461d27b9c48d5921c00d521181f12f" title=" " alt="" coords="5,31,52,57"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a570540f0344421a0af1087f473329286"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a570540f0344421a0af1087f473329286">&#9670;&nbsp;</a></span>write()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void StorageController::write </td>
+          <td>(</td>
+          <td class="paramtype">std::string &amp;&#160;</td>
+          <td class="paramname"><em>path</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::string &amp;&#160;</td>
+          <td class="paramname"><em>data</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="storage_controller_8h.html#a9539e551e6a3b5229703f97c65f94bae">STORAGE_DEVICE</a>&#160;</td>
+          <td class="paramname"><em>device</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="class_storage_controller_a570540f0344421a0af1087f473329286_icgraph.png" border="0" usemap="#aclass_storage_controller_a570540f0344421a0af1087f473329286_icgraph" alt=""/></div>
+<map name="aclass_storage_controller_a570540f0344421a0af1087f473329286_icgraph" id="aclass_storage_controller_a570540f0344421a0af1087f473329286_icgraph">
+<area shape="rect" title=" " alt="" coords="672,5,803,47"/>
+<area shape="rect" href="class_log_controller.html#ab69cfb73204e8713eedfd7e79d73c5c9" title=" " alt="" coords="489,5,624,47"/>
+<area shape="rect" href="class_log_controller.html#a190ac7f27b24dcba384c1c18a94c3ef8" title=" " alt="" coords="295,13,441,39"/>
+<area shape="rect" href="classstate_machine.html#a5f4f54735cb0a13393227e3af6863cdd" title=" " alt="" coords="100,13,247,39"/>
+<area shape="rect" href="main_8cpp.html#afe461d27b9c48d5921c00d521181f12f" title=" " alt="" coords="5,13,52,39"/>
+</map>
+</div>
+
+</div>
+</div>
+<h2 class="groupheader">Member Data Documentation</h2>
+<a id="a193c5de038c90eaca0cae0418f39e661"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a193c5de038c90eaca0cae0418f39e661">&#9670;&nbsp;</a></span>_sm</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classstate_machine.html">stateMachine</a>* StorageController::_sm</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ad302278a1f554b2bdcced6149c0f6ad3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad302278a1f554b2bdcced6149c0f6ad3">&#9670;&nbsp;</a></span>flash</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">Adafruit_SPIFlash StorageController::flash</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="abee9c9104024d8820a22c63673b9673c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abee9c9104024d8820a22c63673b9673c">&#9670;&nbsp;</a></span>flash_fatfs</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">FatFileSystem StorageController::flash_fatfs</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a315c9595def59e88d2ccdb5fa94df6c8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a315c9595def59e88d2ccdb5fa94df6c8">&#9670;&nbsp;</a></span>flashTransport</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">Adafruit_FlashTransport_SPI StorageController::flashTransport</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a0a6342fa9f3905d56ece169cc1cc316a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0a6342fa9f3905d56ece169cc1cc316a">&#9670;&nbsp;</a></span>microsd</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">SdFat StorageController::microsd</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <hr/>The documentation for this class was generated from the following files:<ul>
 <li>/Users/kiran/Documents/Projects/ICLR/Avionics/Ricardo_OS/Ricardo_OS/src/Logging/<a class="el" href="storage_controller_8h_source.html">storageController.h</a></li>
-<li>/Users/kiran/Documents/Projects/ICLR/Avionics/Ricardo_OS/Ricardo_OS/src/Logging/storageController.cpp</li>
+<li>/Users/kiran/Documents/Projects/ICLR/Avionics/Ricardo_OS/Ricardo_OS/src/Logging/<a class="el" href="storage_controller_8cpp.html">storageController.cpp</a></li>
 </ul>
 </div><!-- contents -->
+</div><!-- doc-content -->
 <!-- start footer part -->
-<hr class="footer"/><address class="footer"><small>
-Generated by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1
-</small></address>
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="class_storage_controller.html">StorageController</a></li>
+    <li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
+  </ul>
+</div>
 </body>
 </html>

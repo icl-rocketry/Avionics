@@ -9,9 +9,18 @@
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+  $(document).ready(function() { init_search(); });
+/* @license-end */
+</script>
 <link href="doxygen.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
@@ -25,6 +34,21 @@
    &#160;<span id="projectnumber">1</span>
    </div>
   </td>
+   <td>        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <img id="MSearchSelect" src="search/mag_sel.svg"
+               onmouseover="return searchBox.OnSearchSelectShow()"
+               onmouseout="return searchBox.OnSearchSelectHide()"
+               alt=""/>
+          <input type="text" id="MSearchField" value="Search" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.svg" alt=""/></a>
+          </span>
+        </div>
+</td>
  </tr>
  </tbody>
 </table>
@@ -36,16 +60,23 @@
 var searchBox = new SearchBox("searchBox", "search",false,'Search','.html');
 /* @license-end */
 </script>
-<script type="text/javascript" src="menudata.js"></script>
-<script type="text/javascript" src="menu.js"></script>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
 <script type="text/javascript">
 /* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
-$(function() {
-  initMenu('',true,false,'search.php','Search');
-  $(document).ready(function() { init_search(); });
-});
-/* @license-end */</script>
-<div id="main-nav"></div>
+$(document).ready(function(){initNavTree('log_controller_8h_source.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
      onmouseover="return searchBox.OnSearchSelectShow()"
@@ -60,87 +91,82 @@ $(function() {
 </iframe>
 </div>
 
-<div id="nav-path" class="navpath">
-  <ul>
-<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_ac55354187c8c6c264902bc62bdefbb0.html">Logging</a></li>  </ul>
-</div>
-</div><!-- top -->
 <div class="header">
   <div class="headertitle">
 <div class="title">logController.h</div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#ifndef LOG_CONTROLLER_H</span></div>
+<a href="log_controller_8h.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#ifndef LOG_CONTROLLER_H</span></div>
 <div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor">#define LOG_CONTROLLER_H</span></div>
 <div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor">#include &lt;Arduino.h&gt;</span></div>
-<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &quot;Sensors/sensorStructs.h&quot;</span></div>
-<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor">#include &quot;logframe.h&quot;</span></div>
-<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="preprocessor">#include &quot;Comms/packets.h&quot;</span></div>
-<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="preprocessor">#include &quot;storageController.h&quot;</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="sensor_structs_8h.html">Sensors/sensorStructs.h</a>&quot;</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="logframe_8h.html">logframe.h</a>&quot;</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="packets_8h.html">Comms/packets.h</a>&quot;</span></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="storage_controller_8h.html">storageController.h</a>&quot;</span></div>
 <div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="preprocessor">#include &lt;vector&gt;</span></div>
 <div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="preprocessor">#include &lt;string&gt;</span></div>
-<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="preprocessor">#include &quot;flags.h&quot;</span></div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="flags_8h.html">flags.h</a>&quot;</span></div>
 <div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160; </div>
 <div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160; </div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="keyword">enum class</span> LOG_TYPE:uint8_t{</div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;    TELEMETRY = 0,</div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;    SYSTEM = 1,</div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;    NETWORK = 2</div>
+<div class="line"><a name="l00013"></a><span class="lineno"><a class="line" href="log_controller_8h.html#a3fe34aa18aae383b0dedd08b476f3844">   13</a></span>&#160;<span class="keyword">enum class</span> <a class="code" href="log_controller_8h.html#a3fe34aa18aae383b0dedd08b476f3844">LOG_TYPE</a>:uint8_t{</div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;    <a class="code" href="packets_8h.html#a6e7ce8216c5aef0179ed98af26b7d557abb3d2d909c73fe49800949a344775f8b">TELEMETRY</a> = 0,</div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;    <a class="code" href="log_controller_8h.html#a3fe34aa18aae383b0dedd08b476f3844afa177138f94a7ea01f549b1aa7893d03">SYSTEM</a> = 1,</div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;    <a class="code" href="log_controller_8h.html#a3fe34aa18aae383b0dedd08b476f3844a25835188a2355e9530d3a10fcbe4c65b">NETWORK</a> = 2</div>
 <div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;};</div>
 <div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160; </div>
 <div class="line"><a name="l00019"></a><span class="lineno"><a class="line" href="class_log_controller.html">   19</a></span>&#160;<span class="keyword">class </span><a class="code" href="class_log_controller.html">LogController</a>{</div>
 <div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;    <span class="keyword">public</span>:</div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;        <a class="code" href="class_log_controller.html">LogController</a>(<a class="code" href="class_storage_controller.html">StorageController</a>* storagecontroller);</div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;        <span class="keywordtype">void</span> setup();</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;        <a class="code" href="class_log_controller.html#ab3d307e6813b41a1288bc076b4f388a1">LogController</a>(<a class="code" href="class_storage_controller.html">StorageController</a>* storagecontroller);</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;        <span class="keywordtype">void</span> <a class="code" href="class_log_controller.html#a691c1ff90609fcbd1c95a791fbec30bb">setup</a>();</div>
 <div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;        <span class="comment">//telemtry logging</span></div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;        <span class="keywordtype">void</span> log(<a class="code" href="structstate__t.html">state_t</a> &amp;estimator_state);</div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;        <span class="keywordtype">void</span> log(<a class="code" href="structraw__measurements__t.html">raw_measurements_t</a> &amp;raw_sensors);</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;        <span class="keywordtype">void</span> <a class="code" href="class_log_controller.html#a355de792d40fbdffb4dd694482a0bd2f">log</a>(<a class="code" href="structstate__t.html">state_t</a> &amp;estimator_state);</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;        <span class="keywordtype">void</span> <a class="code" href="class_log_controller.html#a355de792d40fbdffb4dd694482a0bd2f">log</a>(<a class="code" href="structraw__measurements__t.html">raw_measurements_t</a> &amp;raw_sensors);</div>
 <div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;        <span class="comment">//network logging</span></div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;        <span class="keywordtype">void</span> log(<a class="code" href="class_packet_header.html">PacketHeader</a> &amp;header);</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;        <span class="keywordtype">void</span> <a class="code" href="class_log_controller.html#a355de792d40fbdffb4dd694482a0bd2f">log</a>(<a class="code" href="class_packet_header.html">PacketHeader</a> &amp;header);</div>
 <div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;        <span class="comment">//system logging</span></div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;        <span class="keywordtype">void</span> log(std::string message);</div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;        <span class="keywordtype">void</span> log(uint32_t status,uint32_t flag,std::string message);</div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;        <span class="keywordtype">void</span> log(uint32_t status,uint32_t flag);</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;        <span class="keywordtype">void</span> <a class="code" href="class_log_controller.html#a355de792d40fbdffb4dd694482a0bd2f">log</a>(std::string message);</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;        <span class="keywordtype">void</span> <a class="code" href="class_log_controller.html#a355de792d40fbdffb4dd694482a0bd2f">log</a>(uint32_t status,uint32_t flag,std::string message);</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;        <span class="keywordtype">void</span> <a class="code" href="class_log_controller.html#a355de792d40fbdffb4dd694482a0bd2f">log</a>(uint32_t status,uint32_t flag);</div>
 <div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160; </div>
 <div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;        <span class="comment">//update the buffers</span></div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;        <span class="keywordtype">void</span> update();</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;        <span class="keywordtype">void</span> <a class="code" href="class_log_controller.html#a190ac7f27b24dcba384c1c18a94c3ef8">update</a>();</div>
 <div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160; </div>
 <div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;        </div>
 <div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160; </div>
 <div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160; </div>
 <div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;    <span class="keyword">private</span>:</div>
 <div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160; </div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;        <a class="code" href="class_storage_controller.html">StorageController</a>* _storagecontroller; <span class="comment">//pointer to storage controller</span></div>
+<div class="line"><a name="l00041"></a><span class="lineno"><a class="line" href="class_log_controller.html#a15debc42bbac0000e42fc77fd0b1fdf2">   41</a></span>&#160;        <a class="code" href="class_storage_controller.html">StorageController</a>* <a class="code" href="class_log_controller.html#a15debc42bbac0000e42fc77fd0b1fdf2">_storagecontroller</a>; <span class="comment">//pointer to storage controller</span></div>
 <div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160; </div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;        <a class="code" href="classtelemetry__logframe.html">telemetry_logframe</a> telemetry_frame; <span class="comment">//current telemetry log frame object</span></div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;        <a class="code" href="classsystem__logframe.html">system_logframe</a> system_frame;   <span class="comment">//currentsystem log frame object</span></div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;        <a class="code" href="classnetwork__logframe.html">network_logframe</a> network_frame; <span class="comment">//current network log frame object</span></div>
+<div class="line"><a name="l00043"></a><span class="lineno"><a class="line" href="class_log_controller.html#a170b297ce50bc666733c18b3cfd41dad">   43</a></span>&#160;        <a class="code" href="classtelemetry__logframe.html">telemetry_logframe</a> <a class="code" href="class_log_controller.html#a170b297ce50bc666733c18b3cfd41dad">telemetry_frame</a>; <span class="comment">//current telemetry log frame object</span></div>
+<div class="line"><a name="l00044"></a><span class="lineno"><a class="line" href="class_log_controller.html#aaa86f9eb61d7f0b5f7c962626fc1d03c">   44</a></span>&#160;        <a class="code" href="classsystem__logframe.html">system_logframe</a> <a class="code" href="class_log_controller.html#aaa86f9eb61d7f0b5f7c962626fc1d03c">system_frame</a>;   <span class="comment">//currentsystem log frame object</span></div>
+<div class="line"><a name="l00045"></a><span class="lineno"><a class="line" href="class_log_controller.html#a7e90156517ab8b010c8ad57e396873be">   45</a></span>&#160;        <a class="code" href="classnetwork__logframe.html">network_logframe</a> <a class="code" href="class_log_controller.html#a7e90156517ab8b010c8ad57e396873be">network_frame</a>; <span class="comment">//current network log frame object</span></div>
 <div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;        <span class="comment">//log frame buffers to temporarily store log frames before writing to storage devices</span></div>
 <div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160; </div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;        std::vector&lt;telemetry_logframe&gt; telemetry_log_buffer;</div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;        std::vector&lt;system_logframe&gt; system_log_buffer;</div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;        std::vector&lt;network_logframe&gt; network_log_buffer;</div>
+<div class="line"><a name="l00048"></a><span class="lineno"><a class="line" href="class_log_controller.html#a7847076efad4a673569ad19c27056589">   48</a></span>&#160;        std::vector&lt;telemetry_logframe&gt; <a class="code" href="class_log_controller.html#a7847076efad4a673569ad19c27056589">telemetry_log_buffer</a>;</div>
+<div class="line"><a name="l00049"></a><span class="lineno"><a class="line" href="class_log_controller.html#af55fb21bb37175e7c7896d4ba0146361">   49</a></span>&#160;        std::vector&lt;system_logframe&gt; <a class="code" href="class_log_controller.html#af55fb21bb37175e7c7896d4ba0146361">system_log_buffer</a>;</div>
+<div class="line"><a name="l00050"></a><span class="lineno"><a class="line" href="class_log_controller.html#ac953b13f7d276f7a2719de60ac075418">   50</a></span>&#160;        std::vector&lt;network_logframe&gt; <a class="code" href="class_log_controller.html#ac953b13f7d276f7a2719de60ac075418">network_log_buffer</a>;</div>
 <div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160; </div>
 <div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;        <span class="comment">//loging directory prefix;</span></div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;        std::string microsd_prefix = <span class="stringliteral">&quot;/Logs&quot;</span> ;</div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;        std::string flash_prefix = <span class="stringliteral">&quot;/0&quot;</span>;</div>
+<div class="line"><a name="l00053"></a><span class="lineno"><a class="line" href="class_log_controller.html#abe5dd66181f06e84e546ec6d38cfc809">   53</a></span>&#160;        std::string <a class="code" href="class_log_controller.html#abe5dd66181f06e84e546ec6d38cfc809">microsd_prefix</a> = <span class="stringliteral">&quot;/Logs&quot;</span> ;</div>
+<div class="line"><a name="l00054"></a><span class="lineno"><a class="line" href="class_log_controller.html#a851e2ddf7a9d4f1e732e1a7a12a31623">   54</a></span>&#160;        std::string <a class="code" href="class_log_controller.html#a851e2ddf7a9d4f1e732e1a7a12a31623">flash_prefix</a> = <span class="stringliteral">&quot;/0&quot;</span>;</div>
 <div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;        <span class="comment">//log file names</span></div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;        <span class="keyword">const</span> std::string telemetry_log_filename = <span class="stringliteral">&quot;/telemetry_log.txt&quot;</span>;</div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;        <span class="keyword">const</span> std::string system_log_filename = <span class="stringliteral">&quot;/system_log.txt&quot;</span>;</div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;        <span class="keyword">const</span> std::string network_log_filename = <span class="stringliteral">&quot;/network_log.txt&quot;</span>;</div>
+<div class="line"><a name="l00056"></a><span class="lineno"><a class="line" href="class_log_controller.html#aae69eda35e40facd953d3d9929c00682">   56</a></span>&#160;        <span class="keyword">const</span> std::string <a class="code" href="class_log_controller.html#aae69eda35e40facd953d3d9929c00682">telemetry_log_filename</a> = <span class="stringliteral">&quot;/telemetry_log.txt&quot;</span>;</div>
+<div class="line"><a name="l00057"></a><span class="lineno"><a class="line" href="class_log_controller.html#aeeee39c0f958c751a1cd0c2ad1697e9a">   57</a></span>&#160;        <span class="keyword">const</span> std::string <a class="code" href="class_log_controller.html#aeeee39c0f958c751a1cd0c2ad1697e9a">system_log_filename</a> = <span class="stringliteral">&quot;/system_log.txt&quot;</span>;</div>
+<div class="line"><a name="l00058"></a><span class="lineno"><a class="line" href="class_log_controller.html#acfa8f09f193f02e12ce64c6e5c6a4189">   58</a></span>&#160;        <span class="keyword">const</span> std::string <a class="code" href="class_log_controller.html#acfa8f09f193f02e12ce64c6e5c6a4189">network_log_filename</a> = <span class="stringliteral">&quot;/network_log.txt&quot;</span>;</div>
 <div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160; </div>
 <div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;        <span class="comment">//logging frequnecies</span></div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;        uint16_t log_frequency[3] = {5000,5000,5000};</div>
+<div class="line"><a name="l00061"></a><span class="lineno"><a class="line" href="class_log_controller.html#a41ef1c7f554807fbfacb6d778194e8dc">   61</a></span>&#160;        uint16_t <a class="code" href="class_log_controller.html#a41ef1c7f554807fbfacb6d778194e8dc">log_frequency</a>[3] = {5000,5000,5000};</div>
 <div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;    </div>
 <div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;        <span class="comment">//methods to write buffer to file</span></div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;        <span class="keywordtype">void</span> write_to_file(LOG_TYPE log_type);</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;        <span class="keywordtype">void</span> <a class="code" href="class_log_controller.html#ab69cfb73204e8713eedfd7e79d73c5c9">write_to_file</a>(<a class="code" href="log_controller_8h.html#a3fe34aa18aae383b0dedd08b476f3844">LOG_TYPE</a> log_type);</div>
 <div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;        </div>
 <div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;        <span class="comment">//inialize previous time at 0</span></div>
-<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;        uint64_t prev_time = 0;</div>
+<div class="line"><a name="l00067"></a><span class="lineno"><a class="line" href="class_log_controller.html#a07a20fbd912025d371ed5d3ffa718a11">   67</a></span>&#160;        uint64_t <a class="code" href="class_log_controller.html#a07a20fbd912025d371ed5d3ffa718a11">prev_time</a> = 0;</div>
 <div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;        </div>
 <div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;        <span class="comment">//flag level helper function</span></div>
-<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;        std::string flagLevel(uint32_t flag);</div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;        std::string flagLevel(system_flag flag);</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;        std::string <a class="code" href="class_log_controller.html#a8153ae6061e30a960e4397617e4fadc9">flagLevel</a>(uint32_t flag);</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;        std::string <a class="code" href="class_log_controller.html#a8153ae6061e30a960e4397617e4fadc9">flagLevel</a>(<a class="code" href="flags_8h.html#a1cb315cc6ae6368d46a819d952b416ad">system_flag</a> flag);</div>
 <div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160; </div>
 <div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160; </div>
 <div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;        </div>
@@ -149,17 +175,51 @@ $(function() {
 <div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160; </div>
 <div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;<span class="preprocessor">#endif</span></div>
 <div class="ttc" id="aclass_log_controller_html"><div class="ttname"><a href="class_log_controller.html">LogController</a></div><div class="ttdef"><b>Definition:</b> logController.h:19</div></div>
+<div class="ttc" id="aclass_log_controller_html_a07a20fbd912025d371ed5d3ffa718a11"><div class="ttname"><a href="class_log_controller.html#a07a20fbd912025d371ed5d3ffa718a11">LogController::prev_time</a></div><div class="ttdeci">uint64_t prev_time</div><div class="ttdef"><b>Definition:</b> logController.h:67</div></div>
+<div class="ttc" id="aclass_log_controller_html_a15debc42bbac0000e42fc77fd0b1fdf2"><div class="ttname"><a href="class_log_controller.html#a15debc42bbac0000e42fc77fd0b1fdf2">LogController::_storagecontroller</a></div><div class="ttdeci">StorageController * _storagecontroller</div><div class="ttdef"><b>Definition:</b> logController.h:41</div></div>
+<div class="ttc" id="aclass_log_controller_html_a170b297ce50bc666733c18b3cfd41dad"><div class="ttname"><a href="class_log_controller.html#a170b297ce50bc666733c18b3cfd41dad">LogController::telemetry_frame</a></div><div class="ttdeci">telemetry_logframe telemetry_frame</div><div class="ttdef"><b>Definition:</b> logController.h:43</div></div>
+<div class="ttc" id="aclass_log_controller_html_a190ac7f27b24dcba384c1c18a94c3ef8"><div class="ttname"><a href="class_log_controller.html#a190ac7f27b24dcba384c1c18a94c3ef8">LogController::update</a></div><div class="ttdeci">void update()</div><div class="ttdef"><b>Definition:</b> logController.cpp:82</div></div>
+<div class="ttc" id="aclass_log_controller_html_a355de792d40fbdffb4dd694482a0bd2f"><div class="ttname"><a href="class_log_controller.html#a355de792d40fbdffb4dd694482a0bd2f">LogController::log</a></div><div class="ttdeci">void log(state_t &amp;estimator_state)</div><div class="ttdef"><b>Definition:</b> logController.cpp:28</div></div>
+<div class="ttc" id="aclass_log_controller_html_a41ef1c7f554807fbfacb6d778194e8dc"><div class="ttname"><a href="class_log_controller.html#a41ef1c7f554807fbfacb6d778194e8dc">LogController::log_frequency</a></div><div class="ttdeci">uint16_t log_frequency[3]</div><div class="ttdef"><b>Definition:</b> logController.h:61</div></div>
+<div class="ttc" id="aclass_log_controller_html_a691c1ff90609fcbd1c95a791fbec30bb"><div class="ttname"><a href="class_log_controller.html#a691c1ff90609fcbd1c95a791fbec30bb">LogController::setup</a></div><div class="ttdeci">void setup()</div><div class="ttdef"><b>Definition:</b> logController.cpp:20</div></div>
+<div class="ttc" id="aclass_log_controller_html_a7847076efad4a673569ad19c27056589"><div class="ttname"><a href="class_log_controller.html#a7847076efad4a673569ad19c27056589">LogController::telemetry_log_buffer</a></div><div class="ttdeci">std::vector&lt; telemetry_logframe &gt; telemetry_log_buffer</div><div class="ttdef"><b>Definition:</b> logController.h:48</div></div>
+<div class="ttc" id="aclass_log_controller_html_a7e90156517ab8b010c8ad57e396873be"><div class="ttname"><a href="class_log_controller.html#a7e90156517ab8b010c8ad57e396873be">LogController::network_frame</a></div><div class="ttdeci">network_logframe network_frame</div><div class="ttdef"><b>Definition:</b> logController.h:45</div></div>
+<div class="ttc" id="aclass_log_controller_html_a8153ae6061e30a960e4397617e4fadc9"><div class="ttname"><a href="class_log_controller.html#a8153ae6061e30a960e4397617e4fadc9">LogController::flagLevel</a></div><div class="ttdeci">std::string flagLevel(uint32_t flag)</div><div class="ttdef"><b>Definition:</b> logController.cpp:141</div></div>
+<div class="ttc" id="aclass_log_controller_html_a851e2ddf7a9d4f1e732e1a7a12a31623"><div class="ttname"><a href="class_log_controller.html#a851e2ddf7a9d4f1e732e1a7a12a31623">LogController::flash_prefix</a></div><div class="ttdeci">std::string flash_prefix</div><div class="ttdef"><b>Definition:</b> logController.h:54</div></div>
+<div class="ttc" id="aclass_log_controller_html_aaa86f9eb61d7f0b5f7c962626fc1d03c"><div class="ttname"><a href="class_log_controller.html#aaa86f9eb61d7f0b5f7c962626fc1d03c">LogController::system_frame</a></div><div class="ttdeci">system_logframe system_frame</div><div class="ttdef"><b>Definition:</b> logController.h:44</div></div>
+<div class="ttc" id="aclass_log_controller_html_aae69eda35e40facd953d3d9929c00682"><div class="ttname"><a href="class_log_controller.html#aae69eda35e40facd953d3d9929c00682">LogController::telemetry_log_filename</a></div><div class="ttdeci">const std::string telemetry_log_filename</div><div class="ttdef"><b>Definition:</b> logController.h:56</div></div>
+<div class="ttc" id="aclass_log_controller_html_ab3d307e6813b41a1288bc076b4f388a1"><div class="ttname"><a href="class_log_controller.html#ab3d307e6813b41a1288bc076b4f388a1">LogController::LogController</a></div><div class="ttdeci">LogController(StorageController *storagecontroller)</div><div class="ttdef"><b>Definition:</b> logController.cpp:10</div></div>
+<div class="ttc" id="aclass_log_controller_html_ab69cfb73204e8713eedfd7e79d73c5c9"><div class="ttname"><a href="class_log_controller.html#ab69cfb73204e8713eedfd7e79d73c5c9">LogController::write_to_file</a></div><div class="ttdeci">void write_to_file(LOG_TYPE log_type)</div><div class="ttdef"><b>Definition:</b> logController.cpp:103</div></div>
+<div class="ttc" id="aclass_log_controller_html_abe5dd66181f06e84e546ec6d38cfc809"><div class="ttname"><a href="class_log_controller.html#abe5dd66181f06e84e546ec6d38cfc809">LogController::microsd_prefix</a></div><div class="ttdeci">std::string microsd_prefix</div><div class="ttdef"><b>Definition:</b> logController.h:53</div></div>
+<div class="ttc" id="aclass_log_controller_html_ac953b13f7d276f7a2719de60ac075418"><div class="ttname"><a href="class_log_controller.html#ac953b13f7d276f7a2719de60ac075418">LogController::network_log_buffer</a></div><div class="ttdeci">std::vector&lt; network_logframe &gt; network_log_buffer</div><div class="ttdef"><b>Definition:</b> logController.h:50</div></div>
+<div class="ttc" id="aclass_log_controller_html_acfa8f09f193f02e12ce64c6e5c6a4189"><div class="ttname"><a href="class_log_controller.html#acfa8f09f193f02e12ce64c6e5c6a4189">LogController::network_log_filename</a></div><div class="ttdeci">const std::string network_log_filename</div><div class="ttdef"><b>Definition:</b> logController.h:58</div></div>
+<div class="ttc" id="aclass_log_controller_html_aeeee39c0f958c751a1cd0c2ad1697e9a"><div class="ttname"><a href="class_log_controller.html#aeeee39c0f958c751a1cd0c2ad1697e9a">LogController::system_log_filename</a></div><div class="ttdeci">const std::string system_log_filename</div><div class="ttdef"><b>Definition:</b> logController.h:57</div></div>
+<div class="ttc" id="aclass_log_controller_html_af55fb21bb37175e7c7896d4ba0146361"><div class="ttname"><a href="class_log_controller.html#af55fb21bb37175e7c7896d4ba0146361">LogController::system_log_buffer</a></div><div class="ttdeci">std::vector&lt; system_logframe &gt; system_log_buffer</div><div class="ttdef"><b>Definition:</b> logController.h:49</div></div>
 <div class="ttc" id="aclass_packet_header_html"><div class="ttname"><a href="class_packet_header.html">PacketHeader</a></div><div class="ttdef"><b>Definition:</b> packets.h:27</div></div>
 <div class="ttc" id="aclass_storage_controller_html"><div class="ttname"><a href="class_storage_controller.html">StorageController</a></div><div class="ttdef"><b>Definition:</b> storageController.h:32</div></div>
 <div class="ttc" id="aclassnetwork__logframe_html"><div class="ttname"><a href="classnetwork__logframe.html">network_logframe</a></div><div class="ttdef"><b>Definition:</b> logframe.h:149</div></div>
 <div class="ttc" id="aclasssystem__logframe_html"><div class="ttname"><a href="classsystem__logframe.html">system_logframe</a></div><div class="ttdef"><b>Definition:</b> logframe.h:118</div></div>
 <div class="ttc" id="aclasstelemetry__logframe_html"><div class="ttname"><a href="classtelemetry__logframe.html">telemetry_logframe</a></div><div class="ttdef"><b>Definition:</b> logframe.h:13</div></div>
+<div class="ttc" id="aflags_8h_html"><div class="ttname"><a href="flags_8h.html">flags.h</a></div></div>
+<div class="ttc" id="aflags_8h_html_a1cb315cc6ae6368d46a819d952b416ad"><div class="ttname"><a href="flags_8h.html#a1cb315cc6ae6368d46a819d952b416ad">system_flag</a></div><div class="ttdeci">system_flag</div><div class="ttdef"><b>Definition:</b> flags.h:6</div></div>
+<div class="ttc" id="alog_controller_8h_html_a3fe34aa18aae383b0dedd08b476f3844"><div class="ttname"><a href="log_controller_8h.html#a3fe34aa18aae383b0dedd08b476f3844">LOG_TYPE</a></div><div class="ttdeci">LOG_TYPE</div><div class="ttdef"><b>Definition:</b> logController.h:13</div></div>
+<div class="ttc" id="alog_controller_8h_html_a3fe34aa18aae383b0dedd08b476f3844a25835188a2355e9530d3a10fcbe4c65b"><div class="ttname"><a href="log_controller_8h.html#a3fe34aa18aae383b0dedd08b476f3844a25835188a2355e9530d3a10fcbe4c65b">LOG_TYPE::NETWORK</a></div><div class="ttdeci">@ NETWORK</div></div>
+<div class="ttc" id="alog_controller_8h_html_a3fe34aa18aae383b0dedd08b476f3844afa177138f94a7ea01f549b1aa7893d03"><div class="ttname"><a href="log_controller_8h.html#a3fe34aa18aae383b0dedd08b476f3844afa177138f94a7ea01f549b1aa7893d03">LOG_TYPE::SYSTEM</a></div><div class="ttdeci">@ SYSTEM</div></div>
+<div class="ttc" id="alogframe_8h_html"><div class="ttname"><a href="logframe_8h.html">logframe.h</a></div></div>
+<div class="ttc" id="apackets_8h_html"><div class="ttname"><a href="packets_8h.html">packets.h</a></div></div>
+<div class="ttc" id="apackets_8h_html_a6e7ce8216c5aef0179ed98af26b7d557abb3d2d909c73fe49800949a344775f8b"><div class="ttname"><a href="packets_8h.html#a6e7ce8216c5aef0179ed98af26b7d557abb3d2d909c73fe49800949a344775f8b">packet::TELEMETRY</a></div><div class="ttdeci">@ TELEMETRY</div></div>
+<div class="ttc" id="asensor_structs_8h_html"><div class="ttname"><a href="sensor_structs_8h.html">sensorStructs.h</a></div></div>
+<div class="ttc" id="astorage_controller_8h_html"><div class="ttname"><a href="storage_controller_8h.html">storageController.h</a></div></div>
 <div class="ttc" id="astructraw__measurements__t_html"><div class="ttname"><a href="structraw__measurements__t.html">raw_measurements_t</a></div><div class="ttdef"><b>Definition:</b> sensorStructs.h:8</div></div>
 <div class="ttc" id="astructstate__t_html"><div class="ttname"><a href="structstate__t.html">state_t</a></div><div class="ttdef"><b>Definition:</b> sensorStructs.h:32</div></div>
 </div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
 <!-- start footer part -->
-<hr class="footer"/><address class="footer"><small>
-Generated by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1
-</small></address>
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_ac55354187c8c6c264902bc62bdefbb0.html">Logging</a></li><li class="navelem"><a class="el" href="log_controller_8h.html">logController.h</a></li>
+    <li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
+  </ul>
+</div>
 </body>
 </html>

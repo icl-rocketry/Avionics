@@ -9,9 +9,18 @@
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+  $(document).ready(function() { init_search(); });
+/* @license-end */
+</script>
 <link href="doxygen.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
@@ -25,6 +34,21 @@
    &#160;<span id="projectnumber">1</span>
    </div>
   </td>
+   <td>        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <img id="MSearchSelect" src="search/mag_sel.svg"
+               onmouseover="return searchBox.OnSearchSelectShow()"
+               onmouseout="return searchBox.OnSearchSelectHide()"
+               alt=""/>
+          <input type="text" id="MSearchField" value="Search" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.svg" alt=""/></a>
+          </span>
+        </div>
+</td>
  </tr>
  </tbody>
 </table>
@@ -36,17 +60,23 @@
 var searchBox = new SearchBox("searchBox", "search",false,'Search','.html');
 /* @license-end */
 </script>
-<script type="text/javascript" src="menudata.js"></script>
-<script type="text/javascript" src="menu.js"></script>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
 <script type="text/javascript">
 /* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
-$(function() {
-  initMenu('',true,false,'search.php','Search');
-  $(document).ready(function() { init_search(); });
-});
-/* @license-end */</script>
-<div id="main-nav"></div>
-</div><!-- top -->
+$(document).ready(function(){initNavTree('functions_h.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
      onmouseover="return searchBox.OnSearchSelectShow()"
@@ -62,30 +92,37 @@ $(function() {
 </div>
 
 <div class="contents">
-<div class="textblock">Here is a list of all documented class members with links to the class documentation for each member:</div>
+<div class="textblock">Here is a list of all class members with links to the classes they belong to:</div>
 
 <h3><a id="index_h"></a>- h -</h3><ul>
-<li>halt()
-: <a class="el" href="class_sys_call.html#a9b1ef8900e97f572ca561760b4dd4191">SysCall</a>
+<li>handleCommand()
+: <a class="el" href="class_command_handler.html#a54c1b7e2f1a6d0365ef36a0c738d7e02">CommandHandler</a>
 </li>
-<li>headCount
-: <a class="el" href="structbios_parm_block.html#a2324ca82e2a7da4d91f458fa32a6e239">biosParmBlock</a>
-, <a class="el" href="structfat32__boot.html#a1a5298db692526bc64243766d6b54181">fat32_boot</a>
-, <a class="el" href="structfat__boot.html#ae31da876cd9f48de5268a129218df2c2">fat_boot</a>
+<li>head_
+: <a class="el" href="class_circular_buffer.html#abd7fa51c466136b2ed4a3ed40dc72201">CircularBuffer&lt; T &gt;</a>
 </li>
-<li>hex
-: <a class="el" href="classios__base.html#a3608e51eb0a80ea94ddadd5b713a3750">ios_base</a>
+<li>header
+: <a class="el" href="class_command_packet.html#a2782c5499ee78c26ded895f58c4ebe23">CommandPacket</a>
+, <a class="el" href="class_detailed_all_packet.html#ab7b57299e144e8618d7dc265ce8c4c2a">DetailedAllPacket</a>
+, <a class="el" href="class_telemetry_packet.html#af428909be05dd0d1c6a4974062f9c44f">TelemetryPacket</a>
 </li>
-<li>hidddenSectors
-: <a class="el" href="structbios_parm_block.html#a9413199be8525190d40589f60c22bcab">biosParmBlock</a>
-, <a class="el" href="structfat32__boot.html#ab10224aa4bba42b262fcd3479e279e1f">fat32_boot</a>
-, <a class="el" href="structfat__boot.html#a18f1b4c245fe7bd09f5a9430c005e23a">fat_boot</a>
+<li>header_len
+: <a class="el" href="class_packet_header.html#af930dc96d866874b6fe8edfb3bce3d89">PacketHeader</a>
+</li>
+<li>header_size()
+: <a class="el" href="class_packet_header.html#ae0c16331969378456fa7c606e694c926">PacketHeader</a>
+</li>
+<li>header_size_mismatch
+: <a class="el" href="class_packet_header.html#a9b41bad3493c52967899bd750465c238">PacketHeader</a>
 </li>
 </ul>
 </div><!-- contents -->
+</div><!-- doc-content -->
 <!-- start footer part -->
-<hr class="footer"/><address class="footer"><small>
-Generated by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1
-</small></address>
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
+  </ul>
+</div>
 </body>
 </html>

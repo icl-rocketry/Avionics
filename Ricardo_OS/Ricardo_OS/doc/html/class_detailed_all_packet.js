@@ -1,0 +1,28 @@
+var class_detailed_all_packet =
+[
+    [ "DetailedAllPacket", "class_detailed_all_packet.html#a468729995f026863a29739ed9471522f", null ],
+    [ "DetailedAllPacket", "class_detailed_all_packet.html#acb22d658d90bb75c4c168b8f19aeaaf2", null ],
+    [ "~DetailedAllPacket", "class_detailed_all_packet.html#aa9b1e1f0cfd7b464160a69bbadbde0c4", null ],
+    [ "getSerializer", "class_detailed_all_packet.html#a79d839d7b9fb6af7d852efb9821a867d", null ],
+    [ "packet_size", "class_detailed_all_packet.html#a9bc0e677ab448701831326ea3a69c2e6", null ],
+    [ "serialize", "class_detailed_all_packet.html#aaad75cfa0344ab75e70aecfc518fad82", null ],
+    [ "ax", "class_detailed_all_packet.html#a4c2a7891d574a32f76bf2a6898b8fc39", null ],
+    [ "ay", "class_detailed_all_packet.html#adf2d56a6c81f22c372eab42f6146c4d6", null ],
+    [ "az", "class_detailed_all_packet.html#a41d389192ad63e6273049cc90fb3ee17", null ],
+    [ "baro_alt", "class_detailed_all_packet.html#a2297f7091df832e540a13b98a86be714", null ],
+    [ "baro_press", "class_detailed_all_packet.html#a6cb59b729d5f72accab9134a18c45191", null ],
+    [ "baro_temp", "class_detailed_all_packet.html#a808ac0f0779b3c4ba8f98b6ab5aad956", null ],
+    [ "batt_percent", "class_detailed_all_packet.html#a8c700777fb23a6943d1bd47d4213bea0", null ],
+    [ "batt_volt", "class_detailed_all_packet.html#ab0a65488409595b46e311f64f3358697", null ],
+    [ "gps_alt", "class_detailed_all_packet.html#ac3ab288e0281945e2268f564fb16c163", null ],
+    [ "gps_lat", "class_detailed_all_packet.html#a019bd107a208d0a62ab40e51a92f8977", null ],
+    [ "gps_long", "class_detailed_all_packet.html#aaaf0b987ea8da73fe37a99c182b15090", null ],
+    [ "gps_speed", "class_detailed_all_packet.html#a9770d0d705195bfcf856e82587799f82", null ],
+    [ "gx", "class_detailed_all_packet.html#a87ec2740a34395fc0f90f386fbb6cdb8", null ],
+    [ "gy", "class_detailed_all_packet.html#ac2e7768a49638c89b4366d935a25ca5d", null ],
+    [ "gz", "class_detailed_all_packet.html#a9f918034caf7ec288d4e408c2869b8e0", null ],
+    [ "header", "class_detailed_all_packet.html#ab7b57299e144e8618d7dc265ce8c4c2a", null ],
+    [ "mx", "class_detailed_all_packet.html#acada845035ac620d43cd1c93c204008f", null ],
+    [ "my", "class_detailed_all_packet.html#a88ad117efb7480be6b42127a31128dee", null ],
+    [ "mz", "class_detailed_all_packet.html#a48ec4ac5e1132e89b5c0c448ac421f26", null ]
+];

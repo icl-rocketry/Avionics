@@ -9,9 +9,18 @@
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+  $(document).ready(function() { init_search(); });
+/* @license-end */
+</script>
 <link href="doxygen.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
@@ -25,6 +34,21 @@
    &#160;<span id="projectnumber">1</span>
    </div>
   </td>
+   <td>        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <img id="MSearchSelect" src="search/mag_sel.svg"
+               onmouseover="return searchBox.OnSearchSelectShow()"
+               onmouseout="return searchBox.OnSearchSelectHide()"
+               alt=""/>
+          <input type="text" id="MSearchField" value="Search" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.svg" alt=""/></a>
+          </span>
+        </div>
+</td>
  </tr>
  </tbody>
 </table>
@@ -36,16 +60,23 @@
 var searchBox = new SearchBox("searchBox", "search",false,'Search','.html');
 /* @license-end */
 </script>
-<script type="text/javascript" src="menudata.js"></script>
-<script type="text/javascript" src="menu.js"></script>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
 <script type="text/javascript">
 /* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
-$(function() {
-  initMenu('',true,false,'search.php','Search');
-  $(document).ready(function() { init_search(); });
-});
-/* @license-end */</script>
-<div id="main-nav"></div>
+$(document).ready(function(){initNavTree('class_sensors.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
      onmouseover="return searchBox.OnSearchSelectShow()"
@@ -60,55 +91,349 @@ $(function() {
 </iframe>
 </div>
 
-</div><!-- top -->
 <div class="header">
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
 <a href="#pub-attribs">Public Attributes</a> &#124;
+<a href="#pri-attribs">Private Attributes</a> &#124;
 <a href="class_sensors-members.html">List of all members</a>  </div>
   <div class="headertitle">
 <div class="title">Sensors Class Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p><code>#include &lt;<a class="el" href="sensors_8h_source.html">sensors.h</a>&gt;</code></p>
 <div class="dynheader">
 Collaboration diagram for Sensors:</div>
 <div class="dyncontent">
 <div class="center"><img src="class_sensors__coll__graph.png" border="0" usemap="#a_sensors_coll__map" alt="Collaboration graph"/></div>
 <map name="a_sensors_coll__map" id="a_sensors_coll__map">
-<area shape="rect" title=" " alt="" coords="43,95,114,121"/>
-<area shape="rect" href="structraw__measurements__t.html" title=" " alt="" coords="5,5,152,32"/>
+<area shape="rect" title=" " alt="" coords="279,669,349,696"/>
+<area shape="rect" href="classstate_machine.html" title=" " alt="" coords="448,477,548,504"/>
+<area shape="rect" href="class_system_status.html" title=" " alt="" coords="711,335,817,361"/>
+<area shape="rect" href="class_storage_controller.html" title=" " alt="" coords="703,619,825,645"/>
+<area shape="rect" href="class_network_manager.html" title=" " alt="" coords="1241,291,1363,317"/>
+<area shape="rect" href="class_command_handler.html" title=" " alt="" coords="855,152,981,179"/>
+<area shape="rect" href="class_state.html" title=" " alt="" coords="737,395,791,421"/>
+<area shape="rect" href="class_estimator.html" title=" " alt="" coords="725,252,803,279"/>
+<area shape="rect" href="class_u_s_b.html" title=" " alt="" coords="1038,319,1089,345"/>
+<area shape="rect" href="class_radio.html" title=" " alt="" coords="1035,217,1091,244"/>
+<area shape="rect" href="class_g_p_s.html" title=" " alt="" coords="1038,713,1089,740"/>
+<area shape="rect" href="class_battery.html" title=" " alt="" coords="1031,68,1095,95"/>
+<area shape="rect" href="class_baro.html" title=" " alt="" coords="1039,663,1088,689"/>
+<area shape="rect" href="class_imu.html" title=" " alt="" coords="1041,875,1085,901"/>
+<area shape="rect" href="class_log_controller.html" title=" " alt="" coords="1014,1039,1113,1065"/>
+<area shape="rect" href="class_config_controller.html" title=" " alt="" coords="1005,581,1121,608"/>
+<area shape="rect" href="classtelemetry__logframe.html" title=" " alt="" coords="697,1039,831,1065"/>
+<area shape="rect" href="classlogframe.html" title=" " alt="" coords="462,1089,534,1116"/>
+<area shape="rect" href="classsystem__logframe.html" title=" " alt="" coords="703,1089,825,1116"/>
+<area shape="rect" href="classnetwork__logframe.html" title=" " alt="" coords="701,1140,827,1167"/>
+<area shape="rect" href="class_iface.html" title=" " alt="" coords="739,201,789,228"/>
+<area shape="rect" href="class_routing_table.html" title=" " alt="" coords="1014,268,1113,295"/>
+<area shape="rect" href="structstate__t.html" title=" " alt="" coords="467,161,529,188"/>
+<area shape="rect" href="structraw__measurements__t.html" title=" " alt="" coords="5,772,152,799"/>
 </map>
-<center><span class="legend">[<a href="graph_legend.html">legend</a>]</span></center></div>
+<center><span class="legend">[<a target="top" href="graph_legend.html">legend</a>]</span></center></div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a0d11b12054d42e68d30bb62c2412d213"><td class="memItemLeft" align="right" valign="top"><a id="a0d11b12054d42e68d30bb62c2412d213"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>Sensors</b> (<a class="el" href="classstate_machine.html">stateMachine</a> *sm)</td></tr>
+<tr class="memitem:a0d11b12054d42e68d30bb62c2412d213"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sensors.html#a0d11b12054d42e68d30bb62c2412d213">Sensors</a> (<a class="el" href="classstate_machine.html">stateMachine</a> *sm)</td></tr>
 <tr class="separator:a0d11b12054d42e68d30bb62c2412d213"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a53a14d2dc2f063893ba275aa6be2ffc0"><td class="memItemLeft" align="right" valign="top"><a id="a53a14d2dc2f063893ba275aa6be2ffc0"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>setup</b> ()</td></tr>
+<tr class="memitem:a53a14d2dc2f063893ba275aa6be2ffc0"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sensors.html#a53a14d2dc2f063893ba275aa6be2ffc0">setup</a> ()</td></tr>
 <tr class="separator:a53a14d2dc2f063893ba275aa6be2ffc0"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af0290d09b1ae4dd7726a2a6613bf354b"><td class="memItemLeft" align="right" valign="top"><a id="af0290d09b1ae4dd7726a2a6613bf354b"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>update</b> ()</td></tr>
+<tr class="memitem:af0290d09b1ae4dd7726a2a6613bf354b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sensors.html#af0290d09b1ae4dd7726a2a6613bf354b">update</a> ()</td></tr>
 <tr class="separator:af0290d09b1ae4dd7726a2a6613bf354b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8b07d5b68b42c7c11f4532fc997585a3"><td class="memItemLeft" align="right" valign="top"><a id="a8b07d5b68b42c7c11f4532fc997585a3"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>callibrate</b> (SENSOR sensor)</td></tr>
+<tr class="memitem:a8b07d5b68b42c7c11f4532fc997585a3"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sensors.html#a8b07d5b68b42c7c11f4532fc997585a3">callibrate</a> (<a class="el" href="sensors_8h.html#a4841defb3c5d614dc03fc588f4c03fe1">SENSOR</a> sensor)</td></tr>
 <tr class="separator:a8b07d5b68b42c7c11f4532fc997585a3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
-<tr class="memitem:a3295a49b109e68e6934d0b7068557e8d"><td class="memItemLeft" align="right" valign="top"><a id="a3295a49b109e68e6934d0b7068557e8d"></a>
-<a class="el" href="structraw__measurements__t.html">raw_measurements_t</a>&#160;</td><td class="memItemRight" valign="bottom"><b>sensors_raw</b></td></tr>
+<tr class="memitem:a3295a49b109e68e6934d0b7068557e8d"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structraw__measurements__t.html">raw_measurements_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sensors.html#a3295a49b109e68e6934d0b7068557e8d">sensors_raw</a></td></tr>
 <tr class="separator:a3295a49b109e68e6934d0b7068557e8d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-attribs"></a>
+Private Attributes</h2></td></tr>
+<tr class="memitem:a12693f171ad16b3abed526e54c50dc75"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classstate_machine.html">stateMachine</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sensors.html#a12693f171ad16b3abed526e54c50dc75">_sm</a></td></tr>
+<tr class="separator:a12693f171ad16b3abed526e54c50dc75"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6d327380100530f7221d0a75506f03f4"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_g_p_s.html">GPS</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sensors.html#a6d327380100530f7221d0a75506f03f4">gps</a></td></tr>
+<tr class="separator:a6d327380100530f7221d0a75506f03f4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a952bcff8ebe8920f3625844e83255538"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_baro.html">Baro</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sensors.html#a952bcff8ebe8920f3625844e83255538">baro</a></td></tr>
+<tr class="separator:a952bcff8ebe8920f3625844e83255538"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a92a68db24df154bd09eca4fd0ece6b3f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_imu.html">Imu</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sensors.html#a92a68db24df154bd09eca4fd0ece6b3f">imu</a></td></tr>
+<tr class="separator:a92a68db24df154bd09eca4fd0ece6b3f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8a936258472dd6b58125cd6c11ea24b0"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_battery.html">Battery</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sensors.html#a8a936258472dd6b58125cd6c11ea24b0">batt</a></td></tr>
+<tr class="separator:a8a936258472dd6b58125cd6c11ea24b0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
+<h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a id="a0d11b12054d42e68d30bb62c2412d213"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0d11b12054d42e68d30bb62c2412d213">&#9670;&nbsp;</a></span>Sensors()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">Sensors::Sensors </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classstate_machine.html">stateMachine</a> *&#160;</td>
+          <td class="paramname"><em>sm</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<h2 class="groupheader">Member Function Documentation</h2>
+<a id="a8b07d5b68b42c7c11f4532fc997585a3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8b07d5b68b42c7c11f4532fc997585a3">&#9670;&nbsp;</a></span>callibrate()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Sensors::callibrate </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="sensors_8h.html#a4841defb3c5d614dc03fc588f4c03fe1">SENSOR</a>&#160;</td>
+          <td class="paramname"><em>sensor</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a53a14d2dc2f063893ba275aa6be2ffc0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a53a14d2dc2f063893ba275aa6be2ffc0">&#9670;&nbsp;</a></span>setup()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Sensors::setup </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="class_sensors_a53a14d2dc2f063893ba275aa6be2ffc0_cgraph.png" border="0" usemap="#aclass_sensors_a53a14d2dc2f063893ba275aa6be2ffc0_cgraph" alt=""/></div>
+<map name="aclass_sensors_a53a14d2dc2f063893ba275aa6be2ffc0_cgraph" id="aclass_sensors_a53a14d2dc2f063893ba275aa6be2ffc0_cgraph">
+<area shape="rect" title=" " alt="" coords="5,81,116,108"/>
+<area shape="rect" href="class_baro.html#a54bc23ca90c603a8d0f83beebda6d635" title=" " alt="" coords="171,5,261,32"/>
+<area shape="rect" href="class_battery.html#afc45ec8a22fac60f19fe189e4c21d313" title=" " alt="" coords="164,56,268,83"/>
+<area shape="rect" href="class_g_p_s.html#a29556f8e05c9175ca2147c8c648bd023" title=" " alt="" coords="171,107,261,133"/>
+<area shape="rect" href="class_imu.html#af2fba9f67a4449e503374a5ca10b1832" title=" " alt="" coords="174,157,258,184"/>
+<area shape="rect" href="class_system_status.html#a872912293f3c93e87eb69c9a70f7743a" title=" " alt="" coords="316,157,513,184"/>
+<area shape="rect" href="class_log_controller.html#a355de792d40fbdffb4dd694482a0bd2f" title=" " alt="" coords="561,157,685,184"/>
+</map>
+</div>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="class_sensors_a53a14d2dc2f063893ba275aa6be2ffc0_icgraph.png" border="0" usemap="#aclass_sensors_a53a14d2dc2f063893ba275aa6be2ffc0_icgraph" alt=""/></div>
+<map name="aclass_sensors_a53a14d2dc2f063893ba275aa6be2ffc0_icgraph" id="aclass_sensors_a53a14d2dc2f063893ba275aa6be2ffc0_icgraph">
+<area shape="rect" title=" " alt="" coords="1447,31,1557,57"/>
+<area shape="rect" href="classstate_machine.html#ab9275b38265e4166367b4f3d2aa0e474" title=" " alt="" coords="1244,31,1399,57"/>
+<area shape="rect" href="classstate_machine.html#a5d7b94f00a94721921b3b100fa234fb4" title=" " alt="" coords="1015,31,1196,57"/>
+<area shape="rect" href="main_8cpp.html#a4fc01d736fe50cf5b977f755b675f11d" title=" " alt="" coords="1078,81,1133,108"/>
+<area shape="rect" href="class_command_handler.html#a54c1b7e2f1a6d0365ef36a0c738d7e02" title=" " alt="" coords="733,5,967,32"/>
+<area shape="rect" href="classstate_machine.html#a5f4f54735cb0a13393227e3af6863cdd" title=" " alt="" coords="100,31,247,57"/>
+<area shape="rect" href="class_command_handler.html#a6c61c87a0ad0045aa6133dd69112a72b" title=" " alt="" coords="511,5,685,32"/>
+<area shape="rect" href="class_network_manager.html#a0d4ea7d4f0b395249151d0a28af79cd5" title=" " alt="" coords="295,5,463,32"/>
+<area shape="rect" href="main_8cpp.html#afe461d27b9c48d5921c00d521181f12f" title=" " alt="" coords="5,31,52,57"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="af0290d09b1ae4dd7726a2a6613bf354b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af0290d09b1ae4dd7726a2a6613bf354b">&#9670;&nbsp;</a></span>update()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Sensors::update </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="class_sensors_af0290d09b1ae4dd7726a2a6613bf354b_cgraph.png" border="0" usemap="#aclass_sensors_af0290d09b1ae4dd7726a2a6613bf354b_cgraph" alt=""/></div>
+<map name="aclass_sensors_af0290d09b1ae4dd7726a2a6613bf354b_cgraph" id="aclass_sensors_af0290d09b1ae4dd7726a2a6613bf354b_cgraph">
+<area shape="rect" title=" " alt="" coords="5,162,123,189"/>
+<area shape="rect" href="class_baro.html#ae4646ca76722ac09ccffb93aadda30f6" title=" " alt="" coords="178,86,274,113"/>
+<area shape="rect" href="class_battery.html#a85dcc13e31dfb66ce3ce217b78a7df7c" title=" " alt="" coords="171,137,281,163"/>
+<area shape="rect" href="class_g_p_s.html#a5b903e61f93bc5db0d9f78bec35730d4" title=" " alt="" coords="177,187,275,214"/>
+<area shape="rect" href="class_imu.html#a250b49055c531aa7ed5c807e4f447741" title=" " alt="" coords="181,289,271,315"/>
+<area shape="rect" href="class_system_status.html#abaa2a5b6a72c67ae890fd47ebb19cf0c" title=" " alt="" coords="354,5,502,47"/>
+<area shape="rect" href="class_system_status.html#acdbe5c478512869887c5b07779773a1b" title=" " alt="" coords="361,71,495,112"/>
+<area shape="rect" href="class_system_status.html#a872912293f3c93e87eb69c9a70f7743a" title=" " alt="" coords="329,137,527,163"/>
+<area shape="rect" href="namespaceutils.html#a80b01b2df5fab1766ccdbfa4fb2ce79d" title=" " alt="" coords="379,187,477,214"/>
+<area shape="rect" href="class_log_controller.html#a355de792d40fbdffb4dd694482a0bd2f" title=" " alt="" coords="575,75,699,102"/>
+<area shape="rect" href="class_imu.html#aea185774a50d2050a782f36903256fcc" title=" " alt="" coords="371,238,485,265"/>
+<area shape="rect" href="class_imu.html#af338caaa90be2124b541f5e9d7ef0c59" title=" " alt="" coords="373,289,483,315"/>
+<area shape="rect" href="class_imu.html#aacd0c15a4b84dfffd3bbc139fe2475a7" title=" " alt="" coords="373,339,483,366"/>
+<area shape="rect" href="class_imu.html#a2a31fdb5287aa1910c6bf7680de38a16" title=" " alt="" coords="371,390,485,417"/>
+</map>
+</div>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="class_sensors_af0290d09b1ae4dd7726a2a6613bf354b_icgraph.png" border="0" usemap="#aclass_sensors_af0290d09b1ae4dd7726a2a6613bf354b_icgraph" alt=""/></div>
+<map name="aclass_sensors_af0290d09b1ae4dd7726a2a6613bf354b_icgraph" id="aclass_sensors_af0290d09b1ae4dd7726a2a6613bf354b_icgraph">
+<area shape="rect" title=" " alt="" coords="295,5,412,32"/>
+<area shape="rect" href="classstate_machine.html#a5f4f54735cb0a13393227e3af6863cdd" title=" " alt="" coords="100,5,247,32"/>
+<area shape="rect" href="main_8cpp.html#afe461d27b9c48d5921c00d521181f12f" title=" " alt="" coords="5,5,52,32"/>
+</map>
+</div>
+
+</div>
+</div>
+<h2 class="groupheader">Member Data Documentation</h2>
+<a id="a12693f171ad16b3abed526e54c50dc75"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a12693f171ad16b3abed526e54c50dc75">&#9670;&nbsp;</a></span>_sm</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classstate_machine.html">stateMachine</a>* Sensors::_sm</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a952bcff8ebe8920f3625844e83255538"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a952bcff8ebe8920f3625844e83255538">&#9670;&nbsp;</a></span>baro</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_baro.html">Baro</a> Sensors::baro</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a8a936258472dd6b58125cd6c11ea24b0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8a936258472dd6b58125cd6c11ea24b0">&#9670;&nbsp;</a></span>batt</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_battery.html">Battery</a> Sensors::batt</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a6d327380100530f7221d0a75506f03f4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6d327380100530f7221d0a75506f03f4">&#9670;&nbsp;</a></span>gps</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_g_p_s.html">GPS</a> Sensors::gps</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a92a68db24df154bd09eca4fd0ece6b3f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a92a68db24df154bd09eca4fd0ece6b3f">&#9670;&nbsp;</a></span>imu</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_imu.html">Imu</a> Sensors::imu</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a3295a49b109e68e6934d0b7068557e8d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3295a49b109e68e6934d0b7068557e8d">&#9670;&nbsp;</a></span>sensors_raw</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structraw__measurements__t.html">raw_measurements_t</a> Sensors::sensors_raw</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <hr/>The documentation for this class was generated from the following files:<ul>
 <li>/Users/kiran/Documents/Projects/ICLR/Avionics/Ricardo_OS/Ricardo_OS/src/Sensors/<a class="el" href="sensors_8h_source.html">sensors.h</a></li>
-<li>/Users/kiran/Documents/Projects/ICLR/Avionics/Ricardo_OS/Ricardo_OS/src/Sensors/sensors.cpp</li>
+<li>/Users/kiran/Documents/Projects/ICLR/Avionics/Ricardo_OS/Ricardo_OS/src/Sensors/<a class="el" href="sensors_8cpp.html">sensors.cpp</a></li>
 </ul>
 </div><!-- contents -->
+</div><!-- doc-content -->
 <!-- start footer part -->
-<hr class="footer"/><address class="footer"><small>
-Generated by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1
-</small></address>
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="class_sensors.html">Sensors</a></li>
+    <li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
+  </ul>
+</div>
 </body>
 </html>

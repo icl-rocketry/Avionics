@@ -1,26 +1,174 @@
 \hypertarget{class_command_handler}{}\doxysection{Command\+Handler Class Reference}
 \label{class_command_handler}\index{CommandHandler@{CommandHandler}}
+
+
+{\ttfamily \#include $<$command\+Handler.\+h$>$}
+
+
+
+Collaboration diagram for Command\+Handler\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_command_handler__coll__graph}
+\end{center}
+\end{figure}
 \doxysubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\Hypertarget{class_command_handler_aa55bcfead70e180ab286603cfb5b2ccf}\label{class_command_handler_aa55bcfead70e180ab286603cfb5b2ccf}} 
-{\bfseries Command\+Handler} (\mbox{\hyperlink{classstate_machine}{state\+Machine}} $\ast$sm)
+\mbox{\hyperlink{class_command_handler_aa55bcfead70e180ab286603cfb5b2ccf}{Command\+Handler}} (\mbox{\hyperlink{classstate_machine}{state\+Machine}} $\ast$sm)
 \item 
-\mbox{\Hypertarget{class_command_handler_a701fab97d726eb7563583f517e29a1af}\label{class_command_handler_a701fab97d726eb7563583f517e29a1af}} 
-void {\bfseries setup} ()
+void \mbox{\hyperlink{class_command_handler_a701fab97d726eb7563583f517e29a1af}{setup}} ()
 \item 
-\mbox{\Hypertarget{class_command_handler_a6c61c87a0ad0045aa6133dd69112a72b}\label{class_command_handler_a6c61c87a0ad0045aa6133dd69112a72b}} 
-void {\bfseries update} ()
+void \mbox{\hyperlink{class_command_handler_a6c61c87a0ad0045aa6133dd69112a72b}{update}} ()
+\end{DoxyCompactItemize}
+\doxysubsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{class_command_handler_a3ad23bf7d0bb809ac5c3a3ac9c74e5a5}{add\+Command}} (\mbox{\hyperlink{struct_command}{Command}} command)
+\item 
+void \mbox{\hyperlink{class_command_handler_a54c1b7e2f1a6d0365ef36a0c738d7e02}{handle\+Command}} (\mbox{\hyperlink{struct_command}{Command}} command)
+\item 
+bool \mbox{\hyperlink{class_command_handler_a89011ae550ba0c0c32b5ae2794bad92c}{command\+Avaliable}} (\mbox{\hyperlink{struct_command}{Command}} command)
+\end{DoxyCompactItemize}
+\doxysubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classstate_machine}{state\+Machine}} $\ast$ \mbox{\hyperlink{class_command_handler_ae0ee0cc2b5b8a64321ff595b66c278f8}{\+\_\+sm}}
+\item 
+std\+::vector$<$ \mbox{\hyperlink{struct_command}{Command}} $>$ \mbox{\hyperlink{class_command_handler_a8ae50b25a5f7919da291b3a5bfb4e6e4}{commandbuffer}}
 \end{DoxyCompactItemize}
 \doxysubsection*{Friends}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\Hypertarget{class_command_handler_a82ca116715acd6c64f2acf4dc71e4038}\label{class_command_handler_a82ca116715acd6c64f2acf4dc71e4038}} 
-class {\bfseries Network\+Manager}
+class \mbox{\hyperlink{class_command_handler_a82ca116715acd6c64f2acf4dc71e4038}{Network\+Manager}}
 \end{DoxyCompactItemize}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_command_handler_aa55bcfead70e180ab286603cfb5b2ccf}\label{class_command_handler_aa55bcfead70e180ab286603cfb5b2ccf}} 
+\index{CommandHandler@{CommandHandler}!CommandHandler@{CommandHandler}}
+\index{CommandHandler@{CommandHandler}!CommandHandler@{CommandHandler}}
+\doxysubsubsection{\texorpdfstring{CommandHandler()}{CommandHandler()}}
+{\footnotesize\ttfamily Command\+Handler\+::\+Command\+Handler (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classstate_machine}{state\+Machine}} $\ast$}]{sm }\end{DoxyParamCaption})}
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_command_handler_a3ad23bf7d0bb809ac5c3a3ac9c74e5a5}\label{class_command_handler_a3ad23bf7d0bb809ac5c3a3ac9c74e5a5}} 
+\index{CommandHandler@{CommandHandler}!addCommand@{addCommand}}
+\index{addCommand@{addCommand}!CommandHandler@{CommandHandler}}
+\doxysubsubsection{\texorpdfstring{addCommand()}{addCommand()}}
+{\footnotesize\ttfamily void Command\+Handler\+::add\+Command (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_command}{Command}}}]{command }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_command_handler_a3ad23bf7d0bb809ac5c3a3ac9c74e5a5_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_command_handler_a89011ae550ba0c0c32b5ae2794bad92c}\label{class_command_handler_a89011ae550ba0c0c32b5ae2794bad92c}} 
+\index{CommandHandler@{CommandHandler}!commandAvaliable@{commandAvaliable}}
+\index{commandAvaliable@{commandAvaliable}!CommandHandler@{CommandHandler}}
+\doxysubsubsection{\texorpdfstring{commandAvaliable()}{commandAvaliable()}}
+{\footnotesize\ttfamily bool Command\+Handler\+::command\+Avaliable (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_command}{Command}}}]{command }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_command_handler_a89011ae550ba0c0c32b5ae2794bad92c_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_command_handler_a89011ae550ba0c0c32b5ae2794bad92c_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_command_handler_a54c1b7e2f1a6d0365ef36a0c738d7e02}\label{class_command_handler_a54c1b7e2f1a6d0365ef36a0c738d7e02}} 
+\index{CommandHandler@{CommandHandler}!handleCommand@{handleCommand}}
+\index{handleCommand@{handleCommand}!CommandHandler@{CommandHandler}}
+\doxysubsubsection{\texorpdfstring{handleCommand()}{handleCommand()}}
+{\footnotesize\ttfamily void Command\+Handler\+::handle\+Command (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_command}{Command}}}]{command }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_command_handler_a54c1b7e2f1a6d0365ef36a0c738d7e02_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_command_handler_a54c1b7e2f1a6d0365ef36a0c738d7e02_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_command_handler_a701fab97d726eb7563583f517e29a1af}\label{class_command_handler_a701fab97d726eb7563583f517e29a1af}} 
+\index{CommandHandler@{CommandHandler}!setup@{setup}}
+\index{setup@{setup}!CommandHandler@{CommandHandler}}
+\doxysubsubsection{\texorpdfstring{setup()}{setup()}}
+{\footnotesize\ttfamily void Command\+Handler\+::setup (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_command_handler_a6c61c87a0ad0045aa6133dd69112a72b}\label{class_command_handler_a6c61c87a0ad0045aa6133dd69112a72b}} 
+\index{CommandHandler@{CommandHandler}!update@{update}}
+\index{update@{update}!CommandHandler@{CommandHandler}}
+\doxysubsubsection{\texorpdfstring{update()}{update()}}
+{\footnotesize\ttfamily void Command\+Handler\+::update (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_command_handler_a6c61c87a0ad0045aa6133dd69112a72b_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_command_handler_a6c61c87a0ad0045aa6133dd69112a72b_icgraph}
+\end{center}
+\end{figure}
+
+
+\doxysubsection{Friends And Related Function Documentation}
+\mbox{\Hypertarget{class_command_handler_a82ca116715acd6c64f2acf4dc71e4038}\label{class_command_handler_a82ca116715acd6c64f2acf4dc71e4038}} 
+\index{CommandHandler@{CommandHandler}!NetworkManager@{NetworkManager}}
+\index{NetworkManager@{NetworkManager}!CommandHandler@{CommandHandler}}
+\doxysubsubsection{\texorpdfstring{NetworkManager}{NetworkManager}}
+{\footnotesize\ttfamily friend class \mbox{\hyperlink{class_network_manager}{Network\+Manager}}\hspace{0.3cm}{\ttfamily [friend]}}
+
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{class_command_handler_ae0ee0cc2b5b8a64321ff595b66c278f8}\label{class_command_handler_ae0ee0cc2b5b8a64321ff595b66c278f8}} 
+\index{CommandHandler@{CommandHandler}!\_sm@{\_sm}}
+\index{\_sm@{\_sm}!CommandHandler@{CommandHandler}}
+\doxysubsubsection{\texorpdfstring{\_sm}{\_sm}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classstate_machine}{state\+Machine}}$\ast$ Command\+Handler\+::\+\_\+sm\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{class_command_handler_a8ae50b25a5f7919da291b3a5bfb4e6e4}\label{class_command_handler_a8ae50b25a5f7919da291b3a5bfb4e6e4}} 
+\index{CommandHandler@{CommandHandler}!commandbuffer@{commandbuffer}}
+\index{commandbuffer@{commandbuffer}!CommandHandler@{CommandHandler}}
+\doxysubsubsection{\texorpdfstring{commandbuffer}{commandbuffer}}
+{\footnotesize\ttfamily std\+::vector$<$\mbox{\hyperlink{struct_command}{Command}}$>$ Command\+Handler\+::commandbuffer\hspace{0.3cm}{\ttfamily [private]}}
+
 
 
 The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
 \item 
-/\+Users/kiran/\+Documents/\+Projects/\+ICLR/\+Avionics/\+Ricardo\+\_\+\+OS/\+Ricardo\+\_\+\+OS/src/\+Comms/command\+Handler.\+h\item 
-/\+Users/kiran/\+Documents/\+Projects/\+ICLR/\+Avionics/\+Ricardo\+\_\+\+OS/\+Ricardo\+\_\+\+OS/src/\+Comms/command\+Handler.\+cpp\end{DoxyCompactItemize}
+/\+Users/kiran/\+Documents/\+Projects/\+ICLR/\+Avionics/\+Ricardo\+\_\+\+OS/\+Ricardo\+\_\+\+OS/src/\+Comms/\mbox{\hyperlink{command_handler_8h}{command\+Handler.\+h}}\item 
+/\+Users/kiran/\+Documents/\+Projects/\+ICLR/\+Avionics/\+Ricardo\+\_\+\+OS/\+Ricardo\+\_\+\+OS/src/\+Comms/\mbox{\hyperlink{command_handler_8cpp}{command\+Handler.\+cpp}}\end{DoxyCompactItemize}

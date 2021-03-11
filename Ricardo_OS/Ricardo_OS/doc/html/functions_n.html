@@ -9,9 +9,18 @@
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+  $(document).ready(function() { init_search(); });
+/* @license-end */
+</script>
 <link href="doxygen.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
@@ -25,6 +34,21 @@
    &#160;<span id="projectnumber">1</span>
    </div>
   </td>
+   <td>        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <img id="MSearchSelect" src="search/mag_sel.svg"
+               onmouseover="return searchBox.OnSearchSelectShow()"
+               onmouseout="return searchBox.OnSearchSelectHide()"
+               alt=""/>
+          <input type="text" id="MSearchField" value="Search" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.svg" alt=""/></a>
+          </span>
+        </div>
+</td>
  </tr>
  </tbody>
 </table>
@@ -36,17 +60,23 @@
 var searchBox = new SearchBox("searchBox", "search",false,'Search','.html');
 /* @license-end */
 </script>
-<script type="text/javascript" src="menudata.js"></script>
-<script type="text/javascript" src="menu.js"></script>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
 <script type="text/javascript">
 /* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
-$(function() {
-  initMenu('',true,false,'search.php','Search');
-  $(document).ready(function() { init_search(); });
-});
-/* @license-end */</script>
-<div id="main-nav"></div>
-</div><!-- top -->
+$(document).ready(function(){initNavTree('functions_n.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
      onmouseover="return searchBox.OnSearchSelectShow()"
@@ -62,38 +92,42 @@ $(function() {
 </div>
 
 <div class="contents">
-<div class="textblock">Here is a list of all documented class members with links to the class documentation for each member:</div>
+<div class="textblock">Here is a list of all class members with links to the classes they belong to:</div>
 
 <h3><a id="index_n"></a>- n -</h3><ul>
 <li>name
-: <a class="el" href="structdirectory_entry.html#a05dc993ea55a1a742de5970541a31ecb">directoryEntry</a>
+: <a class="el" href="structdirectory__element__t.html#abeef13527d061ea7392bbda7fad95ec4">directory_element_t</a>
 </li>
-<li>name1
-: <a class="el" href="structlong_directory_entry.html#a629f1ca5ba2ccce6cac5295578b6e7b4">longDirectoryEntry</a>
+<li>network_frame
+: <a class="el" href="class_log_controller.html#a7e90156517ab8b010c8ad57e396873be">LogController</a>
 </li>
-<li>name2
-: <a class="el" href="structlong_directory_entry.html#ad763b5a3da4b8d326d9888493fbb819a">longDirectoryEntry</a>
+<li>network_log_buffer
+: <a class="el" href="class_log_controller.html#ac953b13f7d276f7a2719de60ac075418">LogController</a>
 </li>
-<li>name3
-: <a class="el" href="structlong_directory_entry.html#a6f14c81b7d224dc4431217f92601257a">longDirectoryEntry</a>
+<li>network_log_filename
+: <a class="el" href="class_log_controller.html#acfa8f09f193f02e12ce64c6e5c6a4189">LogController</a>
 </li>
-<li>nextFree
-: <a class="el" href="structfat32__fsinfo.html#a539b3bb0a2ead9df417df9ac8b6b1606">fat32_fsinfo</a>
+<li>NetworkManager
+: <a class="el" href="class_command_handler.html#a82ca116715acd6c64f2acf4dc71e4038">CommandHandler</a>
+, <a class="el" href="class_network_manager.html#aa1832d9cbe09178014f299fb1dce404c">NetworkManager</a>
 </li>
-<li>NoExtension()
-: <a class="el" href="classcpplint_1_1_file_info.html#acb46555a72b346966f4bf28c08e3b1fa">cpplint.FileInfo</a>
+<li>networkmanager
+: <a class="el" href="classstate_machine.html#a5392d553305ccc5282a6cd61159c9829">stateMachine</a>
 </li>
-<li>nsac
-: <a class="el" href="struct_c_s_d_v2.html#aa94bece488dd8683b532069d97d8b764">CSDV2</a>
+<li>new_message()
+: <a class="el" href="class_system_status.html#a872912293f3c93e87eb69c9a70f7743a">SystemStatus</a>
 </li>
-<li>NumLines()
-: <a class="el" href="classcpplint_1_1_cleansed_lines.html#a26a7eff70493d64d58d16f4a406c7ee9">cpplint.CleansedLines</a>
+<li>node_type
+: <a class="el" href="class_network_manager.html#a260d13785b90f5854dd7d4173379860f">NetworkManager</a>
 </li>
 </ul>
 </div><!-- contents -->
+</div><!-- doc-content -->
 <!-- start footer part -->
-<hr class="footer"/><address class="footer"><small>
-Generated by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1
-</small></address>
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
+  </ul>
+</div>
 </body>
 </html>

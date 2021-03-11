@@ -1,9 +1,7 @@
 var searchData=
 [
-  ['use_5ffcntl_5fh_2097',['USE_FCNTL_H',['../_sd_fat_config_8h.html#ab4b7255422e65730612f1f6af1a26752',1,'SdFatConfig.h']]],
-  ['use_5flong_5ffile_5fnames_2098',['USE_LONG_FILE_NAMES',['../_fat_lib_config_8h.html#a2536b194b3b007604a39e8526e108b52',1,'USE_LONG_FILE_NAMES():&#160;FatLibConfig.h'],['../_sd_fat_config_8h.html#a2536b194b3b007604a39e8526e108b52',1,'USE_LONG_FILE_NAMES():&#160;SdFatConfig.h']]],
-  ['use_5fmulti_5fblock_5fio_2099',['USE_MULTI_BLOCK_IO',['../_fat_lib_config_8h.html#afc3ef382d3ab8d7e6f8fc134ef21d487',1,'USE_MULTI_BLOCK_IO():&#160;FatLibConfig.h'],['../_sd_fat_config_8h.html#afc3ef382d3ab8d7e6f8fc134ef21d487',1,'USE_MULTI_BLOCK_IO():&#160;SdFatConfig.h']]],
-  ['use_5fsd_5fcrc_2100',['USE_SD_CRC',['../_sd_fat_config_8h.html#af2e76ffb2fdb830175abf513dd640fdd',1,'SdFatConfig.h']]],
-  ['use_5fseparate_5ffat_5fcache_2101',['USE_SEPARATE_FAT_CACHE',['../_fat_lib_config_8h.html#a23f662882413dcb017ebd8107473b8c3',1,'USE_SEPARATE_FAT_CACHE():&#160;FatLibConfig.h'],['../_sd_fat_config_8h.html#a23f662882413dcb017ebd8107473b8c3',1,'USE_SEPARATE_FAT_CACHE():&#160;SdFatConfig.h']]],
-  ['use_5fstandard_5fspi_5flibrary_2102',['USE_STANDARD_SPI_LIBRARY',['../_sd_fat_config_8h.html#a3dc42547ca4567cb789bec55759afeb2',1,'SdFatConfig.h']]]
+  ['mag_5fscale_1165',['MAG_SCALE',['../config_8h.html#af91ea782523c15cb13ede694b43d1510',1,'config.h']]],
+  ['magcs_1166',['MagCs',['../ricardo__pins_8h.html#ae2661a087b618c8ad297bad03f1f1bd8',1,'ricardo_pins.h']]],
+  ['max_5fpacket_5flength_1167',['MAX_PACKET_LENGTH',['../config_8h.html#a973c680573b37fc359fc68d0707da355',1,'config.h']]],
+  ['max_5fserial_5ftimeout_1168',['MAX_SERIAL_TIMEOUT',['../config_8h.html#a9ddcfdd4db871c4dff34d6a3b4c26ffb',1,'config.h']]]
 ];

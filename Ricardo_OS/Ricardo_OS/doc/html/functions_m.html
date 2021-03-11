@@ -9,9 +9,18 @@
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+  $(document).ready(function() { init_search(); });
+/* @license-end */
+</script>
 <link href="doxygen.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
@@ -25,6 +34,21 @@
    &#160;<span id="projectnumber">1</span>
    </div>
   </td>
+   <td>        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <img id="MSearchSelect" src="search/mag_sel.svg"
+               onmouseover="return searchBox.OnSearchSelectShow()"
+               onmouseout="return searchBox.OnSearchSelectHide()"
+               alt=""/>
+          <input type="text" id="MSearchField" value="Search" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.svg" alt=""/></a>
+          </span>
+        </div>
+</td>
  </tr>
  </tbody>
 </table>
@@ -36,17 +60,23 @@
 var searchBox = new SearchBox("searchBox", "search",false,'Search','.html');
 /* @license-end */
 </script>
-<script type="text/javascript" src="menudata.js"></script>
-<script type="text/javascript" src="menu.js"></script>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
 <script type="text/javascript">
 /* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
-$(function() {
-  initMenu('',true,false,'search.php','Search');
-  $(document).ready(function() { init_search(); });
-});
-/* @license-end */</script>
-<div id="main-nav"></div>
-</div><!-- top -->
+$(document).ready(function(){initNavTree('functions_m.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
      onmouseover="return searchBox.OnSearchSelectShow()"
@@ -62,47 +92,53 @@ $(function() {
 </div>
 
 <div class="contents">
-<div class="textblock">Here is a list of all documented class members with links to the class documentation for each member:</div>
+<div class="textblock">Here is a list of all class members with links to the classes they belong to:</div>
 
 <h3><a id="index_m"></a>- m -</h3><ul>
-<li>mbr
-: <a class="el" href="unioncache__t.html#a6ac10bfb1ebb1139c448456679663bb6">cache_t</a>
+<li>max_size_
+: <a class="el" href="class_circular_buffer.html#a588c4166b7abe2cf38e58c63026fe511">CircularBuffer&lt; T &gt;</a>
 </li>
-<li>mbrSig0
-: <a class="el" href="structmaster_boot_record.html#a42b0b413ecb21ac5314d4f6bca05308f">masterBootRecord</a>
+<li>member_size()
+: <a class="el" href="classserializer.html#a8c136a3b1df93a38d9796f89c20aacff">serializer&lt; C, T &gt;</a>
 </li>
-<li>mbrSig1
-: <a class="el" href="structmaster_boot_record.html#aafbbcb4f6a2d1181c6458d4c9603df4f">masterBootRecord</a>
+<li>message
+: <a class="el" href="classsystem__logframe.html#a285b45433e152e3a37c817a5f5ee337b">system_logframe</a>
 </li>
-<li>mdt_month
-: <a class="el" href="struct_c_i_d.html#a60e35d4b824da135dc2a9197c5544929">CID</a>
+<li>metric
+: <a class="el" href="struct_routing_table_entry.html#aac4c68e32d470ed7fe8aea943352b6cb">RoutingTableEntry</a>
 </li>
-<li>mdt_year_high
-: <a class="el" href="struct_c_i_d.html#a6b16c5e74b48af39036aa831fca4cb46">CID</a>
+<li>microsd
+: <a class="el" href="class_storage_controller.html#a0a6342fa9f3905d56ece169cc1cc316a">StorageController</a>
 </li>
-<li>mdt_year_low
-: <a class="el" href="struct_c_i_d.html#afe44a84b416bea68dea9bad27c172c3d">CID</a>
-</li>
-<li>mediaType
-: <a class="el" href="structbios_parm_block.html#a4237e7c3ba247516d546c149954e5042">biosParmBlock</a>
-, <a class="el" href="structfat32__boot.html#a3b1ab5d2dc872c0d80cd4f34622de417">fat32_boot</a>
-, <a class="el" href="structfat__boot.html#a63eaf7185663369af2527309634d3c90">fat_boot</a>
-</li>
-<li>mid
-: <a class="el" href="struct_c_i_d.html#aa77436aa64a8a0e80573ade765039d2f">CID</a>
+<li>microsd_prefix
+: <a class="el" href="class_log_controller.html#abe5dd66181f06e84e546ec6d38cfc809">LogController</a>
 </li>
 <li>mkdir()
-: <a class="el" href="class_fat_file.html#abab5b9f72cc796388dd4eed01d13d90d">FatFile</a>
-, <a class="el" href="class_fat_file_system.html#a231c62c98ba8ac3c2624dc5ad2053ebf">FatFileSystem</a>
+: <a class="el" href="class_storage_controller.html#a1c88bf9602ab25ddceac9503d880a9f9">StorageController</a>
 </li>
-<li>mustBeZero
-: <a class="el" href="structlong_directory_entry.html#af3055930e869875e49b32ef0b49c3649">longDirectoryEntry</a>
+<li>mutex_
+: <a class="el" href="class_circular_buffer.html#aa4762ba2167d8b9560ff39328b4b3afa">CircularBuffer&lt; T &gt;</a>
+</li>
+<li>mx
+: <a class="el" href="class_detailed_all_packet.html#acada845035ac620d43cd1c93c204008f">DetailedAllPacket</a>
+, <a class="el" href="structraw__measurements__t.html#a11f0f6933b140baf745dd7734ea487f3">raw_measurements_t</a>
+</li>
+<li>my
+: <a class="el" href="class_detailed_all_packet.html#a88ad117efb7480be6b42127a31128dee">DetailedAllPacket</a>
+, <a class="el" href="structraw__measurements__t.html#a6eecb9621f12e4dc6e33f9be97c014ef">raw_measurements_t</a>
+</li>
+<li>mz
+: <a class="el" href="class_detailed_all_packet.html#a48ec4ac5e1132e89b5c0c448ac421f26">DetailedAllPacket</a>
+, <a class="el" href="structraw__measurements__t.html#a17b929c5b59c04e9fa5d508fc0b34d51">raw_measurements_t</a>
 </li>
 </ul>
 </div><!-- contents -->
+</div><!-- doc-content -->
 <!-- start footer part -->
-<hr class="footer"/><address class="footer"><small>
-Generated by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1
-</small></address>
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
+  </ul>
+</div>
 </body>
 </html>

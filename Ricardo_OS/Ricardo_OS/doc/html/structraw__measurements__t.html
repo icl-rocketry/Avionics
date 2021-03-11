@@ -9,9 +9,18 @@
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+  $(document).ready(function() { init_search(); });
+/* @license-end */
+</script>
 <link href="doxygen.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
@@ -25,6 +34,21 @@
    &#160;<span id="projectnumber">1</span>
    </div>
   </td>
+   <td>        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <img id="MSearchSelect" src="search/mag_sel.svg"
+               onmouseover="return searchBox.OnSearchSelectShow()"
+               onmouseout="return searchBox.OnSearchSelectHide()"
+               alt=""/>
+          <input type="text" id="MSearchField" value="Search" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.svg" alt=""/></a>
+          </span>
+        </div>
+</td>
  </tr>
  </tbody>
 </table>
@@ -36,16 +60,23 @@
 var searchBox = new SearchBox("searchBox", "search",false,'Search','.html');
 /* @license-end */
 </script>
-<script type="text/javascript" src="menudata.js"></script>
-<script type="text/javascript" src="menu.js"></script>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
 <script type="text/javascript">
 /* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
-$(function() {
-  initMenu('',true,false,'search.php','Search');
-  $(document).ready(function() { init_search(); });
-});
-/* @license-end */</script>
-<div id="main-nav"></div>
+$(document).ready(function(){initNavTree('structraw__measurements__t.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
      onmouseover="return searchBox.OnSearchSelectShow()"
@@ -60,7 +91,6 @@ $(function() {
 </iframe>
 </div>
 
-</div><!-- top -->
 <div class="header">
   <div class="summary">
 <a href="#pub-attribs">Public Attributes</a> &#124;
@@ -69,86 +99,392 @@ $(function() {
 <div class="title">raw_measurements_t Struct Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p><code>#include &lt;<a class="el" href="sensor_structs_8h_source.html">sensorStructs.h</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
-<tr class="memitem:adbac29071ee6bfb27e02f78f11afb145"><td class="memItemLeft" align="right" valign="top"><a id="adbac29071ee6bfb27e02f78f11afb145"></a>
-float&#160;</td><td class="memItemRight" valign="bottom"><b>ax</b></td></tr>
+<tr class="memitem:adbac29071ee6bfb27e02f78f11afb145"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structraw__measurements__t.html#adbac29071ee6bfb27e02f78f11afb145">ax</a></td></tr>
 <tr class="separator:adbac29071ee6bfb27e02f78f11afb145"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:afc23f6645e6d8379f24cf489c73f60fa"><td class="memItemLeft" align="right" valign="top"><a id="afc23f6645e6d8379f24cf489c73f60fa"></a>
-float&#160;</td><td class="memItemRight" valign="bottom"><b>ay</b></td></tr>
+<tr class="memitem:afc23f6645e6d8379f24cf489c73f60fa"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structraw__measurements__t.html#afc23f6645e6d8379f24cf489c73f60fa">ay</a></td></tr>
 <tr class="separator:afc23f6645e6d8379f24cf489c73f60fa"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a201ae5378f9248cc5f1f290e663e896d"><td class="memItemLeft" align="right" valign="top"><a id="a201ae5378f9248cc5f1f290e663e896d"></a>
-float&#160;</td><td class="memItemRight" valign="bottom"><b>az</b></td></tr>
+<tr class="memitem:a201ae5378f9248cc5f1f290e663e896d"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structraw__measurements__t.html#a201ae5378f9248cc5f1f290e663e896d">az</a></td></tr>
 <tr class="separator:a201ae5378f9248cc5f1f290e663e896d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2ef1cca699123ea9e82faed286500cf1"><td class="memItemLeft" align="right" valign="top"><a id="a2ef1cca699123ea9e82faed286500cf1"></a>
-float&#160;</td><td class="memItemRight" valign="bottom"><b>gx</b></td></tr>
+<tr class="memitem:a2ef1cca699123ea9e82faed286500cf1"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structraw__measurements__t.html#a2ef1cca699123ea9e82faed286500cf1">gx</a></td></tr>
 <tr class="separator:a2ef1cca699123ea9e82faed286500cf1"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa4155c467cf1533455c396b14410eabc"><td class="memItemLeft" align="right" valign="top"><a id="aa4155c467cf1533455c396b14410eabc"></a>
-float&#160;</td><td class="memItemRight" valign="bottom"><b>gy</b></td></tr>
+<tr class="memitem:aa4155c467cf1533455c396b14410eabc"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structraw__measurements__t.html#aa4155c467cf1533455c396b14410eabc">gy</a></td></tr>
 <tr class="separator:aa4155c467cf1533455c396b14410eabc"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab2983bb7aade4a03c19baf1498f06c9d"><td class="memItemLeft" align="right" valign="top"><a id="ab2983bb7aade4a03c19baf1498f06c9d"></a>
-float&#160;</td><td class="memItemRight" valign="bottom"><b>gz</b></td></tr>
+<tr class="memitem:ab2983bb7aade4a03c19baf1498f06c9d"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structraw__measurements__t.html#ab2983bb7aade4a03c19baf1498f06c9d">gz</a></td></tr>
 <tr class="separator:ab2983bb7aade4a03c19baf1498f06c9d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a11f0f6933b140baf745dd7734ea487f3"><td class="memItemLeft" align="right" valign="top"><a id="a11f0f6933b140baf745dd7734ea487f3"></a>
-float&#160;</td><td class="memItemRight" valign="bottom"><b>mx</b></td></tr>
+<tr class="memitem:a11f0f6933b140baf745dd7734ea487f3"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structraw__measurements__t.html#a11f0f6933b140baf745dd7734ea487f3">mx</a></td></tr>
 <tr class="separator:a11f0f6933b140baf745dd7734ea487f3"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6eecb9621f12e4dc6e33f9be97c014ef"><td class="memItemLeft" align="right" valign="top"><a id="a6eecb9621f12e4dc6e33f9be97c014ef"></a>
-float&#160;</td><td class="memItemRight" valign="bottom"><b>my</b></td></tr>
+<tr class="memitem:a6eecb9621f12e4dc6e33f9be97c014ef"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structraw__measurements__t.html#a6eecb9621f12e4dc6e33f9be97c014ef">my</a></td></tr>
 <tr class="separator:a6eecb9621f12e4dc6e33f9be97c014ef"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a17b929c5b59c04e9fa5d508fc0b34d51"><td class="memItemLeft" align="right" valign="top"><a id="a17b929c5b59c04e9fa5d508fc0b34d51"></a>
-float&#160;</td><td class="memItemRight" valign="bottom"><b>mz</b></td></tr>
+<tr class="memitem:a17b929c5b59c04e9fa5d508fc0b34d51"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structraw__measurements__t.html#a17b929c5b59c04e9fa5d508fc0b34d51">mz</a></td></tr>
 <tr class="separator:a17b929c5b59c04e9fa5d508fc0b34d51"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0329e1410bffcda37f9186ef5423d73f"><td class="memItemLeft" align="right" valign="top"><a id="a0329e1410bffcda37f9186ef5423d73f"></a>
-int16_t&#160;</td><td class="memItemRight" valign="bottom"><b>imu_temp</b></td></tr>
+<tr class="memitem:a0329e1410bffcda37f9186ef5423d73f"><td class="memItemLeft" align="right" valign="top">int16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structraw__measurements__t.html#a0329e1410bffcda37f9186ef5423d73f">imu_temp</a></td></tr>
 <tr class="separator:a0329e1410bffcda37f9186ef5423d73f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a46c700b055e6b64705def8f838ec5b47"><td class="memItemLeft" align="right" valign="top"><a id="a46c700b055e6b64705def8f838ec5b47"></a>
-float&#160;</td><td class="memItemRight" valign="bottom"><b>gps_lat</b></td></tr>
+<tr class="memitem:a46c700b055e6b64705def8f838ec5b47"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structraw__measurements__t.html#a46c700b055e6b64705def8f838ec5b47">gps_lat</a></td></tr>
 <tr class="separator:a46c700b055e6b64705def8f838ec5b47"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aeef8ef3188e647a761475b7f1814ab66"><td class="memItemLeft" align="right" valign="top"><a id="aeef8ef3188e647a761475b7f1814ab66"></a>
-float&#160;</td><td class="memItemRight" valign="bottom"><b>gps_long</b></td></tr>
+<tr class="memitem:aeef8ef3188e647a761475b7f1814ab66"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structraw__measurements__t.html#aeef8ef3188e647a761475b7f1814ab66">gps_long</a></td></tr>
 <tr class="separator:aeef8ef3188e647a761475b7f1814ab66"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9f926b466e17f6548f78d80d04da01cf"><td class="memItemLeft" align="right" valign="top"><a id="a9f926b466e17f6548f78d80d04da01cf"></a>
-float&#160;</td><td class="memItemRight" valign="bottom"><b>gps_speed</b></td></tr>
+<tr class="memitem:a9f926b466e17f6548f78d80d04da01cf"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structraw__measurements__t.html#a9f926b466e17f6548f78d80d04da01cf">gps_speed</a></td></tr>
 <tr class="separator:a9f926b466e17f6548f78d80d04da01cf"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4f68396bbe707f49cab31eb55e550d73"><td class="memItemLeft" align="right" valign="top"><a id="a4f68396bbe707f49cab31eb55e550d73"></a>
-float&#160;</td><td class="memItemRight" valign="bottom"><b>gps_alt</b></td></tr>
+<tr class="memitem:a4f68396bbe707f49cab31eb55e550d73"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structraw__measurements__t.html#a4f68396bbe707f49cab31eb55e550d73">gps_alt</a></td></tr>
 <tr class="separator:a4f68396bbe707f49cab31eb55e550d73"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab97b64d567ea0e1007409c794f66fc15"><td class="memItemLeft" align="right" valign="top"><a id="ab97b64d567ea0e1007409c794f66fc15"></a>
-float&#160;</td><td class="memItemRight" valign="bottom"><b>gps_course</b></td></tr>
+<tr class="memitem:ab97b64d567ea0e1007409c794f66fc15"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structraw__measurements__t.html#ab97b64d567ea0e1007409c794f66fc15">gps_course</a></td></tr>
 <tr class="separator:ab97b64d567ea0e1007409c794f66fc15"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0777d42b0abeee7c433fe1143aad35e5"><td class="memItemLeft" align="right" valign="top"><a id="a0777d42b0abeee7c433fe1143aad35e5"></a>
-float&#160;</td><td class="memItemRight" valign="bottom"><b>gps_hdop</b></td></tr>
+<tr class="memitem:a0777d42b0abeee7c433fe1143aad35e5"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structraw__measurements__t.html#a0777d42b0abeee7c433fe1143aad35e5">gps_hdop</a></td></tr>
 <tr class="separator:a0777d42b0abeee7c433fe1143aad35e5"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad32300404d256c5b494cddc37c6d917d"><td class="memItemLeft" align="right" valign="top"><a id="ad32300404d256c5b494cddc37c6d917d"></a>
-float&#160;</td><td class="memItemRight" valign="bottom"><b>gps_sat</b></td></tr>
+<tr class="memitem:ad32300404d256c5b494cddc37c6d917d"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structraw__measurements__t.html#ad32300404d256c5b494cddc37c6d917d">gps_sat</a></td></tr>
 <tr class="separator:ad32300404d256c5b494cddc37c6d917d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af4c47a349f87a6238ae9042360f282f2"><td class="memItemLeft" align="right" valign="top"><a id="af4c47a349f87a6238ae9042360f282f2"></a>
-float&#160;</td><td class="memItemRight" valign="bottom"><b>baro_alt</b></td></tr>
+<tr class="memitem:af4c47a349f87a6238ae9042360f282f2"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structraw__measurements__t.html#af4c47a349f87a6238ae9042360f282f2">baro_alt</a></td></tr>
 <tr class="separator:af4c47a349f87a6238ae9042360f282f2"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:afefdff57b2db247311f83e1a95afeccf"><td class="memItemLeft" align="right" valign="top"><a id="afefdff57b2db247311f83e1a95afeccf"></a>
-float&#160;</td><td class="memItemRight" valign="bottom"><b>baro_temp</b></td></tr>
+<tr class="memitem:afefdff57b2db247311f83e1a95afeccf"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structraw__measurements__t.html#afefdff57b2db247311f83e1a95afeccf">baro_temp</a></td></tr>
 <tr class="separator:afefdff57b2db247311f83e1a95afeccf"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae4e6331f376d756730d04dbe8910f558"><td class="memItemLeft" align="right" valign="top"><a id="ae4e6331f376d756730d04dbe8910f558"></a>
-float&#160;</td><td class="memItemRight" valign="bottom"><b>baro_press</b></td></tr>
+<tr class="memitem:ae4e6331f376d756730d04dbe8910f558"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structraw__measurements__t.html#ae4e6331f376d756730d04dbe8910f558">baro_press</a></td></tr>
 <tr class="separator:ae4e6331f376d756730d04dbe8910f558"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a540fb38a3605975f5eead339fda89312"><td class="memItemLeft" align="right" valign="top"><a id="a540fb38a3605975f5eead339fda89312"></a>
-int&#160;</td><td class="memItemRight" valign="bottom"><b>batt_volt</b></td></tr>
+<tr class="memitem:a540fb38a3605975f5eead339fda89312"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structraw__measurements__t.html#a540fb38a3605975f5eead339fda89312">batt_volt</a></td></tr>
 <tr class="separator:a540fb38a3605975f5eead339fda89312"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa452a5f8121ef56cca490f895811c519"><td class="memItemLeft" align="right" valign="top"><a id="aa452a5f8121ef56cca490f895811c519"></a>
-int&#160;</td><td class="memItemRight" valign="bottom"><b>batt_percent</b></td></tr>
+<tr class="memitem:aa452a5f8121ef56cca490f895811c519"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structraw__measurements__t.html#aa452a5f8121ef56cca490f895811c519">batt_percent</a></td></tr>
 <tr class="separator:aa452a5f8121ef56cca490f895811c519"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4ca91d9057a37c15ce47fa668eadf110"><td class="memItemLeft" align="right" valign="top"><a id="a4ca91d9057a37c15ce47fa668eadf110"></a>
-uint32_t&#160;</td><td class="memItemRight" valign="bottom"><b>system_time</b></td></tr>
+<tr class="memitem:a4ca91d9057a37c15ce47fa668eadf110"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structraw__measurements__t.html#a4ca91d9057a37c15ce47fa668eadf110">system_time</a></td></tr>
 <tr class="separator:a4ca91d9057a37c15ce47fa668eadf110"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
+<h2 class="groupheader">Member Data Documentation</h2>
+<a id="adbac29071ee6bfb27e02f78f11afb145"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#adbac29071ee6bfb27e02f78f11afb145">&#9670;&nbsp;</a></span>ax</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">float raw_measurements_t::ax</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="afc23f6645e6d8379f24cf489c73f60fa"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afc23f6645e6d8379f24cf489c73f60fa">&#9670;&nbsp;</a></span>ay</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">float raw_measurements_t::ay</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a201ae5378f9248cc5f1f290e663e896d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a201ae5378f9248cc5f1f290e663e896d">&#9670;&nbsp;</a></span>az</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">float raw_measurements_t::az</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="af4c47a349f87a6238ae9042360f282f2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af4c47a349f87a6238ae9042360f282f2">&#9670;&nbsp;</a></span>baro_alt</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">float raw_measurements_t::baro_alt</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ae4e6331f376d756730d04dbe8910f558"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae4e6331f376d756730d04dbe8910f558">&#9670;&nbsp;</a></span>baro_press</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">float raw_measurements_t::baro_press</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="afefdff57b2db247311f83e1a95afeccf"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afefdff57b2db247311f83e1a95afeccf">&#9670;&nbsp;</a></span>baro_temp</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">float raw_measurements_t::baro_temp</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="aa452a5f8121ef56cca490f895811c519"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa452a5f8121ef56cca490f895811c519">&#9670;&nbsp;</a></span>batt_percent</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int raw_measurements_t::batt_percent</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a540fb38a3605975f5eead339fda89312"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a540fb38a3605975f5eead339fda89312">&#9670;&nbsp;</a></span>batt_volt</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int raw_measurements_t::batt_volt</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a4f68396bbe707f49cab31eb55e550d73"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4f68396bbe707f49cab31eb55e550d73">&#9670;&nbsp;</a></span>gps_alt</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">float raw_measurements_t::gps_alt</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ab97b64d567ea0e1007409c794f66fc15"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab97b64d567ea0e1007409c794f66fc15">&#9670;&nbsp;</a></span>gps_course</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">float raw_measurements_t::gps_course</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a0777d42b0abeee7c433fe1143aad35e5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0777d42b0abeee7c433fe1143aad35e5">&#9670;&nbsp;</a></span>gps_hdop</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">float raw_measurements_t::gps_hdop</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a46c700b055e6b64705def8f838ec5b47"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a46c700b055e6b64705def8f838ec5b47">&#9670;&nbsp;</a></span>gps_lat</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">float raw_measurements_t::gps_lat</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="aeef8ef3188e647a761475b7f1814ab66"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aeef8ef3188e647a761475b7f1814ab66">&#9670;&nbsp;</a></span>gps_long</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">float raw_measurements_t::gps_long</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ad32300404d256c5b494cddc37c6d917d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad32300404d256c5b494cddc37c6d917d">&#9670;&nbsp;</a></span>gps_sat</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">float raw_measurements_t::gps_sat</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a9f926b466e17f6548f78d80d04da01cf"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9f926b466e17f6548f78d80d04da01cf">&#9670;&nbsp;</a></span>gps_speed</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">float raw_measurements_t::gps_speed</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a2ef1cca699123ea9e82faed286500cf1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2ef1cca699123ea9e82faed286500cf1">&#9670;&nbsp;</a></span>gx</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">float raw_measurements_t::gx</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="aa4155c467cf1533455c396b14410eabc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa4155c467cf1533455c396b14410eabc">&#9670;&nbsp;</a></span>gy</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">float raw_measurements_t::gy</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ab2983bb7aade4a03c19baf1498f06c9d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab2983bb7aade4a03c19baf1498f06c9d">&#9670;&nbsp;</a></span>gz</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">float raw_measurements_t::gz</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a0329e1410bffcda37f9186ef5423d73f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0329e1410bffcda37f9186ef5423d73f">&#9670;&nbsp;</a></span>imu_temp</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int16_t raw_measurements_t::imu_temp</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a11f0f6933b140baf745dd7734ea487f3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a11f0f6933b140baf745dd7734ea487f3">&#9670;&nbsp;</a></span>mx</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">float raw_measurements_t::mx</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a6eecb9621f12e4dc6e33f9be97c014ef"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6eecb9621f12e4dc6e33f9be97c014ef">&#9670;&nbsp;</a></span>my</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">float raw_measurements_t::my</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a17b929c5b59c04e9fa5d508fc0b34d51"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a17b929c5b59c04e9fa5d508fc0b34d51">&#9670;&nbsp;</a></span>mz</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">float raw_measurements_t::mz</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a4ca91d9057a37c15ce47fa668eadf110"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4ca91d9057a37c15ce47fa668eadf110">&#9670;&nbsp;</a></span>system_time</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint32_t raw_measurements_t::system_time</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <hr/>The documentation for this struct was generated from the following file:<ul>
 <li>/Users/kiran/Documents/Projects/ICLR/Avionics/Ricardo_OS/Ricardo_OS/src/Sensors/<a class="el" href="sensor_structs_8h_source.html">sensorStructs.h</a></li>
 </ul>
 </div><!-- contents -->
+</div><!-- doc-content -->
 <!-- start footer part -->
-<hr class="footer"/><address class="footer"><small>
-Generated by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1
-</small></address>
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="structraw__measurements__t.html">raw_measurements_t</a></li>
+    <li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
+  </ul>
+</div>
 </body>
 </html>
