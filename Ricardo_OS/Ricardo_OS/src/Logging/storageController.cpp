@@ -95,7 +95,7 @@ void StorageController::mkdir(std::string path,STORAGE_DEVICE device){
             if(!microsd.mkdir(path.c_str())){
                 microsd.mkdir(path.c_str());
             }else{
-                _sm->logcontroller.log(path + " directory already exsists");
+                _sm->logcontroller.log(path + " directory already exists");
             }
             break;
         }
@@ -103,7 +103,7 @@ void StorageController::mkdir(std::string path,STORAGE_DEVICE device){
             if(!flash_fatfs.mkdir(path.c_str())){
                 flash_fatfs.mkdir(path.c_str());
             }else{
-                _sm->logcontroller.log(path + " directory already exsists");
+                _sm->logcontroller.log(path + " directory already exists");
             }
             break;
         }
