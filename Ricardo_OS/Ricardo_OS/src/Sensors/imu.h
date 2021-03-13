@@ -7,12 +7,13 @@
 #define RUAIRIDH_TEST_BOARD //used for testing  stuff
 
 #include "Logging/systemstatus.h"
+#include "Logging/logController.h"
 #include "sensorStructs.h"
 
 
 class Imu{
     public:
-        Imu(SPIClass* spi,SystemStatus* systemstatus,raw_measurements_t* raw_data);
+        Imu(SPIClass* spi,SystemStatus* systemstatus,LogController* logcontroller,raw_measurements_t* raw_data);
         void setup();
         void update();
 
@@ -21,6 +22,7 @@ class Imu{
         SPIClass* _spi;
         //pointer to system status object
         SystemStatus* _systemstatus;
+        LogController* _logcontroller;
         //Sparkfun IMU object
         LSM9DS1 imu;
         //pointer to raw measurements struct

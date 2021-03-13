@@ -4,12 +4,12 @@
 #include "SPI.h"
 
 #include "Logging/systemstatus.h"
-
+#include "Logging/logController.h"
 #include "sensorStructs.h"
 
 class Baro{
     public:
-        Baro(SPIClass* spi,SystemStatus* systemstatus,raw_measurements_t* raw_data);
+        Baro(SPIClass* spi,SystemStatus* systemstatus,LogController* logcontroller,raw_measurements_t* raw_data);
         void setup();
         void update();
 
@@ -18,6 +18,7 @@ class Baro{
         SPIClass* _spi;
         //pointer to system status object
         SystemStatus* _systemstatus;
+        LogController* _logcontroller;
         //pointer to raw data struct
         raw_measurements_t* _raw_data;
 

@@ -119,9 +119,11 @@ void CommandHandler::handleCommand(Command command) {
 					detailedall.my = _sm->sensors.sensors_raw.my;
 					detailedall.mz = _sm->sensors.sensors_raw.mz;
 
-					detailedall.gps_lat = _sm->sensors.sensors_raw.gps_lat;
-					detailedall.gps_long = _sm->sensors.sensors_raw.gps_long;
-					detailedall.gps_speed = _sm->sensors.sensors_raw.gps_speed;
+					detailedall.gps_lat = _sm->sensors.sensors_raw.gps_lat / 10000000.0;
+					detailedall.gps_long = _sm->sensors.sensors_raw.gps_long / 10000000.0;
+					
+					detailedall.gps_speed = _sm->sensors.sensors_raw.gps_sat;
+
 					detailedall.gps_alt = _sm->sensors.sensors_raw.gps_alt;
 
 					detailedall.baro_alt = _sm->sensors.sensors_raw.baro_alt;

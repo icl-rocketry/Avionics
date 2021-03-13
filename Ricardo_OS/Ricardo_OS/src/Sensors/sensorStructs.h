@@ -5,6 +5,8 @@ definition of structs used within sensor classes
 */
 
 
+
+
 struct raw_measurements_t{
 
     //IMU RAW DATA
@@ -16,7 +18,27 @@ struct raw_measurements_t{
 
     
     //GPS RAW DATA
-    float gps_lat,gps_long,gps_speed,gps_alt,gps_course,gps_hdop,gps_sat;
+    long gps_lat,gps_long,gps_alt; // gps poisition -> 10E7 to avoid floating math - alitude in mm
+    long gps_v_n,gps_v_e,gps_v_d; // gps velocity
+    int gps_sat; // gps satilites
+    uint16_t gps_pdop; // poisitonal dillution of precision * 10^-2
+    /* 0 = no fix
+    1 = dead reckoning (requires external sensors)
+    2 = 2D (not quite enough satellites in view)
+    3 = 3D (the standard fix)
+    4 = GNSS + dead reckoning (requires external sensors)
+    5 = Time fix only*/
+    uint8_t gps_fix; // gps fix type
+    bool gps_updated; // flag if gps values have been updated
+    bool gps_valid; // fix valid?
+    uint16_t gps_year;
+    uint8_t gps_month;
+    uint8_t gps_day;
+    uint8_t gps_hour;
+    uint8_t gps_minute;
+    uint8_t gps_second;
+
+
 
     //BARO RAW DATA
     float baro_alt,baro_temp,baro_press;

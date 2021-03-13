@@ -22,7 +22,7 @@ void LogController::setup(){
     flash_prefix = _storagecontroller->updateDirectoryName(flash_prefix,STORAGE_DEVICE::FLASH); // get updated directory prefix
     //ensure directory exists
     _storagecontroller->mkdir(microsd_prefix,STORAGE_DEVICE::MICROSD);
-    _storagecontroller->mkdir(flash_prefix,STORAGE_DEVICE::FLASH);
+    //_storagecontroller->mkdir(flash_prefix,STORAGE_DEVICE::FLASH);
 }
 
 void LogController::log(state_t &estimator_state) {

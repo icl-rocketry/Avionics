@@ -1,5 +1,6 @@
 #include "battery.h"
 #include "Logging/systemstatus.h"
+#include "Logging/logController.h"
 #include "flags.h"
 #include "config.h"
 #include <string>
@@ -8,9 +9,10 @@
 
 #include "Logging/utils.h"
 
-Battery::Battery(uint8_t pin, SystemStatus* systemstatus,raw_measurements_t* raw_data):
+Battery::Battery(uint8_t pin, SystemStatus* systemstatus,LogController* logcontroller,raw_measurements_t* raw_data):
 
 _systemstatus(systemstatus),
+_logcontroller(logcontroller),
 _raw_data(raw_data),
 _pin(pin)
 

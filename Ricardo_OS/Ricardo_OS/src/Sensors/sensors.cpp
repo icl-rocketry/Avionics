@@ -15,10 +15,10 @@
 
 Sensors::Sensors(stateMachine* sm) :
     _sm(sm),
-    gps(&(sm->I2C),&(sm->systemstatus),&sensors_raw),
-    baro(&(sm->vspi),&(sm->systemstatus),&sensors_raw),
-    imu(&(sm->vspi),&(sm->systemstatus),&sensors_raw),
-    batt(BattVolt,&(sm->systemstatus),&sensors_raw)
+    gps(&(sm->I2C),&(sm->systemstatus),&(sm->logcontroller),&sensors_raw),
+    baro(&(sm->vspi),&(sm->systemstatus),&(sm->logcontroller),&sensors_raw),
+    imu(&(sm->vspi),&(sm->systemstatus),&(sm->logcontroller),&sensors_raw),
+    batt(BattVolt,&(sm->systemstatus),&(sm->logcontroller),&sensors_raw)
     
 {
 }
