@@ -61,21 +61,31 @@ std::string StorageController::updateDirectoryName(std::string input_directory,S
     if (!ls(input_directory, fileNames, device)) {
         // TODO: there's an error, crash ourseleves
     }
+    
 // go away u a big poo
 // rude
 // <3
-    int index = 0, maxIndex = 0;
+    std::string maxDirName = "0";
+    int maxDigitIndex = maxDirName.length()-1, digitIndex = 0; // maxDigitIndex is 4 because 0 is the 4th place in logs0
+    int maxDirNum = 0, dirNum = 0;
+
+
     for (directory_element_t elem : fileNames) {
         std::string fName = elem.name;
 
-        index = getFileNameIndex(fName);
+        digitIndex = getFileNameIndex(fName);
+        dirNum = utils::intify(fName.substr(digitIndex, fName.length() - digitIndex));
 
-        if (index > maxIndex) {
-            maxIndex = index;
+        Serial.println(dirNum);
+        if (dirNum > maxDirNum) {
+
+            maxDirNum = dirNum;
+            maxDirName = fName;
+            maxDigitIndex = digitIndex;
         }
     }
 
-    return input_directory + utils::tostring(index + 1);
+    return input_directory + "/" + maxDirName.substr(0, maxDigitIndex) + utils::tostring(maxDirNum + 1);
 }
 
 const int StorageController::getFileNameIndex(const std::string fileName) {
@@ -86,7 +96,8 @@ const int StorageController::getFileNameIndex(const std::string fileName) {
             break;
         }
     }
-    return utils::intify(fileName.substr(numberStartIdx, fileName.length() - numberStartIdx));
+    //return utils::intify(fileName.substr(numberStartIdx, fileName.length() - numberStartIdx));
+    return numberStartIdx+1; 
 }
 
 void StorageController::mkdir(std::string path,STORAGE_DEVICE device){
@@ -114,28 +125,29 @@ void StorageController::mkdir(std::string path,STORAGE_DEVICE device){
 }
 
 bool StorageController::ls(std::string path,std::vector<directory_element_t> &directory_structure,STORAGE_DEVICE device){
-    File file;
+    File _file;
     switch(device){
         case STORAGE_DEVICE::MICROSD:{
             microsd.chvol();//change vol to microsd
-            file = microsd.open(path.c_str()); // open the path supplied
-            return true;
+            _file = microsd.open(path.c_str()); // open the path supplied
+            break;
         }
         case STORAGE_DEVICE::FLASH:{
             flash_fatfs.chvol();//change vol to flash
-            file = flash_fatfs.open(path.c_str()); // open the path supplied
-            return true;
+            _file = flash_fatfs.open(path.c_str()); // open the path supplied
+            break;
         }
         default:{
             return false; // return nothing 
         }
     }
     
-    if((!file) || (!file.isDirectory())){
+    if((!_file) || (!_file.isDirectory())){
         //path invalid so return
+        
         return false;
     }
-    File child = file.openNextFile();//open next file in directory
+    File child = _file.openNextFile();//open next file in directory
 
     while(child){ // while child file is valid
         directory_element_t entry; // create new entry for directory list
@@ -151,7 +163,7 @@ bool StorageController::ls(std::string path,std::vector<directory_element_t> &di
         entry.size = child.size(); // get file size
 
         directory_structure.push_back(entry); // add entry to vector
-        child = file.openNextFile(); // open next file
+        child = _file.openNextFile(); // open next file
 
     }  
     return true;

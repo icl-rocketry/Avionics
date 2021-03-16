@@ -18,10 +18,15 @@ _storagecontroller(storagecontroller)
 };
 
 void LogController::setup(){
+    
+    
     microsd_prefix = _storagecontroller->updateDirectoryName(microsd_prefix,STORAGE_DEVICE::MICROSD); // get updated directory prefix
-    flash_prefix = _storagecontroller->updateDirectoryName(flash_prefix,STORAGE_DEVICE::FLASH); // get updated directory prefix
+    
+    //flash_prefix = _storagecontroller->updateDirectoryName(flash_prefix,STORAGE_DEVICE::FLASH); // get updated directory prefix
     //ensure directory exists
+    Serial.println(microsd_prefix.c_str());
     _storagecontroller->mkdir(microsd_prefix,STORAGE_DEVICE::MICROSD);
+   // Serial.println(_storagecontroller->updateDirectoryName(old,STORAGE_DEVICE::MICROSD).c_str());
     //_storagecontroller->mkdir(flash_prefix,STORAGE_DEVICE::FLASH);
 }
 

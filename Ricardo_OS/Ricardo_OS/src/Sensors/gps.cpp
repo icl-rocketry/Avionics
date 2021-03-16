@@ -34,10 +34,10 @@ void GPS::setup()
     //_wire->begin();
     if(!gnss.begin(*_wire)){
         _systemstatus->new_message(system_flag::ERROR_GPS,"GPS I2C not found at address");
-        Serial.println("error");
+        //Serial.println("error");
     }else{
         _logcontroller->log("GPS Initialized");
-        Serial.println("ok");
+        //Serial.println("ok");
     }
     //turn off nmea messaging
     gnss.setI2COutput(COM_TYPE_UBX);

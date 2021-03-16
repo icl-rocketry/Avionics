@@ -34,9 +34,6 @@ void stateMachine::initialise(State* initStatePtr) {
   estimator.setup();
   networkmanager.setup();
 
-  //storagecontroller.printDirectory("/",STORAGE_DEVICE::MICROSD);
-  //storagecontroller.format(STORAGE_DEVICE::MICROSD);
-  //storagecontroller.printDirectory("/",STORAGE_DEVICE::MICROSD);
   
   
 };
@@ -48,7 +45,7 @@ void stateMachine::update() {
   estimator.update();
 
   networkmanager.update();
-  
+  //Serial.println('hi');
   
 
   State* newStatePtr = _currStatePtr -> update();

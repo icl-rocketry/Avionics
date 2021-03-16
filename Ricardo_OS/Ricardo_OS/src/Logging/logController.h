@@ -51,7 +51,7 @@ class LogController{
 
         //loging directory prefix;
         std::string microsd_prefix = "/Logs" ;
-        std::string flash_prefix = "/0";
+        std::string flash_prefix = "/Logs";
         //log file names
         const std::string telemetry_log_filename = "/telemetry_log.txt";
         const std::string system_log_filename = "/system_log.txt";
