@@ -8,6 +8,7 @@
 #include "config.h"
 
 //indivudal sensor classes
+
 #include "gps.h"
 #include "imu.h"
 #include "baro.h"
