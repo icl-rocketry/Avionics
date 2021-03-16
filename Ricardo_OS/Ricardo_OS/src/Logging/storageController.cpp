@@ -28,10 +28,6 @@ bool StorageController::setup(){
         return false;
     }
     _sm->logcontroller.log("SD Initalized");
-    /*
-    if(!microsd.exists("/Logs")){
-        microsd.mkdir("/Logs");
-    }*/
 
     SPIFlash_Device_t flash_config = W25Q128JV_SM; //pass in spi flash config
     
@@ -46,10 +42,7 @@ bool StorageController::setup(){
         return false;
     }
     _sm->logcontroller.log("Flash FS Initalized");
-    /*
-    if(!flash_fatfs.exists("/Logs")){
-        flash_fatfs.mkdir("/Logs");
-    }*/
+  
     return true;
 
 };
