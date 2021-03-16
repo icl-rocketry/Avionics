@@ -3,7 +3,7 @@ EELAYER 30 0
 EELAYER END
 $Descr A4 11693 8268
 encoding utf-8
-Sheet 7 7
+Sheet 5 7
 Title ""
 Date ""
 Rev ""
@@ -63,19 +63,6 @@ F 3 "" H 7950 3750 50  0001 C CNN
 	1    7950 3750
 	1    0    0    -1  
 $EndComp
-$Comp
-L Device:LED_Small D?
-U 1 1 6053D295
-P 7450 3550
-AR Path="/6053D295" Ref="D?"  Part="1" 
-AR Path="/602F075A/6053D295" Ref="D13"  Part="1" 
-F 0 "D13" H 7450 3345 50  0000 C CNN
-F 1 "USB_LED" H 7450 3436 50  0000 C CNN
-F 2 "LED_SMD:LED_0603_1608Metric_Castellated" V 7450 3550 50  0001 C CNN
-F 3 "~" V 7450 3550 50  0001 C CNN
-	1    7450 3550
-	0    -1   -1   0   
-$EndComp
 Wire Wire Line
 	7450 3350 7450 3450
 Wire Wire Line
@@ -89,7 +76,7 @@ P 7950 3550
 AR Path="/604A9E91" Ref="D?"  Part="1" 
 AR Path="/602F075A/604A9E91" Ref="D17"  Part="1" 
 F 0 "D17" H 7950 3345 50  0000 C CNN
-F 1 "USB_LED" H 7950 3436 50  0000 C CNN
+F 1 "up_led" H 7950 3436 50  0000 C CNN
 F 2 "LED_SMD:LED_0603_1608Metric_Castellated" V 7950 3550 50  0001 C CNN
 F 3 "~" V 7950 3550 50  0001 C CNN
 	1    7950 3550
@@ -97,10 +84,6 @@ F 3 "~" V 7950 3550 50  0001 C CNN
 $EndComp
 Wire Wire Line
 	7950 3450 7950 3350
-Text Notes 8450 4100 2    50   ~ 0
-Upwards LED
-Text Notes 7000 4100 0    50   ~ 0
-Downwards LED
 $Comp
 L Connector:USB_C_Receptacle J1
 U 1 1 604B4652
@@ -157,4 +140,17 @@ NoConn ~ 5550 4750
 NoConn ~ 5550 4950
 NoConn ~ 5550 5050
 NoConn ~ 300  2700
+$Comp
+L Device:LED_Small D?
+U 1 1 6053D295
+P 7450 3550
+AR Path="/6053D295" Ref="D?"  Part="1" 
+AR Path="/602F075A/6053D295" Ref="D13"  Part="1" 
+F 0 "D13" H 7450 3345 50  0000 C CNN
+F 1 "down_led" H 7450 3436 50  0000 C CNN
+F 2 "LED_SMD:LED_0603_1608Metric_Castellated" V 7450 3550 50  0001 C CNN
+F 3 "~" V 7450 3550 50  0001 C CNN
+	1    7450 3550
+	0    -1   -1   0   
+$EndComp
 $EndSCHEMATC
