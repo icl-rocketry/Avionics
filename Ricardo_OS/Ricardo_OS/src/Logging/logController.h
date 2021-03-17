@@ -8,6 +8,7 @@
 #include <vector>
 #include <string>
 #include "flags.h"
+#include <array>
 
 
 enum class LOG_TYPE:uint8_t{
@@ -32,6 +33,8 @@ class LogController{
 
         //update the buffers
         void update();
+
+        void changeFrequency(uint16_t time_period,LOG_TYPE log_type);
 
         
 
@@ -58,13 +61,16 @@ class LogController{
         const std::string network_log_filename = "/network_log.txt";
 
         //logging frequnecies
-        uint16_t log_frequency[3] = {5000,5000,5000};
+        
+        std::array<uint16_t,3> log_frequency = {5000,5000,5000};
+        //uint16_t log_frequency[3] = {5000,5000,5000};
     
         //methods to write buffer to file
         void write_to_file(LOG_TYPE log_type);
         
         //inialize previous time at 0
-        uint64_t prev_time = 0;
+        std::array<uint64_t,3> prev_time = {0,0,0};
+        //uint64_t prev_time = 0;
         
         //flag level helper function
         std::string flagLevel(uint32_t flag);

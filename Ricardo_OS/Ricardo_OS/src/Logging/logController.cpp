@@ -85,21 +85,20 @@ void LogController::log(uint32_t status,uint32_t flag) {
 }
 
 void LogController::update(){
-    uint64_t dt = millis() - prev_time;
+    //uint64_t dt = millis() - prev_time;
     //temporary heart beat log to ensure logging is funtioning
     
-
-    if (dt > log_frequency[(uint8_t)LOG_TYPE::TELEMETRY]){
+    if ((millis() - prev_time[(uint8_t)LOG_TYPE::TELEMETRY]) > log_frequency[(uint8_t)LOG_TYPE::TELEMETRY]){
         //write_to_file(LOG_TYPE::TELEMETRY);
-        prev_time = millis(); // update previous time
+        prev_time[(uint8_t)LOG_TYPE::TELEMETRY] = millis(); // update previous time
     }
-    if (dt > log_frequency[(uint8_t)LOG_TYPE::SYSTEM]){
+    if ((millis() - prev_time[(uint8_t)LOG_TYPE::SYSTEM]) > log_frequency[(uint8_t)LOG_TYPE::SYSTEM]){
         write_to_file(LOG_TYPE::SYSTEM);
-        prev_time = millis(); // update previous time
+        prev_time[(uint8_t)LOG_TYPE::SYSTEM] = millis(); // update previous time
     }
-    if (dt > log_frequency[(uint8_t)LOG_TYPE::NETWORK]){
+    if ((millis() - prev_time[(uint8_t)LOG_TYPE::NETWORK]) > log_frequency[(uint8_t)LOG_TYPE::NETWORK]){
         //write_to_file(LOG_TYPE::NETWORK);
-        prev_time = millis(); // update previous time
+        prev_time[(uint8_t)LOG_TYPE::NETWORK] = millis(); // update previous time
     }
 
 
@@ -166,3 +165,11 @@ std::string LogController::flagLevel(uint32_t flag){
 std::string LogController::flagLevel(system_flag flag){
     return flagLevel(static_cast<uint32_t>(flag));
 };
+
+void LogController::changeFrequency(uint16_t time_period,LOG_TYPE log_type){
+    //simple bounds checking
+    if((uint8_t)log_type < log_frequency.size()){
+        //update logging frequnecy
+        log_frequency[(uint8_t)log_type] = time_period;
+    }
+}
