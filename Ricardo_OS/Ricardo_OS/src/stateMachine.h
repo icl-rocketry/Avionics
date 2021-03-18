@@ -47,18 +47,9 @@ class stateMachine {
     SystemStatus systemstatus;
     
     NetworkManager networkmanager;
-    
+
     Sensors sensors;
     Estimator estimator;
-    
-    
-
-    
-
-
-
-    
-    
     
 
   private:
