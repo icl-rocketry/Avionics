@@ -24,7 +24,7 @@ void LogController::setup(){
     
     //flash_prefix = _storagecontroller->updateDirectoryName(flash_prefix,STORAGE_DEVICE::FLASH); // get updated directory prefix
     //ensure directory exists
-    Serial.println(microsd_prefix.c_str());
+    //Serial.println(microsd_prefix.c_str());
     _storagecontroller->mkdir(microsd_prefix,STORAGE_DEVICE::MICROSD);
    // Serial.println(_storagecontroller->updateDirectoryName(old,STORAGE_DEVICE::MICROSD).c_str());
     //_storagecontroller->mkdir(flash_prefix,STORAGE_DEVICE::FLASH);
@@ -32,12 +32,15 @@ void LogController::setup(){
 
 
 void LogController::log(state_t &estimator_state,raw_measurements_t &raw_sensors) {
+ 
     if((millis()-telemetry_prev_log_time) > telemetry_log_frequency){
+
         telemetry_frame.rawGPSLong = raw_sensors.gps_long; //continue for all variables - we need to see if thers a better way to do this
+
         telemetry_log_buffer.push_back(telemetry_frame); // add frame to buffer
-    }else{
-        //dont log anything
-        return;
+
+
+        telemetry_prev_log_time = millis(); // update previous log time
     }
 }
 
@@ -94,6 +97,8 @@ void LogController::update(){
     
     if ((millis() - prev_write_time[(uint8_t)LOG_TYPE::TELEMETRY]) > write_frequency[(uint8_t)LOG_TYPE::TELEMETRY]){
         //write_to_file(LOG_TYPE::TELEMETRY);
+        //Serial.println(telemetry_log_buffer.size());
+        telemetry_log_buffer.clear();
         prev_write_time[(uint8_t)LOG_TYPE::TELEMETRY] = millis(); // update previous time
     }
     

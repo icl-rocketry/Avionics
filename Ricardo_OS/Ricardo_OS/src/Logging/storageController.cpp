@@ -69,7 +69,7 @@ std::string StorageController::updateDirectoryName(std::string input_directory,S
         digitIndex = getFileNameIndex(fName);
         dirNum = utils::intify(fName.substr(digitIndex, fName.length() - digitIndex));
 
-        Serial.println(dirNum);
+        //Serial.println(dirNum);
         if (dirNum > maxDirNum) {
 
             maxDirNum = dirNum;

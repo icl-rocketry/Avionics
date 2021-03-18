@@ -46,8 +46,8 @@ void SystemStatus::delete_message(system_flag flag){
 void SystemStatus::delete_message(system_flag flag,std::string info){
 
     _status &= ~static_cast<uint32_t>(flag);
-    //_sm->logcontroller.log(_status,static_cast<uint32_t>(flag),info);
-    _logcontroller->log(_status,static_cast<uint32_t>(flag),"flag removed");
+   //_sm->logcontroller.log(_status,static_cast<uint32_t>(flag),info);
+    _logcontroller->log(_status,static_cast<uint32_t>(flag),info);
 };
 
 
