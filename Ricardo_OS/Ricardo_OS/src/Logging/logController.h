@@ -22,8 +22,7 @@ class LogController{
         LogController(StorageController* storagecontroller);
         void setup();
         //telemtry logging
-        void log(state_t &estimator_state);
-        void log(raw_measurements_t &raw_sensors);
+        void log(state_t &estimator_state ,raw_measurements_t &raw_sensors);
         //network logging
 		void log(PacketHeader &header);
         //system logging
@@ -31,13 +30,14 @@ class LogController{
         void log(uint32_t status,uint32_t flag,std::string message);
         void log(uint32_t status,uint32_t flag);
 
-        //update the buffers
-        void update();
-
-        void changeFrequency(uint16_t time_period,LOG_TYPE log_type);
-
         
 
+        void change_write_Frequency(uint16_t time_period,LOG_TYPE log_type);
+
+        void telemetry_Frequency(uint16_t time_period);
+        
+        //update function controls writing to file 
+        void update();
 
     private:
 
@@ -60,17 +60,16 @@ class LogController{
         const std::string system_log_filename = "/system_log.txt";
         const std::string network_log_filename = "/network_log.txt";
 
-        //logging frequnecies
-        
-        std::array<uint16_t,3> log_frequency = {5000,5000,5000};
+        //telemetry logging frequnecy variables
+        uint16_t telemetry_log_frequency = 1000; // default frequnecy of 1Hz
+        uint64_t telemetry_prev_log_time = 0;
+        //writing to memory frequency
+        std::array<uint16_t,3> write_frequency = {5000,5000,5000};
+        std::array<uint64_t,3> prev_write_time = {0,0,0};
         //uint16_t log_frequency[3] = {5000,5000,5000};
     
         //methods to write buffer to file
         void write_to_file(LOG_TYPE log_type);
-        
-        //inialize previous time at 0
-        std::array<uint64_t,3> prev_time = {0,0,0};
-        //uint64_t prev_time = 0;
         
         //flag level helper function
         std::string flagLevel(uint32_t flag);

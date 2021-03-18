@@ -11,9 +11,9 @@ LogController::LogController(StorageController* storagecontroller):
 _storagecontroller(storagecontroller)
 
 {
-    telemetry_log_buffer.reserve(10); 
-    system_log_buffer.reserve(10); 
-    network_log_buffer.reserve(10); 
+    telemetry_log_buffer.reserve(25); //this we can work out as the telemtry logging rates are defined
+    system_log_buffer.reserve(10); //this we need to estimate
+    network_log_buffer.reserve(10); //this needs to be estimated too
     
 };
 
@@ -30,12 +30,15 @@ void LogController::setup(){
     //_storagecontroller->mkdir(flash_prefix,STORAGE_DEVICE::FLASH);
 }
 
-void LogController::log(state_t &estimator_state) {
 
-}
-
-void LogController::log(raw_measurements_t &raw_sensors) {
-	
+void LogController::log(state_t &estimator_state,raw_measurements_t &raw_sensors) {
+    if((millis()-telemetry_prev_log_time) > telemetry_log_frequency){
+        telemetry_frame.rawGPSLong = raw_sensors.gps_long; //continue for all variables - we need to see if thers a better way to do this
+        telemetry_log_buffer.push_back(telemetry_frame); // add frame to buffer
+    }else{
+        //dont log anything
+        return;
+    }
 }
 
 void LogController::log(PacketHeader &header) {
@@ -85,20 +88,23 @@ void LogController::log(uint32_t status,uint32_t flag) {
 }
 
 void LogController::update(){
-    //uint64_t dt = millis() - prev_time;
-    //temporary heart beat log to ensure logging is funtioning
+
     
-    if ((millis() - prev_time[(uint8_t)LOG_TYPE::TELEMETRY]) > log_frequency[(uint8_t)LOG_TYPE::TELEMETRY]){
+    //could be made neater if using for loop however this would make readabilty worse
+    
+    if ((millis() - prev_write_time[(uint8_t)LOG_TYPE::TELEMETRY]) > write_frequency[(uint8_t)LOG_TYPE::TELEMETRY]){
         //write_to_file(LOG_TYPE::TELEMETRY);
-        prev_time[(uint8_t)LOG_TYPE::TELEMETRY] = millis(); // update previous time
+        prev_write_time[(uint8_t)LOG_TYPE::TELEMETRY] = millis(); // update previous time
     }
-    if ((millis() - prev_time[(uint8_t)LOG_TYPE::SYSTEM]) > log_frequency[(uint8_t)LOG_TYPE::SYSTEM]){
+    
+    if ((millis() - prev_write_time[(uint8_t)LOG_TYPE::SYSTEM]) > write_frequency[(uint8_t)LOG_TYPE::SYSTEM]){
         write_to_file(LOG_TYPE::SYSTEM);
-        prev_time[(uint8_t)LOG_TYPE::SYSTEM] = millis(); // update previous time
+        prev_write_time[(uint8_t)LOG_TYPE::SYSTEM] = millis(); // update previous time
     }
-    if ((millis() - prev_time[(uint8_t)LOG_TYPE::NETWORK]) > log_frequency[(uint8_t)LOG_TYPE::NETWORK]){
+
+    if ((millis() - prev_write_time[(uint8_t)LOG_TYPE::NETWORK]) > write_frequency[(uint8_t)LOG_TYPE::NETWORK]){
         //write_to_file(LOG_TYPE::NETWORK);
-        prev_time[(uint8_t)LOG_TYPE::NETWORK] = millis(); // update previous time
+        prev_write_time[(uint8_t)LOG_TYPE::NETWORK] = millis(); // update previous time
     }
 
 
@@ -166,10 +172,12 @@ std::string LogController::flagLevel(system_flag flag){
     return flagLevel(static_cast<uint32_t>(flag));
 };
 
-void LogController::changeFrequency(uint16_t time_period,LOG_TYPE log_type){
+void LogController::change_write_Frequency(uint16_t time_period,LOG_TYPE log_type){
     //simple bounds checking
-    if((uint8_t)log_type < log_frequency.size()){
+    if((uint8_t)log_type < write_frequency.size()){
         //update logging frequnecy
-        log_frequency[(uint8_t)log_type] = time_period;
+        write_frequency[(uint8_t)log_type] = time_period;
     }
-}
+};
+
+void LogController::telemetry_Frequency(uint16_t time_period){telemetry_log_frequency = time_period;};

@@ -2,7 +2,8 @@
 #define ESTIMATOR_H
 #include <Arduino.h>
 #include "sensorStructs.h"
-//global struct for state of rocket
+//#include "sensors.h"
+
 
 
 
@@ -12,6 +13,7 @@ class stateMachine; //forward declaration
 class Estimator{
     public:
         Estimator(stateMachine* sm);   
+        
         void setup();
         void update();
 

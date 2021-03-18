@@ -13,41 +13,49 @@ Written by the Electronics team, Imperial College London Rocketry
 stateMachine::stateMachine() : 
     vspi(VSPI),
     I2C(0),
-    systemstatus(this),
-    sensors(this),
-    estimator(this),
-    networkmanager(this),
     storagecontroller(this),
     logcontroller(&storagecontroller),
-    configcontroller(&storagecontroller)   
+    configcontroller(&storagecontroller), 
+    systemstatus(&logcontroller),
+    networkmanager(this),
+    sensors(this),
+    estimator(this)    
 {};
 
 
 void stateMachine::initialise(State* initStatePtr) {
   //call setup state before callng individual setups
   changeState(initStatePtr);
-  //setup objects 
+  //setup storage and logging so any erros encoutered can be logged
   storagecontroller.setup();
   logcontroller.setup();
-  
+
+  //setup network manager so communication is running
+  networkmanager.setup();
+  //sensors must be setup before estimator
   sensors.setup();
   estimator.setup();
-  networkmanager.setup();
+  
+  
 
   
   
 };
 
 void stateMachine::update() {
-  //call update in classes before state update method so state has most recent information
+  //write logs to file 
   logcontroller.update();
+
+  //request new sensor data
   sensors.update();
+  //process updated sensor data
   estimator.update();
-
+  logcontroller.log(estimator.state,sensors.sensors_raw);// log new navigation solution and sensor output
+  //check for new packets and process
   networkmanager.update();
-  //Serial.println('hi');
-  
 
+  
+  //call update on state after new information has been processed
   State* newStatePtr = _currStatePtr -> update();
 
   if (newStatePtr != _currStatePtr) {

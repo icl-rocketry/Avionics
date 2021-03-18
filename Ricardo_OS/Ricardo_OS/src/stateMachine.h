@@ -40,16 +40,20 @@ class stateMachine {
     SPIClass vspi;
     TwoWire I2C;
 
+    StorageController storagecontroller;
+    LogController logcontroller;
+    ConfigController configcontroller;
+
     SystemStatus systemstatus;
+    
+    NetworkManager networkmanager;
     
     Sensors sensors;
     Estimator estimator;
     
-    NetworkManager networkmanager;
+    
 
-    StorageController storagecontroller;
-    LogController logcontroller;
-    ConfigController configcontroller;
+    
 
 
 
