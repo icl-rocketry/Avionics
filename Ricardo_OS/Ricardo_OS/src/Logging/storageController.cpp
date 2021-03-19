@@ -222,12 +222,17 @@ void StorageController::write(std::string &path,std::string &data,STORAGE_DEVICE
     }
 }
 
-void StorageController::read(std::string path,STORAGE_DEVICE device){
+File StorageController::read(std::string path,STORAGE_DEVICE device){
+    File ret;
     switch(device){
         case(STORAGE_DEVICE::MICROSD):{
+            microsd.chvol();
+            ret = microsd.open(path.c_str());
             break;
         }
         case(STORAGE_DEVICE::FLASH):{
+            flash_fatfs.chvol();
+            ret = flash_fatfs.open(path.c_str());
             break;
         }
         default:{
@@ -235,6 +240,7 @@ void StorageController::read(std::string path,STORAGE_DEVICE device){
             break;
         }
     }
+    return ret;
 }
 
 bool StorageController::erase(STORAGE_DEVICE device){

@@ -35,7 +35,7 @@ class StorageController{
         bool setup(); //setup storage devices
 
         void write(std::string &path,std::string &data,STORAGE_DEVICE device);//missing arguemtn for data -we need to decide 
-        void read(std::string path,STORAGE_DEVICE device); // need to figure out return type
+        File read(std::string path,STORAGE_DEVICE device); 
 
         std::string updateDirectoryName(std::string input_directory,STORAGE_DEVICE device); //checks and updates directory name so that it is unique
         
