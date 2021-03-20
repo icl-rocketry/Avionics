@@ -182,7 +182,7 @@ bool StorageController::ls(std::vector<directory_element_t> &directory_structure
     return ls(path,directory_structure, device);
 };
 
-
+/*
 void StorageController::write(std::string &path,std::string &data,STORAGE_DEVICE device){
    File file;
 
@@ -233,6 +233,27 @@ File StorageController::read(std::string path,STORAGE_DEVICE device){
         case(STORAGE_DEVICE::FLASH):{
             flash_fatfs.chvol();
             ret = flash_fatfs.open(path.c_str());
+            break;
+        }
+        default:{
+            //do nothing
+            break;
+        }
+    }
+    return ret;
+}*/
+
+File StorageController::open(std::string &path, STORAGE_DEVICE device,oflag_t mode){
+    File ret;
+    switch(device){
+        case(STORAGE_DEVICE::MICROSD):{
+            microsd.chvol();
+            ret = microsd.open(path.c_str(),mode);
+            break;
+        }
+        case(STORAGE_DEVICE::FLASH):{
+            flash_fatfs.chvol();
+            ret = flash_fatfs.open(path.c_str(),mode);
             break;
         }
         default:{

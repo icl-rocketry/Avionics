@@ -5,6 +5,7 @@
 #include <string>
 #include <Arduino.h>
 #include <vector>
+#include <SdFat.h>
 
 
 LogController::LogController(StorageController* storagecontroller):
@@ -31,18 +32,18 @@ void LogController::setup(){
 }
 
 
-void LogController::log(state_t &estimator_state,raw_measurements_t &raw_sensors) {
+void LogController::log(state_t &estimator_state,raw_measurements_t &raw_sensors,bool force) {
  
-    if((millis()-telemetry_prev_log_time) > telemetry_log_frequency){
+    if((millis()-telemetry_prev_log_time) > telemetry_log_frequency || force){
 
         telemetry_frame.rawGPSLong = raw_sensors.gps_long; //continue for all variables - we need to see if thers a better way to do this
 
         telemetry_log_buffer.push_back(telemetry_frame); // add frame to buffer
 
-
         telemetry_prev_log_time = millis(); // update previous log time
     }
 }
+
 
 void LogController::log(PacketHeader &header) {
 
@@ -130,15 +131,23 @@ void LogController::write_to_file(LOG_TYPE log_type){
         {
             microsd_file_path = microsd_prefix + system_log_filename;
             flash_file_path = flash_prefix + system_log_filename;
+
+            File microsd_file = _storagecontroller->open(microsd_file_path,STORAGE_DEVICE::MICROSD,(O_WRITE | O_CREAT | O_AT_END));
+
+            if (!microsd_file){
+                return; // file is invalid
+            }
             
             for (int i = 0; i< system_log_buffer.size();i++){
                 //processing each frame individually so we dont accidentally use all of heap
                 std::string entry = system_log_buffer[i].stringify();
-                _storagecontroller->write(microsd_file_path,entry,STORAGE_DEVICE::MICROSD);
+                microsd_file.print(entry.c_str());
                 //_storagecontroller->write(flash_file_path,entry,STORAGE_DEVICE::FLASH);
                 
             }
             
+            microsd_file.close();
+
             system_log_buffer.clear(); //clear all log frames in buffer
 
             break;

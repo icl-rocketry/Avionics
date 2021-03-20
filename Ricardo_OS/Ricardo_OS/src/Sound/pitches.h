@@ -1,4 +1,6 @@
 //shamelessly stolen from github pitches.h
+// numbers in Hz
+
 #ifndef PTICHES_H
 #define PITCHES_H
 
