@@ -18,6 +18,8 @@ class State {
     virtual void exitstate();
 
     
+
+    
   protected:
     stateMachine* _sm; //pointer to statemachine
     system_flag _curr_stateID;

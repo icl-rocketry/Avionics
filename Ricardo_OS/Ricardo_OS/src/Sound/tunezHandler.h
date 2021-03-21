@@ -5,14 +5,14 @@
 
 #include <Arduino.h>
 #include "driver/ledc.h"
-#include "Melodies/melody_struct.h"
+#include "Melodies/melodyClass.h"
 
 
 class TunezHandler{
     public:
         TunezHandler();
         void setup();
-        void play(melody_t melody,uint8_t priorty);
+        void play(melody_base_t *melody);
         void update();
 
     private:
