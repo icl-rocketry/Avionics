@@ -17,7 +17,7 @@ void TunezHandler::setup()
         .speed_mode = LEDC_HIGH_SPEED_MODE,
         .duty_resolution = LEDC_TIMER_8_BIT, //we are driving a buzzer at full volume so we dont really care about duty res here
         .timer_num = LEDC_TIMER_0,
-        .freq_hz = 0,//inital frquency
+        .freq_hz = 5000,//inital frquency
         .clk_cfg = LEDC_AUTO_CLK
     };
 
@@ -26,11 +26,14 @@ void TunezHandler::setup()
         .speed_mode = LEDC_HIGH_SPEED_MODE,
         .channel = LEDC_CHANNEL_0,
         .timer_sel = LEDC_TIMER_0,
-        .duty = 255 //set duty to max for max volume     
+        .duty = 256 //set duty to max for max volume     
     };
 
-    ledc_timer_config(&ledc_timer);
-    ledc_channel_config(&ledc_channel);
+    //ledc_timer_config(&ledc_timer);
+    //ledc_channel_config(&ledc_channel);
+    ledcSetup(0,0,8);
+    ledcAttachPin(Buzzer,0);
+    ledcWrite(0,255); //max volume
 
 };
 
@@ -58,7 +61,7 @@ void TunezHandler::play(melody_base_t *melody,bool loop){
 
      }
 
-     prev_time = 0; //reset prev_time to force update function to play now
+     note_duration = 0; //reset note_duration to force update function to play now
 
 
 };
@@ -68,29 +71,33 @@ void TunezHandler::play(melody_base_t *melody,bool loop){
 void TunezHandler::update(){
 
     if(tune_queue.size() > 0){ //check there are tunez to play
-        if ((millis() - prev_time) > tune_queue.front().melody->getNote(tune_queue.front().index).duration){
-            //time to update index to next one
-            uint16_t current_index = tune_queue.front().index;
-            size_t melody_size = tune_queue.front().melody->getSize();
-            if(current_index < melody_size){
-                tune_queue.front().index += 1; //increment index by 1
+        
+        if ((millis() - prev_time) > note_duration){
+            //time to update index to next on
+            if(tune_queue.front().index < tune_queue.front().melody->getSize()){
+                //get new freuqnecy and note duration
                 uint16_t new_frequency = tune_queue.front().melody->getNote(tune_queue.front().index).pitch;
+                note_duration = tune_queue.front().melody->getNote(tune_queue.front().index).duration;
                 //update ledc driver with new frequnecy
-                ledc_set_freq(LEDC_HIGH_SPEED_MODE,LEDC_TIMER_0,new_frequency);
+                //ledc_set_freq(LEDC_HIGH_SPEED_MODE,LEDC_TIMER_0,new_frequency);
+                ledcWriteTone(0,new_frequency);
+                tune_queue.front().index += 1; //increment index by 1
             }else{
                 //reached the end of the melody
                 if (tune_queue.front().loop){//if we are looping
                     tune_queue.front().index = 0;
-                    uint16_t new_frequency = tune_queue.front().melody->getNote(tune_queue.front().index).pitch;
-                    ledc_set_freq(LEDC_HIGH_SPEED_MODE,LEDC_TIMER_0,new_frequency);
+                    //uint16_t new_frequency = tune_queue.front().melody->getNote(tune_queue.front().index).pitch;
+                    //ledc_set_freq(LEDC_HIGH_SPEED_MODE,LEDC_TIMER_0,new_frequency);
+                    //ledcWriteTone(0,new_frequency);
                 }else{
                     //delete the first element in the tune queue 
                     tune_queue.erase(tune_queue.begin());
                 }
             }
-
+            prev_time = millis(); //update previous time
         }
     }else{
-        ledc_set_freq(LEDC_HIGH_SPEED_MODE,LEDC_TIMER_0,0); // write 0 frequency so no noise is produced
+        ledcWriteTone(0,0);
+        //ledc_set_freq(LEDC_HIGH_SPEED_MODE,LEDC_TIMER_0,0); // write 0 frequency so no noise is produced
     }
 };

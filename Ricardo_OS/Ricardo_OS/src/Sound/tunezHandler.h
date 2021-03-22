@@ -32,6 +32,7 @@ class TunezHandler{
         std::vector<tune_t> tune_queue; 
 
         uint64_t prev_time = 0;
+        uint16_t note_duration = 0;
 
         //ledc_timer_config_t ledc_timer;
         //ledc_channel_config_t ledc_channel;
