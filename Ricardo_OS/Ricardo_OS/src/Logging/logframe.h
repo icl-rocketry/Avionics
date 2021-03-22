@@ -6,11 +6,13 @@
 #include <Arduino.h>
 
 //logframes
+
+/* this isnt used anywhere...
 class logframe{
     virtual std::string stringify() const; //purley virtaul seralize method
-};
+};*/
 
-class telemetry_logframe: public logframe{
+class telemetry_logframe{
 private:  
     static constexpr auto getSerializer()
     {
@@ -115,7 +117,7 @@ public:
     };
 
 };
-class system_logframe:public logframe{
+class system_logframe{
 private:  
     static constexpr auto getSerializer()
     {
@@ -146,7 +148,7 @@ public:
 
 };
 
-class network_logframe:public logframe{
+class network_logframe{
 private:
     static constexpr auto getSerializer()
     {
@@ -165,7 +167,7 @@ public:
 
 };
 
-class engine_logframe:public logframe{
+class engine_logframe{
  // todo
 };
 

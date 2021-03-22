@@ -34,7 +34,7 @@ void TunezHandler::setup()
 
 };
 
-void TunezHandler::playImplementation(melody_base_t *melody,bool loop){
+void TunezHandler::play(melody_base_t *melody,bool loop){
 
      tune_t new_tune;
      new_tune.melody = melody;

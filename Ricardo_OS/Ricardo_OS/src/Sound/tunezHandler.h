@@ -20,16 +20,14 @@ class TunezHandler{
         TunezHandler();
         void setup();
         //templated play function as interface so any melody can be played
-        template<class T>
-        void play(T *melody,bool loop = false){
-            playImplementation(static_cast<melody_base_t*>(melody),loop); //static cast here checks at compile time that the class can be cast correctly
-        };
+        
+        void play(melody_base_t *melody,bool loop = false);
+
 
         void update();
 
     private:
-        void playImplementation(melody_base_t *melody,bool loop = false);
-
+        
         melody_base_t* _current_melody; //pointer to current melody object
         std::vector<tune_t> tune_queue; 
 
