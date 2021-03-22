@@ -2,18 +2,95 @@
 #include <Arduino.h>
 #include "driver/ledc.h"
 #include "Melodies/melodyClass.h"
+#include <vector>
+#include "ricardo_pins.h"
 
 
-
-TunezHandler::TunezHandler(){};
-
-void TunezHandler::setup(){};
-
-void TunezHandler::play(melody_base_t *melody){
-   // previous_time = millis();
-    //_melody = melody;   
+TunezHandler::TunezHandler()
+{ 
+    tune_queue.reserve(10); //we shoudlnt really need more than 10
 };
 
+void TunezHandler::setup()
+{
+    ledc_timer_config_t ledc_timer = {
+        .speed_mode = LEDC_HIGH_SPEED_MODE,
+        .duty_resolution = LEDC_TIMER_8_BIT, //we are driving a buzzer at full volume so we dont really care about duty res here
+        .timer_num = LEDC_TIMER_0,
+        .freq_hz = 0,//inital frquency
+        .clk_cfg = LEDC_AUTO_CLK
+    };
+
+    ledc_channel_config_t ledc_channel = {
+        .gpio_num = Buzzer,
+        .speed_mode = LEDC_HIGH_SPEED_MODE,
+        .channel = LEDC_CHANNEL_0,
+        .timer_sel = LEDC_TIMER_0,
+        .duty = 255 //set duty to max for max volume     
+    };
+
+    ledc_timer_config(&ledc_timer);
+    ledc_channel_config(&ledc_channel);
+
+};
+
+void TunezHandler::playImplementation(melody_base_t *melody,bool loop){
+
+     tune_t new_tune;
+     new_tune.melody = melody;
+     new_tune.loop = loop;
+
+     if(melody->getPriority()){
+         //high priority tune
+         //insert high priority tune at front of vector 
+        tune_queue.insert(tune_queue.begin(),new_tune);
+
+     }else{
+         //low priority tune
+        //check if current playing tune is low priority and is looping
+        //if this is ture then remove that tune
+        //this is to make sure we dont contiously loop a tune without being able to override it
+        if(!(tune_queue.front().melody->getPriority()) && tune_queue.front().loop){
+            tune_queue.erase(tune_queue.begin()); // remove the first element in the tune queue
+        }
+
+         tune_queue.push_back(new_tune);//add new tune to end of queue
+
+     }
+
+     prev_time = 0; //reset prev_time to force update function to play now
+
+
+};
+
+
+
 void TunezHandler::update(){
-    
+
+    if(tune_queue.size() > 0){ //check there are tunez to play
+        if ((millis() - prev_time) > tune_queue.front().melody->getNote(tune_queue.front().index).duration){
+            //time to update index to next one
+            uint16_t current_index = tune_queue.front().index;
+            size_t melody_size = tune_queue.front().melody->getSize();
+            if(current_index < melody_size){
+                tune_queue.front().index += 1; //increment index by 1
+                uint16_t new_frequency = tune_queue.front().melody->getNote(tune_queue.front().index).pitch;
+                //update ledc driver with new frequnecy
+                ledc_set_freq(LEDC_HIGH_SPEED_MODE,LEDC_TIMER_0,new_frequency);
+            }else{
+                //reached the end of the melody
+                if (tune_queue.front().loop){//if we are looping
+                    tune_queue.front().index = 0;
+                    uint16_t new_frequency = tune_queue.front().melody->getNote(tune_queue.front().index).pitch;
+                    ledc_set_freq(LEDC_HIGH_SPEED_MODE,LEDC_TIMER_0,new_frequency);
+                }else{
+                    //delete the first element in the tune queue 
+                    tune_queue.erase(tune_queue.begin());
+                }
+            }
+
+        }
+    }else{
+        ledc_set_freq(LEDC_HIGH_SPEED_MODE,LEDC_TIMER_0,0); // write 0 frequency so no noise is produced
+    }
 };

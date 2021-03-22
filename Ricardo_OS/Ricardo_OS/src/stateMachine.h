@@ -21,6 +21,9 @@ Written by the Electronics team, Imperial College London Rocketry
 #include "Comms/networkManager.h"
 #include "Sensors/sensors.h"
 
+#include "Sound/tunezHandler.h"
+
+
 #include "SPI.h"
 #include "Wire.h"
 
@@ -40,6 +43,7 @@ class stateMachine {
     SPIClass vspi;
     TwoWire I2C;
 
+
     StorageController storagecontroller;
     LogController logcontroller;
     ConfigController configcontroller;
@@ -51,7 +55,7 @@ class stateMachine {
     Sensors sensors;
     Estimator estimator;
     
-
+    TunezHandler tunezhandler;
   private:
     State* _currStatePtr;
 

@@ -9,6 +9,8 @@
 
 #include "preflight.h"
 
+#include "Sound/Melodies/melodyLibrary.h"
+
 
 
 Setup::Setup(stateMachine* sm) : State(sm){
@@ -17,6 +19,8 @@ Setup::Setup(stateMachine* sm) : State(sm){
 
 void Setup::initialise(){
     State::initialise();
+    _sm->tunezhandler.play(&c_scalez); // play startup sound
+
     //internal io initilization must happen here so io buses setup for sensor initialzation
         //intialize i2c interface
     _sm->I2C.begin(_SDA,_SCL,I2C_FREQUENCY);

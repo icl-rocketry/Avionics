@@ -24,6 +24,9 @@ stateMachine::stateMachine() :
 
 
 void stateMachine::initialise(State* initStatePtr) {
+
+  // call tunez handler setup first so we can provide startup tone and auditory cues asap
+  tunezhandler.setup();
   //call setup state before callng individual setups
   changeState(initStatePtr);
   //setup storage and logging so any erros encoutered can be logged
@@ -37,12 +40,16 @@ void stateMachine::initialise(State* initStatePtr) {
   estimator.setup();
   
   
+  
 
   
   
 };
 
 void stateMachine::update() {
+  //call udpate on tunez handler
+  tunezhandler.update();
+
   //write logs to file 
   logcontroller.update();
 
