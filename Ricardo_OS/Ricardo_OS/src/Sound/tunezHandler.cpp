@@ -13,6 +13,7 @@ TunezHandler::TunezHandler()
 
 void TunezHandler::setup()
 {
+    /*
     ledc_timer_config_t ledc_timer = {
         .speed_mode = LEDC_HIGH_SPEED_MODE,
         .duty_resolution = LEDC_TIMER_8_BIT, //we are driving a buzzer at full volume so we dont really care about duty res here
@@ -27,7 +28,7 @@ void TunezHandler::setup()
         .channel = LEDC_CHANNEL_0,
         .timer_sel = LEDC_TIMER_0,
         .duty = 256 //set duty to max for max volume     
-    };
+    };*/
 
     //ledc_timer_config(&ledc_timer);
     //ledc_channel_config(&ledc_channel);
