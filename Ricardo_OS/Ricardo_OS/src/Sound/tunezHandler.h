@@ -28,7 +28,6 @@ class TunezHandler{
 
     private:
         
-        melody_base_t* _current_melody; //pointer to current melody object
         std::vector<tune_t> tune_queue; 
 
         uint64_t prev_time = 0;
