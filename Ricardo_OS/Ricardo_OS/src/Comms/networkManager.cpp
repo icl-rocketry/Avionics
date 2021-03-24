@@ -112,6 +112,7 @@ void NetworkManager::send_to_node(Nodes destination,std::vector<uint8_t> &data){
     uint8_t current_node = static_cast<uint8_t>(node_type);
     //get sending interface from routing table
     Interface send_interface = routingtable(current_node,static_cast<uint8_t>(destination)).gateway;
+    //Serial.write((uint8_t)send_interface);
 
     if ((send_interface == Interface::LOOPBACK) && (current_node != static_cast<uint8_t>(destination))){
         /*
@@ -151,9 +152,10 @@ void NetworkManager::process_global_packets(){
 
             //forward packet to next node
             
-            send_to_node(static_cast<Nodes>(packetheader.destination),*curr_packet);
-
-            
+            send_to_node(static_cast<Nodes>(packetheader.destination),curr_packet_ptr.get(),static_cast<size_t>(packetheader.packet_len+packetheader.header_len));
+           
+            //Serial.write(packetheader.destination);
+            _global_packet_buffer.erase(_global_packet_buffer.begin());
 
 
         }else{
