@@ -54,7 +54,7 @@ void Radio::get_packet(std::vector<std::shared_ptr<uint8_t>> *buf){
     int packetSize = LoRa.parsePacket();
     
     if (packetSize){ //check if theres data to read 
-
+    
         //create shared ptr with custom deleter
         std::shared_ptr<uint8_t> packet_ptr(new uint8_t[packetSize], [](uint8_t *p) { delete[] p; }); 
 

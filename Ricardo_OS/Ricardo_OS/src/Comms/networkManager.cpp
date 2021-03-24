@@ -120,6 +120,7 @@ int NetworkManager::get_node_type(){return static_cast<int>(node_type);};
 
 void NetworkManager::process_global_packets(){
     if (_global_packet_buffer.size() > 0){
+        Serial.print("yay");
         std::shared_ptr<uint8_t> curr_packet_ptr = _global_packet_buffer.front();
         //create temporary packet buffer object to decode packet header
         PacketHeader packetheader = PacketHeader(curr_packet_ptr.get());
