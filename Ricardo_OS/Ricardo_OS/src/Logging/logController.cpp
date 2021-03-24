@@ -59,7 +59,7 @@ void LogController::log(std::string message) {
     system_frame.message = message;
 
  
-    system_log_buffer.push_back(system_frame);
+    //system_log_buffer.push_back(system_frame);
 }
 
 void LogController::log(uint32_t status,uint32_t flag,std::string message) {
@@ -74,7 +74,7 @@ void LogController::log(uint32_t status,uint32_t flag,std::string message) {
     
 
     //add frame to buffer
-    system_log_buffer.push_back(system_frame);
+    //system_log_buffer.push_back(system_frame);
     
 	
 }
@@ -87,7 +87,7 @@ void LogController::log(uint32_t status,uint32_t flag) {
     system_frame.message = "flag logged";
 
  
-    system_log_buffer.push_back(system_frame);
+    //system_log_buffer.push_back(system_frame);
     
 }
 

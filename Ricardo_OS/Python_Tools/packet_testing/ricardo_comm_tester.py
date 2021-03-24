@@ -38,15 +38,16 @@ ser.read(ser.in_waiting)
 
 while True:
 	# Test send a comand packet
-	header = Header(2, 0, 2, 0, source=4, destination=0) # source=4 for USB and destination=0 for rocket
+	header = Header(2, 0, 2, 0, source=2, destination=0) # source=4 for USB and destination=0 for rocket
 	cmd_packet = Command(header, 50, 0) # 50 for detailed all
 	serialized_packet = cmd_packet.serialize()
 	print(serialized_packet.hex())
 	ser.write(serialized_packet)
+	
 	print('we wrote shit')
 
 	b = ser.read(1)
-	#print(b.hex())
+	print(b)
 	#print(ser.in_waiting)
 	
 	if b == Header.start_byte.to_bytes(1, 'little'):

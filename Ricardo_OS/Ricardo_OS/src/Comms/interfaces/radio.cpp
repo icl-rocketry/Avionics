@@ -29,6 +29,7 @@ void Radio::setup(){
 
     while (!LoRa.begin(LORA_REGION)){
         _systemstatus->new_message(system_flag::ERROR_LORA,"Lora setting up");
+        
         delay(100);       
     };
     if (_systemstatus->flag_triggered(system_flag::ERROR_LORA)){
@@ -52,9 +53,8 @@ void Radio::send_packet(uint8_t* data, size_t packet_len){
 
 void Radio::get_packet(std::vector<std::shared_ptr<uint8_t>> *buf){
     int packetSize = LoRa.parsePacket();
-    
     if (packetSize){ //check if theres data to read 
-
+        Serial.write(1);
         //create shared ptr with custom deleter
         std::shared_ptr<uint8_t> packet_ptr(new uint8_t[packetSize], [](uint8_t *p) { delete[] p; }); 
 
