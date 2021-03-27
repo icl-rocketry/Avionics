@@ -48,6 +48,7 @@ void TunezHandler::play(melody_base_t *melody,bool loop){
          //high priority tune
          //insert high priority tune at front of vector 
         tune_queue.insert(tune_queue.begin(),new_tune);
+        note_duration = 0; //reset note_duration to force update function to play now
 
      }else{
          //low priority tune
@@ -62,7 +63,7 @@ void TunezHandler::play(melody_base_t *melody,bool loop){
 
      }
 
-     note_duration = 0; //reset note_duration to force update function to play now
+    
 
 
 };
