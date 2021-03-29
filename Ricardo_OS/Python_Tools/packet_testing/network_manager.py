@@ -35,7 +35,7 @@ class NetworkManager:
 		t_prev = time.time_ns()
 		while self.run:
 			#header = Header(2, 0, 2, 0, source=4, destination=0)# source=4 for USB and destination=0 for rocket
-			header = Header(2, 0, 2, 0, source=4, destination=0) # source = 2 for laptop
+			header = Header(2, 0, 2, 0, source=2, destination=0) # source = 2 for laptop
 			cmd_packet = Command(header, 50, 0) # 50 for detailed all
 
 			self._send_packet(cmd_packet)
