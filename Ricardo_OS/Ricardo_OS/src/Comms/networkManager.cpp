@@ -13,6 +13,7 @@
 #include "packets.h"
 #include "routingTable.h"
 
+#include <Arduino.h>
 #include <memory>
 
 
@@ -27,6 +28,8 @@ NetworkManager::NetworkManager(stateMachine* sm):
     //setup default routing table
     routingtable(Nodes::ROCKET) = std::vector<RoutingTableEntry>({{Interface::LOOPBACK,0},{Interface::LORA,1},{Interface::LORA,2},{Interface::CAN,1},{Interface::USBSerial,1}});
     routingtable(Nodes::GROUNDSTATION) = std::vector<RoutingTableEntry>( {{Interface::LORA,1},{Interface::LOOPBACK,0},{Interface::USBSerial,1},{Interface::LORA,2},{Interface::USBSerial,1}});
+    _global_packet_buffer.reserve(5);
+    _local_packet_buffer.reserve(5);
 };
 
 
@@ -39,8 +42,12 @@ void NetworkManager::update(){
     radio.get_packet(&_global_packet_buffer); //get any new packets and place in global packet buffer
     usbserial.get_packet(&_global_packet_buffer);
 
+
     process_global_packets();
+
+    
     process_local_packets();
+
     commandhandler.update();// process any commands received
 };
 
@@ -64,9 +71,13 @@ void NetworkManager::send_packet(Interface iface,uint8_t* data, size_t len){
 
 
                 // create new instance of shared pointer and push to global packet buffer
-                std::shared_ptr<uint8_t> packet_ptr(new uint8_t[len], [](uint8_t *p) { delete[] p; });
+                //std::shared_ptr<uint8_t[]> packet_ptr(new uint8_t[len]);
+
+                auto packet_ptr = std::make_shared<std::vector<uint8_t>>;
+                packet_ptr.get()->reserve(len); // reserve the length in the vevtor
+                
                 //copy data to packet_ptr
-                memcpy(packet_ptr.get(),data,len);
+                memcpy(packet_ptr.get()->get(),data,len); //first .get() gets the raw pointer of the vector object, the second ->get() returns the raw address of the vector
                 //push onto global packet buffer for processing
                 _global_packet_buffer.push_back(packet_ptr);
 
@@ -120,7 +131,9 @@ int NetworkManager::get_node_type(){return static_cast<int>(node_type);};
 
 void NetworkManager::process_global_packets(){
     if (_global_packet_buffer.size() > 0){
-        std::shared_ptr<uint8_t> curr_packet_ptr = _global_packet_buffer.front();
+        
+        //std::shared_ptr<uint8_t[]> curr_packet_ptr = _global_packet_buffer.front();
+        auto curr_packet_ptr = _global_packet_buffer.front();
         //create temporary packet buffer object to decode packet header
         PacketHeader packetheader = PacketHeader(curr_packet_ptr.get());
 
@@ -132,7 +145,7 @@ void NetworkManager::process_global_packets(){
 
             //forward packet to next node
             
-            send_to_node(static_cast<Nodes>(packetheader.destination),curr_packet_ptr.get(),static_cast<size_t>(packetheader.packet_len+packetheader.header_len));
+            send_to_node(static_cast<Nodes>(packetheader.destination),curr_packet_ptr.get()->get(),static_cast<size_t>(curr_packet_ptr.get()->size()));
 
             _global_packet_buffer.erase(_global_packet_buffer.begin());
 
@@ -172,7 +185,8 @@ void NetworkManager::process_local_packets(){
     //function processes all local packets in packet buffer.
 
     if (_local_packet_buffer.size() > 0){
-        std::shared_ptr<uint8_t> curr_packet_ptr = _local_packet_buffer.front();
+        //std::shared_ptr<uint8_t[]> curr_packet_ptr = _local_packet_buffer.front();
+        auto curr_packet_ptr = _local_packet_buffer.front();
         //create temporary packet buffer object to decode packet header
         PacketHeader packetheader = PacketHeader(curr_packet_ptr.get());
 

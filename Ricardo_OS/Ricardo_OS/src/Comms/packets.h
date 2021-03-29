@@ -54,7 +54,7 @@ private:
 public:
     PacketHeader();
     PacketHeader(uint8_t packet_type, uint32_t packet_size); // Initialise a packet
-    PacketHeader(const uint8_t* data); // Deserialization constructor
+    PacketHeader(const std::vector<uint8_t> &data)); // Deserialization constructor
     ~PacketHeader();
     
     /*
@@ -143,7 +143,7 @@ class TelemetryPacket{
         /*
             Deserialization constructor
         */
-        TelemetryPacket(const uint8_t* data);
+        TelemetryPacket(const std::vector<uint8_t> &data);
         TelemetryPacket();
         ~TelemetryPacket();
 
@@ -162,7 +162,7 @@ public:
     /*
         Deserialization constructor
     */
-    CommandPacket(const uint8_t* data);
+    CommandPacket(const std::vector<uint8_t> &data));
     CommandPacket();
     ~CommandPacket();
 };
@@ -214,7 +214,7 @@ public:
     /*
         Deserialization constructor
     */
-    DetailedAllPacket(const uint8_t* data);
+    DetailedAllPacket(const std::vector<uint8_t> &data));
     DetailedAllPacket();
     ~DetailedAllPacket();
 };

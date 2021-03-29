@@ -56,8 +56,8 @@ class NetworkManager{
         
 
 
-        std::vector<std::shared_ptr<uint8_t>> _global_packet_buffer; //packet buffer containing all network packets received
-        std::vector<std::shared_ptr<uint8_t>> _local_packet_buffer; //packet buffer containing packets meant for this node
+        std::vector<std::shared_ptr<std::vector<uint8_t>>> _global_packet_buffer; //packet buffer containing all network packets received
+        std::vector<std::shared_ptr<std::vector<uint8_t>>> _local_packet_buffer; //packet buffer containing packets meant for this node
         
 
         USB usbserial; //usb serial object

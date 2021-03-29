@@ -28,7 +28,7 @@ void USB::send_packet(uint8_t* data, size_t size){ // From RICARDO to USB
 
 };
 
-void USB::get_packet(std::vector<std::shared_ptr<uint8_t>> *buf){
+void USB::get_packet(std::vector<std::shared_ptr<uint8_t[]>> *buf){
     //return if stream object is null
     if (_stream == nullptr) return;   
 
@@ -83,7 +83,7 @@ void USB::get_packet(std::vector<std::shared_ptr<uint8_t>> *buf){
                 _incompletePacketReceived = false;
                 
                 //create shared ptr with custom deleter
-                std::shared_ptr<uint8_t> packet_ptr(new uint8_t[_total_len], [](uint8_t *p) { delete[] p; });
+                std::shared_ptr<uint8_t[]> packet_ptr(new uint8_t[_total_len]);
                 
                 //deserialize packet header, modify source interface and reserialize.
                 PacketHeader packetheader = PacketHeader(&_tmp_packet_data[0]);

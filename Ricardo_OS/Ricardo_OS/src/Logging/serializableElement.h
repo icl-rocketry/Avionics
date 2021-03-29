@@ -95,9 +95,9 @@ public:
         return ss.str(); // return string bytes
     }
 
-    void deserialize(C& owner, const std::vector<uint8_t>& buffer) const
+    void deserialize(C& owner, const std::vector<uint8_t>& buffer,size_t pos = 0) const
     {
-        deserialize_impl<0>(owner, buffer, 0); // public implmentation of deserializer
+        deserialize_impl<0>(owner, buffer, pos); // public implmentation of deserializer
     }
 
 };
