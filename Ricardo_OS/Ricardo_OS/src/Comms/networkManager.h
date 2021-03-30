@@ -18,6 +18,7 @@
 #include "States/groundstation.h"
 
 #include <memory>
+#include <vector>
 
 
 
@@ -37,8 +38,8 @@ class NetworkManager{
         void setup();
         void update();
         
-        void send_to_node(Nodes destination,uint8_t* data,size_t len);
-        void send_packet(Interface iface,uint8_t* data, size_t len);
+        void send_to_node(Nodes destination,std::vector<uint8_t> &data);
+        void send_packet(Interface iface,std::vector<uint8_t> &data);
 
         //add command 
         void add_command(Nodes source_node, uint32_t command);

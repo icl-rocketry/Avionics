@@ -11,7 +11,7 @@ PacketHeader::PacketHeader(uint8_t packet_type, uint32_t packet_size) : packet_l
 PacketHeader::PacketHeader(const std::vector<uint8_t> &data) {
 	//initalize vector from c array 
 	//std::vector<uint8_t> buffer(data,data + header_size());
-	getSerializer().deserialize(*this, data,0); // header will always be 0 offset 
+	getSerializer().deserialize(*this, data); 
 }
 
 void PacketHeader::serialize(std::vector<uint8_t>& buf) const{
@@ -42,10 +42,14 @@ void TelemetryPacket::serialize(std::vector<uint8_t>& buf) const{
 TelemetryPacket::TelemetryPacket(const std::vector<uint8_t> &data):header(data) {
 	//header = PacketHeader(data); // Deserialize the header
 	//shift data buffer to end of header to get body of packet
-	//const uint8_t* body = data + header.header_len;
+    //const uint8_t* body = data + header.header_len;
 	//initalize vector from c array 
 	//std::vector<uint8_t> buffer(body ,body + packet_size());
-	getSerializer().deserialize(*this, data,header.header_len);
+	std::vector<uint8_t> packet_body;
+	packet_body.reserve(data.size()-header.header_len);
+	memcpy(packet_body.data(),data.data() + header.header_len,packet_body.size());
+
+	getSerializer().deserialize(*this, packet_body);
 };
 
 
@@ -62,8 +66,8 @@ void CommandPacket::serialize(std::vector<uint8_t>& buf) {
 CommandPacket::CommandPacket(const std::vector<uint8_t> &data):header(data) {
 	//header = PacketHeader(data); // Deserialize header
 
-	command = data[header.header_len]; // Get the first byte which is not the header
-	arg = data[header.header_len + 1]; // get next byte
+	command = data.at(header.header_len); // Get the first byte which is not the header
+	arg = data.at(header.header_len + 1); // get next byte
 }
 
 
@@ -84,7 +88,11 @@ DetailedAllPacket::DetailedAllPacket(const std::vector<uint8_t> &data):header(da
 	//const uint8_t* body = data + header.header_len;
 	//initalize vector from c array 
 	//std::vector<uint8_t> buffer(body ,body + packet_size());
-	getSerializer().deserialize(*this, buffer,header.header_len);
+	std::vector<uint8_t> packet_body;
+	packet_body.reserve(data.size()-header.header_len);
+	memcpy(packet_body.data(),data.data() + header.header_len,packet_body.size());
+
+	getSerializer().deserialize(*this, packet_body);
 }
 
 DetailedAllPacket::DetailedAllPacket(){};

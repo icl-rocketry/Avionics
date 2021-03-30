@@ -9,12 +9,16 @@
 #include "../packets.h"
 
 #include <memory>
+#include <vector>
+#include <array>
 
 
 USB::USB(Stream* stream,SystemStatus* systemstatus) :
 _stream(stream),
 _systemstatus(systemstatus)
-{};
+{
+    _tmp_packet_data.reserve(_packetHeader_size);
+};
 
 void USB::setup(){
 
@@ -28,7 +32,7 @@ void USB::send_packet(uint8_t* data, size_t size){ // From RICARDO to USB
 
 };
 
-void USB::get_packet(std::vector<std::shared_ptr<uint8_t[]>> *buf){
+void USB::get_packet(std::vector<std::shared_ptr<std::vector<uint8_t>>> &buf){
     //return if stream object is null
     if (_stream == nullptr) return;   
 
@@ -44,10 +48,11 @@ void USB::get_packet(std::vector<std::shared_ptr<uint8_t[]>> *buf){
                 //reset timeoutcounter
                 _timeoutCounter = 0;
                 //read first bytes of stream to get packet header data into next elements in array
-                _stream->readBytes(&_tmp_packet_data[0],_packetHeader_size);
-
+                _stream->readBytes(_tmp_packet_data.data(),_packetHeader_size);
+                
                 //create packet header object to decode packet header and retrieve packet size
-                PacketHeader packetheader = PacketHeader(&_tmp_packet_data[0]);
+                PacketHeader packetheader = PacketHeader(_tmp_packet_data);
+                //PacketHeader packetheader = PacketHeader();
                 //get decoded packet length 
                 _packet_len = packetheader.packet_len;
                 _header_len = packetheader.header_len;
@@ -83,24 +88,33 @@ void USB::get_packet(std::vector<std::shared_ptr<uint8_t[]>> *buf){
                 _incompletePacketReceived = false;
                 
                 //create shared ptr with custom deleter
-                std::shared_ptr<uint8_t[]> packet_ptr(new uint8_t[_total_len]);
+                //std::shared_ptr<uint8_t[]> packet_ptr(new uint8_t[_total_len]);
+                std::shared_ptr<std::vector<uint8_t>> packet_ptr = std::make_shared<std::vector<uint8_t>>();
+                packet_ptr.get()->reserve(_total_len);
+                
+                
                 
                 //deserialize packet header, modify source interface and reserialize.
-                PacketHeader packetheader = PacketHeader(&_tmp_packet_data[0]);
+                
+                PacketHeader packetheader = PacketHeader(_tmp_packet_data);
+                
+                
                 //update source interface
                 packetheader.src_interface = static_cast<uint8_t>(Interface::USBSerial);
+            
                 //serialize packet header
                 std::vector<uint8_t> modified_packet_header;
                 packetheader.serialize(modified_packet_header);
-                
+               
                 //copy data in modified_packet_header to packet container
-                memcpy(packet_ptr.get(),modified_packet_header.data(),_header_len);
+                memcpy(packet_ptr.get()->data(),modified_packet_header.data(),_header_len);
+                
                 //read bytes in stream buffer into the packet data array starting at the 8th index as header has been read out of stream buffer.
                 //packet len has been decremented 8 as packet_len includes the packet header which is no longer in stream buffer
-                _stream->readBytes((packet_ptr.get() + _header_len), _packet_len); 
-
+                _stream->readBytes((packet_ptr.get()->data() + _header_len), _packet_len); 
+                
                 //should add exceptioj checking here so we know if we have failed to properly read the data into the packet ptr
-                buf->push_back(packet_ptr); // add pointer to packet immediately to buffer                
+                buf.push_back(packet_ptr); // add pointer to packet immediately to buffer                
                 
             };
             

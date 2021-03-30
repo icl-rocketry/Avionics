@@ -15,6 +15,7 @@
 
 #include <Arduino.h>
 #include <memory>
+#include <vector>
 
 
 NetworkManager::NetworkManager(stateMachine* sm):
@@ -39,8 +40,8 @@ void NetworkManager::setup(){
 };
 
 void NetworkManager::update(){
-    radio.get_packet(&_global_packet_buffer); //get any new packets and place in global packet buffer
-    usbserial.get_packet(&_global_packet_buffer);
+    radio.get_packet(_global_packet_buffer); //get any new packets and place in global packet buffer
+    usbserial.get_packet(_global_packet_buffer);
 
 
     process_global_packets();
@@ -51,60 +52,58 @@ void NetworkManager::update(){
     commandhandler.update();// process any commands received
 };
 
-void NetworkManager::send_packet(Interface iface,uint8_t* data, size_t len){
-    if (data == nullptr){
-        return;
-    }else{
-        switch (iface){
-            case Interface::LOOPBACK:
-                {
+void NetworkManager::send_packet(Interface iface,std::vector<uint8_t> &data){
+    switch (iface){
+        case Interface::LOOPBACK:
+            {
 
-                //deserialize packet header, modify source interface and reserialize.
-                PacketHeader packetheader = PacketHeader(data);
-                //update source interface
-                packetheader.src_interface = static_cast<uint8_t>(Interface::LOOPBACK);
-                //serialize packet header
-                std::vector<uint8_t> modified_packet_header;
-                packetheader.serialize(modified_packet_header);
-                //copy into original packet
-                memcpy(data,modified_packet_header.data(),packetheader.header_len);
+            
+            //deserialize packet header, modify source interface and reserialize.
+            PacketHeader packetheader = PacketHeader(data);
+            //update source interface
+            packetheader.src_interface = static_cast<uint8_t>(Interface::LOOPBACK);
+            //serialize packet header
+            std::vector<uint8_t> modified_packet_header;
+            packetheader.serialize(modified_packet_header);
+            //copy into original packet
+            memcpy(data.data(),modified_packet_header.data(),packetheader.header_len);
 
 
-                // create new instance of shared pointer and push to global packet buffer
-                //std::shared_ptr<uint8_t[]> packet_ptr(new uint8_t[len]);
+            // create new instance of shared pointer and push to global packet buffer
+            //std::shared_ptr<uint8_t[]> packet_ptr(new uint8_t[len]);
 
-                auto packet_ptr = std::make_shared<std::vector<uint8_t>>;
-                packet_ptr.get()->reserve(len); // reserve the length in the vevtor
-                
-                //copy data to packet_ptr
-                memcpy(packet_ptr.get()->get(),data,len); //first .get() gets the raw pointer of the vector object, the second ->get() returns the raw address of the vector
-                //push onto global packet buffer for processing
-                _global_packet_buffer.push_back(packet_ptr);
+            std::shared_ptr<std::vector<uint8_t>> packet_ptr = std::make_shared<std::vector<uint8_t>>(data);
+            //*packet_ptr.reserve(data.size()); // reserve the length in the vevtor
+            
+            //copy data to packet_ptr
+            //memcpy(*packet_ptr.data(),data.data(),data.size()); //first .get() gets the raw pointer of the vector object, the second ->get() returns the raw address of the vector
+            //push onto global packet buffer for processing
+            _global_packet_buffer.push_back(packet_ptr);
 
-                break;
-                }
-            case Interface::LORA:
-                {
-                radio.send_packet(data,len);
-                break;
-                }
-            case Interface::USBSerial:
-                {
-                usbserial.send_packet(data,len);
-                break;
-                }
-            case Interface::CAN:
-                {
-                break;
-                }
-            default:
-            //no interface selected do nothing
-                break; 
-        }
-    };
+            break;
+            }
+        case Interface::LORA:
+            {
+            radio.send_packet(data.data(),data.size());
+            break;
+            }
+        case Interface::USBSerial:
+            {
+            usbserial.send_packet(data.data(),data.size());
+            break;
+            }
+        case Interface::CAN:
+            {
+            break;
+            }
+        default:
+        //no interface selected do nothing
+            break; 
+    }
+
 };
 
-void NetworkManager::send_to_node(Nodes destination,uint8_t* data,size_t len){
+void NetworkManager::send_to_node(Nodes destination,std::vector<uint8_t> &data){
     
 
     uint8_t current_node = static_cast<uint8_t>(node_type);
@@ -121,7 +120,7 @@ void NetworkManager::send_to_node(Nodes destination,uint8_t* data,size_t len){
                 isnt good.
                 */
     }else{
-        send_packet(send_interface,data,len);
+        send_packet(send_interface,data);
     };
 
 }
@@ -133,9 +132,9 @@ void NetworkManager::process_global_packets(){
     if (_global_packet_buffer.size() > 0){
         
         //std::shared_ptr<uint8_t[]> curr_packet_ptr = _global_packet_buffer.front();
-        auto curr_packet_ptr = _global_packet_buffer.front();
+        std::shared_ptr<std::vector<uint8_t>> curr_packet = _global_packet_buffer.front(); 
         //create temporary packet buffer object to decode packet header
-        PacketHeader packetheader = PacketHeader(curr_packet_ptr.get());
+        PacketHeader packetheader = PacketHeader(*curr_packet.get()); // get vector object reference
 
         //get current node type
 
@@ -145,7 +144,7 @@ void NetworkManager::process_global_packets(){
 
             //forward packet to next node
             
-            send_to_node(static_cast<Nodes>(packetheader.destination),curr_packet_ptr.get()->get(),static_cast<size_t>(curr_packet_ptr.get()->size()));
+            send_to_node(static_cast<Nodes>(packetheader.destination),*curr_packet.get());
 
             _global_packet_buffer.erase(_global_packet_buffer.begin());
 
@@ -161,7 +160,7 @@ void NetworkManager::process_global_packets(){
                if (packetheader.src_interface == static_cast<uint8_t>(Interface::LOOPBACK)){
                    //loopback packet
                    //delete[] curr_packet_ptr;
-                   _local_packet_buffer.push_back(curr_packet_ptr);
+                   _local_packet_buffer.push_back(curr_packet);
                    _global_packet_buffer.erase(_global_packet_buffer.begin());
 
                }else{
@@ -172,7 +171,7 @@ void NetworkManager::process_global_packets(){
             }else{
                 //YOU GOT MAIL!!!
                 //place packet into local packet buffer for processing
-                _local_packet_buffer.push_back(curr_packet_ptr);
+                _local_packet_buffer.push_back(curr_packet);
                 _global_packet_buffer.erase(_global_packet_buffer.begin());
             }
         }
@@ -181,14 +180,15 @@ void NetworkManager::process_global_packets(){
     };
 }
 
+
 void NetworkManager::process_local_packets(){
     //function processes all local packets in packet buffer.
 
     if (_local_packet_buffer.size() > 0){
         //std::shared_ptr<uint8_t[]> curr_packet_ptr = _local_packet_buffer.front();
-        auto curr_packet_ptr = _local_packet_buffer.front();
+        std::shared_ptr<std::vector<uint8_t>> curr_packet = _local_packet_buffer.front();
         //create temporary packet buffer object to decode packet header
-        PacketHeader packetheader = PacketHeader(curr_packet_ptr.get());
+        PacketHeader packetheader = PacketHeader(*curr_packet.get());
 
         if (packetheader.src_interface == static_cast<uint8_t>(Interface::LOOPBACK)){
             /*erase any packets sent on loopback for now. 
@@ -207,7 +207,7 @@ void NetworkManager::process_local_packets(){
                         //telemerty packets are only processed if ricardo is acting as groundstation
                         if (node_type == Nodes::GROUNDSTATION){
                             //deserialize whole packet
-                            TelemetryPacket rocket_telemetry = TelemetryPacket(curr_packet_ptr.get());
+                            //TelemetryPacket rocket_telemetry = TelemetryPacket(curr_packet_ptr.get());
 
                             //copy packet data to remote rocket telemetry buffer
 
@@ -230,7 +230,7 @@ void NetworkManager::process_local_packets(){
                 case static_cast<uint8_t>(packet::COMMAND):
                     {
                         //deserialize packet
-                        CommandPacket commandpacket = CommandPacket(curr_packet_ptr.get());
+                        CommandPacket commandpacket = CommandPacket(*curr_packet.get());
 
                         //add command to command buffer
                         //add_command(static_cast<Nodes>(commandpacket.header.source),commandpacket.command);

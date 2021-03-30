@@ -14,6 +14,8 @@
 
 #include "interfaces.h"
 
+#include <vector>
+
 
 
 
@@ -50,27 +52,30 @@ void Radio::send_packet(uint8_t* data, size_t packet_len){
 };
 
 
-void Radio::get_packet(std::vector<std::shared_ptr<uint8_t[]>> *buf){
+void Radio::get_packet(std::vector<std::shared_ptr<std::vector<uint8_t>>> &buf){
     int packetSize = LoRa.parsePacket();
     
     if (packetSize){ //check if theres data to read 
     
         //create shared ptr with custom deleter
-        std::shared_ptr<uint8_t[]> packet_ptr(new uint8_t[packetSize]); 
+        //std::shared_ptr<uint8_t[]> packet_ptr(new uint8_t[packetSize]); 
 
-        LoRa.readBytes(packet_ptr.get(), packetSize); // Copy the received data into packet_received
+        std::shared_ptr<std::vector<uint8_t>> packet_ptr = std::make_shared<std::vector<uint8_t>>();
+        packet_ptr.get()->reserve(packetSize);
+
+        LoRa.readBytes(packet_ptr.get()->data(), packetSize); // Copy the received data into packet_received
 
         //deserialize packet header, modify source interface and reserialize.
-        PacketHeader packetheader = PacketHeader(packet_ptr.get());
+        PacketHeader packetheader = PacketHeader(*packet_ptr);
         //update source interface
         packetheader.src_interface = static_cast<uint8_t>(Interface::LORA);
         //serialize packet header
         std::vector<uint8_t> modified_packet_header;
         packetheader.serialize(modified_packet_header);
 
-        memcpy(packet_ptr.get(),modified_packet_header.data(),packetheader.header_len);
+        memcpy(packet_ptr.get()->data(),modified_packet_header.data(),packetheader.header_len);
         
-        buf->push_back(packet_ptr);//add packet ptr  to buffer
+        buf.push_back(packet_ptr);//add packet ptr  to buffer
 
     };
     

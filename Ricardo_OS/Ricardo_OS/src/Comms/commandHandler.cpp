@@ -84,7 +84,7 @@ void CommandHandler::handleCommand(Command command) {
 
 					telemetry.serialize(packet);
 
-					_sm->networkmanager.send_to_node(command.source_node,packet.data(),telemetry.header.packet_len+telemetry.header.header_len);
+					_sm->networkmanager.send_to_node(command.source_node,packet);
 
 				}
 				break;
@@ -135,7 +135,7 @@ void CommandHandler::handleCommand(Command command) {
 
 					detailedall.serialize(packet);
 
-					_sm->networkmanager.send_to_node(command.source_node,packet.data(),detailedall.header.packet_len+detailedall.header.header_len);
+					_sm->networkmanager.send_to_node(command.source_node,packet);
 					
 				}
 				break;
