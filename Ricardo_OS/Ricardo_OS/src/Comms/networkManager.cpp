@@ -195,7 +195,7 @@ void NetworkManager::process_local_packets(){
                         //telemerty packets are only processed if ricardo is acting as groundstation
                         if (node_type == Nodes::GROUNDSTATION){
                             //deserialize whole packet
-                            TelemetryPacket rocket_telemetry = TelemetryPacket(curr_packet_ptr.get());
+                            //TelemetryPacket rocket_telemetry = TelemetryPacket(curr_packet_ptr.get());
 
                             //copy packet data to remote rocket telemetry buffer
 

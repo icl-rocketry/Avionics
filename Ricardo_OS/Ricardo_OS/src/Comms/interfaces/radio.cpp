@@ -44,7 +44,7 @@ void Radio::setup(){
 void Radio::send_packet(uint8_t* data, size_t packet_len){
     if(LoRa.beginPacket()){
         LoRa.write(data, packet_len);
-        LoRa.endPacket();
+        LoRa.endPacket(true);
     }else{
         //radio busy or some awful error
     };
@@ -54,7 +54,7 @@ void Radio::send_packet(uint8_t* data, size_t packet_len){
 void Radio::get_packet(std::vector<std::shared_ptr<uint8_t>> *buf){
     int packetSize = LoRa.parsePacket();
     if (packetSize){ //check if theres data to read 
-        Serial.write(1);
+        
         //create shared ptr with custom deleter
         std::shared_ptr<uint8_t> packet_ptr(new uint8_t[packetSize], [](uint8_t *p) { delete[] p; }); 
 
