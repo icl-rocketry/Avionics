@@ -48,7 +48,7 @@ void Radio::setup(){
 void Radio::send_packet(uint8_t* data, size_t packet_len){
     if(LoRa.beginPacket()){
         LoRa.write(data, packet_len);
-        LoRa.endPacket(true);
+        LoRa.endPacket();
     }else{
         //radio busy or some awful error
     };
