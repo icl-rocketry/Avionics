@@ -17,11 +17,10 @@ USB::USB(Stream* stream,SystemStatus* systemstatus) :
 _stream(stream),
 _systemstatus(systemstatus)
 {
-    _tmp_packet_data.reserve(_packetHeader_size);
+    _tmp_packet_data.resize(_packetHeader_size);
 };
 
 void USB::setup(){
-
 };
 
 void USB::send_packet(uint8_t* data, size_t size){ // From RICARDO to USB
@@ -47,7 +46,8 @@ void USB::get_packet(std::vector<std::shared_ptr<std::vector<uint8_t>>> &buf){
             if(!_incompletePacketReceived){
                 //reset timeoutcounter
                 _timeoutCounter = 0;
-                //read first bytes of stream to get packet header data into next elements in array
+                
+                
                 _stream->readBytes(_tmp_packet_data.data(),_packetHeader_size);
                 
                 //create packet header object to decode packet header and retrieve packet size
@@ -89,8 +89,9 @@ void USB::get_packet(std::vector<std::shared_ptr<std::vector<uint8_t>>> &buf){
                 
                 //create shared ptr with custom deleter
                 //std::shared_ptr<uint8_t[]> packet_ptr(new uint8_t[_total_len]);
+
                 std::shared_ptr<std::vector<uint8_t>> packet_ptr = std::make_shared<std::vector<uint8_t>>();
-                packet_ptr.get()->reserve(_total_len);
+                (*packet_ptr).resize(_total_len);
                 
                 
                 

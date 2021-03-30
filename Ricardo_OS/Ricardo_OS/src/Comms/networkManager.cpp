@@ -134,7 +134,7 @@ void NetworkManager::process_global_packets(){
         //std::shared_ptr<uint8_t[]> curr_packet_ptr = _global_packet_buffer.front();
         std::shared_ptr<std::vector<uint8_t>> curr_packet = _global_packet_buffer.front(); 
         //create temporary packet buffer object to decode packet header
-        PacketHeader packetheader = PacketHeader(*curr_packet.get()); // get vector object reference
+        PacketHeader packetheader = PacketHeader(*curr_packet); // get vector object reference
 
         //get current node type
 
@@ -144,7 +144,7 @@ void NetworkManager::process_global_packets(){
 
             //forward packet to next node
             
-            send_to_node(static_cast<Nodes>(packetheader.destination),*curr_packet.get());
+            send_to_node(static_cast<Nodes>(packetheader.destination),*curr_packet);
 
             _global_packet_buffer.erase(_global_packet_buffer.begin());
 
@@ -230,7 +230,7 @@ void NetworkManager::process_local_packets(){
                 case static_cast<uint8_t>(packet::COMMAND):
                     {
                         //deserialize packet
-                        CommandPacket commandpacket = CommandPacket(*curr_packet.get());
+                        CommandPacket commandpacket = CommandPacket(*curr_packet);
 
                         //add command to command buffer
                         //add_command(static_cast<Nodes>(commandpacket.header.source),commandpacket.command);

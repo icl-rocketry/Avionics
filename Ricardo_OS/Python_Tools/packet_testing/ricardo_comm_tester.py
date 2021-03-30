@@ -28,24 +28,24 @@ ser.flushInput()
 ser.setDTR(True)
 print('esp32 reset')
 ser.flushInput()
-time.sleep(1)
+time.sleep(5)
 print('flushing boot messages')
 ser.read(ser.in_waiting)
 
 
 
 
-
 while True:
 	# Test send a comand packet
-	header = Header(2, 0, 2, 0, source=4, destination=0) # source=4 for USB and destination=0 for rocket
+	header = Header(2, 0, 2, 0, source=2, destination=0) # source=4 for USB and destination=0 for rocket
 	cmd_packet = Command(header, 50, 0) # 50 for detailed all
 	serialized_packet = cmd_packet.serialize()
-	print(serialized_packet.hex())
+	#print(serialized_packet.hex())
 	ser.write(serialized_packet)
-	print('we wrote shit')
+	#print('we wrote shit')
 
 	b = ser.read(1)
+	#print(str(b,"utf-8"),end="",flush=True)
 	#print(b.hex())
 	#print(ser.in_waiting)
 	

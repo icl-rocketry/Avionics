@@ -45,7 +45,7 @@ void Radio::setup(){
 void Radio::send_packet(uint8_t* data, size_t packet_len){
     if(LoRa.beginPacket()){
         LoRa.write(data, packet_len);
-        LoRa.endPacket();
+        LoRa.endPacket(true);
     }else{
         //radio busy or some awful error
     };
@@ -61,9 +61,10 @@ void Radio::get_packet(std::vector<std::shared_ptr<std::vector<uint8_t>>> &buf){
         //std::shared_ptr<uint8_t[]> packet_ptr(new uint8_t[packetSize]); 
 
         std::shared_ptr<std::vector<uint8_t>> packet_ptr = std::make_shared<std::vector<uint8_t>>();
-        packet_ptr.get()->reserve(packetSize);
 
-        LoRa.readBytes(packet_ptr.get()->data(), packetSize); // Copy the received data into packet_received
+        (*packet_ptr).resize(packetSize);
+
+        LoRa.readBytes((*packet_ptr).data(), packetSize); // Copy the received data into packet_received
 
         //deserialize packet header, modify source interface and reserialize.
         PacketHeader packetheader = PacketHeader(*packet_ptr);
@@ -73,7 +74,7 @@ void Radio::get_packet(std::vector<std::shared_ptr<std::vector<uint8_t>>> &buf){
         std::vector<uint8_t> modified_packet_header;
         packetheader.serialize(modified_packet_header);
 
-        memcpy(packet_ptr.get()->data(),modified_packet_header.data(),packetheader.header_len);
+        memcpy((*packet_ptr).data(),modified_packet_header.data(),packetheader.header_len);
         
         buf.push_back(packet_ptr);//add packet ptr  to buffer
 

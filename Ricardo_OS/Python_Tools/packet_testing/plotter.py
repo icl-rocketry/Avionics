@@ -81,15 +81,15 @@ class Plotter:
 		self._time_series_append_packet(packet, self.t)
 
 
-		if self.iter > self.rb_length:
-			self._plot_lines()
-			plt.pause(.01)
-			self.ax.relim()
-			self.ax.set_xlim(left=self.time_series["t"].get()[1], right=self.time_series["t"].get()[-1])
-			self.ax.autoscale_view()
+		#if self.iter > self.rb_length:
+			#self._plot_lines()
+			#plt.pause(.01)
+			#self.ax.relim()
+			#self.ax.set_xlim(left=self.time_series["t"].get()[1], right=self.time_series["t"].get()[-1])
+			#self.ax.autoscale_view()
 			#self.ax.grid()
-			self.fig.canvas.draw()
-			self.fig.canvas.flush_events()
-		else:
-			time.sleep(.001)
+			#self.fig.canvas.draw()
+			#self.fig.canvas.flush_events()
+		#else:
+		time.sleep(.001)
 		self.iter += 1

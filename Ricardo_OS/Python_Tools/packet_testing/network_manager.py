@@ -22,7 +22,7 @@ class NetworkManager:
 		self.ser.setDTR(True)
 		print('esp32 reset')
 		self.ser.flushInput()
-		time.sleep(1)
+		time.sleep(5)
 		print('flushing boot messages')
 		self.ser.read(self.ser.in_waiting)
 
@@ -40,10 +40,11 @@ class NetworkManager:
 			self._send_packet(cmd_packet)
 			packet = self._read_next_packet()
 			
-			t = time.time_ns()
-			dt = t - t_prev
-			t_prev = t
-			self.plotter.update(packet, dt)
+			if packet != False:
+				t = time.time_ns()
+				dt = t - t_prev
+				t_prev = t
+				self.plotter.update(packet, dt)
 			#self.db.add(packet)
 	
 	def _read_next_packet(self):
@@ -52,6 +53,7 @@ class NetworkManager:
 		
 		while not (b == Header.start_byte.to_bytes(1, 'little')):
 			b = self.ser.read(1)
+			return False
 		
 		header_bytes = self.ser.read(Header.header_size - 1)
 		header = Header.from_bytes(b + header_bytes)

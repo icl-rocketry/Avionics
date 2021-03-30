@@ -46,7 +46,7 @@ TelemetryPacket::TelemetryPacket(const std::vector<uint8_t> &data):header(data) 
 	//initalize vector from c array 
 	//std::vector<uint8_t> buffer(body ,body + packet_size());
 	std::vector<uint8_t> packet_body;
-	packet_body.reserve(data.size()-header.header_len);
+	packet_body.resize(data.size()-header.header_len);
 	memcpy(packet_body.data(),data.data() + header.header_len,packet_body.size());
 
 	getSerializer().deserialize(*this, packet_body);
@@ -68,6 +68,7 @@ CommandPacket::CommandPacket(const std::vector<uint8_t> &data):header(data) {
 
 	command = data.at(header.header_len); // Get the first byte which is not the header
 	arg = data.at(header.header_len + 1); // get next byte
+
 }
 
 
@@ -89,7 +90,7 @@ DetailedAllPacket::DetailedAllPacket(const std::vector<uint8_t> &data):header(da
 	//initalize vector from c array 
 	//std::vector<uint8_t> buffer(body ,body + packet_size());
 	std::vector<uint8_t> packet_body;
-	packet_body.reserve(data.size()-header.header_len);
+	packet_body.resize(data.size()-header.header_len);
 	memcpy(packet_body.data(),data.data() + header.header_len,packet_body.size());
 
 	getSerializer().deserialize(*this, packet_body);
