@@ -73,6 +73,7 @@ class NetworkManager:
 			rcv_packet = DetailedAll.from_bytes(b + header_bytes + body) # Constructor expects to receive bytes consisting off header + packet body
 			
 			print('RECEIVED PACKET:')
+			print(b+header_bytes+body)
 			print(rcv_packet)
 			
 			return rcv_packet
