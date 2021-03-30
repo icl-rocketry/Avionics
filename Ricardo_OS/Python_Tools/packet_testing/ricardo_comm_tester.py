@@ -28,7 +28,7 @@ ser.flushInput()
 ser.setDTR(True)
 print('esp32 reset')
 ser.flushInput()
-time.sleep(5)
+time.sleep(1)
 print('flushing boot messages')
 ser.read(ser.in_waiting)
 
