@@ -15,7 +15,7 @@ class Radio: public Iface{
         Radio(SPIClass* spi, SystemStatus* systemstatus);
         void setup();
         void send_packet(uint8_t* txpacket_ptr,size_t packet_size);
-        void get_packet(std::vector<std::shared_ptr<std::vector<uint8_t>>> &buf);
+        void get_packet(std::vector<std::unique_ptr<std::vector<uint8_t>>> &buf);
 
     private:
         SPIClass* _spi; //pointer to spi class 

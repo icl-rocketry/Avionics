@@ -57,28 +57,29 @@ void NetworkManager::send_packet(Interface iface,std::vector<uint8_t> &data){
         case Interface::LOOPBACK:
             {
 
-            
+            std::unique_ptr<std::vector<uint8_t>> packet_ptr = std::make_unique<std::vector<uint8_t>>(data);
+
             //deserialize packet header, modify source interface and reserialize.
-            PacketHeader packetheader = PacketHeader(data);
+            PacketHeader packetheader = PacketHeader(*packet_ptr);
             //update source interface
             packetheader.src_interface = static_cast<uint8_t>(Interface::LOOPBACK);
             //serialize packet header
             std::vector<uint8_t> modified_packet_header;
             packetheader.serialize(modified_packet_header);
             //copy into original packet
-            memcpy(data.data(),modified_packet_header.data(),packetheader.header_len);
+            memcpy((*packet_ptr).data(),modified_packet_header.data(),packetheader.header_len);
 
 
             // create new instance of shared pointer and push to global packet buffer
             //std::shared_ptr<uint8_t[]> packet_ptr(new uint8_t[len]);
 
-            std::shared_ptr<std::vector<uint8_t>> packet_ptr = std::make_shared<std::vector<uint8_t>>(data);
+            
             //*packet_ptr.reserve(data.size()); // reserve the length in the vevtor
             
             //copy data to packet_ptr
             //memcpy(*packet_ptr.data(),data.data(),data.size()); //first .get() gets the raw pointer of the vector object, the second ->get() returns the raw address of the vector
             //push onto global packet buffer for processing
-            _global_packet_buffer.push_back(packet_ptr);
+            _global_packet_buffer.push_back(std::move(packet_ptr));
 
             break;
             }
@@ -132,7 +133,8 @@ void NetworkManager::process_global_packets(){
     if (_global_packet_buffer.size() > 0){
         
         //std::shared_ptr<uint8_t[]> curr_packet_ptr = _global_packet_buffer.front();
-        std::shared_ptr<std::vector<uint8_t>> curr_packet = _global_packet_buffer.front(); 
+        std::unique_ptr<std::vector<uint8_t>> curr_packet = std::move(_global_packet_buffer.front()); 
+        _global_packet_buffer.erase(_global_packet_buffer.begin()); // erase the first elemnt of global buffer
         //create temporary packet buffer object to decode packet header
         PacketHeader packetheader = PacketHeader(*curr_packet); // get vector object reference
 
@@ -146,7 +148,7 @@ void NetworkManager::process_global_packets(){
             
             send_to_node(static_cast<Nodes>(packetheader.destination),*curr_packet);
 
-            _global_packet_buffer.erase(_global_packet_buffer.begin());
+            
 
 
         }else{
@@ -160,19 +162,19 @@ void NetworkManager::process_global_packets(){
                if (packetheader.src_interface == static_cast<uint8_t>(Interface::LOOPBACK)){
                    //loopback packet
                    //delete[] curr_packet_ptr;
-                   _local_packet_buffer.push_back(curr_packet);
-                   _global_packet_buffer.erase(_global_packet_buffer.begin());
+                   _local_packet_buffer.push_back(std::move(curr_packet));
+                   //_global_packet_buffer.erase(_global_packet_buffer.begin());
 
                }else{
                    //more than 1 device with same node type on network.
                    //delete[] curr_packet_ptr;
-                   _global_packet_buffer.erase(_global_packet_buffer.begin());
+                   //_global_packet_buffer.erase(_global_packet_buffer.begin());
                }
             }else{
                 //YOU GOT MAIL!!!
                 //place packet into local packet buffer for processing
-                _local_packet_buffer.push_back(curr_packet);
-                _global_packet_buffer.erase(_global_packet_buffer.begin());
+                _local_packet_buffer.push_back(std::move(curr_packet));
+                //_global_packet_buffer.erase(_global_packet_buffer.begin());
             }
         }
     }else{
@@ -186,9 +188,10 @@ void NetworkManager::process_local_packets(){
 
     if (_local_packet_buffer.size() > 0){
         //std::shared_ptr<uint8_t[]> curr_packet_ptr = _local_packet_buffer.front();
-        std::shared_ptr<std::vector<uint8_t>> curr_packet = _local_packet_buffer.front();
+        std::unique_ptr<std::vector<uint8_t>> curr_packet = std::move(_local_packet_buffer.front());
+        _local_packet_buffer.erase(_local_packet_buffer.begin());
         //create temporary packet buffer object to decode packet header
-        PacketHeader packetheader = PacketHeader(*curr_packet.get());
+        PacketHeader packetheader = PacketHeader(*curr_packet);
 
         if (packetheader.src_interface == static_cast<uint8_t>(Interface::LOOPBACK)){
             /*erase any packets sent on loopback for now. 
@@ -197,7 +200,7 @@ void NetworkManager::process_local_packets(){
             but then we may as well have some fun and create a death pit interface 
             */
             //delete[] curr_packet_ptr;
-            _local_packet_buffer.erase(_local_packet_buffer.begin());
+            
 
         }else{
 
@@ -219,11 +222,11 @@ void NetworkManager::process_local_packets(){
 
                         //delete packet pointer object and remove from buffer
                             //delete[] curr_packet_ptr;
-                            _local_packet_buffer.erase(_local_packet_buffer.begin());
+                            //_local_packet_buffer.erase(_local_packet_buffer.begin());
                         }else{
                             //delete packet as telemtry packets are not processed in any other state
                             //delete[] curr_packet_ptr;
-                            _local_packet_buffer.erase(_local_packet_buffer.begin());
+                            //_local_packet_buffer.erase(_local_packet_buffer.begin());
                         }
                     }
                     break;
@@ -243,7 +246,7 @@ void NetworkManager::process_local_packets(){
 
                         //delete packet pointer and remove from packet buffer
                         //delete[] curr_packet_ptr;
-                        _local_packet_buffer.erase(_local_packet_buffer.begin());
+                        //_local_packet_buffer.erase(_local_packet_buffer.begin());
 
                         break;
                     }
@@ -252,7 +255,7 @@ void NetworkManager::process_local_packets(){
                         //handle all other packet types received
                         //delete packet as somehow a packet has slipped thru and shouldnt be processed on this node
                         //delete[] curr_packet_ptr;
-                        _local_packet_buffer.erase(_local_packet_buffer.begin());  
+                       // _local_packet_buffer.erase(_local_packet_buffer.begin());  
 
                         break;
                     }

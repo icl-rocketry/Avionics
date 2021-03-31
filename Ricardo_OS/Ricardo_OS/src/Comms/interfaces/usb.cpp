@@ -31,7 +31,7 @@ void USB::send_packet(uint8_t* data, size_t size){ // From RICARDO to USB
 
 };
 
-void USB::get_packet(std::vector<std::shared_ptr<std::vector<uint8_t>>> &buf){
+void USB::get_packet(std::vector<std::unique_ptr<std::vector<uint8_t>>> &buf){
     //return if stream object is null
     if (_stream == nullptr) return;   
 
@@ -41,7 +41,7 @@ void USB::get_packet(std::vector<std::shared_ptr<std::vector<uint8_t>>> &buf){
         
         _firstByte = _stream->peek();
         
-        if (_firstByte == 0xAF || _incompletePacketReceived){
+        if ((_firstByte == 0xAF && _stream->available() > 15) || _incompletePacketReceived){
             
             if(!_incompletePacketReceived){
                 //reset timeoutcounter
@@ -60,14 +60,14 @@ void USB::get_packet(std::vector<std::shared_ptr<std::vector<uint8_t>>> &buf){
                 
 
             };
-
+            
             if (_total_len > SERIAL_SIZE_RX){
                 //This basically is a buffer overflow as the serial buffer wont be able to contain this size of packet
                 //in theory this shouldn't happen unless someone does something wrong
                 //TODO
                 //handle oversized packets some how...
                 //return nothing 
-                _stream->read(); // clear start byte so rest of packet is flushed
+                //_stream->read(); // clear start byte so rest of packet is flushed
 
             }else if (_packet_len > _stream->available()){
                 //we dont have the full packet to read 
@@ -90,7 +90,7 @@ void USB::get_packet(std::vector<std::shared_ptr<std::vector<uint8_t>>> &buf){
                 //create shared ptr with custom deleter
                 //std::shared_ptr<uint8_t[]> packet_ptr(new uint8_t[_total_len]);
 
-                std::shared_ptr<std::vector<uint8_t>> packet_ptr = std::make_shared<std::vector<uint8_t>>();
+                std::unique_ptr<std::vector<uint8_t>> packet_ptr = std::make_unique<std::vector<uint8_t>>();
                 (*packet_ptr).resize(_total_len);
                 
                 
@@ -108,14 +108,14 @@ void USB::get_packet(std::vector<std::shared_ptr<std::vector<uint8_t>>> &buf){
                 packetheader.serialize(modified_packet_header);
                
                 //copy data in modified_packet_header to packet container
-                memcpy(packet_ptr.get()->data(),modified_packet_header.data(),_header_len);
+                memcpy((*packet_ptr).data(),modified_packet_header.data(),_header_len);
                 
                 //read bytes in stream buffer into the packet data array starting at the 8th index as header has been read out of stream buffer.
                 //packet len has been decremented 8 as packet_len includes the packet header which is no longer in stream buffer
-                _stream->readBytes((packet_ptr.get()->data() + _header_len), _packet_len); 
+                _stream->readBytes(((*packet_ptr).data() + _header_len), _packet_len); 
                 
                 //should add exceptioj checking here so we know if we have failed to properly read the data into the packet ptr
-                buf.push_back(packet_ptr); // add pointer to packet immediately to buffer                
+                buf.push_back(std::move(packet_ptr)); // add pointer to packet immediately to buffer                
                 
             };
             

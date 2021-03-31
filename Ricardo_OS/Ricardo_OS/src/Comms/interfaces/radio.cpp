@@ -53,15 +53,15 @@ void Radio::send_packet(uint8_t* data, size_t packet_len){
 };
 
 
-void Radio::get_packet(std::vector<std::shared_ptr<std::vector<uint8_t>>> &buf){
+void Radio::get_packet(std::vector<std::unique_ptr<std::vector<uint8_t>>> &buf){
     int packetSize = LoRa.parsePacket();
 
-    if (packetSize){ //check if theres data to read 
+    if (packetSize > 15){ //check if theres data to read and there is at least a header present
         
         //create shared ptr with custom deleter
         //std::shared_ptr<uint8_t[]> packet_ptr(new uint8_t[packetSize]); 
 
-        std::shared_ptr<std::vector<uint8_t>> packet_ptr = std::make_shared<std::vector<uint8_t>>();
+        std::unique_ptr<std::vector<uint8_t>> packet_ptr = std::make_unique<std::vector<uint8_t>>();
 
         (*packet_ptr).resize(packetSize);
 
@@ -77,7 +77,7 @@ void Radio::get_packet(std::vector<std::shared_ptr<std::vector<uint8_t>>> &buf){
 
         memcpy((*packet_ptr).data(),modified_packet_header.data(),packetheader.header_len);
         
-        buf.push_back(packet_ptr);//add packet ptr  to buffer
+        buf.push_back(std::move(packet_ptr));//add packet ptr  to buffer
 
     };
     
