@@ -49,7 +49,7 @@ void Radio::send_packet(uint8_t* data, size_t packet_len){
     }else{
         //radio busy or some awful error
     };
-    LoRa.recieve();
+    LoRa.receive();
 };
 
 
