@@ -21,7 +21,9 @@
 
 Radio::Radio(SPIClass* spi,SystemStatus* systemstatus):
 _spi(spi),
-_systemstatus(systemstatus)
+_systemstatus(systemstatus),
+packetSize(0),
+index(0)
 {};
 
 void Radio::setup(){
@@ -54,33 +56,84 @@ void Radio::send_packet(uint8_t* data, size_t packet_len){
 
 
 void Radio::get_packet(std::vector<std::unique_ptr<std::vector<uint8_t>>> &buf){
-    int packetSize = LoRa.parsePacket();
+    if (packetSize == 0){
+        packetSize = LoRa.parsePacket();
+        index = 0;
+    }else{
 
-    if (packetSize > 15){ //check if theres data to read and there is at least a header present
+        if (index == 0){
+            packet.resize(packetSize);
+            packet.at(index) = LoRa.read();
+            index++;
+        }else if (index == (packetSize - 1)){
+            std::unique_ptr<std::vector<uint8_t>> packet_ptr = std::make_unique<std::vector<uint8_t>>(packet);
+
+            PacketHeader packetheader = PacketHeader(*packet_ptr);
+        
+            //update source interface
+            packetheader.src_interface = static_cast<uint8_t>(Interface::LORA);
+            
+            //serialize packet header
+            std::vector<uint8_t> modified_packet_header;
+            
+            packetheader.serialize(modified_packet_header);
+            
+
+            memcpy((*packet_ptr).data(),modified_packet_header.data(),packetheader.header_len);
+            
+
+            buf.push_back(std::move(packet_ptr));//add packet ptr  to buffer
+            
+
+        }else{
+            packet.at(index) = LoRa.read();
+            index++;
+        }
+    }
+    /*
+
+    if (packetSize){ //check if theres data to read and there is at least a header present
         
         //create shared ptr with custom deleter
         //std::shared_ptr<uint8_t[]> packet_ptr(new uint8_t[packetSize]); 
-
+        
         std::unique_ptr<std::vector<uint8_t>> packet_ptr = std::make_unique<std::vector<uint8_t>>();
-
+        
         (*packet_ptr).resize(packetSize);
-
+        
         LoRa.readBytes((*packet_ptr).data(), packetSize); // Copy the received data into packet_received
+        
+        Serial.print(" radio receive ");
+        Serial.print(" ");
+        Serial.print(packetSize);
+        Serial.print(" ");
+        Serial.print((*packet_ptr).size());
+        Serial.print(" ");
+        for (int i = 0; i< (*packet_ptr).size();i++){
+            Serial.print((*packet_ptr)[i]);
+            Serial.print(" ");
+        }
 
         //deserialize packet header, modify source interface and reserialize.
         PacketHeader packetheader = PacketHeader(*packet_ptr);
+        
         //update source interface
         packetheader.src_interface = static_cast<uint8_t>(Interface::LORA);
+        
         //serialize packet header
         std::vector<uint8_t> modified_packet_header;
+        
         packetheader.serialize(modified_packet_header);
+        
 
         memcpy((*packet_ptr).data(),modified_packet_header.data(),packetheader.header_len);
         
-        buf.push_back(std::move(packet_ptr));//add packet ptr  to buffer
 
-    };
+        buf.push_back(std::move(packet_ptr));//add packet ptr  to buffer
+        
+
+    };*/
     
-};
+}
 
 

@@ -18,8 +18,12 @@ class Radio: public Iface{
         void get_packet(std::vector<std::unique_ptr<std::vector<uint8_t>>> &buf);
 
     private:
+        
         SPIClass* _spi; //pointer to spi class 
-        SystemStatus* _systemstatus; //pointer to system status object       
+        SystemStatus* _systemstatus; //pointer to system status object     
+        int packetSize;  
+        int index;
+        std::vector<uint8_t> packet;
   
 };
 

@@ -40,16 +40,18 @@ void NetworkManager::setup(){
 };
 
 void NetworkManager::update(){
+    
     radio.get_packet(_global_packet_buffer); //get any new packets and place in global packet buffer
+    
     usbserial.get_packet(_global_packet_buffer);
-
+    
 
     process_global_packets();
-
-    
+   
     process_local_packets();
-
+    
     commandhandler.update();// process any commands received
+    
 };
 
 void NetworkManager::send_packet(Interface iface,std::vector<uint8_t> &data){
@@ -133,9 +135,12 @@ void NetworkManager::process_global_packets(){
     if (_global_packet_buffer.size() > 0){
         
         //std::shared_ptr<uint8_t[]> curr_packet_ptr = _global_packet_buffer.front();
+        
         std::unique_ptr<std::vector<uint8_t>> curr_packet = std::move(_global_packet_buffer.front()); 
+  
         _global_packet_buffer.erase(_global_packet_buffer.begin()); // erase the first elemnt of global buffer
         //create temporary packet buffer object to decode packet header
+
         PacketHeader packetheader = PacketHeader(*curr_packet); // get vector object reference
 
         //get current node type
@@ -173,6 +178,7 @@ void NetworkManager::process_global_packets(){
             }else{
                 //YOU GOT MAIL!!!
                 //place packet into local packet buffer for processing
+                
                 _local_packet_buffer.push_back(std::move(curr_packet));
                 //_global_packet_buffer.erase(_global_packet_buffer.begin());
             }

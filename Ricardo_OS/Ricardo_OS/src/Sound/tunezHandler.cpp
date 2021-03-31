@@ -35,6 +35,7 @@ void TunezHandler::setup()
     ledcSetup(0,0,8);
     ledcAttachPin(Buzzer,0);
     ledcWrite(0,255); //max volume
+    ledcWriteTone(0,0); //write 0 hz so no noise
 
 };
 

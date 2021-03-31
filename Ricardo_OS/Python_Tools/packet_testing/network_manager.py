@@ -34,17 +34,18 @@ class NetworkManager:
 	def loop(self):
 		t_prev = time.time_ns()
 		while self.run:
-			header = Header(2, 0, 2, 0, source=4, destination=0) # source=4 for USB and destination=0 for rocket
+			header = Header(2, 0, 2, 0, source=2, destination=0) # source=4 for USB and destination=0 for rocket
 			cmd_packet = Command(header, 50, 0) # 50 for detailed all
 
 			self._send_packet(cmd_packet)
-			print("sent")
+			
 			packet = self._read_next_packet()
 			
 			
 			t = time.time_ns()
 			dt = t - t_prev
 			t_prev = t
+			print("time: " + str(dt*(10**-9)) + " frequnecy: " + str(1/(dt*(10**-9))))
 			self.plotter.update(packet, dt)
 			#self.db.add(packet)
 	
@@ -74,7 +75,7 @@ class NetworkManager:
 			rcv_packet = DetailedAll.from_bytes(b + header_bytes + body) # Constructor expects to receive bytes consisting off header + packet body
 			
 			print('RECEIVED PACKET:')
-			print(b+header_bytes+body)
+			
 			print(rcv_packet)
 			
 			return rcv_packet
