@@ -37,7 +37,7 @@ ser.read(ser.in_waiting)
 
 while True:
 	# Test send a comand packet
-	header = Header(2, 0, 2, 0, source=2, destination=0) # source=4 for USB and destination=0 for rocket
+	header = Header(2, 0, 2, 0, source=4, destination=0) # source=4 for USB and destination=0 for rocket
 	cmd_packet = Command(header, 50, 0) # 50 for detailed all
 	serialized_packet = cmd_packet.serialize()
 	#print(serialized_packet.hex())
