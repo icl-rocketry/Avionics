@@ -1,0 +1,104 @@
+> Executing task: platformio device monitor <
+
+--- Available filters and text transformations: colorize, debug, default, direct, esp32_exception_decoder, hexlify, log2file, nocontrol, printable, send_on_enter, time
+--- More details at http://bit.ly/pio-monitor-filters
+--- Miniterm on /dev/cu.usbserial-1420  115200,8,N,1 ---
+--- Quit: Ctrl+C | Menu: Ctrl+T | Help: Ctrl+T followed by Ctrl+H ---
+oot:0x23 (DOWNLOAD_BOOT(UART0/UART1/SDIO_REI_REO_V2))
+waiting for download
+ets Jun  8 2016 00:22:57
+
+rst:0x1 (POWERON_RESET),boot:0x33 (SPI_FAST_FLASH_BOOT)
+configsip: 0, SPIWP:0xee
+clk_drv:0x00,q_drv:0x00,d_drv:0x00,cs0_drv:0x00,hd_drv:0x00,wp_drv:0x00
+mode:DIO, clock div:2
+load:0x3fff0018,len:4
+load:0x3fff001c,len:1364
+load:0x40078000,len:12656
+load:0x40080400,len:3512
+entry 0x40080624
+ets Jun  8 2016 00:22:57
+
+rst:0x1 (POWERON_RESET),boot:0x33 (SPI_FAST_FLASH_BOOT)
+configsip: 0, SPIWP:0xee
+clk_drv:0x00,q_drv:0x00,d_drv:0x00,cs0_drv:0x00,hd_drv:0x00,wp_drv:0x00
+mode:DIO, clock div:2
+load:0x3fff0018,len:4
+load:0x3fff001c,len:1364
+load:0x40078000,len:12656
+load:0x40080400,len:3512
+entry 0x40080624
+[E][esp32-hal-cpu.c:125] removeApbChangeCallback(): not found func=400E0474 arg=3FFBDCE4
+ radio receive  17 17 175 15 2 0 0 0 0 0 0 0 2 2 0 1 10 50 0 
+ radio receive  17 17 175 15 2 0 0 0 0 0 0 0 2 2 0 1 10 50 0 
+ radio receive  17 17 175 15 2 0 0 0 0 0 0 0 2 2 0 1 10 50 0 
+ radio receive  17 17 175 15 2 0 0 0 0 0 0 0 2 2 0 1 10 50 0 
+ radio receive  17 17 175 15 2 0 0 0 0 0 0 0 2 2 0 1 10 50 0 
+ radio receive  17 17 175 15 2 0 0 0 0 0 0 0 2 2 0 1 10 50 0 
+ radio receive  17 17 175 15 2 0 0 0 0 0 0 0 2 2 0 1 10 50 0 
+ radio receive  17 17 175 15 2 0 0 0 0 0 0 0 2 2 0 1 10 50 0 
+ radio receive  17 17 175 15 2 0 0 0 0 0 0 0 2 2 0 1 10 50 0 
+ radio receive  17 17 175 15 2 0 0 0 0 0 0 0 2 2 0 1 10 50 0 
+ radio receive  17 17 175 15 2 0 0 0 0 0 0 0 2 2 0 1 10 50 0 
+ radio receive  17 17 175 15 2 0 0 0 0 0 0 0 2 2 0 1 10 50 0 
+ radio receive  17 17 175 15 2 0 0 0 0 0 0 0 2 2 0 1 10 50 0 
+ radio receive  17 17 175 15 2 0 0 0 0 0 0 0 82 147 79 1 26 145 173 
+abort() was called at PC 0x4010c0bf on core 1
+
+ELF file SHA256: 0000000000000000
+
+Backtrace: 0x40088b7d:0x3ffb1ba0 0x40088f45:0x3ffb1bc0 0x4010c0bf:0x3ffb1be0 0x4010c106:0x3ffb1c00 0x400fccf7:0x3ffb1c20 0x400fe87f:0x3ffb1c40 0x400d30ba:0x3ffb1ee0 0x400d312d:0x3ffb1f10 0x400d3197:0x3ffb1f50 0x400d6d34:0x3ffb1f70 0x400d6b86:0x3ffb1f90 0x400e0eed:0x3ffb1fb0 0x4008a005:0x3ffb1fd0
+
+Rebooting...
+ets Jun  8 2016 00:22:57
+
+rst:0xc (SW_CPU_RESET),boot:0x33 (SPI_FAST_FLASH_BOOT)
+configsip: 0, SPIWP:0xee
+clk_drv:0x00,q_drv:0x00,d_drv:0x00,cs0_drv:0x00,hd_drv:0x00,wp_drv:0x00
+mode:DIO, clock div:2
+load:0x3fff0018,len:4
+load:0x3fff001c,len:1364
+load:0x40078000,len:12656
+load:0x40080400,len:3512
+entry 0x40080624
+[E][esp32-hal-cpu.c:125] removeApbChangeCallback(): not found func=400E0474 arg=3FFBDCE4
+ radio receive  17 17 175 15 2 0 0 0 0 0 0 0 2 2 0 1 10 50 0 
+ radio receive  17 17 175 15 2 0 0 0 0 0 0 0 2 2 0 1 10 50 0 
+ radio receive  17 17 175 15 2 0 0 0 0 0 0 0 2 2 0 1 10 50 0 
+ radio receive  17 17 175 15 2 0 0 0 0 0 0 0 2 2 0 1 10 50 0 
+ radio receive  17 17 175 15 2 0 0 0 0 0 0 0 2 2 0 1 10 50 0 
+ radio receive  17 17 175 15 2 0 0 0 0 0 0 0 2 2 0 1 10 50 0 
+ radio receive  17 17 175 15 2 0 0 0 0 0 0 0 2 2 0 1 10 50 0 
+ radio receive  17 17 175 15 2 0 0 0 0 0 0 0 2 2 0 1 10 50 0 
+ radio receive  17 17 175 15 2 0 0 0 0 0 0 0 2 2 0 1 10 50 0 
+ radio receive  17 17 175 15 2 0 0 0 0 0 0 0 2 2 0 1 10 50 0 
+ radio receive  17 17 175 15 2 0 0 0 0 0 0 0 2 2 0 1 10 50 0 
+ radio receive  17 17 175 15 2 0 0 0 0 0 0 0 2 2 0 1 10 50 0 
+ radio receive  17 17 175 15 2 0 0 0 0 0 0 0 2 2 0 1 10 50 0 
+ radio receive  17 17 175 15 2 0 0 0 0 0 0 0 2 2 0 1 10 50 0 
+ radio receive  17 17 175 15 2 0 0 0 0 0 0 0 2 2 0 1 10 50 0 
+ radio receive  17 17 175 15 2 0 0 0 0 0 0 0 2 2 0 1 10 50 0 
+ radio receive  17 17 175 15 2 0 0 0 0 0 0 0 2 2 0 1 10 50 0 
+ radio receive  17 17 175 15 2 0 0 0 0 0 0 0 2 2 0 1 10 50 0 
+ radio receive  17 17 175 15 2 0 0 0 0 0 0 0 2 2 0 1 10 50 0 
+ radio receive  17 17 175 15 2 0 0 0 0 0 0 0 2 2 0 1 10 50 0 
+ radio receive  17 17 175 15 2 0 0 0 0 8 192 196 2 147 223 1 26 21 173 
+abort() was called at PC 0x4010c0bf on core 1
+
+ELF file SHA256: 0000000000000000
+
+Backtrace: 0x40088b7d:0x3ffb1ba0 0x40088f45:0x3ffb1bc0 0x4010c0bf:0x3ffb1be0 0x4010c106:0x3ffb1c00 0x400fccf7:0x3ffb1c20 0x400fe87f:0x3ffb1c40 0x400d30ba:0x3ffb1ee0 0x400d312d:0x3ffb1f10 0x400d3197:0x3ffb1f50 0x400d6d34:0x3ffb1f70 0x400d6b86:0x3ffb1f90 0x400e0eed:0x3ffb1fb0 0x4008a005:0x3ffb1fd0
+
+Rebooting...
+ets Jun  8 2016 00:22:57
+
+rst:0xc (SW_CPU_RESET),boot:0x33 (SPI_FAST_FLASH_BOOT)
+configsip: 0, SPIWP:0xee
+clk_drv:0x00,q_drv:0x00,d_drv:0x00,cs0_drv:0x00,hd_drv:0x00,wp_drv:0x00
+mode:DIO, clock div:2
+load:0x3fff0018,len:4
+load:0x3fff001c,len:1364
+load:0x40078000,len:12656
+load:0x40080400,len:3512
+entry 0x40080624
+[E][esp32-hal-cpu.c:125] removeApbChangeCallback(): not found func=400E0474 arg=3FFBDCE4
