@@ -24,6 +24,8 @@ class Radio: public Iface{
         int packetSize;  
         int index;
         std::vector<uint8_t> packet;
+
+        uint64_t prev_time;
   
 };
 

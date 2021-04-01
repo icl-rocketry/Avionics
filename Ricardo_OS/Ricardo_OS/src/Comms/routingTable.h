@@ -5,10 +5,12 @@
 #include <vector>
 #include <iostream>
 #include <iomanip>
+#include <exception>
 
 /*
 routing table class implementation using nested vectors with ability to modify during runtime. Also has nice printing.
-
+TODO! 
+add logging if bounds are out of bounds lol
 */
 
 
@@ -84,20 +86,33 @@ class RoutingTable{
             return _table.at(static_cast<uint8_t>(source_idx));
         };
 
-        template<typename T> RoutingTableEntry& operator()(T source_idx, T destination_idx) {
+        template<typename T> RoutingTableEntry& operator()(T source_idx, T destination_idx) { //assignment operator -> if an out of bound error occurs we want to provide a sacrifical object so we can continue but log the error
             std::vector<RoutingTableEntry> entries = _table.at(static_cast<uint8_t>(source_idx));
-            return entries.at(static_cast<uint8_t>(destination_idx));
+            if (destination_idx >= entries.size()){
+                //throw std::out_of_range("requested destination_idx is out of range of routing table");
+
+                return dummy_entry;
+            }else{
+                return entries.at(static_cast<uint8_t>(destination_idx));
+            }
+            
         };
 
-        template<typename T> RoutingTableEntry operator()(T source_idx, T destination_idx) const{
+        template<typename T> RoutingTableEntry operator()(T source_idx, T destination_idx) const{ //the get operator -> returns an error entry so we can discard the dodgy packet 
             std::vector<RoutingTableEntry> entries = _table.at(static_cast<uint8_t>(source_idx));
-            return entries.at(static_cast<uint8_t>(destination_idx));
+            if (destination_idx >= entries.size()){
+                return error_entry;
+            }else{
+                return entries.at(static_cast<uint8_t>(destination_idx));
+            }
         };
 
 
 
     private:
         std::vector< std::vector<RoutingTableEntry> > _table;
+        const RoutingTableEntry error_entry{Interface::ERROR,255}; // error entry return
+        RoutingTableEntry dummy_entry{Interface::ERROR,255}; // dummy entry to return from assingment operator
 };
 
 

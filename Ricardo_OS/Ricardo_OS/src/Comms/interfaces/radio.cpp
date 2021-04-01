@@ -57,6 +57,15 @@ void Radio::send_packet(uint8_t* data, size_t packet_len){
 
 void Radio::get_packet(std::vector<std::unique_ptr<std::vector<uint8_t>>> &buf){
     packetSize = LoRa.parsePacket();
+    /*
+    if(millis() - prev_time > 10){
+        Serial.print(packetSize);
+        Serial.print(" ");
+        Serial.print(LoRa.available());
+        Serial.print("\n");
+        prev_time = millis();
+    }*/
+
     if(packetSize){
         index = 0;
         packet.resize(packetSize);
@@ -81,7 +90,7 @@ void Radio::get_packet(std::vector<std::unique_ptr<std::vector<uint8_t>>> &buf){
         
 
         memcpy((*packet_ptr).data(),modified_packet_header.data(),packetheader.header_len);
-
+/*
         Serial.print(" radio receive ");
         Serial.print(" ");
         Serial.print(packetSize);
@@ -92,7 +101,7 @@ void Radio::get_packet(std::vector<std::unique_ptr<std::vector<uint8_t>>> &buf){
             Serial.print((*packet_ptr)[i]);
             Serial.print(" ");
         }
-        Serial.print("\n");
+        Serial.print("\n");*/
 
         buf.push_back(std::move(packet_ptr));//add packet ptr  to buffer
 

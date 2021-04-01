@@ -112,6 +112,11 @@ void NetworkManager::send_to_node(Nodes destination,std::vector<uint8_t> &data){
     uint8_t current_node = static_cast<uint8_t>(node_type);
     //get sending interface from routing table
     Interface send_interface = routingtable(current_node,static_cast<uint8_t>(destination)).gateway;
+    
+    if (send_interface == Interface::ERROR){
+        // dump this packet as it looks like the dodgyness of highest quality
+        return;
+    }
 
     if ((send_interface == Interface::LOOPBACK) && (current_node != static_cast<uint8_t>(destination))){
         /*

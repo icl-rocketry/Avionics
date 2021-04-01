@@ -9,7 +9,7 @@ from plotter import Plotter
 class NetworkManager:
 
 	def __init__(self, port, baud=115200):
-		self.ser = serial.Serial(port=port, baudrate=baud)  # open serial port
+		self.ser = serial.Serial(port=port, baudrate=baud,timeout = .3)  # open serial port
 
 		self.ser.stopbits = serial.STOPBITS_ONE
 		self.ser.parity = serial.PARITY_NONE
@@ -37,24 +37,35 @@ class NetworkManager:
 			header = Header(2, 0, 2, 0, source=2, destination=0) # source=4 for USB and destination=0 for rocket
 			cmd_packet = Command(header, 50, 0) # 50 for detailed all
 
+			print("sending")
 			self._send_packet(cmd_packet)
+			
+			
 			
 			packet = self._read_next_packet()
 			
+			if not (packet == False):
+				t = time.time_ns()
+				dt = t - t_prev
+				t_prev = t
+				print("time: " + str(dt*(10**-9)) + " frequnecy: " + str(1/(dt*(10**-9))))
+				self.plotter.update(packet, dt)
 			
-			t = time.time_ns()
-			dt = t - t_prev
-			t_prev = t
-			print("time: " + str(dt*(10**-9)) + " frequnecy: " + str(1/(dt*(10**-9))))
-			self.plotter.update(packet, dt)
 			#self.db.add(packet)
 	
 	def _read_next_packet(self):
-		
+		t = time.time_ns()
+
 		b = self.ser.read(1)
 		
-		while not (b == Header.start_byte.to_bytes(1, 'little')):
-			b = self.ser.read(1)
+		while not (b == Header.start_byte.to_bytes(1, 'little')) :
+			if (time.time_ns() - t < 0.3e8):
+				if (self.ser.in_waiting > 0):
+					b = self.ser.read(1)
+			else:
+				return False
+				
+			
 		
 		header_bytes = self.ser.read(Header.header_size - 1)
 		header = Header.from_bytes(b + header_bytes)
