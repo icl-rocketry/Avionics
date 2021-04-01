@@ -40,7 +40,7 @@ void Radio::setup(){
     }
     
     LoRa.setSyncWord(LORA_SYNC_WORD);
-
+    LoRa.enableCrc();
 };
 
 
