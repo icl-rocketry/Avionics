@@ -42,6 +42,7 @@ while True:
 	serialized_packet = cmd_packet.serialize()
 	#print(serialized_packet.hex())
 	ser.write(serialized_packet)
+	t = time.time_ns()
 	#print('we wrote shit')
 
 	b = ser.read(1)
@@ -71,6 +72,8 @@ while True:
 			rcv_packet = DetailedAll.from_bytes(b + header_bytes + packet_body) # Constructor expects to receive bytes consisting off header + packet body
 			print('RECEIVED PACKET:')
 			print(rcv_packet)
+			dt = (time.time_ns() - t) * (10**-9)
+			print("time: " + str(dt) + " frequency: " + str(1/dt))
 	
 
 ser.close() 
