@@ -61,7 +61,7 @@ class LogController{
         const std::string network_log_filename = "/network_log.txt";
 
         //telemetry logging frequnecy variables
-        uint16_t telemetry_log_frequency = 1000; // default frequnecy of 1Hz
+        uint16_t telemetry_log_frequency = 20; // default frequnecy of 1Hz
         uint64_t telemetry_prev_log_time = 0;
         //writing to memory frequency
         std::array<uint16_t,3> write_frequency = {5000,5000,5000};

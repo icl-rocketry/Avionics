@@ -151,7 +151,8 @@ void LogController::write_to_file(LOG_TYPE log_type){
                 //processing each frame individually so we dont accidentally use all of heap
                 std::string entry = telemetry_log_buffer[i].stringify();
                 
-                microsd_file.print(entry.c_str());
+                //microsd_file.print(entry.c_str());
+                microsd_file.write(entry.c_str(),entry.length());
                 //_storagecontroller->write(flash_file_path,entry,STORAGE_DEVICE::FLASH);
                 
             }

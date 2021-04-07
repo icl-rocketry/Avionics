@@ -4,6 +4,7 @@
 #include <array>
 #include "serializableElement.h"
 #include <Arduino.h>
+#include <vector>
 
 //logframes
 
@@ -112,6 +113,10 @@ public:
 
     std::string stringify()const{
         return getSerializer().stringify(*this) + "\n";
+    };
+
+    std::vector<uint8_t> serialize()const{
+        return getSerializer().serialize(*this);
     };
 
 };
