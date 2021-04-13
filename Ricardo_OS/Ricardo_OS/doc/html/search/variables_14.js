@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['x_1029',['x',['../class_telemetry_packet.html#a42208f8de87f073ac229498622cfa9e6',1,'TelemetryPacket::x()'],['../structstate__t.html#aa5e802500ec7db5976692b987f3645f5',1,'state_t::x()']]]
+  ['write_5ffrequency_1048',['write_frequency',['../class_log_controller.html#a4560ebfd40f5195a1400d04796f5a87a',1,'LogController']]]
 ];

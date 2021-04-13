@@ -6,7 +6,8 @@
 
 
 
-Collaboration diagram for Config\+Controller\+:\nopagebreak
+Collaboration diagram for Config\+Controller\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -17,11 +18,15 @@ Collaboration diagram for Config\+Controller\+:\nopagebreak
 \begin{DoxyCompactItemize}
 \item 
 \mbox{\hyperlink{class_config_controller_aa258296507747e5800e12396c96cc6cb}{Config\+Controller}} (\mbox{\hyperlink{class_storage_controller}{Storage\+Controller}} $\ast$storagecontroller)
+\item 
+void \mbox{\hyperlink{class_config_controller_a2763d5dc965d6d3b61de2f10c4c8e602}{setup}} ()
 \end{DoxyCompactItemize}
 \doxysubsection*{Private Attributes}
 \begin{DoxyCompactItemize}
 \item 
 \mbox{\hyperlink{class_storage_controller}{Storage\+Controller}} $\ast$ \mbox{\hyperlink{class_config_controller_a6af8c4054d18a3ad4f81257713db77a6}{\+\_\+storagecontroller}}
+\item 
+const std\+::string \mbox{\hyperlink{class_config_controller_afc578dea527fc9deb906bd1a150bb730}{configuration\+\_\+file\+\_\+path}} = \char`\"{}/Config.\+json\char`\"{}
 \end{DoxyCompactItemize}
 
 
@@ -34,12 +39,27 @@ Collaboration diagram for Config\+Controller\+:\nopagebreak
 
 
 
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_config_controller_a2763d5dc965d6d3b61de2f10c4c8e602}\label{class_config_controller_a2763d5dc965d6d3b61de2f10c4c8e602}} 
+\index{ConfigController@{ConfigController}!setup@{setup}}
+\index{setup@{setup}!ConfigController@{ConfigController}}
+\doxysubsubsection{\texorpdfstring{setup()}{setup()}}
+{\footnotesize\ttfamily void Config\+Controller\+::setup (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
 \doxysubsection{Member Data Documentation}
 \mbox{\Hypertarget{class_config_controller_a6af8c4054d18a3ad4f81257713db77a6}\label{class_config_controller_a6af8c4054d18a3ad4f81257713db77a6}} 
 \index{ConfigController@{ConfigController}!\_storagecontroller@{\_storagecontroller}}
 \index{\_storagecontroller@{\_storagecontroller}!ConfigController@{ConfigController}}
 \doxysubsubsection{\texorpdfstring{\_storagecontroller}{\_storagecontroller}}
 {\footnotesize\ttfamily \mbox{\hyperlink{class_storage_controller}{Storage\+Controller}}$\ast$ Config\+Controller\+::\+\_\+storagecontroller\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{class_config_controller_afc578dea527fc9deb906bd1a150bb730}\label{class_config_controller_afc578dea527fc9deb906bd1a150bb730}} 
+\index{ConfigController@{ConfigController}!configuration\_file\_path@{configuration\_file\_path}}
+\index{configuration\_file\_path@{configuration\_file\_path}!ConfigController@{ConfigController}}
+\doxysubsubsection{\texorpdfstring{configuration\_file\_path}{configuration\_file\_path}}
+{\footnotesize\ttfamily const std\+::string Config\+Controller\+::configuration\+\_\+file\+\_\+path = \char`\"{}/Config.\+json\char`\"{}\hspace{0.3cm}{\ttfamily [private]}}
 
 
 

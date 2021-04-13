@@ -6,7 +6,8 @@
 
 
 
-Collaboration diagram for Imu\+:\nopagebreak
+Collaboration diagram for Imu\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -16,7 +17,7 @@ Collaboration diagram for Imu\+:\nopagebreak
 \doxysubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\hyperlink{class_imu_a1aabcb869851b5cee17cbdd5d9e5512f}{Imu}} (SPIClass $\ast$spi, \mbox{\hyperlink{class_system_status}{System\+Status}} $\ast$systemstatus, \mbox{\hyperlink{structraw__measurements__t}{raw\+\_\+measurements\+\_\+t}} $\ast$raw\+\_\+data)
+\mbox{\hyperlink{class_imu_aaaacd961b83db439e558735a3de4ad1f}{Imu}} (SPIClass $\ast$spi, \mbox{\hyperlink{class_system_status}{System\+Status}} $\ast$systemstatus, \mbox{\hyperlink{class_log_controller}{Log\+Controller}} $\ast$logcontroller, \mbox{\hyperlink{structraw__measurements__t}{raw\+\_\+measurements\+\_\+t}} $\ast$raw\+\_\+data)
 \item 
 void \mbox{\hyperlink{class_imu_af2fba9f67a4449e503374a5ca10b1832}{setup}} ()
 \item 
@@ -40,6 +41,8 @@ SPIClass $\ast$ \mbox{\hyperlink{class_imu_afaacc86e5ba550168d702f98603b24bd}{\+
 \item 
 \mbox{\hyperlink{class_system_status}{System\+Status}} $\ast$ \mbox{\hyperlink{class_imu_a2dca3cfb1dba3aeba8d85e601f88f0c0}{\+\_\+systemstatus}}
 \item 
+\mbox{\hyperlink{class_log_controller}{Log\+Controller}} $\ast$ \mbox{\hyperlink{class_imu_a61c3dce9f21fc5c2858285fe55303fd3}{\+\_\+logcontroller}}
+\item 
 LSM9\+DS1 \mbox{\hyperlink{class_imu_ab9c174aca19b97517abf02607f6d667d}{imu}}
 \item 
 \mbox{\hyperlink{structraw__measurements__t}{raw\+\_\+measurements\+\_\+t}} $\ast$ \mbox{\hyperlink{class_imu_a841b5561b9b72207f919d37f19a80b59}{\+\_\+raw\+\_\+data}}
@@ -47,11 +50,11 @@ LSM9\+DS1 \mbox{\hyperlink{class_imu_ab9c174aca19b97517abf02607f6d667d}{imu}}
 
 
 \doxysubsection{Constructor \& Destructor Documentation}
-\mbox{\Hypertarget{class_imu_a1aabcb869851b5cee17cbdd5d9e5512f}\label{class_imu_a1aabcb869851b5cee17cbdd5d9e5512f}} 
+\mbox{\Hypertarget{class_imu_aaaacd961b83db439e558735a3de4ad1f}\label{class_imu_aaaacd961b83db439e558735a3de4ad1f}} 
 \index{Imu@{Imu}!Imu@{Imu}}
 \index{Imu@{Imu}!Imu@{Imu}}
 \doxysubsubsection{\texorpdfstring{Imu()}{Imu()}}
-{\footnotesize\ttfamily Imu\+::\+Imu (\begin{DoxyParamCaption}\item[{SPIClass $\ast$}]{spi,  }\item[{\mbox{\hyperlink{class_system_status}{System\+Status}} $\ast$}]{systemstatus,  }\item[{\mbox{\hyperlink{structraw__measurements__t}{raw\+\_\+measurements\+\_\+t}} $\ast$}]{raw\+\_\+data }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily Imu\+::\+Imu (\begin{DoxyParamCaption}\item[{SPIClass $\ast$}]{spi,  }\item[{\mbox{\hyperlink{class_system_status}{System\+Status}} $\ast$}]{systemstatus,  }\item[{\mbox{\hyperlink{class_log_controller}{Log\+Controller}} $\ast$}]{logcontroller,  }\item[{\mbox{\hyperlink{structraw__measurements__t}{raw\+\_\+measurements\+\_\+t}} $\ast$}]{raw\+\_\+data }\end{DoxyParamCaption})}
 
 
 
@@ -62,7 +65,8 @@ LSM9\+DS1 \mbox{\hyperlink{class_imu_ab9c174aca19b97517abf02607f6d667d}{imu}}
 \doxysubsubsection{\texorpdfstring{read\_accel()}{read\_accel()}}
 {\footnotesize\ttfamily void Imu\+::read\+\_\+accel (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
 
-Here is the caller graph for this function\+:\nopagebreak
+Here is the caller graph for this function\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -75,7 +79,8 @@ Here is the caller graph for this function\+:\nopagebreak
 \doxysubsubsection{\texorpdfstring{read\_gyro()}{read\_gyro()}}
 {\footnotesize\ttfamily void Imu\+::read\+\_\+gyro (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
 
-Here is the caller graph for this function\+:\nopagebreak
+Here is the caller graph for this function\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -88,7 +93,8 @@ Here is the caller graph for this function\+:\nopagebreak
 \doxysubsubsection{\texorpdfstring{read\_mag()}{read\_mag()}}
 {\footnotesize\ttfamily void Imu\+::read\+\_\+mag (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
 
-Here is the caller graph for this function\+:\nopagebreak
+Here is the caller graph for this function\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -101,7 +107,8 @@ Here is the caller graph for this function\+:\nopagebreak
 \doxysubsubsection{\texorpdfstring{read\_temp()}{read\_temp()}}
 {\footnotesize\ttfamily void Imu\+::read\+\_\+temp (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
 
-Here is the caller graph for this function\+:\nopagebreak
+Here is the caller graph for this function\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -114,15 +121,15 @@ Here is the caller graph for this function\+:\nopagebreak
 \doxysubsubsection{\texorpdfstring{setup()}{setup()}}
 {\footnotesize\ttfamily void Imu\+::setup (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
 
-Here is the call graph for this function\+:\nopagebreak
+Here is the call graph for this function\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
 \includegraphics[width=350pt]{class_imu_af2fba9f67a4449e503374a5ca10b1832_cgraph}
 \end{center}
 \end{figure}
-Here is the caller graph for this function\+:
-\nopagebreak
+Here is the caller graph for this function\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -142,7 +149,8 @@ Here is the call graph for this function\+:\nopagebreak
 \includegraphics[width=270pt]{class_imu_a250b49055c531aa7ed5c807e4f447741_cgraph}
 \end{center}
 \end{figure}
-Here is the caller graph for this function\+:\nopagebreak
+Here is the caller graph for this function\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -152,6 +160,12 @@ Here is the caller graph for this function\+:\nopagebreak
 
 
 \doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{class_imu_a61c3dce9f21fc5c2858285fe55303fd3}\label{class_imu_a61c3dce9f21fc5c2858285fe55303fd3}} 
+\index{Imu@{Imu}!\_logcontroller@{\_logcontroller}}
+\index{\_logcontroller@{\_logcontroller}!Imu@{Imu}}
+\doxysubsubsection{\texorpdfstring{\_logcontroller}{\_logcontroller}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_log_controller}{Log\+Controller}}$\ast$ Imu\+::\+\_\+logcontroller\hspace{0.3cm}{\ttfamily [private]}}
+
 \mbox{\Hypertarget{class_imu_a841b5561b9b72207f919d37f19a80b59}\label{class_imu_a841b5561b9b72207f919d37f19a80b59}} 
 \index{Imu@{Imu}!\_raw\_data@{\_raw\_data}}
 \index{\_raw\_data@{\_raw\_data}!Imu@{Imu}}

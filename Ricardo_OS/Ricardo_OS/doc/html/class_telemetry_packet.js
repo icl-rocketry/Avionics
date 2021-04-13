@@ -1,6 +1,6 @@
 var class_telemetry_packet =
 [
-    [ "TelemetryPacket", "class_telemetry_packet.html#a57ec586862bcba6d93dd998abe091ed1", null ],
+    [ "TelemetryPacket", "class_telemetry_packet.html#a45ae64bba7d093823e52b09e24186ad7", null ],
     [ "TelemetryPacket", "class_telemetry_packet.html#ab3a7dcb030e4be864aa15304e31275e0", null ],
     [ "~TelemetryPacket", "class_telemetry_packet.html#a08beb088b41631b68d939a2a4d4d6547", null ],
     [ "getSerializer", "class_telemetry_packet.html#ad4046281b520642c1d93199a583dab00", null ],

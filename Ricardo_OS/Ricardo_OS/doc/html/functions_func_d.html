@@ -9,9 +9,18 @@
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+  $(document).ready(function() { init_search(); });
+/* @license-end */
+</script>
 <link href="doxygen.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
@@ -25,6 +34,21 @@
    &#160;<span id="projectnumber">1</span>
    </div>
   </td>
+   <td>        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <img id="MSearchSelect" src="search/mag_sel.svg"
+               onmouseover="return searchBox.OnSearchSelectShow()"
+               onmouseout="return searchBox.OnSearchSelectHide()"
+               alt=""/>
+          <input type="text" id="MSearchField" value="Search" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.svg" alt=""/></a>
+          </span>
+        </div>
+</td>
  </tr>
  </tbody>
 </table>
@@ -36,17 +60,23 @@
 var searchBox = new SearchBox("searchBox", "search",false,'Search','.html');
 /* @license-end */
 </script>
-<script type="text/javascript" src="menudata.js"></script>
-<script type="text/javascript" src="menu.js"></script>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
 <script type="text/javascript">
 /* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
-$(function() {
-  initMenu('',true,false,'search.php','Search');
-  $(document).ready(function() { init_search(); });
-});
-/* @license-end */</script>
-<div id="main-nav"></div>
-</div><!-- top -->
+$(document).ready(function(){initNavTree('functions_func_d.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
      onmouseover="return searchBox.OnSearchSelectShow()"
@@ -65,58 +95,27 @@ $(function() {
 &#160;
 
 <h3><a id="index_d"></a>- d -</h3><ul>
-<li>dataStartBlock()
-: <a class="el" href="class_fat_volume.html#a55906112e0d151db3b144d29630f5066">FatVolume</a>
+<li>delete_message()
+: <a class="el" href="class_system_status.html#abaa2a5b6a72c67ae890fd47ebb19cf0c">SystemStatus</a>
 </li>
-<li>dataStartSector()
-: <a class="el" href="class_fat_volume.html#a6421327a4f6990ba46a479a7baad4cf8">FatVolume</a>
+<li>deserialize()
+: <a class="el" href="classserializable_element.html#a1c3f6e87edaf0481077729dae149a427">serializableElement&lt; C, T &gt;</a>
+, <a class="el" href="classserializer.html#aaefb783c3df2311e2dc9268d175a5a46">serializer&lt; C, T &gt;</a>
 </li>
-<li>dateTimeCallback()
-: <a class="el" href="class_fat_file.html#a29a623f50df057e8b49045ba6611ec2b">FatFile</a>
+<li>deserialize_impl()
+: <a class="el" href="classserializer.html#aa91bfdb0640a9a2addb57eacb9b8aca8">serializer&lt; C, T &gt;</a>
 </li>
-<li>dateTimeCallbackCancel()
-: <a class="el" href="class_fat_file.html#a5df02f1d037e6091375488af25244ebc">FatFile</a>
-</li>
-<li>dbgClearStats()
-: <a class="el" href="class_sd_spi_card.html#ab6cf8283dee415d9217eb758e75a98ef">SdSpiCard</a>
-</li>
-<li>dbgFat()
-: <a class="el" href="class_fat_volume.html#a25c6311b70fa274b3be94ff25fdebba7">FatVolume</a>
-</li>
-<li>dbgPrintStats()
-: <a class="el" href="class_sd_spi_card.html#abdb02df511072aefb465a22858d92e06">SdSpiCard</a>
-</li>
-<li>deactivate()
-: <a class="el" href="class_sd_spi_alt_driver.html#ae6ce25d124e31a8762375ae548a92818">SdSpiAltDriver</a>
-, <a class="el" href="class_sd_spi_base_driver.html#a1768309c7ba4f8d78c2ba62383462de2">SdSpiBaseDriver</a>
-, <a class="el" href="class_sd_spi_lib_driver.html#a120d6b78f9dad6837d10b45b76d32c82">SdSpiLibDriver</a>
-</li>
-<li>DigitalPin()
-: <a class="el" href="class_digital_pin.html#ab68480b09df5c4794c95cdf2230d4c55">DigitalPin&lt; PinNumber &gt;</a>
-</li>
-<li>dirEntry()
-: <a class="el" href="class_fat_file.html#a6858d18c807411a071fd6d1b39d50087">FatFile</a>
-</li>
-<li>dirIndex()
-: <a class="el" href="class_fat_file.html#ae5ec24d4a94d3780384d3f2b731c7eb9">FatFile</a>
-</li>
-<li>dirName()
-: <a class="el" href="class_fat_file.html#a648461081fe07578780f4cd3f246cb66">FatFile</a>
-</li>
-<li>dirSize()
-: <a class="el" href="class_fat_file.html#ae2ed15f05c9ccbce355e7a8d3ce8382d">FatFile</a>
-</li>
-<li>dirty()
-: <a class="el" href="class_fat_cache.html#ab4d3b0c16bb6a116c7d01afff2dcb307">FatCache</a>
-</li>
-<li>dmpFile()
-: <a class="el" href="class_fat_file.html#a4f01d27954ae49aeb6888ac7302f55d9">FatFile</a>
+<li>DetailedAllPacket()
+: <a class="el" href="class_detailed_all_packet.html#a9fdba3f8f1f2d28a4a04c4599ce7e8d9">DetailedAllPacket</a>
 </li>
 </ul>
 </div><!-- contents -->
+</div><!-- doc-content -->
 <!-- start footer part -->
-<hr class="footer"/><address class="footer"><small>
-Generated by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1
-</small></address>
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
+  </ul>
+</div>
 </body>
 </html>

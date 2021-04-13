@@ -15,7 +15,8 @@ Inheritance diagram for USB\+:\nopagebreak
 \end{figure}
 
 
-Collaboration diagram for USB\+:\nopagebreak
+Collaboration diagram for USB\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -31,7 +32,7 @@ void \mbox{\hyperlink{class_u_s_b_ac1ff137bb999158ee6266ec936665399}{setup}} ()
 \item 
 void \mbox{\hyperlink{class_u_s_b_a404c09e9e90a8df1011d4aca3a13c5d1}{send\+\_\+packet}} (uint8\+\_\+t $\ast$data, size\+\_\+t size)
 \item 
-void \mbox{\hyperlink{class_u_s_b_af3cdaec9cd19dbdf093b207a377ecae4}{get\+\_\+packet}} (std\+::vector$<$ std\+::shared\+\_\+ptr$<$ uint8\+\_\+t $>$$>$ $\ast$buf)
+void \mbox{\hyperlink{class_u_s_b_aee393bd4d43bf3481e118a44b3fab0d0}{get\+\_\+packet}} (std\+::vector$<$ std\+::unique\+\_\+ptr$<$ std\+::vector$<$ uint8\+\_\+t $>$$>$$>$ \&buf)
 \end{DoxyCompactItemize}
 \doxysubsection*{Private Attributes}
 \begin{DoxyCompactItemize}
@@ -44,11 +45,11 @@ bool \mbox{\hyperlink{class_u_s_b_abdf6d51fd4d91150dbf54bae92601705}{\+\_\+incom
 \item 
 uint8\+\_\+t \mbox{\hyperlink{class_u_s_b_a5e1e663020e18e9f131f2d670518f6a4}{\+\_\+first\+Byte}}
 \item 
-uint8\+\_\+t \mbox{\hyperlink{class_u_s_b_ab2830f2c994a3d8481ac033fc0fe8631}{\+\_\+tmp\+\_\+packet\+\_\+data}} \mbox{[}\mbox{\hyperlink{class_packet_header_ae0c16331969378456fa7c606e694c926}{Packet\+Header\+::header\+\_\+size}}()\mbox{]}
+std\+::vector$<$ uint8\+\_\+t $>$ \mbox{\hyperlink{class_u_s_b_a126028fe396b943d91e08209d7f61621}{\+\_\+tmp\+\_\+packet\+\_\+data}}
 \item 
 uint32\+\_\+t \mbox{\hyperlink{class_u_s_b_a309095f57d9bb2c05d2806ed9e1515b2}{\+\_\+packet\+\_\+len}}
 \item 
-uint8\+\_\+t \mbox{\hyperlink{class_u_s_b_a9774760fdf1f03807f61eb2dec63c0c7}{\+\_\+packet\+Header\+\_\+size}} = \mbox{\hyperlink{class_packet_header_ae0c16331969378456fa7c606e694c926}{Packet\+Header\+::header\+\_\+size}}()
+const uint8\+\_\+t \mbox{\hyperlink{class_u_s_b_a63eca6f1289d6175f84a8ef2b4932aa0}{\+\_\+packet\+Header\+\_\+size}} = \mbox{\hyperlink{class_packet_header_ae0c16331969378456fa7c606e694c926}{Packet\+Header\+::header\+\_\+size}}()
 \item 
 uint8\+\_\+t \mbox{\hyperlink{class_u_s_b_ad6de59a2d807406a636042ba4e598410}{\+\_\+header\+\_\+len}}
 \item 
@@ -68,21 +69,30 @@ uint8\+\_\+t \mbox{\hyperlink{class_u_s_b_af57d3e0996846f11995e392cfc88620c}{\+\
 
 
 \doxysubsection{Member Function Documentation}
-\mbox{\Hypertarget{class_u_s_b_af3cdaec9cd19dbdf093b207a377ecae4}\label{class_u_s_b_af3cdaec9cd19dbdf093b207a377ecae4}} 
+\mbox{\Hypertarget{class_u_s_b_aee393bd4d43bf3481e118a44b3fab0d0}\label{class_u_s_b_aee393bd4d43bf3481e118a44b3fab0d0}} 
 \index{USB@{USB}!get\_packet@{get\_packet}}
 \index{get\_packet@{get\_packet}!USB@{USB}}
 \doxysubsubsection{\texorpdfstring{get\_packet()}{get\_packet()}}
-{\footnotesize\ttfamily void USB\+::get\+\_\+packet (\begin{DoxyParamCaption}\item[{std\+::vector$<$ std\+::shared\+\_\+ptr$<$ uint8\+\_\+t $>$$>$ $\ast$}]{buf }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+{\footnotesize\ttfamily void USB\+::get\+\_\+packet (\begin{DoxyParamCaption}\item[{std\+::vector$<$ std\+::unique\+\_\+ptr$<$ std\+::vector$<$ uint8\+\_\+t $>$$>$$>$ \&}]{buf }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
 
 
 
-Reimplemented from \mbox{\hyperlink{class_iface_a5128895a25b9e35e18f6ab37d7e4b399}{Iface}}.
+Reimplemented from \mbox{\hyperlink{class_iface_aab6b599d8f932eb4404e11ee88c05c6d}{Iface}}.
 
-Here is the caller graph for this function\+:\nopagebreak
+Here is the call graph for this function\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=350pt]{class_u_s_b_af3cdaec9cd19dbdf093b207a377ecae4_icgraph}
+\includegraphics[width=350pt]{class_u_s_b_aee393bd4d43bf3481e118a44b3fab0d0_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_u_s_b_aee393bd4d43bf3481e118a44b3fab0d0_icgraph}
 \end{center}
 \end{figure}
 \mbox{\Hypertarget{class_u_s_b_a404c09e9e90a8df1011d4aca3a13c5d1}\label{class_u_s_b_a404c09e9e90a8df1011d4aca3a13c5d1}} 
@@ -95,7 +105,8 @@ Here is the caller graph for this function\+:\nopagebreak
 
 Reimplemented from \mbox{\hyperlink{class_iface_ac8e727db8cba7c955c223b9685934568}{Iface}}.
 
-Here is the caller graph for this function\+:\nopagebreak
+Here is the caller graph for this function\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -112,8 +123,7 @@ Here is the caller graph for this function\+:\nopagebreak
 
 Reimplemented from \mbox{\hyperlink{class_iface_a5a89ff5d5f8f05467a55c5811a4ebe3f}{Iface}}.
 
-Here is the caller graph for this function\+:
-\nopagebreak
+Here is the caller graph for this function\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -147,11 +157,11 @@ Here is the caller graph for this function\+:
 \doxysubsubsection{\texorpdfstring{\_packet\_len}{\_packet\_len}}
 {\footnotesize\ttfamily uint32\+\_\+t USB\+::\+\_\+packet\+\_\+len\hspace{0.3cm}{\ttfamily [private]}}
 
-\mbox{\Hypertarget{class_u_s_b_a9774760fdf1f03807f61eb2dec63c0c7}\label{class_u_s_b_a9774760fdf1f03807f61eb2dec63c0c7}} 
+\mbox{\Hypertarget{class_u_s_b_a63eca6f1289d6175f84a8ef2b4932aa0}\label{class_u_s_b_a63eca6f1289d6175f84a8ef2b4932aa0}} 
 \index{USB@{USB}!\_packetHeader\_size@{\_packetHeader\_size}}
 \index{\_packetHeader\_size@{\_packetHeader\_size}!USB@{USB}}
 \doxysubsubsection{\texorpdfstring{\_packetHeader\_size}{\_packetHeader\_size}}
-{\footnotesize\ttfamily uint8\+\_\+t USB\+::\+\_\+packet\+Header\+\_\+size = \mbox{\hyperlink{class_packet_header_ae0c16331969378456fa7c606e694c926}{Packet\+Header\+::header\+\_\+size}}()\hspace{0.3cm}{\ttfamily [private]}}
+{\footnotesize\ttfamily const uint8\+\_\+t USB\+::\+\_\+packet\+Header\+\_\+size = \mbox{\hyperlink{class_packet_header_ae0c16331969378456fa7c606e694c926}{Packet\+Header\+::header\+\_\+size}}()\hspace{0.3cm}{\ttfamily [private]}}
 
 \mbox{\Hypertarget{class_u_s_b_a717896e72794ffe97cfd519b56d151a8}\label{class_u_s_b_a717896e72794ffe97cfd519b56d151a8}} 
 \index{USB@{USB}!\_stream@{\_stream}}
@@ -171,11 +181,11 @@ Here is the caller graph for this function\+:
 \doxysubsubsection{\texorpdfstring{\_timeoutCounter}{\_timeoutCounter}}
 {\footnotesize\ttfamily uint8\+\_\+t USB\+::\+\_\+timeout\+Counter\hspace{0.3cm}{\ttfamily [private]}}
 
-\mbox{\Hypertarget{class_u_s_b_ab2830f2c994a3d8481ac033fc0fe8631}\label{class_u_s_b_ab2830f2c994a3d8481ac033fc0fe8631}} 
+\mbox{\Hypertarget{class_u_s_b_a126028fe396b943d91e08209d7f61621}\label{class_u_s_b_a126028fe396b943d91e08209d7f61621}} 
 \index{USB@{USB}!\_tmp\_packet\_data@{\_tmp\_packet\_data}}
 \index{\_tmp\_packet\_data@{\_tmp\_packet\_data}!USB@{USB}}
 \doxysubsubsection{\texorpdfstring{\_tmp\_packet\_data}{\_tmp\_packet\_data}}
-{\footnotesize\ttfamily uint8\+\_\+t USB\+::\+\_\+tmp\+\_\+packet\+\_\+data\mbox{[}\mbox{\hyperlink{class_packet_header_ae0c16331969378456fa7c606e694c926}{Packet\+Header\+::header\+\_\+size}}()\mbox{]}\hspace{0.3cm}{\ttfamily [private]}}
+{\footnotesize\ttfamily std\+::vector$<$uint8\+\_\+t$>$ USB\+::\+\_\+tmp\+\_\+packet\+\_\+data\hspace{0.3cm}{\ttfamily [private]}}
 
 \mbox{\Hypertarget{class_u_s_b_af4131e483eebfe507dab46cfd2fd82cd}\label{class_u_s_b_af4131e483eebfe507dab46cfd2fd82cd}} 
 \index{USB@{USB}!\_total\_len@{\_total\_len}}

@@ -185,8 +185,6 @@
 \input{class_baro}
 \input{class_battery}
 \input{class_b_t_pyro}
-\input{class_buzzer}
-\input{class_circular_buffer}
 \input{struct_command}
 \input{class_command_handler}
 \input{class_command_packet}
@@ -196,6 +194,8 @@
 \input{class_engine}
 \input{classengine__logframe}
 \input{class_estimator}
+\input{class_event}
+\input{class_event_handler}
 \input{class_flight}
 \input{class_g_p_s}
 \input{class_groundstation}
@@ -204,7 +204,9 @@
 \input{class_launch}
 \input{class_local_pyro}
 \input{class_log_controller}
-\input{classlogframe}
+\input{classmelody__base__t}
+\input{structmelody__note__t}
+\input{classmelody__t}
 \input{classnetwork__logframe}
 \input{class_network_manager}
 \input{class_packet_header}
@@ -228,6 +230,8 @@
 \input{class_system_status}
 \input{classtelemetry__logframe}
 \input{class_telemetry_packet}
+\input{structtune__t}
+\input{class_tunez_handler}
 \input{class_u_s_b}
 \input{class_u_s_bmode}
 \chapter{File Documentation}
@@ -237,6 +241,7 @@
 \input{command_handler_8cpp}
 \input{command_handler_8h}
 \input{commands_8h}
+\input{iface_8cpp}
 \input{iface_8h}
 \input{interfaces_8h}
 \input{radio_8cpp}
@@ -251,7 +256,10 @@
 \input{routing_table_8h}
 \input{engine_8cpp}
 \input{engine_8h}
-\input{circ_buffer_8h}
+\input{event_8cpp}
+\input{event_8h}
+\input{event_handler_8cpp}
+\input{event_handler_8h}
 \input{config_controller_8cpp}
 \input{config_controller_8h}
 \input{log_controller_8cpp}
@@ -277,7 +285,7 @@
 \input{baro_8h}
 \input{battery_8cpp}
 \input{battery_8h}
-\input{esitmator_8cpp}
+\input{estimator_8cpp}
 \input{estimator_8h}
 \input{gps_8cpp}
 \input{gps_8h}
@@ -288,9 +296,11 @@
 \input{sensors_8cpp}
 \input{sensors_8h}
 \input{sensor_structs_8h}
-\input{buzzer_8cpp}
-\input{buzzer_8h}
+\input{melody_class_8h}
+\input{melody_library_8h}
 \input{pitches_8h}
+\input{tunez_handler_8cpp}
+\input{tunez_handler_8h}
 \input{state_machine_8cpp}
 \input{state_machine_8h}
 \input{flight_8cpp}

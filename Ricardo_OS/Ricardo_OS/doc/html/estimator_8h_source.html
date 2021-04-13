@@ -100,37 +100,39 @@ $(document).ready(function(){initNavTree('estimator_8h_source.html',''); initRes
 <div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor">#define ESTIMATOR_H</span></div>
 <div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor">#include &lt;Arduino.h&gt;</span></div>
 <div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="sensor_structs_8h.html">sensorStructs.h</a>&quot;</span></div>
-<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="comment">//global struct for state of rocket</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="comment">//#include &quot;sensors.h&quot;</span></div>
 <div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160; </div>
 <div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160; </div>
 <div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160; </div>
 <div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160; </div>
-<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="keyword">class </span><a class="code" href="classstate_machine.html">stateMachine</a>; <span class="comment">//forward declaration</span></div>
-<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160; </div>
-<div class="line"><a name="l00012"></a><span class="lineno"><a class="line" href="class_estimator.html">   12</a></span>&#160;<span class="keyword">class </span><a class="code" href="class_estimator.html">Estimator</a>{</div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;    <span class="keyword">public</span>:</div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;        <a class="code" href="class_estimator.html#a29f89dc7ce5e09322c699eb3eee6d88d">Estimator</a>(<a class="code" href="classstate_machine.html">stateMachine</a>* sm);   </div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;        <span class="keywordtype">void</span> <a class="code" href="class_estimator.html#a28cc6199ece59c166c0268ebc3edcf9d">setup</a>();</div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;        <span class="keywordtype">void</span> <a class="code" href="class_estimator.html#ad7fbe72b0e1c8d12b77427bcd7d2eafc">update</a>();</div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160; </div>
-<div class="line"><a name="l00018"></a><span class="lineno"><a class="line" href="class_estimator.html#a7938048d38e901e262c0fa6952259c9d">   18</a></span>&#160;        <a class="code" href="structstate__t.html">state_t</a> <a class="code" href="class_estimator.html#a7938048d38e901e262c0fa6952259c9d">state</a>;</div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;    <span class="keyword">private</span>:</div>
-<div class="line"><a name="l00020"></a><span class="lineno"><a class="line" href="class_estimator.html#ae1c2b700d8d29173b2e74eab06df59fd">   20</a></span>&#160;        <a class="code" href="classstate_machine.html">stateMachine</a>* <a class="code" href="class_estimator.html#ae1c2b700d8d29173b2e74eab06df59fd">_sm</a>;<span class="comment">//pointer to statemachine object</span></div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;        </div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160; </div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;};</div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160; </div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="keyword">class </span><a class="code" href="classstate_machine.html">stateMachine</a>; <span class="comment">//forward declaration</span></div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160; </div>
+<div class="line"><a name="l00013"></a><span class="lineno"><a class="line" href="class_estimator.html">   13</a></span>&#160;<span class="keyword">class </span><a class="code" href="class_estimator.html">Estimator</a>{</div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;    <span class="keyword">public</span>:</div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;        <a class="code" href="class_estimator.html#a29f89dc7ce5e09322c699eb3eee6d88d">Estimator</a>(<a class="code" href="classstate_machine.html">stateMachine</a>* sm);   </div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;        </div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;        <span class="keywordtype">void</span> <a class="code" href="class_estimator.html#a28cc6199ece59c166c0268ebc3edcf9d">setup</a>();</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;        <span class="keywordtype">void</span> <a class="code" href="class_estimator.html#ad7fbe72b0e1c8d12b77427bcd7d2eafc">update</a>();</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160; </div>
+<div class="line"><a name="l00020"></a><span class="lineno"><a class="line" href="class_estimator.html#a7938048d38e901e262c0fa6952259c9d">   20</a></span>&#160;        <a class="code" href="structstate__t.html">state_t</a> <a class="code" href="class_estimator.html#a7938048d38e901e262c0fa6952259c9d">state</a>;</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;    <span class="keyword">private</span>:</div>
+<div class="line"><a name="l00022"></a><span class="lineno"><a class="line" href="class_estimator.html#ae1c2b700d8d29173b2e74eab06df59fd">   22</a></span>&#160;        <a class="code" href="classstate_machine.html">stateMachine</a>* <a class="code" href="class_estimator.html#ae1c2b700d8d29173b2e74eab06df59fd">_sm</a>;<span class="comment">//pointer to statemachine object</span></div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;        </div>
 <div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160; </div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160; </div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="ttc" id="aclass_estimator_html"><div class="ttname"><a href="class_estimator.html">Estimator</a></div><div class="ttdef"><b>Definition:</b> estimator.h:12</div></div>
-<div class="ttc" id="aclass_estimator_html_a28cc6199ece59c166c0268ebc3edcf9d"><div class="ttname"><a href="class_estimator.html#a28cc6199ece59c166c0268ebc3edcf9d">Estimator::setup</a></div><div class="ttdeci">void setup()</div><div class="ttdef"><b>Definition:</b> esitmator.cpp:9</div></div>
-<div class="ttc" id="aclass_estimator_html_a29f89dc7ce5e09322c699eb3eee6d88d"><div class="ttname"><a href="class_estimator.html#a29f89dc7ce5e09322c699eb3eee6d88d">Estimator::Estimator</a></div><div class="ttdeci">Estimator(stateMachine *sm)</div><div class="ttdef"><b>Definition:</b> esitmator.cpp:4</div></div>
-<div class="ttc" id="aclass_estimator_html_a7938048d38e901e262c0fa6952259c9d"><div class="ttname"><a href="class_estimator.html#a7938048d38e901e262c0fa6952259c9d">Estimator::state</a></div><div class="ttdeci">state_t state</div><div class="ttdef"><b>Definition:</b> estimator.h:18</div></div>
-<div class="ttc" id="aclass_estimator_html_ad7fbe72b0e1c8d12b77427bcd7d2eafc"><div class="ttname"><a href="class_estimator.html#ad7fbe72b0e1c8d12b77427bcd7d2eafc">Estimator::update</a></div><div class="ttdeci">void update()</div><div class="ttdef"><b>Definition:</b> esitmator.cpp:13</div></div>
-<div class="ttc" id="aclass_estimator_html_ae1c2b700d8d29173b2e74eab06df59fd"><div class="ttname"><a href="class_estimator.html#ae1c2b700d8d29173b2e74eab06df59fd">Estimator::_sm</a></div><div class="ttdeci">stateMachine * _sm</div><div class="ttdef"><b>Definition:</b> estimator.h:20</div></div>
-<div class="ttc" id="aclassstate_machine_html"><div class="ttname"><a href="classstate_machine.html">stateMachine</a></div><div class="ttdef"><b>Definition:</b> stateMachine.h:30</div></div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;};</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160; </div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160; </div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="ttc" id="aclass_estimator_html"><div class="ttname"><a href="class_estimator.html">Estimator</a></div><div class="ttdef"><b>Definition:</b> estimator.h:13</div></div>
+<div class="ttc" id="aclass_estimator_html_a28cc6199ece59c166c0268ebc3edcf9d"><div class="ttname"><a href="class_estimator.html#a28cc6199ece59c166c0268ebc3edcf9d">Estimator::setup</a></div><div class="ttdeci">void setup()</div><div class="ttdef"><b>Definition:</b> estimator.cpp:9</div></div>
+<div class="ttc" id="aclass_estimator_html_a29f89dc7ce5e09322c699eb3eee6d88d"><div class="ttname"><a href="class_estimator.html#a29f89dc7ce5e09322c699eb3eee6d88d">Estimator::Estimator</a></div><div class="ttdeci">Estimator(stateMachine *sm)</div><div class="ttdef"><b>Definition:</b> estimator.cpp:4</div></div>
+<div class="ttc" id="aclass_estimator_html_a7938048d38e901e262c0fa6952259c9d"><div class="ttname"><a href="class_estimator.html#a7938048d38e901e262c0fa6952259c9d">Estimator::state</a></div><div class="ttdeci">state_t state</div><div class="ttdef"><b>Definition:</b> estimator.h:20</div></div>
+<div class="ttc" id="aclass_estimator_html_ad7fbe72b0e1c8d12b77427bcd7d2eafc"><div class="ttname"><a href="class_estimator.html#ad7fbe72b0e1c8d12b77427bcd7d2eafc">Estimator::update</a></div><div class="ttdeci">void update()</div><div class="ttdef"><b>Definition:</b> estimator.cpp:13</div></div>
+<div class="ttc" id="aclass_estimator_html_ae1c2b700d8d29173b2e74eab06df59fd"><div class="ttname"><a href="class_estimator.html#ae1c2b700d8d29173b2e74eab06df59fd">Estimator::_sm</a></div><div class="ttdeci">stateMachine * _sm</div><div class="ttdef"><b>Definition:</b> estimator.h:22</div></div>
+<div class="ttc" id="aclassstate_machine_html"><div class="ttname"><a href="classstate_machine.html">stateMachine</a></div><div class="ttdef"><b>Definition:</b> stateMachine.h:33</div></div>
 <div class="ttc" id="asensor_structs_8h_html"><div class="ttname"><a href="sensor_structs_8h.html">sensorStructs.h</a></div></div>
-<div class="ttc" id="astructstate__t_html"><div class="ttname"><a href="structstate__t.html">state_t</a></div><div class="ttdef"><b>Definition:</b> sensorStructs.h:32</div></div>
+<div class="ttc" id="astructstate__t_html"><div class="ttname"><a href="structstate__t.html">state_t</a></div><div class="ttdef"><b>Definition:</b> sensorStructs.h:54</div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->

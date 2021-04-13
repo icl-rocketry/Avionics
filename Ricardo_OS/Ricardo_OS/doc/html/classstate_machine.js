@@ -13,5 +13,6 @@ var classstate_machine =
     [ "sensors", "classstate_machine.html#ae950d1a20842e52c87668bbb72371163", null ],
     [ "storagecontroller", "classstate_machine.html#ab4c73b5e0fda3a705bad93d5ab45a3a1", null ],
     [ "systemstatus", "classstate_machine.html#aafb1576c55658672886391e9e94d2e0c", null ],
+    [ "tunezhandler", "classstate_machine.html#a64c2ebf972d5b5a35cdd95f382c42516", null ],
     [ "vspi", "classstate_machine.html#ac0e2bf50a0069df384195e64f9e69652", null ]
 ];

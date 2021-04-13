@@ -1,9 +1,7 @@
 <map id="NetworkManager::process_global_packets" name="NetworkManager::process_global_packets">
-<area shape="rect" id="node1" title=" " alt="" coords="5,49,180,90"/>
-<area shape="rect" id="node2" href="$class_network_manager.html#a6f1c4ffd00d9853e9e9660a34d014a12" title=" " alt="" coords="228,49,385,90"/>
-<area shape="rect" id="node3" href="$class_network_manager.html#ab71375f3f8ec9b5df1e0388534c88710" title=" " alt="" coords="433,49,591,90"/>
-<area shape="rect" id="node4" href="$class_u_s_b.html#a404c09e9e90a8df1011d4aca3a13c5d1" title=" " alt="" coords="653,5,785,32"/>
-<area shape="rect" id="node5" href="$class_radio.html#a219437f42cd31f1373c7192b3c5fc19c" title=" " alt="" coords="650,56,789,83"/>
-<area shape="rect" id="node6" href="$class_packet_header.html#a77e1156dbd831df7a2e8c412adbaecd3" title=" " alt="" coords="639,107,800,133"/>
-<area shape="rect" id="node7" href="$class_packet_header.html#acf9c5c5c063bf6ed809d8d6144a5aa56" title=" " alt="" coords="848,107,1033,133"/>
+<area shape="rect" id="node1" title=" " alt="" coords="5,23,180,65"/>
+<area shape="rect" id="node2" href="$class_network_manager.html#a674c1c30636d564b2d43f668cb04485b" title=" " alt="" coords="228,23,385,65"/>
+<area shape="rect" id="node3" href="$class_network_manager.html#a64d21aa0b666042d4458b914b359b61e" title=" " alt="" coords="433,23,591,65"/>
+<area shape="rect" id="node4" href="$class_u_s_b.html#a404c09e9e90a8df1011d4aca3a13c5d1" title=" " alt="" coords="642,5,774,32"/>
+<area shape="rect" id="node5" href="$class_radio.html#a219437f42cd31f1373c7192b3c5fc19c" title=" " alt="" coords="639,56,777,83"/>
 </map>

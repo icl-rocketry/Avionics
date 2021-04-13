@@ -6,7 +6,8 @@
 
 
 
-Collaboration diagram for Baro\+:\nopagebreak
+Collaboration diagram for Baro\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -16,7 +17,7 @@ Collaboration diagram for Baro\+:\nopagebreak
 \doxysubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\hyperlink{class_baro_a076a3723ffe8b5191b54685860f53636}{Baro}} (SPIClass $\ast$spi, \mbox{\hyperlink{class_system_status}{System\+Status}} $\ast$systemstatus, \mbox{\hyperlink{structraw__measurements__t}{raw\+\_\+measurements\+\_\+t}} $\ast$raw\+\_\+data)
+\mbox{\hyperlink{class_baro_af7f00686ffba48345f1d66b851878f07}{Baro}} (SPIClass $\ast$spi, \mbox{\hyperlink{class_system_status}{System\+Status}} $\ast$systemstatus, \mbox{\hyperlink{class_log_controller}{Log\+Controller}} $\ast$logcontroller, \mbox{\hyperlink{structraw__measurements__t}{raw\+\_\+measurements\+\_\+t}} $\ast$raw\+\_\+data)
 \item 
 void \mbox{\hyperlink{class_baro_a54bc23ca90c603a8d0f83beebda6d635}{setup}} ()
 \item 
@@ -29,16 +30,18 @@ SPIClass $\ast$ \mbox{\hyperlink{class_baro_a07853997e4940f4764b5fb483d9b7697}{\
 \item 
 \mbox{\hyperlink{class_system_status}{System\+Status}} $\ast$ \mbox{\hyperlink{class_baro_a6aa4b1ad14b0fc8e6ef3c14b546400cf}{\+\_\+systemstatus}}
 \item 
+\mbox{\hyperlink{class_log_controller}{Log\+Controller}} $\ast$ \mbox{\hyperlink{class_baro_a0835d5c41ec5db1ad77e6bb4f0f5ef7b}{\+\_\+logcontroller}}
+\item 
 \mbox{\hyperlink{structraw__measurements__t}{raw\+\_\+measurements\+\_\+t}} $\ast$ \mbox{\hyperlink{class_baro_a012b899da1af8dba17c6b92697fb79d8}{\+\_\+raw\+\_\+data}}
 \end{DoxyCompactItemize}
 
 
 \doxysubsection{Constructor \& Destructor Documentation}
-\mbox{\Hypertarget{class_baro_a076a3723ffe8b5191b54685860f53636}\label{class_baro_a076a3723ffe8b5191b54685860f53636}} 
+\mbox{\Hypertarget{class_baro_af7f00686ffba48345f1d66b851878f07}\label{class_baro_af7f00686ffba48345f1d66b851878f07}} 
 \index{Baro@{Baro}!Baro@{Baro}}
 \index{Baro@{Baro}!Baro@{Baro}}
 \doxysubsubsection{\texorpdfstring{Baro()}{Baro()}}
-{\footnotesize\ttfamily Baro\+::\+Baro (\begin{DoxyParamCaption}\item[{SPIClass $\ast$}]{spi,  }\item[{\mbox{\hyperlink{class_system_status}{System\+Status}} $\ast$}]{systemstatus,  }\item[{\mbox{\hyperlink{structraw__measurements__t}{raw\+\_\+measurements\+\_\+t}} $\ast$}]{raw\+\_\+data }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily Baro\+::\+Baro (\begin{DoxyParamCaption}\item[{SPIClass $\ast$}]{spi,  }\item[{\mbox{\hyperlink{class_system_status}{System\+Status}} $\ast$}]{systemstatus,  }\item[{\mbox{\hyperlink{class_log_controller}{Log\+Controller}} $\ast$}]{logcontroller,  }\item[{\mbox{\hyperlink{structraw__measurements__t}{raw\+\_\+measurements\+\_\+t}} $\ast$}]{raw\+\_\+data }\end{DoxyParamCaption})}
 
 
 
@@ -49,8 +52,7 @@ SPIClass $\ast$ \mbox{\hyperlink{class_baro_a07853997e4940f4764b5fb483d9b7697}{\
 \doxysubsubsection{\texorpdfstring{setup()}{setup()}}
 {\footnotesize\ttfamily void Baro\+::setup (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
 
-Here is the caller graph for this function\+:
-\nopagebreak
+Here is the caller graph for this function\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -63,7 +65,8 @@ Here is the caller graph for this function\+:
 \doxysubsubsection{\texorpdfstring{update()}{update()}}
 {\footnotesize\ttfamily void Baro\+::update (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
 
-Here is the caller graph for this function\+:\nopagebreak
+Here is the caller graph for this function\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -73,6 +76,12 @@ Here is the caller graph for this function\+:\nopagebreak
 
 
 \doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{class_baro_a0835d5c41ec5db1ad77e6bb4f0f5ef7b}\label{class_baro_a0835d5c41ec5db1ad77e6bb4f0f5ef7b}} 
+\index{Baro@{Baro}!\_logcontroller@{\_logcontroller}}
+\index{\_logcontroller@{\_logcontroller}!Baro@{Baro}}
+\doxysubsubsection{\texorpdfstring{\_logcontroller}{\_logcontroller}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_log_controller}{Log\+Controller}}$\ast$ Baro\+::\+\_\+logcontroller\hspace{0.3cm}{\ttfamily [private]}}
+
 \mbox{\Hypertarget{class_baro_a012b899da1af8dba17c6b92697fb79d8}\label{class_baro_a012b899da1af8dba17c6b92697fb79d8}} 
 \index{Baro@{Baro}!\_raw\_data@{\_raw\_data}}
 \index{\_raw\_data@{\_raw\_data}!Baro@{Baro}}

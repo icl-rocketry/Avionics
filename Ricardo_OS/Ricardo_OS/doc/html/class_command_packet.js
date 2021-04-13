@@ -1,6 +1,6 @@
 var class_command_packet =
 [
-    [ "CommandPacket", "class_command_packet.html#a7de072e1cb4cfb86b6b57f0cdf8d375f", null ],
+    [ "CommandPacket", "class_command_packet.html#a931ef9b231be4925448a2a17208551e8", null ],
     [ "CommandPacket", "class_command_packet.html#a59a589337ce4e5944fd4212d81b5d506", null ],
     [ "~CommandPacket", "class_command_packet.html#a4e4ff5b52001777448ed0f89469b531a", null ],
     [ "serialize", "class_command_packet.html#a5078f68e53133909f2595048d82f87f5", null ],

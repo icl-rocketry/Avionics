@@ -117,8 +117,8 @@ Collaboration diagram for TelemetryPacket:</div>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:a081eba8279f9c3ed6a04df2e88c16df1"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_telemetry_packet.html#a081eba8279f9c3ed6a04df2e88c16df1">serialize</a> (std::vector&lt; uint8_t &gt; &amp;buf) const</td></tr>
 <tr class="separator:a081eba8279f9c3ed6a04df2e88c16df1"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a57ec586862bcba6d93dd998abe091ed1"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_telemetry_packet.html#a57ec586862bcba6d93dd998abe091ed1">TelemetryPacket</a> (const uint8_t *data)</td></tr>
-<tr class="separator:a57ec586862bcba6d93dd998abe091ed1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a45ae64bba7d093823e52b09e24186ad7"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_telemetry_packet.html#a45ae64bba7d093823e52b09e24186ad7">TelemetryPacket</a> (const std::vector&lt; uint8_t &gt; &amp;data)</td></tr>
+<tr class="separator:a45ae64bba7d093823e52b09e24186ad7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab3a7dcb030e4be864aa15304e31275e0"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_telemetry_packet.html#ab3a7dcb030e4be864aa15304e31275e0">TelemetryPacket</a> ()</td></tr>
 <tr class="separator:ab3a7dcb030e4be864aa15304e31275e0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a08beb088b41631b68d939a2a4d4d6547"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_telemetry_packet.html#a08beb088b41631b68d939a2a4d4d6547">~TelemetryPacket</a> ()</td></tr>
@@ -157,8 +157,8 @@ Static Private Member Functions</h2></td></tr>
 <tr class="separator:a35aa6a48c2a5d27ea4a2d21de42d8b3c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
-<a id="a57ec586862bcba6d93dd998abe091ed1"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a57ec586862bcba6d93dd998abe091ed1">&#9670;&nbsp;</a></span>TelemetryPacket() <span class="overload">[1/2]</span></h2>
+<a id="a45ae64bba7d093823e52b09e24186ad7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a45ae64bba7d093823e52b09e24186ad7">&#9670;&nbsp;</a></span>TelemetryPacket() <span class="overload">[1/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -166,7 +166,7 @@ Static Private Member Functions</h2></td></tr>
         <tr>
           <td class="memname">TelemetryPacket::TelemetryPacket </td>
           <td>(</td>
-          <td class="paramtype">const uint8_t *&#160;</td>
+          <td class="paramtype">const std::vector&lt; uint8_t &gt; &amp;&#160;</td>
           <td class="paramname"><em>data</em></td><td>)</td>
           <td></td>
         </tr>
@@ -175,11 +175,10 @@ Static Private Member Functions</h2></td></tr>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><img src="class_telemetry_packet_a57ec586862bcba6d93dd998abe091ed1_cgraph.png" border="0" usemap="#aclass_telemetry_packet_a57ec586862bcba6d93dd998abe091ed1_cgraph" alt=""/></div>
-<map name="aclass_telemetry_packet_a57ec586862bcba6d93dd998abe091ed1_cgraph" id="aclass_telemetry_packet_a57ec586862bcba6d93dd998abe091ed1_cgraph">
+<div class="center"><img src="class_telemetry_packet_a45ae64bba7d093823e52b09e24186ad7_cgraph.png" border="0" usemap="#aclass_telemetry_packet_a45ae64bba7d093823e52b09e24186ad7_cgraph" alt=""/></div>
+<map name="aclass_telemetry_packet_a45ae64bba7d093823e52b09e24186ad7_cgraph" id="aclass_telemetry_packet_a45ae64bba7d093823e52b09e24186ad7_cgraph">
 <area shape="rect" title=" " alt="" coords="5,5,191,47"/>
-<area shape="rect" href="class_telemetry_packet.html#ad4046281b520642c1d93199a583dab00" title=" " alt="" coords="485,13,685,39"/>
-<area shape="rect" href="class_telemetry_packet.html#a35aa6a48c2a5d27ea4a2d21de42d8b3c" title=" " alt="" coords="239,38,437,65"/>
+<area shape="rect" href="class_telemetry_packet.html#ad4046281b520642c1d93199a583dab00" title=" " alt="" coords="239,13,439,39"/>
 </map>
 </div>
 
@@ -247,15 +246,17 @@ Here is the caller graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="class_telemetry_packet_ad4046281b520642c1d93199a583dab00_icgraph.png" border="0" usemap="#aclass_telemetry_packet_ad4046281b520642c1d93199a583dab00_icgraph" alt=""/></div>
 <map name="aclass_telemetry_packet_ad4046281b520642c1d93199a583dab00_icgraph" id="aclass_telemetry_packet_ad4046281b520642c1d93199a583dab00_icgraph">
-<area shape="rect" title=" " alt="" coords="1261,56,1461,83"/>
-<area shape="rect" href="class_telemetry_packet.html#a35aa6a48c2a5d27ea4a2d21de42d8b3c" title=" " alt="" coords="1015,5,1213,32"/>
-<area shape="rect" href="class_telemetry_packet.html#a57ec586862bcba6d93dd998abe091ed1" title=" " alt="" coords="757,19,943,61"/>
-<area shape="rect" href="class_telemetry_packet.html#a081eba8279f9c3ed6a04df2e88c16df1" title=" " alt="" coords="1026,107,1202,133"/>
-<area shape="rect" href="class_command_handler.html#a54c1b7e2f1a6d0365ef36a0c738d7e02" title=" " alt="" coords="733,107,967,133"/>
-<area shape="rect" href="class_command_handler.html#a6c61c87a0ad0045aa6133dd69112a72b" title=" " alt="" coords="511,107,685,133"/>
-<area shape="rect" href="class_network_manager.html#a0d4ea7d4f0b395249151d0a28af79cd5" title=" " alt="" coords="295,107,463,133"/>
-<area shape="rect" href="classstate_machine.html#a5f4f54735cb0a13393227e3af6863cdd" title=" " alt="" coords="100,107,247,133"/>
-<area shape="rect" href="main_8cpp.html#afe461d27b9c48d5921c00d521181f12f" title=" " alt="" coords="5,107,52,133"/>
+<area shape="rect" title=" " alt="" coords="1603,56,1803,83"/>
+<area shape="rect" href="class_telemetry_packet.html#a35aa6a48c2a5d27ea4a2d21de42d8b3c" title=" " alt="" coords="1356,5,1555,32"/>
+<area shape="rect" href="class_telemetry_packet.html#a081eba8279f9c3ed6a04df2e88c16df1" title=" " alt="" coords="1367,56,1543,83"/>
+<area shape="rect" href="class_telemetry_packet.html#a45ae64bba7d093823e52b09e24186ad7" title=" " alt="" coords="1363,107,1548,149"/>
+<area shape="rect" href="class_command_handler.html#a54c1b7e2f1a6d0365ef36a0c738d7e02" title=" " alt="" coords="1075,56,1308,83"/>
+<area shape="rect" href="class_command_handler.html#a6c61c87a0ad0045aa6133dd69112a72b" title=" " alt="" coords="852,56,1027,83"/>
+<area shape="rect" href="class_network_manager.html#a0d4ea7d4f0b395249151d0a28af79cd5" title=" " alt="" coords="636,56,804,83"/>
+<area shape="rect" href="classstate_machine.html#a5f4f54735cb0a13393227e3af6863cdd" title=" " alt="" coords="441,56,588,83"/>
+<area shape="rect" href="main_8cpp.html#afe461d27b9c48d5921c00d521181f12f" title=" " alt="" coords="347,56,393,83"/>
+<area shape="rect" href="class_tunez_handler.html#a02e64b5ab21c71fc6e62e6673f80ac63" title=" " alt="" coords="164,56,299,83"/>
+<area shape="rect" href="class_setup.html#a315e788a23a012d5993613c627f15302" title=" " alt="" coords="5,56,116,83"/>
 </map>
 </div>
 
@@ -292,15 +293,6 @@ Here is the call graph for this function:</div>
 <area shape="rect" href="class_telemetry_packet.html#ad4046281b520642c1d93199a583dab00" title=" " alt="" coords="252,5,452,32"/>
 </map>
 </div>
-<div class="dynheader">
-Here is the caller graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><img src="class_telemetry_packet_a35aa6a48c2a5d27ea4a2d21de42d8b3c_icgraph.png" border="0" usemap="#aclass_telemetry_packet_a35aa6a48c2a5d27ea4a2d21de42d8b3c_icgraph" alt=""/></div>
-<map name="aclass_telemetry_packet_a35aa6a48c2a5d27ea4a2d21de42d8b3c_icgraph" id="aclass_telemetry_packet_a35aa6a48c2a5d27ea4a2d21de42d8b3c_icgraph">
-<area shape="rect" title=" " alt="" coords="239,13,437,39"/>
-<area shape="rect" href="class_telemetry_packet.html#a57ec586862bcba6d93dd998abe091ed1" title=" " alt="" coords="5,5,191,47"/>
-</map>
-</div>
 
 </div>
 </div>
@@ -335,12 +327,14 @@ Here is the caller graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="class_telemetry_packet_a081eba8279f9c3ed6a04df2e88c16df1_icgraph.png" border="0" usemap="#aclass_telemetry_packet_a081eba8279f9c3ed6a04df2e88c16df1_icgraph" alt=""/></div>
 <map name="aclass_telemetry_packet_a081eba8279f9c3ed6a04df2e88c16df1_icgraph" id="aclass_telemetry_packet_a081eba8279f9c3ed6a04df2e88c16df1_icgraph">
-<area shape="rect" title=" " alt="" coords="1015,5,1191,32"/>
-<area shape="rect" href="class_command_handler.html#a54c1b7e2f1a6d0365ef36a0c738d7e02" title=" " alt="" coords="733,5,967,32"/>
-<area shape="rect" href="class_command_handler.html#a6c61c87a0ad0045aa6133dd69112a72b" title=" " alt="" coords="511,5,685,32"/>
-<area shape="rect" href="class_network_manager.html#a0d4ea7d4f0b395249151d0a28af79cd5" title=" " alt="" coords="295,5,463,32"/>
-<area shape="rect" href="classstate_machine.html#a5f4f54735cb0a13393227e3af6863cdd" title=" " alt="" coords="100,5,247,32"/>
-<area shape="rect" href="main_8cpp.html#afe461d27b9c48d5921c00d521181f12f" title=" " alt="" coords="5,5,52,32"/>
+<area shape="rect" title=" " alt="" coords="1356,5,1532,32"/>
+<area shape="rect" href="class_command_handler.html#a54c1b7e2f1a6d0365ef36a0c738d7e02" title=" " alt="" coords="1075,5,1308,32"/>
+<area shape="rect" href="class_command_handler.html#a6c61c87a0ad0045aa6133dd69112a72b" title=" " alt="" coords="852,5,1027,32"/>
+<area shape="rect" href="class_network_manager.html#a0d4ea7d4f0b395249151d0a28af79cd5" title=" " alt="" coords="636,5,804,32"/>
+<area shape="rect" href="classstate_machine.html#a5f4f54735cb0a13393227e3af6863cdd" title=" " alt="" coords="441,5,588,32"/>
+<area shape="rect" href="main_8cpp.html#afe461d27b9c48d5921c00d521181f12f" title=" " alt="" coords="347,5,393,32"/>
+<area shape="rect" href="class_tunez_handler.html#a02e64b5ab21c71fc6e62e6673f80ac63" title=" " alt="" coords="164,5,299,32"/>
+<area shape="rect" href="class_setup.html#a315e788a23a012d5993613c627f15302" title=" " alt="" coords="5,5,116,32"/>
 </map>
 </div>
 

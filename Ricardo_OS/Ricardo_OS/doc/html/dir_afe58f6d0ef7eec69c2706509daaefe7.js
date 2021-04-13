@@ -8,7 +8,7 @@ var dir_afe58f6d0ef7eec69c2706509daaefe7 =
     [ "battery.h", "battery_8h.html", [
       [ "Battery", "class_battery.html", "class_battery" ]
     ] ],
-    [ "esitmator.cpp", "esitmator_8cpp.html", null ],
+    [ "estimator.cpp", "estimator_8cpp.html", null ],
     [ "estimator.h", "estimator_8h.html", [
       [ "Estimator", "class_estimator.html", "class_estimator" ]
     ] ],

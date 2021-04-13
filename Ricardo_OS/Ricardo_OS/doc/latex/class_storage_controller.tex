@@ -6,7 +6,8 @@
 
 
 
-Collaboration diagram for Storage\+Controller\+:\nopagebreak
+Collaboration diagram for Storage\+Controller\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -20,9 +21,7 @@ Collaboration diagram for Storage\+Controller\+:\nopagebreak
 \item 
 bool \mbox{\hyperlink{class_storage_controller_a0b346fe54c8f2253697f86926fa5eb90}{setup}} ()
 \item 
-void \mbox{\hyperlink{class_storage_controller_a570540f0344421a0af1087f473329286}{write}} (std\+::string \&path, std\+::string \&data, \mbox{\hyperlink{storage_controller_8h_a9539e551e6a3b5229703f97c65f94bae}{STORAGE\+\_\+\+DEVICE}} device)
-\item 
-void \mbox{\hyperlink{class_storage_controller_ac275c89a86d43a29114d5bd04c7158c1}{read}} (std\+::string path, \mbox{\hyperlink{storage_controller_8h_a9539e551e6a3b5229703f97c65f94bae}{STORAGE\+\_\+\+DEVICE}} device)
+File \mbox{\hyperlink{class_storage_controller_a0fb6ece5348f0a1a15f4d7050b03e4a9}{open}} (std\+::string \&path, \mbox{\hyperlink{storage_controller_8h_a9539e551e6a3b5229703f97c65f94bae}{STORAGE\+\_\+\+DEVICE}} device, oflag\+\_\+t mode)
 \item 
 std\+::string \mbox{\hyperlink{class_storage_controller_a87d4665b5ef9041aea21649463c895d0}{update\+Directory\+Name}} (std\+::string input\+\_\+directory, \mbox{\hyperlink{storage_controller_8h_a9539e551e6a3b5229703f97c65f94bae}{STORAGE\+\_\+\+DEVICE}} device)
 \item 
@@ -72,7 +71,8 @@ Fat\+File\+System \mbox{\hyperlink{class_storage_controller_abee9c9104024d8820a2
 \doxysubsubsection{\texorpdfstring{erase()}{erase()}}
 {\footnotesize\ttfamily bool Storage\+Controller\+::erase (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{storage_controller_8h_a9539e551e6a3b5229703f97c65f94bae}{STORAGE\+\_\+\+DEVICE}}}]{device }\end{DoxyParamCaption})}
 
-Here is the call graph for this function\+:\nopagebreak
+Here is the call graph for this function\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -85,15 +85,7 @@ Here is the call graph for this function\+:\nopagebreak
 \doxysubsubsection{\texorpdfstring{getFileNameIndex()}{getFileNameIndex()}}
 {\footnotesize\ttfamily const int Storage\+Controller\+::get\+File\+Name\+Index (\begin{DoxyParamCaption}\item[{const std\+::string}]{file\+Name }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
 
-Here is the call graph for this function\+:\nopagebreak
-\begin{figure}[H]
-\begin{center}
-\leavevmode
-\includegraphics[width=276pt]{class_storage_controller_adae9673eb8ed76ad4711b4d6bb7a02f7_cgraph}
-\end{center}
-\end{figure}
-Here is the caller graph for this function\+:
-\nopagebreak
+Here is the caller graph for this function\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -106,8 +98,7 @@ Here is the caller graph for this function\+:
 \doxysubsubsection{\texorpdfstring{ls()}{ls()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
 {\footnotesize\ttfamily bool Storage\+Controller\+::ls (\begin{DoxyParamCaption}\item[{std\+::string}]{path,  }\item[{std\+::vector$<$ \mbox{\hyperlink{structdirectory__element__t}{directory\+\_\+element\+\_\+t}} $>$ \&}]{directory\+\_\+structure,  }\item[{\mbox{\hyperlink{storage_controller_8h_a9539e551e6a3b5229703f97c65f94bae}{STORAGE\+\_\+\+DEVICE}}}]{device }\end{DoxyParamCaption})}
 
-Here is the caller graph for this function\+:
-\nopagebreak
+Here is the caller graph for this function\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -133,19 +124,33 @@ Here is the call graph for this function\+:\nopagebreak
 \doxysubsubsection{\texorpdfstring{mkdir()}{mkdir()}}
 {\footnotesize\ttfamily void Storage\+Controller\+::mkdir (\begin{DoxyParamCaption}\item[{std\+::string}]{path,  }\item[{\mbox{\hyperlink{storage_controller_8h_a9539e551e6a3b5229703f97c65f94bae}{STORAGE\+\_\+\+DEVICE}}}]{device }\end{DoxyParamCaption})}
 
-Here is the call graph for this function\+:\nopagebreak
+Here is the call graph for this function\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
 \includegraphics[width=307pt]{class_storage_controller_a1c88bf9602ab25ddceac9503d880a9f9_cgraph}
 \end{center}
 \end{figure}
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_storage_controller_a1c88bf9602ab25ddceac9503d880a9f9_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_storage_controller_a0fb6ece5348f0a1a15f4d7050b03e4a9}\label{class_storage_controller_a0fb6ece5348f0a1a15f4d7050b03e4a9}} 
+\index{StorageController@{StorageController}!open@{open}}
+\index{open@{open}!StorageController@{StorageController}}
+\doxysubsubsection{\texorpdfstring{open()}{open()}}
+{\footnotesize\ttfamily File Storage\+Controller\+::open (\begin{DoxyParamCaption}\item[{std\+::string \&}]{path,  }\item[{\mbox{\hyperlink{storage_controller_8h_a9539e551e6a3b5229703f97c65f94bae}{STORAGE\+\_\+\+DEVICE}}}]{device,  }\item[{oflag\+\_\+t}]{mode }\end{DoxyParamCaption})}
+
 Here is the caller graph for this function\+:
 \nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=350pt]{class_storage_controller_a1c88bf9602ab25ddceac9503d880a9f9_icgraph}
+\includegraphics[width=350pt]{class_storage_controller_a0fb6ece5348f0a1a15f4d7050b03e4a9_icgraph}
 \end{center}
 \end{figure}
 \mbox{\Hypertarget{class_storage_controller_a118abfa6ab0520474ccc47c78827f843}\label{class_storage_controller_a118abfa6ab0520474ccc47c78827f843}} 
@@ -161,27 +166,21 @@ Here is the call graph for this function\+:\nopagebreak
 \includegraphics[width=320pt]{class_storage_controller_a118abfa6ab0520474ccc47c78827f843_cgraph}
 \end{center}
 \end{figure}
-\mbox{\Hypertarget{class_storage_controller_ac275c89a86d43a29114d5bd04c7158c1}\label{class_storage_controller_ac275c89a86d43a29114d5bd04c7158c1}} 
-\index{StorageController@{StorageController}!read@{read}}
-\index{read@{read}!StorageController@{StorageController}}
-\doxysubsubsection{\texorpdfstring{read()}{read()}}
-{\footnotesize\ttfamily void Storage\+Controller\+::read (\begin{DoxyParamCaption}\item[{std\+::string}]{path,  }\item[{\mbox{\hyperlink{storage_controller_8h_a9539e551e6a3b5229703f97c65f94bae}{STORAGE\+\_\+\+DEVICE}}}]{device }\end{DoxyParamCaption})}
-
 \mbox{\Hypertarget{class_storage_controller_a0b346fe54c8f2253697f86926fa5eb90}\label{class_storage_controller_a0b346fe54c8f2253697f86926fa5eb90}} 
 \index{StorageController@{StorageController}!setup@{setup}}
 \index{setup@{setup}!StorageController@{StorageController}}
 \doxysubsubsection{\texorpdfstring{setup()}{setup()}}
 {\footnotesize\ttfamily bool Storage\+Controller\+::setup (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
 
-Here is the call graph for this function\+:\nopagebreak
+Here is the call graph for this function\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
 \includegraphics[width=350pt]{class_storage_controller_a0b346fe54c8f2253697f86926fa5eb90_cgraph}
 \end{center}
 \end{figure}
-Here is the caller graph for this function\+:
-\nopagebreak
+Here is the caller graph for this function\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -194,32 +193,19 @@ Here is the caller graph for this function\+:
 \doxysubsubsection{\texorpdfstring{updateDirectoryName()}{updateDirectoryName()}}
 {\footnotesize\ttfamily std\+::string Storage\+Controller\+::update\+Directory\+Name (\begin{DoxyParamCaption}\item[{std\+::string}]{input\+\_\+directory,  }\item[{\mbox{\hyperlink{storage_controller_8h_a9539e551e6a3b5229703f97c65f94bae}{STORAGE\+\_\+\+DEVICE}}}]{device }\end{DoxyParamCaption})}
 
-Here is the call graph for this function\+:\nopagebreak
-\begin{figure}[H]
-\begin{center}
-\leavevmode
-\includegraphics[width=350pt]{class_storage_controller_a87d4665b5ef9041aea21649463c895d0_cgraph}
-\end{center}
-\end{figure}
-Here is the caller graph for this function\+:
+Here is the call graph for this function\+:
 \nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=350pt]{class_storage_controller_a87d4665b5ef9041aea21649463c895d0_icgraph}
+\includegraphics[width=334pt]{class_storage_controller_a87d4665b5ef9041aea21649463c895d0_cgraph}
 \end{center}
 \end{figure}
-\mbox{\Hypertarget{class_storage_controller_a570540f0344421a0af1087f473329286}\label{class_storage_controller_a570540f0344421a0af1087f473329286}} 
-\index{StorageController@{StorageController}!write@{write}}
-\index{write@{write}!StorageController@{StorageController}}
-\doxysubsubsection{\texorpdfstring{write()}{write()}}
-{\footnotesize\ttfamily void Storage\+Controller\+::write (\begin{DoxyParamCaption}\item[{std\+::string \&}]{path,  }\item[{std\+::string \&}]{data,  }\item[{\mbox{\hyperlink{storage_controller_8h_a9539e551e6a3b5229703f97c65f94bae}{STORAGE\+\_\+\+DEVICE}}}]{device }\end{DoxyParamCaption})}
-
 Here is the caller graph for this function\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=350pt]{class_storage_controller_a570540f0344421a0af1087f473329286_icgraph}
+\includegraphics[width=350pt]{class_storage_controller_a87d4665b5ef9041aea21649463c895d0_icgraph}
 \end{center}
 \end{figure}
 

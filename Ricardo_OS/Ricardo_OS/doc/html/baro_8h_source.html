@@ -102,12 +102,12 @@ $(document).ready(function(){initNavTree('baro_8h_source.html',''); initResizabl
 <div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &quot;SPI.h&quot;</span></div>
 <div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160; </div>
 <div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="systemstatus_8h.html">Logging/systemstatus.h</a>&quot;</span></div>
-<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160; </div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="log_controller_8h.html">Logging/logController.h</a>&quot;</span></div>
 <div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="sensor_structs_8h.html">sensorStructs.h</a>&quot;</span></div>
 <div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160; </div>
 <div class="line"><a name="l00010"></a><span class="lineno"><a class="line" href="class_baro.html">   10</a></span>&#160;<span class="keyword">class </span><a class="code" href="class_baro.html">Baro</a>{</div>
 <div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;    <span class="keyword">public</span>:</div>
-<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;        <a class="code" href="class_baro.html#a076a3723ffe8b5191b54685860f53636">Baro</a>(SPIClass* spi,<a class="code" href="class_system_status.html">SystemStatus</a>* systemstatus,<a class="code" href="structraw__measurements__t.html">raw_measurements_t</a>* raw_data);</div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;        <a class="code" href="class_baro.html#af7f00686ffba48345f1d66b851878f07">Baro</a>(SPIClass* spi,<a class="code" href="class_system_status.html">SystemStatus</a>* systemstatus,<a class="code" href="class_log_controller.html">LogController</a>* logcontroller,<a class="code" href="structraw__measurements__t.html">raw_measurements_t</a>* raw_data);</div>
 <div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;        <span class="keywordtype">void</span> <a class="code" href="class_baro.html#a54bc23ca90c603a8d0f83beebda6d635">setup</a>();</div>
 <div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;        <span class="keywordtype">void</span> <a class="code" href="class_baro.html#ae4646ca76722ac09ccffb93aadda30f6">update</a>();</div>
 <div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160; </div>
@@ -116,23 +116,27 @@ $(document).ready(function(){initNavTree('baro_8h_source.html',''); initResizabl
 <div class="line"><a name="l00018"></a><span class="lineno"><a class="line" href="class_baro.html#a07853997e4940f4764b5fb483d9b7697">   18</a></span>&#160;        SPIClass* <a class="code" href="class_baro.html#a07853997e4940f4764b5fb483d9b7697">_spi</a>;</div>
 <div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;        <span class="comment">//pointer to system status object</span></div>
 <div class="line"><a name="l00020"></a><span class="lineno"><a class="line" href="class_baro.html#a6aa4b1ad14b0fc8e6ef3c14b546400cf">   20</a></span>&#160;        <a class="code" href="class_system_status.html">SystemStatus</a>* <a class="code" href="class_baro.html#a6aa4b1ad14b0fc8e6ef3c14b546400cf">_systemstatus</a>;</div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;        <span class="comment">//pointer to raw data struct</span></div>
-<div class="line"><a name="l00022"></a><span class="lineno"><a class="line" href="class_baro.html#a012b899da1af8dba17c6b92697fb79d8">   22</a></span>&#160;        <a class="code" href="structraw__measurements__t.html">raw_measurements_t</a>* <a class="code" href="class_baro.html#a012b899da1af8dba17c6b92697fb79d8">_raw_data</a>;</div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160; </div>
+<div class="line"><a name="l00021"></a><span class="lineno"><a class="line" href="class_baro.html#a0835d5c41ec5db1ad77e6bb4f0f5ef7b">   21</a></span>&#160;        <a class="code" href="class_log_controller.html">LogController</a>* <a class="code" href="class_baro.html#a0835d5c41ec5db1ad77e6bb4f0f5ef7b">_logcontroller</a>;</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;        <span class="comment">//pointer to raw data struct</span></div>
+<div class="line"><a name="l00023"></a><span class="lineno"><a class="line" href="class_baro.html#a012b899da1af8dba17c6b92697fb79d8">   23</a></span>&#160;        <a class="code" href="structraw__measurements__t.html">raw_measurements_t</a>* <a class="code" href="class_baro.html#a012b899da1af8dba17c6b92697fb79d8">_raw_data</a>;</div>
 <div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160; </div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;};    </div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160; </div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160; </div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;};    </div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160; </div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="preprocessor">#endif</span></div>
 <div class="ttc" id="aclass_baro_html"><div class="ttname"><a href="class_baro.html">Baro</a></div><div class="ttdef"><b>Definition:</b> baro.h:10</div></div>
-<div class="ttc" id="aclass_baro_html_a012b899da1af8dba17c6b92697fb79d8"><div class="ttname"><a href="class_baro.html#a012b899da1af8dba17c6b92697fb79d8">Baro::_raw_data</a></div><div class="ttdeci">raw_measurements_t * _raw_data</div><div class="ttdef"><b>Definition:</b> baro.h:22</div></div>
-<div class="ttc" id="aclass_baro_html_a076a3723ffe8b5191b54685860f53636"><div class="ttname"><a href="class_baro.html#a076a3723ffe8b5191b54685860f53636">Baro::Baro</a></div><div class="ttdeci">Baro(SPIClass *spi, SystemStatus *systemstatus, raw_measurements_t *raw_data)</div><div class="ttdef"><b>Definition:</b> baro.cpp:10</div></div>
+<div class="ttc" id="aclass_baro_html_a012b899da1af8dba17c6b92697fb79d8"><div class="ttname"><a href="class_baro.html#a012b899da1af8dba17c6b92697fb79d8">Baro::_raw_data</a></div><div class="ttdeci">raw_measurements_t * _raw_data</div><div class="ttdef"><b>Definition:</b> baro.h:23</div></div>
 <div class="ttc" id="aclass_baro_html_a07853997e4940f4764b5fb483d9b7697"><div class="ttname"><a href="class_baro.html#a07853997e4940f4764b5fb483d9b7697">Baro::_spi</a></div><div class="ttdeci">SPIClass * _spi</div><div class="ttdef"><b>Definition:</b> baro.h:18</div></div>
-<div class="ttc" id="aclass_baro_html_a54bc23ca90c603a8d0f83beebda6d635"><div class="ttname"><a href="class_baro.html#a54bc23ca90c603a8d0f83beebda6d635">Baro::setup</a></div><div class="ttdeci">void setup()</div><div class="ttdef"><b>Definition:</b> baro.cpp:16</div></div>
+<div class="ttc" id="aclass_baro_html_a0835d5c41ec5db1ad77e6bb4f0f5ef7b"><div class="ttname"><a href="class_baro.html#a0835d5c41ec5db1ad77e6bb4f0f5ef7b">Baro::_logcontroller</a></div><div class="ttdeci">LogController * _logcontroller</div><div class="ttdef"><b>Definition:</b> baro.h:21</div></div>
+<div class="ttc" id="aclass_baro_html_a54bc23ca90c603a8d0f83beebda6d635"><div class="ttname"><a href="class_baro.html#a54bc23ca90c603a8d0f83beebda6d635">Baro::setup</a></div><div class="ttdeci">void setup()</div><div class="ttdef"><b>Definition:</b> baro.cpp:17</div></div>
 <div class="ttc" id="aclass_baro_html_a6aa4b1ad14b0fc8e6ef3c14b546400cf"><div class="ttname"><a href="class_baro.html#a6aa4b1ad14b0fc8e6ef3c14b546400cf">Baro::_systemstatus</a></div><div class="ttdeci">SystemStatus * _systemstatus</div><div class="ttdef"><b>Definition:</b> baro.h:20</div></div>
-<div class="ttc" id="aclass_baro_html_ae4646ca76722ac09ccffb93aadda30f6"><div class="ttname"><a href="class_baro.html#ae4646ca76722ac09ccffb93aadda30f6">Baro::update</a></div><div class="ttdeci">void update()</div><div class="ttdef"><b>Definition:</b> baro.cpp:21</div></div>
-<div class="ttc" id="aclass_system_status_html"><div class="ttname"><a href="class_system_status.html">SystemStatus</a></div><div class="ttdef"><b>Definition:</b> systemstatus.h:15</div></div>
+<div class="ttc" id="aclass_baro_html_ae4646ca76722ac09ccffb93aadda30f6"><div class="ttname"><a href="class_baro.html#ae4646ca76722ac09ccffb93aadda30f6">Baro::update</a></div><div class="ttdeci">void update()</div><div class="ttdef"><b>Definition:</b> baro.cpp:22</div></div>
+<div class="ttc" id="aclass_baro_html_af7f00686ffba48345f1d66b851878f07"><div class="ttname"><a href="class_baro.html#af7f00686ffba48345f1d66b851878f07">Baro::Baro</a></div><div class="ttdeci">Baro(SPIClass *spi, SystemStatus *systemstatus, LogController *logcontroller, raw_measurements_t *raw_data)</div><div class="ttdef"><b>Definition:</b> baro.cpp:10</div></div>
+<div class="ttc" id="aclass_log_controller_html"><div class="ttname"><a href="class_log_controller.html">LogController</a></div><div class="ttdef"><b>Definition:</b> logController.h:20</div></div>
+<div class="ttc" id="aclass_system_status_html"><div class="ttname"><a href="class_system_status.html">SystemStatus</a></div><div class="ttdef"><b>Definition:</b> systemstatus.h:16</div></div>
+<div class="ttc" id="alog_controller_8h_html"><div class="ttname"><a href="log_controller_8h.html">logController.h</a></div></div>
 <div class="ttc" id="asensor_structs_8h_html"><div class="ttname"><a href="sensor_structs_8h.html">sensorStructs.h</a></div></div>
-<div class="ttc" id="astructraw__measurements__t_html"><div class="ttname"><a href="structraw__measurements__t.html">raw_measurements_t</a></div><div class="ttdef"><b>Definition:</b> sensorStructs.h:8</div></div>
+<div class="ttc" id="astructraw__measurements__t_html"><div class="ttname"><a href="structraw__measurements__t.html">raw_measurements_t</a></div><div class="ttdef"><b>Definition:</b> sensorStructs.h:10</div></div>
 <div class="ttc" id="asystemstatus_8h_html"><div class="ttname"><a href="systemstatus_8h.html">systemstatus.h</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->

@@ -10,5 +10,7 @@ var class_routing_table =
     [ "push_row", "class_routing_table.html#ac7f997392f3654f8c35de455286bdfba", null ],
     [ "size", "class_routing_table.html#ae83180a12e0583fa3420ba19260054be", null ],
     [ "operator<<", "class_routing_table.html#a6303e42a06796509acda1a1214c73c87", null ],
-    [ "_table", "class_routing_table.html#a436cfb60e620d25cc26ed76ab628c5ec", null ]
+    [ "_table", "class_routing_table.html#a436cfb60e620d25cc26ed76ab628c5ec", null ],
+    [ "dummy_entry", "class_routing_table.html#a8447ce2d94fd43e7703bcf6d3f7ecb99", null ],
+    [ "error_entry", "class_routing_table.html#a0062f1c70221321510a0f79b1bcb4655", null ]
 ];

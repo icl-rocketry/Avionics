@@ -2,7 +2,7 @@ var class_packet_header =
 [
     [ "PacketHeader", "class_packet_header.html#a269a8be760b8f5785bf822758770d738", null ],
     [ "PacketHeader", "class_packet_header.html#ac821c6e8c0d14e59f92d6a4408feb3de", null ],
-    [ "PacketHeader", "class_packet_header.html#a475cd6f2ce12956628181b7dbf01ea2b", null ],
+    [ "PacketHeader", "class_packet_header.html#ab4efe8cbc246bbe22fd5be6a92a1d3cb", null ],
     [ "~PacketHeader", "class_packet_header.html#a6d1ec34fd9e3a472cc758be32d583845", null ],
     [ "getSerializer", "class_packet_header.html#acf9c5c5c063bf6ed809d8d6144a5aa56", null ],
     [ "header_size", "class_packet_header.html#ae0c16331969378456fa7c606e694c926", null ],

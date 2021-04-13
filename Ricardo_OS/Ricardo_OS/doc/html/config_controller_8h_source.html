@@ -102,19 +102,28 @@ $(document).ready(function(){initNavTree('config_controller_8h_source.html','');
 <div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &lt;string&gt;</span></div>
 <div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="storage_controller_8h.html">storageController.h</a>&quot;</span></div>
 <div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160; </div>
-<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160; </div>
-<div class="line"><a name="l00008"></a><span class="lineno"><a class="line" href="class_config_controller.html">    8</a></span>&#160;<span class="keyword">class </span><a class="code" href="class_config_controller.html">ConfigController</a>{</div>
-<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;    <span class="keyword">public</span>:</div>
-<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;        <a class="code" href="class_config_controller.html#aa258296507747e5800e12396c96cc6cb">ConfigController</a>(<a class="code" href="class_storage_controller.html">StorageController</a> *storagecontroller);</div>
-<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;    <span class="keyword">private</span>:</div>
-<div class="line"><a name="l00012"></a><span class="lineno"><a class="line" href="class_config_controller.html#a6af8c4054d18a3ad4f81257713db77a6">   12</a></span>&#160;        <a class="code" href="class_storage_controller.html">StorageController</a> *<a class="code" href="class_config_controller.html#a6af8c4054d18a3ad4f81257713db77a6">_storagecontroller</a>; <span class="comment">//pointer to storage controller</span></div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;};</div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160; </div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="ttc" id="aclass_config_controller_html"><div class="ttname"><a href="class_config_controller.html">ConfigController</a></div><div class="ttdef"><b>Definition:</b> configController.h:8</div></div>
-<div class="ttc" id="aclass_config_controller_html_a6af8c4054d18a3ad4f81257713db77a6"><div class="ttname"><a href="class_config_controller.html#a6af8c4054d18a3ad4f81257713db77a6">ConfigController::_storagecontroller</a></div><div class="ttdeci">StorageController * _storagecontroller</div><div class="ttdef"><b>Definition:</b> configController.h:12</div></div>
-<div class="ttc" id="aclass_config_controller_html_aa258296507747e5800e12396c96cc6cb"><div class="ttname"><a href="class_config_controller.html#aa258296507747e5800e12396c96cc6cb">ConfigController::ConfigController</a></div><div class="ttdeci">ConfigController(StorageController *storagecontroller)</div><div class="ttdef"><b>Definition:</b> configController.cpp:4</div></div>
-<div class="ttc" id="aclass_storage_controller_html"><div class="ttname"><a href="class_storage_controller.html">StorageController</a></div><div class="ttdef"><b>Definition:</b> storageController.h:32</div></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="preprocessor">#include &lt;ArduinoJson.h&gt;</span></div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160; </div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160; </div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160; </div>
+<div class="line"><a name="l00011"></a><span class="lineno"><a class="line" href="class_config_controller.html">   11</a></span>&#160;<span class="keyword">class </span><a class="code" href="class_config_controller.html">ConfigController</a>{</div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;    <span class="keyword">public</span>:</div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;        <a class="code" href="class_config_controller.html#aa258296507747e5800e12396c96cc6cb">ConfigController</a>(<a class="code" href="class_storage_controller.html">StorageController</a> *storagecontroller);</div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;        <span class="keywordtype">void</span> <a class="code" href="class_config_controller.html#a2763d5dc965d6d3b61de2f10c4c8e602">setup</a>();</div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;        </div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;        </div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;    <span class="keyword">private</span>:</div>
+<div class="line"><a name="l00018"></a><span class="lineno"><a class="line" href="class_config_controller.html#a6af8c4054d18a3ad4f81257713db77a6">   18</a></span>&#160;        <a class="code" href="class_storage_controller.html">StorageController</a> *<a class="code" href="class_config_controller.html#a6af8c4054d18a3ad4f81257713db77a6">_storagecontroller</a>; <span class="comment">//pointer to storage controller</span></div>
+<div class="line"><a name="l00019"></a><span class="lineno"><a class="line" href="class_config_controller.html#afc578dea527fc9deb906bd1a150bb730">   19</a></span>&#160;        <span class="keyword">const</span> std::string <a class="code" href="class_config_controller.html#afc578dea527fc9deb906bd1a150bb730">configuration_file_path</a> = <span class="stringliteral">&quot;/Config.json&quot;</span>;</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;};</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160; </div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="ttc" id="aclass_config_controller_html"><div class="ttname"><a href="class_config_controller.html">ConfigController</a></div><div class="ttdef"><b>Definition:</b> configController.h:11</div></div>
+<div class="ttc" id="aclass_config_controller_html_a2763d5dc965d6d3b61de2f10c4c8e602"><div class="ttname"><a href="class_config_controller.html#a2763d5dc965d6d3b61de2f10c4c8e602">ConfigController::setup</a></div><div class="ttdeci">void setup()</div><div class="ttdef"><b>Definition:</b> configController.cpp:11</div></div>
+<div class="ttc" id="aclass_config_controller_html_a6af8c4054d18a3ad4f81257713db77a6"><div class="ttname"><a href="class_config_controller.html#a6af8c4054d18a3ad4f81257713db77a6">ConfigController::_storagecontroller</a></div><div class="ttdeci">StorageController * _storagecontroller</div><div class="ttdef"><b>Definition:</b> configController.h:18</div></div>
+<div class="ttc" id="aclass_config_controller_html_aa258296507747e5800e12396c96cc6cb"><div class="ttname"><a href="class_config_controller.html#aa258296507747e5800e12396c96cc6cb">ConfigController::ConfigController</a></div><div class="ttdeci">ConfigController(StorageController *storagecontroller)</div><div class="ttdef"><b>Definition:</b> configController.cpp:7</div></div>
+<div class="ttc" id="aclass_config_controller_html_afc578dea527fc9deb906bd1a150bb730"><div class="ttname"><a href="class_config_controller.html#afc578dea527fc9deb906bd1a150bb730">ConfigController::configuration_file_path</a></div><div class="ttdeci">const std::string configuration_file_path</div><div class="ttdef"><b>Definition:</b> configController.h:19</div></div>
+<div class="ttc" id="aclass_storage_controller_html"><div class="ttname"><a href="class_storage_controller.html">StorageController</a></div><div class="ttdef"><b>Definition:</b> storageController.h:33</div></div>
 <div class="ttc" id="astorage_controller_8h_html"><div class="ttname"><a href="storage_controller_8h.html">storageController.h</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->

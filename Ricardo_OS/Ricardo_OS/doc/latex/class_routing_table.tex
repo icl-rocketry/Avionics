@@ -4,6 +4,16 @@
 
 {\ttfamily \#include $<$routing\+Table.\+h$>$}
 
+
+
+Collaboration diagram for Routing\+Table\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=192pt]{class_routing_table__coll__graph}
+\end{center}
+\end{figure}
 \doxysubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
@@ -29,6 +39,10 @@ void \mbox{\hyperlink{class_routing_table_ac7f997392f3654f8c35de455286bdfba}{pus
 \begin{DoxyCompactItemize}
 \item 
 std\+::vector$<$ std\+::vector$<$ \mbox{\hyperlink{struct_routing_table_entry}{Routing\+Table\+Entry}} $>$ $>$ \mbox{\hyperlink{class_routing_table_a436cfb60e620d25cc26ed76ab628c5ec}{\+\_\+table}}
+\item 
+const \mbox{\hyperlink{struct_routing_table_entry}{Routing\+Table\+Entry}} \mbox{\hyperlink{class_routing_table_a0062f1c70221321510a0f79b1bcb4655}{error\+\_\+entry}} \{\mbox{\hyperlink{interfaces_8h_af0cd30ccfa4f4fe2bd0fdc3cfc4d34cfabb1ca97ec761fc37101737ba0aa2e7c5}{Interface\+::\+ERROR}},255\}
+\item 
+\mbox{\hyperlink{struct_routing_table_entry}{Routing\+Table\+Entry}} \mbox{\hyperlink{class_routing_table_a8447ce2d94fd43e7703bcf6d3f7ecb99}{dummy\+\_\+entry}} \{\mbox{\hyperlink{interfaces_8h_af0cd30ccfa4f4fe2bd0fdc3cfc4d34cfabb1ca97ec761fc37101737ba0aa2e7c5}{Interface\+::\+ERROR}},255\}
 \end{DoxyCompactItemize}
 \doxysubsection*{Friends}
 \begin{DoxyCompactItemize}
@@ -117,6 +131,18 @@ bool Routing\+Table\+::push\+\_\+entry (\begin{DoxyParamCaption}\item[{T}]{sourc
 \index{\_table@{\_table}!RoutingTable@{RoutingTable}}
 \doxysubsubsection{\texorpdfstring{\_table}{\_table}}
 {\footnotesize\ttfamily std\+::vector$<$ std\+::vector$<$\mbox{\hyperlink{struct_routing_table_entry}{Routing\+Table\+Entry}}$>$ $>$ Routing\+Table\+::\+\_\+table\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{class_routing_table_a8447ce2d94fd43e7703bcf6d3f7ecb99}\label{class_routing_table_a8447ce2d94fd43e7703bcf6d3f7ecb99}} 
+\index{RoutingTable@{RoutingTable}!dummy\_entry@{dummy\_entry}}
+\index{dummy\_entry@{dummy\_entry}!RoutingTable@{RoutingTable}}
+\doxysubsubsection{\texorpdfstring{dummy\_entry}{dummy\_entry}}
+{\footnotesize\ttfamily \mbox{\hyperlink{struct_routing_table_entry}{Routing\+Table\+Entry}} Routing\+Table\+::dummy\+\_\+entry \{\mbox{\hyperlink{interfaces_8h_af0cd30ccfa4f4fe2bd0fdc3cfc4d34cfabb1ca97ec761fc37101737ba0aa2e7c5}{Interface\+::\+ERROR}},255\}\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{class_routing_table_a0062f1c70221321510a0f79b1bcb4655}\label{class_routing_table_a0062f1c70221321510a0f79b1bcb4655}} 
+\index{RoutingTable@{RoutingTable}!error\_entry@{error\_entry}}
+\index{error\_entry@{error\_entry}!RoutingTable@{RoutingTable}}
+\doxysubsubsection{\texorpdfstring{error\_entry}{error\_entry}}
+{\footnotesize\ttfamily const \mbox{\hyperlink{struct_routing_table_entry}{Routing\+Table\+Entry}} Routing\+Table\+::error\+\_\+entry \{\mbox{\hyperlink{interfaces_8h_af0cd30ccfa4f4fe2bd0fdc3cfc4d34cfabb1ca97ec761fc37101737ba0aa2e7c5}{Interface\+::\+ERROR}},255\}\hspace{0.3cm}{\ttfamily [private]}}
 
 
 

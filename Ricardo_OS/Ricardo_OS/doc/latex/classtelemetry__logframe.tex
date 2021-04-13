@@ -4,113 +4,43 @@
 
 {\ttfamily \#include $<$logframe.\+h$>$}
 
-
-
-Inheritance diagram for telemetry\+\_\+logframe\+:\nopagebreak
-\begin{figure}[H]
-\begin{center}
-\leavevmode
-\includegraphics[width=180pt]{classtelemetry__logframe__inherit__graph}
-\end{center}
-\end{figure}
-
-
-Collaboration diagram for telemetry\+\_\+logframe\+:\nopagebreak
-\begin{figure}[H]
-\begin{center}
-\leavevmode
-\includegraphics[width=180pt]{classtelemetry__logframe__coll__graph}
-\end{center}
-\end{figure}
 \doxysubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
 std\+::string \mbox{\hyperlink{classtelemetry__logframe_add67dbfbf886bf1b322628962a03c0de}{stringify}} () const
+\item 
+std\+::vector$<$ uint8\+\_\+t $>$ \mbox{\hyperlink{classtelemetry__logframe_a753c1bc52c26f391cecfef4983232aee}{serialize}} () const
 \end{DoxyCompactItemize}
 \doxysubsection*{Public Attributes}
 \begin{DoxyCompactItemize}
 \item 
-double \mbox{\hyperlink{classtelemetry__logframe_abfcb82eda7a276ed3d76a2110ee9f366}{raw\+GPSLong}}
+long \mbox{\hyperlink{classtelemetry__logframe_a7d31fdb76771d077657d91f8a2c8cd01}{raw\+GPSLong}}
 \item 
-double \mbox{\hyperlink{classtelemetry__logframe_a19ac82e4d2e69b7cbcef96a97c6e66b1}{raw\+GPSLat}}
+long \mbox{\hyperlink{classtelemetry__logframe_afc4d09331bd795dea506b90c3e3d7856}{raw\+GPSLat}}
 \item 
-double \mbox{\hyperlink{classtelemetry__logframe_a3695abc86a0031daca6489a73c62283b}{raw\+GPSSpeed}}
+int \mbox{\hyperlink{classtelemetry__logframe_af4977aa3b41b6f379145cb3224140d46}{raw\+GPSsat}}
 \item 
-double \mbox{\hyperlink{classtelemetry__logframe_abed3f7ccf22675644174928f5ed6aeca}{raw\+GPSAlt}}
+float \mbox{\hyperlink{classtelemetry__logframe_a6b22fc28cf67efb702b6c0d3c1972fb2}{raw\+IMUAx}}
 \item 
-uint8\+\_\+t \mbox{\hyperlink{classtelemetry__logframe_ad8bf7db3943276e354d14ed17ef8b141}{raw\+GPSsat}}
+float \mbox{\hyperlink{classtelemetry__logframe_a0d3731670a7ada1921fbef614efc7049}{raw\+IMUAy}}
 \item 
-double \mbox{\hyperlink{classtelemetry__logframe_a2018e686f2b853ecc4dd2ee245aa6b8d}{raw\+GPShdop}}
+float \mbox{\hyperlink{classtelemetry__logframe_a40d791eda67c22616d5999811c359284}{raw\+IMUAz}}
 \item 
-double \mbox{\hyperlink{classtelemetry__logframe_a5f2e45dcf0f53024dc333c3c0c1c8770}{raw\+IMUAx}}
+float \mbox{\hyperlink{classtelemetry__logframe_a4cc7697e4aacc70873aef982581a9993}{raw\+IMUGx}}
 \item 
-double \mbox{\hyperlink{classtelemetry__logframe_ad3c0c61ecf6022a3994a9b849c4dc7ab}{raw\+IMUAy}}
+float \mbox{\hyperlink{classtelemetry__logframe_a06638728d150ac12a5f3444625a2b394}{raw\+IMUGy}}
 \item 
-double \mbox{\hyperlink{classtelemetry__logframe_a6dbdddb10fe6b4663422ec0153175a7e}{raw\+IMUAz}}
+float \mbox{\hyperlink{classtelemetry__logframe_a1686b85db4df71e0637e6f7b260696b0}{raw\+IMUGz}}
 \item 
-double \mbox{\hyperlink{classtelemetry__logframe_a0bae1017e4b802d7a7b2275da49abb35}{raw\+IMUGx}}
+float \mbox{\hyperlink{classtelemetry__logframe_a837c64dd76c8b49df2ce716530fc78dd}{raw\+IMUMx}}
 \item 
-double \mbox{\hyperlink{classtelemetry__logframe_a4c31ca9a97493b97905f4609f8a1ff51}{raw\+IMUGy}}
+float \mbox{\hyperlink{classtelemetry__logframe_a9aa68f2cf973d3224b2a88493a5e7545}{raw\+IMUMy}}
 \item 
-double \mbox{\hyperlink{classtelemetry__logframe_a39d7e6ecd2524c18003df65903fd77e2}{raw\+IMUGz}}
+float \mbox{\hyperlink{classtelemetry__logframe_a2063c866c698919b00931c1e4dbede72}{raw\+IMUMz}}
 \item 
-double \mbox{\hyperlink{classtelemetry__logframe_a60f8de4ac8c1efcaa2cebe0fc9b80244}{raw\+IMUMx}}
+uint16\+\_\+t \mbox{\hyperlink{classtelemetry__logframe_a67125fcc7cf363022476b647c4deb650}{raw\+IMUTemp}}
 \item 
-double \mbox{\hyperlink{classtelemetry__logframe_a34fa15a676e3270383be3700979f169d}{raw\+IMUMy}}
-\item 
-double \mbox{\hyperlink{classtelemetry__logframe_a494b7e8225f4f616726821a1fd99377d}{raw\+IMUMz}}
-\item 
-double \mbox{\hyperlink{classtelemetry__logframe_af2b256b4b8b80f7fc2f3a577f1b687dd}{raw\+IMUTemp}}
-\item 
-double \mbox{\hyperlink{classtelemetry__logframe_ab8815c9e9dd8604fcf2a596eee982721}{raw\+Baro\+Temp}}
-\item 
-double \mbox{\hyperlink{classtelemetry__logframe_ac8b180854780128e00737cfcd3d5b5fd}{raw\+Baro\+Pres}}
-\item 
-double \mbox{\hyperlink{classtelemetry__logframe_af07b363717e1d60a0fad5578f77590be}{raw\+Baro\+Alt}}
-\item 
-int \mbox{\hyperlink{classtelemetry__logframe_adf91389e746abca489849f524de22c4d}{batt\+Volt}}
-\item 
-int \mbox{\hyperlink{classtelemetry__logframe_a3e354e8d44799cf5180fdab819ed9004}{batt\+Percent}}
-\item 
-long \mbox{\hyperlink{classtelemetry__logframe_aa0d6dc5c0d1396c47ff73888e958aaca}{raw\+Timestamp}}
-\item 
-double \mbox{\hyperlink{classtelemetry__logframe_a50caa40a1d26f41d1b2f72537591d4bb}{estimatorX}}
-\item 
-double \mbox{\hyperlink{classtelemetry__logframe_a4111b52d4ae341459ed786ff55a93ff4}{estimatorY}}
-\item 
-double \mbox{\hyperlink{classtelemetry__logframe_a62a020307f0c8fc953a512caf0ae9ed7}{estimatorZ}}
-\item 
-double \mbox{\hyperlink{classtelemetry__logframe_a9dfe53c017460644890341b50fb6a1b4}{estimator\+VX}}
-\item 
-double \mbox{\hyperlink{classtelemetry__logframe_a6491163af1278e4adee716cc31c96c31}{estimator\+VY}}
-\item 
-double \mbox{\hyperlink{classtelemetry__logframe_a394cc0b05a1f43fb44ca7005847b2da5}{estimator\+VZ}}
-\item 
-double \mbox{\hyperlink{classtelemetry__logframe_adf39bab0bb4591dd27cb61acaec3dbbf}{estimator\+AX}}
-\item 
-double \mbox{\hyperlink{classtelemetry__logframe_a1571a61e084a43a4d8dc386d415dff7b}{estimator\+AY}}
-\item 
-double \mbox{\hyperlink{classtelemetry__logframe_a56c9227a1cc5c7f929fe6a1d0b94b237}{estimator\+AZ}}
-\item 
-double \mbox{\hyperlink{classtelemetry__logframe_ad91dd5cae5551d775fc310c3355e76d2}{estimator\+Yaw}}
-\item 
-double \mbox{\hyperlink{classtelemetry__logframe_a7a738de350a9d77b14b0b66c81535fe1}{estimator\+Pitch}}
-\item 
-double \mbox{\hyperlink{classtelemetry__logframe_a188e0ff3e6cd0f46605c4d0bff0bcf4f}{estimator\+Roll}}
-\item 
-double \mbox{\hyperlink{classtelemetry__logframe_a8e4b6db13271e203af45c5b0fe8d7f01}{estimatorP}}
-\item 
-double \mbox{\hyperlink{classtelemetry__logframe_aa3f9e7815b1d89367d1794012a0d7087}{estimatorR}}
-\item 
-double \mbox{\hyperlink{classtelemetry__logframe_a8e3e94085df1edbefb96335b706921ad}{estimatorQ}}
-\item 
-double \mbox{\hyperlink{classtelemetry__logframe_a3928b4b4db39ccffd39722e4660457e0}{estimatorL}}
-\item 
-double \mbox{\hyperlink{classtelemetry__logframe_a2e6f352e110432a49d01249095e337cb}{estimatorM}}
-\item 
-double \mbox{\hyperlink{classtelemetry__logframe_a0d5bb58bc04207a07dc93ecf5f9f5462}{estimatorN}}
-\item 
-long \mbox{\hyperlink{classtelemetry__logframe_a0aaa30b41d8e744fc1fc4ed0974154db}{estimator\+Timestamp}}
+uint64\+\_\+t \mbox{\hyperlink{classtelemetry__logframe_a2860b0173af07cbc84546bf540877d25}{raw\+Timestamp}}
 \end{DoxyCompactItemize}
 \doxysubsection*{Static Private Member Functions}
 \begin{DoxyCompactItemize}
@@ -126,22 +56,33 @@ static constexpr auto \mbox{\hyperlink{classtelemetry__logframe_ad8ce2864d5faaf0
 \doxysubsubsection{\texorpdfstring{getSerializer()}{getSerializer()}}
 {\footnotesize\ttfamily static constexpr auto telemetry\+\_\+logframe\+::get\+Serializer (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}, {\ttfamily [constexpr]}, {\ttfamily [private]}}
 
-Here is the caller graph for this function\+:\nopagebreak
+Here is the caller graph for this function\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
 \includegraphics[width=316pt]{classtelemetry__logframe_ad8ce2864d5faaf045a0ff812c029a4b4_icgraph}
 \end{center}
 \end{figure}
+\mbox{\Hypertarget{classtelemetry__logframe_a753c1bc52c26f391cecfef4983232aee}\label{classtelemetry__logframe_a753c1bc52c26f391cecfef4983232aee}} 
+\index{telemetry\_logframe@{telemetry\_logframe}!serialize@{serialize}}
+\index{serialize@{serialize}!telemetry\_logframe@{telemetry\_logframe}}
+\doxysubsubsection{\texorpdfstring{serialize()}{serialize()}}
+{\footnotesize\ttfamily std\+::vector$<$uint8\+\_\+t$>$ telemetry\+\_\+logframe\+::serialize (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=316pt]{classtelemetry__logframe_a753c1bc52c26f391cecfef4983232aee_cgraph}
+\end{center}
+\end{figure}
 \mbox{\Hypertarget{classtelemetry__logframe_add67dbfbf886bf1b322628962a03c0de}\label{classtelemetry__logframe_add67dbfbf886bf1b322628962a03c0de}} 
 \index{telemetry\_logframe@{telemetry\_logframe}!stringify@{stringify}}
 \index{stringify@{stringify}!telemetry\_logframe@{telemetry\_logframe}}
 \doxysubsubsection{\texorpdfstring{stringify()}{stringify()}}
-{\footnotesize\ttfamily std\+::string telemetry\+\_\+logframe\+::stringify (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
-
-
-
-Reimplemented from \mbox{\hyperlink{classlogframe_a552d7438907dc9dba908829915a4dd67}{logframe}}.
+{\footnotesize\ttfamily std\+::string telemetry\+\_\+logframe\+::stringify (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
 
 Here is the call graph for this function\+:\nopagebreak
 \begin{figure}[H]
@@ -153,251 +94,89 @@ Here is the call graph for this function\+:\nopagebreak
 
 
 \doxysubsection{Member Data Documentation}
-\mbox{\Hypertarget{classtelemetry__logframe_a3e354e8d44799cf5180fdab819ed9004}\label{classtelemetry__logframe_a3e354e8d44799cf5180fdab819ed9004}} 
-\index{telemetry\_logframe@{telemetry\_logframe}!battPercent@{battPercent}}
-\index{battPercent@{battPercent}!telemetry\_logframe@{telemetry\_logframe}}
-\doxysubsubsection{\texorpdfstring{battPercent}{battPercent}}
-{\footnotesize\ttfamily int telemetry\+\_\+logframe\+::batt\+Percent}
-
-\mbox{\Hypertarget{classtelemetry__logframe_adf91389e746abca489849f524de22c4d}\label{classtelemetry__logframe_adf91389e746abca489849f524de22c4d}} 
-\index{telemetry\_logframe@{telemetry\_logframe}!battVolt@{battVolt}}
-\index{battVolt@{battVolt}!telemetry\_logframe@{telemetry\_logframe}}
-\doxysubsubsection{\texorpdfstring{battVolt}{battVolt}}
-{\footnotesize\ttfamily int telemetry\+\_\+logframe\+::batt\+Volt}
-
-\mbox{\Hypertarget{classtelemetry__logframe_adf39bab0bb4591dd27cb61acaec3dbbf}\label{classtelemetry__logframe_adf39bab0bb4591dd27cb61acaec3dbbf}} 
-\index{telemetry\_logframe@{telemetry\_logframe}!estimatorAX@{estimatorAX}}
-\index{estimatorAX@{estimatorAX}!telemetry\_logframe@{telemetry\_logframe}}
-\doxysubsubsection{\texorpdfstring{estimatorAX}{estimatorAX}}
-{\footnotesize\ttfamily double telemetry\+\_\+logframe\+::estimator\+AX}
-
-\mbox{\Hypertarget{classtelemetry__logframe_a1571a61e084a43a4d8dc386d415dff7b}\label{classtelemetry__logframe_a1571a61e084a43a4d8dc386d415dff7b}} 
-\index{telemetry\_logframe@{telemetry\_logframe}!estimatorAY@{estimatorAY}}
-\index{estimatorAY@{estimatorAY}!telemetry\_logframe@{telemetry\_logframe}}
-\doxysubsubsection{\texorpdfstring{estimatorAY}{estimatorAY}}
-{\footnotesize\ttfamily double telemetry\+\_\+logframe\+::estimator\+AY}
-
-\mbox{\Hypertarget{classtelemetry__logframe_a56c9227a1cc5c7f929fe6a1d0b94b237}\label{classtelemetry__logframe_a56c9227a1cc5c7f929fe6a1d0b94b237}} 
-\index{telemetry\_logframe@{telemetry\_logframe}!estimatorAZ@{estimatorAZ}}
-\index{estimatorAZ@{estimatorAZ}!telemetry\_logframe@{telemetry\_logframe}}
-\doxysubsubsection{\texorpdfstring{estimatorAZ}{estimatorAZ}}
-{\footnotesize\ttfamily double telemetry\+\_\+logframe\+::estimator\+AZ}
-
-\mbox{\Hypertarget{classtelemetry__logframe_a3928b4b4db39ccffd39722e4660457e0}\label{classtelemetry__logframe_a3928b4b4db39ccffd39722e4660457e0}} 
-\index{telemetry\_logframe@{telemetry\_logframe}!estimatorL@{estimatorL}}
-\index{estimatorL@{estimatorL}!telemetry\_logframe@{telemetry\_logframe}}
-\doxysubsubsection{\texorpdfstring{estimatorL}{estimatorL}}
-{\footnotesize\ttfamily double telemetry\+\_\+logframe\+::estimatorL}
-
-\mbox{\Hypertarget{classtelemetry__logframe_a2e6f352e110432a49d01249095e337cb}\label{classtelemetry__logframe_a2e6f352e110432a49d01249095e337cb}} 
-\index{telemetry\_logframe@{telemetry\_logframe}!estimatorM@{estimatorM}}
-\index{estimatorM@{estimatorM}!telemetry\_logframe@{telemetry\_logframe}}
-\doxysubsubsection{\texorpdfstring{estimatorM}{estimatorM}}
-{\footnotesize\ttfamily double telemetry\+\_\+logframe\+::estimatorM}
-
-\mbox{\Hypertarget{classtelemetry__logframe_a0d5bb58bc04207a07dc93ecf5f9f5462}\label{classtelemetry__logframe_a0d5bb58bc04207a07dc93ecf5f9f5462}} 
-\index{telemetry\_logframe@{telemetry\_logframe}!estimatorN@{estimatorN}}
-\index{estimatorN@{estimatorN}!telemetry\_logframe@{telemetry\_logframe}}
-\doxysubsubsection{\texorpdfstring{estimatorN}{estimatorN}}
-{\footnotesize\ttfamily double telemetry\+\_\+logframe\+::estimatorN}
-
-\mbox{\Hypertarget{classtelemetry__logframe_a8e4b6db13271e203af45c5b0fe8d7f01}\label{classtelemetry__logframe_a8e4b6db13271e203af45c5b0fe8d7f01}} 
-\index{telemetry\_logframe@{telemetry\_logframe}!estimatorP@{estimatorP}}
-\index{estimatorP@{estimatorP}!telemetry\_logframe@{telemetry\_logframe}}
-\doxysubsubsection{\texorpdfstring{estimatorP}{estimatorP}}
-{\footnotesize\ttfamily double telemetry\+\_\+logframe\+::estimatorP}
-
-\mbox{\Hypertarget{classtelemetry__logframe_a7a738de350a9d77b14b0b66c81535fe1}\label{classtelemetry__logframe_a7a738de350a9d77b14b0b66c81535fe1}} 
-\index{telemetry\_logframe@{telemetry\_logframe}!estimatorPitch@{estimatorPitch}}
-\index{estimatorPitch@{estimatorPitch}!telemetry\_logframe@{telemetry\_logframe}}
-\doxysubsubsection{\texorpdfstring{estimatorPitch}{estimatorPitch}}
-{\footnotesize\ttfamily double telemetry\+\_\+logframe\+::estimator\+Pitch}
-
-\mbox{\Hypertarget{classtelemetry__logframe_a8e3e94085df1edbefb96335b706921ad}\label{classtelemetry__logframe_a8e3e94085df1edbefb96335b706921ad}} 
-\index{telemetry\_logframe@{telemetry\_logframe}!estimatorQ@{estimatorQ}}
-\index{estimatorQ@{estimatorQ}!telemetry\_logframe@{telemetry\_logframe}}
-\doxysubsubsection{\texorpdfstring{estimatorQ}{estimatorQ}}
-{\footnotesize\ttfamily double telemetry\+\_\+logframe\+::estimatorQ}
-
-\mbox{\Hypertarget{classtelemetry__logframe_aa3f9e7815b1d89367d1794012a0d7087}\label{classtelemetry__logframe_aa3f9e7815b1d89367d1794012a0d7087}} 
-\index{telemetry\_logframe@{telemetry\_logframe}!estimatorR@{estimatorR}}
-\index{estimatorR@{estimatorR}!telemetry\_logframe@{telemetry\_logframe}}
-\doxysubsubsection{\texorpdfstring{estimatorR}{estimatorR}}
-{\footnotesize\ttfamily double telemetry\+\_\+logframe\+::estimatorR}
-
-\mbox{\Hypertarget{classtelemetry__logframe_a188e0ff3e6cd0f46605c4d0bff0bcf4f}\label{classtelemetry__logframe_a188e0ff3e6cd0f46605c4d0bff0bcf4f}} 
-\index{telemetry\_logframe@{telemetry\_logframe}!estimatorRoll@{estimatorRoll}}
-\index{estimatorRoll@{estimatorRoll}!telemetry\_logframe@{telemetry\_logframe}}
-\doxysubsubsection{\texorpdfstring{estimatorRoll}{estimatorRoll}}
-{\footnotesize\ttfamily double telemetry\+\_\+logframe\+::estimator\+Roll}
-
-\mbox{\Hypertarget{classtelemetry__logframe_a0aaa30b41d8e744fc1fc4ed0974154db}\label{classtelemetry__logframe_a0aaa30b41d8e744fc1fc4ed0974154db}} 
-\index{telemetry\_logframe@{telemetry\_logframe}!estimatorTimestamp@{estimatorTimestamp}}
-\index{estimatorTimestamp@{estimatorTimestamp}!telemetry\_logframe@{telemetry\_logframe}}
-\doxysubsubsection{\texorpdfstring{estimatorTimestamp}{estimatorTimestamp}}
-{\footnotesize\ttfamily long telemetry\+\_\+logframe\+::estimator\+Timestamp}
-
-\mbox{\Hypertarget{classtelemetry__logframe_a9dfe53c017460644890341b50fb6a1b4}\label{classtelemetry__logframe_a9dfe53c017460644890341b50fb6a1b4}} 
-\index{telemetry\_logframe@{telemetry\_logframe}!estimatorVX@{estimatorVX}}
-\index{estimatorVX@{estimatorVX}!telemetry\_logframe@{telemetry\_logframe}}
-\doxysubsubsection{\texorpdfstring{estimatorVX}{estimatorVX}}
-{\footnotesize\ttfamily double telemetry\+\_\+logframe\+::estimator\+VX}
-
-\mbox{\Hypertarget{classtelemetry__logframe_a6491163af1278e4adee716cc31c96c31}\label{classtelemetry__logframe_a6491163af1278e4adee716cc31c96c31}} 
-\index{telemetry\_logframe@{telemetry\_logframe}!estimatorVY@{estimatorVY}}
-\index{estimatorVY@{estimatorVY}!telemetry\_logframe@{telemetry\_logframe}}
-\doxysubsubsection{\texorpdfstring{estimatorVY}{estimatorVY}}
-{\footnotesize\ttfamily double telemetry\+\_\+logframe\+::estimator\+VY}
-
-\mbox{\Hypertarget{classtelemetry__logframe_a394cc0b05a1f43fb44ca7005847b2da5}\label{classtelemetry__logframe_a394cc0b05a1f43fb44ca7005847b2da5}} 
-\index{telemetry\_logframe@{telemetry\_logframe}!estimatorVZ@{estimatorVZ}}
-\index{estimatorVZ@{estimatorVZ}!telemetry\_logframe@{telemetry\_logframe}}
-\doxysubsubsection{\texorpdfstring{estimatorVZ}{estimatorVZ}}
-{\footnotesize\ttfamily double telemetry\+\_\+logframe\+::estimator\+VZ}
-
-\mbox{\Hypertarget{classtelemetry__logframe_a50caa40a1d26f41d1b2f72537591d4bb}\label{classtelemetry__logframe_a50caa40a1d26f41d1b2f72537591d4bb}} 
-\index{telemetry\_logframe@{telemetry\_logframe}!estimatorX@{estimatorX}}
-\index{estimatorX@{estimatorX}!telemetry\_logframe@{telemetry\_logframe}}
-\doxysubsubsection{\texorpdfstring{estimatorX}{estimatorX}}
-{\footnotesize\ttfamily double telemetry\+\_\+logframe\+::estimatorX}
-
-\mbox{\Hypertarget{classtelemetry__logframe_a4111b52d4ae341459ed786ff55a93ff4}\label{classtelemetry__logframe_a4111b52d4ae341459ed786ff55a93ff4}} 
-\index{telemetry\_logframe@{telemetry\_logframe}!estimatorY@{estimatorY}}
-\index{estimatorY@{estimatorY}!telemetry\_logframe@{telemetry\_logframe}}
-\doxysubsubsection{\texorpdfstring{estimatorY}{estimatorY}}
-{\footnotesize\ttfamily double telemetry\+\_\+logframe\+::estimatorY}
-
-\mbox{\Hypertarget{classtelemetry__logframe_ad91dd5cae5551d775fc310c3355e76d2}\label{classtelemetry__logframe_ad91dd5cae5551d775fc310c3355e76d2}} 
-\index{telemetry\_logframe@{telemetry\_logframe}!estimatorYaw@{estimatorYaw}}
-\index{estimatorYaw@{estimatorYaw}!telemetry\_logframe@{telemetry\_logframe}}
-\doxysubsubsection{\texorpdfstring{estimatorYaw}{estimatorYaw}}
-{\footnotesize\ttfamily double telemetry\+\_\+logframe\+::estimator\+Yaw}
-
-\mbox{\Hypertarget{classtelemetry__logframe_a62a020307f0c8fc953a512caf0ae9ed7}\label{classtelemetry__logframe_a62a020307f0c8fc953a512caf0ae9ed7}} 
-\index{telemetry\_logframe@{telemetry\_logframe}!estimatorZ@{estimatorZ}}
-\index{estimatorZ@{estimatorZ}!telemetry\_logframe@{telemetry\_logframe}}
-\doxysubsubsection{\texorpdfstring{estimatorZ}{estimatorZ}}
-{\footnotesize\ttfamily double telemetry\+\_\+logframe\+::estimatorZ}
-
-\mbox{\Hypertarget{classtelemetry__logframe_af07b363717e1d60a0fad5578f77590be}\label{classtelemetry__logframe_af07b363717e1d60a0fad5578f77590be}} 
-\index{telemetry\_logframe@{telemetry\_logframe}!rawBaroAlt@{rawBaroAlt}}
-\index{rawBaroAlt@{rawBaroAlt}!telemetry\_logframe@{telemetry\_logframe}}
-\doxysubsubsection{\texorpdfstring{rawBaroAlt}{rawBaroAlt}}
-{\footnotesize\ttfamily double telemetry\+\_\+logframe\+::raw\+Baro\+Alt}
-
-\mbox{\Hypertarget{classtelemetry__logframe_ac8b180854780128e00737cfcd3d5b5fd}\label{classtelemetry__logframe_ac8b180854780128e00737cfcd3d5b5fd}} 
-\index{telemetry\_logframe@{telemetry\_logframe}!rawBaroPres@{rawBaroPres}}
-\index{rawBaroPres@{rawBaroPres}!telemetry\_logframe@{telemetry\_logframe}}
-\doxysubsubsection{\texorpdfstring{rawBaroPres}{rawBaroPres}}
-{\footnotesize\ttfamily double telemetry\+\_\+logframe\+::raw\+Baro\+Pres}
-
-\mbox{\Hypertarget{classtelemetry__logframe_ab8815c9e9dd8604fcf2a596eee982721}\label{classtelemetry__logframe_ab8815c9e9dd8604fcf2a596eee982721}} 
-\index{telemetry\_logframe@{telemetry\_logframe}!rawBaroTemp@{rawBaroTemp}}
-\index{rawBaroTemp@{rawBaroTemp}!telemetry\_logframe@{telemetry\_logframe}}
-\doxysubsubsection{\texorpdfstring{rawBaroTemp}{rawBaroTemp}}
-{\footnotesize\ttfamily double telemetry\+\_\+logframe\+::raw\+Baro\+Temp}
-
-\mbox{\Hypertarget{classtelemetry__logframe_abed3f7ccf22675644174928f5ed6aeca}\label{classtelemetry__logframe_abed3f7ccf22675644174928f5ed6aeca}} 
-\index{telemetry\_logframe@{telemetry\_logframe}!rawGPSAlt@{rawGPSAlt}}
-\index{rawGPSAlt@{rawGPSAlt}!telemetry\_logframe@{telemetry\_logframe}}
-\doxysubsubsection{\texorpdfstring{rawGPSAlt}{rawGPSAlt}}
-{\footnotesize\ttfamily double telemetry\+\_\+logframe\+::raw\+GPSAlt}
-
-\mbox{\Hypertarget{classtelemetry__logframe_a2018e686f2b853ecc4dd2ee245aa6b8d}\label{classtelemetry__logframe_a2018e686f2b853ecc4dd2ee245aa6b8d}} 
-\index{telemetry\_logframe@{telemetry\_logframe}!rawGPShdop@{rawGPShdop}}
-\index{rawGPShdop@{rawGPShdop}!telemetry\_logframe@{telemetry\_logframe}}
-\doxysubsubsection{\texorpdfstring{rawGPShdop}{rawGPShdop}}
-{\footnotesize\ttfamily double telemetry\+\_\+logframe\+::raw\+GPShdop}
-
-\mbox{\Hypertarget{classtelemetry__logframe_a19ac82e4d2e69b7cbcef96a97c6e66b1}\label{classtelemetry__logframe_a19ac82e4d2e69b7cbcef96a97c6e66b1}} 
+\mbox{\Hypertarget{classtelemetry__logframe_afc4d09331bd795dea506b90c3e3d7856}\label{classtelemetry__logframe_afc4d09331bd795dea506b90c3e3d7856}} 
 \index{telemetry\_logframe@{telemetry\_logframe}!rawGPSLat@{rawGPSLat}}
 \index{rawGPSLat@{rawGPSLat}!telemetry\_logframe@{telemetry\_logframe}}
 \doxysubsubsection{\texorpdfstring{rawGPSLat}{rawGPSLat}}
-{\footnotesize\ttfamily double telemetry\+\_\+logframe\+::raw\+GPSLat}
+{\footnotesize\ttfamily long telemetry\+\_\+logframe\+::raw\+GPSLat}
 
-\mbox{\Hypertarget{classtelemetry__logframe_abfcb82eda7a276ed3d76a2110ee9f366}\label{classtelemetry__logframe_abfcb82eda7a276ed3d76a2110ee9f366}} 
+\mbox{\Hypertarget{classtelemetry__logframe_a7d31fdb76771d077657d91f8a2c8cd01}\label{classtelemetry__logframe_a7d31fdb76771d077657d91f8a2c8cd01}} 
 \index{telemetry\_logframe@{telemetry\_logframe}!rawGPSLong@{rawGPSLong}}
 \index{rawGPSLong@{rawGPSLong}!telemetry\_logframe@{telemetry\_logframe}}
 \doxysubsubsection{\texorpdfstring{rawGPSLong}{rawGPSLong}}
-{\footnotesize\ttfamily double telemetry\+\_\+logframe\+::raw\+GPSLong}
+{\footnotesize\ttfamily long telemetry\+\_\+logframe\+::raw\+GPSLong}
 
-\mbox{\Hypertarget{classtelemetry__logframe_ad8bf7db3943276e354d14ed17ef8b141}\label{classtelemetry__logframe_ad8bf7db3943276e354d14ed17ef8b141}} 
+\mbox{\Hypertarget{classtelemetry__logframe_af4977aa3b41b6f379145cb3224140d46}\label{classtelemetry__logframe_af4977aa3b41b6f379145cb3224140d46}} 
 \index{telemetry\_logframe@{telemetry\_logframe}!rawGPSsat@{rawGPSsat}}
 \index{rawGPSsat@{rawGPSsat}!telemetry\_logframe@{telemetry\_logframe}}
 \doxysubsubsection{\texorpdfstring{rawGPSsat}{rawGPSsat}}
-{\footnotesize\ttfamily uint8\+\_\+t telemetry\+\_\+logframe\+::raw\+GPSsat}
+{\footnotesize\ttfamily int telemetry\+\_\+logframe\+::raw\+GPSsat}
 
-\mbox{\Hypertarget{classtelemetry__logframe_a3695abc86a0031daca6489a73c62283b}\label{classtelemetry__logframe_a3695abc86a0031daca6489a73c62283b}} 
-\index{telemetry\_logframe@{telemetry\_logframe}!rawGPSSpeed@{rawGPSSpeed}}
-\index{rawGPSSpeed@{rawGPSSpeed}!telemetry\_logframe@{telemetry\_logframe}}
-\doxysubsubsection{\texorpdfstring{rawGPSSpeed}{rawGPSSpeed}}
-{\footnotesize\ttfamily double telemetry\+\_\+logframe\+::raw\+GPSSpeed}
-
-\mbox{\Hypertarget{classtelemetry__logframe_a5f2e45dcf0f53024dc333c3c0c1c8770}\label{classtelemetry__logframe_a5f2e45dcf0f53024dc333c3c0c1c8770}} 
+\mbox{\Hypertarget{classtelemetry__logframe_a6b22fc28cf67efb702b6c0d3c1972fb2}\label{classtelemetry__logframe_a6b22fc28cf67efb702b6c0d3c1972fb2}} 
 \index{telemetry\_logframe@{telemetry\_logframe}!rawIMUAx@{rawIMUAx}}
 \index{rawIMUAx@{rawIMUAx}!telemetry\_logframe@{telemetry\_logframe}}
 \doxysubsubsection{\texorpdfstring{rawIMUAx}{rawIMUAx}}
-{\footnotesize\ttfamily double telemetry\+\_\+logframe\+::raw\+IMUAx}
+{\footnotesize\ttfamily float telemetry\+\_\+logframe\+::raw\+IMUAx}
 
-\mbox{\Hypertarget{classtelemetry__logframe_ad3c0c61ecf6022a3994a9b849c4dc7ab}\label{classtelemetry__logframe_ad3c0c61ecf6022a3994a9b849c4dc7ab}} 
+\mbox{\Hypertarget{classtelemetry__logframe_a0d3731670a7ada1921fbef614efc7049}\label{classtelemetry__logframe_a0d3731670a7ada1921fbef614efc7049}} 
 \index{telemetry\_logframe@{telemetry\_logframe}!rawIMUAy@{rawIMUAy}}
 \index{rawIMUAy@{rawIMUAy}!telemetry\_logframe@{telemetry\_logframe}}
 \doxysubsubsection{\texorpdfstring{rawIMUAy}{rawIMUAy}}
-{\footnotesize\ttfamily double telemetry\+\_\+logframe\+::raw\+IMUAy}
+{\footnotesize\ttfamily float telemetry\+\_\+logframe\+::raw\+IMUAy}
 
-\mbox{\Hypertarget{classtelemetry__logframe_a6dbdddb10fe6b4663422ec0153175a7e}\label{classtelemetry__logframe_a6dbdddb10fe6b4663422ec0153175a7e}} 
+\mbox{\Hypertarget{classtelemetry__logframe_a40d791eda67c22616d5999811c359284}\label{classtelemetry__logframe_a40d791eda67c22616d5999811c359284}} 
 \index{telemetry\_logframe@{telemetry\_logframe}!rawIMUAz@{rawIMUAz}}
 \index{rawIMUAz@{rawIMUAz}!telemetry\_logframe@{telemetry\_logframe}}
 \doxysubsubsection{\texorpdfstring{rawIMUAz}{rawIMUAz}}
-{\footnotesize\ttfamily double telemetry\+\_\+logframe\+::raw\+IMUAz}
+{\footnotesize\ttfamily float telemetry\+\_\+logframe\+::raw\+IMUAz}
 
-\mbox{\Hypertarget{classtelemetry__logframe_a0bae1017e4b802d7a7b2275da49abb35}\label{classtelemetry__logframe_a0bae1017e4b802d7a7b2275da49abb35}} 
+\mbox{\Hypertarget{classtelemetry__logframe_a4cc7697e4aacc70873aef982581a9993}\label{classtelemetry__logframe_a4cc7697e4aacc70873aef982581a9993}} 
 \index{telemetry\_logframe@{telemetry\_logframe}!rawIMUGx@{rawIMUGx}}
 \index{rawIMUGx@{rawIMUGx}!telemetry\_logframe@{telemetry\_logframe}}
 \doxysubsubsection{\texorpdfstring{rawIMUGx}{rawIMUGx}}
-{\footnotesize\ttfamily double telemetry\+\_\+logframe\+::raw\+IMUGx}
+{\footnotesize\ttfamily float telemetry\+\_\+logframe\+::raw\+IMUGx}
 
-\mbox{\Hypertarget{classtelemetry__logframe_a4c31ca9a97493b97905f4609f8a1ff51}\label{classtelemetry__logframe_a4c31ca9a97493b97905f4609f8a1ff51}} 
+\mbox{\Hypertarget{classtelemetry__logframe_a06638728d150ac12a5f3444625a2b394}\label{classtelemetry__logframe_a06638728d150ac12a5f3444625a2b394}} 
 \index{telemetry\_logframe@{telemetry\_logframe}!rawIMUGy@{rawIMUGy}}
 \index{rawIMUGy@{rawIMUGy}!telemetry\_logframe@{telemetry\_logframe}}
 \doxysubsubsection{\texorpdfstring{rawIMUGy}{rawIMUGy}}
-{\footnotesize\ttfamily double telemetry\+\_\+logframe\+::raw\+IMUGy}
+{\footnotesize\ttfamily float telemetry\+\_\+logframe\+::raw\+IMUGy}
 
-\mbox{\Hypertarget{classtelemetry__logframe_a39d7e6ecd2524c18003df65903fd77e2}\label{classtelemetry__logframe_a39d7e6ecd2524c18003df65903fd77e2}} 
+\mbox{\Hypertarget{classtelemetry__logframe_a1686b85db4df71e0637e6f7b260696b0}\label{classtelemetry__logframe_a1686b85db4df71e0637e6f7b260696b0}} 
 \index{telemetry\_logframe@{telemetry\_logframe}!rawIMUGz@{rawIMUGz}}
 \index{rawIMUGz@{rawIMUGz}!telemetry\_logframe@{telemetry\_logframe}}
 \doxysubsubsection{\texorpdfstring{rawIMUGz}{rawIMUGz}}
-{\footnotesize\ttfamily double telemetry\+\_\+logframe\+::raw\+IMUGz}
+{\footnotesize\ttfamily float telemetry\+\_\+logframe\+::raw\+IMUGz}
 
-\mbox{\Hypertarget{classtelemetry__logframe_a60f8de4ac8c1efcaa2cebe0fc9b80244}\label{classtelemetry__logframe_a60f8de4ac8c1efcaa2cebe0fc9b80244}} 
+\mbox{\Hypertarget{classtelemetry__logframe_a837c64dd76c8b49df2ce716530fc78dd}\label{classtelemetry__logframe_a837c64dd76c8b49df2ce716530fc78dd}} 
 \index{telemetry\_logframe@{telemetry\_logframe}!rawIMUMx@{rawIMUMx}}
 \index{rawIMUMx@{rawIMUMx}!telemetry\_logframe@{telemetry\_logframe}}
 \doxysubsubsection{\texorpdfstring{rawIMUMx}{rawIMUMx}}
-{\footnotesize\ttfamily double telemetry\+\_\+logframe\+::raw\+IMUMx}
+{\footnotesize\ttfamily float telemetry\+\_\+logframe\+::raw\+IMUMx}
 
-\mbox{\Hypertarget{classtelemetry__logframe_a34fa15a676e3270383be3700979f169d}\label{classtelemetry__logframe_a34fa15a676e3270383be3700979f169d}} 
+\mbox{\Hypertarget{classtelemetry__logframe_a9aa68f2cf973d3224b2a88493a5e7545}\label{classtelemetry__logframe_a9aa68f2cf973d3224b2a88493a5e7545}} 
 \index{telemetry\_logframe@{telemetry\_logframe}!rawIMUMy@{rawIMUMy}}
 \index{rawIMUMy@{rawIMUMy}!telemetry\_logframe@{telemetry\_logframe}}
 \doxysubsubsection{\texorpdfstring{rawIMUMy}{rawIMUMy}}
-{\footnotesize\ttfamily double telemetry\+\_\+logframe\+::raw\+IMUMy}
+{\footnotesize\ttfamily float telemetry\+\_\+logframe\+::raw\+IMUMy}
 
-\mbox{\Hypertarget{classtelemetry__logframe_a494b7e8225f4f616726821a1fd99377d}\label{classtelemetry__logframe_a494b7e8225f4f616726821a1fd99377d}} 
+\mbox{\Hypertarget{classtelemetry__logframe_a2063c866c698919b00931c1e4dbede72}\label{classtelemetry__logframe_a2063c866c698919b00931c1e4dbede72}} 
 \index{telemetry\_logframe@{telemetry\_logframe}!rawIMUMz@{rawIMUMz}}
 \index{rawIMUMz@{rawIMUMz}!telemetry\_logframe@{telemetry\_logframe}}
 \doxysubsubsection{\texorpdfstring{rawIMUMz}{rawIMUMz}}
-{\footnotesize\ttfamily double telemetry\+\_\+logframe\+::raw\+IMUMz}
+{\footnotesize\ttfamily float telemetry\+\_\+logframe\+::raw\+IMUMz}
 
-\mbox{\Hypertarget{classtelemetry__logframe_af2b256b4b8b80f7fc2f3a577f1b687dd}\label{classtelemetry__logframe_af2b256b4b8b80f7fc2f3a577f1b687dd}} 
+\mbox{\Hypertarget{classtelemetry__logframe_a67125fcc7cf363022476b647c4deb650}\label{classtelemetry__logframe_a67125fcc7cf363022476b647c4deb650}} 
 \index{telemetry\_logframe@{telemetry\_logframe}!rawIMUTemp@{rawIMUTemp}}
 \index{rawIMUTemp@{rawIMUTemp}!telemetry\_logframe@{telemetry\_logframe}}
 \doxysubsubsection{\texorpdfstring{rawIMUTemp}{rawIMUTemp}}
-{\footnotesize\ttfamily double telemetry\+\_\+logframe\+::raw\+IMUTemp}
+{\footnotesize\ttfamily uint16\+\_\+t telemetry\+\_\+logframe\+::raw\+IMUTemp}
 
-\mbox{\Hypertarget{classtelemetry__logframe_aa0d6dc5c0d1396c47ff73888e958aaca}\label{classtelemetry__logframe_aa0d6dc5c0d1396c47ff73888e958aaca}} 
+\mbox{\Hypertarget{classtelemetry__logframe_a2860b0173af07cbc84546bf540877d25}\label{classtelemetry__logframe_a2860b0173af07cbc84546bf540877d25}} 
 \index{telemetry\_logframe@{telemetry\_logframe}!rawTimestamp@{rawTimestamp}}
 \index{rawTimestamp@{rawTimestamp}!telemetry\_logframe@{telemetry\_logframe}}
 \doxysubsubsection{\texorpdfstring{rawTimestamp}{rawTimestamp}}
-{\footnotesize\ttfamily long telemetry\+\_\+logframe\+::raw\+Timestamp}
+{\footnotesize\ttfamily uint64\+\_\+t telemetry\+\_\+logframe\+::raw\+Timestamp}
 
 
 

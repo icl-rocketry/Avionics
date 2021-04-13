@@ -102,39 +102,43 @@ $(document).ready(function(){initNavTree('battery_8h_source.html',''); initResiz
 <div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &lt;Arduino.h&gt;</span></div>
 <div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160; </div>
 <div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="systemstatus_8h.html">Logging/systemstatus.h</a>&quot;</span></div>
-<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160; </div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="log_controller_8h.html">Logging/logController.h</a>&quot;</span></div>
 <div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="sensor_structs_8h.html">sensorStructs.h</a>&quot;</span></div>
 <div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160; </div>
 <div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160; </div>
 <div class="line"><a name="l00011"></a><span class="lineno"><a class="line" href="class_battery.html">   11</a></span>&#160;<span class="keyword">class </span><a class="code" href="class_battery.html">Battery</a>{</div>
 <div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;    <span class="keyword">public</span>:</div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;        <a class="code" href="class_battery.html#a44169aa692325f24c89d7284a4ebfe06">Battery</a>(uint8_t pin,<a class="code" href="class_system_status.html">SystemStatus</a>* systemstatus,<a class="code" href="structraw__measurements__t.html">raw_measurements_t</a>* raw_data);</div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;        <a class="code" href="class_battery.html#a6a7c18a20e76d5f6eab9a41683d13a7f">Battery</a>(uint8_t pin,<a class="code" href="class_system_status.html">SystemStatus</a>* systemstatus,<a class="code" href="class_log_controller.html">LogController</a>* logcontroller,<a class="code" href="structraw__measurements__t.html">raw_measurements_t</a>* raw_data);</div>
 <div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;        <span class="keywordtype">void</span> <a class="code" href="class_battery.html#afc45ec8a22fac60f19fe189e4c21d313">setup</a>();</div>
 <div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;        <span class="keywordtype">void</span> <a class="code" href="class_battery.html#a85dcc13e31dfb66ce3ce217b78a7df7c">update</a>();</div>
 <div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;    </div>
 <div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;    <span class="keyword">private</span>:</div>
 <div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;        <span class="comment">//pointer to system status object</span></div>
 <div class="line"><a name="l00019"></a><span class="lineno"><a class="line" href="class_battery.html#afdc0ac13d459105f35e8d79b38a0e415">   19</a></span>&#160;        <a class="code" href="class_system_status.html">SystemStatus</a>* <a class="code" href="class_battery.html#afdc0ac13d459105f35e8d79b38a0e415">_systemstatus</a>;</div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;        <span class="comment">//pointer to raw data struct</span></div>
-<div class="line"><a name="l00021"></a><span class="lineno"><a class="line" href="class_battery.html#a820d2552b93ab622cad06682e41d0b91">   21</a></span>&#160;        <a class="code" href="structraw__measurements__t.html">raw_measurements_t</a>* <a class="code" href="class_battery.html#a820d2552b93ab622cad06682e41d0b91">_raw_data</a>;</div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160; </div>
-<div class="line"><a name="l00023"></a><span class="lineno"><a class="line" href="class_battery.html#a7585667ba6d27c2d126b5d41af3b7c72">   23</a></span>&#160;        uint8_t <a class="code" href="class_battery.html#a7585667ba6d27c2d126b5d41af3b7c72">_pin</a>;</div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160; </div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;        </div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160; </div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;};    </div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160; </div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00020"></a><span class="lineno"><a class="line" href="class_battery.html#af68a51fb7117256a7cc82a509a9f8ca0">   20</a></span>&#160;        <a class="code" href="class_log_controller.html">LogController</a>* <a class="code" href="class_battery.html#af68a51fb7117256a7cc82a509a9f8ca0">_logcontroller</a>;</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;        <span class="comment">//pointer to raw data struct</span></div>
+<div class="line"><a name="l00022"></a><span class="lineno"><a class="line" href="class_battery.html#a820d2552b93ab622cad06682e41d0b91">   22</a></span>&#160;        <a class="code" href="structraw__measurements__t.html">raw_measurements_t</a>* <a class="code" href="class_battery.html#a820d2552b93ab622cad06682e41d0b91">_raw_data</a>;</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160; </div>
+<div class="line"><a name="l00024"></a><span class="lineno"><a class="line" href="class_battery.html#a7585667ba6d27c2d126b5d41af3b7c72">   24</a></span>&#160;        uint8_t <a class="code" href="class_battery.html#a7585667ba6d27c2d126b5d41af3b7c72">_pin</a>;</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160; </div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;        </div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160; </div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;};    </div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160; </div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="preprocessor">#endif</span></div>
 <div class="ttc" id="aclass_battery_html"><div class="ttname"><a href="class_battery.html">Battery</a></div><div class="ttdef"><b>Definition:</b> battery.h:11</div></div>
-<div class="ttc" id="aclass_battery_html_a44169aa692325f24c89d7284a4ebfe06"><div class="ttname"><a href="class_battery.html#a44169aa692325f24c89d7284a4ebfe06">Battery::Battery</a></div><div class="ttdeci">Battery(uint8_t pin, SystemStatus *systemstatus, raw_measurements_t *raw_data)</div><div class="ttdef"><b>Definition:</b> battery.cpp:11</div></div>
-<div class="ttc" id="aclass_battery_html_a7585667ba6d27c2d126b5d41af3b7c72"><div class="ttname"><a href="class_battery.html#a7585667ba6d27c2d126b5d41af3b7c72">Battery::_pin</a></div><div class="ttdeci">uint8_t _pin</div><div class="ttdef"><b>Definition:</b> battery.h:23</div></div>
-<div class="ttc" id="aclass_battery_html_a820d2552b93ab622cad06682e41d0b91"><div class="ttname"><a href="class_battery.html#a820d2552b93ab622cad06682e41d0b91">Battery::_raw_data</a></div><div class="ttdeci">raw_measurements_t * _raw_data</div><div class="ttdef"><b>Definition:</b> battery.h:21</div></div>
-<div class="ttc" id="aclass_battery_html_a85dcc13e31dfb66ce3ce217b78a7df7c"><div class="ttname"><a href="class_battery.html#a85dcc13e31dfb66ce3ce217b78a7df7c">Battery::update</a></div><div class="ttdeci">void update()</div><div class="ttdef"><b>Definition:</b> battery.cpp:24</div></div>
-<div class="ttc" id="aclass_battery_html_afc45ec8a22fac60f19fe189e4c21d313"><div class="ttname"><a href="class_battery.html#afc45ec8a22fac60f19fe189e4c21d313">Battery::setup</a></div><div class="ttdeci">void setup()</div><div class="ttdef"><b>Definition:</b> battery.cpp:20</div></div>
+<div class="ttc" id="aclass_battery_html_a6a7c18a20e76d5f6eab9a41683d13a7f"><div class="ttname"><a href="class_battery.html#a6a7c18a20e76d5f6eab9a41683d13a7f">Battery::Battery</a></div><div class="ttdeci">Battery(uint8_t pin, SystemStatus *systemstatus, LogController *logcontroller, raw_measurements_t *raw_data)</div><div class="ttdef"><b>Definition:</b> battery.cpp:12</div></div>
+<div class="ttc" id="aclass_battery_html_a7585667ba6d27c2d126b5d41af3b7c72"><div class="ttname"><a href="class_battery.html#a7585667ba6d27c2d126b5d41af3b7c72">Battery::_pin</a></div><div class="ttdeci">uint8_t _pin</div><div class="ttdef"><b>Definition:</b> battery.h:24</div></div>
+<div class="ttc" id="aclass_battery_html_a820d2552b93ab622cad06682e41d0b91"><div class="ttname"><a href="class_battery.html#a820d2552b93ab622cad06682e41d0b91">Battery::_raw_data</a></div><div class="ttdeci">raw_measurements_t * _raw_data</div><div class="ttdef"><b>Definition:</b> battery.h:22</div></div>
+<div class="ttc" id="aclass_battery_html_a85dcc13e31dfb66ce3ce217b78a7df7c"><div class="ttname"><a href="class_battery.html#a85dcc13e31dfb66ce3ce217b78a7df7c">Battery::update</a></div><div class="ttdeci">void update()</div><div class="ttdef"><b>Definition:</b> battery.cpp:26</div></div>
+<div class="ttc" id="aclass_battery_html_af68a51fb7117256a7cc82a509a9f8ca0"><div class="ttname"><a href="class_battery.html#af68a51fb7117256a7cc82a509a9f8ca0">Battery::_logcontroller</a></div><div class="ttdeci">LogController * _logcontroller</div><div class="ttdef"><b>Definition:</b> battery.h:20</div></div>
+<div class="ttc" id="aclass_battery_html_afc45ec8a22fac60f19fe189e4c21d313"><div class="ttname"><a href="class_battery.html#afc45ec8a22fac60f19fe189e4c21d313">Battery::setup</a></div><div class="ttdeci">void setup()</div><div class="ttdef"><b>Definition:</b> battery.cpp:22</div></div>
 <div class="ttc" id="aclass_battery_html_afdc0ac13d459105f35e8d79b38a0e415"><div class="ttname"><a href="class_battery.html#afdc0ac13d459105f35e8d79b38a0e415">Battery::_systemstatus</a></div><div class="ttdeci">SystemStatus * _systemstatus</div><div class="ttdef"><b>Definition:</b> battery.h:19</div></div>
-<div class="ttc" id="aclass_system_status_html"><div class="ttname"><a href="class_system_status.html">SystemStatus</a></div><div class="ttdef"><b>Definition:</b> systemstatus.h:15</div></div>
+<div class="ttc" id="aclass_log_controller_html"><div class="ttname"><a href="class_log_controller.html">LogController</a></div><div class="ttdef"><b>Definition:</b> logController.h:20</div></div>
+<div class="ttc" id="aclass_system_status_html"><div class="ttname"><a href="class_system_status.html">SystemStatus</a></div><div class="ttdef"><b>Definition:</b> systemstatus.h:16</div></div>
+<div class="ttc" id="alog_controller_8h_html"><div class="ttname"><a href="log_controller_8h.html">logController.h</a></div></div>
 <div class="ttc" id="asensor_structs_8h_html"><div class="ttname"><a href="sensor_structs_8h.html">sensorStructs.h</a></div></div>
-<div class="ttc" id="astructraw__measurements__t_html"><div class="ttname"><a href="structraw__measurements__t.html">raw_measurements_t</a></div><div class="ttdef"><b>Definition:</b> sensorStructs.h:8</div></div>
+<div class="ttc" id="astructraw__measurements__t_html"><div class="ttname"><a href="structraw__measurements__t.html">raw_measurements_t</a></div><div class="ttdef"><b>Definition:</b> sensorStructs.h:10</div></div>
 <div class="ttc" id="asystemstatus_8h_html"><div class="ttname"><a href="systemstatus_8h.html">systemstatus.h</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->

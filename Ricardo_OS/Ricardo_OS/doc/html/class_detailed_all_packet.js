@@ -1,6 +1,6 @@
 var class_detailed_all_packet =
 [
-    [ "DetailedAllPacket", "class_detailed_all_packet.html#a468729995f026863a29739ed9471522f", null ],
+    [ "DetailedAllPacket", "class_detailed_all_packet.html#a9fdba3f8f1f2d28a4a04c4599ce7e8d9", null ],
     [ "DetailedAllPacket", "class_detailed_all_packet.html#acb22d658d90bb75c4c168b8f19aeaaf2", null ],
     [ "~DetailedAllPacket", "class_detailed_all_packet.html#aa9b1e1f0cfd7b464160a69bbadbde0c4", null ],
     [ "getSerializer", "class_detailed_all_packet.html#a79d839d7b9fb6af7d852efb9821a867d", null ],
