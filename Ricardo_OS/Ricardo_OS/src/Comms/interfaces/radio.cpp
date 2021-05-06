@@ -1,6 +1,8 @@
 #include "radio.h"
 #include "iface.h"
-#include "config.h"
+
+#include "global_config.h"
+
 #include "SPI.h"
 #include "ricardo_pins.h"
 #include "LoRa.h"

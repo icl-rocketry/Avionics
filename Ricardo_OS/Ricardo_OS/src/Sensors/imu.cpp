@@ -1,5 +1,5 @@
 #include "imu.h"
-#include "config.h"
+#include "global_config.h"
 #include "SPI.h"
 #include "ricardo_pins.h"
 #include "Logging/systemstatus.h"

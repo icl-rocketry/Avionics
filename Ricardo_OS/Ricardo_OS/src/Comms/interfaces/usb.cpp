@@ -1,6 +1,6 @@
 #include "usb.h"
 
-#include "config.h"
+#include "global_config.h"
 #include "iface.h"
 #include "interfaces.h"
 

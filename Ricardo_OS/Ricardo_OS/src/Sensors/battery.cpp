@@ -2,7 +2,7 @@
 #include "Logging/systemstatus.h"
 #include "Logging/logController.h"
 #include "flags.h"
-#include "config.h"
+#include "global_config.h"
 #include <string>
 
 #include "sensorStructs.h"

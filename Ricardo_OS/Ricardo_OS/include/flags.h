@@ -1,7 +1,6 @@
 #ifndef FLAGS_H
 #define FLAGS_H
 
-#include <string>
 
 enum class system_flag:uint32_t{
     //state flags

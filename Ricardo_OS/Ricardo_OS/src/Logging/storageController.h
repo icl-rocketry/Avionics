@@ -59,7 +59,7 @@ class StorageController{
 
         FatFileSystem flash_fatfs;//flash filesystem
         
-       const int getFileNameIndex(const std::string fileName); // Extracts the index of the file from file name (e.g. returns 4 when input is logs_flight_4)
+        int getFileNameIndex(const std::string fileName); // Extracts the index of the file from file name (e.g. returns 4 when input is logs_flight_4)
 
         
         

@@ -1,5 +1,5 @@
 #include "ricardo_pins.h"
-#include "config.h"
+#include "global_config.h"
 #include "Arduino.h"
 
 #include "setup.h"

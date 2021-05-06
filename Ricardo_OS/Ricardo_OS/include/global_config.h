@@ -1,6 +1,6 @@
 //Global Config
-#ifndef CONFIG_H
-#define CONFIG_H
+#ifndef GLOBALCONFIG_H
+#define GLOBALCONFIG_H
 
 //uncomment to show all debug messages
 #define VERBOSE

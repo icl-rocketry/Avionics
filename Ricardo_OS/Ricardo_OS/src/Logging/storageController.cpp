@@ -81,7 +81,7 @@ std::string StorageController::updateDirectoryName(std::string input_directory,S
     return input_directory + "/" + maxDirName.substr(0, maxDigitIndex) + utils::tostring(maxDirNum + 1);
 }
 
-const int StorageController::getFileNameIndex(const std::string fileName) {
+int StorageController::getFileNameIndex(const std::string fileName) {
     int numberStartIdx; // Start index of the character at which the digit index starts
     for (numberStartIdx = fileName.length() - 1; numberStartIdx >=0; --numberStartIdx) {
         if (!std::isdigit(fileName.at(numberStartIdx))) {

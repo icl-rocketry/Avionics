@@ -48,6 +48,7 @@ class serializer
     template <size_t I>
     void deserialize_impl(C& owner, const std::vector<uint8_t>& buffer, size_t pos) const
     {
+        size_t p1 = pos;
         if constexpr (I < sizeof...(T)) // sizeof...(T) gives the number of elements in the pack expression
         {
             auto element_size = std::get<I>(elements).deserialize(owner, buffer, pos); // gets the I'th element from elements tuple and calls deserialize

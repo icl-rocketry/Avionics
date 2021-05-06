@@ -7,6 +7,6 @@ _continuity_pin(continuity_pin),
 _fire_pin(fire_pin)
 {};
 
-bool LocalPyro::check_continuity(){};
+bool LocalPyro::check_continuity(){return true;};
 
-bool LocalPyro::Fire(uint8_t duration){};
+bool LocalPyro::Fire(uint8_t duration){return true;};
