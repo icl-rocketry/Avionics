@@ -1,6 +1,7 @@
 #ifndef MELODYLIBRARY_H
 #define MELODYLIBRARY_H
 #include "melodyClass.h"
+#include "Fireflies.h"
 
 melody_t<8> c_scalez = { {{ 
                     {NOTE_C4,100},
