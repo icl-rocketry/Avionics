@@ -664,7 +664,7 @@ bool FatFile::openParent(FatFile* dirFile) {
       goto fail;
     }
   } else {
-    memset(&dotdot, 0, sizeof(FatFile));
+    memset((void*)&dotdot, 0, sizeof(FatFile)); //hacky void pointer cast to prevent warning
     dotdot.m_attr = FILE_ATTR_SUBDIR;
     dotdot.m_flags = F_READ;
     dotdot.m_vol = dirFile->m_vol;
