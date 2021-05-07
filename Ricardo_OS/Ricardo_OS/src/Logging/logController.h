@@ -11,10 +11,17 @@
 #include <array>
 
 
+#include "Loggers/logger.h"
+#include "Loggers/telemetryLogger.h"
+#include "Loggers/systemLogger.h"
+
+
+
 enum class LOG_TYPE:uint8_t{
     TELEMETRY = 0,
     SYSTEM = 1,
-    NETWORK = 2
+    NETWORK = 2,
+    ALL
 };
 
 class LogController{
@@ -30,6 +37,10 @@ class LogController{
         void log(uint32_t status,uint32_t flag,std::string message);
         void log(uint32_t status,uint32_t flag);
 
+        void stop(LOG_TYPE log);
+        void start(LOG_TYPE log);
+
+
         
 
         void change_write_Frequency(uint16_t time_period,LOG_TYPE log_type);
@@ -43,6 +54,13 @@ class LogController{
 
         StorageController* _storagecontroller; //pointer to storage controller
 
+        SystemLogger systemlogger;
+        TelemetryLogger telemetrylogger;
+
+
+
+
+
         telemetry_logframe telemetry_frame; //current telemetry log frame object
         system_logframe system_frame;   //currentsystem log frame object
         network_logframe network_frame; //current network log frame object
@@ -53,8 +71,9 @@ class LogController{
         std::vector<network_logframe> network_log_buffer;
 
         //loging directory prefix;
-        std::string microsd_prefix = "/Logs" ;
-        std::string flash_prefix = "/Logs";
+        const std::string parentDirectory = "/Logs" ;
+        std::string uniqueDirectory;
+        //std::string flash_prefix = "/Logs";
         //log file names
         const std::string telemetry_log_filename = "/telemetry_log.txt";
         const std::string system_log_filename = "/system_log.txt";
@@ -74,6 +93,8 @@ class LogController{
         //flag level helper function
         std::string flagLevel(uint32_t flag);
         std::string flagLevel(system_flag flag);
+
+        File telemetry_logfile;
 
 
         

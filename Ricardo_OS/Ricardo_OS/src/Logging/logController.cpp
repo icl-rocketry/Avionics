@@ -9,50 +9,34 @@
 
 
 LogController::LogController(StorageController* storagecontroller):
-_storagecontroller(storagecontroller)
-
-{
-    telemetry_log_buffer.reserve(25); //this we can work out as the telemtry logging rates are defined
-    system_log_buffer.reserve(10); //this we need to estimate
-    network_log_buffer.reserve(10); //this needs to be estimated too
-    
-};
+_storagecontroller(storagecontroller),
+systemlogger(storagecontroller,5000,"/system_log.txt",STORAGE_DEVICE::MICROSD,STORAGE_DEVICE::NONE), // overriding defaults to no backup device for debugging currently
+telemetrylogger(storagecontroller,5000,"/telemetry_log.txt",STORAGE_DEVICE::MICROSD,STORAGE_DEVICE::NONE)
+{};
 
 void LogController::setup(){
     
+    //generate a unique directory name
+    uniqueDirectory = _storagecontroller->getUniqueDirectory(parentDirectory,STORAGE_DEVICE::MICROSD); // get updated directory prefix
     
-    microsd_prefix = _storagecontroller->updateDirectoryName(microsd_prefix,STORAGE_DEVICE::MICROSD); // get updated directory prefix
-    
-    //flash_prefix = _storagecontroller->updateDirectoryName(flash_prefix,STORAGE_DEVICE::FLASH); // get updated directory prefix
-    //ensure directory exists
-    //Serial.println(microsd_prefix.c_str());
-    _storagecontroller->mkdir(microsd_prefix,STORAGE_DEVICE::MICROSD);
-   // Serial.println(_storagecontroller->updateDirectoryName(old,STORAGE_DEVICE::MICROSD).c_str());
-    //_storagecontroller->mkdir(flash_prefix,STORAGE_DEVICE::FLASH);
+    //create new directory
+    _storagecontroller->mkdir(uniqueDirectory,STORAGE_DEVICE::MICROSD);
+    //_storagecontroller->mkdir(uniqueDirectory,STORAGE_DEVICE::MICROSD);
+
+    //update loggers with unique directory
+    systemlogger.setDirectory(uniqueDirectory);
+    telemetrylogger.setDirectory(uniqueDirectory);
+
+    //enable loggers
+    systemlogger.enable();
+    telemetrylogger.enable();
+
 }
 
 
 void LogController::log(state_t &estimator_state,raw_measurements_t &raw_sensors,bool force) {
- 
     if((millis()-telemetry_prev_log_time) > telemetry_log_frequency || force){
-
-        telemetry_frame.rawGPSLong = raw_sensors.gps_long; //continue for all variables - we need to see if thers a better way to do this
-        telemetry_frame.rawGPSLat = raw_sensors.gps_lat;
-        telemetry_frame.rawGPSsat = raw_sensors.gps_sat;
-        telemetry_frame.rawIMUAx= raw_sensors.ax;
-        telemetry_frame.rawIMUAy= raw_sensors.ay;
-        telemetry_frame.rawIMUAz= raw_sensors.az;
-        telemetry_frame.rawIMUGx= raw_sensors.gx;
-        telemetry_frame.rawIMUGy= raw_sensors.gy;
-        telemetry_frame.rawIMUGz= raw_sensors.gz;
-        telemetry_frame.rawIMUMx= raw_sensors.mx;
-        telemetry_frame.rawIMUMy= raw_sensors.my;
-        telemetry_frame.rawIMUMz= raw_sensors.mz;
-        telemetry_frame.rawIMUTemp= raw_sensors.imu_temp;
-        telemetry_frame.rawTimestamp = millis();
-
-        telemetry_log_buffer.push_back(telemetry_frame); // add frame to buffer
-
+        telemetrylogger.log(estimator_state,raw_sensors);
         telemetry_prev_log_time = millis(); // update previous log time
     }
 }
@@ -65,43 +49,15 @@ void LogController::log(PacketHeader &header) {
 }
 
 void LogController::log(std::string message) {
-    system_frame.logLevel = "[MESSAGE]";
-    system_frame.timestamp = millis();
-    system_frame.systemStatus = 0;
-    system_frame.systemFlag = 0;
-    system_frame.message = message;
-
- 
-    system_log_buffer.push_back(system_frame);
+  
 }
 
 void LogController::log(uint32_t status,uint32_t flag,std::string message) {
-    //will create a new log frame each time it is called
-    //update system_frame with new values
-    //construct log frame
-    system_frame.logLevel = flagLevel(flag);
-    system_frame.timestamp = millis();
-    system_frame.systemStatus = status;
-    system_frame.systemFlag = flag;
-    system_frame.message = message;
-    
 
-    //add frame to buffer
-    system_log_buffer.push_back(system_frame);
-    
 	
 }
 void LogController::log(uint32_t status,uint32_t flag) {
-    //will create a new log frame each time it is called
-    system_frame.logLevel = flagLevel(flag);
-    system_frame.timestamp = millis();
-    system_frame.systemStatus = status;
-    system_frame.systemFlag = flag;
-    system_frame.message = "flag logged";
 
- 
-    system_log_buffer.push_back(system_frame);
-    
 }
 
 void LogController::update(){
@@ -138,28 +94,30 @@ void LogController::write_to_file(LOG_TYPE log_type){
         case LOG_TYPE::TELEMETRY:
         {
 
-            microsd_file_path = microsd_prefix + telemetry_log_filename;
+            //microsd_file_path = microsd_prefix + telemetry_log_filename;
             //flash_file_path = flash_prefix + system_log_filename;
 
-            File microsd_file = _storagecontroller->open(microsd_file_path,STORAGE_DEVICE::MICROSD,(O_WRITE | O_CREAT | O_AT_END));
+            //File microsd_file = _storagecontroller->open(microsd_file_path,STORAGE_DEVICE::MICROSD,(O_WRITE | O_CREAT | O_AT_END));
 
-            if (!microsd_file){
-                return; // file is invalid
-            }
+            //if (!microsd_file){
+            //if (!telemetry_logfile){
+             //   return; // file is invalid
+            //}
             
             for (int i = 0; i< telemetry_log_buffer.size();i++){
                 //processing each frame individually so we dont accidentally use all of heap
                 std::string entry = telemetry_log_buffer[i].stringify();
                 
                 //microsd_file.print(entry.c_str());
-                microsd_file.write(entry.c_str(),entry.length());
+                //microsd_file.write(entry.c_str(),entry.length());
+                telemetry_logfile.write(entry.c_str(),entry.length());
                 //_storagecontroller->write(flash_file_path,entry,STORAGE_DEVICE::FLASH);
                 
             }
             
-            microsd_file.close();
-
-            telemetry_log_buffer.clear(); //clear all log frames in buffer
+            //microsd_file.close();
+            telemetry_logfile.flush();
+            //telemetry_log_buffer.clear(); //clear all log frames in buffer
 
             break;
         }
@@ -198,29 +156,7 @@ void LogController::write_to_file(LOG_TYPE log_type){
 }
 
 
-std::string LogController::flagLevel(uint32_t flag){
-    //using definitions from flags.h
-    if (flag <= (1<<6)){
-        return "[STATE]";
-    }
-    else if (flag <= (1<<7)){
-        return "[DEBUG]";
-    }
-    else if (flag <= (1<<20)){
-        return "[ERROR]";
-    }
-    else if (flag <= (1<<23)){
-        return "[WARN]";
-    }
-    else{
-        return "";
-    }
 
-};
-
-std::string LogController::flagLevel(system_flag flag){
-    return flagLevel(static_cast<uint32_t>(flag));
-};
 
 void LogController::change_write_Frequency(uint16_t time_period,LOG_TYPE log_type){
     //simple bounds checking

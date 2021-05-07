@@ -5,7 +5,7 @@
 
 #include <Arduino.h>
 #include <string>
-#include <SPI.h>
+//#include <SPI.h>
 #include <SdFat.h>
 #include <cctype>
 
@@ -20,39 +20,48 @@ flashTransport(FlashCs,&(sm->vspi)),
 flash(&flashTransport)
 {};
 
-bool StorageController::setup(){
+void StorageController::setup(){
  
-
-    if(!microsd.begin(SdCs,SD_SCK_MHZ(10))){
+    if(microsd.begin(SdCs,SD_SCK_MHZ(10))){
+        generateDirectoryStructure(STORAGE_DEVICE::MICROSD);
+        _sm->logcontroller.log("SD Initalized");   
+    }else{
         _sm->systemstatus.new_message(system_flag::ERROR_SD,"Error intializing SD card");
-        return false;
     }
-    _sm->logcontroller.log("SD Initalized");
-
-    SPIFlash_Device_t flash_config = W25Q128JV_SM; //pass in spi flash config
     
-    if(!flash.begin(&flash_config)){
+
+    const SPIFlash_Device_t flash_config = W25Q128JV_SM; //pass in spi flash config
+    
+    if(flash.begin(&flash_config)){
+
+        _sm->logcontroller.log("Flash Initalized");
+
+        if(flash_fatfs.begin(&flash)){
+            generateDirectoryStructure(STORAGE_DEVICE::FLASH);
+            _sm->logcontroller.log("Flash FS Initalized");
+        
+        }else{
+            _sm->systemstatus.new_message(system_flag::ERROR_FLASH,"Error intializing onboard flashfs");
+            
+        }
+
+    }else{
         _sm->systemstatus.new_message(system_flag::ERROR_FLASH,"Error intializing onboard flash");
-        return false;
+        
     }
-    _sm->logcontroller.log("Flash Initalized");
     
-    if(!flash_fatfs.begin(&flash)){
-        _sm->systemstatus.new_message(system_flag::ERROR_FLASH,"Error intializing onboard flashfs");
-        return false;
-    }
-    _sm->logcontroller.log("Flash FS Initalized");
-  
-    return true;
-
 };
 
-std::string StorageController::updateDirectoryName(std::string input_directory,STORAGE_DEVICE device){
+std::string StorageController::getUniqueDirectory(std::string input_directory,STORAGE_DEVICE device){
     // Looks for the highest numbered log folder and increments by one
     std::vector<directory_element_t> fileNames = std::vector<directory_element_t>();
 
+    mkdir(input_directory,device); // ensure directory exists
+
     if (!ls(input_directory, fileNames, device)) {
         // TODO: there's an error, crash ourseleves
+    
+
     }
     
 // go away u a big poo
@@ -96,7 +105,7 @@ int StorageController::getFileNameIndex(const std::string fileName) {
 void StorageController::mkdir(std::string path,STORAGE_DEVICE device){
     switch(device){
         case STORAGE_DEVICE::MICROSD:{
-            if(!microsd.mkdir(path.c_str())){
+            if(!microsd.exists(path.c_str())){
                 microsd.mkdir(path.c_str());
             }else{
                 _sm->logcontroller.log(path + " directory already exists");
@@ -104,7 +113,7 @@ void StorageController::mkdir(std::string path,STORAGE_DEVICE device){
             break;
         }
         case STORAGE_DEVICE::FLASH:{
-            if(!flash_fatfs.mkdir(path.c_str())){
+            if(!flash_fatfs.exists(path.c_str())){
                 flash_fatfs.mkdir(path.c_str());
             }else{
                 _sm->logcontroller.log(path + " directory already exists");
@@ -119,15 +128,19 @@ void StorageController::mkdir(std::string path,STORAGE_DEVICE device){
 
 bool StorageController::ls(std::string path,std::vector<directory_element_t> &directory_structure,STORAGE_DEVICE device){
     File _file;
+    
     switch(device){
         case STORAGE_DEVICE::MICROSD:{
             microsd.chvol();//change vol to microsd
             _file = microsd.open(path.c_str()); // open the path supplied
+            
+
             break;
         }
         case STORAGE_DEVICE::FLASH:{
             flash_fatfs.chvol();//change vol to flash
             _file = flash_fatfs.open(path.c_str()); // open the path supplied
+            
             break;
         }
         default:{
@@ -140,6 +153,8 @@ bool StorageController::ls(std::string path,std::vector<directory_element_t> &di
         
         return false;
     }
+    //all log files in the log controller must be closed from this point for ls to function correctly
+
     File child = _file.openNextFile();//open next file in directory
 
     while(child){ // while child file is valid
@@ -158,7 +173,9 @@ bool StorageController::ls(std::string path,std::vector<directory_element_t> &di
         directory_structure.push_back(entry); // add entry to vector
         child = _file.openNextFile(); // open next file
 
-    }  
+    }
+    // re open log files in log controller here
+
     return true;
 };
 
@@ -182,66 +199,6 @@ bool StorageController::ls(std::vector<directory_element_t> &directory_structure
     return ls(path,directory_structure, device);
 };
 
-/*
-void StorageController::write(std::string &path,std::string &data,STORAGE_DEVICE device){
-   File file;
-
-   switch(device){
-        case(STORAGE_DEVICE::ALL):{
-            
-            //write(path,data,STORAGE_DEVICE::MICROSD);
-            //write(path,data,STORAGE_DEVICE::FLASH);
-
-            break;
-        }
-        case(STORAGE_DEVICE::MICROSD):{
-            microsd.chvol();
-            file = microsd.open(path.c_str(), (O_WRITE | O_CREAT | O_AT_END));//
-            if (file){
-                //check if file is okay
-                file.print(data.c_str());
-                file.close();//close the file
-            }
-            break;
-        }
-        case(STORAGE_DEVICE::FLASH):{
-            flash_fatfs.chvol();
-            file = flash_fatfs.open(path.c_str(), (O_WRITE | O_CREAT | O_AT_END));//
-            if (file){
-                //check if file is okay
-                file.print(data.c_str());
-                file.close();//close the file
-            }
-
-            break;
-        }
-        default:{
-            //do nothing
-            break;
-        }
-    }
-}
-
-File StorageController::read(std::string path,STORAGE_DEVICE device){
-    File ret;
-    switch(device){
-        case(STORAGE_DEVICE::MICROSD):{
-            microsd.chvol();
-            ret = microsd.open(path.c_str());
-            break;
-        }
-        case(STORAGE_DEVICE::FLASH):{
-            flash_fatfs.chvol();
-            ret = flash_fatfs.open(path.c_str());
-            break;
-        }
-        default:{
-            //do nothing
-            break;
-        }
-    }
-    return ret;
-}*/
 
 File StorageController::open(std::string &path, STORAGE_DEVICE device,oflag_t mode){
     File ret;
@@ -264,13 +221,15 @@ File StorageController::open(std::string &path, STORAGE_DEVICE device,oflag_t mo
     return ret;
 }
 
-bool StorageController::erase(STORAGE_DEVICE device){
+bool StorageController::erase(STORAGE_DEVICE device){ // need to make sure this doesnt wipe out configuration files lol
+//maybe call the configcontroller to rewrite the config file if we store the configuration in ram
     switch(device){
         case(STORAGE_DEVICE::MICROSD):{
             if(!microsd.wipe()){
                 _sm->systemstatus.new_message(system_flag::ERROR_SD,"Error wiping SD card");
                 return false;
             }
+
             _sm->logcontroller.log("SD Wiped");
             return true;
         }
@@ -287,4 +246,16 @@ bool StorageController::erase(STORAGE_DEVICE device){
             return false;
         }
     }
+}
+
+void StorageController::generateDirectoryStructure(STORAGE_DEVICE device){
+    //ensure the expected directory structure is present
+    /*
+
+    /
+    /Logs
+    /Configuration
+    */
+   mkdir("/Logs",device);
+   mkdir("/Configuration",device);
 }

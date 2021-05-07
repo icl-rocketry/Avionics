@@ -13,9 +13,9 @@
 class stateMachine; //forward declaration to prevent ciruclar dependancy
 
 enum class STORAGE_DEVICE:uint8_t{
-    ALL, //all writes to all avalibale memory devices to backup
     MICROSD,
-    FLASH 
+    FLASH,
+    NONE 
 };
 
 enum class FILE_TYPE:uint8_t{
@@ -33,20 +33,23 @@ struct directory_element_t{
 class StorageController{
     public:
         StorageController(stateMachine *sm);
-        bool setup(); //setup storage devices
+        void setup(); //setup storage devices
 
         //void write(std::string &path,std::string &data,STORAGE_DEVICE device);//missing arguemtn for data -we need to decide 
         //File read(std::string path,STORAGE_DEVICE device); 
 
         File open(std::string &path,STORAGE_DEVICE device,oflag_t mode);
 
-        std::string updateDirectoryName(std::string input_directory,STORAGE_DEVICE device); //checks and updates directory name so that it is unique
+        std::string getUniqueDirectory(std::string input_directory,STORAGE_DEVICE device); //checks and updates directory name so that it is unique
         
         void mkdir(std::string path, STORAGE_DEVICE device);
         bool ls(std::string path,std::vector<directory_element_t> &directory_structure,STORAGE_DEVICE device);
         bool ls(std::vector<directory_element_t> &directory_structure,STORAGE_DEVICE device);
         void printDirectory(std::string path,STORAGE_DEVICE device);
         bool erase(STORAGE_DEVICE device);//format device
+
+        void generateDirectoryStructure(STORAGE_DEVICE device);
+
 
     private:
         stateMachine *_sm;//pointer to state machine
