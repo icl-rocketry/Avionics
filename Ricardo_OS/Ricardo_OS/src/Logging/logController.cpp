@@ -42,127 +42,47 @@ void LogController::log(state_t &estimator_state,raw_measurements_t &raw_sensors
 }
 
 
-void LogController::log(PacketHeader &header) {
-
-
-	
-}
+void LogController::log(PacketHeader &header) {}
 
 void LogController::log(std::string message) {
-  
+    systemlogger.log(message);
 }
 
 void LogController::log(uint32_t status,uint32_t flag,std::string message) {
-
-	
+    systemlogger.log(status,flag,message);	
 }
-void LogController::log(uint32_t status,uint32_t flag) {
 
+void LogController::log(uint32_t status,uint32_t flag) {
+    systemlogger.log(status,flag,"flag logged");
 }
 
 void LogController::update(){
 
-    
-    //could be made neater if using for loop however this would make readabilty worse
-    
-    if ((millis() - prev_write_time[(uint8_t)LOG_TYPE::TELEMETRY]) > write_frequency[(uint8_t)LOG_TYPE::TELEMETRY]){
-        write_to_file(LOG_TYPE::TELEMETRY);
-        //Serial.println(telemetry_log_buffer.size());
-        ///telemetry_log_buffer.clear();
-        prev_write_time[(uint8_t)LOG_TYPE::TELEMETRY] = millis(); // update previous time
-    }
-    
-    if ((millis() - prev_write_time[(uint8_t)LOG_TYPE::SYSTEM]) > write_frequency[(uint8_t)LOG_TYPE::SYSTEM]){
-        write_to_file(LOG_TYPE::SYSTEM);
-        prev_write_time[(uint8_t)LOG_TYPE::SYSTEM] = millis(); // update previous time
-    }
-
-    if ((millis() - prev_write_time[(uint8_t)LOG_TYPE::NETWORK]) > write_frequency[(uint8_t)LOG_TYPE::NETWORK]){
-        //write_to_file(LOG_TYPE::NETWORK);
-        prev_write_time[(uint8_t)LOG_TYPE::NETWORK] = millis(); // update previous time
-    }
+    systemlogger.writeLog();
+    telemetrylogger.writeLog();
 
 
 }
-
-void LogController::write_to_file(LOG_TYPE log_type){
-    std::string microsd_file_path;
-    std::string flash_file_path;
-    
-    
-    switch(log_type){
-        case LOG_TYPE::TELEMETRY:
-        {
-
-            //microsd_file_path = microsd_prefix + telemetry_log_filename;
-            //flash_file_path = flash_prefix + system_log_filename;
-
-            //File microsd_file = _storagecontroller->open(microsd_file_path,STORAGE_DEVICE::MICROSD,(O_WRITE | O_CREAT | O_AT_END));
-
-            //if (!microsd_file){
-            //if (!telemetry_logfile){
-             //   return; // file is invalid
-            //}
-            
-            for (int i = 0; i< telemetry_log_buffer.size();i++){
-                //processing each frame individually so we dont accidentally use all of heap
-                std::string entry = telemetry_log_buffer[i].stringify();
-                
-                //microsd_file.print(entry.c_str());
-                //microsd_file.write(entry.c_str(),entry.length());
-                telemetry_logfile.write(entry.c_str(),entry.length());
-                //_storagecontroller->write(flash_file_path,entry,STORAGE_DEVICE::FLASH);
-                
-            }
-            
-            //microsd_file.close();
-            telemetry_logfile.flush();
-            //telemetry_log_buffer.clear(); //clear all log frames in buffer
-
-            break;
-        }
-        case LOG_TYPE::SYSTEM:
-        {
-            microsd_file_path = microsd_prefix + system_log_filename;
-            flash_file_path = flash_prefix + system_log_filename;
-
-            File microsd_file = _storagecontroller->open(microsd_file_path,STORAGE_DEVICE::MICROSD,(O_WRITE | O_CREAT | O_AT_END));
-
-            if (!microsd_file){
-                return; // file is invalid
-            }
-            
-            for (int i = 0; i< system_log_buffer.size();i++){
-                //processing each frame individually so we dont accidentally use all of heap
-                std::string entry = system_log_buffer[i].stringify();
-                microsd_file.print(entry.c_str());
-                //_storagecontroller->write(flash_file_path,entry,STORAGE_DEVICE::FLASH);
-                
-            }
-            
-            microsd_file.close();
-
-            system_log_buffer.clear(); //clear all log frames in buffer
-
-            break;
-        }
-        case LOG_TYPE::NETWORK:
-        {
-            break;
-        }
-    }
-    
-
-}
-
-
 
 
 void LogController::change_write_Frequency(uint16_t time_period,LOG_TYPE log_type){
     //simple bounds checking
-    if((uint8_t)log_type < write_frequency.size()){
-        //update logging frequnecy
-        write_frequency[(uint8_t)log_type] = time_period;
+    switch(log_type){
+        case LOG_TYPE::NETWORK:{
+            break;
+        }
+        case LOG_TYPE::SYSTEM:{
+            systemlogger.changeFrequency(time_period);
+            break;
+        }
+        case LOG_TYPE::TELEMETRY:{
+            telemetrylogger.changeFrequency(time_period);
+            break;
+        }
+        default:{
+            //do nothing
+            break;
+        }
     }
 };
 

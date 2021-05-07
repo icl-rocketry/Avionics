@@ -8,8 +8,10 @@ _mainStorage(mainStorage),
 _backupStorage(backupStorage),
 _writeDelta(dt),
 _filename(filename),
-_status(false),
+_status(false)
 {};
+
+Logger::~Logger(){};
 
 void Logger::enable(){
     if (_filepath.size() != 0){ // ensure a filepath has been provided otherwise do not allow logger to be enabled

@@ -74,10 +74,7 @@ void SystemLogger::log(uint32_t status,uint32_t flag,std::string message){
     //add frame to buffer
     system_log_buffer.push_back(system_frame);
 };
-void SystemLogger::log(uint32_t status,uint32_t flag){
-    //will create a new log frame each time it is called
-    log(status,flag,"flag logged");
-};
+
 
 
 
