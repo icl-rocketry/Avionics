@@ -102,13 +102,15 @@ int StorageController::getFileNameIndex(const std::string fileName) {
     return numberStartIdx+1; 
 }
 
-void StorageController::mkdir(std::string path,STORAGE_DEVICE device){
+bool StorageController::mkdir(std::string path,STORAGE_DEVICE device){
+    bool alreadyPresent = false;
     switch(device){
         case STORAGE_DEVICE::MICROSD:{
             if(!microsd.exists(path.c_str())){
                 microsd.mkdir(path.c_str());
             }else{
                 _sm->logcontroller.log(path + " directory already exists");
+                alreadyPresent = true;
             }
             break;
         }
@@ -117,13 +119,16 @@ void StorageController::mkdir(std::string path,STORAGE_DEVICE device){
                 flash_fatfs.mkdir(path.c_str());
             }else{
                 _sm->logcontroller.log(path + " directory already exists");
+                alreadyPresent = true;
             }
             break;
         }
         default:{
             break;
         }
+
     }
+    return alreadyPresent;
 }
 
 bool StorageController::ls(std::string path,std::vector<directory_element_t> &directory_structure,STORAGE_DEVICE device){
@@ -154,6 +159,8 @@ bool StorageController::ls(std::string path,std::vector<directory_element_t> &di
         return false;
     }
     //all log files in the log controller must be closed from this point for ls to function correctly
+    // i dont like the coupling this creates but its currently the best way. will think of a better way later
+    _sm->logcontroller.stopLogging(LOG_TYPE::ALL);
 
     File child = _file.openNextFile();//open next file in directory
 
@@ -175,6 +182,7 @@ bool StorageController::ls(std::string path,std::vector<directory_element_t> &di
 
     }
     // re open log files in log controller here
+    _sm->logcontroller.startLogging(LOG_TYPE::ALL);
 
     return true;
 };
@@ -223,28 +231,45 @@ File StorageController::open(std::string &path, STORAGE_DEVICE device,oflag_t mo
 
 bool StorageController::erase(STORAGE_DEVICE device){ // need to make sure this doesnt wipe out configuration files lol
 //maybe call the configcontroller to rewrite the config file if we store the configuration in ram
+    // cross coupling here again because we need to turn off logging so we can update the log file paths
+    bool error = false;
+
+    _sm->logcontroller.stopLogging(LOG_TYPE::ALL);
+
     switch(device){
         case(STORAGE_DEVICE::MICROSD):{
             if(!microsd.wipe()){
                 _sm->systemstatus.new_message(system_flag::ERROR_SD,"Error wiping SD card");
-                return false;
+                error = true;
+                break;
             }
-
+            
             _sm->logcontroller.log("SD Wiped");
-            return true;
+            break;
         }
         case(STORAGE_DEVICE::FLASH):{
             if(!flash_fatfs.wipe()){
                 _sm->systemstatus.new_message(system_flag::ERROR_FLASH,"Error wiping onboard flash");
-                return false;
+                error = true;
+                break;
             }   
+
             _sm->logcontroller.log("Flash Wiped");
-            return true;       
+            break;       
         }
         default:{
             //no option supplied so dont do anything
-            return false;
+            error = true;
+            break;
         }
+
+    //make sure directory structure is present on wiped device
+    generateDirectoryStructure(device);
+    _sm->logcontroller.generateLogDirectories(device); //ensure logging directories exist
+    //reopen log files
+    _sm->logcontroller.startLogging(LOG_TYPE::ALL);    
+
+    return error;
     }
 }
 

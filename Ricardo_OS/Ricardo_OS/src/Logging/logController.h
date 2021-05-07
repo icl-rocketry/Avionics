@@ -37,10 +37,10 @@ class LogController{
         void log(uint32_t status,uint32_t flag,std::string message);
         void log(uint32_t status,uint32_t flag);
 
-        void stop(LOG_TYPE log);
-        void start(LOG_TYPE log);
+        void stopLogging(LOG_TYPE log);
+        void startLogging(LOG_TYPE log);
 
-
+        void generateLogDirectories(STORAGE_DEVICE device);
         
 
         void change_write_Frequency(uint16_t time_period,LOG_TYPE log_type);
