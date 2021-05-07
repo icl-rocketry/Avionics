@@ -262,7 +262,7 @@ bool StorageController::erase(STORAGE_DEVICE device){ // need to make sure this 
             error = true;
             break;
         }
-
+    }
     //make sure directory structure is present on wiped device
     generateDirectoryStructure(device);
     _sm->logcontroller.generateLogDirectories(device); //ensure logging directories exist
@@ -270,7 +270,7 @@ bool StorageController::erase(STORAGE_DEVICE device){ // need to make sure this 
     _sm->logcontroller.startLogging(LOG_TYPE::ALL);    
 
     return error;
-    }
+    
 }
 
 void StorageController::generateDirectoryStructure(STORAGE_DEVICE device){

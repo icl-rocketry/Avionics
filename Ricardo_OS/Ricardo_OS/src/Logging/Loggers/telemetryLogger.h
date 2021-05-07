@@ -8,6 +8,7 @@
 #include "Sensors/sensorStructs.h"
 #include "../logframe.h"
 #include <vector>
+#include <array>
 
 class TelemetryLogger : public Logger
 {
@@ -24,7 +25,7 @@ public:
     ~TelemetryLogger();
 private:
     telemetry_logframe telemetry_frame;
-    std::vector<telemetry_logframe> telemetry_log_buffer;
-
+    //std::vector<telemetry_logframe> telemetry_log_buffer;
+    std::vector<uint8_t> telemetry_log_buffer;
 };
 
