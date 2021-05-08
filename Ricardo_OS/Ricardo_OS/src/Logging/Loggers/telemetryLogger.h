@@ -26,6 +26,7 @@ public:
 private:
     telemetry_logframe telemetry_frame;
     //std::vector<telemetry_logframe> telemetry_log_buffer;
-    std::vector<uint8_t> telemetry_log_buffer;
+    //std::vector<uint8_t> telemetry_log_buffer;
+    std::string telemetry_log_buffer;
 };
 

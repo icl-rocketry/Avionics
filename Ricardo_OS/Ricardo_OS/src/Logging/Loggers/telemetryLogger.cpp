@@ -28,12 +28,14 @@ void TelemetryLogger::writeLog(){
     if (!_status){
         return; // check if logger is enabled
     }
-    if (telemetry_log_buffer.size()>=2048){
-        main_logfile.write(telemetry_log_buffer.data(),telemetry_log_buffer.size());
+    if (telemetry_log_buffer.size()>=400){
+        main_logfile.write(telemetry_log_buffer.c_str(),telemetry_log_buffer.size());
         telemetry_log_buffer.clear();
+        main_logfile.flush();
     }
+    /*
     if (millis()-_prevWriteTime > _writeDelta){
-        /*
+        
         for (int i = 0; i< telemetry_log_buffer.size();i++){
             //processing each frame individually so we dont accidentally use all of heap
             std::string entry = telemetry_log_buffer[i].stringify();
@@ -43,13 +45,13 @@ void TelemetryLogger::writeLog(){
             main_logfile.write(entry.c_str(),entry.length());
             //_storagecontroller->write(flash_file_path,entry,STORAGE_DEVICE::FLASH);
             
-        }*/
+        }
 
         main_logfile.flush();
 
         _prevWriteTime = millis();
 
-    }
+    }*/
 };
 
 
@@ -82,8 +84,9 @@ void TelemetryLogger::log(state_t &estimator_state,raw_measurements_t &raw_senso
         
         telemetry_log_buffer.clear(); // this should never happen but it prevents the logger eating all ram like the cookie monster
     }
-    telemetry_log_buffer.resize(telemetry_log_buffer.size() + string_data.size());
-    memcpy(telemetry_log_buffer.data() + telemetry_log_buffer.size(),string_data.c_str(),string_data.length());
+    //telemetry_log_buffer.resize(telemetry_log_buffer.size() + string_data.size());
+    telemetry_log_buffer += string_data;
+    //memcpy(telemetry_log_buffer.data() + telemetry_log_buffer.size(),string_data.data(),string_data.size());
     
     //telemetry_log_buffer.push_back(telemetry_frame); // add frame to buffer
     //std::vector<uint8_t> data = telemetry_frame.serialize();
