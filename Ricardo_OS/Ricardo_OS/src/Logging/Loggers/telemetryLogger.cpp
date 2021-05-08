@@ -28,8 +28,9 @@ void TelemetryLogger::writeLog(){
     if (!_status){
         return; // check if logger is enabled
     }
-    if (telemetry_log_buffer.size()>=400){
+    if (telemetry_log_buffer.size()>=1024){
         main_logfile.write(telemetry_log_buffer.c_str(),telemetry_log_buffer.size());
+
         telemetry_log_buffer.clear();
         main_logfile.flush();
     }

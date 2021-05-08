@@ -31,11 +31,13 @@ class USB: public Iface{
         bool _incompletePacketReceived;
         uint8_t _firstByte;
 
+
         //byte array to store first bytes of incoming packet for decoding
         //uint8_t _tmp_packet_data[PacketHeader::header_size()];
         std::vector<uint8_t> _tmp_packet_data;
         //pointer to packet header object
         //PacketHeader* _packetHeader_ptr = nullptr;
+
         
         //Packet size
         uint32_t _packet_len;
