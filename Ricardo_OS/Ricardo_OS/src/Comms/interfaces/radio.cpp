@@ -80,16 +80,8 @@ void Radio::get_packet(std::vector<std::unique_ptr<std::vector<uint8_t>>> &buf){
 
         std::unique_ptr<std::vector<uint8_t>> packet_ptr = std::make_unique<std::vector<uint8_t>>(packet);
 
-        PacketHeader packetheader = PacketHeader(*packet_ptr);
-    
-        //update source interface
-        packetheader.src_interface = static_cast<uint8_t>(Interface::LORA);
-        
-        //serialize packet header
         std::vector<uint8_t> modified_packet_header;
-        
-        packetheader.serialize(modified_packet_header);
-        
+        Iface::updateSourceInterface((*packet_ptr),modified_packet_header,Interface::LORA)
 
         memcpy((*packet_ptr).data(),modified_packet_header.data(),packetheader.header_len);
 /*

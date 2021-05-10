@@ -38,20 +38,21 @@ void USB::get_packet(std::vector<std::unique_ptr<std::vector<uint8_t>>> &buf){
 
 
     
-    while (_stream->available() > 0){
+    while (_stream->available() > 0){ // nonblocking??
         //find and process any and all packets
        
         
-        _firstByte = _stream->peek();
+        //_firstByte = _stream->peek();
+        _firstByte = _stream->read();
         
-        if ((_firstByte == 0xAF && _stream->available() > 15) || _incompletePacketReceived){
+        if ((_firstByte == 0xAF && _stream->available() > 15)){
             
             if(!_incompletePacketReceived){
                 //reset timeoutcounter
-                _timeoutCounter = 0;
                 
                 
-                _stream->readBytes(_tmp_packet_data.data(),_packetHeader_size);
+                _tmp_packet_data[0] = 0xAF; 
+                _stream->readBytes(_tmp_packet_data.data()+1,_packetHeader_size-1);//this is a blocking operation
                 
                 //create packet header object to decode packet header and retrieve packet size
                 PacketHeader packetheader = PacketHeader(_tmp_packet_data);
@@ -66,17 +67,8 @@ void USB::get_packet(std::vector<std::unique_ptr<std::vector<uint8_t>>> &buf){
             
             if (_packet_len > _stream->available()){
                 //we dont have the full packet to read 
-
-                //increment timeoutcounter
-                _timeoutCounter += 1;
-
-                //return out of function so we can wait for new data without blocking - idk if this is a bad idea could cause a buffer overflow
-                //potentially implement a timeout function so if the packet is formed wrong we dont get stuck here
-                if (_timeoutCounter > 0){ //just dump the packet
-                    _incompletePacketReceived = false;
-                }else{
-                    _incompletePacketReceived = true;
-                };
+                _incompletePacketReceived = false; //dump the packet
+                _systemstatus->new_message(system_flag::ERROR_SERIAL,"Packet Dumped");
                 
             }else{
                 //only a single packet to read or multiple packets to read so we will only the first packet
@@ -86,29 +78,18 @@ void USB::get_packet(std::vector<std::unique_ptr<std::vector<uint8_t>>> &buf){
                 //std::shared_ptr<uint8_t[]> packet_ptr(new uint8_t[_total_len]);
 
                 std::unique_ptr<std::vector<uint8_t>> packet_ptr = std::make_unique<std::vector<uint8_t>>();
-                (*packet_ptr).resize(_total_len);
+
                 
-                
-                
-                //deserialize packet header, modify source interface and reserialize.
-                
-                PacketHeader packetheader = PacketHeader(_tmp_packet_data);
-                
-                
-                //update source interface
-                packetheader.src_interface = static_cast<uint8_t>(Interface::USBSerial);
-            
-                //serialize packet header
-                std::vector<uint8_t> modified_packet_header;
-                packetheader.serialize(modified_packet_header);
-               
-                //copy data in modified_packet_header to packet container
-                memcpy((*packet_ptr).data(),modified_packet_header.data(),_header_len);
+                //deserialize packet header, modify source interface and reserialize into packet_ptr.
+                Iface::updateSourceInterface(_tmp_packet_data,(*packet_ptr),Interface::USBSerial);
                 
                 //read bytes in stream buffer into the packet data array starting at the 8th index as header has been read out of stream buffer.
                 //packet len has been decremented 8 as packet_len includes the packet header which is no longer in stream buffer
-                _stream->readBytes(((*packet_ptr).data() + _header_len), _packet_len); 
                 
+                //expand vector to total_len size
+                (*packet_ptr).resize(_total_len);
+                _stream->readBytes(((*packet_ptr).data() + _header_len), _packet_len); 
+
                 //should add exceptioj checking here so we know if we have failed to properly read the data into the packet ptr
                 buf.push_back(std::move(packet_ptr)); // add pointer to packet immediately to buffer                
                 
@@ -116,7 +97,7 @@ void USB::get_packet(std::vector<std::unique_ptr<std::vector<uint8_t>>> &buf){
             
         }else{
             // read byte to clear byte in serial buffer
-            _stream->read(); 
+            _systemstatus->new_message(system_flag::ERROR_SERIAL,"Packet Dumped");
         };  
     }; 
 /*

@@ -19,7 +19,7 @@ Setup::Setup(stateMachine* sm) : State(sm){
 
 void Setup::initialise(){
     State::initialise();
-    _sm->tunezhandler.play(c_scalez.get()); // play startup sound
+    //_sm->tunezhandler.play(c_scalez.get()); // play startup sound
 
     //internal io initilization must happen here so io buses setup for sensor initialzation
         //intialize i2c interface

@@ -62,7 +62,7 @@ class LogController{
         std::string uniqueDirectory;
 
         //telemetry logging frequnecy variables
-        uint16_t telemetry_log_frequency = 20; 
+        uint16_t telemetry_log_frequency = 50; 
         uint64_t telemetry_prev_log_time = 0;
    
 
