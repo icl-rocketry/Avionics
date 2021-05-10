@@ -28,12 +28,12 @@ void Imu::setup(){
 
     imu.setAccelScale(ACCEL_SCALE);
     //set samplerate of accel to 952Hz
-    imu.settings.accel.sampleRate = 6;
+    imu.settings.accel.sampleRate = 5;
     imu.settings.accel.enabled = true; // Enable accelerometer
     
     imu.setGyroScale(GYRO_SCALE);
     //set samplerate of gyro to 952Hz
-    imu.settings.gyro.sampleRate = 6;
+    imu.settings.gyro.sampleRate = 5;
     imu.settings.gyro.lowPowerEnable = true;
     //imu.settings.accel.enabled = false; // Enable accelerometer
     // [HPFEnable] enables or disables the high-pass filter
@@ -47,9 +47,11 @@ void Imu::setup(){
     //imu.setMagScale(12);
     imu.settings.mag.XYPerformance = 3; // Ultra-high perform.
     imu.settings.mag.ZPerformance = 3; // Ultra-high perform.
-    imu.settings.mag.sampleRate = 7;
+    imu.settings.mag.sampleRate = 6;
     imu.settings.mag.lowPowerEnable = false;
     imu.settings.mag.operatingMode = 0; // Continuous mode
+    //mag temp compensation -> this is a good thing right?
+    imu.settings.mag.tempCompensationEnable = true;
 
     if (!imu.beginSPI(_SCLK,_MISO,_MOSI,ImuCs, MagCs)){
         _systemstatus->new_message(system_flag::ERROR_IMU, "Unable to initialize the imu");
@@ -93,3 +95,10 @@ void Imu::read_temp(){
     }
 }
 
+void Imu::calibrateAccelGyro(bool autocalc){
+    imu.calibrate(autocalc);
+}
+
+void Imu::calibrateMag(bool loadIn){
+    imu.calibrateMag(loadIn);
+}

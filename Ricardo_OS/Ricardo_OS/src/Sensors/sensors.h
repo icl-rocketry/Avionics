@@ -14,12 +14,13 @@
 
 
 enum class SENSOR:uint8_t{
-    ACCEL = 0,
-    MAG = 1,
-    GYRO = 2,
-    BARO = 3,
-    GPS = 4,
-    BATT = 5
+    ACCEL,
+    GYRO,
+    ACCELGYRO, // subroutines such as the callibration are perfomed simultaneously for both
+    MAG,  
+    BARO,
+    GPS,
+    BATT
 };
 
 
