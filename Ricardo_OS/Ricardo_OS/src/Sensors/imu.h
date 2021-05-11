@@ -21,6 +21,7 @@ class Imu{
         void calibrateAccelGyro(bool autocalc); // autocalc automatically subtracts accel gyro biases
         void calibrateMag(bool loadIn); // loadIn loads mag biases into mag registers -> this is only a bias correction 
 
+    
     private:
         //pointer to spi object
         SPIClass* _spi;
@@ -37,6 +38,9 @@ class Imu{
         void read_mag();
         void read_accel();
         void read_temp();
+
+        uint64_t prev_read_time;
+        uint16_t time_period;
 
 
 };    

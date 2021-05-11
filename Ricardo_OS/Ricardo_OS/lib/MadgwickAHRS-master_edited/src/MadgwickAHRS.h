@@ -38,10 +38,15 @@ private:
 //-------------------------------------------------------------------------------------------
 // Function declarations
 public:
-    Madgwick(void);
-    void begin(float sampleFrequency) { invSampleFreq = 1.0f / sampleFrequency; }
-    void update(float gx, float gy, float gz, float ax, float ay, float az, float mx, float my, float mz);
-    void updateIMU(float gx, float gy, float gz, float ax, float ay, float az);
+    //Madgwick(void);
+
+    Madgwick(float beta_value=0.1f,float dt=2); // custom constructor with default values
+ 
+    //void begin(float sampleFrequency) { invSampleFreq = 1.0f / sampleFrequency; } /// ???? this is kinda dumb ngl
+    //void update(float gx, float gy, float gz, float ax, float ay, float az, float mx, float my, float mz);
+    void update(float gx, float gy, float gz, float ax, float ay, float az, float mx, float my, float mz,float dt);
+    //void updateIMU(float gx, float gy, float gz, float ax, float ay, float az);
+    void updateIMU(float gx, float gy, float gz, float ax, float ay, float az,float dt);
     //float getPitch(){return atan2f(2.0f * q2 * q3 - 2.0f * q0 * q1, 2.0f * q0 * q0 + 2.0f * q3 * q3 - 1.0f);};
     //float getRoll(){return -1.0f * asinf(2.0f * q1 * q3 + 2.0f * q0 * q2);};
     //float getYaw(){return atan2f(2.0f * q1 * q2 - 2.0f * q0 * q3, 2.0f * q0 * q0 + 2.0f * q1 * q1 - 1.0f);};
@@ -57,6 +62,7 @@ public:
         if (!anglesComputed) computeAngles();
         return yaw * 57.29578f + 180.0f;
     }
+
     float getRollRadians() {
         if (!anglesComputed) computeAngles();
         return roll;
@@ -69,6 +75,7 @@ public:
         if (!anglesComputed) computeAngles();
         return yaw;
     }
+
 };
 #endif
 

@@ -36,6 +36,7 @@ class Sensors{
 
         raw_measurements_t sensors_raw;
 
+
     private:
         stateMachine* _sm; //pointer to statemachine
 
@@ -43,6 +44,7 @@ class Sensors{
         GPS gps;
         Baro baro;
         Imu imu;
+        
         Battery batt;
 
 

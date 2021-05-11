@@ -39,7 +39,8 @@ void stateMachine::initialise(State* initStatePtr) {
   sensors.setup();
   estimator.setup();
   
-  
+  sensors.callibrate(SENSOR::ACCELGYRO);
+  //sensors.callibrate(SENSOR::MAG);
   
 
   

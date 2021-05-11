@@ -25,8 +25,8 @@
 //-------------------------------------------------------------------------------------------
 // Definitions
 
-#define sampleFreqDef   512.0f          // sample frequency in Hz
-#define betaDef         0.1f            // 2 * proportional gain
+//#define sampleFreqDef   512.0f          // sample frequency in Hz
+//#define betaDef         0.1f            // 2 * proportional gain
 
 
 //============================================================================================
@@ -34,18 +34,29 @@
 
 //-------------------------------------------------------------------------------------------
 // AHRS algorithm update
-
+/*
 Madgwick::Madgwick() {
-	beta = betaDef;
+	beta = 0.1f;
 	q0 = 1.0f;
 	q1 = 0.0f;
 	q2 = 0.0f;
 	q3 = 0.0f;
-	invSampleFreq = 1.0f / sampleFreqDef;
+	invSampleFreq = 1.0f / 512.0f;
 	anglesComputed = 0;
-}
+}*/
 
-void Madgwick::update(float gx, float gy, float gz, float ax, float ay, float az, float mx, float my, float mz) {
+Madgwick::Madgwick(float beta_value,float dt):
+beta(beta_value),
+q0(1.0f),
+q1(0.0f),
+q2(0.0f),
+q3(0.0f),
+invSampleFreq(dt),
+anglesComputed(0)
+{};
+
+//void Madgwick::update(float gx, float gy, float gz, float ax, float ay, float az, float mx, float my, float mz) {
+void Madgwick::update(float gx, float gy, float gz, float ax, float ay, float az, float mx, float my, float mz,float dt) {
 	float recipNorm;
 	float s0, s1, s2, s3;
 	float qDot1, qDot2, qDot3, qDot4;
@@ -54,7 +65,7 @@ void Madgwick::update(float gx, float gy, float gz, float ax, float ay, float az
 
 	// Use IMU algorithm if magnetometer measurement invalid (avoids NaN in magnetometer normalisation)
 	if((mx == 0.0f) && (my == 0.0f) && (mz == 0.0f)) {
-		updateIMU(gx, gy, gz, ax, ay, az);
+		updateIMU(gx, gy, gz, ax, ay, az,dt);
 		return;
 	}
 
@@ -133,11 +144,16 @@ void Madgwick::update(float gx, float gy, float gz, float ax, float ay, float az
 	}
 
 	// Integrate rate of change of quaternion to yield quaternion
+	/*
 	q0 += qDot1 * invSampleFreq;
 	q1 += qDot2 * invSampleFreq;
 	q2 += qDot3 * invSampleFreq;
 	q3 += qDot4 * invSampleFreq;
-
+*/	
+	q0 += qDot1 * dt;
+	q1 += qDot2 * dt;
+	q2 += qDot3 * dt;
+	q3 += qDot4 * dt;
 	// Normalise quaternion
 	recipNorm = invSqrt(q0 * q0 + q1 * q1 + q2 * q2 + q3 * q3);
 	q0 *= recipNorm;
@@ -150,7 +166,8 @@ void Madgwick::update(float gx, float gy, float gz, float ax, float ay, float az
 //-------------------------------------------------------------------------------------------
 // IMU algorithm update
 
-void Madgwick::updateIMU(float gx, float gy, float gz, float ax, float ay, float az) {
+//void Madgwick::updateIMU(float gx, float gy, float gz, float ax, float ay, float az) {
+void Madgwick::updateIMU(float gx, float gy, float gz, float ax, float ay, float az,float dt) {
 	float recipNorm;
 	float s0, s1, s2, s3;
 	float qDot1, qDot2, qDot3, qDot4;
@@ -210,11 +227,16 @@ void Madgwick::updateIMU(float gx, float gy, float gz, float ax, float ay, float
 	}
 
 	// Integrate rate of change of quaternion to yield quaternion
+	/*
 	q0 += qDot1 * invSampleFreq;
 	q1 += qDot2 * invSampleFreq;
 	q2 += qDot3 * invSampleFreq;
 	q3 += qDot4 * invSampleFreq;
-
+	*/
+	q0 += qDot1 * dt;
+	q1 += qDot2 * dt;
+	q2 += qDot3 * dt;
+	q3 += qDot4 * dt;
 	// Normalise quaternion
 	recipNorm = invSqrt(q0 * q0 + q1 * q1 + q2 * q2 + q3 * q3);
 	q0 *= recipNorm;
@@ -229,6 +251,7 @@ void Madgwick::updateIMU(float gx, float gy, float gz, float ax, float ay, float
 // See: http://en.wikipedia.org/wiki/Fast_inverse_square_root
 
 float Madgwick::invSqrt(float x) {
+	/*
 	float halfx = 0.5f * x;
 	float y = x;
 	long i = *(long*)&y;
@@ -236,7 +259,12 @@ float Madgwick::invSqrt(float x) {
 	y = *(float*)&i;
 	y = y * (1.5f - (halfx * y * y));
 	y = y * (1.5f - (halfx * y * y));
-	return y;
+	return y;*/
+
+	/* close-to-optimal  method with low cost from http://pizer.wordpress.com/2008/10/12/fast-inverse-square-root */
+	unsigned int i = 0x5F1F1412 - (*(unsigned int*)&x >> 1);
+	float tmp = *(float*)&i;
+	return tmp * (1.69000231f - 0.714158168f * x * tmp * tmp);
 }
 
 //-------------------------------------------------------------------------------------------

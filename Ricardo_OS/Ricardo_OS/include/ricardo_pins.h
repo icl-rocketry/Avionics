@@ -8,7 +8,7 @@
 #ifndef PINS_H
 #define PINS_H
 
-#define JTAG
+//#define JTAG
 
 
 #define Buzzer 2
