@@ -1,5 +1,5 @@
 //=============================================================================================
-// MadgwickAHRS.c
+// MadgwickAHRS.c -> MODIFIED
 //=============================================================================================
 //
 // Implementation of Madgwick's IMU and AHRS algorithms.
@@ -13,37 +13,14 @@
 // 29/09/2011	SOH Madgwick    Initial release
 // 02/10/2011	SOH Madgwick	Optimised for reduced CPU load
 // 19/02/2012	SOH Madgwick	Magnetometer measurement is normalised
-//
+// 
 //=============================================================================================
 
-//-------------------------------------------------------------------------------------------
-// Header files
 
 #include "MadgwickAHRS.h"
 #include <math.h>
 
-//-------------------------------------------------------------------------------------------
-// Definitions
 
-//#define sampleFreqDef   512.0f          // sample frequency in Hz
-//#define betaDef         0.1f            // 2 * proportional gain
-
-
-//============================================================================================
-// Functions
-
-//-------------------------------------------------------------------------------------------
-// AHRS algorithm update
-/*
-Madgwick::Madgwick() {
-	beta = 0.1f;
-	q0 = 1.0f;
-	q1 = 0.0f;
-	q2 = 0.0f;
-	q3 = 0.0f;
-	invSampleFreq = 1.0f / 512.0f;
-	anglesComputed = 0;
-}*/
 
 Madgwick::Madgwick(float beta_value,float dt):
 beta(beta_value),
@@ -55,8 +32,8 @@ invSampleFreq(dt),
 anglesComputed(0)
 {};
 
-//void Madgwick::update(float gx, float gy, float gz, float ax, float ay, float az, float mx, float my, float mz) {
-void Madgwick::update(float gx, float gy, float gz, float ax, float ay, float az, float mx, float my, float mz,float dt) {
+
+void Madgwick::update(float gx, float gy, float gz, float ax, float ay, float az, float mx, float my, float mz) {
 	float recipNorm;
 	float s0, s1, s2, s3;
 	float qDot1, qDot2, qDot3, qDot4;
@@ -65,7 +42,7 @@ void Madgwick::update(float gx, float gy, float gz, float ax, float ay, float az
 
 	// Use IMU algorithm if magnetometer measurement invalid (avoids NaN in magnetometer normalisation)
 	if((mx == 0.0f) && (my == 0.0f) && (mz == 0.0f)) {
-		updateIMU(gx, gy, gz, ax, ay, az,dt);
+		updateIMU(gx, gy, gz, ax, ay, az);
 		return;
 	}
 
@@ -144,16 +121,13 @@ void Madgwick::update(float gx, float gy, float gz, float ax, float ay, float az
 	}
 
 	// Integrate rate of change of quaternion to yield quaternion
-	/*
+	
 	q0 += qDot1 * invSampleFreq;
 	q1 += qDot2 * invSampleFreq;
 	q2 += qDot3 * invSampleFreq;
 	q3 += qDot4 * invSampleFreq;
-*/	
-	q0 += qDot1 * dt;
-	q1 += qDot2 * dt;
-	q2 += qDot3 * dt;
-	q3 += qDot4 * dt;
+	
+
 	// Normalise quaternion
 	recipNorm = invSqrt(q0 * q0 + q1 * q1 + q2 * q2 + q3 * q3);
 	q0 *= recipNorm;
@@ -166,8 +140,7 @@ void Madgwick::update(float gx, float gy, float gz, float ax, float ay, float az
 //-------------------------------------------------------------------------------------------
 // IMU algorithm update
 
-//void Madgwick::updateIMU(float gx, float gy, float gz, float ax, float ay, float az) {
-void Madgwick::updateIMU(float gx, float gy, float gz, float ax, float ay, float az,float dt) {
+void Madgwick::updateIMU(float gx, float gy, float gz, float ax, float ay, float az) {
 	float recipNorm;
 	float s0, s1, s2, s3;
 	float qDot1, qDot2, qDot3, qDot4;
@@ -227,16 +200,12 @@ void Madgwick::updateIMU(float gx, float gy, float gz, float ax, float ay, float
 	}
 
 	// Integrate rate of change of quaternion to yield quaternion
-	/*
+	
 	q0 += qDot1 * invSampleFreq;
 	q1 += qDot2 * invSampleFreq;
 	q2 += qDot3 * invSampleFreq;
 	q3 += qDot4 * invSampleFreq;
-	*/
-	q0 += qDot1 * dt;
-	q1 += qDot2 * dt;
-	q2 += qDot3 * dt;
-	q3 += qDot4 * dt;
+
 	// Normalise quaternion
 	recipNorm = invSqrt(q0 * q0 + q1 * q1 + q2 * q2 + q3 * q3);
 	q0 *= recipNorm;

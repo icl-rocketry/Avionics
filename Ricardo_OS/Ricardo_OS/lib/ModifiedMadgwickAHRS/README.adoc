@@ -1,3 +1,7 @@
+
+*** MODIFIED MADGWICK LIBRARY***
+
+
 :repository-owner: arduino-libraries
 :repository-name: MadgwickAHRS
 

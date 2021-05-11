@@ -24,10 +24,6 @@ class Estimator{
 
         Madgwick madgwick; // madgwick filter object
 
-        uint64_t madgwick_prev_time;
-        uint16_t madgwick_delta_t;
-
-        
 
 };
 
