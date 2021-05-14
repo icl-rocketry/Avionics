@@ -33,6 +33,12 @@ enum class system_flag:uint32_t{
     WARN_PYRO1 = (1 << 22),
     WARN_PYRO2 = (1 << 23),
     //info 
+    INFO_BOOST = (1 << 24),
+    INFO_COAST = (1 << 25),
+    INFO_APOGEE = (1 << 26),
+    INFO_DROUGE_CHUTE = (1 << 27),
+    INFO_MAIN_CHUTE = (1 << 28)
+    
 };
 
 

@@ -17,12 +17,17 @@
 #ifndef MadgwickAHRS_h
 #define MadgwickAHRS_h
 #include <math.h>
+#include <Eigen/Core>
+#include <Eigen/Eigen>
+#include <Eigen/Geometry>
 
 
 class Madgwick{
 private:
     static float invSqrt(float x);
     float beta;				// algorithm gain
+    Eigen::Quaternionf q;
+
     float q0;
     float q1;
     float q2;
@@ -45,6 +50,9 @@ public:
     void update(float gx, float gy, float gz, float ax, float ay, float az, float mx, float my, float mz);
     void updateIMU(float gx, float gy, float gz, float ax, float ay, float az);
     
+    Eigen::Quaternionf getOrientation();
+    
+
     float getRoll() {
         if (!anglesComputed) computeAngles();
         return roll * 57.29578f;
