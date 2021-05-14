@@ -246,3 +246,21 @@ void Madgwick::computeAngles()
 	anglesComputed = 1;
 }
 
+
+Eigen::Quaternion<float> Madgwick::getOrientation(){
+	return Eigen::Quaternion<float>{q0,q1,q2,q3};
+};
+
+Eigen::Matrix<float,3,1> Madgwick::getEulerAngles(){
+	if(!anglesComputed){
+		computeAngles();
+	}
+	return Eigen::Matrix<float,3,1>{roll,pitch,yaw};
+};
+Eigen::Matrix<float,3,3> Madgwick::getRotationMatrix(){
+	return getOrientation().normalized().toRotationMatrix();
+};
+Eigen::Matrix<float,3,3> Madgwick::getInverseRotationMatrix(){
+	//the inverse of a rotation matrix is simply its transpose
+	return getRotationMatrix().transpose();
+};
