@@ -390,9 +390,9 @@ struct RhsPanelHelper {
 template <typename Packet>
 struct QuadPacket
 {
-  Packet B_0, B1, B2, B3;
+  Packet B_0, B1_Eigen, B2, B3;
   const Packet& get(const FixedInt<0>&) const { return B_0; }
-  const Packet& get(const FixedInt<1>&) const { return B1; }
+  const Packet& get(const FixedInt<1>&) const { return B1_Eigen; }
   const Packet& get(const FixedInt<2>&) const { return B2; }
   const Packet& get(const FixedInt<3>&) const { return B3; }
 };
@@ -508,7 +508,7 @@ public:
 
   EIGEN_STRONG_INLINE void loadRhs(const RhsScalar* b, RhsPacketx4& dest) const
   {
-    pbroadcast4(b, dest.B_0, dest.B1, dest.B2, dest.B3);
+    pbroadcast4(b, dest.B_0, dest.B1_Eigen, dest.B2, dest.B3);
   }
 
   template<typename RhsPacketType>
@@ -628,7 +628,7 @@ public:
 
   EIGEN_STRONG_INLINE void loadRhs(const RhsScalar* b, RhsPacketx4& dest) const
   {
-    pbroadcast4(b, dest.B_0, dest.B1, dest.B2, dest.B3);
+    pbroadcast4(b, dest.B_0, dest.B1_Eigen, dest.B2, dest.B3);
   }
 
   template<typename RhsPacketType>
@@ -853,7 +853,7 @@ public:
   EIGEN_STRONG_INLINE void loadRhs(const RhsScalar* b, RhsPacketx4& dest) const
   {
     loadRhs(b, dest.B_0);
-    loadRhs(b + 1, dest.B1);
+    loadRhs(b + 1, dest.B1_Eigen);
     loadRhs(b + 2, dest.B2);
     loadRhs(b + 3, dest.B3);
   }
@@ -1008,7 +1008,7 @@ public:
 
   EIGEN_STRONG_INLINE void loadRhs(const RhsScalar* b, RhsPacketx4& dest) const
   {
-    pbroadcast4(b, dest.B_0, dest.B1, dest.B2, dest.B3);
+    pbroadcast4(b, dest.B_0, dest.B1_Eigen, dest.B2, dest.B3);
   }
 
   template<typename RhsPacketType>
@@ -1415,14 +1415,14 @@ template<int nr, Index LhsProgress, Index RhsProgress, typename LhsScalar, typen
 struct lhs_process_fraction_of_packet : lhs_process_one_packet<nr, LhsProgress, RhsProgress, LhsScalar, RhsScalar, ResScalar, AccPacket, LhsPacket, RhsPacket, ResPacket, GEBPTraits, LinearMapper, DataMapper>
 {
 
-EIGEN_STRONG_INLINE void peeled_kc_onestep(Index K, const LhsScalar* blA, const RhsScalar* blB, GEBPTraits traits, LhsPacket *A0, RhsPacket *B_0, RhsPacket *B1, RhsPacket *B2, RhsPacket *B3, AccPacket *C0, AccPacket *C1, AccPacket *C2, AccPacket *C3)
+EIGEN_STRONG_INLINE void peeled_kc_onestep(Index K, const LhsScalar* blA, const RhsScalar* blB, GEBPTraits traits, LhsPacket *A0, RhsPacket *B_0, RhsPacket *B1_Eigen, RhsPacket *B2, RhsPacket *B3, AccPacket *C0, AccPacket *C1, AccPacket *C2, AccPacket *C3)
   {
         EIGEN_ASM_COMMENT("begin step of gebp micro kernel 1X4");
         EIGEN_ASM_COMMENT("Note: these asm comments work around bug 935!");
         traits.loadLhsUnaligned(&blA[(0+1*K)*(LhsProgress)], *A0);
-        traits.broadcastRhs(&blB[(0+4*K)*RhsProgress], *B_0, *B1, *B2, *B3);
+        traits.broadcastRhs(&blB[(0+4*K)*RhsProgress], *B_0, *B1_Eigen, *B2, *B3);
         traits.madd(*A0, *B_0, *C0, *B_0);
-        traits.madd(*A0, *B1,  *C1, *B1);
+        traits.madd(*A0, *B1_Eigen,  *C1, *B1_Eigen);
         traits.madd(*A0, *B2,  *C2, *B2);
         traits.madd(*A0, *B3,  *C3, *B3);
         EIGEN_ASM_COMMENT("end step of gebp micro kernel 1X4");
@@ -1862,7 +1862,7 @@ void gebp_kernel<LhsScalar,RhsScalar,Index,DataMapper,mr,nr,ConjugateLhs,Conjuga
           for(Index k=0; k<peeled_kc; k+=pk)
           {
             EIGEN_ASM_COMMENT("begin gebp micro kernel 2pX1");
-            RhsPacket B_0, B1;
+            RhsPacket B_0, B1_Eigen;
         
 #define EIGEN_GEBGP_ONESTEP(K) \
             do {                                                                  \
@@ -1871,7 +1871,7 @@ void gebp_kernel<LhsScalar,RhsScalar,Index,DataMapper,mr,nr,ConjugateLhs,Conjuga
               traits.loadLhs(&blA[(0+2*K)*LhsProgress], A0);                      \
               traits.loadLhs(&blA[(1+2*K)*LhsProgress], A1);                      \
               traits.loadRhs(&blB[(0+K)*RhsProgress], B_0);                       \
-              traits.madd(A0, B_0, C0, B1, fix<0>);                               \
+              traits.madd(A0, B_0, C0, B1_Eigen, fix<0>);                               \
               traits.madd(A1, B_0, C4, B_0, fix<0>);                              \
               EIGEN_ASM_COMMENT("end step of gebp micro kernel 2pX1");            \
             } while(false)
@@ -1894,7 +1894,7 @@ void gebp_kernel<LhsScalar,RhsScalar,Index,DataMapper,mr,nr,ConjugateLhs,Conjuga
           // process remaining peeled loop
           for(Index k=peeled_kc; k<depth; k++)
           {
-            RhsPacket B_0, B1;
+            RhsPacket B_0, B1_Eigen;
             EIGEN_GEBGP_ONESTEP(0);
             blB += RhsProgress;
             blA += 2*Traits::LhsProgress;
@@ -2434,7 +2434,7 @@ EIGEN_DONT_INLINE void gemm_pack_rhs<Scalar, Index, DataMapper, nr, ColMajor, Co
 //       // skip what we have before
 //       if(PanelMode) count += 8 * offset;
 //       const Scalar* b0 = &rhs[(j2+0)*rhsStride];
-//       const Scalar* b1 = &rhs[(j2+1)*rhsStride];
+//       const Scalar* B1_Eigen = &rhs[(j2+1)*rhsStride];
 //       const Scalar* b2 = &rhs[(j2+2)*rhsStride];
 //       const Scalar* b3 = &rhs[(j2+3)*rhsStride];
 //       const Scalar* b4 = &rhs[(j2+4)*rhsStride];
@@ -2459,7 +2459,7 @@ EIGEN_DONT_INLINE void gemm_pack_rhs<Scalar, Index, DataMapper, nr, ColMajor, Co
 //       for(; k<depth; k++)
 //       {
 //         blockB[count+0] = cj(b0[k]);
-//         blockB[count+1] = cj(b1[k]);
+//         blockB[count+1] = cj(B1_Eigen[k]);
 //         blockB[count+2] = cj(b2[k]);
 //         blockB[count+3] = cj(b3[k]);
 //         blockB[count+4] = cj(b4[k]);
