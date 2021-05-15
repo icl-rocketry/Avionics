@@ -19,6 +19,9 @@
 
 #include "MadgwickAHRS.h"
 #include <math.h>
+#include <Eigen/Core>
+#include <Eigen/Eigen>
+#include <Eigen/Geometry>
 
 
 

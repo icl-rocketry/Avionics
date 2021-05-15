@@ -4,6 +4,9 @@
 definition of structs used within sensor classes
 */
 
+#include <Eigen/Core>
+#include <Eigen/Eigen>
+#include <Eigen/Geometry>
 
 
 
@@ -30,7 +33,7 @@ struct raw_measurements_t{
     5 = Time fix only*/
     uint8_t gps_fix; // gps fix type
     bool gps_updated; // flag if gps values have been updated
-    bool gps_valid; // fix valid?
+    bool gps_valid;
     uint16_t gps_year;
     uint8_t gps_month;
     uint8_t gps_day;
@@ -52,12 +55,17 @@ struct raw_measurements_t{
 };
 
 struct state_t{
-    float lat,lng;
-    float q[4]; //quaternion output
-    float ypr[3]; //yaw pitch roll
-    float x,y,z; //world coordinates(m) relative to launch position
-    float vx,vy,vz; //rocket frame of reference velocity m/s
-    float ax,ay,az; //rocket frame of reference aceleration m/s^2
+
+    Eigen::Quaternion<float> orientation;
+    Eigen::Matrix<float,3,1> eulerAngles;
+    Eigen::Matrix<float,3,1> position;
+    Eigen::Matrix<float,3,1> velocity;
+    Eigen::Matrix<float,3,1> acceleration;
+    Eigen::Matrix<float,3,1> angularRates;
+    float thrust; //estimated thrust
+
+
+
     uint8_t estimator_state; 
 };
 
