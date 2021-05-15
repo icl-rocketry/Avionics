@@ -1,0 +1,80 @@
+\hypertarget{class_soft_s_p_i}{}\doxysection{Soft\+SPI$<$ Miso\+Pin, Mosi\+Pin, Sck\+Pin, Mode $>$ Class Template Reference}
+\label{class_soft_s_p_i}\index{SoftSPI$<$ MisoPin, MosiPin, SckPin, Mode $>$@{SoftSPI$<$ MisoPin, MosiPin, SckPin, Mode $>$}}
+
+
+Fast software SPI.  
+
+
+
+
+{\ttfamily \#include $<$Soft\+SPI.\+h$>$}
+
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{class_soft_s_p_i_a8086e47eeb663d943e2281c814af67eb}{begin}} ()
+\item 
+\mbox{\hyperlink{class_soft_s_p_i_a4fc6640d31248d3d5791fecbfb5645c2}{\+\_\+\+\_\+attribute\+\_\+\+\_\+}} ((always\+\_\+inline)) uint8\+\_\+t receive()
+\item 
+\mbox{\hyperlink{class_soft_s_p_i_a380a5340916f1c263b9f23fbcd64e671}{\+\_\+\+\_\+attribute\+\_\+\+\_\+}} ((always\+\_\+inline)) void send(uint8\+\_\+t data)
+\item 
+\mbox{\hyperlink{class_soft_s_p_i_a1b5b7ef5f34ab792893b520bafb3029d}{\+\_\+\+\_\+attribute\+\_\+\+\_\+}} ((always\+\_\+inline)) uint8\+\_\+t transfer(uint8\+\_\+t tx\+Data)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\subsubsection*{template$<$uint8\+\_\+t Miso\+Pin, uint8\+\_\+t Mosi\+Pin, uint8\+\_\+t Sck\+Pin, uint8\+\_\+t Mode = 0$>$\newline
+class Soft\+SPI$<$ Miso\+Pin, Mosi\+Pin, Sck\+Pin, Mode $>$}
+
+Fast software SPI. 
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_soft_s_p_i_a4fc6640d31248d3d5791fecbfb5645c2}\label{class_soft_s_p_i_a4fc6640d31248d3d5791fecbfb5645c2}} 
+\index{SoftSPI$<$ MisoPin, MosiPin, SckPin, Mode $>$@{SoftSPI$<$ MisoPin, MosiPin, SckPin, Mode $>$}!\_\_attribute\_\_@{\_\_attribute\_\_}}
+\index{\_\_attribute\_\_@{\_\_attribute\_\_}!SoftSPI$<$ MisoPin, MosiPin, SckPin, Mode $>$@{SoftSPI$<$ MisoPin, MosiPin, SckPin, Mode $>$}}
+\doxysubsubsection{\texorpdfstring{\_\_attribute\_\_()}{\_\_attribute\_\_()}\hspace{0.1cm}{\footnotesize\ttfamily [1/3]}}
+{\footnotesize\ttfamily template$<$uint8\+\_\+t Miso\+Pin, uint8\+\_\+t Mosi\+Pin, uint8\+\_\+t Sck\+Pin, uint8\+\_\+t Mode = 0$>$ \\
+\mbox{\hyperlink{class_soft_s_p_i}{Soft\+SPI}}$<$ Miso\+Pin, Mosi\+Pin, Sck\+Pin, Mode $>$\+::\+\_\+\+\_\+attribute\+\_\+\+\_\+ (\begin{DoxyParamCaption}\item[{(always\+\_\+inline)}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Soft SPI receive byte. \begin{DoxyReturn}{Returns}
+Data byte received. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_soft_s_p_i_a1b5b7ef5f34ab792893b520bafb3029d}\label{class_soft_s_p_i_a1b5b7ef5f34ab792893b520bafb3029d}} 
+\index{SoftSPI$<$ MisoPin, MosiPin, SckPin, Mode $>$@{SoftSPI$<$ MisoPin, MosiPin, SckPin, Mode $>$}!\_\_attribute\_\_@{\_\_attribute\_\_}}
+\index{\_\_attribute\_\_@{\_\_attribute\_\_}!SoftSPI$<$ MisoPin, MosiPin, SckPin, Mode $>$@{SoftSPI$<$ MisoPin, MosiPin, SckPin, Mode $>$}}
+\doxysubsubsection{\texorpdfstring{\_\_attribute\_\_()}{\_\_attribute\_\_()}\hspace{0.1cm}{\footnotesize\ttfamily [2/3]}}
+{\footnotesize\ttfamily template$<$uint8\+\_\+t Miso\+Pin, uint8\+\_\+t Mosi\+Pin, uint8\+\_\+t Sck\+Pin, uint8\+\_\+t Mode = 0$>$ \\
+\mbox{\hyperlink{class_soft_s_p_i}{Soft\+SPI}}$<$ Miso\+Pin, Mosi\+Pin, Sck\+Pin, Mode $>$\+::\+\_\+\+\_\+attribute\+\_\+\+\_\+ (\begin{DoxyParamCaption}\item[{(always\+\_\+inline)}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Soft SPI transfer byte. 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em tx\+Data} & Data byte to send. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Data byte received. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_soft_s_p_i_a380a5340916f1c263b9f23fbcd64e671}\label{class_soft_s_p_i_a380a5340916f1c263b9f23fbcd64e671}} 
+\index{SoftSPI$<$ MisoPin, MosiPin, SckPin, Mode $>$@{SoftSPI$<$ MisoPin, MosiPin, SckPin, Mode $>$}!\_\_attribute\_\_@{\_\_attribute\_\_}}
+\index{\_\_attribute\_\_@{\_\_attribute\_\_}!SoftSPI$<$ MisoPin, MosiPin, SckPin, Mode $>$@{SoftSPI$<$ MisoPin, MosiPin, SckPin, Mode $>$}}
+\doxysubsubsection{\texorpdfstring{\_\_attribute\_\_()}{\_\_attribute\_\_()}\hspace{0.1cm}{\footnotesize\ttfamily [3/3]}}
+{\footnotesize\ttfamily template$<$uint8\+\_\+t Miso\+Pin, uint8\+\_\+t Mosi\+Pin, uint8\+\_\+t Sck\+Pin, uint8\+\_\+t Mode = 0$>$ \\
+\mbox{\hyperlink{class_soft_s_p_i}{Soft\+SPI}}$<$ Miso\+Pin, Mosi\+Pin, Sck\+Pin, Mode $>$\+::\+\_\+\+\_\+attribute\+\_\+\+\_\+ (\begin{DoxyParamCaption}\item[{(always\+\_\+inline)}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Soft SPI send byte. 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em data} & Data byte to send. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_soft_s_p_i_a8086e47eeb663d943e2281c814af67eb}\label{class_soft_s_p_i_a8086e47eeb663d943e2281c814af67eb}} 
+\index{SoftSPI$<$ MisoPin, MosiPin, SckPin, Mode $>$@{SoftSPI$<$ MisoPin, MosiPin, SckPin, Mode $>$}!begin@{begin}}
+\index{begin@{begin}!SoftSPI$<$ MisoPin, MosiPin, SckPin, Mode $>$@{SoftSPI$<$ MisoPin, MosiPin, SckPin, Mode $>$}}
+\doxysubsubsection{\texorpdfstring{begin()}{begin()}}
+{\footnotesize\ttfamily template$<$uint8\+\_\+t Miso\+Pin, uint8\+\_\+t Mosi\+Pin, uint8\+\_\+t Sck\+Pin, uint8\+\_\+t Mode = 0$>$ \\
+void \mbox{\hyperlink{class_soft_s_p_i}{Soft\+SPI}}$<$ Miso\+Pin, Mosi\+Pin, Sck\+Pin, Mode $>$\+::begin (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Initialize \mbox{\hyperlink{class_soft_s_p_i}{Soft\+SPI}} pins. 
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+/\+Users/kiran/\+Documents/\+Projects/\+ICLR/\+Avionics/\+Ricardo\+\_\+\+OS/\+Ricardo\+\_\+\+OS/lib/\+Sd\+Fat-\/master-\/adafruit\+\_\+fork/src/\+Spi\+Driver/\mbox{\hyperlink{_soft_s_p_i_8h}{Soft\+SPI.\+h}}\end{DoxyCompactItemize}

@@ -1,0 +1,126 @@
+\hypertarget{class_s_p_i_fram}{}\doxysection{SPIFram Class Reference}
+\label{class_s_p_i_fram}\index{SPIFram@{SPIFram}}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_s_p_i_fram_a0c6fb30fdc7b23c646fab6379e7d96df}\label{class_s_p_i_fram_a0c6fb30fdc7b23c646fab6379e7d96df}} 
+{\bfseries SPIFram} (uint8\+\_\+t cs=CS)
+\item 
+\mbox{\Hypertarget{class_s_p_i_fram_a5b5c0aa1460f4fbc37a32f2bc14ae893}\label{class_s_p_i_fram_a5b5c0aa1460f4fbc37a32f2bc14ae893}} 
+bool {\bfseries begin} (uint32\+\_\+t flash\+Chip\+Size=0)
+\item 
+\mbox{\Hypertarget{class_s_p_i_fram_a21c9d9d71aabc8ce34ea1dfc7151388e}\label{class_s_p_i_fram_a21c9d9d71aabc8ce34ea1dfc7151388e}} 
+void {\bfseries set\+Clock} (uint32\+\_\+t clock\+Speed)
+\item 
+\mbox{\Hypertarget{class_s_p_i_fram_a65202ca3b6cb3b1a1a3f7fd2474486c6}\label{class_s_p_i_fram_a65202ca3b6cb3b1a1a3f7fd2474486c6}} 
+bool {\bfseries libver} (uint8\+\_\+t $\ast$b1, uint8\+\_\+t $\ast$b2, uint8\+\_\+t $\ast$b3)
+\item 
+\mbox{\Hypertarget{class_s_p_i_fram_aae8bb43af3ab78eb22df3dec4f1776f0}\label{class_s_p_i_fram_aae8bb43af3ab78eb22df3dec4f1776f0}} 
+uint8\+\_\+t {\bfseries error} (bool verbosity=false)
+\item 
+\mbox{\Hypertarget{class_s_p_i_fram_a01d2231351005d4435412b45de8d4a98}\label{class_s_p_i_fram_a01d2231351005d4435412b45de8d4a98}} 
+uint16\+\_\+t {\bfseries get\+Man\+ID} (void)
+\item 
+\mbox{\Hypertarget{class_s_p_i_fram_a84f72d922a96c759b66848a20ae803c0}\label{class_s_p_i_fram_a84f72d922a96c759b66848a20ae803c0}} 
+uint32\+\_\+t {\bfseries get\+JEDECID} (void)
+\item 
+\mbox{\Hypertarget{class_s_p_i_fram_a04598a3902d95fe2d2d8b6fe579ee433}\label{class_s_p_i_fram_a04598a3902d95fe2d2d8b6fe579ee433}} 
+uint64\+\_\+t {\bfseries get\+Unique\+ID} (void)
+\item 
+\mbox{\Hypertarget{class_s_p_i_fram_a854fe28e3563dcf86c53ae056ee5af88}\label{class_s_p_i_fram_a854fe28e3563dcf86c53ae056ee5af88}} 
+uint32\+\_\+t {\bfseries get\+Address} (uint16\+\_\+t size)
+\item 
+\mbox{\Hypertarget{class_s_p_i_fram_a96e35938c4d4f11d09e03682e884dea1}\label{class_s_p_i_fram_a96e35938c4d4f11d09e03682e884dea1}} 
+uint16\+\_\+t {\bfseries sizeof\+Str} (\mbox{\hyperlink{class_string}{String}} \&input\+Str)
+\item 
+\mbox{\Hypertarget{class_s_p_i_fram_a481530bcfa44b7870daa6f0198449d41}\label{class_s_p_i_fram_a481530bcfa44b7870daa6f0198449d41}} 
+uint32\+\_\+t {\bfseries get\+Capacity} (void)
+\item 
+\mbox{\Hypertarget{class_s_p_i_fram_a3f58a92fb74782220a019d1228be97b1}\label{class_s_p_i_fram_a3f58a92fb74782220a019d1228be97b1}} 
+float {\bfseries function\+Run\+Time} (void)
+\item 
+\mbox{\Hypertarget{class_s_p_i_fram_af3560620104c94e7869b30f0f36fb49c}\label{class_s_p_i_fram_af3560620104c94e7869b30f0f36fb49c}} 
+bool {\bfseries write\+Byte} (uint32\+\_\+t \+\_\+addr, uint8\+\_\+t data, bool error\+Check=true)
+\item 
+\mbox{\Hypertarget{class_s_p_i_fram_a3c372d6ce03306d01846ac6192e1c281}\label{class_s_p_i_fram_a3c372d6ce03306d01846ac6192e1c281}} 
+uint8\+\_\+t {\bfseries read\+Byte} (uint32\+\_\+t \+\_\+addr, bool fast\+Read=false)
+\item 
+\mbox{\Hypertarget{class_s_p_i_fram_ac2f25ef0bbcce8aea16c38b61ac026df}\label{class_s_p_i_fram_ac2f25ef0bbcce8aea16c38b61ac026df}} 
+bool {\bfseries write\+Byte\+Array} (uint32\+\_\+t \+\_\+addr, uint8\+\_\+t $\ast$data\+\_\+buffer, size\+\_\+t buffer\+Size, bool error\+Check=true)
+\item 
+\mbox{\Hypertarget{class_s_p_i_fram_a395c7bf4cb84da13314e6716d6bbe7dd}\label{class_s_p_i_fram_a395c7bf4cb84da13314e6716d6bbe7dd}} 
+bool {\bfseries read\+Byte\+Array} (uint32\+\_\+t \+\_\+addr, uint8\+\_\+t $\ast$data\+\_\+buffer, size\+\_\+t buffer\+Size, bool fast\+Read=false)
+\item 
+\mbox{\Hypertarget{class_s_p_i_fram_ab33d8f330e006fc1a9bd0db1599e5d7b}\label{class_s_p_i_fram_ab33d8f330e006fc1a9bd0db1599e5d7b}} 
+bool {\bfseries write\+Char} (uint32\+\_\+t \+\_\+addr, int8\+\_\+t data, bool error\+Check=true)
+\item 
+\mbox{\Hypertarget{class_s_p_i_fram_aaf95116be1c0949e7ee9baddfacaa7b9}\label{class_s_p_i_fram_aaf95116be1c0949e7ee9baddfacaa7b9}} 
+int8\+\_\+t {\bfseries read\+Char} (uint32\+\_\+t \+\_\+addr, bool fast\+Read=false)
+\item 
+\mbox{\Hypertarget{class_s_p_i_fram_a12830fb38216411d2d1226fba04e2af6}\label{class_s_p_i_fram_a12830fb38216411d2d1226fba04e2af6}} 
+bool {\bfseries write\+Char\+Array} (uint32\+\_\+t \+\_\+addr, char $\ast$data\+\_\+buffer, size\+\_\+t buffer\+Size, bool error\+Check=true)
+\item 
+\mbox{\Hypertarget{class_s_p_i_fram_afd63cc108aeb6b9c931a0d77ced7dc6d}\label{class_s_p_i_fram_afd63cc108aeb6b9c931a0d77ced7dc6d}} 
+bool {\bfseries read\+Char\+Array} (uint32\+\_\+t \+\_\+addr, char $\ast$data\+\_\+buffer, size\+\_\+t buffer\+\_\+size, bool fast\+Read=false)
+\item 
+\mbox{\Hypertarget{class_s_p_i_fram_a0e9acf037452e2c703c967b535e337ff}\label{class_s_p_i_fram_a0e9acf037452e2c703c967b535e337ff}} 
+bool {\bfseries write\+Short} (uint32\+\_\+t \+\_\+addr, int16\+\_\+t data, bool error\+Check=true)
+\item 
+\mbox{\Hypertarget{class_s_p_i_fram_af13387a301bdcb6621f946ddf5ee375d}\label{class_s_p_i_fram_af13387a301bdcb6621f946ddf5ee375d}} 
+int16\+\_\+t {\bfseries read\+Short} (uint32\+\_\+t \+\_\+addr, bool fast\+Read=false)
+\item 
+\mbox{\Hypertarget{class_s_p_i_fram_aa8ab5e97a3963fc3e2793cb93b08b05d}\label{class_s_p_i_fram_aa8ab5e97a3963fc3e2793cb93b08b05d}} 
+bool {\bfseries write\+Word} (uint32\+\_\+t \+\_\+addr, uint16\+\_\+t data, bool error\+Check=true)
+\item 
+\mbox{\Hypertarget{class_s_p_i_fram_a09d9f086db85ff632e42cc0836571b4a}\label{class_s_p_i_fram_a09d9f086db85ff632e42cc0836571b4a}} 
+uint16\+\_\+t {\bfseries read\+Word} (uint32\+\_\+t \+\_\+addr, bool fast\+Read=false)
+\item 
+\mbox{\Hypertarget{class_s_p_i_fram_a468de0fd33fa134eb9d0bcbf28cf92b1}\label{class_s_p_i_fram_a468de0fd33fa134eb9d0bcbf28cf92b1}} 
+bool {\bfseries write\+Long} (uint32\+\_\+t \+\_\+addr, int32\+\_\+t data, bool error\+Check=true)
+\item 
+\mbox{\Hypertarget{class_s_p_i_fram_a51b1209bf325b6c03238b6e28ff51a0d}\label{class_s_p_i_fram_a51b1209bf325b6c03238b6e28ff51a0d}} 
+int32\+\_\+t {\bfseries read\+Long} (uint32\+\_\+t \+\_\+addr, bool fast\+Read=false)
+\item 
+\mbox{\Hypertarget{class_s_p_i_fram_a7e3a178e08d8a06fa3afd9493212959d}\label{class_s_p_i_fram_a7e3a178e08d8a06fa3afd9493212959d}} 
+bool {\bfseries write\+ULong} (uint32\+\_\+t \+\_\+addr, uint32\+\_\+t data, bool error\+Check=true)
+\item 
+\mbox{\Hypertarget{class_s_p_i_fram_a71a3be3596818533059aad21f419b9e1}\label{class_s_p_i_fram_a71a3be3596818533059aad21f419b9e1}} 
+uint32\+\_\+t {\bfseries read\+ULong} (uint32\+\_\+t \+\_\+addr, bool fast\+Read=false)
+\item 
+\mbox{\Hypertarget{class_s_p_i_fram_a787e87cde8d086d0ff4c622c8989f0be}\label{class_s_p_i_fram_a787e87cde8d086d0ff4c622c8989f0be}} 
+bool {\bfseries write\+Float} (uint32\+\_\+t \+\_\+addr, float data, bool error\+Check=true)
+\item 
+\mbox{\Hypertarget{class_s_p_i_fram_ace712c71d7afac7b39a08af8fbf9e5c4}\label{class_s_p_i_fram_ace712c71d7afac7b39a08af8fbf9e5c4}} 
+float {\bfseries read\+Float} (uint32\+\_\+t \+\_\+addr, bool fast\+Read=false)
+\item 
+\mbox{\Hypertarget{class_s_p_i_fram_a937852d5a17044679e355d0db28ebf4d}\label{class_s_p_i_fram_a937852d5a17044679e355d0db28ebf4d}} 
+bool {\bfseries write\+Str} (uint32\+\_\+t \+\_\+addr, \mbox{\hyperlink{class_string}{String}} \&data, bool error\+Check=true)
+\item 
+\mbox{\Hypertarget{class_s_p_i_fram_a7660f1ab8a3a610c3a43bf56df5fc252}\label{class_s_p_i_fram_a7660f1ab8a3a610c3a43bf56df5fc252}} 
+bool {\bfseries read\+Str} (uint32\+\_\+t \+\_\+addr, \mbox{\hyperlink{class_string}{String}} \&data, bool fast\+Read=false)
+\item 
+\mbox{\Hypertarget{class_s_p_i_fram_a4aba1baa83b6375097c7195d999fa1f8}\label{class_s_p_i_fram_a4aba1baa83b6375097c7195d999fa1f8}} 
+{\footnotesize template$<$class T $>$ }\\bool {\bfseries write\+Anything} (uint32\+\_\+t \+\_\+addr, const T \&data, bool error\+Check=true)
+\item 
+\mbox{\Hypertarget{class_s_p_i_fram_a1316cfa15415354f1b6aa0a7a2b589df}\label{class_s_p_i_fram_a1316cfa15415354f1b6aa0a7a2b589df}} 
+{\footnotesize template$<$class T $>$ }\\bool {\bfseries read\+Anything} (uint32\+\_\+t \+\_\+addr, T \&data, bool fast\+Read=false)
+\item 
+\mbox{\Hypertarget{class_s_p_i_fram_a98eb36329ab3599d2fe39cf907f0d77e}\label{class_s_p_i_fram_a98eb36329ab3599d2fe39cf907f0d77e}} 
+bool {\bfseries erase\+Section} (uint32\+\_\+t \+\_\+addr, uint32\+\_\+t \+\_\+sz)
+\item 
+\mbox{\Hypertarget{class_s_p_i_fram_a3844b3eef1fb5ab82efd179335143397}\label{class_s_p_i_fram_a3844b3eef1fb5ab82efd179335143397}} 
+bool {\bfseries erase\+Chip} (void)
+\item 
+\mbox{\Hypertarget{class_s_p_i_fram_ac25b8cf85755a8f0b6983c42b0e40c95}\label{class_s_p_i_fram_ac25b8cf85755a8f0b6983c42b0e40c95}} 
+bool {\bfseries power\+Down} (void)
+\item 
+\mbox{\Hypertarget{class_s_p_i_fram_a1d89d1e18f62d7f2620e05076c1a2c36}\label{class_s_p_i_fram_a1d89d1e18f62d7f2620e05076c1a2c36}} 
+bool {\bfseries power\+Up} (void)
+\end{DoxyCompactItemize}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+/\+Users/kiran/\+Documents/\+Projects/\+ICLR/\+Avionics/\+Ricardo\+\_\+\+OS/\+Ricardo\+\_\+\+OS/lib/\+SPIMemory-\/master/src/SPIFram.\+h\item 
+/\+Users/kiran/\+Documents/\+Projects/\+ICLR/\+Avionics/\+Ricardo\+\_\+\+OS/\+Ricardo\+\_\+\+OS/lib/\+SPIMemory-\/master/src/SPIFram.\+cpp\item 
+/\+Users/kiran/\+Documents/\+Projects/\+ICLR/\+Avionics/\+Ricardo\+\_\+\+OS/\+Ricardo\+\_\+\+OS/lib/\+SPIMemory-\/master/src/SPIFram\+IO.\+cpp\end{DoxyCompactItemize}

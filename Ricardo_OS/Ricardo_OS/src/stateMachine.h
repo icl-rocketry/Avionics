@@ -12,9 +12,18 @@ Written by the Electronics team, Imperial College London Rocketry
 #include "States/state.h"
 
 #include "Logging/systemstatus.h"
+
+#include "Logging/logController.h"
+#include "Logging/storageController.h"
+#include "Logging/configController.h"
+
 #include "Sensors/estimator.h"
 #include "Comms/networkManager.h"
 #include "Sensors/sensors.h"
+
+#include "Sound/tunezHandler.h"
+
+
 #include "SPI.h"
 #include "Wire.h"
 
@@ -34,15 +43,19 @@ class stateMachine {
     SPIClass vspi;
     TwoWire I2C;
 
+
+    StorageController storagecontroller;
+    LogController logcontroller;
+    ConfigController configcontroller;
+
     SystemStatus systemstatus;
     
+    NetworkManager networkmanager;
+
     Sensors sensors;
     Estimator estimator;
     
-    NetworkManager networkmanager;
-    
-    
-
+    TunezHandler tunezhandler;
   private:
     State* _currStatePtr;
 

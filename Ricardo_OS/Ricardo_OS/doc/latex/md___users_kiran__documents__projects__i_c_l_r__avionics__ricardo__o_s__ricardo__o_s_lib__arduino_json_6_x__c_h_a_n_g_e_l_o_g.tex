@@ -1,0 +1,1088 @@
+\hypertarget{md___users_kiran__documents__projects__i_c_l_r__avionics__ricardo__o_s__ricardo__o_s_lib__arduino_json_6_x__c_h_a_n_g_e_l_o_g_autotoc_md1}{}\doxysection{HEAD}\label{md___users_kiran__documents__projects__i_c_l_r__avionics__ricardo__o_s__ricardo__o_s_lib__arduino_json_6_x__c_h_a_n_g_e_l_o_g_autotoc_md1}
+
+\begin{DoxyItemize}
+\item Made {\ttfamily Json\+Document}\textquotesingle{}s destructor protected (issue \#1480)
+\end{DoxyItemize}\hypertarget{md___users_kiran__documents__projects__i_c_l_r__avionics__ricardo__o_s__ricardo__o_s_lib__arduino_json_6_x__c_h_a_n_g_e_l_o_g_autotoc_md2}{}\doxysection{v6.\+17.\+2 (2020-\/11-\/14)}\label{md___users_kiran__documents__projects__i_c_l_r__avionics__ricardo__o_s__ricardo__o_s_lib__arduino_json_6_x__c_h_a_n_g_e_l_o_g_autotoc_md2}
+
+\begin{DoxyItemize}
+\item Fixed invalid conversion error in {\ttfamily operator$\vert$(\+Json\+Variant, char$\ast$)} (issue \#1432)
+\item Changed the default value of {\ttfamily ARDUINOJSON\+\_\+\+ENABLE\+\_\+\+PROGMEM} (issue \#1433). It now checks that the {\ttfamily pgm\+\_\+read\+\_\+\+XXX} macros are defined before enabling {\ttfamily PROGMEM}.
+\end{DoxyItemize}\hypertarget{md___users_kiran__documents__projects__i_c_l_r__avionics__ricardo__o_s__ricardo__o_s_lib__arduino_json_6_x__c_h_a_n_g_e_l_o_g_autotoc_md3}{}\doxysection{v6.\+17.\+1 (2020-\/11-\/07)}\label{md___users_kiran__documents__projects__i_c_l_r__avionics__ricardo__o_s__ricardo__o_s_lib__arduino_json_6_x__c_h_a_n_g_e_l_o_g_autotoc_md3}
+
+\begin{DoxyItemize}
+\item Fixed error `ambiguous overload for \textquotesingle{}operator$\vert$'{\ttfamily (issue \#1411)}
+\item {\ttfamily Fixed}operator$\vert$(\+Member\+Proxy, Json\+Object)\`{} (issue \#1415)
+\item Allowed more than 32767 values in non-\/embedded mode (issue \#1414)
+\end{DoxyItemize}\hypertarget{md___users_kiran__documents__projects__i_c_l_r__avionics__ricardo__o_s__ricardo__o_s_lib__arduino_json_6_x__c_h_a_n_g_e_l_o_g_autotoc_md4}{}\doxysection{v6.\+17.\+0 (2020-\/10-\/19)}\label{md___users_kiran__documents__projects__i_c_l_r__avionics__ricardo__o_s__ricardo__o_s_lib__arduino_json_6_x__c_h_a_n_g_e_l_o_g_autotoc_md4}
+
+\begin{DoxyItemize}
+\item Added a build failure when nullptr is defined as a macro (issue \#1355)
+\item Added {\ttfamily Json\+Document\+::overflowed()} which tells if the memory pool was too small (issue \#1358)
+\item Added {\ttfamily Deserialization\+Error\+::\+Empty\+Input} which tells if the input was empty
+\item Added {\ttfamily Deserialization\+Error\+::f\+\_\+str()} which returns a {\ttfamily const \+\_\+\+\_\+\+Flash\+String\+Helper$\ast$} (issue \#846)
+\item Added {\ttfamily operator$\vert$(\+Json\+Variant\+Const, Json\+Variant\+Const)}
+\item Added filtering for Message\+Pack (issue \#1298, PR \#1394 by Luca Passarella)
+\item Moved float convertion tables to PROGMEM
+\item Fixed {\ttfamily Json\+Variant\+::set((char$\ast$)0)} which returned false instead of true (issue \#1368)
+\item Fixed error {\ttfamily No such file or directory \#include $<$WString.\+h$>$} (issue \#1381)
+\end{DoxyItemize}\hypertarget{md___users_kiran__documents__projects__i_c_l_r__avionics__ricardo__o_s__ricardo__o_s_lib__arduino_json_6_x__c_h_a_n_g_e_l_o_g_autotoc_md5}{}\doxysection{v6.\+16.\+1 (2020-\/08-\/04)}\label{md___users_kiran__documents__projects__i_c_l_r__avionics__ricardo__o_s__ricardo__o_s_lib__arduino_json_6_x__c_h_a_n_g_e_l_o_g_autotoc_md5}
+
+\begin{DoxyItemize}
+\item Fixed {\ttfamily deserialize\+Json()} that stopped reading after {\ttfamily \{\}} (issue \#1335)
+\end{DoxyItemize}\hypertarget{md___users_kiran__documents__projects__i_c_l_r__avionics__ricardo__o_s__ricardo__o_s_lib__arduino_json_6_x__c_h_a_n_g_e_l_o_g_autotoc_md6}{}\doxysection{v6.\+16.\+0 (2020-\/08-\/01)}\label{md___users_kiran__documents__projects__i_c_l_r__avionics__ricardo__o_s__ricardo__o_s_lib__arduino_json_6_x__c_h_a_n_g_e_l_o_g_autotoc_md6}
+
+\begin{DoxyItemize}
+\item Added comparisons ({\ttfamily $>$}, {\ttfamily $>$=}, {\ttfamily ==}, {\ttfamily !=}, {\ttfamily $<$}, and {\ttfamily $<$=}) between {\ttfamily Json\+Variant}s
+\item Added string deduplication (issue \#1303)
+\item Added {\ttfamily Json\+String\+::operator!=}
+\item Added wildcard key ({\ttfamily $\ast$}) for filters (issue \#1309)
+\item Set {\ttfamily ARDUINOJSON\+\_\+\+DECODE\+\_\+\+UNICODE} to {\ttfamily 1} by default
+\item Fixed {\ttfamily copy\+Array()} not working with {\ttfamily \mbox{\hyperlink{class_string}{String}}}, {\ttfamily Element\+Proxy}, and {\ttfamily Member\+Proxy}
+\item Fixed error {\ttfamily get\+Or\+Add\+Element is not a member of Element\+Proxy} (issue \#1311)
+\item Fixed excessive stack usage when compiled with {\ttfamily -\/Og} (issues \#1210 and \#1314)
+\item Fixed {\ttfamily Warning\mbox{[}Pa093\mbox{]}\+: implicit conversion from floating point to integer} on IAR compiler (PR \#1328 by @stawiski)
+\end{DoxyItemize}\hypertarget{md___users_kiran__documents__projects__i_c_l_r__avionics__ricardo__o_s__ricardo__o_s_lib__arduino_json_6_x__c_h_a_n_g_e_l_o_g_autotoc_md7}{}\doxysection{v6.\+15.\+2 (2020-\/05-\/15)}\label{md___users_kiran__documents__projects__i_c_l_r__avionics__ricardo__o_s__ricardo__o_s_lib__arduino_json_6_x__c_h_a_n_g_e_l_o_g_autotoc_md7}
+
+\begin{DoxyItemize}
+\item CMake\+: don\textquotesingle{}t build tests when imported in another project
+\item CMake\+: made project arch-\/independent
+\item Visual Studio\+: fixed error C2766 with flag {\ttfamily /\+Zc\+:\+\_\+\+\_\+cplusplus} (issue \#1250)
+\item Added support for {\ttfamily Json\+Document} to {\ttfamily copy\+Array()} (issue \#1255)
+\item Added support for {\ttfamily enum}s in {\ttfamily as$<$T$>$()} and {\ttfamily is$<$T$>$()} (issue \#1256)
+\item Added {\ttfamily Json\+Variant} as an input type for {\ttfamily deserialize\+Xxx()} ~\newline
+ For example, you can do\+: {\ttfamily deserialize\+Json(doc2, doc1\mbox{[}\char`\"{}payload\char`\"{}\mbox{]})}
+\item Break the build if using 64-\/bit integers with ARDUINOJSON\+\_\+\+USE\+\_\+\+LONG\+\_\+\+LONG==0
+\end{DoxyItemize}\hypertarget{md___users_kiran__documents__projects__i_c_l_r__avionics__ricardo__o_s__ricardo__o_s_lib__arduino_json_6_x__c_h_a_n_g_e_l_o_g_autotoc_md8}{}\doxysection{v6.\+15.\+1 (2020-\/04-\/08)}\label{md___users_kiran__documents__projects__i_c_l_r__avionics__ricardo__o_s__ricardo__o_s_lib__arduino_json_6_x__c_h_a_n_g_e_l_o_g_autotoc_md8}
+
+\begin{DoxyItemize}
+\item Fixed \char`\"{}maybe-\/uninitialized\char`\"{} warning (issue \#1217)
+\item Fixed \char`\"{}statement is unreachable\char`\"{} warning on IAR (issue \#1233)
+\item Fixed \char`\"{}pointless integer comparison\char`\"{} warning on IAR (issue \#1233)
+\item Added CMake \char`\"{}install\char`\"{} target (issue \#1209)
+\item Disabled alignment on AVR (issue \#1231)
+\end{DoxyItemize}\hypertarget{md___users_kiran__documents__projects__i_c_l_r__avionics__ricardo__o_s__ricardo__o_s_lib__arduino_json_6_x__c_h_a_n_g_e_l_o_g_autotoc_md9}{}\doxysection{v6.\+15.\+0 (2020-\/03-\/22)}\label{md___users_kiran__documents__projects__i_c_l_r__avionics__ricardo__o_s__ricardo__o_s_lib__arduino_json_6_x__c_h_a_n_g_e_l_o_g_autotoc_md9}
+
+\begin{DoxyItemize}
+\item Added {\ttfamily Deserialization\+Option\+::\+Filter} (issue \#959)
+\item Added example {\ttfamily Json\+Filter\+Example.\+ino}
+\item Changed the array subscript operator to automatically add missing elements
+\item Fixed \char`\"{}deprecated-\/copy\char`\"{} warning on GCC 9 (fixes \#1184)
+\item Fixed {\ttfamily Member\+Proxy\+::set(char\mbox{[}$\,$\mbox{]})} not duplicating the string (issue \#1191)
+\item Fixed enums serialized as booleans (issue \#1197)
+\item Fixed incorrect string comparison on some platforms (issue \#1198)
+\item Added move-\/constructor and move-\/assignment to {\ttfamily Basic\+Json\+Document}
+\item Added {\ttfamily Basic\+Json\+Document\+::garbage\+Collect()} (issue \#1195)
+\item Added {\ttfamily Static\+Json\+Document\+::garbage\+Collect()}
+\item Changed copy-\/constructor of {\ttfamily Basic\+Json\+Document} to preserve the capacity of the source.
+\item Removed copy-\/constructor of {\ttfamily Json\+Document} (issue \#1189)
+\end{DoxyItemize}
+
+\begin{quote}
+\#\#\# BREAKING CHANGES
+
+\end{quote}
+\hypertarget{md___users_kiran__documents__projects__i_c_l_r__avionics__ricardo__o_s__ricardo__o_s_lib__arduino_json_6_x__c_h_a_n_g_e_l_o_g_autotoc_md10}{}\doxysubsubsection{Copy-\/constructor of $<$tt$>$\+Basic\+Json\+Document$<$/tt$>$}\label{md___users_kiran__documents__projects__i_c_l_r__avionics__ricardo__o_s__ricardo__o_s_lib__arduino_json_6_x__c_h_a_n_g_e_l_o_g_autotoc_md10}
+In previous versions, the copy constructor of {\ttfamily Basic\+Json\+Document} looked at the source\textquotesingle{}s {\ttfamily memory\+Usage()} to choose its capacity. Now, the copy constructor of {\ttfamily Basic\+Json\+Document} uses the same capacity as the source.
+
+Example\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{ \{c++\}}
+\DoxyCodeLine{DynamicJsonDocument doc1(64);}
+\DoxyCodeLine{doc1.set(String("{}example"{}));}
+\DoxyCodeLine{}
+\DoxyCodeLine{DynamicJsonDocument doc2 = doc1;}
+\DoxyCodeLine{Serial.print(doc2.capacity());  // 8 with ArduinoJson 6.14}
+\DoxyCodeLine{                                // 64 with ArduinoJson 6.15}
+
+\end{DoxyCode}
+
+
+I made this change to get consistent results between copy-\/constructor and move-\/constructor, and whether RVO applies or not.
+
+If you use the copy-\/constructor to optimize your documents, you can use {\ttfamily garbage\+Collect()} or {\ttfamily shrink\+To\+Fit()} instead.\hypertarget{md___users_kiran__documents__projects__i_c_l_r__avionics__ricardo__o_s__ricardo__o_s_lib__arduino_json_6_x__c_h_a_n_g_e_l_o_g_autotoc_md11}{}\doxysubsubsection{Copy-\/constructor of $<$tt$>$\+Json\+Document$<$/tt$>$}\label{md___users_kiran__documents__projects__i_c_l_r__avionics__ricardo__o_s__ricardo__o_s_lib__arduino_json_6_x__c_h_a_n_g_e_l_o_g_autotoc_md11}
+In previous versions, it was possible to create a function that take a {\ttfamily Json\+Document} by value.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{ \{c++\}}
+\DoxyCodeLine{void myFunction(JsonDocument doc) \{\}}
+
+\end{DoxyCode}
+
+
+This function gives the wrong clues because it doesn\textquotesingle{}t receive a copy of the {\ttfamily Json\+Document}, only a sliced version. It worked because the copy constructor copied the internal pointers, but it was an accident.
+
+From now, if you need to pass a {\ttfamily Json\+Document} to a function, you must use a reference\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{ \{c++\}}
+\DoxyCodeLine{void myFunction(JsonDocument\& doc) \{\}}
+
+\end{DoxyCode}
+ \hypertarget{md___users_kiran__documents__projects__i_c_l_r__avionics__ricardo__o_s__ricardo__o_s_lib__arduino_json_6_x__c_h_a_n_g_e_l_o_g_autotoc_md12}{}\doxysection{v6.\+14.\+1 (2020-\/01-\/27)}\label{md___users_kiran__documents__projects__i_c_l_r__avionics__ricardo__o_s__ricardo__o_s_lib__arduino_json_6_x__c_h_a_n_g_e_l_o_g_autotoc_md12}
+
+\begin{DoxyItemize}
+\item Fixed regression in UTF16 decoding (issue \#1173)
+\item Fixed {\ttfamily contains\+Key()} on {\ttfamily Json\+Variant\+Const}
+\item Added {\ttfamily get\+Element()} and {\ttfamily get\+Member()} to {\ttfamily Json\+Variant\+Const}
+\end{DoxyItemize}\hypertarget{md___users_kiran__documents__projects__i_c_l_r__avionics__ricardo__o_s__ricardo__o_s_lib__arduino_json_6_x__c_h_a_n_g_e_l_o_g_autotoc_md13}{}\doxysection{v6.\+14.\+0 (2020-\/01-\/16)}\label{md___users_kiran__documents__projects__i_c_l_r__avionics__ricardo__o_s__ricardo__o_s_lib__arduino_json_6_x__c_h_a_n_g_e_l_o_g_autotoc_md13}
+
+\begin{DoxyItemize}
+\item Added {\ttfamily Basic\+Json\+Document\+::shrink\+To\+Fit()}
+\item Added support of {\ttfamily uint8\+\_\+t} for {\ttfamily serialize\+Json()}, {\ttfamily serialize\+Json\+Pretty()}, and {\ttfamily serialize\+Msg\+Pack()} (issue \#1142)
+\item Added {\ttfamily ARDUINOJSON\+\_\+\+ENABLE\+\_\+\+COMMENTS} to enable support for comments (defaults to 0)
+\item Auto enable support for {\ttfamily std\+::string} and {\ttfamily std\+::stream} on modern compilers (issue \#1156) (No need to define {\ttfamily ARDUINOJSON\+\_\+\+ENABLE\+\_\+\+STD\+\_\+\+STRING} and {\ttfamily ARDUINOJSON\+\_\+\+ENABLE\+\_\+\+STD\+\_\+\+STREAM} anymore)
+\item Improved decoding of UTF-\/16 surrogate pairs (PR \#1157 by @kaysievers) (Arduino\+Json now produces standard UTF-\/8 instead of CESU-\/8)
+\item Added {\ttfamily measure\+Json}, {\ttfamily measure\+Json\+Pretty}, and {\ttfamily measure\+Msg\+Pack} to {\ttfamily keywords.\+txt} (This file is used for syntax highlighting in the Arduino IDE)
+\item Fixed {\ttfamily variant.\+is$<$nullptr\+\_\+t$>$()}
+\item Fixed value returned by {\ttfamily serialize\+Json()}, {\ttfamily serialize\+Json\+Pretty()}, and {\ttfamily serialize\+Msg\+Pack()} when writing to a {\ttfamily \mbox{\hyperlink{class_string}{String}}}
+\item Improved speed of {\ttfamily serialize\+Json()}, {\ttfamily serialize\+Json\+Pretty()}, and {\ttfamily serialize\+Msg\+Pack()} when writing to a {\ttfamily \mbox{\hyperlink{class_string}{String}}}
+\end{DoxyItemize}
+
+\begin{quote}
+\#\#\# BREAKING CHANGES
+
+\end{quote}
+\hypertarget{md___users_kiran__documents__projects__i_c_l_r__avionics__ricardo__o_s__ricardo__o_s_lib__arduino_json_6_x__c_h_a_n_g_e_l_o_g_autotoc_md14}{}\doxysubsubsection{Comments}\label{md___users_kiran__documents__projects__i_c_l_r__avionics__ricardo__o_s__ricardo__o_s_lib__arduino_json_6_x__c_h_a_n_g_e_l_o_g_autotoc_md14}
+Support for comments in input is now optional and disabled by default.
+
+If you need support for comments, you must defined {\ttfamily ARDUINOJSON\+\_\+\+ENABLE\+\_\+\+COMMENTS} to {\ttfamily 1}; otherwise, you\textquotesingle{}ll receive {\ttfamily Invalid\+Input} errors.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{ \{c++\}}
+\DoxyCodeLine{\#define ARDUINOJSON\_ENABLE\_COMMENTS 1}
+\DoxyCodeLine{\#include <ArduinoJson.h>}
+
+\end{DoxyCode}
+ \hypertarget{md___users_kiran__documents__projects__i_c_l_r__avionics__ricardo__o_s__ricardo__o_s_lib__arduino_json_6_x__c_h_a_n_g_e_l_o_g_autotoc_md15}{}\doxysection{v6.\+13.\+0 (2019-\/11-\/01)}\label{md___users_kiran__documents__projects__i_c_l_r__avionics__ricardo__o_s__ricardo__o_s_lib__arduino_json_6_x__c_h_a_n_g_e_l_o_g_autotoc_md15}
+
+\begin{DoxyItemize}
+\item Added support for custom writer/reader classes (issue \#1088)
+\item Added conversion from {\ttfamily Json\+Array} and {\ttfamily Json\+Object} to {\ttfamily bool}, to be consistent with {\ttfamily Json\+Variant}
+\item Fixed {\ttfamily deserialize\+Json()} when input contains duplicate keys (issue \#1095)
+\item Improved {\ttfamily deserialize\+Msg\+Pack()} speed by reading several bytes at once
+\item Added detection of Atmel AVR8/\+GNU C Compiler (issue \#1112)
+\item Fixed deserializer that stopped reading at the first {\ttfamily 0x\+FF} (PR \#1118 by @mikee47)
+\item Fixed dangling reference in copies of {\ttfamily Member\+Proxy} and {\ttfamily Element\+Proxy} (issue \#1120)
+\end{DoxyItemize}\hypertarget{md___users_kiran__documents__projects__i_c_l_r__avionics__ricardo__o_s__ricardo__o_s_lib__arduino_json_6_x__c_h_a_n_g_e_l_o_g_autotoc_md16}{}\doxysection{v6.\+12.\+0 (2019-\/09-\/05)}\label{md___users_kiran__documents__projects__i_c_l_r__avionics__ricardo__o_s__ricardo__o_s_lib__arduino_json_6_x__c_h_a_n_g_e_l_o_g_autotoc_md16}
+
+\begin{DoxyItemize}
+\item Use absolute instead of relative includes (issue \#1072)
+\item Changed {\ttfamily Json\+Variant\+::as$<$bool$>$()} to return {\ttfamily true} for any non-\/null value (issue \#1005)
+\item Moved ancillary files to {\ttfamily extras/} (issue \#1011)
+\end{DoxyItemize}\hypertarget{md___users_kiran__documents__projects__i_c_l_r__avionics__ricardo__o_s__ricardo__o_s_lib__arduino_json_6_x__c_h_a_n_g_e_l_o_g_autotoc_md17}{}\doxysection{v6.\+11.\+5 (2019-\/08-\/23)}\label{md___users_kiran__documents__projects__i_c_l_r__avionics__ricardo__o_s__ricardo__o_s_lib__arduino_json_6_x__c_h_a_n_g_e_l_o_g_autotoc_md17}
+
+\begin{DoxyItemize}
+\item Added fallback implementations of {\ttfamily strlen\+\_\+\+P()}, {\ttfamily strncmp\+\_\+\+P()}, {\ttfamily strcmp\+\_\+\+P()}, and {\ttfamily memcpy\+\_\+\+P()} (issue \#1073)
+\end{DoxyItemize}\hypertarget{md___users_kiran__documents__projects__i_c_l_r__avionics__ricardo__o_s__ricardo__o_s_lib__arduino_json_6_x__c_h_a_n_g_e_l_o_g_autotoc_md18}{}\doxysection{v6.\+11.\+4 (2019-\/08-\/12)}\label{md___users_kiran__documents__projects__i_c_l_r__avionics__ricardo__o_s__ricardo__o_s_lib__arduino_json_6_x__c_h_a_n_g_e_l_o_g_autotoc_md18}
+
+\begin{DoxyItemize}
+\item Added {\ttfamily measure\+Json()} to the {\ttfamily Arduino\+Json} namespace (PR \#1069 by @nomis)
+\item Added support for {\ttfamily basic\+\_\+string$<$char, traits, allocator$>$} (issue \#1045)
+\item Fixed example {\ttfamily Json\+Config\+File.\+ino} for ESP8266
+\item Include {\ttfamily \mbox{\hyperlink{_arduino_8h_source}{Arduino.\+h}}} if {\ttfamily ARDUINO} is defined (PR \#1071 by @nomis)
+\end{DoxyItemize}\hypertarget{md___users_kiran__documents__projects__i_c_l_r__avionics__ricardo__o_s__ricardo__o_s_lib__arduino_json_6_x__c_h_a_n_g_e_l_o_g_autotoc_md19}{}\doxysection{v6.\+11.\+3 (2019-\/07-\/22)}\label{md___users_kiran__documents__projects__i_c_l_r__avionics__ricardo__o_s__ricardo__o_s_lib__arduino_json_6_x__c_h_a_n_g_e_l_o_g_autotoc_md19}
+
+\begin{DoxyItemize}
+\item Added operators {\ttfamily ==} and {\ttfamily !=} for {\ttfamily Json\+Document}, {\ttfamily Element\+Proxy}, and {\ttfamily Member\+Proxy}
+\item Fixed comparison of {\ttfamily Json\+Variant} when one contains a linked string and the other contains an owned string (issue \#1051)
+\end{DoxyItemize}\hypertarget{md___users_kiran__documents__projects__i_c_l_r__avionics__ricardo__o_s__ricardo__o_s_lib__arduino_json_6_x__c_h_a_n_g_e_l_o_g_autotoc_md20}{}\doxysection{v6.\+11.\+2 (2019-\/07-\/08)}\label{md___users_kiran__documents__projects__i_c_l_r__avionics__ricardo__o_s__ricardo__o_s_lib__arduino_json_6_x__c_h_a_n_g_e_l_o_g_autotoc_md20}
+
+\begin{DoxyItemize}
+\item Fixed assignment of {\ttfamily Json\+Document} to {\ttfamily Json\+Variant} (issue \#1023)
+\item Fix invalid conversion error on Particle Argon (issue \#1035)
+\end{DoxyItemize}\hypertarget{md___users_kiran__documents__projects__i_c_l_r__avionics__ricardo__o_s__ricardo__o_s_lib__arduino_json_6_x__c_h_a_n_g_e_l_o_g_autotoc_md21}{}\doxysection{v6.\+11.\+1 (2019-\/06-\/21)}\label{md___users_kiran__documents__projects__i_c_l_r__avionics__ricardo__o_s__ricardo__o_s_lib__arduino_json_6_x__c_h_a_n_g_e_l_o_g_autotoc_md21}
+
+\begin{DoxyItemize}
+\item Fixed {\ttfamily serialized()} not working with Flash strings (issue \#1030)
+\end{DoxyItemize}\hypertarget{md___users_kiran__documents__projects__i_c_l_r__avionics__ricardo__o_s__ricardo__o_s_lib__arduino_json_6_x__c_h_a_n_g_e_l_o_g_autotoc_md22}{}\doxysection{v6.\+11.\+0 (2019-\/05-\/26)}\label{md___users_kiran__documents__projects__i_c_l_r__avionics__ricardo__o_s__ricardo__o_s_lib__arduino_json_6_x__c_h_a_n_g_e_l_o_g_autotoc_md22}
+
+\begin{DoxyItemize}
+\item Fixed {\ttfamily deserialize\+Json()} silently accepting a {\ttfamily Stream$\ast$} (issue \#978)
+\item Fixed invalid result from {\ttfamily operator$\vert$} (issue \#981)
+\item Made {\ttfamily deserialize\+Json()} more picky about trailing characters (issue \#980)
+\item Added {\ttfamily ARDUINOJSON\+\_\+\+ENABLE\+\_\+\+NAN} (default=0) to enable NaN in JSON (issue \#973)
+\item Added {\ttfamily ARDUINOJSON\+\_\+\+ENABLE\+\_\+\+INFINITY} (default=0) to enable Infinity in JSON
+\item Removed implicit conversion in comparison operators (issue \#998)
+\item Added lexicographical comparison for {\ttfamily Json\+Variant}
+\item Added support for {\ttfamily nullptr} (issue \#998)
+\end{DoxyItemize}
+
+\begin{quote}
+\#\#\# BREAKING CHANGES
+
+\end{quote}
+\hypertarget{md___users_kiran__documents__projects__i_c_l_r__avionics__ricardo__o_s__ricardo__o_s_lib__arduino_json_6_x__c_h_a_n_g_e_l_o_g_autotoc_md23}{}\doxysubsubsection{Na\+N and Infinity}\label{md___users_kiran__documents__projects__i_c_l_r__avionics__ricardo__o_s__ricardo__o_s_lib__arduino_json_6_x__c_h_a_n_g_e_l_o_g_autotoc_md23}
+The JSON specification allows neither NaN not Infinity, but previous versions of Arduino\+Json supported it. Now, Arduino\+Json behaves like most other libraries\+: a NaN or and Infinity in the {\ttfamily Json\+Document}, becomes a {\ttfamily null} in the output JSON. Also, {\ttfamily deserialize\+Json()} returns {\ttfamily Invalid\+Input} if the JSON document contains NaN or Infinity.
+
+This version still supports NaN and Infinity in JSON documents, but it\textquotesingle{}s disabled by default to be compatible with other JSON parsers. If you need the old behavior back, define {\ttfamily ARDUINOJSON\+\_\+\+ENABLE\+\_\+\+NAN} and {\ttfamily ARDUINOJSON\+\_\+\+ENABLE\+\_\+\+INFINITY} to {\ttfamily 1};\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{ \{c++\}}
+\DoxyCodeLine{\#define ARDUINOJSON\_ENABLE\_NAN 1}
+\DoxyCodeLine{\#define ARDUINOJSON\_ENABLE\_INFINITY 1}
+\DoxyCodeLine{\#include <ArduinoJson.h>}
+
+\end{DoxyCode}
+\hypertarget{md___users_kiran__documents__projects__i_c_l_r__avionics__ricardo__o_s__ricardo__o_s_lib__arduino_json_6_x__c_h_a_n_g_e_l_o_g_autotoc_md24}{}\doxysubsubsection{The \char`\"{}or\char`\"{} operator}\label{md___users_kiran__documents__projects__i_c_l_r__avionics__ricardo__o_s__ricardo__o_s_lib__arduino_json_6_x__c_h_a_n_g_e_l_o_g_autotoc_md24}
+This version slightly changes the behavior of the $\vert$ operator when the variant contains a float and the user requests an integer.
+
+Older versions returned the floating point value truncated. Now, it returns the default value.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{ \{c++\}}
+\DoxyCodeLine{// suppose variant contains 1.2}
+\DoxyCodeLine{int value = variant | 3;}
+\DoxyCodeLine{}
+\DoxyCodeLine{// old behavior:}
+\DoxyCodeLine{value == 1}
+\DoxyCodeLine{}
+\DoxyCodeLine{// new behavior}
+\DoxyCodeLine{value == 3}
+
+\end{DoxyCode}
+
+
+If you need the old behavior, you must add {\ttfamily if (variant.\+is$<$float$>$())}. \hypertarget{md___users_kiran__documents__projects__i_c_l_r__avionics__ricardo__o_s__ricardo__o_s_lib__arduino_json_6_x__c_h_a_n_g_e_l_o_g_autotoc_md25}{}\doxysection{v6.\+10.\+1 (2019-\/04-\/23)}\label{md___users_kiran__documents__projects__i_c_l_r__avionics__ricardo__o_s__ricardo__o_s_lib__arduino_json_6_x__c_h_a_n_g_e_l_o_g_autotoc_md25}
+
+\begin{DoxyItemize}
+\item Fixed error \char`\"{}attributes are not allowed on a function-\/definition\char`\"{}
+\item Fixed {\ttfamily deserialize\+Json()} not being picky enough (issue \#969)
+\item Fixed error \char`\"{}no matching function for call to write(uint8\+\_\+t)\char`\"{} (issue \#972)
+\end{DoxyItemize}\hypertarget{md___users_kiran__documents__projects__i_c_l_r__avionics__ricardo__o_s__ricardo__o_s_lib__arduino_json_6_x__c_h_a_n_g_e_l_o_g_autotoc_md26}{}\doxysection{v6.\+10.\+0 (2019-\/03-\/22)}\label{md___users_kiran__documents__projects__i_c_l_r__avionics__ricardo__o_s__ricardo__o_s_lib__arduino_json_6_x__c_h_a_n_g_e_l_o_g_autotoc_md26}
+
+\begin{DoxyItemize}
+\item Fixed an integer overflow in the JSON deserializer
+\item Added overflow handling in {\ttfamily Json\+Variant\+::as$<$T$>$()} and {\ttfamily Json\+Variant\+::is$<$T$>$()}.
+\begin{DoxyItemize}
+\item {\ttfamily as$<$T$>$()} returns {\ttfamily 0} if the integer {\ttfamily T} overflows
+\item {\ttfamily is$<$T$>$()} returns {\ttfamily false} if the integer {\ttfamily T} overflows
+\end{DoxyItemize}
+\item Added {\ttfamily Basic\+Json\+Document} to support custom allocator (issue \#876)
+\item Added {\ttfamily Json\+Document\+::contains\+Key()} (issue \#938)
+\item Added {\ttfamily Json\+Variant\+::contains\+Key()}
+\end{DoxyItemize}\hypertarget{md___users_kiran__documents__projects__i_c_l_r__avionics__ricardo__o_s__ricardo__o_s_lib__arduino_json_6_x__c_h_a_n_g_e_l_o_g_autotoc_md27}{}\doxysection{v6.\+9.\+1 (2019-\/03-\/01)}\label{md___users_kiran__documents__projects__i_c_l_r__avionics__ricardo__o_s__ricardo__o_s_lib__arduino_json_6_x__c_h_a_n_g_e_l_o_g_autotoc_md27}
+
+\begin{DoxyItemize}
+\item Fixed warning \char`\"{}unused variable\char`\"{} with GCC 4.\+4 (issue \#912)
+\item Fixed warning \char`\"{}cast  increases required alignment\char`\"{} (issue \#914)
+\item Fixed warning \char`\"{}conversion may alter value\char`\"{} (issue \#914)
+\item Fixed naming conflict with \char`\"{}\+CAPACITY\char`\"{} (issue \#839)
+\item Muted warning \char`\"{}will change in GCC 7.\+1\char`\"{} (issue \#914)
+\item Added a clear error message for {\ttfamily Static\+Json\+Buffer} and {\ttfamily Dynamic\+Json\+Buffer}
+\item Marked Arduino\+Json.\+h as a \char`\"{}system header\char`\"{}
+\end{DoxyItemize}\hypertarget{md___users_kiran__documents__projects__i_c_l_r__avionics__ricardo__o_s__ricardo__o_s_lib__arduino_json_6_x__c_h_a_n_g_e_l_o_g_autotoc_md28}{}\doxysection{v6.\+9.\+0 (2019-\/02-\/26)}\label{md___users_kiran__documents__projects__i_c_l_r__avionics__ricardo__o_s__ricardo__o_s_lib__arduino_json_6_x__c_h_a_n_g_e_l_o_g_autotoc_md28}
+
+\begin{DoxyItemize}
+\item Decode escaped Unicode characters like \textbackslash{}u00\+DE (issue \#304, PR \#791) Many thanks to Daniel Schulte (aka @trilader) who implemented this feature.
+\item Added option ARDUINOJSON\+\_\+\+DECODE\+\_\+\+UNICODE to enable it
+\item Converted {\ttfamily Json\+Array\+::copy\+From()/copy\+To()} to free functions {\ttfamily copy\+Array()}
+\item Renamed {\ttfamily Json\+Array\+::copy\+From()} and {\ttfamily Json\+Object\+::copy\+From()} to {\ttfamily set()}
+\item Renamed {\ttfamily Json\+Array\+::get()} to {\ttfamily get\+Element()}
+\item Renamed {\ttfamily Json\+Array\+::add()} (without arg) to {\ttfamily add\+Element()}
+\item Renamed {\ttfamily Json\+Object\+::get()} to {\ttfamily get\+Member()}
+\item Renamed {\ttfamily Json\+Object\+::get\+Or\+Create()} to {\ttfamily get\+Or\+Add\+Member()}
+\item Fixed {\ttfamily Json\+Variant\+::is\+Null()} not returning {\ttfamily true} after {\ttfamily set((char$\ast$)0)}
+\item Fixed segfault after {\ttfamily variant.\+set(serialized((char$\ast$)0))}
+\item Detect {\ttfamily Incomplete\+Input} in {\ttfamily false}, {\ttfamily true}, and {\ttfamily null}
+\item Added {\ttfamily Json\+Document\+::size()}
+\item Added {\ttfamily Json\+Document\+::remove()}
+\item Added {\ttfamily Json\+Variant\+::clear()}
+\item Added {\ttfamily Json\+Variant\+::remove()}
+\end{DoxyItemize}\hypertarget{md___users_kiran__documents__projects__i_c_l_r__avionics__ricardo__o_s__ricardo__o_s_lib__arduino_json_6_x__c_h_a_n_g_e_l_o_g_autotoc_md29}{}\doxysection{v6.\+8.\+0-\/beta (2019-\/01-\/30)}\label{md___users_kiran__documents__projects__i_c_l_r__avionics__ricardo__o_s__ricardo__o_s_lib__arduino_json_6_x__c_h_a_n_g_e_l_o_g_autotoc_md29}
+
+\begin{DoxyItemize}
+\item Import functions in the Arduino\+Json namespace to get clearer errors
+\item Improved syntax highlighting in Arduino IDE
+\item Removed default capacity of {\ttfamily Dynamic\+Json\+Document}
+\item {\ttfamily Json\+Array\+::copy\+From()} accepts {\ttfamily Json\+Array\+Const}
+\item {\ttfamily Json\+Variant\+::set()} accepts {\ttfamily Json\+Array\+Const} and {\ttfamily Json\+Object\+Const}
+\item {\ttfamily Json\+Document} was missing in the Arduino\+Json namespace
+\item Added {\ttfamily memory\+Usage()} to {\ttfamily Json\+Array}, {\ttfamily Json\+Object}, and {\ttfamily Json\+Variant}
+\item Added {\ttfamily nesting()} to {\ttfamily Json\+Array}, {\ttfamily Json\+Document}, {\ttfamily Json\+Object}, and {\ttfamily Json\+Variant}
+\item Replaced {\ttfamily Json\+Document\+::nesting\+Limit} with an additional parameter to {\ttfamily deserialize\+Json()} and {\ttfamily deserialize\+Msg\+Pack()}
+\item Fixed uninitialized variant in {\ttfamily Json\+Document}
+\item Fixed {\ttfamily Static\+Json\+Document} copy constructor and copy assignment
+\item The copy constructor of {\ttfamily Dynamic\+Json\+Document} chooses the capacity according to the memory usage of the source, not from the capacity of the source.
+\item Added the ability to create/assign a {\ttfamily Static\+Json\+Document}/{\ttfamily Dynamic\+Json\+Document} from a {\ttfamily Json\+Array}/{\ttfamily Json\+Object}/{\ttfamily Json\+Variant}
+\item Added {\ttfamily Json\+Document\+::is\+Null()}
+\item Added {\ttfamily Json\+Document\+::operator\mbox{[}$\,$\mbox{]}}
+\item Added {\ttfamily ARDUINOJSON\+\_\+\+TAB} to configure the indentation character
+\item Reduced the size of the pretty JSON serializer
+\item Added {\ttfamily add()}, {\ttfamily create\+Nested\+Array()} and {\ttfamily create\+Nested\+Object()} to {\ttfamily Json\+Variant}
+\item {\ttfamily Json\+Variant} automatically promotes to {\ttfamily Json\+Object} or {\ttfamily Json\+Array} on write. Calling {\ttfamily Json\+Variant\+::to$<$T$>$()} is not required anymore.
+\item {\ttfamily Json\+Document} now support the same operations as {\ttfamily Json\+Variant}. Calling {\ttfamily Json\+Document\+::as$<$T$>$()} is not required anymore.
+\item Fixed example {\ttfamily Json\+Http\+Client.\+ino}
+\item User can now use a {\ttfamily Json\+String} as a key or a value
+\end{DoxyItemize}
+
+\begin{quote}
+\#\#\# BREAKING CHANGES
+
+\end{quote}
+\hypertarget{md___users_kiran__documents__projects__i_c_l_r__avionics__ricardo__o_s__ricardo__o_s_lib__arduino_json_6_x__c_h_a_n_g_e_l_o_g_autotoc_md30}{}\doxysubsubsection{$<$tt$>$\+Dynamic\+Json\+Document$<$/tt$>$\textquotesingle{}s constructor}\label{md___users_kiran__documents__projects__i_c_l_r__avionics__ricardo__o_s__ricardo__o_s_lib__arduino_json_6_x__c_h_a_n_g_e_l_o_g_autotoc_md30}
+The parameter to the constructor of {\ttfamily Dynamic\+Json\+Document} is now mandatory
+
+Old code\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{ \{c++\}}
+\DoxyCodeLine{DynamicJsonDocument doc;}
+
+\end{DoxyCode}
+
+
+New code\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{ \{c++\}}
+\DoxyCodeLine{DynamicJsonDocument doc(1024);}
+
+\end{DoxyCode}
+\hypertarget{md___users_kiran__documents__projects__i_c_l_r__avionics__ricardo__o_s__ricardo__o_s_lib__arduino_json_6_x__c_h_a_n_g_e_l_o_g_autotoc_md31}{}\doxysubsubsection{Nesting limit}\label{md___users_kiran__documents__projects__i_c_l_r__avionics__ricardo__o_s__ricardo__o_s_lib__arduino_json_6_x__c_h_a_n_g_e_l_o_g_autotoc_md31}
+{\ttfamily Json\+Document\+::nesting\+Limit} was replaced with a new parameter to {\ttfamily deserialize\+Json()} and {\ttfamily deserialize\+Msg\+Pack()}.
+
+Old code\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{ \{c++\}}
+\DoxyCodeLine{doc.nestingLimit = 15;}
+\DoxyCodeLine{deserializeJson(doc, input);}
+
+\end{DoxyCode}
+
+
+New code\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{ \{c++\}}
+\DoxyCodeLine{deserializeJson(doc, input, DeserializationOption::NestingLimit(15));}
+
+\end{DoxyCode}
+ \hypertarget{md___users_kiran__documents__projects__i_c_l_r__avionics__ricardo__o_s__ricardo__o_s_lib__arduino_json_6_x__c_h_a_n_g_e_l_o_g_autotoc_md32}{}\doxysection{v6.\+7.\+0-\/beta (2018-\/12-\/07)}\label{md___users_kiran__documents__projects__i_c_l_r__avionics__ricardo__o_s__ricardo__o_s_lib__arduino_json_6_x__c_h_a_n_g_e_l_o_g_autotoc_md32}
+
+\begin{DoxyItemize}
+\item Removed the automatic expansion of {\ttfamily Dynamic\+Json\+Document}, it now has a fixed capacity.
+\item Restored the monotonic allocator because the code was getting too big
+\item Reduced the memory usage
+\item Reduced the code size
+\item Renamed {\ttfamily Json\+Key} to {\ttfamily Json\+String}
+\item Removed spurious files in the Particle library
+\end{DoxyItemize}\hypertarget{md___users_kiran__documents__projects__i_c_l_r__avionics__ricardo__o_s__ricardo__o_s_lib__arduino_json_6_x__c_h_a_n_g_e_l_o_g_autotoc_md33}{}\doxysection{v6.\+6.\+0-\/beta (2018-\/11-\/13)}\label{md___users_kiran__documents__projects__i_c_l_r__avionics__ricardo__o_s__ricardo__o_s_lib__arduino_json_6_x__c_h_a_n_g_e_l_o_g_autotoc_md33}
+
+\begin{DoxyItemize}
+\item Removed {\ttfamily Json\+Array\+::is$<$T$>$(i)} and {\ttfamily Json\+Array\+::set(i,v)}
+\item Removed {\ttfamily Json\+Object\+::is$<$T$>$(k)} and {\ttfamily Json\+Object\+::set(k,v)}
+\item Replaced {\ttfamily T Json\+Array\+::get$<$T$>$(i)} with {\ttfamily Json\+Variant Json\+Array\+::get(i)}
+\item Replaced {\ttfamily T Json\+Object\+::get$<$T$>$(k)} with {\ttfamily Json\+Variant Json\+Object\+::get(k)}
+\item Added {\ttfamily JSON\+\_\+\+STRING\+\_\+\+SIZE()}
+\item \sout{Replacing or removing a value now releases the memory}
+\item Added {\ttfamily Deserialization\+Error\+::code()} to be used in switch statements (issue \#846)
+\end{DoxyItemize}\hypertarget{md___users_kiran__documents__projects__i_c_l_r__avionics__ricardo__o_s__ricardo__o_s_lib__arduino_json_6_x__c_h_a_n_g_e_l_o_g_autotoc_md34}{}\doxysection{v6.\+5.\+0-\/beta (2018-\/10-\/13)}\label{md___users_kiran__documents__projects__i_c_l_r__avionics__ricardo__o_s__ricardo__o_s_lib__arduino_json_6_x__c_h_a_n_g_e_l_o_g_autotoc_md34}
+
+\begin{DoxyItemize}
+\item Added implicit conversion from {\ttfamily Json\+Array} and {\ttfamily Json\+Object} to {\ttfamily Json\+Variant}
+\item Allow mixed configuration in compilation units (issue \#809)
+\item Fixed object keys not being duplicated
+\item {\ttfamily Json\+Pair\+::key()} now returns a {\ttfamily Json\+Key}
+\item Increased the default capacity of {\ttfamily Dynamic\+Json\+Document}
+\item Fixed {\ttfamily Json\+Variant\+::is$<$\mbox{\hyperlink{class_string}{String}}$>$()} (closes \#763)
+\item Added {\ttfamily Json\+Array\+Const}, {\ttfamily Json\+Object\+Const}, and {\ttfamily Json\+Variant\+Const}
+\item Added copy-\/constructor and copy-\/assignment-\/operator for {\ttfamily Json\+Document} (issue \#827)
+\end{DoxyItemize}\hypertarget{md___users_kiran__documents__projects__i_c_l_r__avionics__ricardo__o_s__ricardo__o_s_lib__arduino_json_6_x__c_h_a_n_g_e_l_o_g_autotoc_md35}{}\doxysection{v6.\+4.\+0-\/beta (2018-\/09-\/11)}\label{md___users_kiran__documents__projects__i_c_l_r__avionics__ricardo__o_s__ricardo__o_s_lib__arduino_json_6_x__c_h_a_n_g_e_l_o_g_autotoc_md35}
+
+\begin{DoxyItemize}
+\item Copy {\ttfamily Json\+Array} and {\ttfamily Json\+Object}, instead of storing pointers (issue \#780)
+\item Added {\ttfamily Json\+Variant\+::to$<$Json\+Array$>$()} and {\ttfamily Json\+Variant\+::to$<$Json\+Object$>$()}
+\end{DoxyItemize}\hypertarget{md___users_kiran__documents__projects__i_c_l_r__avionics__ricardo__o_s__ricardo__o_s_lib__arduino_json_6_x__c_h_a_n_g_e_l_o_g_autotoc_md36}{}\doxysection{v6.\+3.\+0-\/beta (2018-\/08-\/31)}\label{md___users_kiran__documents__projects__i_c_l_r__avionics__ricardo__o_s__ricardo__o_s_lib__arduino_json_6_x__c_h_a_n_g_e_l_o_g_autotoc_md36}
+
+\begin{DoxyItemize}
+\item Implemented reference semantics for {\ttfamily Json\+Variant}
+\item Replaced {\ttfamily Json\+Pair}\textquotesingle{}s {\ttfamily key} and {\ttfamily value} with {\ttfamily key()} and {\ttfamily value()}
+\item Fixed {\ttfamily serialize\+Json(obj\mbox{[}key\mbox{]}, dst)} (issue \#794)
+\end{DoxyItemize}
+
+\begin{quote}
+\#\#\# BREAKING CHANGES
+
+\end{quote}
+\hypertarget{md___users_kiran__documents__projects__i_c_l_r__avionics__ricardo__o_s__ricardo__o_s_lib__arduino_json_6_x__c_h_a_n_g_e_l_o_g_autotoc_md37}{}\doxysubsubsection{Json\+Variant}\label{md___users_kiran__documents__projects__i_c_l_r__avionics__ricardo__o_s__ricardo__o_s_lib__arduino_json_6_x__c_h_a_n_g_e_l_o_g_autotoc_md37}
+{\ttfamily Json\+Variant} now has a semantic similar to {\ttfamily Json\+Object} and {\ttfamily Json\+Array}. It\textquotesingle{}s a reference to a value stored in the {\ttfamily Json\+Document}. As a consequence, a {\ttfamily Json\+Variant} cannot be used as a standalone variable anymore.
+
+Old code\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{ \{c++\}}
+\DoxyCodeLine{JsonVariant myValue = 42;}
+
+\end{DoxyCode}
+
+
+New code\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{ \{c++\}}
+\DoxyCodeLine{DynamicJsonDocument doc;}
+\DoxyCodeLine{JsonVariant myValue = doc.to<JsonVariant>();}
+\DoxyCodeLine{myValue.set(42);}
+
+\end{DoxyCode}
+\hypertarget{md___users_kiran__documents__projects__i_c_l_r__avionics__ricardo__o_s__ricardo__o_s_lib__arduino_json_6_x__c_h_a_n_g_e_l_o_g_autotoc_md38}{}\doxysubsubsection{Json\+Pair}\label{md___users_kiran__documents__projects__i_c_l_r__avionics__ricardo__o_s__ricardo__o_s_lib__arduino_json_6_x__c_h_a_n_g_e_l_o_g_autotoc_md38}
+Old code\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{ \{c++\}}
+\DoxyCodeLine{for(JsonPair p : myObject) \{}
+\DoxyCodeLine{  Serial.println(p.key);}
+\DoxyCodeLine{  Serial.println(p.value.as<int>());}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+
+
+New code\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{ \{c++\}}
+\DoxyCodeLine{for(JsonPair p : myObject) \{}
+\DoxyCodeLine{  Serial.println(p.key());}
+\DoxyCodeLine{  Serial.println(p.value().as<int>());}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+
+
+CAUTION\+: the key is now read only! \hypertarget{md___users_kiran__documents__projects__i_c_l_r__avionics__ricardo__o_s__ricardo__o_s_lib__arduino_json_6_x__c_h_a_n_g_e_l_o_g_autotoc_md39}{}\doxysection{v6.\+2.\+3-\/beta (2018-\/07-\/19)}\label{md___users_kiran__documents__projects__i_c_l_r__avionics__ricardo__o_s__ricardo__o_s_lib__arduino_json_6_x__c_h_a_n_g_e_l_o_g_autotoc_md39}
+
+\begin{DoxyItemize}
+\item Fixed exception when using Flash strings as object keys (issue \#784)
+\end{DoxyItemize}\hypertarget{md___users_kiran__documents__projects__i_c_l_r__avionics__ricardo__o_s__ricardo__o_s_lib__arduino_json_6_x__c_h_a_n_g_e_l_o_g_autotoc_md40}{}\doxysection{v6.\+2.\+2-\/beta (2018-\/07-\/18)}\label{md___users_kiran__documents__projects__i_c_l_r__avionics__ricardo__o_s__ricardo__o_s_lib__arduino_json_6_x__c_h_a_n_g_e_l_o_g_autotoc_md40}
+
+\begin{DoxyItemize}
+\item Fixed `invalid application of \textquotesingle{}sizeof' to incomplete type \textquotesingle{}\+\_\+\+\_\+\+Flash\+String\+Helper\textquotesingle{}{\ttfamily (issue \#783)}
+\item {\ttfamily Fixed}char\mbox{[}\mbox{]}{\ttfamily not duplicated when passed to}Json\+Variant\+::operator\mbox{[}$\,$\mbox{]}\`{}
+\end{DoxyItemize}\hypertarget{md___users_kiran__documents__projects__i_c_l_r__avionics__ricardo__o_s__ricardo__o_s_lib__arduino_json_6_x__c_h_a_n_g_e_l_o_g_autotoc_md41}{}\doxysection{v6.\+2.\+1-\/beta (2018-\/07-\/17)}\label{md___users_kiran__documents__projects__i_c_l_r__avionics__ricardo__o_s__ricardo__o_s_lib__arduino_json_6_x__c_h_a_n_g_e_l_o_g_autotoc_md41}
+
+\begin{DoxyItemize}
+\item Fixed {\ttfamily Json\+Object} not inserting keys of type {\ttfamily \mbox{\hyperlink{class_string}{String}}} (issue \#782)
+\end{DoxyItemize}\hypertarget{md___users_kiran__documents__projects__i_c_l_r__avionics__ricardo__o_s__ricardo__o_s_lib__arduino_json_6_x__c_h_a_n_g_e_l_o_g_autotoc_md42}{}\doxysection{v6.\+2.\+0-\/beta (2018-\/07-\/12)}\label{md___users_kiran__documents__projects__i_c_l_r__avionics__ricardo__o_s__ricardo__o_s_lib__arduino_json_6_x__c_h_a_n_g_e_l_o_g_autotoc_md42}
+
+\begin{DoxyItemize}
+\item Disabled lazy number deserialization (issue \#772)
+\item Fixed {\ttfamily Json\+Variant\+::is$<$int$>$()} that returned true for empty strings
+\item Improved float serialization when {\ttfamily -\/fsingle-\/precision-\/constant} is used
+\item Renamed function {\ttfamily Raw\+Json()} to {\ttfamily serialized()}
+\item {\ttfamily serialize\+Msg\+Pack()} now supports values marked with {\ttfamily serialized()}
+\end{DoxyItemize}
+
+\begin{quote}
+\#\#\# BREAKING CHANGES
+
+\end{quote}
+\hypertarget{md___users_kiran__documents__projects__i_c_l_r__avionics__ricardo__o_s__ricardo__o_s_lib__arduino_json_6_x__c_h_a_n_g_e_l_o_g_autotoc_md43}{}\doxysubsubsection{Non quoted strings}\label{md___users_kiran__documents__projects__i_c_l_r__avionics__ricardo__o_s__ricardo__o_s_lib__arduino_json_6_x__c_h_a_n_g_e_l_o_g_autotoc_md43}
+Non quoted strings are now forbidden in values, but they are still allowed in keys. For example, {\ttfamily \{key\+:\char`\"{}value\char`\"{}\}} is accepted, but {\ttfamily \{key\+:value\}} is not.\hypertarget{md___users_kiran__documents__projects__i_c_l_r__avionics__ricardo__o_s__ricardo__o_s_lib__arduino_json_6_x__c_h_a_n_g_e_l_o_g_autotoc_md44}{}\doxysubsubsection{Preformatted values}\label{md___users_kiran__documents__projects__i_c_l_r__avionics__ricardo__o_s__ricardo__o_s_lib__arduino_json_6_x__c_h_a_n_g_e_l_o_g_autotoc_md44}
+Old code\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{ \{c++\}}
+\DoxyCodeLine{object["{}values"{}] = RawJson("{}[1,2,3,4]"{});}
+
+\end{DoxyCode}
+
+
+New code\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{ \{c++\}}
+\DoxyCodeLine{object["{}values"{}] = serialized("{}[1,2,3,4]"{});}
+
+\end{DoxyCode}
+ \hypertarget{md___users_kiran__documents__projects__i_c_l_r__avionics__ricardo__o_s__ricardo__o_s_lib__arduino_json_6_x__c_h_a_n_g_e_l_o_g_autotoc_md45}{}\doxysection{v6.\+1.\+0-\/beta (2018-\/07-\/02)}\label{md___users_kiran__documents__projects__i_c_l_r__avionics__ricardo__o_s__ricardo__o_s_lib__arduino_json_6_x__c_h_a_n_g_e_l_o_g_autotoc_md45}
+
+\begin{DoxyItemize}
+\item Return {\ttfamily Json\+Array} and {\ttfamily Json\+Object} by value instead of reference (issue \#309)
+\item Replaced {\ttfamily success()} with {\ttfamily is\+Null()}
+\end{DoxyItemize}
+
+\begin{quote}
+\#\#\# BREAKING CHANGES
+
+Old code\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{ \{c++\}}
+\DoxyCodeLine{JsonObject\& obj = doc.to<JsonObject>();}
+\DoxyCodeLine{JsonArray\& arr = obj.createNestedArray("{}key"{});}
+\DoxyCodeLine{if (!arr.success()) \{}
+\DoxyCodeLine{  Serial.println("{}Not enough memory"{});}
+\DoxyCodeLine{  return;}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+
+
+New code\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{ \{c++\}}
+\DoxyCodeLine{JsonObject obj = doc.to<JsonObject>();}
+\DoxyCodeLine{JsonArray arr = obj.createNestedArray("{}key"{});}
+\DoxyCodeLine{if (arr.isNull()) \{}
+\DoxyCodeLine{  Serial.println("{}Not enough memory"{});}
+\DoxyCodeLine{  return;}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+ \end{quote}
+\hypertarget{md___users_kiran__documents__projects__i_c_l_r__avionics__ricardo__o_s__ricardo__o_s_lib__arduino_json_6_x__c_h_a_n_g_e_l_o_g_autotoc_md46}{}\doxysection{v6.\+0.\+1-\/beta (2018-\/06-\/11)}\label{md___users_kiran__documents__projects__i_c_l_r__avionics__ricardo__o_s__ricardo__o_s_lib__arduino_json_6_x__c_h_a_n_g_e_l_o_g_autotoc_md46}
+
+\begin{DoxyItemize}
+\item Fixed conflicts with {\ttfamily isnan()} and {\ttfamily isinf()} macros (issue \#752)
+\end{DoxyItemize}\hypertarget{md___users_kiran__documents__projects__i_c_l_r__avionics__ricardo__o_s__ricardo__o_s_lib__arduino_json_6_x__c_h_a_n_g_e_l_o_g_autotoc_md47}{}\doxysection{v6.\+0.\+0-\/beta (2018-\/06-\/07)}\label{md___users_kiran__documents__projects__i_c_l_r__avionics__ricardo__o_s__ricardo__o_s_lib__arduino_json_6_x__c_h_a_n_g_e_l_o_g_autotoc_md47}
+
+\begin{DoxyItemize}
+\item Added {\ttfamily Dynamic\+Json\+Document} and {\ttfamily Static\+Json\+Document}
+\item Added {\ttfamily deserialize\+Json()}
+\item Added {\ttfamily serialize\+Json()} and {\ttfamily serialize\+Json\+Pretty()}
+\item Added {\ttfamily measure\+Json()} and {\ttfamily measure\+Json\+Pretty()}
+\item Added {\ttfamily serialize\+Msg\+Pack()}, {\ttfamily deserialize\+Msg\+Pack()} and {\ttfamily measure\+Msg\+Pack()} (issue \#358)
+\item Added example {\ttfamily Msg\+Pack\+Parser.\+ino} (issue \#358)
+\item Added support for non zero-\/terminated strings (issue \#704)
+\item Removed {\ttfamily Json\+Buffer\+::parse\+Array()}, {\ttfamily parse\+Object()} and {\ttfamily parse()}
+\item Removed {\ttfamily Json\+Buffer\+::create\+Array()} and {\ttfamily create\+Object()}
+\item Removed {\ttfamily print\+To()} and {\ttfamily pretty\+Print\+To()}
+\item Removed {\ttfamily measure\+Length()} and {\ttfamily measure\+Pretty\+Length()}
+\item Removed all deprecated features
+\end{DoxyItemize}
+
+\begin{quote}
+\#\#\# BREAKING CHANGES
+
+\end{quote}
+\hypertarget{md___users_kiran__documents__projects__i_c_l_r__avionics__ricardo__o_s__ricardo__o_s_lib__arduino_json_6_x__c_h_a_n_g_e_l_o_g_autotoc_md48}{}\doxysubsubsection{Deserialization}\label{md___users_kiran__documents__projects__i_c_l_r__avionics__ricardo__o_s__ricardo__o_s_lib__arduino_json_6_x__c_h_a_n_g_e_l_o_g_autotoc_md48}
+Old code\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{ \{c++\}}
+\DoxyCodeLine{DynamicJsonBuffer jb;}
+\DoxyCodeLine{JsonObject\& obj = jb.parseObject(json);}
+\DoxyCodeLine{if (obj.success()) \{}
+\DoxyCodeLine{}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+
+
+New code\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{ \{c++\}}
+\DoxyCodeLine{DynamicJsonDocument doc;}
+\DoxyCodeLine{DeserializationError error = deserializeJson(doc, json);}
+\DoxyCodeLine{if (error) \{}
+\DoxyCodeLine{}
+\DoxyCodeLine{\}}
+\DoxyCodeLine{JsonObject\& obj = doc.as<JsonObject>();}
+
+\end{DoxyCode}
+\hypertarget{md___users_kiran__documents__projects__i_c_l_r__avionics__ricardo__o_s__ricardo__o_s_lib__arduino_json_6_x__c_h_a_n_g_e_l_o_g_autotoc_md49}{}\doxysubsubsection{Serialization}\label{md___users_kiran__documents__projects__i_c_l_r__avionics__ricardo__o_s__ricardo__o_s_lib__arduino_json_6_x__c_h_a_n_g_e_l_o_g_autotoc_md49}
+Old code\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{ \{c++\}}
+\DoxyCodeLine{DynamicJsonBuffer jb;}
+\DoxyCodeLine{JsonObject\& obj = jb.createObject();}
+\DoxyCodeLine{obj["{}key"{}] = "{}value"{};}
+\DoxyCodeLine{obj.printTo(Serial);}
+
+\end{DoxyCode}
+
+
+New code\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{ \{c++\}}
+\DoxyCodeLine{DynamicJsonDocument obj;}
+\DoxyCodeLine{JsonObject\& obj = doc.to<JsonObject>();}
+\DoxyCodeLine{obj["{}key"{}] = "{}value"{};}
+\DoxyCodeLine{serializeJson(doc, Serial);}
+
+\end{DoxyCode}
+ \hypertarget{md___users_kiran__documents__projects__i_c_l_r__avionics__ricardo__o_s__ricardo__o_s_lib__arduino_json_6_x__c_h_a_n_g_e_l_o_g_autotoc_md50}{}\doxysection{v5.\+13.\+2}\label{md___users_kiran__documents__projects__i_c_l_r__avionics__ricardo__o_s__ricardo__o_s_lib__arduino_json_6_x__c_h_a_n_g_e_l_o_g_autotoc_md50}
+
+\begin{DoxyItemize}
+\item Fixed {\ttfamily Json\+Buffer\+::parse()} not respecting nesting limit correctly (issue \#693)
+\item Fixed inconsistencies in nesting level counting (PR \#695 from Zhenyu Wu)
+\item Fixed null values that could be pass to {\ttfamily strcmp()} (PR \#745 from Mike Karlesky)
+\item Added macros {\ttfamily ARDUINOJSON\+\_\+\+VERSION}, {\ttfamily ARDUINOJSON\+\_\+\+VERSION\+\_\+\+MAJOR}...
+\end{DoxyItemize}\hypertarget{md___users_kiran__documents__projects__i_c_l_r__avionics__ricardo__o_s__ricardo__o_s_lib__arduino_json_6_x__c_h_a_n_g_e_l_o_g_autotoc_md51}{}\doxysection{v5.\+13.\+1}\label{md___users_kiran__documents__projects__i_c_l_r__avionics__ricardo__o_s__ricardo__o_s_lib__arduino_json_6_x__c_h_a_n_g_e_l_o_g_autotoc_md51}
+
+\begin{DoxyItemize}
+\item Fixed {\ttfamily Json\+Variant\+::operator$\vert$(int)} that returned the default value if the variant contained a double (issue \#675)
+\item Allowed non-\/quoted key to contain underscores (issue \#665)
+\end{DoxyItemize}\hypertarget{md___users_kiran__documents__projects__i_c_l_r__avionics__ricardo__o_s__ricardo__o_s_lib__arduino_json_6_x__c_h_a_n_g_e_l_o_g_autotoc_md52}{}\doxysection{v5.\+13.\+0}\label{md___users_kiran__documents__projects__i_c_l_r__avionics__ricardo__o_s__ricardo__o_s_lib__arduino_json_6_x__c_h_a_n_g_e_l_o_g_autotoc_md52}
+
+\begin{DoxyItemize}
+\item Changed the rules of string duplication (issue \#658)
+\item {\ttfamily Raw\+Json()} accepts any kind of string and obeys to the same rules for duplication
+\item Changed the return type of {\ttfamily strdup()} to {\ttfamily const char$\ast$} to prevent double duplication
+\item Marked {\ttfamily strdup()} as deprecated
+\end{DoxyItemize}
+
+\begin{quote}
+\#\#\# New rules for string duplication
+
+\tabulinesep=1mm
+\begin{longtabu}spread 0pt [c]{*{2}{|X[-1]}|}
+\hline
+\cellcolor{\tableheadbgcolor}\textbf{ type   }&\cellcolor{\tableheadbgcolor}\textbf{ duplication    }\\\cline{1-2}
+\endfirsthead
+\hline
+\endfoot
+\hline
+\cellcolor{\tableheadbgcolor}\textbf{ type   }&\cellcolor{\tableheadbgcolor}\textbf{ duplication    }\\\cline{1-2}
+\endhead
+const char$\ast$   &no    \\\cline{1-2}
+char$\ast$   &\sout{no} yes    \\\cline{1-2}
+\mbox{\hyperlink{class_string}{String}}   &yes    \\\cline{1-2}
+std\+::string   &yes    \\\cline{1-2}
+const \+\_\+\+\_\+\+Flash\+String\+Helper$\ast$   &yes   \\\cline{1-2}
+\end{longtabu}
+
+
+These new rules make {\ttfamily Json\+Buffer\+::strdup()} useless. \end{quote}
+\hypertarget{md___users_kiran__documents__projects__i_c_l_r__avionics__ricardo__o_s__ricardo__o_s_lib__arduino_json_6_x__c_h_a_n_g_e_l_o_g_autotoc_md53}{}\doxysection{v5.\+12.\+0}\label{md___users_kiran__documents__projects__i_c_l_r__avionics__ricardo__o_s__ricardo__o_s_lib__arduino_json_6_x__c_h_a_n_g_e_l_o_g_autotoc_md53}
+
+\begin{DoxyItemize}
+\item Added {\ttfamily Json\+Variant\+::operator$\vert$} to return a default value (see below)
+\item Added a clear error message when compiled as C instead of C++ (issue \#629)
+\item Added detection of MPLAB XC compiler (issue \#629)
+\item Added detection of Keil ARM Compiler (issue \#629)
+\item Added an example that shows how to save and load a configuration file
+\item Reworked all other examples
+\end{DoxyItemize}
+
+\begin{quote}
+\#\#\# How to use the new feature?
+
+If you have a block like this\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{ \{c++\}}
+\DoxyCodeLine{const char* ssid = root["{}ssid"{}];}
+\DoxyCodeLine{if (!ssid)}
+\DoxyCodeLine{  ssid = "{}default ssid"{};}
+
+\end{DoxyCode}
+
+
+You can simplify like that\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{ \{c++\}}
+\DoxyCodeLine{const char* ssid = root["{}ssid"{}] | "{}default ssid"{};}
+
+\end{DoxyCode}
+ \end{quote}
+\hypertarget{md___users_kiran__documents__projects__i_c_l_r__avionics__ricardo__o_s__ricardo__o_s_lib__arduino_json_6_x__c_h_a_n_g_e_l_o_g_autotoc_md54}{}\doxysection{v5.\+11.\+2}\label{md___users_kiran__documents__projects__i_c_l_r__avionics__ricardo__o_s__ricardo__o_s_lib__arduino_json_6_x__c_h_a_n_g_e_l_o_g_autotoc_md54}
+
+\begin{DoxyItemize}
+\item Fixed {\ttfamily Dynamic\+Json\+Buffer\+::clear()} not resetting allocation size (issue \#561)
+\item Fixed incorrect rounding for float values (issue \#588)
+\end{DoxyItemize}\hypertarget{md___users_kiran__documents__projects__i_c_l_r__avionics__ricardo__o_s__ricardo__o_s_lib__arduino_json_6_x__c_h_a_n_g_e_l_o_g_autotoc_md55}{}\doxysection{v5.\+11.\+1}\label{md___users_kiran__documents__projects__i_c_l_r__avionics__ricardo__o_s__ricardo__o_s_lib__arduino_json_6_x__c_h_a_n_g_e_l_o_g_autotoc_md55}
+
+\begin{DoxyItemize}
+\item Removed dependency on {\ttfamily PGM\+\_\+P} as Particle 0.\+6.\+2 doesn\textquotesingle{}t define it (issue \#546)
+\item Fixed warning \char`\"{}dereferencing type-\/punned pointer will break strict-\/aliasing rules \mbox{[}-\/\+Wstrict-\/aliasing\mbox{]}\char`\"{}
+\item Fixed warning \char`\"{}floating constant exceeds range of \textquotesingle{}float\textquotesingle{} \mbox{[}-\/\+Woverflow\mbox{]}\char`\"{} (issue \#544)
+\item Fixed warning \char`\"{}this statement may fall through\char`\"{} \href{issue \#539}{\texttt{ -\/Wimplicit-\/fallthrough=}}
+\item Removed {\ttfamily ARDUINOJSON\+\_\+\+DOUBLE\+\_\+\+IS\+\_\+64\+BITS} as it became useless.
+\item Fixed too many decimals places in float serialization (issue \#543)
+\end{DoxyItemize}\hypertarget{md___users_kiran__documents__projects__i_c_l_r__avionics__ricardo__o_s__ricardo__o_s_lib__arduino_json_6_x__c_h_a_n_g_e_l_o_g_autotoc_md56}{}\doxysection{v5.\+11.\+0}\label{md___users_kiran__documents__projects__i_c_l_r__avionics__ricardo__o_s__ricardo__o_s_lib__arduino_json_6_x__c_h_a_n_g_e_l_o_g_autotoc_md56}
+
+\begin{DoxyItemize}
+\item Made {\ttfamily Json\+Buffer} non-\/copyable (PR \#524 by @luisrayas3)
+\item Added {\ttfamily Static\+Json\+Buffer\+::clear()}
+\item Added {\ttfamily Dynamic\+Json\+Buffer\+::clear()}
+\end{DoxyItemize}\hypertarget{md___users_kiran__documents__projects__i_c_l_r__avionics__ricardo__o_s__ricardo__o_s_lib__arduino_json_6_x__c_h_a_n_g_e_l_o_g_autotoc_md57}{}\doxysection{v5.\+10.\+1}\label{md___users_kiran__documents__projects__i_c_l_r__avionics__ricardo__o_s__ricardo__o_s_lib__arduino_json_6_x__c_h_a_n_g_e_l_o_g_autotoc_md57}
+
+\begin{DoxyItemize}
+\item Fixed Intelli\+Sense errors in Visual Micro (issue \#483)
+\item Fixed compilation in IAR Embedded Workbench (issue \#515)
+\item Fixed reading \char`\"{}true\char`\"{} as a float (issue \#516)
+\item Added {\ttfamily ARDUINOJSON\+\_\+\+DOUBLE\+\_\+\+IS\+\_\+64\+BITS}
+\item Added {\ttfamily ARDUINOJSON\+\_\+\+EMBEDDED\+\_\+\+MODE}
+\end{DoxyItemize}\hypertarget{md___users_kiran__documents__projects__i_c_l_r__avionics__ricardo__o_s__ricardo__o_s_lib__arduino_json_6_x__c_h_a_n_g_e_l_o_g_autotoc_md58}{}\doxysection{v5.\+10.\+0}\label{md___users_kiran__documents__projects__i_c_l_r__avionics__ricardo__o_s__ricardo__o_s_lib__arduino_json_6_x__c_h_a_n_g_e_l_o_g_autotoc_md58}
+
+\begin{DoxyItemize}
+\item Removed configurable number of decimal places (issues \#288, \#427 and \#506)
+\item Changed exponentiation thresholds to {\ttfamily 1e7} and {\ttfamily 1e-\/5} (issues \#288, \#427 and \#506)
+\item {\ttfamily Json\+Variant\+::is$<$double$>$()} now returns {\ttfamily true} for integers
+\item Fixed error {\ttfamily Is\+Base\+Of is not a member of Arduino\+Json\+::\+Type\+Traits} (issue \#495)
+\item Fixed error {\ttfamily forming reference to reference} (issue \#495)
+\end{DoxyItemize}
+
+\begin{quote}
+\#\#\# BREAKING CHANGES \+:warning\+:
+
+\tabulinesep=1mm
+\begin{longtabu}spread 0pt [c]{*{2}{|X[-1]}|}
+\hline
+\cellcolor{\tableheadbgcolor}\textbf{ Old syntax   }&\cellcolor{\tableheadbgcolor}\textbf{ New syntax    }\\\cline{1-2}
+\endfirsthead
+\hline
+\endfoot
+\hline
+\cellcolor{\tableheadbgcolor}\textbf{ Old syntax   }&\cellcolor{\tableheadbgcolor}\textbf{ New syntax    }\\\cline{1-2}
+\endhead
+{\ttfamily double\+\_\+with\+\_\+n\+\_\+digits(3.\+14, 2)}   &{\ttfamily 3.\+14}    \\\cline{1-2}
+{\ttfamily float\+\_\+with\+\_\+n\+\_\+digits(3.\+14, 2)}   &{\ttfamily 3.\+14f}    \\\cline{1-2}
+{\ttfamily obj.\+set(\char`\"{}key\char`\"{}, 3.\+14, 2)}   &{\ttfamily obj\mbox{[}\char`\"{}key\char`\"{}\mbox{]} = 3.\+14}    \\\cline{1-2}
+{\ttfamily arr.\+add(3.\+14, 2)}   &{\ttfamily arr.\+add(3.\+14)}   \\\cline{1-2}
+\end{longtabu}
+
+
+\tabulinesep=1mm
+\begin{longtabu}spread 0pt [c]{*{3}{|X[-1]}|}
+\hline
+\cellcolor{\tableheadbgcolor}\textbf{ Input   }&\cellcolor{\tableheadbgcolor}\textbf{ Old output   }&\cellcolor{\tableheadbgcolor}\textbf{ New output    }\\\cline{1-3}
+\endfirsthead
+\hline
+\endfoot
+\hline
+\cellcolor{\tableheadbgcolor}\textbf{ Input   }&\cellcolor{\tableheadbgcolor}\textbf{ Old output   }&\cellcolor{\tableheadbgcolor}\textbf{ New output    }\\\cline{1-3}
+\endhead
+{\ttfamily 3.\+14159}   &{\ttfamily 3.\+14}   &{\ttfamily 3.\+14159}    \\\cline{1-3}
+{\ttfamily 42.\+0}   &{\ttfamily 42.\+00}   &{\ttfamily 42}    \\\cline{1-3}
+{\ttfamily 0.\+0}   &{\ttfamily 0.\+00}   &{\ttfamily 0}   \\\cline{1-3}
+\end{longtabu}
+
+
+\tabulinesep=1mm
+\begin{longtabu}spread 0pt [c]{*{3}{|X[-1]}|}
+\hline
+\cellcolor{\tableheadbgcolor}\textbf{ Expression   }&\cellcolor{\tableheadbgcolor}\textbf{ Old result   }&\cellcolor{\tableheadbgcolor}\textbf{ New result    }\\\cline{1-3}
+\endfirsthead
+\hline
+\endfoot
+\hline
+\cellcolor{\tableheadbgcolor}\textbf{ Expression   }&\cellcolor{\tableheadbgcolor}\textbf{ Old result   }&\cellcolor{\tableheadbgcolor}\textbf{ New result    }\\\cline{1-3}
+\endhead
+{\ttfamily Json\+Variant(42).is$<$int$>$()}   &{\ttfamily true}   &{\ttfamily true}    \\\cline{1-3}
+{\ttfamily Json\+Variant(42).is$<$float$>$()}   &{\ttfamily false}   &{\ttfamily true}    \\\cline{1-3}
+{\ttfamily Json\+Variant(42).is$<$double$>$()}   &{\ttfamily false}   &{\ttfamily true}   \\\cline{1-3}
+\end{longtabu}
+\end{quote}
+\hypertarget{md___users_kiran__documents__projects__i_c_l_r__avionics__ricardo__o_s__ricardo__o_s_lib__arduino_json_6_x__c_h_a_n_g_e_l_o_g_autotoc_md59}{}\doxysection{v5.\+9.\+0}\label{md___users_kiran__documents__projects__i_c_l_r__avionics__ricardo__o_s__ricardo__o_s_lib__arduino_json_6_x__c_h_a_n_g_e_l_o_g_autotoc_md59}
+
+\begin{DoxyItemize}
+\item Added {\ttfamily Json\+Array\+::remove(iterator)} (issue \#479)
+\item Added {\ttfamily Json\+Object\+::remove(iterator)}
+\item Renamed {\ttfamily Json\+Array\+::remove\+At(size\+\_\+t)} into {\ttfamily remove(size\+\_\+t)}
+\item Renamed folder {\ttfamily include/} to {\ttfamily src/}
+\item Fixed warnings {\ttfamily floating constant exceeds range of float}and {\ttfamily floating constant truncated to zero} (issue \#483)
+\item Removed {\ttfamily Print} class and converted {\ttfamily print\+To()} to a template method (issue \#276)
+\item Removed example {\ttfamily Indented\+Print\+Example.\+ino}
+\item Now compatible with Particle 0.\+6.\+1, thanks to Jacob Nite (issue \#294 and PR \#461 by @foodbag)
+\end{DoxyItemize}\hypertarget{md___users_kiran__documents__projects__i_c_l_r__avionics__ricardo__o_s__ricardo__o_s_lib__arduino_json_6_x__c_h_a_n_g_e_l_o_g_autotoc_md60}{}\doxysection{v5.\+8.\+4}\label{md___users_kiran__documents__projects__i_c_l_r__avionics__ricardo__o_s__ricardo__o_s_lib__arduino_json_6_x__c_h_a_n_g_e_l_o_g_autotoc_md60}
+
+\begin{DoxyItemize}
+\item Added custom implementation of {\ttfamily strtod()} (issue \#453)
+\item Added custom implementation of {\ttfamily strtol()} (issue \#465)
+\item {\ttfamily char} is now treated as an integral type (issue \#337, \#370)
+\end{DoxyItemize}\hypertarget{md___users_kiran__documents__projects__i_c_l_r__avionics__ricardo__o_s__ricardo__o_s_lib__arduino_json_6_x__c_h_a_n_g_e_l_o_g_autotoc_md61}{}\doxysection{v5.\+8.\+3}\label{md___users_kiran__documents__projects__i_c_l_r__avionics__ricardo__o_s__ricardo__o_s_lib__arduino_json_6_x__c_h_a_n_g_e_l_o_g_autotoc_md61}
+
+\begin{DoxyItemize}
+\item Fixed an access violation in {\ttfamily Dynamic\+Json\+Buffer} when memory allocation fails (issue \#433)
+\item Added operators {\ttfamily ==} and {\ttfamily !=} for two {\ttfamily Json\+Variant}s (issue \#436)
+\item Fixed {\ttfamily Json\+Variant\+::operator\mbox{[}const Flash\+String\+Helper$\ast$\mbox{]}} (issue \#441)
+\end{DoxyItemize}\hypertarget{md___users_kiran__documents__projects__i_c_l_r__avionics__ricardo__o_s__ricardo__o_s_lib__arduino_json_6_x__c_h_a_n_g_e_l_o_g_autotoc_md62}{}\doxysection{v5.\+8.\+2}\label{md___users_kiran__documents__projects__i_c_l_r__avionics__ricardo__o_s__ricardo__o_s_lib__arduino_json_6_x__c_h_a_n_g_e_l_o_g_autotoc_md62}
+
+\begin{DoxyItemize}
+\item Fixed parsing of comments (issue \#421)
+\item Fixed ignored {\ttfamily \mbox{\hyperlink{struct_stream}{Stream}}} timeout (issue \#422)
+\item Made sure we don\textquotesingle{}t read more that necessary (issue \#422)
+\item Fixed error when the key of a {\ttfamily Json\+Object} is a {\ttfamily char\mbox{[}\mbox{]}} (issue \#423)
+\item Reduced code size when using {\ttfamily const} references
+\item Fixed error with string of type {\ttfamily unsigned char$\ast$} (issue \#428)
+\item Added {\ttfamily deprecated} attribute on {\ttfamily as\+Array()}, {\ttfamily as\+Object()} and {\ttfamily as\+String()} (issue \#420)
+\end{DoxyItemize}\hypertarget{md___users_kiran__documents__projects__i_c_l_r__avionics__ricardo__o_s__ricardo__o_s_lib__arduino_json_6_x__c_h_a_n_g_e_l_o_g_autotoc_md63}{}\doxysection{v5.\+8.\+1}\label{md___users_kiran__documents__projects__i_c_l_r__avionics__ricardo__o_s__ricardo__o_s_lib__arduino_json_6_x__c_h_a_n_g_e_l_o_g_autotoc_md63}
+
+\begin{DoxyItemize}
+\item Fixed error when assigning a {\ttfamily volatile int} to a {\ttfamily Json\+Variant} (issue \#415)
+\item Fixed errors with Variable Length Arrays (issue \#416)
+\item Fixed error when both {\ttfamily ARDUINOJSON\+\_\+\+ENABLE\+\_\+\+STD\+\_\+\+STREAM} and {\ttfamily ARDUINOJSON\+\_\+\+ENABLE\+\_\+\+ARDUINO\+\_\+\+STREAM} are set to {\ttfamily 1}
+\item Fixed error \char`\"{}\+Stream does not name a type\char`\"{} (issue \#412)
+\end{DoxyItemize}\hypertarget{md___users_kiran__documents__projects__i_c_l_r__avionics__ricardo__o_s__ricardo__o_s_lib__arduino_json_6_x__c_h_a_n_g_e_l_o_g_autotoc_md64}{}\doxysection{v5.\+8.\+0}\label{md___users_kiran__documents__projects__i_c_l_r__avionics__ricardo__o_s__ricardo__o_s_lib__arduino_json_6_x__c_h_a_n_g_e_l_o_g_autotoc_md64}
+
+\begin{DoxyItemize}
+\item Added operator {\ttfamily ==} to compare {\ttfamily Json\+Variant} and strings (issue \#402)
+\item Added support for {\ttfamily \mbox{\hyperlink{struct_stream}{Stream}}} (issue \#300)
+\item Reduced memory consumption by not duplicating spaces and comments
+\end{DoxyItemize}
+
+\begin{quote}
+\#\#\# BREAKING CHANGES \+:warning\+:
+
+{\ttfamily Json\+Buffer\+::parse\+Object()} and {\ttfamily Json\+Buffer\+::parse\+Array()} have been pulled down to the derived classes {\ttfamily Dynamic\+Json\+Buffer} and {\ttfamily Static\+Json\+Buffer\+Base}.
+
+This means that if you have code like\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{ \{c++\}}
+\DoxyCodeLine{void myFunction(JsonBuffer\& jsonBuffer);}
+
+\end{DoxyCode}
+
+
+you need to replace it with one of the following\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{ \{c++\}}
+\DoxyCodeLine{void myFunction(DynamicJsonBuffer\& jsonBuffer);}
+\DoxyCodeLine{void myFunction(StaticJsonBufferBase\& jsonBuffer);}
+\DoxyCodeLine{template<typename TJsonBuffer> void myFunction(TJsonBuffer\& jsonBuffer);}
+
+\end{DoxyCode}
+ \end{quote}
+\hypertarget{md___users_kiran__documents__projects__i_c_l_r__avionics__ricardo__o_s__ricardo__o_s_lib__arduino_json_6_x__c_h_a_n_g_e_l_o_g_autotoc_md65}{}\doxysection{v5.\+7.\+3}\label{md___users_kiran__documents__projects__i_c_l_r__avionics__ricardo__o_s__ricardo__o_s_lib__arduino_json_6_x__c_h_a_n_g_e_l_o_g_autotoc_md65}
+
+\begin{DoxyItemize}
+\item Added an {\ttfamily print\+To(char\mbox{[}\+N\mbox{]})} and {\ttfamily pretty\+Print\+To(char\mbox{[}\+N\mbox{]})} (issue \#292)
+\item Added ability to set a nested value like this\+: {\ttfamily root\mbox{[}\char`\"{}\+A\char`\"{}\mbox{]}\mbox{[}\char`\"{}\+B\char`\"{}\mbox{]} = \char`\"{}\+C\char`\"{}} (issue \#352)
+\item Renamed {\ttfamily $\ast$.ipp} to {\ttfamily $\ast$\+Impl.hpp} because they were ignored by Arduino IDE (issue \#396)
+\end{DoxyItemize}\hypertarget{md___users_kiran__documents__projects__i_c_l_r__avionics__ricardo__o_s__ricardo__o_s_lib__arduino_json_6_x__c_h_a_n_g_e_l_o_g_autotoc_md66}{}\doxysection{v5.\+7.\+2}\label{md___users_kiran__documents__projects__i_c_l_r__avionics__ricardo__o_s__ricardo__o_s_lib__arduino_json_6_x__c_h_a_n_g_e_l_o_g_autotoc_md66}
+
+\begin{DoxyItemize}
+\item Made PROGMEM available on more platforms (issue \#381)
+\item Fixed PROGMEM causing an exception on ESP8266 (issue \#383)
+\end{DoxyItemize}\hypertarget{md___users_kiran__documents__projects__i_c_l_r__avionics__ricardo__o_s__ricardo__o_s_lib__arduino_json_6_x__c_h_a_n_g_e_l_o_g_autotoc_md67}{}\doxysection{v5.\+7.\+1}\label{md___users_kiran__documents__projects__i_c_l_r__avionics__ricardo__o_s__ricardo__o_s_lib__arduino_json_6_x__c_h_a_n_g_e_l_o_g_autotoc_md67}
+
+\begin{DoxyItemize}
+\item Added support for PROGMEM (issue \#76)
+\item Fixed compilation error when index is not an {\ttfamily int} (issue \#381)
+\end{DoxyItemize}\hypertarget{md___users_kiran__documents__projects__i_c_l_r__avionics__ricardo__o_s__ricardo__o_s_lib__arduino_json_6_x__c_h_a_n_g_e_l_o_g_autotoc_md68}{}\doxysection{v5.\+7.\+0}\label{md___users_kiran__documents__projects__i_c_l_r__avionics__ricardo__o_s__ricardo__o_s_lib__arduino_json_6_x__c_h_a_n_g_e_l_o_g_autotoc_md68}
+
+\begin{DoxyItemize}
+\item Templatized all functions using {\ttfamily \mbox{\hyperlink{class_string}{String}}} or {\ttfamily std\+::string}
+\item Removed {\ttfamily Arduino\+Json\+::\+String}
+\item Removed {\ttfamily Json\+Variant\+::default\+Value$<$T$>$()}
+\item Removed non-\/template {\ttfamily Json\+Object\+::get()} and {\ttfamily Json\+Array.\+get()}
+\item Fixed support for {\ttfamily String\+Sum\+Helper} (issue \#184)
+\item Replaced {\ttfamily ARDUINOJSON\+\_\+\+USE\+\_\+\+ARDUINO\+\_\+\+STRING} by {\ttfamily ARDUINOJSON\+\_\+\+ENABLE\+\_\+\+STD\+\_\+\+STRING} and {\ttfamily ARDUINOJSON\+\_\+\+ENABLE\+\_\+\+ARDUINO\+\_\+\+STRING} (issue \#378)
+\item Added example {\ttfamily String\+Example.\+ino} to show where {\ttfamily \mbox{\hyperlink{class_string}{String}}} can be used
+\item Increased default nesting limit to 50 when compiled for a computer (issue \#349)
+\end{DoxyItemize}
+
+\begin{quote}
+\#\#\# BREAKING CHANGES \+:warning\+:
+
+The non-\/template functions {\ttfamily Json\+Object\+::get()} and {\ttfamily Json\+Array.\+get()} have been removed. This means that you need to explicitely tell the type you expect in return.
+
+Old code\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{ \{c++\}}
+\DoxyCodeLine{\#define ARDUINOJSON\_USE\_ARDUINO\_STRING 0}
+\DoxyCodeLine{JsonVariant value1 = myObject.get("{}myKey"{});}
+\DoxyCodeLine{JsonVariant value2 = myArray.get(0);}
+
+\end{DoxyCode}
+
+
+New code\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{ \{c++\}}
+\DoxyCodeLine{\#define ARDUINOJSON\_ENABLE\_ARDUINO\_STRING 0}
+\DoxyCodeLine{\#define ARDUINOJSON\_ENABLE\_STD\_STRING 1}
+\DoxyCodeLine{JsonVariant value1 = myObject.get<JsonVariant>("{}myKey"{});}
+\DoxyCodeLine{JsonVariant value2 = myArray.get<JsonVariant>(0);}
+
+\end{DoxyCode}
+ \end{quote}
+\hypertarget{md___users_kiran__documents__projects__i_c_l_r__avionics__ricardo__o_s__ricardo__o_s_lib__arduino_json_6_x__c_h_a_n_g_e_l_o_g_autotoc_md69}{}\doxysection{v5.\+6.\+7}\label{md___users_kiran__documents__projects__i_c_l_r__avionics__ricardo__o_s__ricardo__o_s_lib__arduino_json_6_x__c_h_a_n_g_e_l_o_g_autotoc_md69}
+
+\begin{DoxyItemize}
+\item Fixed {\ttfamily array\mbox{[}idx\mbox{]}.as$<$Json\+Variant$>$()} and {\ttfamily object\mbox{[}key\mbox{]}.as$<$Json\+Variant$>$()}
+\item Fixed return value of {\ttfamily Json\+Object\+::set()} (issue \#350)
+\item Fixed undefined behavior in {\ttfamily Prettyfier} and {\ttfamily Print} (issue \#354)
+\item Fixed parser that incorrectly rejected floats containing a {\ttfamily +} (issue \#349)
+\end{DoxyItemize}\hypertarget{md___users_kiran__documents__projects__i_c_l_r__avionics__ricardo__o_s__ricardo__o_s_lib__arduino_json_6_x__c_h_a_n_g_e_l_o_g_autotoc_md70}{}\doxysection{v5.\+6.\+6}\label{md___users_kiran__documents__projects__i_c_l_r__avionics__ricardo__o_s__ricardo__o_s_lib__arduino_json_6_x__c_h_a_n_g_e_l_o_g_autotoc_md70}
+
+\begin{DoxyItemize}
+\item Fixed {\ttfamily -\/Wparentheses} warning introduced in v5.\+6.\+5 (PR \#335 by @nuket)
+\item Added {\ttfamily .mbedignore} for ARM mbdeb (PR \#334 by @nuket)
+\item Fixed {\ttfamily Json\+Variant\+::success()} which didn\textquotesingle{}t propagate {\ttfamily Json\+Array\+::success()} nor {\ttfamily Json\+Object\+::success()} (issue \#342).
+\end{DoxyItemize}\hypertarget{md___users_kiran__documents__projects__i_c_l_r__avionics__ricardo__o_s__ricardo__o_s_lib__arduino_json_6_x__c_h_a_n_g_e_l_o_g_autotoc_md71}{}\doxysection{v5.\+6.\+5}\label{md___users_kiran__documents__projects__i_c_l_r__avionics__ricardo__o_s__ricardo__o_s_lib__arduino_json_6_x__c_h_a_n_g_e_l_o_g_autotoc_md71}
+
+\begin{DoxyItemize}
+\item {\ttfamily as$<$char$\ast$$>$()} now returns {\ttfamily true} when input is {\ttfamily null} (issue \#330)
+\end{DoxyItemize}\hypertarget{md___users_kiran__documents__projects__i_c_l_r__avionics__ricardo__o_s__ricardo__o_s_lib__arduino_json_6_x__c_h_a_n_g_e_l_o_g_autotoc_md72}{}\doxysection{v5.\+6.\+4}\label{md___users_kiran__documents__projects__i_c_l_r__avionics__ricardo__o_s__ricardo__o_s_lib__arduino_json_6_x__c_h_a_n_g_e_l_o_g_autotoc_md72}
+
+\begin{DoxyItemize}
+\item Fixed error in float serialization (issue \#324)
+\end{DoxyItemize}\hypertarget{md___users_kiran__documents__projects__i_c_l_r__avionics__ricardo__o_s__ricardo__o_s_lib__arduino_json_6_x__c_h_a_n_g_e_l_o_g_autotoc_md73}{}\doxysection{v5.\+6.\+3}\label{md___users_kiran__documents__projects__i_c_l_r__avionics__ricardo__o_s__ricardo__o_s_lib__arduino_json_6_x__c_h_a_n_g_e_l_o_g_autotoc_md73}
+
+\begin{DoxyItemize}
+\item Improved speed of float serialization (about twice faster)
+\item Added {\ttfamily as$<$Json\+Array$>$()} as a synonym for {\ttfamily as$<$Json\+Array\&$>$()}... (issue \#291)
+\item Fixed {\ttfamily call of overloaded isinf(double\&) is ambiguous} (issue \#284)
+\end{DoxyItemize}\hypertarget{md___users_kiran__documents__projects__i_c_l_r__avionics__ricardo__o_s__ricardo__o_s_lib__arduino_json_6_x__c_h_a_n_g_e_l_o_g_autotoc_md74}{}\doxysection{v5.\+6.\+2}\label{md___users_kiran__documents__projects__i_c_l_r__avionics__ricardo__o_s__ricardo__o_s_lib__arduino_json_6_x__c_h_a_n_g_e_l_o_g_autotoc_md74}
+
+\begin{DoxyItemize}
+\item Fixed build when another lib does {\ttfamily \#undef isnan} (issue \#284)
+\end{DoxyItemize}\hypertarget{md___users_kiran__documents__projects__i_c_l_r__avionics__ricardo__o_s__ricardo__o_s_lib__arduino_json_6_x__c_h_a_n_g_e_l_o_g_autotoc_md75}{}\doxysection{v5.\+6.\+1}\label{md___users_kiran__documents__projects__i_c_l_r__avionics__ricardo__o_s__ricardo__o_s_lib__arduino_json_6_x__c_h_a_n_g_e_l_o_g_autotoc_md75}
+
+\begin{DoxyItemize}
+\item Added missing {\ttfamily \#pragma once} (issue \#310)
+\end{DoxyItemize}\hypertarget{md___users_kiran__documents__projects__i_c_l_r__avionics__ricardo__o_s__ricardo__o_s_lib__arduino_json_6_x__c_h_a_n_g_e_l_o_g_autotoc_md76}{}\doxysection{v5.\+6.\+0}\label{md___users_kiran__documents__projects__i_c_l_r__avionics__ricardo__o_s__ricardo__o_s_lib__arduino_json_6_x__c_h_a_n_g_e_l_o_g_autotoc_md76}
+
+\begin{DoxyItemize}
+\item Arduino\+Json is now a header-\/only library (issue \#199)
+\end{DoxyItemize}\hypertarget{md___users_kiran__documents__projects__i_c_l_r__avionics__ricardo__o_s__ricardo__o_s_lib__arduino_json_6_x__c_h_a_n_g_e_l_o_g_autotoc_md77}{}\doxysection{v5.\+5.\+1}\label{md___users_kiran__documents__projects__i_c_l_r__avionics__ricardo__o_s__ricardo__o_s_lib__arduino_json_6_x__c_h_a_n_g_e_l_o_g_autotoc_md77}
+
+\begin{DoxyItemize}
+\item Fixed compilation error with Intel Galileo (issue \#299)
+\end{DoxyItemize}\hypertarget{md___users_kiran__documents__projects__i_c_l_r__avionics__ricardo__o_s__ricardo__o_s_lib__arduino_json_6_x__c_h_a_n_g_e_l_o_g_autotoc_md78}{}\doxysection{v5.\+5.\+0}\label{md___users_kiran__documents__projects__i_c_l_r__avionics__ricardo__o_s__ricardo__o_s_lib__arduino_json_6_x__c_h_a_n_g_e_l_o_g_autotoc_md78}
+
+\begin{DoxyItemize}
+\item Added {\ttfamily Json\+Variant\+::success()} (issue \#279)
+\item Renamed {\ttfamily Json\+Variant\+::invalid$<$T$>$()} to {\ttfamily Json\+Variant\+::default\+Value$<$T$>$()}
+\end{DoxyItemize}\hypertarget{md___users_kiran__documents__projects__i_c_l_r__avionics__ricardo__o_s__ricardo__o_s_lib__arduino_json_6_x__c_h_a_n_g_e_l_o_g_autotoc_md79}{}\doxysection{v5.\+4.\+0}\label{md___users_kiran__documents__projects__i_c_l_r__avionics__ricardo__o_s__ricardo__o_s_lib__arduino_json_6_x__c_h_a_n_g_e_l_o_g_autotoc_md79}
+
+\begin{DoxyItemize}
+\item Changed {\ttfamily \mbox{\hyperlink{class_string}{String}}} to {\ttfamily Arduino\+Json\+::\+String} (issue \#275)
+\item Changed {\ttfamily \+::\+Print} to {\ttfamily Arduino\+Json\+::\+Print} too
+\end{DoxyItemize}\hypertarget{md___users_kiran__documents__projects__i_c_l_r__avionics__ricardo__o_s__ricardo__o_s_lib__arduino_json_6_x__c_h_a_n_g_e_l_o_g_autotoc_md80}{}\doxysection{v5.\+3.\+0}\label{md___users_kiran__documents__projects__i_c_l_r__avionics__ricardo__o_s__ricardo__o_s_lib__arduino_json_6_x__c_h_a_n_g_e_l_o_g_autotoc_md80}
+
+\begin{DoxyItemize}
+\item Added custom implementation of {\ttfamily ftoa} (issues \#266, \#267, \#269 and \#270)
+\item Added {\ttfamily Json\+Variant Json\+Buffer\+::parse()} (issue \#265)
+\item Fixed {\ttfamily unsigned long} printed as {\ttfamily signed long} (issue \#170)
+\end{DoxyItemize}\hypertarget{md___users_kiran__documents__projects__i_c_l_r__avionics__ricardo__o_s__ricardo__o_s_lib__arduino_json_6_x__c_h_a_n_g_e_l_o_g_autotoc_md81}{}\doxysection{v5.\+2.\+0}\label{md___users_kiran__documents__projects__i_c_l_r__avionics__ricardo__o_s__ricardo__o_s_lib__arduino_json_6_x__c_h_a_n_g_e_l_o_g_autotoc_md81}
+
+\begin{DoxyItemize}
+\item Added {\ttfamily Json\+Variant\+::as$<$char$\ast$$>$()} as a synonym for {\ttfamily Json\+Variant\+::as$<$const char$\ast$$>$()} (issue \#257)
+\item Added example {\ttfamily Json\+Http\+Client} (issue \#256)
+\item Added {\ttfamily Json\+Array\+::copy\+To()} and {\ttfamily Json\+Array\+::copy\+From()} (issue \#254)
+\item Added {\ttfamily Raw\+Json()} to insert pregenerated JSON portions (issue \#259)
+\end{DoxyItemize}\hypertarget{md___users_kiran__documents__projects__i_c_l_r__avionics__ricardo__o_s__ricardo__o_s_lib__arduino_json_6_x__c_h_a_n_g_e_l_o_g_autotoc_md82}{}\doxysection{v5.\+1.\+1}\label{md___users_kiran__documents__projects__i_c_l_r__avionics__ricardo__o_s__ricardo__o_s_lib__arduino_json_6_x__c_h_a_n_g_e_l_o_g_autotoc_md82}
+
+\begin{DoxyItemize}
+\item Removed {\ttfamily \mbox{\hyperlink{class_string}{String}}} duplication when one replaces a value in a {\ttfamily Json\+Object} (PR \#232 by @ulion)
+\end{DoxyItemize}\hypertarget{md___users_kiran__documents__projects__i_c_l_r__avionics__ricardo__o_s__ricardo__o_s_lib__arduino_json_6_x__c_h_a_n_g_e_l_o_g_autotoc_md83}{}\doxysection{v5.\+1.\+0}\label{md___users_kiran__documents__projects__i_c_l_r__avionics__ricardo__o_s__ricardo__o_s_lib__arduino_json_6_x__c_h_a_n_g_e_l_o_g_autotoc_md83}
+
+\begin{DoxyItemize}
+\item Added support of {\ttfamily long long} (issue \#171)
+\item Moved all build settings to {\ttfamily \mbox{\hyperlink{_configuration_8hpp_source}{Arduino\+Json/\+Configuration.\+hpp}}}
+\end{DoxyItemize}
+
+\begin{quote}
+\#\#\# BREAKING CHANGE \+:warning\+:
+
+If you defined {\ttfamily ARDUINOJSON\+\_\+\+ENABLE\+\_\+\+STD\+\_\+\+STREAM}, you now need to define it to {\ttfamily 1}. \end{quote}
+\hypertarget{md___users_kiran__documents__projects__i_c_l_r__avionics__ricardo__o_s__ricardo__o_s_lib__arduino_json_6_x__c_h_a_n_g_e_l_o_g_autotoc_md84}{}\doxysection{v5.\+0.\+8}\label{md___users_kiran__documents__projects__i_c_l_r__avionics__ricardo__o_s__ricardo__o_s_lib__arduino_json_6_x__c_h_a_n_g_e_l_o_g_autotoc_md84}
+
+\begin{DoxyItemize}
+\item Made the library compatible with \href{http://platformio.org/}{\texttt{ Platform\+IO}} (issue \#181)
+\item Fixed {\ttfamily Json\+Variant\+::is$<$bool$>$()} that was incorrectly returning false (issue \#214)
+\end{DoxyItemize}\hypertarget{md___users_kiran__documents__projects__i_c_l_r__avionics__ricardo__o_s__ricardo__o_s_lib__arduino_json_6_x__c_h_a_n_g_e_l_o_g_autotoc_md85}{}\doxysection{v5.\+0.\+7}\label{md___users_kiran__documents__projects__i_c_l_r__avionics__ricardo__o_s__ricardo__o_s_lib__arduino_json_6_x__c_h_a_n_g_e_l_o_g_autotoc_md85}
+
+\begin{DoxyItemize}
+\item Made library easier to use from a CMake project\+: simply {\ttfamily add\+\_\+subdirectory(Arduino\+Json/src)}
+\item Changed {\ttfamily \mbox{\hyperlink{class_string}{String}}} to be a {\ttfamily typedef} of {\ttfamily std\+::string} (issues \#142 and \#161)
+\end{DoxyItemize}
+
+\begin{quote}
+\#\#\# BREAKING CHANGES \+:warning\+:
+
+
+\begin{DoxyItemize}
+\item {\ttfamily Json\+Variant(true).as$<$\mbox{\hyperlink{class_string}{String}}$>$()} now returns {\ttfamily \char`\"{}true\char`\"{}} instead of {\ttfamily \char`\"{}1\char`\"{}}
+\item {\ttfamily Json\+Variant(false).as$<$\mbox{\hyperlink{class_string}{String}}$>$()} now returns {\ttfamily \char`\"{}false\char`\"{}} instead of {\ttfamily \char`\"{}0\char`\"{}} 
+\end{DoxyItemize}\end{quote}
+\hypertarget{md___users_kiran__documents__projects__i_c_l_r__avionics__ricardo__o_s__ricardo__o_s_lib__arduino_json_6_x__c_h_a_n_g_e_l_o_g_autotoc_md86}{}\doxysection{v5.\+0.\+6}\label{md___users_kiran__documents__projects__i_c_l_r__avionics__ricardo__o_s__ricardo__o_s_lib__arduino_json_6_x__c_h_a_n_g_e_l_o_g_autotoc_md86}
+
+\begin{DoxyItemize}
+\item Added parameter to {\ttfamily Dynamic\+Json\+Buffer} constructor to set initial size (issue \#152)
+\item Fixed warning about library category in Arduino 1.\+6.\+6 (issue \#147)
+\item Examples\+: Added a loop to wait for serial port to be ready (issue \#156)
+\end{DoxyItemize}\hypertarget{md___users_kiran__documents__projects__i_c_l_r__avionics__ricardo__o_s__ricardo__o_s_lib__arduino_json_6_x__c_h_a_n_g_e_l_o_g_autotoc_md87}{}\doxysection{v5.\+0.\+5}\label{md___users_kiran__documents__projects__i_c_l_r__avionics__ricardo__o_s__ricardo__o_s_lib__arduino_json_6_x__c_h_a_n_g_e_l_o_g_autotoc_md87}
+
+\begin{DoxyItemize}
+\item Added overload {\ttfamily Json\+Object\+Suscript\+::set(value, decimals)} (issue \#143)
+\item Use {\ttfamily float} instead of {\ttfamily double} to reduce the size of {\ttfamily Json\+Variant} (issue \#134)
+\end{DoxyItemize}\hypertarget{md___users_kiran__documents__projects__i_c_l_r__avionics__ricardo__o_s__ricardo__o_s_lib__arduino_json_6_x__c_h_a_n_g_e_l_o_g_autotoc_md88}{}\doxysection{v5.\+0.\+4}\label{md___users_kiran__documents__projects__i_c_l_r__avionics__ricardo__o_s__ricardo__o_s_lib__arduino_json_6_x__c_h_a_n_g_e_l_o_g_autotoc_md88}
+
+\begin{DoxyItemize}
+\item Fixed ambiguous overload with {\ttfamily Json\+Array\+Subscript} and {\ttfamily Json\+Object\+Subscript} (issue \#122)
+\end{DoxyItemize}\hypertarget{md___users_kiran__documents__projects__i_c_l_r__avionics__ricardo__o_s__ricardo__o_s_lib__arduino_json_6_x__c_h_a_n_g_e_l_o_g_autotoc_md89}{}\doxysection{v5.\+0.\+3}\label{md___users_kiran__documents__projects__i_c_l_r__avionics__ricardo__o_s__ricardo__o_s_lib__arduino_json_6_x__c_h_a_n_g_e_l_o_g_autotoc_md89}
+
+\begin{DoxyItemize}
+\item Fixed {\ttfamily print\+To(\+String)} which wrote numbers instead of strings (issue \#120)
+\item Fixed return type of {\ttfamily Json\+Array\+::is$<$T$>$()} and some others (issue \#121)
+\end{DoxyItemize}\hypertarget{md___users_kiran__documents__projects__i_c_l_r__avionics__ricardo__o_s__ricardo__o_s_lib__arduino_json_6_x__c_h_a_n_g_e_l_o_g_autotoc_md90}{}\doxysection{v5.\+0.\+2}\label{md___users_kiran__documents__projects__i_c_l_r__avionics__ricardo__o_s__ricardo__o_s_lib__arduino_json_6_x__c_h_a_n_g_e_l_o_g_autotoc_md90}
+
+\begin{DoxyItemize}
+\item Fixed segmentation fault in {\ttfamily parse\+Object(\+String)} and {\ttfamily parse\+Array(\+String)}, when the {\ttfamily Static\+Json\+Buffer} is too small to hold a copy of the string
+\item Fixed Clang warning \char`\"{}register specifier is deprecated\char`\"{} (issue \#102)
+\item Fixed GCC warning \char`\"{}declaration shadows a member\char`\"{} (issue \#103)
+\item Fixed memory alignment, which made ESP8266 crash (issue \#104)
+\item Fixed compilation on Visual Studio 2010 and 2012 (issue \#107)
+\end{DoxyItemize}\hypertarget{md___users_kiran__documents__projects__i_c_l_r__avionics__ricardo__o_s__ricardo__o_s_lib__arduino_json_6_x__c_h_a_n_g_e_l_o_g_autotoc_md91}{}\doxysection{v5.\+0.\+1}\label{md___users_kiran__documents__projects__i_c_l_r__avionics__ricardo__o_s__ricardo__o_s_lib__arduino_json_6_x__c_h_a_n_g_e_l_o_g_autotoc_md91}
+
+\begin{DoxyItemize}
+\item Fixed compilation with Arduino 1.\+0.\+6 (issue \#99)
+\end{DoxyItemize}\hypertarget{md___users_kiran__documents__projects__i_c_l_r__avionics__ricardo__o_s__ricardo__o_s_lib__arduino_json_6_x__c_h_a_n_g_e_l_o_g_autotoc_md92}{}\doxysection{v5.\+0.\+0}\label{md___users_kiran__documents__projects__i_c_l_r__avionics__ricardo__o_s__ricardo__o_s_lib__arduino_json_6_x__c_h_a_n_g_e_l_o_g_autotoc_md92}
+
+\begin{DoxyItemize}
+\item Added support of {\ttfamily \mbox{\hyperlink{class_string}{String}}} class (issues \#55, \#56, \#70, \#77)
+\item Added {\ttfamily Json\+Buffer\+::strdup()} to make a copy of a string (issues \#10, \#57)
+\item Implicitly call {\ttfamily strdup()} for {\ttfamily \mbox{\hyperlink{class_string}{String}}} but not for {\ttfamily char$\ast$} (issues \#84, \#87)
+\item Added support of non standard JSON input (issue \#44)
+\item Added support of comments in JSON input (issue \#88)
+\item Added implicit cast between numerical types (issues \#64, \#69, \#93)
+\item Added ability to read number values as string (issue \#90)
+\item Redesigned {\ttfamily Json\+Variant} to leverage converting constructors instead of assignment operators (issue \#66)
+\item Switched to new the library layout (requires Arduino 1.\+0.\+6 or above)
+\end{DoxyItemize}
+
+\begin{quote}
+\#\#\# BREAKING CHANGES \+:warning\+:
+
+
+\begin{DoxyItemize}
+\item {\ttfamily Json\+Object\+::add()} was renamed to {\ttfamily set()}
+\item {\ttfamily Json\+Array\+::at()} and {\ttfamily Json\+Object\+::at()} were renamed to {\ttfamily get()}
+\item Number of digits of floating point value are now set with {\ttfamily double\+\_\+with\+\_\+n\+\_\+digits()} 
+\end{DoxyItemize}\end{quote}
+{\bfseries{Personal note about the {\ttfamily \mbox{\hyperlink{class_string}{String}}} class}}\+: Support of the {\ttfamily \mbox{\hyperlink{class_string}{String}}} class has been added to the library because many people use it in their programs. However, you should not see this as an invitation to use the {\ttfamily \mbox{\hyperlink{class_string}{String}}} class. The {\ttfamily \mbox{\hyperlink{class_string}{String}}} class is {\bfseries{bad}} because it uses dynamic memory allocation. Compared to static allocation, it compiles to a bigger, slower program, and is less predictable. You certainly don\textquotesingle{}t want that in an embedded environment! 

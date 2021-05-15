@@ -1,0 +1,504 @@
+\hypertarget{class_sdio_card}{}\doxysection{Sdio\+Card Class Reference}
+\label{class_sdio_card}\index{SdioCard@{SdioCard}}
+
+
+Raw SDIO access to SD and SDHC flash memory cards.  
+
+
+
+
+{\ttfamily \#include $<$Sdio\+Card.\+h$>$}
+
+Inheritance diagram for Sdio\+Card\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=3.000000cm]{class_sdio_card}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+bool \mbox{\hyperlink{class_sdio_card_ac749bdad92a4465d062f5d21a7f4faf5}{begin}} ()
+\item 
+uint32\+\_\+t \mbox{\hyperlink{class_sdio_card_aa093779cceb6acbf5ff02ff06f340dab}{card\+Capacity}} ()
+\item 
+uint32\+\_\+t \mbox{\hyperlink{class_sdio_card_a3d8f9a92f7faec77094ec65e6c41dd45}{card\+Size}} ()
+\item 
+bool \mbox{\hyperlink{class_sdio_card_a1ce82b035257790ed8e4a9be3d966b80}{erase}} (uint32\+\_\+t first\+Block, uint32\+\_\+t last\+Block)
+\item 
+uint8\+\_\+t \mbox{\hyperlink{class_sdio_card_a4ff272009a24fc4078ac87c2d87ccd16}{error\+Code}} ()
+\item 
+uint32\+\_\+t \mbox{\hyperlink{class_sdio_card_a8251b9aa0d623487e80cf908fc1625b5}{error\+Data}} ()
+\item 
+uint32\+\_\+t \mbox{\hyperlink{class_sdio_card_aafa9feb1b5a90f3cf96456b6b286bfdf}{error\+Line}} ()
+\item 
+bool \mbox{\hyperlink{class_sdio_card_a560bdfc96932d073c2b0610600560f78}{is\+Busy}} ()
+\item 
+uint32\+\_\+t \mbox{\hyperlink{class_sdio_card_a3532a1a4b8a43a51ed9b5853186203cb}{k\+Hz\+Sd\+Clk}} ()
+\item 
+bool \mbox{\hyperlink{class_sdio_card_ac94605c428fa9258106835cceec470d8}{read\+Block}} (uint32\+\_\+t lba, uint8\+\_\+t $\ast$dst)
+\item 
+bool \mbox{\hyperlink{class_sdio_card_a7de36d26a01dc39b7dc122c54ee03b12}{read\+Blocks}} (uint32\+\_\+t lba, uint8\+\_\+t $\ast$dst, size\+\_\+t nb)
+\item 
+bool \mbox{\hyperlink{class_sdio_card_add77777fbcf91cc41e8ec62fda169e79}{read\+CID}} (void $\ast$cid)
+\item 
+bool \mbox{\hyperlink{class_sdio_card_a1da0ca418c153e24b4e13b4c1e20d450}{read\+CSD}} (void $\ast$csd)
+\item 
+bool \mbox{\hyperlink{class_sdio_card_a9dc1cd99d0136e514faaecf56a6318d2}{read\+Data}} (uint8\+\_\+t $\ast$dst)
+\item 
+bool \mbox{\hyperlink{class_sdio_card_adc583f7a27f57ce55ce474b1379b9303}{read\+OCR}} (uint32\+\_\+t $\ast$ocr)
+\item 
+bool \mbox{\hyperlink{class_sdio_card_a73beed782d16173b2e7b0e29c663f6fb}{read\+Start}} (uint32\+\_\+t lba)
+\item 
+bool \mbox{\hyperlink{class_sdio_card_a788171db84a1d724808d56ab9608e3a4}{read\+Start}} (uint32\+\_\+t lba, uint32\+\_\+t count)
+\item 
+bool \mbox{\hyperlink{class_sdio_card_a5bd3f206d790149340783135d08eb701}{read\+Stop}} ()
+\item 
+bool \mbox{\hyperlink{class_sdio_card_affcd36a5c3a42042fe24716671f06632}{sync\+Blocks}} ()
+\item 
+uint8\+\_\+t \mbox{\hyperlink{class_sdio_card_a2151106a93280ae41bab654428214661}{type}} ()
+\item 
+bool \mbox{\hyperlink{class_sdio_card_ae53e5f72ddf9ace3f47774d968e064ed}{write\+Block}} (uint32\+\_\+t lba, const uint8\+\_\+t $\ast$src)
+\item 
+bool \mbox{\hyperlink{class_sdio_card_a8b811f875497e90e75fbe6c2d41d89cb}{write\+Blocks}} (uint32\+\_\+t lba, const uint8\+\_\+t $\ast$src, size\+\_\+t nb)
+\item 
+bool \mbox{\hyperlink{class_sdio_card_a8467e7ffafa45ff930b38a6f18e9547a}{write\+Data}} (const uint8\+\_\+t $\ast$src)
+\item 
+bool \mbox{\hyperlink{class_sdio_card_a6216b2b1c42bd585669955f774292f78}{write\+Start}} (uint32\+\_\+t lba)
+\item 
+bool \mbox{\hyperlink{class_sdio_card_a55b31eb21c986c8476bf42e975801e05}{write\+Start}} (uint32\+\_\+t lba, uint32\+\_\+t count)
+\item 
+bool \mbox{\hyperlink{class_sdio_card_acb560c2ea1f30c646b96f02e728b0fe1}{write\+Stop}} ()
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Raw SDIO access to SD and SDHC flash memory cards. 
+
+Copyright (c) 2011-\/2018 Bill Greiman This file is part of the \mbox{\hyperlink{class_sd_fat}{Sd\+Fat}} library for SD memory cards.
+
+MIT License
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the \char`\"{}\+Software\char`\"{}), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions\+:
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED \char`\"{}\+AS IS\char`\"{}, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE. 
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_sdio_card_ac749bdad92a4465d062f5d21a7f4faf5}\label{class_sdio_card_ac749bdad92a4465d062f5d21a7f4faf5}} 
+\index{SdioCard@{SdioCard}!begin@{begin}}
+\index{begin@{begin}!SdioCard@{SdioCard}}
+\doxysubsubsection{\texorpdfstring{begin()}{begin()}}
+{\footnotesize\ttfamily bool Sdio\+Card\+::begin (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Initialize the SD card. \begin{DoxyReturn}{Returns}
+true for success else false. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_sdio_card_aa093779cceb6acbf5ff02ff06f340dab}\label{class_sdio_card_aa093779cceb6acbf5ff02ff06f340dab}} 
+\index{SdioCard@{SdioCard}!cardCapacity@{cardCapacity}}
+\index{cardCapacity@{cardCapacity}!SdioCard@{SdioCard}}
+\doxysubsubsection{\texorpdfstring{cardCapacity()}{cardCapacity()}}
+{\footnotesize\ttfamily uint32\+\_\+t Sdio\+Card\+::card\+Capacity (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Determine the size of an SD flash memory card.
+
+\begin{DoxyReturn}{Returns}
+The number of 512 byte sectors in the card or zero if an error occurs. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_sdio_card_a3d8f9a92f7faec77094ec65e6c41dd45}\label{class_sdio_card_a3d8f9a92f7faec77094ec65e6c41dd45}} 
+\index{SdioCard@{SdioCard}!cardSize@{cardSize}}
+\index{cardSize@{cardSize}!SdioCard@{SdioCard}}
+\doxysubsubsection{\texorpdfstring{cardSize()}{cardSize()}}
+{\footnotesize\ttfamily uint32\+\_\+t Sdio\+Card\+::card\+Size (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\begin{DoxyReturn}{Returns}
+Card size in sectors or zero if an error occurs. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_sdio_card_a1ce82b035257790ed8e4a9be3d966b80}\label{class_sdio_card_a1ce82b035257790ed8e4a9be3d966b80}} 
+\index{SdioCard@{SdioCard}!erase@{erase}}
+\index{erase@{erase}!SdioCard@{SdioCard}}
+\doxysubsubsection{\texorpdfstring{erase()}{erase()}}
+{\footnotesize\ttfamily bool Sdio\+Card\+::erase (\begin{DoxyParamCaption}\item[{uint32\+\_\+t}]{first\+Block,  }\item[{uint32\+\_\+t}]{last\+Block }\end{DoxyParamCaption})}
+
+Erase a range of blocks.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em first\+Block} & The address of the first block in the range. \\
+\hline
+\mbox{\texttt{ in}}  & {\em last\+Block} & The address of the last block in the range.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyNote}{Note}
+This function requests the SD card to do a flash erase for a range of blocks. The data on the card after an erase operation is either 0 or 1, depends on the card vendor. The card must support single block erase.
+\end{DoxyNote}
+\begin{DoxyReturn}{Returns}
+The value true is returned for success and the value false is returned for failure. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_sdio_card_a4ff272009a24fc4078ac87c2d87ccd16}\label{class_sdio_card_a4ff272009a24fc4078ac87c2d87ccd16}} 
+\index{SdioCard@{SdioCard}!errorCode@{errorCode}}
+\index{errorCode@{errorCode}!SdioCard@{SdioCard}}
+\doxysubsubsection{\texorpdfstring{errorCode()}{errorCode()}}
+{\footnotesize\ttfamily uint8\+\_\+t Sdio\+Card\+::error\+Code (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\begin{DoxyReturn}{Returns}
+code for the last error. See \mbox{\hyperlink{_sd_info_8h_source}{Sd\+Info.\+h}} for a list of error codes. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_sdio_card_a8251b9aa0d623487e80cf908fc1625b5}\label{class_sdio_card_a8251b9aa0d623487e80cf908fc1625b5}} 
+\index{SdioCard@{SdioCard}!errorData@{errorData}}
+\index{errorData@{errorData}!SdioCard@{SdioCard}}
+\doxysubsubsection{\texorpdfstring{errorData()}{errorData()}}
+{\footnotesize\ttfamily uint32\+\_\+t Sdio\+Card\+::error\+Data (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\begin{DoxyReturn}{Returns}
+error data for last error. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_sdio_card_aafa9feb1b5a90f3cf96456b6b286bfdf}\label{class_sdio_card_aafa9feb1b5a90f3cf96456b6b286bfdf}} 
+\index{SdioCard@{SdioCard}!errorLine@{errorLine}}
+\index{errorLine@{errorLine}!SdioCard@{SdioCard}}
+\doxysubsubsection{\texorpdfstring{errorLine()}{errorLine()}}
+{\footnotesize\ttfamily uint32\+\_\+t Sdio\+Card\+::error\+Line (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\begin{DoxyReturn}{Returns}
+error line for last error. Tmp function for debug. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_sdio_card_a560bdfc96932d073c2b0610600560f78}\label{class_sdio_card_a560bdfc96932d073c2b0610600560f78}} 
+\index{SdioCard@{SdioCard}!isBusy@{isBusy}}
+\index{isBusy@{isBusy}!SdioCard@{SdioCard}}
+\doxysubsubsection{\texorpdfstring{isBusy()}{isBusy()}}
+{\footnotesize\ttfamily bool Sdio\+Card\+::is\+Busy (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Check for busy with CMD13.
+
+\begin{DoxyReturn}{Returns}
+true if busy else false. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_sdio_card_a3532a1a4b8a43a51ed9b5853186203cb}\label{class_sdio_card_a3532a1a4b8a43a51ed9b5853186203cb}} 
+\index{SdioCard@{SdioCard}!kHzSdClk@{kHzSdClk}}
+\index{kHzSdClk@{kHzSdClk}!SdioCard@{SdioCard}}
+\doxysubsubsection{\texorpdfstring{kHzSdClk()}{kHzSdClk()}}
+{\footnotesize\ttfamily uint32\+\_\+t Sdio\+Card\+::k\+Hz\+Sd\+Clk (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\begin{DoxyReturn}{Returns}
+the SD clock frequency in k\+Hz. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_sdio_card_ac94605c428fa9258106835cceec470d8}\label{class_sdio_card_ac94605c428fa9258106835cceec470d8}} 
+\index{SdioCard@{SdioCard}!readBlock@{readBlock}}
+\index{readBlock@{readBlock}!SdioCard@{SdioCard}}
+\doxysubsubsection{\texorpdfstring{readBlock()}{readBlock()}}
+{\footnotesize\ttfamily bool Sdio\+Card\+::read\+Block (\begin{DoxyParamCaption}\item[{uint32\+\_\+t}]{lba,  }\item[{uint8\+\_\+t $\ast$}]{dst }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+Read a 512 byte block from an SD card.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em lba} & Logical block to be read. \\
+\hline
+\mbox{\texttt{ out}}  & {\em dst} & Pointer to the location that will receive the data. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The value true is returned for success and the value false is returned for failure. 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{class_base_block_driver_a16bb3305f3130253dd7ab6e19aa1b524}{Base\+Block\+Driver}}.
+
+
+
+Reimplemented in \mbox{\hyperlink{class_sdio_card_e_x_a49609f0409ef01284bc83b10a8ec5efe}{Sdio\+Card\+EX}}.
+
+\mbox{\Hypertarget{class_sdio_card_a7de36d26a01dc39b7dc122c54ee03b12}\label{class_sdio_card_a7de36d26a01dc39b7dc122c54ee03b12}} 
+\index{SdioCard@{SdioCard}!readBlocks@{readBlocks}}
+\index{readBlocks@{readBlocks}!SdioCard@{SdioCard}}
+\doxysubsubsection{\texorpdfstring{readBlocks()}{readBlocks()}}
+{\footnotesize\ttfamily bool Sdio\+Card\+::read\+Blocks (\begin{DoxyParamCaption}\item[{uint32\+\_\+t}]{lba,  }\item[{uint8\+\_\+t $\ast$}]{dst,  }\item[{size\+\_\+t}]{nb }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+Read multiple 512 byte blocks from an SD card.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em lba} & Logical block to be read. \\
+\hline
+\mbox{\texttt{ in}}  & {\em nb} & Number of blocks to be read. \\
+\hline
+\mbox{\texttt{ out}}  & {\em dst} & Pointer to the location that will receive the data. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The value true is returned for success and the value false is returned for failure. 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{class_base_block_driver_a3a029a2d02fc7cbdd7c15c8d622565c4}{Base\+Block\+Driver}}.
+
+
+
+Reimplemented in \mbox{\hyperlink{class_sdio_card_e_x_a1b50db2f87246f4ff1af4782152c5fee}{Sdio\+Card\+EX}}.
+
+\mbox{\Hypertarget{class_sdio_card_add77777fbcf91cc41e8ec62fda169e79}\label{class_sdio_card_add77777fbcf91cc41e8ec62fda169e79}} 
+\index{SdioCard@{SdioCard}!readCID@{readCID}}
+\index{readCID@{readCID}!SdioCard@{SdioCard}}
+\doxysubsubsection{\texorpdfstring{readCID()}{readCID()}}
+{\footnotesize\ttfamily bool Sdio\+Card\+::read\+CID (\begin{DoxyParamCaption}\item[{void $\ast$}]{cid }\end{DoxyParamCaption})}
+
+Read a card\textquotesingle{}s \mbox{\hyperlink{struct_c_i_d}{CID}} register. The \mbox{\hyperlink{struct_c_i_d}{CID}} contains card identification information such as Manufacturer ID, Product name, Product serial number and Manufacturing date.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ out}}  & {\em cid} & pointer to area for returned data.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true for success or false for failure. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_sdio_card_a1da0ca418c153e24b4e13b4c1e20d450}\label{class_sdio_card_a1da0ca418c153e24b4e13b4c1e20d450}} 
+\index{SdioCard@{SdioCard}!readCSD@{readCSD}}
+\index{readCSD@{readCSD}!SdioCard@{SdioCard}}
+\doxysubsubsection{\texorpdfstring{readCSD()}{readCSD()}}
+{\footnotesize\ttfamily bool Sdio\+Card\+::read\+CSD (\begin{DoxyParamCaption}\item[{void $\ast$}]{csd }\end{DoxyParamCaption})}
+
+Read a card\textquotesingle{}s CSD register. The CSD contains Card-\/\+Specific Data that provides information regarding access to the card\textquotesingle{}s contents.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ out}}  & {\em csd} & pointer to area for returned data.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true for success or false for failure. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_sdio_card_a9dc1cd99d0136e514faaecf56a6318d2}\label{class_sdio_card_a9dc1cd99d0136e514faaecf56a6318d2}} 
+\index{SdioCard@{SdioCard}!readData@{readData}}
+\index{readData@{readData}!SdioCard@{SdioCard}}
+\doxysubsubsection{\texorpdfstring{readData()}{readData()}}
+{\footnotesize\ttfamily bool Sdio\+Card\+::read\+Data (\begin{DoxyParamCaption}\item[{uint8\+\_\+t $\ast$}]{dst }\end{DoxyParamCaption})}
+
+Read one data block in a multiple block read sequence
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ out}}  & {\em dst} & Pointer to the location for the data to be read.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The value true is returned for success and the value false is returned for failure. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_sdio_card_adc583f7a27f57ce55ce474b1379b9303}\label{class_sdio_card_adc583f7a27f57ce55ce474b1379b9303}} 
+\index{SdioCard@{SdioCard}!readOCR@{readOCR}}
+\index{readOCR@{readOCR}!SdioCard@{SdioCard}}
+\doxysubsubsection{\texorpdfstring{readOCR()}{readOCR()}}
+{\footnotesize\ttfamily bool Sdio\+Card\+::read\+OCR (\begin{DoxyParamCaption}\item[{uint32\+\_\+t $\ast$}]{ocr }\end{DoxyParamCaption})}
+
+Read OCR register.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ out}}  & {\em ocr} & Value of OCR register. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true for success else false. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_sdio_card_a73beed782d16173b2e7b0e29c663f6fb}\label{class_sdio_card_a73beed782d16173b2e7b0e29c663f6fb}} 
+\index{SdioCard@{SdioCard}!readStart@{readStart}}
+\index{readStart@{readStart}!SdioCard@{SdioCard}}
+\doxysubsubsection{\texorpdfstring{readStart()}{readStart()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily bool Sdio\+Card\+::read\+Start (\begin{DoxyParamCaption}\item[{uint32\+\_\+t}]{lba }\end{DoxyParamCaption})}
+
+Start a read multiple blocks sequence.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em lba} & Address of first block in sequence.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyNote}{Note}
+This function is used with \mbox{\hyperlink{class_sdio_card_a9dc1cd99d0136e514faaecf56a6318d2}{read\+Data()}} and \mbox{\hyperlink{class_sdio_card_a5bd3f206d790149340783135d08eb701}{read\+Stop()}} for optimized multiple block reads. SPI chip\+Select must be low for the entire sequence.
+\end{DoxyNote}
+\begin{DoxyReturn}{Returns}
+The value true is returned for success and the value false is returned for failure. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_sdio_card_a788171db84a1d724808d56ab9608e3a4}\label{class_sdio_card_a788171db84a1d724808d56ab9608e3a4}} 
+\index{SdioCard@{SdioCard}!readStart@{readStart}}
+\index{readStart@{readStart}!SdioCard@{SdioCard}}
+\doxysubsubsection{\texorpdfstring{readStart()}{readStart()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily bool Sdio\+Card\+::read\+Start (\begin{DoxyParamCaption}\item[{uint32\+\_\+t}]{lba,  }\item[{uint32\+\_\+t}]{count }\end{DoxyParamCaption})}
+
+Start a read multiple blocks sequence.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em lba} & Address of first block in sequence. \\
+\hline
+\mbox{\texttt{ in}}  & {\em count} & Maximum block count. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyNote}{Note}
+This function is used with \mbox{\hyperlink{class_sdio_card_a9dc1cd99d0136e514faaecf56a6318d2}{read\+Data()}} and \mbox{\hyperlink{class_sdio_card_a5bd3f206d790149340783135d08eb701}{read\+Stop()}} for optimized multiple block reads. SPI chip\+Select must be low for the entire sequence.
+\end{DoxyNote}
+\begin{DoxyReturn}{Returns}
+The value true is returned for success and the value false is returned for failure. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_sdio_card_a5bd3f206d790149340783135d08eb701}\label{class_sdio_card_a5bd3f206d790149340783135d08eb701}} 
+\index{SdioCard@{SdioCard}!readStop@{readStop}}
+\index{readStop@{readStop}!SdioCard@{SdioCard}}
+\doxysubsubsection{\texorpdfstring{readStop()}{readStop()}}
+{\footnotesize\ttfamily bool Sdio\+Card\+::read\+Stop (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+End a read multiple blocks sequence.
+
+\begin{DoxyReturn}{Returns}
+The value true is returned for success and the value false is returned for failure. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_sdio_card_affcd36a5c3a42042fe24716671f06632}\label{class_sdio_card_affcd36a5c3a42042fe24716671f06632}} 
+\index{SdioCard@{SdioCard}!syncBlocks@{syncBlocks}}
+\index{syncBlocks@{syncBlocks}!SdioCard@{SdioCard}}
+\doxysubsubsection{\texorpdfstring{syncBlocks()}{syncBlocks()}}
+{\footnotesize\ttfamily bool Sdio\+Card\+::sync\+Blocks (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+\begin{DoxyReturn}{Returns}
+success if sync successful. Not for user apps. 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{class_base_block_driver_a5361ff2658d7654bf00b97c54c6aa2aa}{Base\+Block\+Driver}}.
+
+
+
+Reimplemented in \mbox{\hyperlink{class_sdio_card_e_x_a02699a39ef940441ef0f1049742c5aa7}{Sdio\+Card\+EX}}.
+
+\mbox{\Hypertarget{class_sdio_card_a2151106a93280ae41bab654428214661}\label{class_sdio_card_a2151106a93280ae41bab654428214661}} 
+\index{SdioCard@{SdioCard}!type@{type}}
+\index{type@{type}!SdioCard@{SdioCard}}
+\doxysubsubsection{\texorpdfstring{type()}{type()}}
+{\footnotesize\ttfamily uint8\+\_\+t Sdio\+Card\+::type (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Return the card type\+: SD V1, SD V2 or SDHC \begin{DoxyReturn}{Returns}
+0 -\/ SD V1, 1 -\/ SD V2, or 3 -\/ SDHC. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_sdio_card_ae53e5f72ddf9ace3f47774d968e064ed}\label{class_sdio_card_ae53e5f72ddf9ace3f47774d968e064ed}} 
+\index{SdioCard@{SdioCard}!writeBlock@{writeBlock}}
+\index{writeBlock@{writeBlock}!SdioCard@{SdioCard}}
+\doxysubsubsection{\texorpdfstring{writeBlock()}{writeBlock()}}
+{\footnotesize\ttfamily bool Sdio\+Card\+::write\+Block (\begin{DoxyParamCaption}\item[{uint32\+\_\+t}]{lba,  }\item[{const uint8\+\_\+t $\ast$}]{src }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+Writes a 512 byte block to an SD card.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em lba} & Logical block to be written. \\
+\hline
+\mbox{\texttt{ in}}  & {\em src} & Pointer to the location of the data to be written. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The value true is returned for success and the value false is returned for failure. 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{class_base_block_driver_a87df3db1b400286883661525441d39fa}{Base\+Block\+Driver}}.
+
+
+
+Reimplemented in \mbox{\hyperlink{class_sdio_card_e_x_ab34379d6663461dd0000180e640b73be}{Sdio\+Card\+EX}}.
+
+\mbox{\Hypertarget{class_sdio_card_a8b811f875497e90e75fbe6c2d41d89cb}\label{class_sdio_card_a8b811f875497e90e75fbe6c2d41d89cb}} 
+\index{SdioCard@{SdioCard}!writeBlocks@{writeBlocks}}
+\index{writeBlocks@{writeBlocks}!SdioCard@{SdioCard}}
+\doxysubsubsection{\texorpdfstring{writeBlocks()}{writeBlocks()}}
+{\footnotesize\ttfamily bool Sdio\+Card\+::write\+Blocks (\begin{DoxyParamCaption}\item[{uint32\+\_\+t}]{lba,  }\item[{const uint8\+\_\+t $\ast$}]{src,  }\item[{size\+\_\+t}]{nb }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+Write multiple 512 byte blocks to an SD card.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em lba} & Logical block to be written. \\
+\hline
+\mbox{\texttt{ in}}  & {\em nb} & Number of blocks to be written. \\
+\hline
+\mbox{\texttt{ in}}  & {\em src} & Pointer to the location of the data to be written. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The value true is returned for success and the value false is returned for failure. 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{class_base_block_driver_a3d6520b21252ebfb17b0cac0b87689b1}{Base\+Block\+Driver}}.
+
+
+
+Reimplemented in \mbox{\hyperlink{class_sdio_card_e_x_a0e504921296a473da074d4a60d573f29}{Sdio\+Card\+EX}}.
+
+\mbox{\Hypertarget{class_sdio_card_a8467e7ffafa45ff930b38a6f18e9547a}\label{class_sdio_card_a8467e7ffafa45ff930b38a6f18e9547a}} 
+\index{SdioCard@{SdioCard}!writeData@{writeData}}
+\index{writeData@{writeData}!SdioCard@{SdioCard}}
+\doxysubsubsection{\texorpdfstring{writeData()}{writeData()}}
+{\footnotesize\ttfamily bool Sdio\+Card\+::write\+Data (\begin{DoxyParamCaption}\item[{const uint8\+\_\+t $\ast$}]{src }\end{DoxyParamCaption})}
+
+Write one data block in a multiple block write sequence. 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em src} & Pointer to the location of the data to be written. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The value true is returned for success and the value false is returned for failure. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_sdio_card_a6216b2b1c42bd585669955f774292f78}\label{class_sdio_card_a6216b2b1c42bd585669955f774292f78}} 
+\index{SdioCard@{SdioCard}!writeStart@{writeStart}}
+\index{writeStart@{writeStart}!SdioCard@{SdioCard}}
+\doxysubsubsection{\texorpdfstring{writeStart()}{writeStart()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily bool Sdio\+Card\+::write\+Start (\begin{DoxyParamCaption}\item[{uint32\+\_\+t}]{lba }\end{DoxyParamCaption})}
+
+Start a write multiple blocks sequence.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em lba} & Address of first block in sequence.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyNote}{Note}
+This function is used with \mbox{\hyperlink{class_sdio_card_a8467e7ffafa45ff930b38a6f18e9547a}{write\+Data()}} and \mbox{\hyperlink{class_sdio_card_acb560c2ea1f30c646b96f02e728b0fe1}{write\+Stop()}} for optimized multiple block writes.
+\end{DoxyNote}
+\begin{DoxyReturn}{Returns}
+The value true is returned for success and the value false is returned for failure. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_sdio_card_a55b31eb21c986c8476bf42e975801e05}\label{class_sdio_card_a55b31eb21c986c8476bf42e975801e05}} 
+\index{SdioCard@{SdioCard}!writeStart@{writeStart}}
+\index{writeStart@{writeStart}!SdioCard@{SdioCard}}
+\doxysubsubsection{\texorpdfstring{writeStart()}{writeStart()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily bool Sdio\+Card\+::write\+Start (\begin{DoxyParamCaption}\item[{uint32\+\_\+t}]{lba,  }\item[{uint32\+\_\+t}]{count }\end{DoxyParamCaption})}
+
+Start a write multiple blocks sequence.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em lba} & Address of first block in sequence. \\
+\hline
+\mbox{\texttt{ in}}  & {\em count} & Maximum block count. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyNote}{Note}
+This function is used with \mbox{\hyperlink{class_sdio_card_a8467e7ffafa45ff930b38a6f18e9547a}{write\+Data()}} and \mbox{\hyperlink{class_sdio_card_acb560c2ea1f30c646b96f02e728b0fe1}{write\+Stop()}} for optimized multiple block writes.
+\end{DoxyNote}
+\begin{DoxyReturn}{Returns}
+The value true is returned for success and the value false is returned for failure. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_sdio_card_acb560c2ea1f30c646b96f02e728b0fe1}\label{class_sdio_card_acb560c2ea1f30c646b96f02e728b0fe1}} 
+\index{SdioCard@{SdioCard}!writeStop@{writeStop}}
+\index{writeStop@{writeStop}!SdioCard@{SdioCard}}
+\doxysubsubsection{\texorpdfstring{writeStop()}{writeStop()}}
+{\footnotesize\ttfamily bool Sdio\+Card\+::write\+Stop (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+End a write multiple blocks sequence.
+
+\begin{DoxyReturn}{Returns}
+The value true is returned for success and the value false is returned for failure. 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+/\+Users/kiran/\+Documents/\+Projects/\+ICLR/\+Avionics/\+Ricardo\+\_\+\+OS/\+Ricardo\+\_\+\+OS/lib/\+Sd\+Fat-\/master-\/adafruit\+\_\+fork/src/\+Sd\+Card/Sdio\+Card.\+h\end{DoxyCompactItemize}

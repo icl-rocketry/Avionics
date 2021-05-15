@@ -17,7 +17,7 @@ void Flight::initialise(){
 
 
 State* Flight::update(){
-
+    
     //at apogee transtion to recovery state
     return this;
 };

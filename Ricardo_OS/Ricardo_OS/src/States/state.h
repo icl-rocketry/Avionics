@@ -18,12 +18,15 @@ class State {
     virtual void exitstate();
 
     
+
+    
   protected:
     stateMachine* _sm; //pointer to statemachine
     system_flag _curr_stateID;
 
-    uint32_t time_entered_state;
-    uint32_t time_duration_state;
+    uint64_t time_entered_state;
+    uint64_t time_exited_state;
+    uint64_t time_duration_state;
 
 
 };

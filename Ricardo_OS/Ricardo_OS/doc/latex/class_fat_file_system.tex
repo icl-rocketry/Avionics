@@ -1,0 +1,321 @@
+\hypertarget{class_fat_file_system}{}\doxysection{Fat\+File\+System Class Reference}
+\label{class_fat_file_system}\index{FatFileSystem@{FatFileSystem}}
+
+
+Integration class for the Fat\+Lib library.  
+
+
+
+
+{\ttfamily \#include $<$Fat\+File\+System.\+h$>$}
+
+Inheritance diagram for Fat\+File\+System\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=4.000000cm]{class_fat_file_system}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+bool \mbox{\hyperlink{class_fat_file_system_a5dda20d3dcbfc8c641babbb2c9aac382}{begin}} (\mbox{\hyperlink{_block_driver_8h_ace97f2377acdc471a01f9f7ec1fd6bbb}{Block\+Driver}} $\ast$block\+Dev, uint8\+\_\+t \mbox{\hyperlink{_fat_structs_8h_aa65f87792f271fc6cfa70980af6ac3dd}{part}}=0)
+\item 
+bool \mbox{\hyperlink{class_fat_file_system_a5667915e63187a43a71dfada63800865}{chdir}} (bool set\+\_\+cwd=false)
+\item 
+bool \mbox{\hyperlink{class_fat_file_system_a44af1b98e8d986d12107b654453acbc4}{chdir}} (const char $\ast$path, bool set\+\_\+cwd=false)
+\item 
+void \mbox{\hyperlink{class_fat_file_system_af24917d6e00c8766dab168eb834047ec}{chvol}} ()
+\item 
+bool \mbox{\hyperlink{class_fat_file_system_aee58c6352652f216577196e32a594b67}{exists}} (const char $\ast$path)
+\item 
+bool \mbox{\hyperlink{class_fat_file_system_ac281c164ab376648c31a168817d1d3c2}{ls}} (\mbox{\hyperlink{class_char_writer}{print\+\_\+t}} $\ast$pr, uint8\+\_\+t flags=0)
+\item 
+bool \mbox{\hyperlink{class_fat_file_system_a3bc01f735d956fff9ad00f932bc827f7}{ls}} (\mbox{\hyperlink{class_char_writer}{print\+\_\+t}} $\ast$pr, const char $\ast$path, uint8\+\_\+t flags)
+\item 
+bool \mbox{\hyperlink{class_fat_file_system_a231c62c98ba8ac3c2624dc5ad2053ebf}{mkdir}} (const char $\ast$path, bool p\+Flag=true)
+\item 
+bool \mbox{\hyperlink{class_fat_file_system_abf7d7d0dab43083d5be10d70ff4669e4}{remove}} (const char $\ast$path)
+\item 
+bool \mbox{\hyperlink{class_fat_file_system_a0187891a24017b41bd7c5ba63e659e65}{rename}} (const char $\ast$old\+Path, const char $\ast$new\+Path)
+\item 
+bool \mbox{\hyperlink{class_fat_file_system_aaed2edc7ff7fedb163458c870bb41b33}{rmdir}} (const char $\ast$path)
+\item 
+bool \mbox{\hyperlink{class_fat_file_system_ad60cb13557f35578f868e03e9ccb8be1}{truncate}} (const char $\ast$path, uint32\+\_\+t length)
+\item 
+\mbox{\hyperlink{class_fat_volume}{Fat\+Volume}} $\ast$ \mbox{\hyperlink{class_fat_file_system_a4ca68fe47bb675df0a80df1ed7a53698}{vol}} ()
+\item 
+\mbox{\hyperlink{class_fat_file}{Fat\+File}} $\ast$ \mbox{\hyperlink{class_fat_file_system_acf257d02b7166683bda2abc5058004bf}{vwd}} ()
+\item 
+bool \mbox{\hyperlink{class_fat_file_system_a36d7831f92acfbfef1c4a24dd7103dc4}{wipe}} (\mbox{\hyperlink{class_char_writer}{print\+\_\+t}} $\ast$pr=0)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Integration class for the Fat\+Lib library. 
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_fat_file_system_a5dda20d3dcbfc8c641babbb2c9aac382}\label{class_fat_file_system_a5dda20d3dcbfc8c641babbb2c9aac382}} 
+\index{FatFileSystem@{FatFileSystem}!begin@{begin}}
+\index{begin@{begin}!FatFileSystem@{FatFileSystem}}
+\doxysubsubsection{\texorpdfstring{begin()}{begin()}}
+{\footnotesize\ttfamily bool Fat\+File\+System\+::begin (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{_block_driver_8h_ace97f2377acdc471a01f9f7ec1fd6bbb}{Block\+Driver}} $\ast$}]{block\+Dev,  }\item[{uint8\+\_\+t}]{part = {\ttfamily 0} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Initialize an \mbox{\hyperlink{class_fat_file_system}{Fat\+File\+System}} object. 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em block\+Dev} & Device block driver. \\
+\hline
+\mbox{\texttt{ in}}  & {\em part} & partition to initialize. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The value true is returned for success and the value false is returned for failure. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_fat_file_system_a5667915e63187a43a71dfada63800865}\label{class_fat_file_system_a5667915e63187a43a71dfada63800865}} 
+\index{FatFileSystem@{FatFileSystem}!chdir@{chdir}}
+\index{chdir@{chdir}!FatFileSystem@{FatFileSystem}}
+\doxysubsubsection{\texorpdfstring{chdir()}{chdir()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily bool Fat\+File\+System\+::chdir (\begin{DoxyParamCaption}\item[{bool}]{set\+\_\+cwd = {\ttfamily false} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Change a volume\textquotesingle{}s working directory to root
+
+Changes the volume\textquotesingle{}s working directory to the SD\textquotesingle{}s root directory. Optionally set the current working directory to the volume\textquotesingle{}s working directory.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em set\+\_\+cwd} & Set the current working directory to this volume\textquotesingle{}s working directory if true.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The value true is returned for success and the value false is returned for failure. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_fat_file_system_a44af1b98e8d986d12107b654453acbc4}\label{class_fat_file_system_a44af1b98e8d986d12107b654453acbc4}} 
+\index{FatFileSystem@{FatFileSystem}!chdir@{chdir}}
+\index{chdir@{chdir}!FatFileSystem@{FatFileSystem}}
+\doxysubsubsection{\texorpdfstring{chdir()}{chdir()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily bool Fat\+File\+System\+::chdir (\begin{DoxyParamCaption}\item[{const char $\ast$}]{path,  }\item[{bool}]{set\+\_\+cwd = {\ttfamily false} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Change a volume\textquotesingle{}s working directory
+
+Changes the volume working directory to the {\itshape path} subdirectory. Optionally set the current working directory to the volume\textquotesingle{}s working directory.
+
+Example\+: If the volume\textquotesingle{}s working directory is \char`\"{}/\+DIR\char`\"{}, chdir(\char`\"{}\+SUB\char`\"{}) will change the volume\textquotesingle{}s working directory from \char`\"{}/\+DIR\char`\"{} to \char`\"{}/\+DIR/\+SUB\char`\"{}.
+
+If path is \char`\"{}/\char`\"{}, the volume\textquotesingle{}s working directory will be changed to the root directory
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em path} & The name of the subdirectory.\\
+\hline
+\mbox{\texttt{ in}}  & {\em set\+\_\+cwd} & Set the current working directory to this volume\textquotesingle{}s working directory if true.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The value true is returned for success and the value false is returned for failure. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_fat_file_system_af24917d6e00c8766dab168eb834047ec}\label{class_fat_file_system_af24917d6e00c8766dab168eb834047ec}} 
+\index{FatFileSystem@{FatFileSystem}!chvol@{chvol}}
+\index{chvol@{chvol}!FatFileSystem@{FatFileSystem}}
+\doxysubsubsection{\texorpdfstring{chvol()}{chvol()}}
+{\footnotesize\ttfamily void Fat\+File\+System\+::chvol (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Set the current working directory to a volume\textquotesingle{}s working directory.
+
+This is useful with multiple SD cards.
+
+The current working directory is changed to this volume\textquotesingle{}s working directory.
+
+This is like the Windows/\+DOS $<$drive letter$>$\+: command. \mbox{\Hypertarget{class_fat_file_system_aee58c6352652f216577196e32a594b67}\label{class_fat_file_system_aee58c6352652f216577196e32a594b67}} 
+\index{FatFileSystem@{FatFileSystem}!exists@{exists}}
+\index{exists@{exists}!FatFileSystem@{FatFileSystem}}
+\doxysubsubsection{\texorpdfstring{exists()}{exists()}}
+{\footnotesize\ttfamily bool Fat\+File\+System\+::exists (\begin{DoxyParamCaption}\item[{const char $\ast$}]{path }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Test for the existence of a file.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em path} & Path of the file to be tested for.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if the file exists else false. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_fat_file_system_a3bc01f735d956fff9ad00f932bc827f7}\label{class_fat_file_system_a3bc01f735d956fff9ad00f932bc827f7}} 
+\index{FatFileSystem@{FatFileSystem}!ls@{ls}}
+\index{ls@{ls}!FatFileSystem@{FatFileSystem}}
+\doxysubsubsection{\texorpdfstring{ls()}{ls()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily bool Fat\+File\+System\+::ls (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_char_writer}{print\+\_\+t}} $\ast$}]{pr,  }\item[{const char $\ast$}]{path,  }\item[{uint8\+\_\+t}]{flags }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+List the directory contents of a directory.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em pr} & Print stream for list.\\
+\hline
+\mbox{\texttt{ in}}  & {\em path} & directory to list.\\
+\hline
+\mbox{\texttt{ in}}  & {\em flags} & The inclusive OR of\\
+\hline
+\end{DoxyParams}
+LS\+\_\+\+DATE -\/ Print file modification date
+
+LS\+\_\+\+SIZE -\/ Print file size.
+
+LS\+\_\+R -\/ Recursive list of subdirectories.
+
+\begin{DoxyReturn}{Returns}
+true for success or false if an error occurred. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_fat_file_system_ac281c164ab376648c31a168817d1d3c2}\label{class_fat_file_system_ac281c164ab376648c31a168817d1d3c2}} 
+\index{FatFileSystem@{FatFileSystem}!ls@{ls}}
+\index{ls@{ls}!FatFileSystem@{FatFileSystem}}
+\doxysubsubsection{\texorpdfstring{ls()}{ls()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily bool Fat\+File\+System\+::ls (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_char_writer}{print\+\_\+t}} $\ast$}]{pr,  }\item[{uint8\+\_\+t}]{flags = {\ttfamily 0} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+List the directory contents of the volume working directory.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em pr} & Print stream for list.\\
+\hline
+\mbox{\texttt{ in}}  & {\em flags} & The inclusive OR of\\
+\hline
+\end{DoxyParams}
+LS\+\_\+\+DATE -\/ Print file modification date
+
+LS\+\_\+\+SIZE -\/ Print file size.
+
+LS\+\_\+R -\/ Recursive list of subdirectories.
+
+\begin{DoxyReturn}{Returns}
+true for success or false if an error occurred. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_fat_file_system_a231c62c98ba8ac3c2624dc5ad2053ebf}\label{class_fat_file_system_a231c62c98ba8ac3c2624dc5ad2053ebf}} 
+\index{FatFileSystem@{FatFileSystem}!mkdir@{mkdir}}
+\index{mkdir@{mkdir}!FatFileSystem@{FatFileSystem}}
+\doxysubsubsection{\texorpdfstring{mkdir()}{mkdir()}}
+{\footnotesize\ttfamily bool Fat\+File\+System\+::mkdir (\begin{DoxyParamCaption}\item[{const char $\ast$}]{path,  }\item[{bool}]{p\+Flag = {\ttfamily true} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Make a subdirectory in the volume working directory.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em path} & A path with a valid 8.\+3 DOS name for the subdirectory.\\
+\hline
+\mbox{\texttt{ in}}  & {\em p\+Flag} & Create missing parent directories if true.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The value true is returned for success and the value false is returned for failure. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_fat_file_system_abf7d7d0dab43083d5be10d70ff4669e4}\label{class_fat_file_system_abf7d7d0dab43083d5be10d70ff4669e4}} 
+\index{FatFileSystem@{FatFileSystem}!remove@{remove}}
+\index{remove@{remove}!FatFileSystem@{FatFileSystem}}
+\doxysubsubsection{\texorpdfstring{remove()}{remove()}}
+{\footnotesize\ttfamily bool Fat\+File\+System\+::remove (\begin{DoxyParamCaption}\item[{const char $\ast$}]{path }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Remove a file from the volume working directory.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em path} & A path with a valid 8.\+3 DOS name for the file.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The value true is returned for success and the value false is returned for failure. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_fat_file_system_a0187891a24017b41bd7c5ba63e659e65}\label{class_fat_file_system_a0187891a24017b41bd7c5ba63e659e65}} 
+\index{FatFileSystem@{FatFileSystem}!rename@{rename}}
+\index{rename@{rename}!FatFileSystem@{FatFileSystem}}
+\doxysubsubsection{\texorpdfstring{rename()}{rename()}}
+{\footnotesize\ttfamily bool Fat\+File\+System\+::rename (\begin{DoxyParamCaption}\item[{const char $\ast$}]{old\+Path,  }\item[{const char $\ast$}]{new\+Path }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Rename a file or subdirectory.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em old\+Path} & Path name to the file or subdirectory to be renamed.\\
+\hline
+\mbox{\texttt{ in}}  & {\em new\+Path} & New path name of the file or subdirectory.\\
+\hline
+\end{DoxyParams}
+The {\itshape new\+Path} object must not exist before the rename call.
+
+The file to be renamed must not be open. The directory entry may be moved and file system corruption could occur if the file is accessed by a file object that was opened before the \mbox{\hyperlink{class_fat_file_system_a0187891a24017b41bd7c5ba63e659e65}{rename()}} call.
+
+\begin{DoxyReturn}{Returns}
+The value true is returned for success and the value false is returned for failure. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_fat_file_system_aaed2edc7ff7fedb163458c870bb41b33}\label{class_fat_file_system_aaed2edc7ff7fedb163458c870bb41b33}} 
+\index{FatFileSystem@{FatFileSystem}!rmdir@{rmdir}}
+\index{rmdir@{rmdir}!FatFileSystem@{FatFileSystem}}
+\doxysubsubsection{\texorpdfstring{rmdir()}{rmdir()}}
+{\footnotesize\ttfamily bool Fat\+File\+System\+::rmdir (\begin{DoxyParamCaption}\item[{const char $\ast$}]{path }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Remove a subdirectory from the volume\textquotesingle{}s working directory.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em path} & A path with a valid 8.\+3 DOS name for the subdirectory.\\
+\hline
+\end{DoxyParams}
+The subdirectory file will be removed only if it is empty.
+
+\begin{DoxyReturn}{Returns}
+The value true is returned for success and the value false is returned for failure. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_fat_file_system_ad60cb13557f35578f868e03e9ccb8be1}\label{class_fat_file_system_ad60cb13557f35578f868e03e9ccb8be1}} 
+\index{FatFileSystem@{FatFileSystem}!truncate@{truncate}}
+\index{truncate@{truncate}!FatFileSystem@{FatFileSystem}}
+\doxysubsubsection{\texorpdfstring{truncate()}{truncate()}}
+{\footnotesize\ttfamily bool Fat\+File\+System\+::truncate (\begin{DoxyParamCaption}\item[{const char $\ast$}]{path,  }\item[{uint32\+\_\+t}]{length }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Truncate a file to a specified length. The current file position will be maintained if it is less than or equal to {\itshape length} otherwise it will be set to end of file.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em path} & A path with a valid 8.\+3 DOS name for the file. \\
+\hline
+\mbox{\texttt{ in}}  & {\em length} & The desired length for the file.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The value true is returned for success and the value false is returned for failure. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_fat_file_system_a4ca68fe47bb675df0a80df1ed7a53698}\label{class_fat_file_system_a4ca68fe47bb675df0a80df1ed7a53698}} 
+\index{FatFileSystem@{FatFileSystem}!vol@{vol}}
+\index{vol@{vol}!FatFileSystem@{FatFileSystem}}
+\doxysubsubsection{\texorpdfstring{vol()}{vol()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_fat_volume}{Fat\+Volume}}$\ast$ Fat\+File\+System\+::vol (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\begin{DoxyReturn}{Returns}
+a pointer to the \mbox{\hyperlink{class_fat_volume}{Fat\+Volume}} object. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_fat_file_system_acf257d02b7166683bda2abc5058004bf}\label{class_fat_file_system_acf257d02b7166683bda2abc5058004bf}} 
+\index{FatFileSystem@{FatFileSystem}!vwd@{vwd}}
+\index{vwd@{vwd}!FatFileSystem@{FatFileSystem}}
+\doxysubsubsection{\texorpdfstring{vwd()}{vwd()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_fat_file}{Fat\+File}}$\ast$ Fat\+File\+System\+::vwd (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\begin{DoxyReturn}{Returns}
+a pointer to the volume working directory. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_fat_file_system_a36d7831f92acfbfef1c4a24dd7103dc4}\label{class_fat_file_system_a36d7831f92acfbfef1c4a24dd7103dc4}} 
+\index{FatFileSystem@{FatFileSystem}!wipe@{wipe}}
+\index{wipe@{wipe}!FatFileSystem@{FatFileSystem}}
+\doxysubsubsection{\texorpdfstring{wipe()}{wipe()}}
+{\footnotesize\ttfamily bool Fat\+File\+System\+::wipe (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_char_writer}{print\+\_\+t}} $\ast$}]{pr = {\ttfamily 0} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Wipe all data from the volume. You must reinitialize the volume before accessing it again. 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em pr} & print stream for status dots. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true for success else false. 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+/\+Users/kiran/\+Documents/\+Projects/\+ICLR/\+Avionics/\+Ricardo\+\_\+\+OS/\+Ricardo\+\_\+\+OS/lib/\+Sd\+Fat-\/master-\/adafruit\+\_\+fork/src/\+Fat\+Lib/\mbox{\hyperlink{_fat_file_system_8h}{Fat\+File\+System.\+h}}\end{DoxyCompactItemize}

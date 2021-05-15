@@ -1,0 +1,13 @@
+<map id="TelemetryPacket::getSerializer" name="TelemetryPacket::getSerializer">
+<area shape="rect" id="node1" title=" " alt="" coords="1603,56,1803,83"/>
+<area shape="rect" id="node2" href="$class_telemetry_packet.html#a35aa6a48c2a5d27ea4a2d21de42d8b3c" title=" " alt="" coords="1356,5,1555,32"/>
+<area shape="rect" id="node3" href="$class_telemetry_packet.html#a081eba8279f9c3ed6a04df2e88c16df1" title=" " alt="" coords="1367,56,1543,83"/>
+<area shape="rect" id="node11" href="$class_telemetry_packet.html#a45ae64bba7d093823e52b09e24186ad7" title=" " alt="" coords="1363,107,1548,149"/>
+<area shape="rect" id="node4" href="$class_command_handler.html#a54c1b7e2f1a6d0365ef36a0c738d7e02" title=" " alt="" coords="1075,56,1308,83"/>
+<area shape="rect" id="node5" href="$class_command_handler.html#a6c61c87a0ad0045aa6133dd69112a72b" title=" " alt="" coords="852,56,1027,83"/>
+<area shape="rect" id="node6" href="$class_network_manager.html#a0d4ea7d4f0b395249151d0a28af79cd5" title=" " alt="" coords="636,56,804,83"/>
+<area shape="rect" id="node7" href="$classstate_machine.html#a5f4f54735cb0a13393227e3af6863cdd" title=" " alt="" coords="441,56,588,83"/>
+<area shape="rect" id="node8" href="$main_8cpp.html#afe461d27b9c48d5921c00d521181f12f" title=" " alt="" coords="347,56,393,83"/>
+<area shape="rect" id="node9" href="$class_tunez_handler.html#a02e64b5ab21c71fc6e62e6673f80ac63" title=" " alt="" coords="164,56,299,83"/>
+<area shape="rect" id="node10" href="$class_setup.html#a315e788a23a012d5993613c627f15302" title=" " alt="" coords="5,56,116,83"/>
+</map>

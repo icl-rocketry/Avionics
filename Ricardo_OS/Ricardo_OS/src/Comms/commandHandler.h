@@ -5,6 +5,7 @@
 
 
 #include <Arduino.h>
+#include <vector>
 
 //#include "commandBuffer.h"
 #include "commands.h"

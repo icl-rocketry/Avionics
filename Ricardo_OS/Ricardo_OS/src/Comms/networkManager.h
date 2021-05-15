@@ -18,6 +18,7 @@
 #include "States/groundstation.h"
 
 #include <memory>
+#include <vector>
 
 
 
@@ -37,8 +38,8 @@ class NetworkManager{
         void setup();
         void update();
         
-        void send_to_node(Nodes destination,uint8_t* data,size_t len);
-        void send_packet(Interface iface,uint8_t* data, size_t len);
+        void send_to_node(Nodes destination,std::vector<uint8_t> &data);
+        void send_packet(Interface iface,std::vector<uint8_t> &data);
 
         //add command 
         void add_command(Nodes source_node, uint32_t command);
@@ -52,9 +53,12 @@ class NetworkManager{
     private:
         stateMachine* _sm; //pointer to state machine
 
+        RoutingTable routingtable; // routing table for networking -> maybe move to protected so an be acsesed eaiser??
+        
 
-        std::vector<std::shared_ptr<uint8_t>> _global_packet_buffer; //packet buffer containing all network packets received
-        std::vector<std::shared_ptr<uint8_t>> _local_packet_buffer; //packet buffer containing packets meant for this node
+
+        std::vector<std::unique_ptr<std::vector<uint8_t>>> _global_packet_buffer; //packet buffer containing all network packets received
+        std::vector<std::unique_ptr<std::vector<uint8_t>>> _local_packet_buffer; //packet buffer containing packets meant for this node
         
 
         USB usbserial; //usb serial object

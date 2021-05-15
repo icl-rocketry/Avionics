@@ -1,0 +1,49 @@
+\hypertarget{class_sd2_card}{}\doxysection{Sd2\+Card Class Reference}
+\label{class_sd2_card}\index{Sd2Card@{Sd2Card}}
+
+
+Raw access to SD and SDHC card using default SPI library.  
+
+
+
+
+{\ttfamily \#include $<$Sd\+Fat.\+h$>$}
+
+Inheritance diagram for Sd2\+Card\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_sd2_card}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+bool \mbox{\hyperlink{class_sd2_card_a8506e1a2d7c4d8ec3f26e8b62ea81cd7}{begin}} (uint8\+\_\+t cs\+Pin=SS, SPISettings settings=SD\+\_\+\+SCK\+\_\+\+MHZ(50))
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Raw access to SD and SDHC card using default SPI library. 
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_sd2_card_a8506e1a2d7c4d8ec3f26e8b62ea81cd7}\label{class_sd2_card_a8506e1a2d7c4d8ec3f26e8b62ea81cd7}} 
+\index{Sd2Card@{Sd2Card}!begin@{begin}}
+\index{begin@{begin}!Sd2Card@{Sd2Card}}
+\doxysubsubsection{\texorpdfstring{begin()}{begin()}}
+{\footnotesize\ttfamily bool Sd2\+Card\+::begin (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{cs\+Pin = {\ttfamily SS},  }\item[{SPISettings}]{settings = {\ttfamily SD\+\_\+SCK\+\_\+MHZ(50)} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Initialize the SD card. 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em cs\+Pin} & SD chip select pin. \\
+\hline
+\mbox{\texttt{ in}}  & {\em settings} & SPI speed, mode, and bit order. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true for success else false. 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+/\+Users/kiran/\+Documents/\+Projects/\+ICLR/\+Avionics/\+Ricardo\+\_\+\+OS/\+Ricardo\+\_\+\+OS/lib/\+Sd\+Fat-\/master-\/adafruit\+\_\+fork/src/\mbox{\hyperlink{_sd_fat_8h}{Sd\+Fat.\+h}}\end{DoxyCompactItemize}

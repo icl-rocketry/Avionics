@@ -1,0 +1,108 @@
+\hypertarget{classcpplint_1_1_file_info}{}\doxysection{cpplint.\+File\+Info Class Reference}
+\label{classcpplint_1_1_file_info}\index{cpplint.FileInfo@{cpplint.FileInfo}}
+Inheritance diagram for cpplint.\+File\+Info\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classcpplint_1_1_file_info}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classcpplint_1_1_file_info_abd3ff77aab027af2476b3a1d97b1f89c}\label{classcpplint_1_1_file_info_abd3ff77aab027af2476b3a1d97b1f89c}} 
+def {\bfseries \+\_\+\+\_\+init\+\_\+\+\_\+} (self, filename)
+\item 
+def \mbox{\hyperlink{classcpplint_1_1_file_info_aed56577368c45cdf45fc4c9109129145}{Full\+Name}} (self)
+\item 
+def \mbox{\hyperlink{classcpplint_1_1_file_info_a2b3b79b7d46221a6b9d0ea0bebac2061}{Repository\+Name}} (self)
+\item 
+def \mbox{\hyperlink{classcpplint_1_1_file_info_a43f1c5ff1771da52e29c60c114955e72}{Split}} (self)
+\item 
+def \mbox{\hyperlink{classcpplint_1_1_file_info_a1a12ed63ddc2ffd8f6a105e3ab4d6289}{Base\+Name}} (self)
+\item 
+def \mbox{\hyperlink{classcpplint_1_1_file_info_a2554b504117839931e901b59a59c67ae}{Extension}} (self)
+\item 
+def \mbox{\hyperlink{classcpplint_1_1_file_info_acb46555a72b346966f4bf28c08e3b1fa}{No\+Extension}} (self)
+\item 
+def \mbox{\hyperlink{classcpplint_1_1_file_info_a157f8d3266d7291321db88cdad3b2879}{Is\+Source}} (self)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\begin{DoxyVerb}Provides utility functions for filenames.
+
+FileInfo provides easy access to the components of a file's path
+relative to the project root.
+\end{DoxyVerb}
+ 
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classcpplint_1_1_file_info_a1a12ed63ddc2ffd8f6a105e3ab4d6289}\label{classcpplint_1_1_file_info_a1a12ed63ddc2ffd8f6a105e3ab4d6289}} 
+\index{cpplint.FileInfo@{cpplint.FileInfo}!BaseName@{BaseName}}
+\index{BaseName@{BaseName}!cpplint.FileInfo@{cpplint.FileInfo}}
+\doxysubsubsection{\texorpdfstring{BaseName()}{BaseName()}}
+{\footnotesize\ttfamily def cpplint.\+File\+Info.\+Base\+Name (\begin{DoxyParamCaption}\item[{}]{self }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}File base name - text after the final slash, before the final period.\end{DoxyVerb}
+ \mbox{\Hypertarget{classcpplint_1_1_file_info_a2554b504117839931e901b59a59c67ae}\label{classcpplint_1_1_file_info_a2554b504117839931e901b59a59c67ae}} 
+\index{cpplint.FileInfo@{cpplint.FileInfo}!Extension@{Extension}}
+\index{Extension@{Extension}!cpplint.FileInfo@{cpplint.FileInfo}}
+\doxysubsubsection{\texorpdfstring{Extension()}{Extension()}}
+{\footnotesize\ttfamily def cpplint.\+File\+Info.\+Extension (\begin{DoxyParamCaption}\item[{}]{self }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}File extension - text following the final period.\end{DoxyVerb}
+ \mbox{\Hypertarget{classcpplint_1_1_file_info_aed56577368c45cdf45fc4c9109129145}\label{classcpplint_1_1_file_info_aed56577368c45cdf45fc4c9109129145}} 
+\index{cpplint.FileInfo@{cpplint.FileInfo}!FullName@{FullName}}
+\index{FullName@{FullName}!cpplint.FileInfo@{cpplint.FileInfo}}
+\doxysubsubsection{\texorpdfstring{FullName()}{FullName()}}
+{\footnotesize\ttfamily def cpplint.\+File\+Info.\+Full\+Name (\begin{DoxyParamCaption}\item[{}]{self }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Make Windows paths like Unix.\end{DoxyVerb}
+ \mbox{\Hypertarget{classcpplint_1_1_file_info_a157f8d3266d7291321db88cdad3b2879}\label{classcpplint_1_1_file_info_a157f8d3266d7291321db88cdad3b2879}} 
+\index{cpplint.FileInfo@{cpplint.FileInfo}!IsSource@{IsSource}}
+\index{IsSource@{IsSource}!cpplint.FileInfo@{cpplint.FileInfo}}
+\doxysubsubsection{\texorpdfstring{IsSource()}{IsSource()}}
+{\footnotesize\ttfamily def cpplint.\+File\+Info.\+Is\+Source (\begin{DoxyParamCaption}\item[{}]{self }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}File has a source file extension.\end{DoxyVerb}
+ \mbox{\Hypertarget{classcpplint_1_1_file_info_acb46555a72b346966f4bf28c08e3b1fa}\label{classcpplint_1_1_file_info_acb46555a72b346966f4bf28c08e3b1fa}} 
+\index{cpplint.FileInfo@{cpplint.FileInfo}!NoExtension@{NoExtension}}
+\index{NoExtension@{NoExtension}!cpplint.FileInfo@{cpplint.FileInfo}}
+\doxysubsubsection{\texorpdfstring{NoExtension()}{NoExtension()}}
+{\footnotesize\ttfamily def cpplint.\+File\+Info.\+No\+Extension (\begin{DoxyParamCaption}\item[{}]{self }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}File has no source file extension.\end{DoxyVerb}
+ \mbox{\Hypertarget{classcpplint_1_1_file_info_a2b3b79b7d46221a6b9d0ea0bebac2061}\label{classcpplint_1_1_file_info_a2b3b79b7d46221a6b9d0ea0bebac2061}} 
+\index{cpplint.FileInfo@{cpplint.FileInfo}!RepositoryName@{RepositoryName}}
+\index{RepositoryName@{RepositoryName}!cpplint.FileInfo@{cpplint.FileInfo}}
+\doxysubsubsection{\texorpdfstring{RepositoryName()}{RepositoryName()}}
+{\footnotesize\ttfamily def cpplint.\+File\+Info.\+Repository\+Name (\begin{DoxyParamCaption}\item[{}]{self }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}FullName after removing the local path to the repository.
+
+If we have a real absolute path name here we can try to do something smart:
+detecting the root of the checkout and truncating /path/to/checkout from
+the name so that we get header guards that don't include things like
+"C:\Documents and Settings\..." or "/home/username/..." in them and thus
+people on different computers who have checked the source out to different
+locations won't see bogus errors.
+\end{DoxyVerb}
+ \mbox{\Hypertarget{classcpplint_1_1_file_info_a43f1c5ff1771da52e29c60c114955e72}\label{classcpplint_1_1_file_info_a43f1c5ff1771da52e29c60c114955e72}} 
+\index{cpplint.FileInfo@{cpplint.FileInfo}!Split@{Split}}
+\index{Split@{Split}!cpplint.FileInfo@{cpplint.FileInfo}}
+\doxysubsubsection{\texorpdfstring{Split()}{Split()}}
+{\footnotesize\ttfamily def cpplint.\+File\+Info.\+Split (\begin{DoxyParamCaption}\item[{}]{self }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Splits the file into the directory, basename, and extension.
+
+For 'chrome/browser/browser.cc', Split() would
+return ('chrome/browser', 'browser', '.cc')
+
+Returns:
+  A tuple of (directory, basename, extension).
+\end{DoxyVerb}
+ 
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+/\+Users/kiran/\+Documents/\+Projects/\+ICLR/\+Avionics/\+Ricardo\+\_\+\+OS/\+Ricardo\+\_\+\+OS/lib/\+Sd\+Fat-\/master-\/adafruit\+\_\+fork/extras/cpplint.\+py\end{DoxyCompactItemize}

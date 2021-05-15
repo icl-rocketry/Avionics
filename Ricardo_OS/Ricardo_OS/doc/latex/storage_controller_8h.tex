@@ -1,0 +1,79 @@
+\hypertarget{storage_controller_8h}{}\doxysection{/\+Users/kiran/\+Documents/\+Projects/\+ICLR/\+Avionics/\+Ricardo\+\_\+\+OS/\+Ricardo\+\_\+\+OS/src/\+Logging/storage\+Controller.h File Reference}
+\label{storage_controller_8h}\index{/Users/kiran/Documents/Projects/ICLR/Avionics/Ricardo\_OS/Ricardo\_OS/src/Logging/storageController.h@{/Users/kiran/Documents/Projects/ICLR/Avionics/Ricardo\_OS/Ricardo\_OS/src/Logging/storageController.h}}
+{\ttfamily \#include $<$Sd\+Fat.\+h$>$}\newline
+{\ttfamily \#include $<$Adafruit\+\_\+\+SPIFlash.\+h$>$}\newline
+{\ttfamily \#include $<$string$>$}\newline
+{\ttfamily \#include $<$vector$>$}\newline
+Include dependency graph for storage\+Controller.\+h\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{storage_controller_8h__incl}
+\end{center}
+\end{figure}
+This graph shows which files directly or indirectly include this file\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{storage_controller_8h__dep__incl}
+\end{center}
+\end{figure}
+\doxysubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{structdirectory__element__t}{directory\+\_\+element\+\_\+t}}
+\item 
+class \mbox{\hyperlink{class_storage_controller}{Storage\+Controller}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+enum class \mbox{\hyperlink{storage_controller_8h_a9539e551e6a3b5229703f97c65f94bae}{STORAGE\+\_\+\+DEVICE}} \+: uint8\+\_\+t \{ \mbox{\hyperlink{storage_controller_8h_a9539e551e6a3b5229703f97c65f94baea5fb1f955b45e38e31789286a1790398d}{ALL}}
+, \mbox{\hyperlink{storage_controller_8h_a9539e551e6a3b5229703f97c65f94baea12e06b08b2eca71ace052b129c0baa7b}{MICROSD}}
+, \mbox{\hyperlink{storage_controller_8h_a9539e551e6a3b5229703f97c65f94baea227b519e83a8b99329302ad2d37d0bbb}{FLASH}}
+ \}
+\item 
+enum class \mbox{\hyperlink{storage_controller_8h_a720eb3494260f3225ea9b9c1f9ee18e7}{FILE\+\_\+\+TYPE}} \+: uint8\+\_\+t \{ \mbox{\hyperlink{storage_controller_8h_a720eb3494260f3225ea9b9c1f9ee18e7a9fc5887c030f7a3e19821ebec457e719}{FILE}}
+, \mbox{\hyperlink{storage_controller_8h_a720eb3494260f3225ea9b9c1f9ee18e7a28766b4be065d0c806c2e9c9d914af48}{DIRECTORY}}
+ \}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Enumeration Type Documentation}
+\mbox{\Hypertarget{storage_controller_8h_a720eb3494260f3225ea9b9c1f9ee18e7}\label{storage_controller_8h_a720eb3494260f3225ea9b9c1f9ee18e7}} 
+\index{storageController.h@{storageController.h}!FILE\_TYPE@{FILE\_TYPE}}
+\index{FILE\_TYPE@{FILE\_TYPE}!storageController.h@{storageController.h}}
+\doxysubsubsection{\texorpdfstring{FILE\_TYPE}{FILE\_TYPE}}
+{\footnotesize\ttfamily enum \mbox{\hyperlink{storage_controller_8h_a720eb3494260f3225ea9b9c1f9ee18e7}{FILE\+\_\+\+TYPE}} \+: uint8\+\_\+t\hspace{0.3cm}{\ttfamily [strong]}}
+
+\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{FILE@{FILE}!storageController.h@{storageController.h}}\index{storageController.h@{storageController.h}!FILE@{FILE}}}\mbox{\Hypertarget{storage_controller_8h_a720eb3494260f3225ea9b9c1f9ee18e7a9fc5887c030f7a3e19821ebec457e719}\label{storage_controller_8h_a720eb3494260f3225ea9b9c1f9ee18e7a9fc5887c030f7a3e19821ebec457e719}} 
+FILE&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{DIRECTORY@{DIRECTORY}!storageController.h@{storageController.h}}\index{storageController.h@{storageController.h}!DIRECTORY@{DIRECTORY}}}\mbox{\Hypertarget{storage_controller_8h_a720eb3494260f3225ea9b9c1f9ee18e7a28766b4be065d0c806c2e9c9d914af48}\label{storage_controller_8h_a720eb3494260f3225ea9b9c1f9ee18e7a28766b4be065d0c806c2e9c9d914af48}} 
+DIRECTORY&\\
+\hline
+
+\end{DoxyEnumFields}
+\mbox{\Hypertarget{storage_controller_8h_a9539e551e6a3b5229703f97c65f94bae}\label{storage_controller_8h_a9539e551e6a3b5229703f97c65f94bae}} 
+\index{storageController.h@{storageController.h}!STORAGE\_DEVICE@{STORAGE\_DEVICE}}
+\index{STORAGE\_DEVICE@{STORAGE\_DEVICE}!storageController.h@{storageController.h}}
+\doxysubsubsection{\texorpdfstring{STORAGE\_DEVICE}{STORAGE\_DEVICE}}
+{\footnotesize\ttfamily enum \mbox{\hyperlink{storage_controller_8h_a9539e551e6a3b5229703f97c65f94bae}{STORAGE\+\_\+\+DEVICE}} \+: uint8\+\_\+t\hspace{0.3cm}{\ttfamily [strong]}}
+
+\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{ALL@{ALL}!storageController.h@{storageController.h}}\index{storageController.h@{storageController.h}!ALL@{ALL}}}\mbox{\Hypertarget{storage_controller_8h_a9539e551e6a3b5229703f97c65f94baea5fb1f955b45e38e31789286a1790398d}\label{storage_controller_8h_a9539e551e6a3b5229703f97c65f94baea5fb1f955b45e38e31789286a1790398d}} 
+ALL&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{MICROSD@{MICROSD}!storageController.h@{storageController.h}}\index{storageController.h@{storageController.h}!MICROSD@{MICROSD}}}\mbox{\Hypertarget{storage_controller_8h_a9539e551e6a3b5229703f97c65f94baea12e06b08b2eca71ace052b129c0baa7b}\label{storage_controller_8h_a9539e551e6a3b5229703f97c65f94baea12e06b08b2eca71ace052b129c0baa7b}} 
+MICROSD&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{FLASH@{FLASH}!storageController.h@{storageController.h}}\index{storageController.h@{storageController.h}!FLASH@{FLASH}}}\mbox{\Hypertarget{storage_controller_8h_a9539e551e6a3b5229703f97c65f94baea227b519e83a8b99329302ad2d37d0bbb}\label{storage_controller_8h_a9539e551e6a3b5229703f97c65f94baea227b519e83a8b99329302ad2d37d0bbb}} 
+FLASH&\\
+\hline
+
+\end{DoxyEnumFields}

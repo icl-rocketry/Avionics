@@ -1,0 +1,186 @@
+\hypertarget{class_adafruit___flash_transport___e_s_p32}{}\doxysection{Adafruit\+\_\+\+Flash\+Transport\+\_\+\+ESP32 Class Reference}
+\label{class_adafruit___flash_transport___e_s_p32}\index{Adafruit\_FlashTransport\_ESP32@{Adafruit\_FlashTransport\_ESP32}}
+Inheritance diagram for Adafruit\+\_\+\+Flash\+Transport\+\_\+\+ESP32\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_adafruit___flash_transport___e_s_p32}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_adafruit___flash_transport___e_s_p32_a8bc44ff83464fabd493b26906409f39f}\label{class_adafruit___flash_transport___e_s_p32_a8bc44ff83464fabd493b26906409f39f}} 
+virtual void {\bfseries begin} (void)
+\item 
+\mbox{\Hypertarget{class_adafruit___flash_transport___e_s_p32_ad9d7af61d3886282e96afeaacc1de1ef}\label{class_adafruit___flash_transport___e_s_p32_ad9d7af61d3886282e96afeaacc1de1ef}} 
+virtual bool {\bfseries support\+Quad\+Mode} (void)
+\item 
+virtual void \mbox{\hyperlink{class_adafruit___flash_transport___e_s_p32_a43b58a0420c5f125dcb1ed2b5a2fa42e}{set\+Clock\+Speed}} (uint32\+\_\+t write\+\_\+hz, uint32\+\_\+t read\+\_\+hz)
+\item 
+virtual bool \mbox{\hyperlink{class_adafruit___flash_transport___e_s_p32_af24ddf8428749e00ec9a4bb801eb3a46}{run\+Command}} (uint8\+\_\+t command)
+\item 
+virtual bool \mbox{\hyperlink{class_adafruit___flash_transport___e_s_p32_aabdacfc96f0d9492ade500687fa3a268}{read\+Command}} (uint8\+\_\+t command, uint8\+\_\+t $\ast$response, uint32\+\_\+t len)
+\item 
+virtual bool \mbox{\hyperlink{class_adafruit___flash_transport___e_s_p32_aa9994b2beeb8c1c990dc739f607d07c9}{write\+Command}} (uint8\+\_\+t command, uint8\+\_\+t const $\ast$data, uint32\+\_\+t len)
+\item 
+virtual bool \mbox{\hyperlink{class_adafruit___flash_transport___e_s_p32_a9fcac4ec5a1accac3bc7a9b7e893099f}{erase\+Command}} (uint8\+\_\+t command, uint32\+\_\+t addr)
+\item 
+virtual bool \mbox{\hyperlink{class_adafruit___flash_transport___e_s_p32_a09e0b0c741d1b937d59a8fc207998dec}{read\+Memory}} (uint32\+\_\+t addr, uint8\+\_\+t $\ast$data, uint32\+\_\+t len)
+\item 
+virtual bool \mbox{\hyperlink{class_adafruit___flash_transport___e_s_p32_a4d8fe25ef8b37af440730cb87547eea2}{write\+Memory}} (uint32\+\_\+t addr, uint8\+\_\+t const $\ast$data, uint32\+\_\+t len)
+\item 
+\mbox{\Hypertarget{class_adafruit___flash_transport___e_s_p32_adada215d261b7660b331fcd8cf7b9e6b}\label{class_adafruit___flash_transport___e_s_p32_adada215d261b7660b331fcd8cf7b9e6b}} 
+\mbox{\hyperlink{struct_s_p_i_flash___device__t}{SPIFlash\+\_\+\+Device\+\_\+t}} $\ast$ {\bfseries get\+Flash\+Device} (void)
+\end{DoxyCompactItemize}
+\doxysubsection*{Additional Inherited Members}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_adafruit___flash_transport___e_s_p32_a9fcac4ec5a1accac3bc7a9b7e893099f}\label{class_adafruit___flash_transport___e_s_p32_a9fcac4ec5a1accac3bc7a9b7e893099f}} 
+\index{Adafruit\_FlashTransport\_ESP32@{Adafruit\_FlashTransport\_ESP32}!eraseCommand@{eraseCommand}}
+\index{eraseCommand@{eraseCommand}!Adafruit\_FlashTransport\_ESP32@{Adafruit\_FlashTransport\_ESP32}}
+\doxysubsubsection{\texorpdfstring{eraseCommand()}{eraseCommand()}}
+{\footnotesize\ttfamily virtual bool Adafruit\+\_\+\+Flash\+Transport\+\_\+\+ESP32\+::erase\+Command (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{command,  }\item[{uint32\+\_\+t}]{address }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+Erase external flash by address 
+\begin{DoxyParams}{Parameters}
+{\em command} & can be sector erase (0x20) or block erase 0x\+D8 \\
+\hline
+{\em address} & adddress to be erased \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if success 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{class_adafruit___flash_transport_a4259df18b4ba2c01a3822dbf0bbb792b}{Adafruit\+\_\+\+Flash\+Transport}}.
+
+\mbox{\Hypertarget{class_adafruit___flash_transport___e_s_p32_aabdacfc96f0d9492ade500687fa3a268}\label{class_adafruit___flash_transport___e_s_p32_aabdacfc96f0d9492ade500687fa3a268}} 
+\index{Adafruit\_FlashTransport\_ESP32@{Adafruit\_FlashTransport\_ESP32}!readCommand@{readCommand}}
+\index{readCommand@{readCommand}!Adafruit\_FlashTransport\_ESP32@{Adafruit\_FlashTransport\_ESP32}}
+\doxysubsubsection{\texorpdfstring{readCommand()}{readCommand()}}
+{\footnotesize\ttfamily virtual bool Adafruit\+\_\+\+Flash\+Transport\+\_\+\+ESP32\+::read\+Command (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{command,  }\item[{uint8\+\_\+t $\ast$}]{response,  }\item[{uint32\+\_\+t}]{len }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+Execute a command with response data e.\+g Read Status, Read JEDEC 
+\begin{DoxyParams}{Parameters}
+{\em command} & command code \\
+\hline
+{\em response} & buffer to hold data \\
+\hline
+{\em len} & number of bytes to read \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if success 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{class_adafruit___flash_transport_abff7b6e6b9653d635f218ee6f9c82443}{Adafruit\+\_\+\+Flash\+Transport}}.
+
+\mbox{\Hypertarget{class_adafruit___flash_transport___e_s_p32_a09e0b0c741d1b937d59a8fc207998dec}\label{class_adafruit___flash_transport___e_s_p32_a09e0b0c741d1b937d59a8fc207998dec}} 
+\index{Adafruit\_FlashTransport\_ESP32@{Adafruit\_FlashTransport\_ESP32}!readMemory@{readMemory}}
+\index{readMemory@{readMemory}!Adafruit\_FlashTransport\_ESP32@{Adafruit\_FlashTransport\_ESP32}}
+\doxysubsubsection{\texorpdfstring{readMemory()}{readMemory()}}
+{\footnotesize\ttfamily virtual bool Adafruit\+\_\+\+Flash\+Transport\+\_\+\+ESP32\+::read\+Memory (\begin{DoxyParamCaption}\item[{uint32\+\_\+t}]{addr,  }\item[{uint8\+\_\+t $\ast$}]{buffer,  }\item[{uint32\+\_\+t}]{len }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+Read data from external flash contents. Typically it is implemented by quad read command 0x6B 
+\begin{DoxyParams}{Parameters}
+{\em addr} & address to read \\
+\hline
+{\em buffer} & buffer to hold data \\
+\hline
+{\em len} & number of byte to read \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if success 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{class_adafruit___flash_transport_a2e12e085a69b854482850f02aecdcbe5}{Adafruit\+\_\+\+Flash\+Transport}}.
+
+\mbox{\Hypertarget{class_adafruit___flash_transport___e_s_p32_af24ddf8428749e00ec9a4bb801eb3a46}\label{class_adafruit___flash_transport___e_s_p32_af24ddf8428749e00ec9a4bb801eb3a46}} 
+\index{Adafruit\_FlashTransport\_ESP32@{Adafruit\_FlashTransport\_ESP32}!runCommand@{runCommand}}
+\index{runCommand@{runCommand}!Adafruit\_FlashTransport\_ESP32@{Adafruit\_FlashTransport\_ESP32}}
+\doxysubsubsection{\texorpdfstring{runCommand()}{runCommand()}}
+{\footnotesize\ttfamily virtual bool Adafruit\+\_\+\+Flash\+Transport\+\_\+\+ESP32\+::run\+Command (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{command }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+Execute a single byte command e.\+g Reset, Write Enable 
+\begin{DoxyParams}{Parameters}
+{\em command} & command code \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if success 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{class_adafruit___flash_transport_a197d8a57798e7a154f0232234e1dfb05}{Adafruit\+\_\+\+Flash\+Transport}}.
+
+\mbox{\Hypertarget{class_adafruit___flash_transport___e_s_p32_a43b58a0420c5f125dcb1ed2b5a2fa42e}\label{class_adafruit___flash_transport___e_s_p32_a43b58a0420c5f125dcb1ed2b5a2fa42e}} 
+\index{Adafruit\_FlashTransport\_ESP32@{Adafruit\_FlashTransport\_ESP32}!setClockSpeed@{setClockSpeed}}
+\index{setClockSpeed@{setClockSpeed}!Adafruit\_FlashTransport\_ESP32@{Adafruit\_FlashTransport\_ESP32}}
+\doxysubsubsection{\texorpdfstring{setClockSpeed()}{setClockSpeed()}}
+{\footnotesize\ttfamily virtual void Adafruit\+\_\+\+Flash\+Transport\+\_\+\+ESP32\+::set\+Clock\+Speed (\begin{DoxyParamCaption}\item[{uint32\+\_\+t}]{write\+\_\+hz,  }\item[{uint32\+\_\+t}]{read\+\_\+hz }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+Set clock speed in hertz 
+\begin{DoxyParams}{Parameters}
+{\em write\+\_\+hz} & Write clock speed in hertz \\
+\hline
+{\em read\+\_\+hz} & Read clock speed in hertz \\
+\hline
+\end{DoxyParams}
+
+
+Implements \mbox{\hyperlink{class_adafruit___flash_transport_a30274ecc344eda78868d5a9bed285686}{Adafruit\+\_\+\+Flash\+Transport}}.
+
+\mbox{\Hypertarget{class_adafruit___flash_transport___e_s_p32_aa9994b2beeb8c1c990dc739f607d07c9}\label{class_adafruit___flash_transport___e_s_p32_aa9994b2beeb8c1c990dc739f607d07c9}} 
+\index{Adafruit\_FlashTransport\_ESP32@{Adafruit\_FlashTransport\_ESP32}!writeCommand@{writeCommand}}
+\index{writeCommand@{writeCommand}!Adafruit\_FlashTransport\_ESP32@{Adafruit\_FlashTransport\_ESP32}}
+\doxysubsubsection{\texorpdfstring{writeCommand()}{writeCommand()}}
+{\footnotesize\ttfamily virtual bool Adafruit\+\_\+\+Flash\+Transport\+\_\+\+ESP32\+::write\+Command (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{command,  }\item[{uint8\+\_\+t const $\ast$}]{data,  }\item[{uint32\+\_\+t}]{len }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+Execute a command with data e.\+g Write Status, 
+\begin{DoxyParams}{Parameters}
+{\em command} & command code \\
+\hline
+{\em data} & writing data \\
+\hline
+{\em len} & number of bytes to read \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if success 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{class_adafruit___flash_transport_ac7f68b5da0e227186d13de4935b053f0}{Adafruit\+\_\+\+Flash\+Transport}}.
+
+\mbox{\Hypertarget{class_adafruit___flash_transport___e_s_p32_a4d8fe25ef8b37af440730cb87547eea2}\label{class_adafruit___flash_transport___e_s_p32_a4d8fe25ef8b37af440730cb87547eea2}} 
+\index{Adafruit\_FlashTransport\_ESP32@{Adafruit\_FlashTransport\_ESP32}!writeMemory@{writeMemory}}
+\index{writeMemory@{writeMemory}!Adafruit\_FlashTransport\_ESP32@{Adafruit\_FlashTransport\_ESP32}}
+\doxysubsubsection{\texorpdfstring{writeMemory()}{writeMemory()}}
+{\footnotesize\ttfamily virtual bool Adafruit\+\_\+\+Flash\+Transport\+\_\+\+ESP32\+::write\+Memory (\begin{DoxyParamCaption}\item[{uint32\+\_\+t}]{addr,  }\item[{uint8\+\_\+t const $\ast$}]{data,  }\item[{uint32\+\_\+t}]{len }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+Write data to external flash contents, flash sector must be previously erased first. Typically it uses quad write command 0x32 
+\begin{DoxyParams}{Parameters}
+{\em addr} & address to read \\
+\hline
+{\em data} & writing data \\
+\hline
+{\em len} & number of byte to read \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if success 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{class_adafruit___flash_transport_a7d56ebc2ccd15ad1135309e6d358970a}{Adafruit\+\_\+\+Flash\+Transport}}.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+/\+Users/kiran/\+Documents/\+Projects/\+ICLR/\+Avionics/\+Ricardo\+\_\+\+OS/\+Ricardo\+\_\+\+OS/lib/\+Adafruit\+\_\+\+SPIFlash-\/master/src/esp32/Adafruit\+\_\+\+Flash\+Transport\+\_\+\+ESP32.\+h\end{DoxyCompactItemize}

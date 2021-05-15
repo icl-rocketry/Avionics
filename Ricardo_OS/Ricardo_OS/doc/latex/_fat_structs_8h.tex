@@ -1,0 +1,1020 @@
+\hypertarget{_fat_structs_8h}{}\doxysection{/\+Users/kiran/\+Documents/\+Projects/\+ICLR/\+Avionics/\+Ricardo\+\_\+\+OS/\+Ricardo\+\_\+\+OS/lib/\+Sd\+Fat-\/master-\/adafruit\+\_\+fork/src/\+Fat\+Lib/\+Fat\+Structs.h File Reference}
+\label{_fat_structs_8h}\index{/Users/kiran/Documents/Projects/ICLR/Avionics/Ricardo\_OS/Ricardo\_OS/lib/SdFat-\/master-\/adafruit\_fork/src/FatLib/FatStructs.h@{/Users/kiran/Documents/Projects/ICLR/Avionics/Ricardo\_OS/Ricardo\_OS/lib/SdFat-\/master-\/adafruit\_fork/src/FatLib/FatStructs.h}}
+
+
+FAT file structures.  
+
+
+\doxysubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{structpartition_table}{partition\+Table}}
+\begin{DoxyCompactList}\small\item\em MBR partition table entry. \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{structmaster_boot_record}{master\+Boot\+Record}}
+\begin{DoxyCompactList}\small\item\em Master Boot Record. \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{structbios_parm_block}{bios\+Parm\+Block}}
+\begin{DoxyCompactList}\small\item\em BIOS parameter block. \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{structfat__boot}{fat\+\_\+boot}}
+\begin{DoxyCompactList}\small\item\em Boot sector for a FAT12/\+FAT16 volume. \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{structfat32__boot}{fat32\+\_\+boot}}
+\begin{DoxyCompactList}\small\item\em Boot sector for a FAT32 volume. \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{structfat32__fsinfo}{fat32\+\_\+fsinfo}}
+\begin{DoxyCompactList}\small\item\em FSINFO sector for a FAT32 volume. \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{structdirectory_entry}{directory\+Entry}}
+\begin{DoxyCompactList}\small\item\em FAT short directory entry. \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{structlong_directory_entry}{long\+Directory\+Entry}}
+\begin{DoxyCompactList}\small\item\em FAT long directory entry. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+typedef struct \mbox{\hyperlink{structpartition_table}{partition\+Table}} \mbox{\hyperlink{_fat_structs_8h_a37251e7d5c69a159be727a3fc8c9d0e6}{part\+\_\+t}}
+\item 
+typedef struct \mbox{\hyperlink{structmaster_boot_record}{master\+Boot\+Record}} \mbox{\hyperlink{_fat_structs_8h_a7c429e5097f101c8c97663d6c4155bd9}{mbr\+\_\+t}}
+\item 
+typedef struct \mbox{\hyperlink{structbios_parm_block}{bios\+Parm\+Block}} \mbox{\hyperlink{_fat_structs_8h_a5c8af240713e05e7e6c959006ced35fb}{bpb\+\_\+t}}
+\item 
+typedef struct \mbox{\hyperlink{structfat__boot}{fat\+\_\+boot}} \mbox{\hyperlink{_fat_structs_8h_aedac4595ee08198da26c14b9891a07d5}{fat\+\_\+boot\+\_\+t}}
+\item 
+typedef struct \mbox{\hyperlink{structfat32__boot}{fat32\+\_\+boot}} \mbox{\hyperlink{_fat_structs_8h_a38fa081d004647a828095d31b07ec491}{fat32\+\_\+boot\+\_\+t}}
+\item 
+typedef struct \mbox{\hyperlink{structfat32__fsinfo}{fat32\+\_\+fsinfo}} \mbox{\hyperlink{_fat_structs_8h_a6030ed0fce3a819326a2548407fc8556}{fat32\+\_\+fsinfo\+\_\+t}}
+\item 
+typedef struct \mbox{\hyperlink{structdirectory_entry}{directory\+Entry}} \mbox{\hyperlink{_fat_structs_8h_a803db59d4e16a0c54a647afc6a7954e3}{dir\+\_\+t}}
+\item 
+typedef struct \mbox{\hyperlink{structlong_directory_entry}{long\+Directory\+Entry}} \mbox{\hyperlink{_fat_structs_8h_aa1b540ee1eedd1aa9b267d11cba0d9e2}{ldir\+\_\+t}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{_fat_structs_8h_ae8ade7cb3ac1769946ea36d0847391c4}\label{_fat_structs_8h_ae8ade7cb3ac1769946ea36d0847391c4}} 
+struct \mbox{\hyperlink{structpartition_table}{partition\+Table}} {\bfseries \+\_\+\+\_\+attribute\+\_\+\+\_\+} ((packed))
+\end{DoxyCompactItemize}
+\doxysubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+const uint8\+\_\+t \mbox{\hyperlink{_fat_structs_8h_acb7f0c892eb84c121c5698b2605e95e3}{BOOTSIG0}} = 0\+X55
+\item 
+const uint8\+\_\+t \mbox{\hyperlink{_fat_structs_8h_a52f90172e11e828b411c803f29853753}{BOOTSIG1}} = 0\+XAA
+\item 
+const uint8\+\_\+t \mbox{\hyperlink{_fat_structs_8h_aefadfae26e4cc8d57c1ff727a9d1cd20}{EXTENDED\+\_\+\+BOOT\+\_\+\+SIG}} = 0\+X29
+\item 
+uint8\+\_\+t \mbox{\hyperlink{_fat_structs_8h_ad2acb7fab9ef33a6f00c834401250229}{boot}}
+\item 
+uint8\+\_\+t \mbox{\hyperlink{_fat_structs_8h_ab27b713d70d01c43e31fc67e08f876bf}{begin\+Head}}
+\item 
+unsigned \mbox{\hyperlink{_fat_structs_8h_a3ef026d5e8a9c697e414cf773b129db4}{begin\+Sector}}
+\item 
+unsigned \mbox{\hyperlink{_fat_structs_8h_aae20759e6c6dbfa51368964f8fe095c7}{begin\+Cylinder\+High}}
+\item 
+uint8\+\_\+t \mbox{\hyperlink{_fat_structs_8h_afefdee23280567f8434f9c31610e0a3b}{begin\+Cylinder\+Low}}
+\item 
+uint8\+\_\+t \mbox{\hyperlink{_fat_structs_8h_a1d127017fb298b889f4ba24752d08b8e}{type}}
+\item 
+uint8\+\_\+t \mbox{\hyperlink{_fat_structs_8h_a248e6a8c42872744129b8b85a864a7a6}{end\+Head}}
+\item 
+unsigned \mbox{\hyperlink{_fat_structs_8h_a1412f3c5116885eb7d4a047e432c9cdd}{end\+Sector}}
+\item 
+unsigned \mbox{\hyperlink{_fat_structs_8h_adeccbdcad0d989d1e33a07b435ab7300}{end\+Cylinder\+High}}
+\item 
+uint8\+\_\+t \mbox{\hyperlink{_fat_structs_8h_a3eb4b87675075500899edbb9296e0435}{end\+Cylinder\+Low}}
+\item 
+uint32\+\_\+t \mbox{\hyperlink{_fat_structs_8h_a5951cd74127d45180071909972899c0e}{first\+Sector}}
+\item 
+uint32\+\_\+t \mbox{\hyperlink{_fat_structs_8h_ab3559f69d4a46a945bd4c037070585f2}{total\+Sectors}}
+\item 
+uint8\+\_\+t \mbox{\hyperlink{_fat_structs_8h_a714f552faf0b0f09ffc53e2ba52ddbc3}{code\+Area}} \mbox{[}440\mbox{]}
+\item 
+uint32\+\_\+t \mbox{\hyperlink{_fat_structs_8h_a6a40348b3b308847ba21a75829d91871}{disk\+Signature}}
+\item 
+uint16\+\_\+t \mbox{\hyperlink{_fat_structs_8h_aefe56bef1bc942c24bc7eefc4a7aefcc}{usually\+Zero}}
+\item 
+\mbox{\hyperlink{_fat_structs_8h_a37251e7d5c69a159be727a3fc8c9d0e6}{part\+\_\+t}} \mbox{\hyperlink{_fat_structs_8h_aa65f87792f271fc6cfa70980af6ac3dd}{part}} \mbox{[}4\mbox{]}
+\item 
+uint8\+\_\+t \mbox{\hyperlink{_fat_structs_8h_aa5633d8ea0049be26315e7627e32bb4e}{mbr\+Sig0}}
+\item 
+uint8\+\_\+t \mbox{\hyperlink{_fat_structs_8h_af106928fafe93a641c06cfb87b0d24e3}{mbr\+Sig1}}
+\item 
+uint16\+\_\+t \mbox{\hyperlink{_fat_structs_8h_adb2ddeae74baf681103d21d724814a63}{bytes\+Per\+Sector}}
+\item 
+uint8\+\_\+t \mbox{\hyperlink{_fat_structs_8h_a3ce07376c286acd8393a18a32d7ca4c0}{sectors\+Per\+Cluster}}
+\item 
+uint16\+\_\+t \mbox{\hyperlink{_fat_structs_8h_a16c854faf567331bbbfb383e6c8df6f5}{reserved\+Sector\+Count}}
+\item 
+uint8\+\_\+t \mbox{\hyperlink{_fat_structs_8h_a624e9eb125b4fc8aeaebcccf79e17aa8}{fat\+Count}}
+\item 
+uint16\+\_\+t \mbox{\hyperlink{_fat_structs_8h_aabe25e54b9c06a9a7393fc6c475d9fa1}{root\+Dir\+Entry\+Count}}
+\item 
+uint16\+\_\+t \mbox{\hyperlink{_fat_structs_8h_ad717f5b9af13f8ec9d0d6d1337174dfa}{total\+Sectors16}}
+\item 
+uint8\+\_\+t \mbox{\hyperlink{_fat_structs_8h_ab88738f9cb91c882cb91d5e83a19a73f}{media\+Type}}
+\item 
+uint16\+\_\+t \mbox{\hyperlink{_fat_structs_8h_abf85d1c57b01c8901a0cdcd0ac1babc2}{sectors\+Per\+Fat16}}
+\item 
+uint16\+\_\+t \mbox{\hyperlink{_fat_structs_8h_ae1928fd953f5d0f198826c93c320f2b2}{sectors\+Per\+Trtack}}
+\item 
+uint16\+\_\+t \mbox{\hyperlink{_fat_structs_8h_a57cb7e16b9969fa87c9f1ca43a87d217}{head\+Count}}
+\item 
+uint32\+\_\+t \mbox{\hyperlink{_fat_structs_8h_a454fd6cc3f063c86b7fe65c367da7cdd}{hiddden\+Sectors}}
+\item 
+uint32\+\_\+t \mbox{\hyperlink{_fat_structs_8h_a64d5902f9e900ecc745b1c0b325d875f}{total\+Sectors32}}
+\item 
+uint32\+\_\+t \mbox{\hyperlink{_fat_structs_8h_a687653b3b71ab0de1f27f8ab8f331a1c}{sectors\+Per\+Fat32}}
+\item 
+uint16\+\_\+t \mbox{\hyperlink{_fat_structs_8h_a4f864cefb7f1b004d5739ffab9a65ae1}{fat32\+Flags}}
+\item 
+uint16\+\_\+t \mbox{\hyperlink{_fat_structs_8h_a8f27235fa3dee48a4b4e099135fc81d6}{fat32\+Version}}
+\item 
+uint32\+\_\+t \mbox{\hyperlink{_fat_structs_8h_a58249ed4ed0f92d5768f2342f248af82}{fat32\+Root\+Cluster}}
+\item 
+uint16\+\_\+t \mbox{\hyperlink{_fat_structs_8h_aad3222ea255af06d09734e96a93c82ed}{fat32\+FSInfo}}
+\item 
+uint16\+\_\+t \mbox{\hyperlink{_fat_structs_8h_a1914baf34756efd18072059dccfcf40f}{fat32\+Back\+Boot\+Block}}
+\item 
+uint8\+\_\+t \mbox{\hyperlink{_fat_structs_8h_a6894c520facd5a61acc317e16099f693}{fat32\+Reserved}} \mbox{[}12\mbox{]}
+\item 
+uint8\+\_\+t \mbox{\hyperlink{_fat_structs_8h_ad29ce39fde11e3efe207f3cc71924c01}{jump}} \mbox{[}3\mbox{]}
+\item 
+char \mbox{\hyperlink{_fat_structs_8h_a9c423397154f11b5108165f058d64c03}{oem\+Id}} \mbox{[}8\mbox{]}
+\item 
+uint16\+\_\+t \mbox{\hyperlink{_fat_structs_8h_a42886f9109ee1759d5972e871f0689a8}{sectors\+Per\+Track}}
+\item 
+uint8\+\_\+t \mbox{\hyperlink{_fat_structs_8h_aa7c65fdb4f759fca094105d1c870bcb2}{drive\+Number}}
+\item 
+uint8\+\_\+t \mbox{\hyperlink{_fat_structs_8h_affe215a7220b2d52fb9dacf3b35e56dc}{reserved1}}
+\item 
+uint8\+\_\+t \mbox{\hyperlink{_fat_structs_8h_acc4a4e4c22b630d12c1b2c2b8c7eb366}{boot\+Signature}}
+\item 
+uint32\+\_\+t \mbox{\hyperlink{_fat_structs_8h_a7c9ffcee12051cefe1724e8024af25f8}{volume\+Serial\+Number}}
+\item 
+char \mbox{\hyperlink{_fat_structs_8h_a4c67f30c214795e34070d3402de94f41}{volume\+Label}} \mbox{[}11\mbox{]}
+\item 
+char \mbox{\hyperlink{_fat_structs_8h_a14bc72c09ec28729b9907aab215e5fe3}{file\+System\+Type}} \mbox{[}8\mbox{]}
+\item 
+uint8\+\_\+t \mbox{\hyperlink{_fat_structs_8h_a2f3c72b78dbeeeb61d543df3c9d1cefd}{boot\+Code}} \mbox{[}448\mbox{]}
+\item 
+uint8\+\_\+t \mbox{\hyperlink{_fat_structs_8h_abdaf2cc75b74800944ede557442ca5bd}{boot\+Sector\+Sig0}}
+\item 
+uint8\+\_\+t \mbox{\hyperlink{_fat_structs_8h_a44983e94ecddbdcb7ab691e493a13d94}{boot\+Sector\+Sig1}}
+\item 
+const uint32\+\_\+t \mbox{\hyperlink{_fat_structs_8h_a7a7a74a7315ad523e3b0c9dbd44d9a32}{FSINFO\+\_\+\+LEAD\+\_\+\+SIG}} = 0x41615252
+\item 
+const uint32\+\_\+t \mbox{\hyperlink{_fat_structs_8h_a9bf6b77df7bec6c49d81562c54371e81}{FSINFO\+\_\+\+STRUCT\+\_\+\+SIG}} = 0x61417272
+\item 
+uint32\+\_\+t \mbox{\hyperlink{_fat_structs_8h_a19196eeae2525130bdb0d39607860743}{lead\+Signature}}
+\item 
+uint32\+\_\+t \mbox{\hyperlink{_fat_structs_8h_a31ea8ae6a8d32f61dd576d0d4921f015}{struct\+Signature}}
+\item 
+uint32\+\_\+t \mbox{\hyperlink{_fat_structs_8h_af5d9e0aff08147617a09dc19d207eafe}{free\+Count}}
+\item 
+uint32\+\_\+t \mbox{\hyperlink{_fat_structs_8h_a456cdbc01678df5d05eabb80f5aac9b0}{next\+Free}}
+\item 
+uint8\+\_\+t \mbox{\hyperlink{_fat_structs_8h_a2d2f4821102b812b81b15f5e713dd8e8}{reserved2}} \mbox{[}12\mbox{]}
+\item 
+uint8\+\_\+t \mbox{\hyperlink{_fat_structs_8h_a89944902cc4effcd8568575786c3a084}{tail\+Signature}} \mbox{[}4\mbox{]}
+\item 
+const uint16\+\_\+t \mbox{\hyperlink{_fat_structs_8h_af314c45d1d37d09c9e44847326232466}{FAT12\+EOC}} = 0\+XFFF
+\item 
+const uint16\+\_\+t \mbox{\hyperlink{_fat_structs_8h_a48951911b522ebf72bf5561c3402aa15}{FAT12\+EOC\+\_\+\+MIN}} = 0\+XFF8
+\item 
+const uint16\+\_\+t \mbox{\hyperlink{_fat_structs_8h_afcd95ebc621a46c82b9997c8b9208550}{FAT16\+EOC}} = 0\+XFFFF
+\item 
+const uint16\+\_\+t \mbox{\hyperlink{_fat_structs_8h_a2f549b850b74666ba7d922bcb373896e}{FAT16\+EOC\+\_\+\+MIN}} = 0\+XFFF8
+\item 
+const uint32\+\_\+t \mbox{\hyperlink{_fat_structs_8h_a67a9dbf970f43fadd41a6a9fede60c47}{FAT32\+EOC}} = 0\+X0\+FFFFFFF
+\item 
+const uint32\+\_\+t \mbox{\hyperlink{_fat_structs_8h_a8f97a312e990c3f4faf7e98c3256aae5}{FAT32\+EOC\+\_\+\+MIN}} = 0\+X0\+FFFFFF8
+\item 
+const uint32\+\_\+t \mbox{\hyperlink{_fat_structs_8h_a7491c79fff0bda3b026ffa098a28d6df}{FAT32\+MASK}} = 0\+X0\+FFFFFFF
+\item 
+uint8\+\_\+t \mbox{\hyperlink{_fat_structs_8h_a30308c9b983377042fd2cc8900454fb1}{name}} \mbox{[}11\mbox{]}
+\item 
+uint8\+\_\+t \mbox{\hyperlink{_fat_structs_8h_a983149395439fbc9ca8497076b75fd6b}{attributes}}
+\item 
+uint8\+\_\+t \mbox{\hyperlink{_fat_structs_8h_a937b2d2e4b78ddf9e42b19c754e4f31a}{reserved\+NT}}
+\item 
+uint8\+\_\+t \mbox{\hyperlink{_fat_structs_8h_a088ac767e59feb38599e0a53e6aacb82}{creation\+Time\+Tenths}}
+\item 
+uint16\+\_\+t \mbox{\hyperlink{_fat_structs_8h_a2b2b18a3fb988470278b1217abe946ab}{creation\+Time}}
+\item 
+uint16\+\_\+t \mbox{\hyperlink{_fat_structs_8h_ab00be6268bf4c4f4b6014f056e27ba45}{creation\+Date}}
+\item 
+uint16\+\_\+t \mbox{\hyperlink{_fat_structs_8h_a5635857642ec25e070355257115dafd1}{last\+Access\+Date}}
+\item 
+uint16\+\_\+t \mbox{\hyperlink{_fat_structs_8h_ad6224dfa27a1c558703f158e93ceafe0}{first\+Cluster\+High}}
+\item 
+uint16\+\_\+t \mbox{\hyperlink{_fat_structs_8h_ab140bb773b2ff0ddf7199efc083ce037}{last\+Write\+Time}}
+\item 
+uint16\+\_\+t \mbox{\hyperlink{_fat_structs_8h_a26f462d6e4410d502149973ee6c216fd}{last\+Write\+Date}}
+\item 
+uint16\+\_\+t \mbox{\hyperlink{_fat_structs_8h_a3a4f70fb49494208d7eb349969a8acaa}{first\+Cluster\+Low}}
+\item 
+uint32\+\_\+t \mbox{\hyperlink{_fat_structs_8h_a48f46ad02b77a00b795d15626ba1d42e}{file\+Size}}
+\item 
+const uint8\+\_\+t \mbox{\hyperlink{_fat_structs_8h_a1696d3db9949d6e22d1c2c595fd14669}{DIR\+\_\+\+NAME\+\_\+0\+XE5}} = 0\+X05
+\item 
+const uint8\+\_\+t \mbox{\hyperlink{_fat_structs_8h_a8c08d4823047505f3231e86c5033d08c}{DIR\+\_\+\+NAME\+\_\+\+DELETED}} = 0\+XE5
+\item 
+const uint8\+\_\+t \mbox{\hyperlink{_fat_structs_8h_a0f1f0001102ae59b9e7c9e3b04cc06d8}{DIR\+\_\+\+NAME\+\_\+\+FREE}} = 0\+X00
+\item 
+const uint8\+\_\+t \mbox{\hyperlink{_fat_structs_8h_ae5efa2fd21e8a563a3a45f8a52538cde}{DIR\+\_\+\+ATT\+\_\+\+READ\+\_\+\+ONLY}} = 0\+X01
+\item 
+const uint8\+\_\+t \mbox{\hyperlink{_fat_structs_8h_aed394afe98ff4b7876a5815319b6ef94}{DIR\+\_\+\+ATT\+\_\+\+HIDDEN}} = 0\+X02
+\item 
+const uint8\+\_\+t \mbox{\hyperlink{_fat_structs_8h_a31c7e5c119c9ebc1237746c985cf385d}{DIR\+\_\+\+ATT\+\_\+\+SYSTEM}} = 0\+X04
+\item 
+const uint8\+\_\+t \mbox{\hyperlink{_fat_structs_8h_a410501be78b30a75224dd4e81a4a1105}{DIR\+\_\+\+ATT\+\_\+\+VOLUME\+\_\+\+ID}} = 0\+X08
+\item 
+const uint8\+\_\+t \mbox{\hyperlink{_fat_structs_8h_a5fe039a9af7304fc97a0e903acd217f7}{DIR\+\_\+\+ATT\+\_\+\+DIRECTORY}} = 0\+X10
+\item 
+const uint8\+\_\+t \mbox{\hyperlink{_fat_structs_8h_a0d0745a2bc191d12f6e3294a890c4b13}{DIR\+\_\+\+ATT\+\_\+\+ARCHIVE}} = 0\+X20
+\item 
+const uint8\+\_\+t \mbox{\hyperlink{_fat_structs_8h_a0039e1903007eb7383a9fe4b80a3569e}{DIR\+\_\+\+ATT\+\_\+\+LONG\+\_\+\+NAME}} = 0\+X0F
+\item 
+const uint8\+\_\+t \mbox{\hyperlink{_fat_structs_8h_a74ddbd24c315a682449a51a2a35adf39}{DIR\+\_\+\+ATT\+\_\+\+LONG\+\_\+\+NAME\+\_\+\+MASK}} = 0\+X3F
+\item 
+const uint8\+\_\+t \mbox{\hyperlink{_fat_structs_8h_ad0c6ed5cf186a40f98cc3929b52cf8ee}{DIR\+\_\+\+ATT\+\_\+\+DEFINED\+\_\+\+BITS}} = 0\+X3F
+\item 
+const uint8\+\_\+t \mbox{\hyperlink{_fat_structs_8h_af006ada1b85a9761dd9538273c1ee97f}{DIR\+\_\+\+ATT\+\_\+\+FILE\+\_\+\+TYPE\+\_\+\+MASK}} = (\mbox{\hyperlink{_fat_structs_8h_a410501be78b30a75224dd4e81a4a1105}{DIR\+\_\+\+ATT\+\_\+\+VOLUME\+\_\+\+ID}} $\vert$ \mbox{\hyperlink{_fat_structs_8h_a5fe039a9af7304fc97a0e903acd217f7}{DIR\+\_\+\+ATT\+\_\+\+DIRECTORY}})
+\item 
+const uint8\+\_\+t \mbox{\hyperlink{_fat_structs_8h_a39f9b8960dba007b537e9b71c25384fe}{DIR\+\_\+\+NT\+\_\+\+LC\+\_\+\+BASE}} = 0\+X08
+\item 
+const uint8\+\_\+t \mbox{\hyperlink{_fat_structs_8h_a8766a8bbab6ad3da38c1b308545d7572}{DIR\+\_\+\+NT\+\_\+\+LC\+\_\+\+EXT}} = 0\+X10
+\item 
+const uint16\+\_\+t \mbox{\hyperlink{_fat_structs_8h_a42eeb0322bced1f7b527c707f8bd54a4}{FAT\+\_\+\+DEFAULT\+\_\+\+DATE}} = ((2000 -\/ 1980) $<$$<$ 9) $\vert$ (1 $<$$<$ 5) $\vert$ 1
+\item 
+const uint16\+\_\+t \mbox{\hyperlink{_fat_structs_8h_a23c2510407ec3be457e0e4807644deb2}{FAT\+\_\+\+DEFAULT\+\_\+\+TIME}} = (1 $<$$<$ 11)
+\item 
+const uint8\+\_\+t \mbox{\hyperlink{_fat_structs_8h_af843af29c67dd30ca7c5684806bf02fc}{LDIR\+\_\+\+NAME1\+\_\+\+DIM}} = 5
+\item 
+const uint8\+\_\+t \mbox{\hyperlink{_fat_structs_8h_a99cae591c59e261f54617617e173e7e0}{LDIR\+\_\+\+NAME2\+\_\+\+DIM}} = 6
+\item 
+const uint8\+\_\+t \mbox{\hyperlink{_fat_structs_8h_a99fbd27fa9e5003a8d77ca7fc14d2090}{LDIR\+\_\+\+NAME3\+\_\+\+DIM}} = 2
+\item 
+uint8\+\_\+t \mbox{\hyperlink{_fat_structs_8h_ae204655dc23be1d048e8bebf2dfa5089}{ord}}
+\item 
+uint16\+\_\+t \mbox{\hyperlink{_fat_structs_8h_a07da96089c18c8a0d602b7928da0911b}{name1}} \mbox{[}\mbox{\hyperlink{_fat_structs_8h_af843af29c67dd30ca7c5684806bf02fc}{LDIR\+\_\+\+NAME1\+\_\+\+DIM}}\mbox{]}
+\item 
+uint8\+\_\+t \mbox{\hyperlink{_fat_structs_8h_a28478ea2856f6286899bc90b2c6a1ec4}{attr}}
+\item 
+uint8\+\_\+t \mbox{\hyperlink{_fat_structs_8h_a385e330c40b5fc7d8aa0619183f6705a}{chksum}}
+\item 
+uint16\+\_\+t \mbox{\hyperlink{_fat_structs_8h_a131c8b991ced6a7727162f48679f546b}{name2}} \mbox{[}\mbox{\hyperlink{_fat_structs_8h_a99cae591c59e261f54617617e173e7e0}{LDIR\+\_\+\+NAME2\+\_\+\+DIM}}\mbox{]}
+\item 
+uint16\+\_\+t \mbox{\hyperlink{_fat_structs_8h_a06b092a772e5358228eaf0c01eb73838}{must\+Be\+Zero}}
+\item 
+uint16\+\_\+t \mbox{\hyperlink{_fat_structs_8h_a36c0f9ceab93f09fe49f5dc2549258ba}{name3}} \mbox{[}\mbox{\hyperlink{_fat_structs_8h_a99fbd27fa9e5003a8d77ca7fc14d2090}{LDIR\+\_\+\+NAME3\+\_\+\+DIM}}\mbox{]}
+\item 
+const uint8\+\_\+t \mbox{\hyperlink{_fat_structs_8h_a8cfb60b9eaf04dcdc6e4f5a466af5540}{LDIR\+\_\+\+ORD\+\_\+\+LAST\+\_\+\+LONG\+\_\+\+ENTRY}} = 0\+X40
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+FAT file structures. 
+
+Copyright (c) 2011-\/2018 Bill Greiman This file is part of the \mbox{\hyperlink{class_sd_fat}{Sd\+Fat}} library for SD memory cards.
+
+MIT License
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the \char`\"{}\+Software\char`\"{}), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions\+:
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED \char`\"{}\+AS IS\char`\"{}, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE. 
+
+\doxysubsection{Typedef Documentation}
+\mbox{\Hypertarget{_fat_structs_8h_a5c8af240713e05e7e6c959006ced35fb}\label{_fat_structs_8h_a5c8af240713e05e7e6c959006ced35fb}} 
+\index{FatStructs.h@{FatStructs.h}!bpb\_t@{bpb\_t}}
+\index{bpb\_t@{bpb\_t}!FatStructs.h@{FatStructs.h}}
+\doxysubsubsection{\texorpdfstring{bpb\_t}{bpb\_t}}
+{\footnotesize\ttfamily typedef struct \mbox{\hyperlink{structbios_parm_block}{bios\+Parm\+Block}} \mbox{\hyperlink{_fat_structs_8h_a5c8af240713e05e7e6c959006ced35fb}{bpb\+\_\+t}}}
+
+Type name for \mbox{\hyperlink{structbios_parm_block}{bios\+Parm\+Block}} \mbox{\Hypertarget{_fat_structs_8h_a803db59d4e16a0c54a647afc6a7954e3}\label{_fat_structs_8h_a803db59d4e16a0c54a647afc6a7954e3}} 
+\index{FatStructs.h@{FatStructs.h}!dir\_t@{dir\_t}}
+\index{dir\_t@{dir\_t}!FatStructs.h@{FatStructs.h}}
+\doxysubsubsection{\texorpdfstring{dir\_t}{dir\_t}}
+{\footnotesize\ttfamily typedef struct \mbox{\hyperlink{structdirectory_entry}{directory\+Entry}} \mbox{\hyperlink{_fat_structs_8h_a803db59d4e16a0c54a647afc6a7954e3}{dir\+\_\+t}}}
+
+Type name for \mbox{\hyperlink{structdirectory_entry}{directory\+Entry}} \mbox{\Hypertarget{_fat_structs_8h_a38fa081d004647a828095d31b07ec491}\label{_fat_structs_8h_a38fa081d004647a828095d31b07ec491}} 
+\index{FatStructs.h@{FatStructs.h}!fat32\_boot\_t@{fat32\_boot\_t}}
+\index{fat32\_boot\_t@{fat32\_boot\_t}!FatStructs.h@{FatStructs.h}}
+\doxysubsubsection{\texorpdfstring{fat32\_boot\_t}{fat32\_boot\_t}}
+{\footnotesize\ttfamily typedef struct \mbox{\hyperlink{structfat32__boot}{fat32\+\_\+boot}} \mbox{\hyperlink{_fat_structs_8h_a38fa081d004647a828095d31b07ec491}{fat32\+\_\+boot\+\_\+t}}}
+
+Type name for FAT32 Boot Sector \mbox{\Hypertarget{_fat_structs_8h_a6030ed0fce3a819326a2548407fc8556}\label{_fat_structs_8h_a6030ed0fce3a819326a2548407fc8556}} 
+\index{FatStructs.h@{FatStructs.h}!fat32\_fsinfo\_t@{fat32\_fsinfo\_t}}
+\index{fat32\_fsinfo\_t@{fat32\_fsinfo\_t}!FatStructs.h@{FatStructs.h}}
+\doxysubsubsection{\texorpdfstring{fat32\_fsinfo\_t}{fat32\_fsinfo\_t}}
+{\footnotesize\ttfamily typedef struct \mbox{\hyperlink{structfat32__fsinfo}{fat32\+\_\+fsinfo}} \mbox{\hyperlink{_fat_structs_8h_a6030ed0fce3a819326a2548407fc8556}{fat32\+\_\+fsinfo\+\_\+t}}}
+
+Type name for FAT32 FSINFO Sector \mbox{\Hypertarget{_fat_structs_8h_aedac4595ee08198da26c14b9891a07d5}\label{_fat_structs_8h_aedac4595ee08198da26c14b9891a07d5}} 
+\index{FatStructs.h@{FatStructs.h}!fat\_boot\_t@{fat\_boot\_t}}
+\index{fat\_boot\_t@{fat\_boot\_t}!FatStructs.h@{FatStructs.h}}
+\doxysubsubsection{\texorpdfstring{fat\_boot\_t}{fat\_boot\_t}}
+{\footnotesize\ttfamily typedef struct \mbox{\hyperlink{structfat__boot}{fat\+\_\+boot}} \mbox{\hyperlink{_fat_structs_8h_aedac4595ee08198da26c14b9891a07d5}{fat\+\_\+boot\+\_\+t}}}
+
+Type name for FAT Boot Sector \mbox{\Hypertarget{_fat_structs_8h_aa1b540ee1eedd1aa9b267d11cba0d9e2}\label{_fat_structs_8h_aa1b540ee1eedd1aa9b267d11cba0d9e2}} 
+\index{FatStructs.h@{FatStructs.h}!ldir\_t@{ldir\_t}}
+\index{ldir\_t@{ldir\_t}!FatStructs.h@{FatStructs.h}}
+\doxysubsubsection{\texorpdfstring{ldir\_t}{ldir\_t}}
+{\footnotesize\ttfamily typedef struct \mbox{\hyperlink{structlong_directory_entry}{long\+Directory\+Entry}} \mbox{\hyperlink{_fat_structs_8h_aa1b540ee1eedd1aa9b267d11cba0d9e2}{ldir\+\_\+t}}}
+
+Type name for \mbox{\hyperlink{structlong_directory_entry}{long\+Directory\+Entry}} \mbox{\Hypertarget{_fat_structs_8h_a7c429e5097f101c8c97663d6c4155bd9}\label{_fat_structs_8h_a7c429e5097f101c8c97663d6c4155bd9}} 
+\index{FatStructs.h@{FatStructs.h}!mbr\_t@{mbr\_t}}
+\index{mbr\_t@{mbr\_t}!FatStructs.h@{FatStructs.h}}
+\doxysubsubsection{\texorpdfstring{mbr\_t}{mbr\_t}}
+{\footnotesize\ttfamily typedef struct \mbox{\hyperlink{structmaster_boot_record}{master\+Boot\+Record}} \mbox{\hyperlink{_fat_structs_8h_a7c429e5097f101c8c97663d6c4155bd9}{mbr\+\_\+t}}}
+
+Type name for \mbox{\hyperlink{structmaster_boot_record}{master\+Boot\+Record}} \mbox{\Hypertarget{_fat_structs_8h_a37251e7d5c69a159be727a3fc8c9d0e6}\label{_fat_structs_8h_a37251e7d5c69a159be727a3fc8c9d0e6}} 
+\index{FatStructs.h@{FatStructs.h}!part\_t@{part\_t}}
+\index{part\_t@{part\_t}!FatStructs.h@{FatStructs.h}}
+\doxysubsubsection{\texorpdfstring{part\_t}{part\_t}}
+{\footnotesize\ttfamily typedef struct \mbox{\hyperlink{structpartition_table}{partition\+Table}} \mbox{\hyperlink{_fat_structs_8h_a37251e7d5c69a159be727a3fc8c9d0e6}{part\+\_\+t}}}
+
+Type name for \mbox{\hyperlink{structpartition_table}{partition\+Table}} 
+
+\doxysubsection{Variable Documentation}
+\mbox{\Hypertarget{_fat_structs_8h_a28478ea2856f6286899bc90b2c6a1ec4}\label{_fat_structs_8h_a28478ea2856f6286899bc90b2c6a1ec4}} 
+\index{FatStructs.h@{FatStructs.h}!attr@{attr}}
+\index{attr@{attr}!FatStructs.h@{FatStructs.h}}
+\doxysubsubsection{\texorpdfstring{attr}{attr}}
+{\footnotesize\ttfamily uint8\+\_\+t attr}
+
+Attributes -\/ must be ATTR\+\_\+\+LONG\+\_\+\+NAME \mbox{\Hypertarget{_fat_structs_8h_a983149395439fbc9ca8497076b75fd6b}\label{_fat_structs_8h_a983149395439fbc9ca8497076b75fd6b}} 
+\index{FatStructs.h@{FatStructs.h}!attributes@{attributes}}
+\index{attributes@{attributes}!FatStructs.h@{FatStructs.h}}
+\doxysubsubsection{\texorpdfstring{attributes}{attributes}}
+{\footnotesize\ttfamily uint8\+\_\+t attributes}
+
+Entry attributes.
+
+The upper two bits of the attribute byte are reserved and should always be set to 0 when a file is created and never modified or looked at after that. See defines that begin with DIR\+\_\+\+ATT\+\_\+. \mbox{\Hypertarget{_fat_structs_8h_aae20759e6c6dbfa51368964f8fe095c7}\label{_fat_structs_8h_aae20759e6c6dbfa51368964f8fe095c7}} 
+\index{FatStructs.h@{FatStructs.h}!beginCylinderHigh@{beginCylinderHigh}}
+\index{beginCylinderHigh@{beginCylinderHigh}!FatStructs.h@{FatStructs.h}}
+\doxysubsubsection{\texorpdfstring{beginCylinderHigh}{beginCylinderHigh}}
+{\footnotesize\ttfamily unsigned begin\+Cylinder\+High}
+
+High bits cylinder for first block in partition. \mbox{\Hypertarget{_fat_structs_8h_afefdee23280567f8434f9c31610e0a3b}\label{_fat_structs_8h_afefdee23280567f8434f9c31610e0a3b}} 
+\index{FatStructs.h@{FatStructs.h}!beginCylinderLow@{beginCylinderLow}}
+\index{beginCylinderLow@{beginCylinderLow}!FatStructs.h@{FatStructs.h}}
+\doxysubsubsection{\texorpdfstring{beginCylinderLow}{beginCylinderLow}}
+{\footnotesize\ttfamily uint8\+\_\+t begin\+Cylinder\+Low}
+
+Combine begin\+Cylinder\+Low with begin\+Cylinder\+High. Legal values are 0-\/1023. Only used in old PC BIOS. \mbox{\Hypertarget{_fat_structs_8h_ab27b713d70d01c43e31fc67e08f876bf}\label{_fat_structs_8h_ab27b713d70d01c43e31fc67e08f876bf}} 
+\index{FatStructs.h@{FatStructs.h}!beginHead@{beginHead}}
+\index{beginHead@{beginHead}!FatStructs.h@{FatStructs.h}}
+\doxysubsubsection{\texorpdfstring{beginHead}{beginHead}}
+{\footnotesize\ttfamily uint8\+\_\+t begin\+Head}
+
+Head part of Cylinder-\/head-\/sector address of the first block in the partition. Legal values are 0-\/255. Only used in old PC BIOS. \mbox{\Hypertarget{_fat_structs_8h_a3ef026d5e8a9c697e414cf773b129db4}\label{_fat_structs_8h_a3ef026d5e8a9c697e414cf773b129db4}} 
+\index{FatStructs.h@{FatStructs.h}!beginSector@{beginSector}}
+\index{beginSector@{beginSector}!FatStructs.h@{FatStructs.h}}
+\doxysubsubsection{\texorpdfstring{beginSector}{beginSector}}
+{\footnotesize\ttfamily unsigned begin\+Sector}
+
+Sector part of Cylinder-\/head-\/sector address of the first block in the partition. Legal values are 1-\/63. Only used in old PC BIOS. \mbox{\Hypertarget{_fat_structs_8h_ad2acb7fab9ef33a6f00c834401250229}\label{_fat_structs_8h_ad2acb7fab9ef33a6f00c834401250229}} 
+\index{FatStructs.h@{FatStructs.h}!boot@{boot}}
+\index{boot@{boot}!FatStructs.h@{FatStructs.h}}
+\doxysubsubsection{\texorpdfstring{boot}{boot}}
+{\footnotesize\ttfamily uint8\+\_\+t boot}
+
+Boot Indicator . Indicates whether the volume is the active partition. Legal values include\+: 0X00. Do not use for booting. 0X80 Active partition. \mbox{\Hypertarget{_fat_structs_8h_a2f3c72b78dbeeeb61d543df3c9d1cefd}\label{_fat_structs_8h_a2f3c72b78dbeeeb61d543df3c9d1cefd}} 
+\index{FatStructs.h@{FatStructs.h}!bootCode@{bootCode}}
+\index{bootCode@{bootCode}!FatStructs.h@{FatStructs.h}}
+\doxysubsubsection{\texorpdfstring{bootCode}{bootCode}}
+{\footnotesize\ttfamily uint8\+\_\+t boot\+Code}
+
+X86 boot code \mbox{\Hypertarget{_fat_structs_8h_abdaf2cc75b74800944ede557442ca5bd}\label{_fat_structs_8h_abdaf2cc75b74800944ede557442ca5bd}} 
+\index{FatStructs.h@{FatStructs.h}!bootSectorSig0@{bootSectorSig0}}
+\index{bootSectorSig0@{bootSectorSig0}!FatStructs.h@{FatStructs.h}}
+\doxysubsubsection{\texorpdfstring{bootSectorSig0}{bootSectorSig0}}
+{\footnotesize\ttfamily uint8\+\_\+t boot\+Sector\+Sig0}
+
+must be 0X55 \mbox{\Hypertarget{_fat_structs_8h_a44983e94ecddbdcb7ab691e493a13d94}\label{_fat_structs_8h_a44983e94ecddbdcb7ab691e493a13d94}} 
+\index{FatStructs.h@{FatStructs.h}!bootSectorSig1@{bootSectorSig1}}
+\index{bootSectorSig1@{bootSectorSig1}!FatStructs.h@{FatStructs.h}}
+\doxysubsubsection{\texorpdfstring{bootSectorSig1}{bootSectorSig1}}
+{\footnotesize\ttfamily uint8\+\_\+t boot\+Sector\+Sig1}
+
+must be 0XAA \mbox{\Hypertarget{_fat_structs_8h_acb7f0c892eb84c121c5698b2605e95e3}\label{_fat_structs_8h_acb7f0c892eb84c121c5698b2605e95e3}} 
+\index{FatStructs.h@{FatStructs.h}!BOOTSIG0@{BOOTSIG0}}
+\index{BOOTSIG0@{BOOTSIG0}!FatStructs.h@{FatStructs.h}}
+\doxysubsubsection{\texorpdfstring{BOOTSIG0}{BOOTSIG0}}
+{\footnotesize\ttfamily const uint8\+\_\+t BOOTSIG0 = 0\+X55}
+
+Value for byte 510 of boot block or MBR \mbox{\Hypertarget{_fat_structs_8h_a52f90172e11e828b411c803f29853753}\label{_fat_structs_8h_a52f90172e11e828b411c803f29853753}} 
+\index{FatStructs.h@{FatStructs.h}!BOOTSIG1@{BOOTSIG1}}
+\index{BOOTSIG1@{BOOTSIG1}!FatStructs.h@{FatStructs.h}}
+\doxysubsubsection{\texorpdfstring{BOOTSIG1}{BOOTSIG1}}
+{\footnotesize\ttfamily const uint8\+\_\+t BOOTSIG1 = 0\+XAA}
+
+Value for byte 511 of boot block or MBR \mbox{\Hypertarget{_fat_structs_8h_acc4a4e4c22b630d12c1b2c2b8c7eb366}\label{_fat_structs_8h_acc4a4e4c22b630d12c1b2c2b8c7eb366}} 
+\index{FatStructs.h@{FatStructs.h}!bootSignature@{bootSignature}}
+\index{bootSignature@{bootSignature}!FatStructs.h@{FatStructs.h}}
+\doxysubsubsection{\texorpdfstring{bootSignature}{bootSignature}}
+{\footnotesize\ttfamily uint8\+\_\+t boot\+Signature}
+
+0X29 if next three fields are valid \mbox{\Hypertarget{_fat_structs_8h_adb2ddeae74baf681103d21d724814a63}\label{_fat_structs_8h_adb2ddeae74baf681103d21d724814a63}} 
+\index{FatStructs.h@{FatStructs.h}!bytesPerSector@{bytesPerSector}}
+\index{bytesPerSector@{bytesPerSector}!FatStructs.h@{FatStructs.h}}
+\doxysubsubsection{\texorpdfstring{bytesPerSector}{bytesPerSector}}
+{\footnotesize\ttfamily uint16\+\_\+t bytes\+Per\+Sector}
+
+Count of bytes per sector. This value may take on only the following values\+: 512, 1024, 2048 or 4096
+
+The size of a hardware sector. Valid decimal values for this field are 512, 1024, 2048, and 4096. For most disks used in the United States, the value of this field is 512. \mbox{\Hypertarget{_fat_structs_8h_a385e330c40b5fc7d8aa0619183f6705a}\label{_fat_structs_8h_a385e330c40b5fc7d8aa0619183f6705a}} 
+\index{FatStructs.h@{FatStructs.h}!chksum@{chksum}}
+\index{chksum@{chksum}!FatStructs.h@{FatStructs.h}}
+\doxysubsubsection{\texorpdfstring{chksum}{chksum}}
+{\footnotesize\ttfamily uint8\+\_\+t chksum}
+
+Checksum of name in the short dir entry at the end of the long dir set. \mbox{\Hypertarget{_fat_structs_8h_a714f552faf0b0f09ffc53e2ba52ddbc3}\label{_fat_structs_8h_a714f552faf0b0f09ffc53e2ba52ddbc3}} 
+\index{FatStructs.h@{FatStructs.h}!codeArea@{codeArea}}
+\index{codeArea@{codeArea}!FatStructs.h@{FatStructs.h}}
+\doxysubsubsection{\texorpdfstring{codeArea}{codeArea}}
+{\footnotesize\ttfamily uint8\+\_\+t code\+Area\mbox{[}440\mbox{]}}
+
+Code Area for master boot program. \mbox{\Hypertarget{_fat_structs_8h_ab00be6268bf4c4f4b6014f056e27ba45}\label{_fat_structs_8h_ab00be6268bf4c4f4b6014f056e27ba45}} 
+\index{FatStructs.h@{FatStructs.h}!creationDate@{creationDate}}
+\index{creationDate@{creationDate}!FatStructs.h@{FatStructs.h}}
+\doxysubsubsection{\texorpdfstring{creationDate}{creationDate}}
+{\footnotesize\ttfamily uint16\+\_\+t creation\+Date}
+
+Date file was created. \mbox{\Hypertarget{_fat_structs_8h_a2b2b18a3fb988470278b1217abe946ab}\label{_fat_structs_8h_a2b2b18a3fb988470278b1217abe946ab}} 
+\index{FatStructs.h@{FatStructs.h}!creationTime@{creationTime}}
+\index{creationTime@{creationTime}!FatStructs.h@{FatStructs.h}}
+\doxysubsubsection{\texorpdfstring{creationTime}{creationTime}}
+{\footnotesize\ttfamily uint16\+\_\+t creation\+Time}
+
+Time file was created. \mbox{\Hypertarget{_fat_structs_8h_a088ac767e59feb38599e0a53e6aacb82}\label{_fat_structs_8h_a088ac767e59feb38599e0a53e6aacb82}} 
+\index{FatStructs.h@{FatStructs.h}!creationTimeTenths@{creationTimeTenths}}
+\index{creationTimeTenths@{creationTimeTenths}!FatStructs.h@{FatStructs.h}}
+\doxysubsubsection{\texorpdfstring{creationTimeTenths}{creationTimeTenths}}
+{\footnotesize\ttfamily uint8\+\_\+t creation\+Time\+Tenths}
+
+The granularity of the seconds part of creation\+Time is 2 seconds so this field is a count of tenths of a second and its valid value range is 0-\/199 inclusive. (WHG note -\/ seems to be hundredths) \mbox{\Hypertarget{_fat_structs_8h_a0d0745a2bc191d12f6e3294a890c4b13}\label{_fat_structs_8h_a0d0745a2bc191d12f6e3294a890c4b13}} 
+\index{FatStructs.h@{FatStructs.h}!DIR\_ATT\_ARCHIVE@{DIR\_ATT\_ARCHIVE}}
+\index{DIR\_ATT\_ARCHIVE@{DIR\_ATT\_ARCHIVE}!FatStructs.h@{FatStructs.h}}
+\doxysubsubsection{\texorpdfstring{DIR\_ATT\_ARCHIVE}{DIR\_ATT\_ARCHIVE}}
+{\footnotesize\ttfamily const uint8\+\_\+t DIR\+\_\+\+ATT\+\_\+\+ARCHIVE = 0\+X20}
+
+Old DOS archive bit for backup support \mbox{\Hypertarget{_fat_structs_8h_ad0c6ed5cf186a40f98cc3929b52cf8ee}\label{_fat_structs_8h_ad0c6ed5cf186a40f98cc3929b52cf8ee}} 
+\index{FatStructs.h@{FatStructs.h}!DIR\_ATT\_DEFINED\_BITS@{DIR\_ATT\_DEFINED\_BITS}}
+\index{DIR\_ATT\_DEFINED\_BITS@{DIR\_ATT\_DEFINED\_BITS}!FatStructs.h@{FatStructs.h}}
+\doxysubsubsection{\texorpdfstring{DIR\_ATT\_DEFINED\_BITS}{DIR\_ATT\_DEFINED\_BITS}}
+{\footnotesize\ttfamily const uint8\+\_\+t DIR\+\_\+\+ATT\+\_\+\+DEFINED\+\_\+\+BITS = 0\+X3F}
+
+defined attribute bits \mbox{\Hypertarget{_fat_structs_8h_a5fe039a9af7304fc97a0e903acd217f7}\label{_fat_structs_8h_a5fe039a9af7304fc97a0e903acd217f7}} 
+\index{FatStructs.h@{FatStructs.h}!DIR\_ATT\_DIRECTORY@{DIR\_ATT\_DIRECTORY}}
+\index{DIR\_ATT\_DIRECTORY@{DIR\_ATT\_DIRECTORY}!FatStructs.h@{FatStructs.h}}
+\doxysubsubsection{\texorpdfstring{DIR\_ATT\_DIRECTORY}{DIR\_ATT\_DIRECTORY}}
+{\footnotesize\ttfamily const uint8\+\_\+t DIR\+\_\+\+ATT\+\_\+\+DIRECTORY = 0\+X10}
+
+Entry is for a directory \mbox{\Hypertarget{_fat_structs_8h_af006ada1b85a9761dd9538273c1ee97f}\label{_fat_structs_8h_af006ada1b85a9761dd9538273c1ee97f}} 
+\index{FatStructs.h@{FatStructs.h}!DIR\_ATT\_FILE\_TYPE\_MASK@{DIR\_ATT\_FILE\_TYPE\_MASK}}
+\index{DIR\_ATT\_FILE\_TYPE\_MASK@{DIR\_ATT\_FILE\_TYPE\_MASK}!FatStructs.h@{FatStructs.h}}
+\doxysubsubsection{\texorpdfstring{DIR\_ATT\_FILE\_TYPE\_MASK}{DIR\_ATT\_FILE\_TYPE\_MASK}}
+{\footnotesize\ttfamily const uint8\+\_\+t DIR\+\_\+\+ATT\+\_\+\+FILE\+\_\+\+TYPE\+\_\+\+MASK = (\mbox{\hyperlink{_fat_structs_8h_a410501be78b30a75224dd4e81a4a1105}{DIR\+\_\+\+ATT\+\_\+\+VOLUME\+\_\+\+ID}} $\vert$ \mbox{\hyperlink{_fat_structs_8h_a5fe039a9af7304fc97a0e903acd217f7}{DIR\+\_\+\+ATT\+\_\+\+DIRECTORY}})}
+
+Mask for file/subdirectory tests \mbox{\Hypertarget{_fat_structs_8h_aed394afe98ff4b7876a5815319b6ef94}\label{_fat_structs_8h_aed394afe98ff4b7876a5815319b6ef94}} 
+\index{FatStructs.h@{FatStructs.h}!DIR\_ATT\_HIDDEN@{DIR\_ATT\_HIDDEN}}
+\index{DIR\_ATT\_HIDDEN@{DIR\_ATT\_HIDDEN}!FatStructs.h@{FatStructs.h}}
+\doxysubsubsection{\texorpdfstring{DIR\_ATT\_HIDDEN}{DIR\_ATT\_HIDDEN}}
+{\footnotesize\ttfamily const uint8\+\_\+t DIR\+\_\+\+ATT\+\_\+\+HIDDEN = 0\+X02}
+
+File should e hidden in directory listings \mbox{\Hypertarget{_fat_structs_8h_a0039e1903007eb7383a9fe4b80a3569e}\label{_fat_structs_8h_a0039e1903007eb7383a9fe4b80a3569e}} 
+\index{FatStructs.h@{FatStructs.h}!DIR\_ATT\_LONG\_NAME@{DIR\_ATT\_LONG\_NAME}}
+\index{DIR\_ATT\_LONG\_NAME@{DIR\_ATT\_LONG\_NAME}!FatStructs.h@{FatStructs.h}}
+\doxysubsubsection{\texorpdfstring{DIR\_ATT\_LONG\_NAME}{DIR\_ATT\_LONG\_NAME}}
+{\footnotesize\ttfamily const uint8\+\_\+t DIR\+\_\+\+ATT\+\_\+\+LONG\+\_\+\+NAME = 0\+X0F}
+
+Test value for long name entry. Test is (d-\/$>$attributes \& DIR\+\_\+\+ATT\+\_\+\+LONG\+\_\+\+NAME\+\_\+\+MASK) == DIR\+\_\+\+ATT\+\_\+\+LONG\+\_\+\+NAME. \mbox{\Hypertarget{_fat_structs_8h_a74ddbd24c315a682449a51a2a35adf39}\label{_fat_structs_8h_a74ddbd24c315a682449a51a2a35adf39}} 
+\index{FatStructs.h@{FatStructs.h}!DIR\_ATT\_LONG\_NAME\_MASK@{DIR\_ATT\_LONG\_NAME\_MASK}}
+\index{DIR\_ATT\_LONG\_NAME\_MASK@{DIR\_ATT\_LONG\_NAME\_MASK}!FatStructs.h@{FatStructs.h}}
+\doxysubsubsection{\texorpdfstring{DIR\_ATT\_LONG\_NAME\_MASK}{DIR\_ATT\_LONG\_NAME\_MASK}}
+{\footnotesize\ttfamily const uint8\+\_\+t DIR\+\_\+\+ATT\+\_\+\+LONG\+\_\+\+NAME\+\_\+\+MASK = 0\+X3F}
+
+Test mask for long name entry \mbox{\Hypertarget{_fat_structs_8h_ae5efa2fd21e8a563a3a45f8a52538cde}\label{_fat_structs_8h_ae5efa2fd21e8a563a3a45f8a52538cde}} 
+\index{FatStructs.h@{FatStructs.h}!DIR\_ATT\_READ\_ONLY@{DIR\_ATT\_READ\_ONLY}}
+\index{DIR\_ATT\_READ\_ONLY@{DIR\_ATT\_READ\_ONLY}!FatStructs.h@{FatStructs.h}}
+\doxysubsubsection{\texorpdfstring{DIR\_ATT\_READ\_ONLY}{DIR\_ATT\_READ\_ONLY}}
+{\footnotesize\ttfamily const uint8\+\_\+t DIR\+\_\+\+ATT\+\_\+\+READ\+\_\+\+ONLY = 0\+X01}
+
+file is read-\/only \mbox{\Hypertarget{_fat_structs_8h_a31c7e5c119c9ebc1237746c985cf385d}\label{_fat_structs_8h_a31c7e5c119c9ebc1237746c985cf385d}} 
+\index{FatStructs.h@{FatStructs.h}!DIR\_ATT\_SYSTEM@{DIR\_ATT\_SYSTEM}}
+\index{DIR\_ATT\_SYSTEM@{DIR\_ATT\_SYSTEM}!FatStructs.h@{FatStructs.h}}
+\doxysubsubsection{\texorpdfstring{DIR\_ATT\_SYSTEM}{DIR\_ATT\_SYSTEM}}
+{\footnotesize\ttfamily const uint8\+\_\+t DIR\+\_\+\+ATT\+\_\+\+SYSTEM = 0\+X04}
+
+Entry is for a system file \mbox{\Hypertarget{_fat_structs_8h_a410501be78b30a75224dd4e81a4a1105}\label{_fat_structs_8h_a410501be78b30a75224dd4e81a4a1105}} 
+\index{FatStructs.h@{FatStructs.h}!DIR\_ATT\_VOLUME\_ID@{DIR\_ATT\_VOLUME\_ID}}
+\index{DIR\_ATT\_VOLUME\_ID@{DIR\_ATT\_VOLUME\_ID}!FatStructs.h@{FatStructs.h}}
+\doxysubsubsection{\texorpdfstring{DIR\_ATT\_VOLUME\_ID}{DIR\_ATT\_VOLUME\_ID}}
+{\footnotesize\ttfamily const uint8\+\_\+t DIR\+\_\+\+ATT\+\_\+\+VOLUME\+\_\+\+ID = 0\+X08}
+
+Directory entry contains the volume label \mbox{\Hypertarget{_fat_structs_8h_a1696d3db9949d6e22d1c2c595fd14669}\label{_fat_structs_8h_a1696d3db9949d6e22d1c2c595fd14669}} 
+\index{FatStructs.h@{FatStructs.h}!DIR\_NAME\_0XE5@{DIR\_NAME\_0XE5}}
+\index{DIR\_NAME\_0XE5@{DIR\_NAME\_0XE5}!FatStructs.h@{FatStructs.h}}
+\doxysubsubsection{\texorpdfstring{DIR\_NAME\_0XE5}{DIR\_NAME\_0XE5}}
+{\footnotesize\ttfamily const uint8\+\_\+t DIR\+\_\+\+NAME\+\_\+0\+XE5 = 0\+X05}
+
+escape for name\mbox{[}0\mbox{]} = 0XE5 \mbox{\Hypertarget{_fat_structs_8h_a8c08d4823047505f3231e86c5033d08c}\label{_fat_structs_8h_a8c08d4823047505f3231e86c5033d08c}} 
+\index{FatStructs.h@{FatStructs.h}!DIR\_NAME\_DELETED@{DIR\_NAME\_DELETED}}
+\index{DIR\_NAME\_DELETED@{DIR\_NAME\_DELETED}!FatStructs.h@{FatStructs.h}}
+\doxysubsubsection{\texorpdfstring{DIR\_NAME\_DELETED}{DIR\_NAME\_DELETED}}
+{\footnotesize\ttfamily const uint8\+\_\+t DIR\+\_\+\+NAME\+\_\+\+DELETED = 0\+XE5}
+
+name\mbox{[}0\mbox{]} value for entry that is free after being \char`\"{}deleted\char`\"{} \mbox{\Hypertarget{_fat_structs_8h_a0f1f0001102ae59b9e7c9e3b04cc06d8}\label{_fat_structs_8h_a0f1f0001102ae59b9e7c9e3b04cc06d8}} 
+\index{FatStructs.h@{FatStructs.h}!DIR\_NAME\_FREE@{DIR\_NAME\_FREE}}
+\index{DIR\_NAME\_FREE@{DIR\_NAME\_FREE}!FatStructs.h@{FatStructs.h}}
+\doxysubsubsection{\texorpdfstring{DIR\_NAME\_FREE}{DIR\_NAME\_FREE}}
+{\footnotesize\ttfamily const uint8\+\_\+t DIR\+\_\+\+NAME\+\_\+\+FREE = 0\+X00}
+
+name\mbox{[}0\mbox{]} value for entry that is free and no allocated entries follow \mbox{\Hypertarget{_fat_structs_8h_a39f9b8960dba007b537e9b71c25384fe}\label{_fat_structs_8h_a39f9b8960dba007b537e9b71c25384fe}} 
+\index{FatStructs.h@{FatStructs.h}!DIR\_NT\_LC\_BASE@{DIR\_NT\_LC\_BASE}}
+\index{DIR\_NT\_LC\_BASE@{DIR\_NT\_LC\_BASE}!FatStructs.h@{FatStructs.h}}
+\doxysubsubsection{\texorpdfstring{DIR\_NT\_LC\_BASE}{DIR\_NT\_LC\_BASE}}
+{\footnotesize\ttfamily const uint8\+\_\+t DIR\+\_\+\+NT\+\_\+\+LC\+\_\+\+BASE = 0\+X08}
+
+Filename base-\/name is all lower case \mbox{\Hypertarget{_fat_structs_8h_a8766a8bbab6ad3da38c1b308545d7572}\label{_fat_structs_8h_a8766a8bbab6ad3da38c1b308545d7572}} 
+\index{FatStructs.h@{FatStructs.h}!DIR\_NT\_LC\_EXT@{DIR\_NT\_LC\_EXT}}
+\index{DIR\_NT\_LC\_EXT@{DIR\_NT\_LC\_EXT}!FatStructs.h@{FatStructs.h}}
+\doxysubsubsection{\texorpdfstring{DIR\_NT\_LC\_EXT}{DIR\_NT\_LC\_EXT}}
+{\footnotesize\ttfamily const uint8\+\_\+t DIR\+\_\+\+NT\+\_\+\+LC\+\_\+\+EXT = 0\+X10}
+
+Filename extension is all lower case. \mbox{\Hypertarget{_fat_structs_8h_a6a40348b3b308847ba21a75829d91871}\label{_fat_structs_8h_a6a40348b3b308847ba21a75829d91871}} 
+\index{FatStructs.h@{FatStructs.h}!diskSignature@{diskSignature}}
+\index{diskSignature@{diskSignature}!FatStructs.h@{FatStructs.h}}
+\doxysubsubsection{\texorpdfstring{diskSignature}{diskSignature}}
+{\footnotesize\ttfamily uint32\+\_\+t disk\+Signature}
+
+Optional Windows NT disk signature. May contain boot code. \mbox{\Hypertarget{_fat_structs_8h_aa7c65fdb4f759fca094105d1c870bcb2}\label{_fat_structs_8h_aa7c65fdb4f759fca094105d1c870bcb2}} 
+\index{FatStructs.h@{FatStructs.h}!driveNumber@{driveNumber}}
+\index{driveNumber@{driveNumber}!FatStructs.h@{FatStructs.h}}
+\doxysubsubsection{\texorpdfstring{driveNumber}{driveNumber}}
+{\footnotesize\ttfamily uint8\+\_\+t drive\+Number}
+
+Related to the BIOS physical drive number. Floppy drives are identified as 0x00 and physical hard disks are identified as 0x80, regardless of the number of physical disk drives. Typically, this value is set prior to issuing an INT 13h BIOS call to specify the device to access. The value is only relevant if the device is a boot device. \mbox{\Hypertarget{_fat_structs_8h_adeccbdcad0d989d1e33a07b435ab7300}\label{_fat_structs_8h_adeccbdcad0d989d1e33a07b435ab7300}} 
+\index{FatStructs.h@{FatStructs.h}!endCylinderHigh@{endCylinderHigh}}
+\index{endCylinderHigh@{endCylinderHigh}!FatStructs.h@{FatStructs.h}}
+\doxysubsubsection{\texorpdfstring{endCylinderHigh}{endCylinderHigh}}
+{\footnotesize\ttfamily unsigned end\+Cylinder\+High}
+
+High bits of end cylinder \mbox{\Hypertarget{_fat_structs_8h_a3eb4b87675075500899edbb9296e0435}\label{_fat_structs_8h_a3eb4b87675075500899edbb9296e0435}} 
+\index{FatStructs.h@{FatStructs.h}!endCylinderLow@{endCylinderLow}}
+\index{endCylinderLow@{endCylinderLow}!FatStructs.h@{FatStructs.h}}
+\doxysubsubsection{\texorpdfstring{endCylinderLow}{endCylinderLow}}
+{\footnotesize\ttfamily uint8\+\_\+t end\+Cylinder\+Low}
+
+Combine end\+Cylinder\+Low with end\+Cylinder\+High. Legal values are 0-\/1023. Only used in old PC BIOS. \mbox{\Hypertarget{_fat_structs_8h_a248e6a8c42872744129b8b85a864a7a6}\label{_fat_structs_8h_a248e6a8c42872744129b8b85a864a7a6}} 
+\index{FatStructs.h@{FatStructs.h}!endHead@{endHead}}
+\index{endHead@{endHead}!FatStructs.h@{FatStructs.h}}
+\doxysubsubsection{\texorpdfstring{endHead}{endHead}}
+{\footnotesize\ttfamily uint8\+\_\+t end\+Head}
+
+head part of cylinder-\/head-\/sector address of the last sector in the partition. Legal values are 0-\/255. Only used in old PC BIOS. \mbox{\Hypertarget{_fat_structs_8h_a1412f3c5116885eb7d4a047e432c9cdd}\label{_fat_structs_8h_a1412f3c5116885eb7d4a047e432c9cdd}} 
+\index{FatStructs.h@{FatStructs.h}!endSector@{endSector}}
+\index{endSector@{endSector}!FatStructs.h@{FatStructs.h}}
+\doxysubsubsection{\texorpdfstring{endSector}{endSector}}
+{\footnotesize\ttfamily unsigned end\+Sector}
+
+Sector part of cylinder-\/head-\/sector address of the last sector in the partition. Legal values are 1-\/63. Only used in old PC BIOS. \mbox{\Hypertarget{_fat_structs_8h_aefadfae26e4cc8d57c1ff727a9d1cd20}\label{_fat_structs_8h_aefadfae26e4cc8d57c1ff727a9d1cd20}} 
+\index{FatStructs.h@{FatStructs.h}!EXTENDED\_BOOT\_SIG@{EXTENDED\_BOOT\_SIG}}
+\index{EXTENDED\_BOOT\_SIG@{EXTENDED\_BOOT\_SIG}!FatStructs.h@{FatStructs.h}}
+\doxysubsubsection{\texorpdfstring{EXTENDED\_BOOT\_SIG}{EXTENDED\_BOOT\_SIG}}
+{\footnotesize\ttfamily const uint8\+\_\+t EXTENDED\+\_\+\+BOOT\+\_\+\+SIG = 0\+X29}
+
+Value for boot\+Signature field int FAT/\+FAT32 boot sector \mbox{\Hypertarget{_fat_structs_8h_af314c45d1d37d09c9e44847326232466}\label{_fat_structs_8h_af314c45d1d37d09c9e44847326232466}} 
+\index{FatStructs.h@{FatStructs.h}!FAT12EOC@{FAT12EOC}}
+\index{FAT12EOC@{FAT12EOC}!FatStructs.h@{FatStructs.h}}
+\doxysubsubsection{\texorpdfstring{FAT12EOC}{FAT12EOC}}
+{\footnotesize\ttfamily const uint16\+\_\+t FAT12\+EOC = 0\+XFFF}
+
+FAT12 end of chain value used by Microsoft. \mbox{\Hypertarget{_fat_structs_8h_a48951911b522ebf72bf5561c3402aa15}\label{_fat_structs_8h_a48951911b522ebf72bf5561c3402aa15}} 
+\index{FatStructs.h@{FatStructs.h}!FAT12EOC\_MIN@{FAT12EOC\_MIN}}
+\index{FAT12EOC\_MIN@{FAT12EOC\_MIN}!FatStructs.h@{FatStructs.h}}
+\doxysubsubsection{\texorpdfstring{FAT12EOC\_MIN}{FAT12EOC\_MIN}}
+{\footnotesize\ttfamily const uint16\+\_\+t FAT12\+EOC\+\_\+\+MIN = 0\+XFF8}
+
+Minimum value for FAT12 EOC. Use to test for EOC. \mbox{\Hypertarget{_fat_structs_8h_afcd95ebc621a46c82b9997c8b9208550}\label{_fat_structs_8h_afcd95ebc621a46c82b9997c8b9208550}} 
+\index{FatStructs.h@{FatStructs.h}!FAT16EOC@{FAT16EOC}}
+\index{FAT16EOC@{FAT16EOC}!FatStructs.h@{FatStructs.h}}
+\doxysubsubsection{\texorpdfstring{FAT16EOC}{FAT16EOC}}
+{\footnotesize\ttfamily const uint16\+\_\+t FAT16\+EOC = 0\+XFFFF}
+
+FAT16 end of chain value used by Microsoft. \mbox{\Hypertarget{_fat_structs_8h_a2f549b850b74666ba7d922bcb373896e}\label{_fat_structs_8h_a2f549b850b74666ba7d922bcb373896e}} 
+\index{FatStructs.h@{FatStructs.h}!FAT16EOC\_MIN@{FAT16EOC\_MIN}}
+\index{FAT16EOC\_MIN@{FAT16EOC\_MIN}!FatStructs.h@{FatStructs.h}}
+\doxysubsubsection{\texorpdfstring{FAT16EOC\_MIN}{FAT16EOC\_MIN}}
+{\footnotesize\ttfamily const uint16\+\_\+t FAT16\+EOC\+\_\+\+MIN = 0\+XFFF8}
+
+Minimum value for FAT16 EOC. Use to test for EOC. \mbox{\Hypertarget{_fat_structs_8h_a1914baf34756efd18072059dccfcf40f}\label{_fat_structs_8h_a1914baf34756efd18072059dccfcf40f}} 
+\index{FatStructs.h@{FatStructs.h}!fat32BackBootBlock@{fat32BackBootBlock}}
+\index{fat32BackBootBlock@{fat32BackBootBlock}!FatStructs.h@{FatStructs.h}}
+\doxysubsubsection{\texorpdfstring{fat32BackBootBlock}{fat32BackBootBlock}}
+{\footnotesize\ttfamily uint16\+\_\+t fat32\+Back\+Boot\+Block}
+
+If nonzero, indicates the sector number in the reserved area of the volume of a copy of the boot record. Usually 6. No value other than 6 is recommended.
+
+If non-\/zero, indicates the sector number in the reserved area of the volume of a copy of the boot record. Usually 6. No value other than 6 is recommended. \mbox{\Hypertarget{_fat_structs_8h_a67a9dbf970f43fadd41a6a9fede60c47}\label{_fat_structs_8h_a67a9dbf970f43fadd41a6a9fede60c47}} 
+\index{FatStructs.h@{FatStructs.h}!FAT32EOC@{FAT32EOC}}
+\index{FAT32EOC@{FAT32EOC}!FatStructs.h@{FatStructs.h}}
+\doxysubsubsection{\texorpdfstring{FAT32EOC}{FAT32EOC}}
+{\footnotesize\ttfamily const uint32\+\_\+t FAT32\+EOC = 0\+X0\+FFFFFFF}
+
+FAT32 end of chain value used by Microsoft. \mbox{\Hypertarget{_fat_structs_8h_a8f97a312e990c3f4faf7e98c3256aae5}\label{_fat_structs_8h_a8f97a312e990c3f4faf7e98c3256aae5}} 
+\index{FatStructs.h@{FatStructs.h}!FAT32EOC\_MIN@{FAT32EOC\_MIN}}
+\index{FAT32EOC\_MIN@{FAT32EOC\_MIN}!FatStructs.h@{FatStructs.h}}
+\doxysubsubsection{\texorpdfstring{FAT32EOC\_MIN}{FAT32EOC\_MIN}}
+{\footnotesize\ttfamily const uint32\+\_\+t FAT32\+EOC\+\_\+\+MIN = 0\+X0\+FFFFFF8}
+
+Minimum value for FAT32 EOC. Use to test for EOC. \mbox{\Hypertarget{_fat_structs_8h_a4f864cefb7f1b004d5739ffab9a65ae1}\label{_fat_structs_8h_a4f864cefb7f1b004d5739ffab9a65ae1}} 
+\index{FatStructs.h@{FatStructs.h}!fat32Flags@{fat32Flags}}
+\index{fat32Flags@{fat32Flags}!FatStructs.h@{FatStructs.h}}
+\doxysubsubsection{\texorpdfstring{fat32Flags}{fat32Flags}}
+{\footnotesize\ttfamily uint16\+\_\+t fat32\+Flags}
+
+This field is only defined for FAT32 media and does not exist on FAT12 and FAT16 media. Bits 0-\/3 -- Zero-\/based number of active FAT. Only valid if mirroring is disabled. Bits 4-\/6 -- Reserved. Bit 7 -- 0 means the FAT is mirrored at runtime into all FATs. -- 1 means only one FAT is active; it is the one referenced in bits 0-\/3. Bits 8-\/15 -- Reserved. \mbox{\Hypertarget{_fat_structs_8h_aad3222ea255af06d09734e96a93c82ed}\label{_fat_structs_8h_aad3222ea255af06d09734e96a93c82ed}} 
+\index{FatStructs.h@{FatStructs.h}!fat32FSInfo@{fat32FSInfo}}
+\index{fat32FSInfo@{fat32FSInfo}!FatStructs.h@{FatStructs.h}}
+\doxysubsubsection{\texorpdfstring{fat32FSInfo}{fat32FSInfo}}
+{\footnotesize\ttfamily uint16\+\_\+t fat32\+FSInfo}
+
+Sector number of FSINFO structure in the reserved area of the FAT32 volume. Usually 1. \mbox{\Hypertarget{_fat_structs_8h_a7491c79fff0bda3b026ffa098a28d6df}\label{_fat_structs_8h_a7491c79fff0bda3b026ffa098a28d6df}} 
+\index{FatStructs.h@{FatStructs.h}!FAT32MASK@{FAT32MASK}}
+\index{FAT32MASK@{FAT32MASK}!FatStructs.h@{FatStructs.h}}
+\doxysubsubsection{\texorpdfstring{FAT32MASK}{FAT32MASK}}
+{\footnotesize\ttfamily const uint32\+\_\+t FAT32\+MASK = 0\+X0\+FFFFFFF}
+
+Mask a for FAT32 entry. Entries are 28 bits. \mbox{\Hypertarget{_fat_structs_8h_a6894c520facd5a61acc317e16099f693}\label{_fat_structs_8h_a6894c520facd5a61acc317e16099f693}} 
+\index{FatStructs.h@{FatStructs.h}!fat32Reserved@{fat32Reserved}}
+\index{fat32Reserved@{fat32Reserved}!FatStructs.h@{FatStructs.h}}
+\doxysubsubsection{\texorpdfstring{fat32Reserved}{fat32Reserved}}
+{\footnotesize\ttfamily uint8\+\_\+t fat32\+Reserved}
+
+Reserved for future expansion. Code that formats FAT32 volumes should always set all of the bytes of this field to 0. \mbox{\Hypertarget{_fat_structs_8h_a58249ed4ed0f92d5768f2342f248af82}\label{_fat_structs_8h_a58249ed4ed0f92d5768f2342f248af82}} 
+\index{FatStructs.h@{FatStructs.h}!fat32RootCluster@{fat32RootCluster}}
+\index{fat32RootCluster@{fat32RootCluster}!FatStructs.h@{FatStructs.h}}
+\doxysubsubsection{\texorpdfstring{fat32RootCluster}{fat32RootCluster}}
+{\footnotesize\ttfamily uint32\+\_\+t fat32\+Root\+Cluster}
+
+Cluster number of the first cluster of the root directory for FAT32. This usually 2 but not required to be 2. \mbox{\Hypertarget{_fat_structs_8h_a8f27235fa3dee48a4b4e099135fc81d6}\label{_fat_structs_8h_a8f27235fa3dee48a4b4e099135fc81d6}} 
+\index{FatStructs.h@{FatStructs.h}!fat32Version@{fat32Version}}
+\index{fat32Version@{fat32Version}!FatStructs.h@{FatStructs.h}}
+\doxysubsubsection{\texorpdfstring{fat32Version}{fat32Version}}
+{\footnotesize\ttfamily uint16\+\_\+t fat32\+Version}
+
+FAT32 version. High byte is major revision number. Low byte is minor revision number. Only 0.\+0 define. \mbox{\Hypertarget{_fat_structs_8h_a42eeb0322bced1f7b527c707f8bd54a4}\label{_fat_structs_8h_a42eeb0322bced1f7b527c707f8bd54a4}} 
+\index{FatStructs.h@{FatStructs.h}!FAT\_DEFAULT\_DATE@{FAT\_DEFAULT\_DATE}}
+\index{FAT\_DEFAULT\_DATE@{FAT\_DEFAULT\_DATE}!FatStructs.h@{FatStructs.h}}
+\doxysubsubsection{\texorpdfstring{FAT\_DEFAULT\_DATE}{FAT\_DEFAULT\_DATE}}
+{\footnotesize\ttfamily const uint16\+\_\+t FAT\+\_\+\+DEFAULT\+\_\+\+DATE = ((2000 -\/ 1980) $<$$<$ 9) $\vert$ (1 $<$$<$ 5) $\vert$ 1}
+
+Default date for file timestamps is 1 Jan 2000 \mbox{\Hypertarget{_fat_structs_8h_a23c2510407ec3be457e0e4807644deb2}\label{_fat_structs_8h_a23c2510407ec3be457e0e4807644deb2}} 
+\index{FatStructs.h@{FatStructs.h}!FAT\_DEFAULT\_TIME@{FAT\_DEFAULT\_TIME}}
+\index{FAT\_DEFAULT\_TIME@{FAT\_DEFAULT\_TIME}!FatStructs.h@{FatStructs.h}}
+\doxysubsubsection{\texorpdfstring{FAT\_DEFAULT\_TIME}{FAT\_DEFAULT\_TIME}}
+{\footnotesize\ttfamily const uint16\+\_\+t FAT\+\_\+\+DEFAULT\+\_\+\+TIME = (1 $<$$<$ 11)}
+
+Default time for file timestamp is 1 am \mbox{\Hypertarget{_fat_structs_8h_a624e9eb125b4fc8aeaebcccf79e17aa8}\label{_fat_structs_8h_a624e9eb125b4fc8aeaebcccf79e17aa8}} 
+\index{FatStructs.h@{FatStructs.h}!fatCount@{fatCount}}
+\index{fatCount@{fatCount}!FatStructs.h@{FatStructs.h}}
+\doxysubsubsection{\texorpdfstring{fatCount}{fatCount}}
+{\footnotesize\ttfamily uint8\+\_\+t fat\+Count}
+
+The count of FAT data structures on the volume. This field should always contain the value 2 for any FAT volume of any type.
+
+The number of copies of the FAT on the volume. The value of this field is always 2. \mbox{\Hypertarget{_fat_structs_8h_a48f46ad02b77a00b795d15626ba1d42e}\label{_fat_structs_8h_a48f46ad02b77a00b795d15626ba1d42e}} 
+\index{FatStructs.h@{FatStructs.h}!fileSize@{fileSize}}
+\index{fileSize@{fileSize}!FatStructs.h@{FatStructs.h}}
+\doxysubsubsection{\texorpdfstring{fileSize}{fileSize}}
+{\footnotesize\ttfamily uint32\+\_\+t file\+Size}
+
+32-\/bit unsigned holding this file\textquotesingle{}s size in bytes. \mbox{\Hypertarget{_fat_structs_8h_a14bc72c09ec28729b9907aab215e5fe3}\label{_fat_structs_8h_a14bc72c09ec28729b9907aab215e5fe3}} 
+\index{FatStructs.h@{FatStructs.h}!fileSystemType@{fileSystemType}}
+\index{fileSystemType@{fileSystemType}!FatStructs.h@{FatStructs.h}}
+\doxysubsubsection{\texorpdfstring{fileSystemType}{fileSystemType}}
+{\footnotesize\ttfamily char file\+System\+Type}
+
+A field with a value of either FAT, FAT12 or FAT16, depending on the disk format.
+
+A text field with a value of FAT32. \mbox{\Hypertarget{_fat_structs_8h_ad6224dfa27a1c558703f158e93ceafe0}\label{_fat_structs_8h_ad6224dfa27a1c558703f158e93ceafe0}} 
+\index{FatStructs.h@{FatStructs.h}!firstClusterHigh@{firstClusterHigh}}
+\index{firstClusterHigh@{firstClusterHigh}!FatStructs.h@{FatStructs.h}}
+\doxysubsubsection{\texorpdfstring{firstClusterHigh}{firstClusterHigh}}
+{\footnotesize\ttfamily uint16\+\_\+t first\+Cluster\+High}
+
+High word of this entry\textquotesingle{}s first cluster number (always 0 for a FAT12 or FAT16 volume). \mbox{\Hypertarget{_fat_structs_8h_a3a4f70fb49494208d7eb349969a8acaa}\label{_fat_structs_8h_a3a4f70fb49494208d7eb349969a8acaa}} 
+\index{FatStructs.h@{FatStructs.h}!firstClusterLow@{firstClusterLow}}
+\index{firstClusterLow@{firstClusterLow}!FatStructs.h@{FatStructs.h}}
+\doxysubsubsection{\texorpdfstring{firstClusterLow}{firstClusterLow}}
+{\footnotesize\ttfamily uint16\+\_\+t first\+Cluster\+Low}
+
+Low word of this entry\textquotesingle{}s first cluster number. \mbox{\Hypertarget{_fat_structs_8h_a5951cd74127d45180071909972899c0e}\label{_fat_structs_8h_a5951cd74127d45180071909972899c0e}} 
+\index{FatStructs.h@{FatStructs.h}!firstSector@{firstSector}}
+\index{firstSector@{firstSector}!FatStructs.h@{FatStructs.h}}
+\doxysubsubsection{\texorpdfstring{firstSector}{firstSector}}
+{\footnotesize\ttfamily uint32\+\_\+t first\+Sector}
+
+Logical block address of the first block in the partition. \mbox{\Hypertarget{_fat_structs_8h_af5d9e0aff08147617a09dc19d207eafe}\label{_fat_structs_8h_af5d9e0aff08147617a09dc19d207eafe}} 
+\index{FatStructs.h@{FatStructs.h}!freeCount@{freeCount}}
+\index{freeCount@{freeCount}!FatStructs.h@{FatStructs.h}}
+\doxysubsubsection{\texorpdfstring{freeCount}{freeCount}}
+{\footnotesize\ttfamily uint32\+\_\+t free\+Count}
+
+Contains the last known free cluster count on the volume. If the value is 0x\+FFFFFFFF, then the free count is unknown and must be computed. Any other value can be used, but is not necessarily correct. It should be range checked at least to make sure it is $<$= volume cluster count. \mbox{\Hypertarget{_fat_structs_8h_a7a7a74a7315ad523e3b0c9dbd44d9a32}\label{_fat_structs_8h_a7a7a74a7315ad523e3b0c9dbd44d9a32}} 
+\index{FatStructs.h@{FatStructs.h}!FSINFO\_LEAD\_SIG@{FSINFO\_LEAD\_SIG}}
+\index{FSINFO\_LEAD\_SIG@{FSINFO\_LEAD\_SIG}!FatStructs.h@{FatStructs.h}}
+\doxysubsubsection{\texorpdfstring{FSINFO\_LEAD\_SIG}{FSINFO\_LEAD\_SIG}}
+{\footnotesize\ttfamily const uint32\+\_\+t FSINFO\+\_\+\+LEAD\+\_\+\+SIG = 0x41615252}
+
+Lead signature for a FSINFO sector \mbox{\Hypertarget{_fat_structs_8h_a9bf6b77df7bec6c49d81562c54371e81}\label{_fat_structs_8h_a9bf6b77df7bec6c49d81562c54371e81}} 
+\index{FatStructs.h@{FatStructs.h}!FSINFO\_STRUCT\_SIG@{FSINFO\_STRUCT\_SIG}}
+\index{FSINFO\_STRUCT\_SIG@{FSINFO\_STRUCT\_SIG}!FatStructs.h@{FatStructs.h}}
+\doxysubsubsection{\texorpdfstring{FSINFO\_STRUCT\_SIG}{FSINFO\_STRUCT\_SIG}}
+{\footnotesize\ttfamily const uint32\+\_\+t FSINFO\+\_\+\+STRUCT\+\_\+\+SIG = 0x61417272}
+
+Struct signature for a FSINFO sector \mbox{\Hypertarget{_fat_structs_8h_a57cb7e16b9969fa87c9f1ca43a87d217}\label{_fat_structs_8h_a57cb7e16b9969fa87c9f1ca43a87d217}} 
+\index{FatStructs.h@{FatStructs.h}!headCount@{headCount}}
+\index{headCount@{headCount}!FatStructs.h@{FatStructs.h}}
+\doxysubsubsection{\texorpdfstring{headCount}{headCount}}
+{\footnotesize\ttfamily uint16\+\_\+t head\+Count}
+
+Number of heads for interrupt 0x13. Not used otherwise. \mbox{\Hypertarget{_fat_structs_8h_a454fd6cc3f063c86b7fe65c367da7cdd}\label{_fat_structs_8h_a454fd6cc3f063c86b7fe65c367da7cdd}} 
+\index{FatStructs.h@{FatStructs.h}!hidddenSectors@{hidddenSectors}}
+\index{hidddenSectors@{hidddenSectors}!FatStructs.h@{FatStructs.h}}
+\doxysubsubsection{\texorpdfstring{hidddenSectors}{hidddenSectors}}
+{\footnotesize\ttfamily uint32\+\_\+t hiddden\+Sectors}
+
+Count of hidden sectors preceding the partition that contains this FAT volume. This field is generally only relevant for media visible on interrupt 0x13. \mbox{\Hypertarget{_fat_structs_8h_ad29ce39fde11e3efe207f3cc71924c01}\label{_fat_structs_8h_ad29ce39fde11e3efe207f3cc71924c01}} 
+\index{FatStructs.h@{FatStructs.h}!jump@{jump}}
+\index{jump@{jump}!FatStructs.h@{FatStructs.h}}
+\doxysubsubsection{\texorpdfstring{jump}{jump}}
+{\footnotesize\ttfamily uint8\+\_\+t jump}
+
+The first three bytes of the boot sector must be valid, executable x 86-\/based CPU instructions. This includes a jump instruction that skips the next non-\/executable bytes. \mbox{\Hypertarget{_fat_structs_8h_a5635857642ec25e070355257115dafd1}\label{_fat_structs_8h_a5635857642ec25e070355257115dafd1}} 
+\index{FatStructs.h@{FatStructs.h}!lastAccessDate@{lastAccessDate}}
+\index{lastAccessDate@{lastAccessDate}!FatStructs.h@{FatStructs.h}}
+\doxysubsubsection{\texorpdfstring{lastAccessDate}{lastAccessDate}}
+{\footnotesize\ttfamily uint16\+\_\+t last\+Access\+Date}
+
+Last access date. Note that there is no last access time, only a date. This is the date of last read or write. In the case of a write, this should be set to the same date as last\+Write\+Date. \mbox{\Hypertarget{_fat_structs_8h_a26f462d6e4410d502149973ee6c216fd}\label{_fat_structs_8h_a26f462d6e4410d502149973ee6c216fd}} 
+\index{FatStructs.h@{FatStructs.h}!lastWriteDate@{lastWriteDate}}
+\index{lastWriteDate@{lastWriteDate}!FatStructs.h@{FatStructs.h}}
+\doxysubsubsection{\texorpdfstring{lastWriteDate}{lastWriteDate}}
+{\footnotesize\ttfamily uint16\+\_\+t last\+Write\+Date}
+
+Date of last write. File creation is considered a write. \mbox{\Hypertarget{_fat_structs_8h_ab140bb773b2ff0ddf7199efc083ce037}\label{_fat_structs_8h_ab140bb773b2ff0ddf7199efc083ce037}} 
+\index{FatStructs.h@{FatStructs.h}!lastWriteTime@{lastWriteTime}}
+\index{lastWriteTime@{lastWriteTime}!FatStructs.h@{FatStructs.h}}
+\doxysubsubsection{\texorpdfstring{lastWriteTime}{lastWriteTime}}
+{\footnotesize\ttfamily uint16\+\_\+t last\+Write\+Time}
+
+Time of last write. File creation is considered a write. \mbox{\Hypertarget{_fat_structs_8h_af843af29c67dd30ca7c5684806bf02fc}\label{_fat_structs_8h_af843af29c67dd30ca7c5684806bf02fc}} 
+\index{FatStructs.h@{FatStructs.h}!LDIR\_NAME1\_DIM@{LDIR\_NAME1\_DIM}}
+\index{LDIR\_NAME1\_DIM@{LDIR\_NAME1\_DIM}!FatStructs.h@{FatStructs.h}}
+\doxysubsubsection{\texorpdfstring{LDIR\_NAME1\_DIM}{LDIR\_NAME1\_DIM}}
+{\footnotesize\ttfamily const uint8\+\_\+t LDIR\+\_\+\+NAME1\+\_\+\+DIM = 5}
+
+Dimension of first name field in long directory entry \mbox{\Hypertarget{_fat_structs_8h_a99cae591c59e261f54617617e173e7e0}\label{_fat_structs_8h_a99cae591c59e261f54617617e173e7e0}} 
+\index{FatStructs.h@{FatStructs.h}!LDIR\_NAME2\_DIM@{LDIR\_NAME2\_DIM}}
+\index{LDIR\_NAME2\_DIM@{LDIR\_NAME2\_DIM}!FatStructs.h@{FatStructs.h}}
+\doxysubsubsection{\texorpdfstring{LDIR\_NAME2\_DIM}{LDIR\_NAME2\_DIM}}
+{\footnotesize\ttfamily const uint8\+\_\+t LDIR\+\_\+\+NAME2\+\_\+\+DIM = 6}
+
+Dimension of first name field in long directory entry \mbox{\Hypertarget{_fat_structs_8h_a99fbd27fa9e5003a8d77ca7fc14d2090}\label{_fat_structs_8h_a99fbd27fa9e5003a8d77ca7fc14d2090}} 
+\index{FatStructs.h@{FatStructs.h}!LDIR\_NAME3\_DIM@{LDIR\_NAME3\_DIM}}
+\index{LDIR\_NAME3\_DIM@{LDIR\_NAME3\_DIM}!FatStructs.h@{FatStructs.h}}
+\doxysubsubsection{\texorpdfstring{LDIR\_NAME3\_DIM}{LDIR\_NAME3\_DIM}}
+{\footnotesize\ttfamily const uint8\+\_\+t LDIR\+\_\+\+NAME3\+\_\+\+DIM = 2}
+
+Dimension of first name field in long directory entry \mbox{\Hypertarget{_fat_structs_8h_a8cfb60b9eaf04dcdc6e4f5a466af5540}\label{_fat_structs_8h_a8cfb60b9eaf04dcdc6e4f5a466af5540}} 
+\index{FatStructs.h@{FatStructs.h}!LDIR\_ORD\_LAST\_LONG\_ENTRY@{LDIR\_ORD\_LAST\_LONG\_ENTRY}}
+\index{LDIR\_ORD\_LAST\_LONG\_ENTRY@{LDIR\_ORD\_LAST\_LONG\_ENTRY}!FatStructs.h@{FatStructs.h}}
+\doxysubsubsection{\texorpdfstring{LDIR\_ORD\_LAST\_LONG\_ENTRY}{LDIR\_ORD\_LAST\_LONG\_ENTRY}}
+{\footnotesize\ttfamily const uint8\+\_\+t LDIR\+\_\+\+ORD\+\_\+\+LAST\+\_\+\+LONG\+\_\+\+ENTRY = 0\+X40}
+
+Ord mast that indicates the entry is the last long dir entry in a set of long dir entries. All valid sets of long dir entries must begin with an entry having this mask. \mbox{\Hypertarget{_fat_structs_8h_a19196eeae2525130bdb0d39607860743}\label{_fat_structs_8h_a19196eeae2525130bdb0d39607860743}} 
+\index{FatStructs.h@{FatStructs.h}!leadSignature@{leadSignature}}
+\index{leadSignature@{leadSignature}!FatStructs.h@{FatStructs.h}}
+\doxysubsubsection{\texorpdfstring{leadSignature}{leadSignature}}
+{\footnotesize\ttfamily uint32\+\_\+t lead\+Signature}
+
+must be 0X52, 0X52, 0X61, 0X41 \mbox{\Hypertarget{_fat_structs_8h_aa5633d8ea0049be26315e7627e32bb4e}\label{_fat_structs_8h_aa5633d8ea0049be26315e7627e32bb4e}} 
+\index{FatStructs.h@{FatStructs.h}!mbrSig0@{mbrSig0}}
+\index{mbrSig0@{mbrSig0}!FatStructs.h@{FatStructs.h}}
+\doxysubsubsection{\texorpdfstring{mbrSig0}{mbrSig0}}
+{\footnotesize\ttfamily uint8\+\_\+t mbr\+Sig0}
+
+First MBR signature byte. Must be 0X55 \mbox{\Hypertarget{_fat_structs_8h_af106928fafe93a641c06cfb87b0d24e3}\label{_fat_structs_8h_af106928fafe93a641c06cfb87b0d24e3}} 
+\index{FatStructs.h@{FatStructs.h}!mbrSig1@{mbrSig1}}
+\index{mbrSig1@{mbrSig1}!FatStructs.h@{FatStructs.h}}
+\doxysubsubsection{\texorpdfstring{mbrSig1}{mbrSig1}}
+{\footnotesize\ttfamily uint8\+\_\+t mbr\+Sig1}
+
+Second MBR signature byte. Must be 0XAA \mbox{\Hypertarget{_fat_structs_8h_ab88738f9cb91c882cb91d5e83a19a73f}\label{_fat_structs_8h_ab88738f9cb91c882cb91d5e83a19a73f}} 
+\index{FatStructs.h@{FatStructs.h}!mediaType@{mediaType}}
+\index{mediaType@{mediaType}!FatStructs.h@{FatStructs.h}}
+\doxysubsubsection{\texorpdfstring{mediaType}{mediaType}}
+{\footnotesize\ttfamily uint8\+\_\+t media\+Type}
+
+This dates back to the old MS-\/\+DOS 1.\+x media determination and is no longer usually used for anything. 0x\+F8 is the standard value for fixed (nonremovable) media. For removable media, 0x\+F0 is frequently used. Legal values are 0x\+F0 or 0x\+F8-\/0x\+FF.
+
+This dates back to the old MS-\/\+DOS 1.\+x media determination and is no longer usually used for anything. 0x\+F8 is the standard value for fixed (non-\/removable) media. For removable media, 0x\+F0 is frequently used. Legal values are 0x\+F0 or 0x\+F8-\/0x\+FF. \mbox{\Hypertarget{_fat_structs_8h_a06b092a772e5358228eaf0c01eb73838}\label{_fat_structs_8h_a06b092a772e5358228eaf0c01eb73838}} 
+\index{FatStructs.h@{FatStructs.h}!mustBeZero@{mustBeZero}}
+\index{mustBeZero@{mustBeZero}!FatStructs.h@{FatStructs.h}}
+\doxysubsubsection{\texorpdfstring{mustBeZero}{mustBeZero}}
+{\footnotesize\ttfamily uint16\+\_\+t must\+Be\+Zero}
+
+Must be ZERO. This is an artifact of the FAT \char`\"{}first cluster\char`\"{} \mbox{\Hypertarget{_fat_structs_8h_a30308c9b983377042fd2cc8900454fb1}\label{_fat_structs_8h_a30308c9b983377042fd2cc8900454fb1}} 
+\index{FatStructs.h@{FatStructs.h}!name@{name}}
+\index{name@{name}!FatStructs.h@{FatStructs.h}}
+\doxysubsubsection{\texorpdfstring{name}{name}}
+{\footnotesize\ttfamily uint8\+\_\+t name\mbox{[}11\mbox{]}}
+
+Short 8.\+3 name.
+
+The first eight bytes contain the file name with blank fill. The last three bytes contain the file extension with blank fill. \mbox{\Hypertarget{_fat_structs_8h_a07da96089c18c8a0d602b7928da0911b}\label{_fat_structs_8h_a07da96089c18c8a0d602b7928da0911b}} 
+\index{FatStructs.h@{FatStructs.h}!name1@{name1}}
+\index{name1@{name1}!FatStructs.h@{FatStructs.h}}
+\doxysubsubsection{\texorpdfstring{name1}{name1}}
+{\footnotesize\ttfamily uint16\+\_\+t name1\mbox{[}\mbox{\hyperlink{_fat_structs_8h_af843af29c67dd30ca7c5684806bf02fc}{LDIR\+\_\+\+NAME1\+\_\+\+DIM}}\mbox{]}}
+
+Characters 1-\/5 of the long-\/name sub-\/component in this entry. \mbox{\Hypertarget{_fat_structs_8h_a131c8b991ced6a7727162f48679f546b}\label{_fat_structs_8h_a131c8b991ced6a7727162f48679f546b}} 
+\index{FatStructs.h@{FatStructs.h}!name2@{name2}}
+\index{name2@{name2}!FatStructs.h@{FatStructs.h}}
+\doxysubsubsection{\texorpdfstring{name2}{name2}}
+{\footnotesize\ttfamily uint16\+\_\+t name2\mbox{[}\mbox{\hyperlink{_fat_structs_8h_a99cae591c59e261f54617617e173e7e0}{LDIR\+\_\+\+NAME2\+\_\+\+DIM}}\mbox{]}}
+
+Characters 6-\/11 of the long-\/name sub-\/component in this entry. \mbox{\Hypertarget{_fat_structs_8h_a36c0f9ceab93f09fe49f5dc2549258ba}\label{_fat_structs_8h_a36c0f9ceab93f09fe49f5dc2549258ba}} 
+\index{FatStructs.h@{FatStructs.h}!name3@{name3}}
+\index{name3@{name3}!FatStructs.h@{FatStructs.h}}
+\doxysubsubsection{\texorpdfstring{name3}{name3}}
+{\footnotesize\ttfamily uint16\+\_\+t name3\mbox{[}\mbox{\hyperlink{_fat_structs_8h_a99fbd27fa9e5003a8d77ca7fc14d2090}{LDIR\+\_\+\+NAME3\+\_\+\+DIM}}\mbox{]}}
+
+Characters 12 and 13 of the long-\/name sub-\/component in this entry. \mbox{\Hypertarget{_fat_structs_8h_a456cdbc01678df5d05eabb80f5aac9b0}\label{_fat_structs_8h_a456cdbc01678df5d05eabb80f5aac9b0}} 
+\index{FatStructs.h@{FatStructs.h}!nextFree@{nextFree}}
+\index{nextFree@{nextFree}!FatStructs.h@{FatStructs.h}}
+\doxysubsubsection{\texorpdfstring{nextFree}{nextFree}}
+{\footnotesize\ttfamily uint32\+\_\+t next\+Free}
+
+This is a hint for the FAT driver. It indicates the cluster number at which the driver should start looking for free clusters. If the value is 0x\+FFFFFFFF, then there is no hint and the driver should start looking at cluster 2. \mbox{\Hypertarget{_fat_structs_8h_a9c423397154f11b5108165f058d64c03}\label{_fat_structs_8h_a9c423397154f11b5108165f058d64c03}} 
+\index{FatStructs.h@{FatStructs.h}!oemId@{oemId}}
+\index{oemId@{oemId}!FatStructs.h@{FatStructs.h}}
+\doxysubsubsection{\texorpdfstring{oemId}{oemId}}
+{\footnotesize\ttfamily char oem\+Id}
+
+This is typically a string of characters that identifies the operating system that formatted the volume. \mbox{\Hypertarget{_fat_structs_8h_ae204655dc23be1d048e8bebf2dfa5089}\label{_fat_structs_8h_ae204655dc23be1d048e8bebf2dfa5089}} 
+\index{FatStructs.h@{FatStructs.h}!ord@{ord}}
+\index{ord@{ord}!FatStructs.h@{FatStructs.h}}
+\doxysubsubsection{\texorpdfstring{ord}{ord}}
+{\footnotesize\ttfamily uint8\+\_\+t ord}
+
+The order of this entry in the sequence of long dir entries associated with the short dir entry at the end of the long dir set.
+
+If masked with 0X40 (LAST\+\_\+\+LONG\+\_\+\+ENTRY), this indicates the entry is the last long dir entry in a set of long dir entries. All valid sets of long dir entries must begin with an entry having this mask. \mbox{\Hypertarget{_fat_structs_8h_aa65f87792f271fc6cfa70980af6ac3dd}\label{_fat_structs_8h_aa65f87792f271fc6cfa70980af6ac3dd}} 
+\index{FatStructs.h@{FatStructs.h}!part@{part}}
+\index{part@{part}!FatStructs.h@{FatStructs.h}}
+\doxysubsubsection{\texorpdfstring{part}{part}}
+{\footnotesize\ttfamily \mbox{\hyperlink{_fat_structs_8h_a37251e7d5c69a159be727a3fc8c9d0e6}{part\+\_\+t}} part\mbox{[}4\mbox{]}}
+
+Partition tables. \mbox{\Hypertarget{_fat_structs_8h_affe215a7220b2d52fb9dacf3b35e56dc}\label{_fat_structs_8h_affe215a7220b2d52fb9dacf3b35e56dc}} 
+\index{FatStructs.h@{FatStructs.h}!reserved1@{reserved1}}
+\index{reserved1@{reserved1}!FatStructs.h@{FatStructs.h}}
+\doxysubsubsection{\texorpdfstring{reserved1}{reserved1}}
+{\footnotesize\ttfamily unsigned char reserved1}
+
+used by Windows NT -\/ should be zero for FAT
+
+must be zero \mbox{\Hypertarget{_fat_structs_8h_a2d2f4821102b812b81b15f5e713dd8e8}\label{_fat_structs_8h_a2d2f4821102b812b81b15f5e713dd8e8}} 
+\index{FatStructs.h@{FatStructs.h}!reserved2@{reserved2}}
+\index{reserved2@{reserved2}!FatStructs.h@{FatStructs.h}}
+\doxysubsubsection{\texorpdfstring{reserved2}{reserved2}}
+{\footnotesize\ttfamily unsigned char reserved2}
+
+must be zero
+
+not used \mbox{\Hypertarget{_fat_structs_8h_a937b2d2e4b78ddf9e42b19c754e4f31a}\label{_fat_structs_8h_a937b2d2e4b78ddf9e42b19c754e4f31a}} 
+\index{FatStructs.h@{FatStructs.h}!reservedNT@{reservedNT}}
+\index{reservedNT@{reservedNT}!FatStructs.h@{FatStructs.h}}
+\doxysubsubsection{\texorpdfstring{reservedNT}{reservedNT}}
+{\footnotesize\ttfamily uint8\+\_\+t reserved\+NT}
+
+Reserved for use by Windows NT. Set value to 0 when a file is created and never modify or look at it after that. \mbox{\Hypertarget{_fat_structs_8h_a16c854faf567331bbbfb383e6c8df6f5}\label{_fat_structs_8h_a16c854faf567331bbbfb383e6c8df6f5}} 
+\index{FatStructs.h@{FatStructs.h}!reservedSectorCount@{reservedSectorCount}}
+\index{reservedSectorCount@{reservedSectorCount}!FatStructs.h@{FatStructs.h}}
+\doxysubsubsection{\texorpdfstring{reservedSectorCount}{reservedSectorCount}}
+{\footnotesize\ttfamily uint16\+\_\+t reserved\+Sector\+Count}
+
+Number of sectors before the first FAT. This value must not be zero.
+
+The number of sectors preceding the start of the first FAT, including the boot sector. The value of this field is always 1.
+
+The number of sectors preceding the start of the first FAT, including the boot sector. Must not be zero \mbox{\Hypertarget{_fat_structs_8h_aabe25e54b9c06a9a7393fc6c475d9fa1}\label{_fat_structs_8h_aabe25e54b9c06a9a7393fc6c475d9fa1}} 
+\index{FatStructs.h@{FatStructs.h}!rootDirEntryCount@{rootDirEntryCount}}
+\index{rootDirEntryCount@{rootDirEntryCount}!FatStructs.h@{FatStructs.h}}
+\doxysubsubsection{\texorpdfstring{rootDirEntryCount}{rootDirEntryCount}}
+{\footnotesize\ttfamily uint16\+\_\+t root\+Dir\+Entry\+Count}
+
+For FAT12 and FAT16 volumes, this field contains the count of 32-\/byte directory entries in the root directory. For FAT32 volumes, this field must be set to 0. For FAT12 and FAT16 volumes, this value should always specify a count that when multiplied by 32 results in a multiple of bytes\+Per\+Sector. FAT16 volumes should use the value 512.
+
+FAT12/\+FAT16 only. For FAT32 volumes, this field must be set to 0. \mbox{\Hypertarget{_fat_structs_8h_a3ce07376c286acd8393a18a32d7ca4c0}\label{_fat_structs_8h_a3ce07376c286acd8393a18a32d7ca4c0}} 
+\index{FatStructs.h@{FatStructs.h}!sectorsPerCluster@{sectorsPerCluster}}
+\index{sectorsPerCluster@{sectorsPerCluster}!FatStructs.h@{FatStructs.h}}
+\doxysubsubsection{\texorpdfstring{sectorsPerCluster}{sectorsPerCluster}}
+{\footnotesize\ttfamily uint8\+\_\+t sectors\+Per\+Cluster}
+
+Number of sectors per allocation unit. This value must be a power of 2 that is greater than 0. The legal values are 1, 2, 4, 8, 16, 32, 64, and 128.
+
+Number of sectors per allocation unit. This value must be a power of 2 that is greater than 0. The legal values are 1, 2, 4, 8, 16, 32, 64, and 128. 128 should be avoided. \mbox{\Hypertarget{_fat_structs_8h_abf85d1c57b01c8901a0cdcd0ac1babc2}\label{_fat_structs_8h_abf85d1c57b01c8901a0cdcd0ac1babc2}} 
+\index{FatStructs.h@{FatStructs.h}!sectorsPerFat16@{sectorsPerFat16}}
+\index{sectorsPerFat16@{sectorsPerFat16}!FatStructs.h@{FatStructs.h}}
+\doxysubsubsection{\texorpdfstring{sectorsPerFat16}{sectorsPerFat16}}
+{\footnotesize\ttfamily uint16\+\_\+t sectors\+Per\+Fat16}
+
+Count of sectors occupied by one FAT on FAT12/\+FAT16 volumes. On FAT32 volumes this field must be 0, and sectors\+Per\+Fat32 contains the FAT size count.
+
+On FAT32 volumes this field must be 0, and sectors\+Per\+Fat32 contains the FAT size count. \mbox{\Hypertarget{_fat_structs_8h_a687653b3b71ab0de1f27f8ab8f331a1c}\label{_fat_structs_8h_a687653b3b71ab0de1f27f8ab8f331a1c}} 
+\index{FatStructs.h@{FatStructs.h}!sectorsPerFat32@{sectorsPerFat32}}
+\index{sectorsPerFat32@{sectorsPerFat32}!FatStructs.h@{FatStructs.h}}
+\doxysubsubsection{\texorpdfstring{sectorsPerFat32}{sectorsPerFat32}}
+{\footnotesize\ttfamily uint32\+\_\+t sectors\+Per\+Fat32}
+
+Count of sectors occupied by one FAT on FAT32 volumes. \mbox{\Hypertarget{_fat_structs_8h_a42886f9109ee1759d5972e871f0689a8}\label{_fat_structs_8h_a42886f9109ee1759d5972e871f0689a8}} 
+\index{FatStructs.h@{FatStructs.h}!sectorsPerTrack@{sectorsPerTrack}}
+\index{sectorsPerTrack@{sectorsPerTrack}!FatStructs.h@{FatStructs.h}}
+\doxysubsubsection{\texorpdfstring{sectorsPerTrack}{sectorsPerTrack}}
+{\footnotesize\ttfamily uint16\+\_\+t sectors\+Per\+Track}
+
+Sectors per track for interrupt 0x13. Not used otherwise. \mbox{\Hypertarget{_fat_structs_8h_ae1928fd953f5d0f198826c93c320f2b2}\label{_fat_structs_8h_ae1928fd953f5d0f198826c93c320f2b2}} 
+\index{FatStructs.h@{FatStructs.h}!sectorsPerTrtack@{sectorsPerTrtack}}
+\index{sectorsPerTrtack@{sectorsPerTrtack}!FatStructs.h@{FatStructs.h}}
+\doxysubsubsection{\texorpdfstring{sectorsPerTrtack}{sectorsPerTrtack}}
+{\footnotesize\ttfamily uint16\+\_\+t sectors\+Per\+Trtack}
+
+Sectors per track for interrupt 0x13. Not used otherwise. \mbox{\Hypertarget{_fat_structs_8h_a31ea8ae6a8d32f61dd576d0d4921f015}\label{_fat_structs_8h_a31ea8ae6a8d32f61dd576d0d4921f015}} 
+\index{FatStructs.h@{FatStructs.h}!structSignature@{structSignature}}
+\index{structSignature@{structSignature}!FatStructs.h@{FatStructs.h}}
+\doxysubsubsection{\texorpdfstring{structSignature}{structSignature}}
+{\footnotesize\ttfamily uint32\+\_\+t struct\+Signature}
+
+must be 0X72, 0X72, 0X41, 0X61 \mbox{\Hypertarget{_fat_structs_8h_a89944902cc4effcd8568575786c3a084}\label{_fat_structs_8h_a89944902cc4effcd8568575786c3a084}} 
+\index{FatStructs.h@{FatStructs.h}!tailSignature@{tailSignature}}
+\index{tailSignature@{tailSignature}!FatStructs.h@{FatStructs.h}}
+\doxysubsubsection{\texorpdfstring{tailSignature}{tailSignature}}
+{\footnotesize\ttfamily uint8\+\_\+t tail\+Signature\mbox{[}4\mbox{]}}
+
+must be 0X00, 0X00, 0X55, 0XAA \mbox{\Hypertarget{_fat_structs_8h_ab3559f69d4a46a945bd4c037070585f2}\label{_fat_structs_8h_ab3559f69d4a46a945bd4c037070585f2}} 
+\index{FatStructs.h@{FatStructs.h}!totalSectors@{totalSectors}}
+\index{totalSectors@{totalSectors}!FatStructs.h@{FatStructs.h}}
+\doxysubsubsection{\texorpdfstring{totalSectors}{totalSectors}}
+{\footnotesize\ttfamily uint32\+\_\+t total\+Sectors}
+
+Length of the partition, in blocks. \mbox{\Hypertarget{_fat_structs_8h_ad717f5b9af13f8ec9d0d6d1337174dfa}\label{_fat_structs_8h_ad717f5b9af13f8ec9d0d6d1337174dfa}} 
+\index{FatStructs.h@{FatStructs.h}!totalSectors16@{totalSectors16}}
+\index{totalSectors16@{totalSectors16}!FatStructs.h@{FatStructs.h}}
+\doxysubsubsection{\texorpdfstring{totalSectors16}{totalSectors16}}
+{\footnotesize\ttfamily uint16\+\_\+t total\+Sectors16}
+
+This field is the old 16-\/bit total count of sectors on the volume. This count includes the count of all sectors in all four regions of the volume. This field can be 0; if it is 0, then total\+Sectors32 must be nonzero. For FAT32 volumes, this field must be 0. For FAT12 and FAT16 volumes, this field contains the sector count, and total\+Sectors32 is 0 if the total sector count fits (is less than 0x10000).
+
+This field is the old 16-\/bit total count of sectors on the volume. This count includes the count of all sectors in all four regions of the volume. This field can be 0; if it is 0, then total\+Sectors32 must be non-\/zero. For FAT32 volumes, this field must be 0. For FAT12 and FAT16 volumes, this field contains the sector count, and total\+Sectors32 is 0 if the total sector count fits (is less than 0x10000).
+
+For FAT32 volumes, this field must be 0. \mbox{\Hypertarget{_fat_structs_8h_a64d5902f9e900ecc745b1c0b325d875f}\label{_fat_structs_8h_a64d5902f9e900ecc745b1c0b325d875f}} 
+\index{FatStructs.h@{FatStructs.h}!totalSectors32@{totalSectors32}}
+\index{totalSectors32@{totalSectors32}!FatStructs.h@{FatStructs.h}}
+\doxysubsubsection{\texorpdfstring{totalSectors32}{totalSectors32}}
+{\footnotesize\ttfamily uint32\+\_\+t total\+Sectors32}
+
+This field is the new 32-\/bit total count of sectors on the volume. This count includes the count of all sectors in all four regions of the volume. This field can be 0; if it is 0, then total\+Sectors16 must be nonzero.
+
+This field is the new 32-\/bit total count of sectors on the volume. This count includes the count of all sectors in all four regions of the volume. This field can be 0; if it is 0, then total\+Sectors16 must be non-\/zero.
+
+Contains the total number of sectors in the FAT32 volume. \mbox{\Hypertarget{_fat_structs_8h_a1d127017fb298b889f4ba24752d08b8e}\label{_fat_structs_8h_a1d127017fb298b889f4ba24752d08b8e}} 
+\index{FatStructs.h@{FatStructs.h}!type@{type}}
+\index{type@{type}!FatStructs.h@{FatStructs.h}}
+\doxysubsubsection{\texorpdfstring{type}{type}}
+{\footnotesize\ttfamily uint8\+\_\+t type}
+
+Partition type. See defines that begin with PART\+\_\+\+TYPE\+\_\+ for some Microsoft partition types.
+
+If zero, indicates a directory entry that is a sub-\/component of a long name. NOTE\+: Other values reserved for future extensions.
+
+Non-\/zero implies other directory entry types. \mbox{\Hypertarget{_fat_structs_8h_aefe56bef1bc942c24bc7eefc4a7aefcc}\label{_fat_structs_8h_aefe56bef1bc942c24bc7eefc4a7aefcc}} 
+\index{FatStructs.h@{FatStructs.h}!usuallyZero@{usuallyZero}}
+\index{usuallyZero@{usuallyZero}!FatStructs.h@{FatStructs.h}}
+\doxysubsubsection{\texorpdfstring{usuallyZero}{usuallyZero}}
+{\footnotesize\ttfamily uint16\+\_\+t usually\+Zero}
+
+Usually zero but may be more boot code. \mbox{\Hypertarget{_fat_structs_8h_a4c67f30c214795e34070d3402de94f41}\label{_fat_structs_8h_a4c67f30c214795e34070d3402de94f41}} 
+\index{FatStructs.h@{FatStructs.h}!volumeLabel@{volumeLabel}}
+\index{volumeLabel@{volumeLabel}!FatStructs.h@{FatStructs.h}}
+\doxysubsubsection{\texorpdfstring{volumeLabel}{volumeLabel}}
+{\footnotesize\ttfamily char volume\+Label}
+
+A field once used to store the volume label. The volume label is now stored as a special file in the root directory. \mbox{\Hypertarget{_fat_structs_8h_a7c9ffcee12051cefe1724e8024af25f8}\label{_fat_structs_8h_a7c9ffcee12051cefe1724e8024af25f8}} 
+\index{FatStructs.h@{FatStructs.h}!volumeSerialNumber@{volumeSerialNumber}}
+\index{volumeSerialNumber@{volumeSerialNumber}!FatStructs.h@{FatStructs.h}}
+\doxysubsubsection{\texorpdfstring{volumeSerialNumber}{volumeSerialNumber}}
+{\footnotesize\ttfamily uint32\+\_\+t volume\+Serial\+Number}
+
+A random serial number created when formatting a disk, which helps to distinguish between disks. Usually generated by combining date and time. 

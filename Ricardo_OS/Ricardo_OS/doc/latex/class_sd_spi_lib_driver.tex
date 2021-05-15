@@ -1,0 +1,152 @@
+\hypertarget{class_sd_spi_lib_driver}{}\doxysection{Sd\+Spi\+Lib\+Driver Class Reference}
+\label{class_sd_spi_lib_driver}\index{SdSpiLibDriver@{SdSpiLibDriver}}
+
+
+\mbox{\hyperlink{class_sd_spi_lib_driver}{Sd\+Spi\+Lib\+Driver}} -\/ use standard SPI library.  
+
+
+
+
+{\ttfamily \#include $<$Sd\+Spi\+Driver.\+h$>$}
+
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{class_sd_spi_lib_driver_aeb8263fb0eaca724af90830e90ddd044}{activate}} ()
+\item 
+void \mbox{\hyperlink{class_sd_spi_lib_driver_a120d6b78f9dad6837d10b45b76d32c82}{deactivate}} ()
+\item 
+void \mbox{\hyperlink{class_sd_spi_lib_driver_a5863b84f8f277b7a926e915cdc378957}{begin}} (uint8\+\_\+t cs\+Pin)
+\item 
+uint8\+\_\+t \mbox{\hyperlink{class_sd_spi_lib_driver_acab44a1709ed382264e0844a544526d7}{receive}} ()
+\item 
+uint8\+\_\+t \mbox{\hyperlink{class_sd_spi_lib_driver_a961697c166b9965ab495e22b12f01ae9}{receive}} (uint8\+\_\+t $\ast$buf, size\+\_\+t n)
+\item 
+void \mbox{\hyperlink{class_sd_spi_lib_driver_aed31a7a2cc1b07200f6b295659b39a26}{send}} (uint8\+\_\+t data)
+\item 
+void \mbox{\hyperlink{class_sd_spi_lib_driver_a2dc6c188ff9be18aa46234c4bdc4e536}{send}} (const uint8\+\_\+t $\ast$buf, size\+\_\+t n)
+\item 
+void \mbox{\hyperlink{class_sd_spi_lib_driver_af24e0b0555b068d059b895314a77785d}{select}} ()
+\item 
+void \mbox{\hyperlink{class_sd_spi_lib_driver_a99fb51a9a567923fa7f87374e0aa124f}{set\+Spi\+Settings}} (SPISettings spi\+Settings)
+\item 
+void \mbox{\hyperlink{class_sd_spi_lib_driver_a593b443dca85fe4de76ab06547233429}{unselect}} ()
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\mbox{\hyperlink{class_sd_spi_lib_driver}{Sd\+Spi\+Lib\+Driver}} -\/ use standard SPI library. 
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_sd_spi_lib_driver_aeb8263fb0eaca724af90830e90ddd044}\label{class_sd_spi_lib_driver_aeb8263fb0eaca724af90830e90ddd044}} 
+\index{SdSpiLibDriver@{SdSpiLibDriver}!activate@{activate}}
+\index{activate@{activate}!SdSpiLibDriver@{SdSpiLibDriver}}
+\doxysubsubsection{\texorpdfstring{activate()}{activate()}}
+{\footnotesize\ttfamily void Sd\+Spi\+Lib\+Driver\+::activate (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Activate SPI hardware. \mbox{\Hypertarget{class_sd_spi_lib_driver_a5863b84f8f277b7a926e915cdc378957}\label{class_sd_spi_lib_driver_a5863b84f8f277b7a926e915cdc378957}} 
+\index{SdSpiLibDriver@{SdSpiLibDriver}!begin@{begin}}
+\index{begin@{begin}!SdSpiLibDriver@{SdSpiLibDriver}}
+\doxysubsubsection{\texorpdfstring{begin()}{begin()}}
+{\footnotesize\ttfamily void Sd\+Spi\+Lib\+Driver\+::begin (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{cs\+Pin }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Initialize the SPI bus.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em cs\+Pin} & SD card chip select pin. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_sd_spi_lib_driver_a120d6b78f9dad6837d10b45b76d32c82}\label{class_sd_spi_lib_driver_a120d6b78f9dad6837d10b45b76d32c82}} 
+\index{SdSpiLibDriver@{SdSpiLibDriver}!deactivate@{deactivate}}
+\index{deactivate@{deactivate}!SdSpiLibDriver@{SdSpiLibDriver}}
+\doxysubsubsection{\texorpdfstring{deactivate()}{deactivate()}}
+{\footnotesize\ttfamily void Sd\+Spi\+Lib\+Driver\+::deactivate (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Deactivate SPI hardware. \mbox{\Hypertarget{class_sd_spi_lib_driver_acab44a1709ed382264e0844a544526d7}\label{class_sd_spi_lib_driver_acab44a1709ed382264e0844a544526d7}} 
+\index{SdSpiLibDriver@{SdSpiLibDriver}!receive@{receive}}
+\index{receive@{receive}!SdSpiLibDriver@{SdSpiLibDriver}}
+\doxysubsubsection{\texorpdfstring{receive()}{receive()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily uint8\+\_\+t Sd\+Spi\+Lib\+Driver\+::receive (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Receive a byte.
+
+\begin{DoxyReturn}{Returns}
+The byte. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_sd_spi_lib_driver_a961697c166b9965ab495e22b12f01ae9}\label{class_sd_spi_lib_driver_a961697c166b9965ab495e22b12f01ae9}} 
+\index{SdSpiLibDriver@{SdSpiLibDriver}!receive@{receive}}
+\index{receive@{receive}!SdSpiLibDriver@{SdSpiLibDriver}}
+\doxysubsubsection{\texorpdfstring{receive()}{receive()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily uint8\+\_\+t Sd\+Spi\+Lib\+Driver\+::receive (\begin{DoxyParamCaption}\item[{uint8\+\_\+t $\ast$}]{buf,  }\item[{size\+\_\+t}]{n }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Receive multiple bytes.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ out}}  & {\em buf} & Buffer to receive the data. \\
+\hline
+\mbox{\texttt{ in}}  & {\em n} & Number of bytes to receive.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Zero for no error or nonzero error code. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_sd_spi_lib_driver_af24e0b0555b068d059b895314a77785d}\label{class_sd_spi_lib_driver_af24e0b0555b068d059b895314a77785d}} 
+\index{SdSpiLibDriver@{SdSpiLibDriver}!select@{select}}
+\index{select@{select}!SdSpiLibDriver@{SdSpiLibDriver}}
+\doxysubsubsection{\texorpdfstring{select()}{select()}}
+{\footnotesize\ttfamily void Sd\+Spi\+Lib\+Driver\+::select (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Set CS low. \mbox{\Hypertarget{class_sd_spi_lib_driver_a2dc6c188ff9be18aa46234c4bdc4e536}\label{class_sd_spi_lib_driver_a2dc6c188ff9be18aa46234c4bdc4e536}} 
+\index{SdSpiLibDriver@{SdSpiLibDriver}!send@{send}}
+\index{send@{send}!SdSpiLibDriver@{SdSpiLibDriver}}
+\doxysubsubsection{\texorpdfstring{send()}{send()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily void Sd\+Spi\+Lib\+Driver\+::send (\begin{DoxyParamCaption}\item[{const uint8\+\_\+t $\ast$}]{buf,  }\item[{size\+\_\+t}]{n }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Send multiple bytes.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em buf} & Buffer for data to be sent. \\
+\hline
+\mbox{\texttt{ in}}  & {\em n} & Number of bytes to send. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_sd_spi_lib_driver_aed31a7a2cc1b07200f6b295659b39a26}\label{class_sd_spi_lib_driver_aed31a7a2cc1b07200f6b295659b39a26}} 
+\index{SdSpiLibDriver@{SdSpiLibDriver}!send@{send}}
+\index{send@{send}!SdSpiLibDriver@{SdSpiLibDriver}}
+\doxysubsubsection{\texorpdfstring{send()}{send()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily void Sd\+Spi\+Lib\+Driver\+::send (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{data }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Send a byte.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em data} & Byte to send \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_sd_spi_lib_driver_a99fb51a9a567923fa7f87374e0aa124f}\label{class_sd_spi_lib_driver_a99fb51a9a567923fa7f87374e0aa124f}} 
+\index{SdSpiLibDriver@{SdSpiLibDriver}!setSpiSettings@{setSpiSettings}}
+\index{setSpiSettings@{setSpiSettings}!SdSpiLibDriver@{SdSpiLibDriver}}
+\doxysubsubsection{\texorpdfstring{setSpiSettings()}{setSpiSettings()}}
+{\footnotesize\ttfamily void Sd\+Spi\+Lib\+Driver\+::set\+Spi\+Settings (\begin{DoxyParamCaption}\item[{SPISettings}]{spi\+Settings }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Save SPISettings.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em spi\+Settings} & SPI speed, mode, and byte order. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_sd_spi_lib_driver_a593b443dca85fe4de76ab06547233429}\label{class_sd_spi_lib_driver_a593b443dca85fe4de76ab06547233429}} 
+\index{SdSpiLibDriver@{SdSpiLibDriver}!unselect@{unselect}}
+\index{unselect@{unselect}!SdSpiLibDriver@{SdSpiLibDriver}}
+\doxysubsubsection{\texorpdfstring{unselect()}{unselect()}}
+{\footnotesize\ttfamily void Sd\+Spi\+Lib\+Driver\+::unselect (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Set CS high. 
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+/\+Users/kiran/\+Documents/\+Projects/\+ICLR/\+Avionics/\+Ricardo\+\_\+\+OS/\+Ricardo\+\_\+\+OS/lib/\+Sd\+Fat-\/master-\/adafruit\+\_\+fork/src/\+Spi\+Driver/\mbox{\hyperlink{_sd_spi_driver_8h}{Sd\+Spi\+Driver.\+h}}\end{DoxyCompactItemize}

@@ -1,0 +1,355 @@
+\hypertarget{class_log_controller}{}\doxysection{Log\+Controller Class Reference}
+\label{class_log_controller}\index{LogController@{LogController}}
+
+
+{\ttfamily \#include $<$log\+Controller.\+h$>$}
+
+
+
+Collaboration diagram for Log\+Controller\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_log_controller__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_log_controller_ab3d307e6813b41a1288bc076b4f388a1}{Log\+Controller}} (\mbox{\hyperlink{class_storage_controller}{Storage\+Controller}} $\ast$storagecontroller)
+\item 
+void \mbox{\hyperlink{class_log_controller_a691c1ff90609fcbd1c95a791fbec30bb}{setup}} ()
+\item 
+void \mbox{\hyperlink{class_log_controller_adb94b2720224b121ac8487c7c0e04ffc}{log}} (\mbox{\hyperlink{structstate__t}{state\+\_\+t}} \&estimator\+\_\+state, \mbox{\hyperlink{structraw__measurements__t}{raw\+\_\+measurements\+\_\+t}} \&raw\+\_\+sensors, bool force=false)
+\item 
+void \mbox{\hyperlink{class_log_controller_ab162a58ce27cb4806eeb2309cc146d98}{log}} (\mbox{\hyperlink{class_packet_header}{Packet\+Header}} \&header)
+\item 
+void \mbox{\hyperlink{class_log_controller_ac52bcbe9b80caba2063ef52fe472869b}{log}} (std\+::string message)
+\item 
+void \mbox{\hyperlink{class_log_controller_ab8057d65f7db81a488968b9d87a5690d}{log}} (uint32\+\_\+t status, uint32\+\_\+t flag, std\+::string message)
+\item 
+void \mbox{\hyperlink{class_log_controller_a1e11bbb4a509737bc4ba2e8cd3852b09}{log}} (uint32\+\_\+t status, uint32\+\_\+t flag)
+\item 
+void \mbox{\hyperlink{class_log_controller_a1417c3002b7ee334d6cb051a50f0da46}{change\+\_\+write\+\_\+\+Frequency}} (uint16\+\_\+t time\+\_\+period, \mbox{\hyperlink{log_controller_8h_a3fe34aa18aae383b0dedd08b476f3844}{LOG\+\_\+\+TYPE}} log\+\_\+type)
+\item 
+void \mbox{\hyperlink{class_log_controller_a0f78ba7f67ae9ea9f91363d678e7c3e3}{telemetry\+\_\+\+Frequency}} (uint16\+\_\+t time\+\_\+period)
+\item 
+void \mbox{\hyperlink{class_log_controller_a190ac7f27b24dcba384c1c18a94c3ef8}{update}} ()
+\end{DoxyCompactItemize}
+\doxysubsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{class_log_controller_ab69cfb73204e8713eedfd7e79d73c5c9}{write\+\_\+to\+\_\+file}} (\mbox{\hyperlink{log_controller_8h_a3fe34aa18aae383b0dedd08b476f3844}{LOG\+\_\+\+TYPE}} log\+\_\+type)
+\item 
+std\+::string \mbox{\hyperlink{class_log_controller_a8153ae6061e30a960e4397617e4fadc9}{flag\+Level}} (uint32\+\_\+t flag)
+\item 
+std\+::string \mbox{\hyperlink{class_log_controller_abdf8aa95b898c031d8555bee1961f8d6}{flag\+Level}} (\mbox{\hyperlink{flags_8h_a1cb315cc6ae6368d46a819d952b416ad}{system\+\_\+flag}} flag)
+\end{DoxyCompactItemize}
+\doxysubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_storage_controller}{Storage\+Controller}} $\ast$ \mbox{\hyperlink{class_log_controller_a15debc42bbac0000e42fc77fd0b1fdf2}{\+\_\+storagecontroller}}
+\item 
+\mbox{\hyperlink{classtelemetry__logframe}{telemetry\+\_\+logframe}} \mbox{\hyperlink{class_log_controller_a170b297ce50bc666733c18b3cfd41dad}{telemetry\+\_\+frame}}
+\item 
+\mbox{\hyperlink{classsystem__logframe}{system\+\_\+logframe}} \mbox{\hyperlink{class_log_controller_aaa86f9eb61d7f0b5f7c962626fc1d03c}{system\+\_\+frame}}
+\item 
+\mbox{\hyperlink{classnetwork__logframe}{network\+\_\+logframe}} \mbox{\hyperlink{class_log_controller_a7e90156517ab8b010c8ad57e396873be}{network\+\_\+frame}}
+\item 
+std\+::vector$<$ \mbox{\hyperlink{classtelemetry__logframe}{telemetry\+\_\+logframe}} $>$ \mbox{\hyperlink{class_log_controller_a7847076efad4a673569ad19c27056589}{telemetry\+\_\+log\+\_\+buffer}}
+\item 
+std\+::vector$<$ \mbox{\hyperlink{classsystem__logframe}{system\+\_\+logframe}} $>$ \mbox{\hyperlink{class_log_controller_af55fb21bb37175e7c7896d4ba0146361}{system\+\_\+log\+\_\+buffer}}
+\item 
+std\+::vector$<$ \mbox{\hyperlink{classnetwork__logframe}{network\+\_\+logframe}} $>$ \mbox{\hyperlink{class_log_controller_ac953b13f7d276f7a2719de60ac075418}{network\+\_\+log\+\_\+buffer}}
+\item 
+std\+::string \mbox{\hyperlink{class_log_controller_abe5dd66181f06e84e546ec6d38cfc809}{microsd\+\_\+prefix}} = \char`\"{}/Logs\char`\"{}
+\item 
+std\+::string \mbox{\hyperlink{class_log_controller_a851e2ddf7a9d4f1e732e1a7a12a31623}{flash\+\_\+prefix}} = \char`\"{}/Logs\char`\"{}
+\item 
+const std\+::string \mbox{\hyperlink{class_log_controller_aae69eda35e40facd953d3d9929c00682}{telemetry\+\_\+log\+\_\+filename}} = \char`\"{}/telemetry\+\_\+log.\+txt\char`\"{}
+\item 
+const std\+::string \mbox{\hyperlink{class_log_controller_aeeee39c0f958c751a1cd0c2ad1697e9a}{system\+\_\+log\+\_\+filename}} = \char`\"{}/system\+\_\+log.\+txt\char`\"{}
+\item 
+const std\+::string \mbox{\hyperlink{class_log_controller_acfa8f09f193f02e12ce64c6e5c6a4189}{network\+\_\+log\+\_\+filename}} = \char`\"{}/network\+\_\+log.\+txt\char`\"{}
+\item 
+uint16\+\_\+t \mbox{\hyperlink{class_log_controller_a8cfd8682297540952c5978b8b8879f64}{telemetry\+\_\+log\+\_\+frequency}} = 20
+\item 
+uint64\+\_\+t \mbox{\hyperlink{class_log_controller_abe00eb8238536ed8e282d22253b1ce8f}{telemetry\+\_\+prev\+\_\+log\+\_\+time}} = 0
+\item 
+std\+::array$<$ uint16\+\_\+t, 3 $>$ \mbox{\hyperlink{class_log_controller_a4560ebfd40f5195a1400d04796f5a87a}{write\+\_\+frequency}} = \{5000,5000,5000\}
+\item 
+std\+::array$<$ uint64\+\_\+t, 3 $>$ \mbox{\hyperlink{class_log_controller_a0a412f7d577f7030f1d36193970e53a0}{prev\+\_\+write\+\_\+time}} = \{0,0,0\}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_log_controller_ab3d307e6813b41a1288bc076b4f388a1}\label{class_log_controller_ab3d307e6813b41a1288bc076b4f388a1}} 
+\index{LogController@{LogController}!LogController@{LogController}}
+\index{LogController@{LogController}!LogController@{LogController}}
+\doxysubsubsection{\texorpdfstring{LogController()}{LogController()}}
+{\footnotesize\ttfamily Log\+Controller\+::\+Log\+Controller (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_storage_controller}{Storage\+Controller}} $\ast$}]{storagecontroller }\end{DoxyParamCaption})}
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_log_controller_a1417c3002b7ee334d6cb051a50f0da46}\label{class_log_controller_a1417c3002b7ee334d6cb051a50f0da46}} 
+\index{LogController@{LogController}!change\_write\_Frequency@{change\_write\_Frequency}}
+\index{change\_write\_Frequency@{change\_write\_Frequency}!LogController@{LogController}}
+\doxysubsubsection{\texorpdfstring{change\_write\_Frequency()}{change\_write\_Frequency()}}
+{\footnotesize\ttfamily void Log\+Controller\+::change\+\_\+write\+\_\+\+Frequency (\begin{DoxyParamCaption}\item[{uint16\+\_\+t}]{time\+\_\+period,  }\item[{\mbox{\hyperlink{log_controller_8h_a3fe34aa18aae383b0dedd08b476f3844}{LOG\+\_\+\+TYPE}}}]{log\+\_\+type }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_log_controller_abdf8aa95b898c031d8555bee1961f8d6}\label{class_log_controller_abdf8aa95b898c031d8555bee1961f8d6}} 
+\index{LogController@{LogController}!flagLevel@{flagLevel}}
+\index{flagLevel@{flagLevel}!LogController@{LogController}}
+\doxysubsubsection{\texorpdfstring{flagLevel()}{flagLevel()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily std\+::string Log\+Controller\+::flag\+Level (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{flags_8h_a1cb315cc6ae6368d46a819d952b416ad}{system\+\_\+flag}}}]{flag }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_log_controller_abdf8aa95b898c031d8555bee1961f8d6_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_log_controller_a8153ae6061e30a960e4397617e4fadc9}\label{class_log_controller_a8153ae6061e30a960e4397617e4fadc9}} 
+\index{LogController@{LogController}!flagLevel@{flagLevel}}
+\index{flagLevel@{flagLevel}!LogController@{LogController}}
+\doxysubsubsection{\texorpdfstring{flagLevel()}{flagLevel()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily std\+::string Log\+Controller\+::flag\+Level (\begin{DoxyParamCaption}\item[{uint32\+\_\+t}]{flag }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_log_controller_a8153ae6061e30a960e4397617e4fadc9_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_log_controller_ab162a58ce27cb4806eeb2309cc146d98}\label{class_log_controller_ab162a58ce27cb4806eeb2309cc146d98}} 
+\index{LogController@{LogController}!log@{log}}
+\index{log@{log}!LogController@{LogController}}
+\doxysubsubsection{\texorpdfstring{log()}{log()}\hspace{0.1cm}{\footnotesize\ttfamily [1/5]}}
+{\footnotesize\ttfamily void Log\+Controller\+::log (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_packet_header}{Packet\+Header}} \&}]{header }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_log_controller_adb94b2720224b121ac8487c7c0e04ffc}\label{class_log_controller_adb94b2720224b121ac8487c7c0e04ffc}} 
+\index{LogController@{LogController}!log@{log}}
+\index{log@{log}!LogController@{LogController}}
+\doxysubsubsection{\texorpdfstring{log()}{log()}\hspace{0.1cm}{\footnotesize\ttfamily [2/5]}}
+{\footnotesize\ttfamily void Log\+Controller\+::log (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structstate__t}{state\+\_\+t}} \&}]{estimator\+\_\+state,  }\item[{\mbox{\hyperlink{structraw__measurements__t}{raw\+\_\+measurements\+\_\+t}} \&}]{raw\+\_\+sensors,  }\item[{bool}]{force = {\ttfamily false} }\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_log_controller_adb94b2720224b121ac8487c7c0e04ffc_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_log_controller_ac52bcbe9b80caba2063ef52fe472869b}\label{class_log_controller_ac52bcbe9b80caba2063ef52fe472869b}} 
+\index{LogController@{LogController}!log@{log}}
+\index{log@{log}!LogController@{LogController}}
+\doxysubsubsection{\texorpdfstring{log()}{log()}\hspace{0.1cm}{\footnotesize\ttfamily [3/5]}}
+{\footnotesize\ttfamily void Log\+Controller\+::log (\begin{DoxyParamCaption}\item[{std\+::string}]{message }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_log_controller_a1e11bbb4a509737bc4ba2e8cd3852b09}\label{class_log_controller_a1e11bbb4a509737bc4ba2e8cd3852b09}} 
+\index{LogController@{LogController}!log@{log}}
+\index{log@{log}!LogController@{LogController}}
+\doxysubsubsection{\texorpdfstring{log()}{log()}\hspace{0.1cm}{\footnotesize\ttfamily [4/5]}}
+{\footnotesize\ttfamily void Log\+Controller\+::log (\begin{DoxyParamCaption}\item[{uint32\+\_\+t}]{status,  }\item[{uint32\+\_\+t}]{flag }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=328pt]{class_log_controller_a1e11bbb4a509737bc4ba2e8cd3852b09_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_log_controller_ab8057d65f7db81a488968b9d87a5690d}\label{class_log_controller_ab8057d65f7db81a488968b9d87a5690d}} 
+\index{LogController@{LogController}!log@{log}}
+\index{log@{log}!LogController@{LogController}}
+\doxysubsubsection{\texorpdfstring{log()}{log()}\hspace{0.1cm}{\footnotesize\ttfamily [5/5]}}
+{\footnotesize\ttfamily void Log\+Controller\+::log (\begin{DoxyParamCaption}\item[{uint32\+\_\+t}]{status,  }\item[{uint32\+\_\+t}]{flag,  }\item[{std\+::string}]{message }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=328pt]{class_log_controller_ab8057d65f7db81a488968b9d87a5690d_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_log_controller_a691c1ff90609fcbd1c95a791fbec30bb}\label{class_log_controller_a691c1ff90609fcbd1c95a791fbec30bb}} 
+\index{LogController@{LogController}!setup@{setup}}
+\index{setup@{setup}!LogController@{LogController}}
+\doxysubsubsection{\texorpdfstring{setup()}{setup()}}
+{\footnotesize\ttfamily void Log\+Controller\+::setup (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_log_controller_a691c1ff90609fcbd1c95a791fbec30bb_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_log_controller_a691c1ff90609fcbd1c95a791fbec30bb_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_log_controller_a0f78ba7f67ae9ea9f91363d678e7c3e3}\label{class_log_controller_a0f78ba7f67ae9ea9f91363d678e7c3e3}} 
+\index{LogController@{LogController}!telemetry\_Frequency@{telemetry\_Frequency}}
+\index{telemetry\_Frequency@{telemetry\_Frequency}!LogController@{LogController}}
+\doxysubsubsection{\texorpdfstring{telemetry\_Frequency()}{telemetry\_Frequency()}}
+{\footnotesize\ttfamily void Log\+Controller\+::telemetry\+\_\+\+Frequency (\begin{DoxyParamCaption}\item[{uint16\+\_\+t}]{time\+\_\+period }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_log_controller_a190ac7f27b24dcba384c1c18a94c3ef8}\label{class_log_controller_a190ac7f27b24dcba384c1c18a94c3ef8}} 
+\index{LogController@{LogController}!update@{update}}
+\index{update@{update}!LogController@{LogController}}
+\doxysubsubsection{\texorpdfstring{update()}{update()}}
+{\footnotesize\ttfamily void Log\+Controller\+::update (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+telemetry\+\_\+log\+\_\+buffer.\+clear();Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_log_controller_a190ac7f27b24dcba384c1c18a94c3ef8_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_log_controller_a190ac7f27b24dcba384c1c18a94c3ef8_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_log_controller_ab69cfb73204e8713eedfd7e79d73c5c9}\label{class_log_controller_ab69cfb73204e8713eedfd7e79d73c5c9}} 
+\index{LogController@{LogController}!write\_to\_file@{write\_to\_file}}
+\index{write\_to\_file@{write\_to\_file}!LogController@{LogController}}
+\doxysubsubsection{\texorpdfstring{write\_to\_file()}{write\_to\_file()}}
+{\footnotesize\ttfamily void Log\+Controller\+::write\+\_\+to\+\_\+file (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{log_controller_8h_a3fe34aa18aae383b0dedd08b476f3844}{LOG\+\_\+\+TYPE}}}]{log\+\_\+type }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=336pt]{class_log_controller_ab69cfb73204e8713eedfd7e79d73c5c9_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_log_controller_ab69cfb73204e8713eedfd7e79d73c5c9_icgraph}
+\end{center}
+\end{figure}
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{class_log_controller_a15debc42bbac0000e42fc77fd0b1fdf2}\label{class_log_controller_a15debc42bbac0000e42fc77fd0b1fdf2}} 
+\index{LogController@{LogController}!\_storagecontroller@{\_storagecontroller}}
+\index{\_storagecontroller@{\_storagecontroller}!LogController@{LogController}}
+\doxysubsubsection{\texorpdfstring{\_storagecontroller}{\_storagecontroller}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_storage_controller}{Storage\+Controller}}$\ast$ Log\+Controller\+::\+\_\+storagecontroller\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{class_log_controller_a851e2ddf7a9d4f1e732e1a7a12a31623}\label{class_log_controller_a851e2ddf7a9d4f1e732e1a7a12a31623}} 
+\index{LogController@{LogController}!flash\_prefix@{flash\_prefix}}
+\index{flash\_prefix@{flash\_prefix}!LogController@{LogController}}
+\doxysubsubsection{\texorpdfstring{flash\_prefix}{flash\_prefix}}
+{\footnotesize\ttfamily std\+::string Log\+Controller\+::flash\+\_\+prefix = \char`\"{}/Logs\char`\"{}\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{class_log_controller_abe5dd66181f06e84e546ec6d38cfc809}\label{class_log_controller_abe5dd66181f06e84e546ec6d38cfc809}} 
+\index{LogController@{LogController}!microsd\_prefix@{microsd\_prefix}}
+\index{microsd\_prefix@{microsd\_prefix}!LogController@{LogController}}
+\doxysubsubsection{\texorpdfstring{microsd\_prefix}{microsd\_prefix}}
+{\footnotesize\ttfamily std\+::string Log\+Controller\+::microsd\+\_\+prefix = \char`\"{}/Logs\char`\"{}\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{class_log_controller_a7e90156517ab8b010c8ad57e396873be}\label{class_log_controller_a7e90156517ab8b010c8ad57e396873be}} 
+\index{LogController@{LogController}!network\_frame@{network\_frame}}
+\index{network\_frame@{network\_frame}!LogController@{LogController}}
+\doxysubsubsection{\texorpdfstring{network\_frame}{network\_frame}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classnetwork__logframe}{network\+\_\+logframe}} Log\+Controller\+::network\+\_\+frame\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{class_log_controller_ac953b13f7d276f7a2719de60ac075418}\label{class_log_controller_ac953b13f7d276f7a2719de60ac075418}} 
+\index{LogController@{LogController}!network\_log\_buffer@{network\_log\_buffer}}
+\index{network\_log\_buffer@{network\_log\_buffer}!LogController@{LogController}}
+\doxysubsubsection{\texorpdfstring{network\_log\_buffer}{network\_log\_buffer}}
+{\footnotesize\ttfamily std\+::vector$<$\mbox{\hyperlink{classnetwork__logframe}{network\+\_\+logframe}}$>$ Log\+Controller\+::network\+\_\+log\+\_\+buffer\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{class_log_controller_acfa8f09f193f02e12ce64c6e5c6a4189}\label{class_log_controller_acfa8f09f193f02e12ce64c6e5c6a4189}} 
+\index{LogController@{LogController}!network\_log\_filename@{network\_log\_filename}}
+\index{network\_log\_filename@{network\_log\_filename}!LogController@{LogController}}
+\doxysubsubsection{\texorpdfstring{network\_log\_filename}{network\_log\_filename}}
+{\footnotesize\ttfamily const std\+::string Log\+Controller\+::network\+\_\+log\+\_\+filename = \char`\"{}/network\+\_\+log.\+txt\char`\"{}\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{class_log_controller_a0a412f7d577f7030f1d36193970e53a0}\label{class_log_controller_a0a412f7d577f7030f1d36193970e53a0}} 
+\index{LogController@{LogController}!prev\_write\_time@{prev\_write\_time}}
+\index{prev\_write\_time@{prev\_write\_time}!LogController@{LogController}}
+\doxysubsubsection{\texorpdfstring{prev\_write\_time}{prev\_write\_time}}
+{\footnotesize\ttfamily std\+::array$<$uint64\+\_\+t,3$>$ Log\+Controller\+::prev\+\_\+write\+\_\+time = \{0,0,0\}\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{class_log_controller_aaa86f9eb61d7f0b5f7c962626fc1d03c}\label{class_log_controller_aaa86f9eb61d7f0b5f7c962626fc1d03c}} 
+\index{LogController@{LogController}!system\_frame@{system\_frame}}
+\index{system\_frame@{system\_frame}!LogController@{LogController}}
+\doxysubsubsection{\texorpdfstring{system\_frame}{system\_frame}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classsystem__logframe}{system\+\_\+logframe}} Log\+Controller\+::system\+\_\+frame\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{class_log_controller_af55fb21bb37175e7c7896d4ba0146361}\label{class_log_controller_af55fb21bb37175e7c7896d4ba0146361}} 
+\index{LogController@{LogController}!system\_log\_buffer@{system\_log\_buffer}}
+\index{system\_log\_buffer@{system\_log\_buffer}!LogController@{LogController}}
+\doxysubsubsection{\texorpdfstring{system\_log\_buffer}{system\_log\_buffer}}
+{\footnotesize\ttfamily std\+::vector$<$\mbox{\hyperlink{classsystem__logframe}{system\+\_\+logframe}}$>$ Log\+Controller\+::system\+\_\+log\+\_\+buffer\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{class_log_controller_aeeee39c0f958c751a1cd0c2ad1697e9a}\label{class_log_controller_aeeee39c0f958c751a1cd0c2ad1697e9a}} 
+\index{LogController@{LogController}!system\_log\_filename@{system\_log\_filename}}
+\index{system\_log\_filename@{system\_log\_filename}!LogController@{LogController}}
+\doxysubsubsection{\texorpdfstring{system\_log\_filename}{system\_log\_filename}}
+{\footnotesize\ttfamily const std\+::string Log\+Controller\+::system\+\_\+log\+\_\+filename = \char`\"{}/system\+\_\+log.\+txt\char`\"{}\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{class_log_controller_a170b297ce50bc666733c18b3cfd41dad}\label{class_log_controller_a170b297ce50bc666733c18b3cfd41dad}} 
+\index{LogController@{LogController}!telemetry\_frame@{telemetry\_frame}}
+\index{telemetry\_frame@{telemetry\_frame}!LogController@{LogController}}
+\doxysubsubsection{\texorpdfstring{telemetry\_frame}{telemetry\_frame}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classtelemetry__logframe}{telemetry\+\_\+logframe}} Log\+Controller\+::telemetry\+\_\+frame\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{class_log_controller_a7847076efad4a673569ad19c27056589}\label{class_log_controller_a7847076efad4a673569ad19c27056589}} 
+\index{LogController@{LogController}!telemetry\_log\_buffer@{telemetry\_log\_buffer}}
+\index{telemetry\_log\_buffer@{telemetry\_log\_buffer}!LogController@{LogController}}
+\doxysubsubsection{\texorpdfstring{telemetry\_log\_buffer}{telemetry\_log\_buffer}}
+{\footnotesize\ttfamily std\+::vector$<$\mbox{\hyperlink{classtelemetry__logframe}{telemetry\+\_\+logframe}}$>$ Log\+Controller\+::telemetry\+\_\+log\+\_\+buffer\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{class_log_controller_aae69eda35e40facd953d3d9929c00682}\label{class_log_controller_aae69eda35e40facd953d3d9929c00682}} 
+\index{LogController@{LogController}!telemetry\_log\_filename@{telemetry\_log\_filename}}
+\index{telemetry\_log\_filename@{telemetry\_log\_filename}!LogController@{LogController}}
+\doxysubsubsection{\texorpdfstring{telemetry\_log\_filename}{telemetry\_log\_filename}}
+{\footnotesize\ttfamily const std\+::string Log\+Controller\+::telemetry\+\_\+log\+\_\+filename = \char`\"{}/telemetry\+\_\+log.\+txt\char`\"{}\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{class_log_controller_a8cfd8682297540952c5978b8b8879f64}\label{class_log_controller_a8cfd8682297540952c5978b8b8879f64}} 
+\index{LogController@{LogController}!telemetry\_log\_frequency@{telemetry\_log\_frequency}}
+\index{telemetry\_log\_frequency@{telemetry\_log\_frequency}!LogController@{LogController}}
+\doxysubsubsection{\texorpdfstring{telemetry\_log\_frequency}{telemetry\_log\_frequency}}
+{\footnotesize\ttfamily uint16\+\_\+t Log\+Controller\+::telemetry\+\_\+log\+\_\+frequency = 20\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{class_log_controller_abe00eb8238536ed8e282d22253b1ce8f}\label{class_log_controller_abe00eb8238536ed8e282d22253b1ce8f}} 
+\index{LogController@{LogController}!telemetry\_prev\_log\_time@{telemetry\_prev\_log\_time}}
+\index{telemetry\_prev\_log\_time@{telemetry\_prev\_log\_time}!LogController@{LogController}}
+\doxysubsubsection{\texorpdfstring{telemetry\_prev\_log\_time}{telemetry\_prev\_log\_time}}
+{\footnotesize\ttfamily uint64\+\_\+t Log\+Controller\+::telemetry\+\_\+prev\+\_\+log\+\_\+time = 0\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{class_log_controller_a4560ebfd40f5195a1400d04796f5a87a}\label{class_log_controller_a4560ebfd40f5195a1400d04796f5a87a}} 
+\index{LogController@{LogController}!write\_frequency@{write\_frequency}}
+\index{write\_frequency@{write\_frequency}!LogController@{LogController}}
+\doxysubsubsection{\texorpdfstring{write\_frequency}{write\_frequency}}
+{\footnotesize\ttfamily std\+::array$<$uint16\+\_\+t,3$>$ Log\+Controller\+::write\+\_\+frequency = \{5000,5000,5000\}\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+/\+Users/kiran/\+Documents/\+Projects/\+ICLR/\+Avionics/\+Ricardo\+\_\+\+OS/\+Ricardo\+\_\+\+OS/src/\+Logging/\mbox{\hyperlink{log_controller_8h}{log\+Controller.\+h}}\item 
+/\+Users/kiran/\+Documents/\+Projects/\+ICLR/\+Avionics/\+Ricardo\+\_\+\+OS/\+Ricardo\+\_\+\+OS/src/\+Logging/\mbox{\hyperlink{log_controller_8cpp}{log\+Controller.\+cpp}}\end{DoxyCompactItemize}

@@ -1,0 +1,303 @@
+\hypertarget{class_network_manager}{}\doxysection{Network\+Manager Class Reference}
+\label{class_network_manager}\index{NetworkManager@{NetworkManager}}
+
+
+{\ttfamily \#include $<$network\+Manager.\+h$>$}
+
+
+
+Collaboration diagram for Network\+Manager\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_network_manager__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_network_manager_aa1832d9cbe09178014f299fb1dce404c}{Network\+Manager}} (\mbox{\hyperlink{classstate_machine}{state\+Machine}} $\ast$sm)
+\item 
+void \mbox{\hyperlink{class_network_manager_a87b64dafa618fac138addfac9c47edab}{setup}} ()
+\item 
+void \mbox{\hyperlink{class_network_manager_a0d4ea7d4f0b395249151d0a28af79cd5}{update}} ()
+\item 
+void \mbox{\hyperlink{class_network_manager_a674c1c30636d564b2d43f668cb04485b}{send\+\_\+to\+\_\+node}} (\mbox{\hyperlink{nodes_8h_a898f2e294c3f9fc053e921a46dd52dce}{Nodes}} destination, std\+::vector$<$ uint8\+\_\+t $>$ \&data)
+\item 
+void \mbox{\hyperlink{class_network_manager_a64d21aa0b666042d4458b914b359b61e}{send\+\_\+packet}} (\mbox{\hyperlink{interfaces_8h_af0cd30ccfa4f4fe2bd0fdc3cfc4d34cf}{Interface}} iface, std\+::vector$<$ uint8\+\_\+t $>$ \&data)
+\item 
+void \mbox{\hyperlink{class_network_manager_ab03dd5020fe0c178b73eaf887f1ed8a7}{add\+\_\+command}} (\mbox{\hyperlink{nodes_8h_a898f2e294c3f9fc053e921a46dd52dce}{Nodes}} source\+\_\+node, uint32\+\_\+t command)
+\item 
+int \mbox{\hyperlink{class_network_manager_abd5ef50bf011b031598c9f87520d2a52}{get\+\_\+node\+\_\+type}} ()
+\end{DoxyCompactItemize}
+\doxysubsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{nodes_8h_a898f2e294c3f9fc053e921a46dd52dce}{Nodes}} \mbox{\hyperlink{class_network_manager_a260d13785b90f5854dd7d4173379860f}{node\+\_\+type}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{class_network_manager_a64e0a7fce010c89681b6e26a38bd79d1}{process\+\_\+global\+\_\+packets}} ()
+\item 
+void \mbox{\hyperlink{class_network_manager_a657f3958fd5a075fe1df6b2f9e7fa01f}{process\+\_\+local\+\_\+packets}} ()
+\end{DoxyCompactItemize}
+\doxysubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classstate_machine}{state\+Machine}} $\ast$ \mbox{\hyperlink{class_network_manager_a65252299213785eb2d99ba159f04ad8f}{\+\_\+sm}}
+\item 
+\mbox{\hyperlink{class_routing_table}{Routing\+Table}} \mbox{\hyperlink{class_network_manager_aa5459076b4f68249db6b2976ac1f868c}{routingtable}}
+\item 
+std\+::vector$<$ std\+::unique\+\_\+ptr$<$ std\+::vector$<$ uint8\+\_\+t $>$ $>$ $>$ \mbox{\hyperlink{class_network_manager_aacfb7869578fd8caa6ae2656f290fe62}{\+\_\+global\+\_\+packet\+\_\+buffer}}
+\item 
+std\+::vector$<$ std\+::unique\+\_\+ptr$<$ std\+::vector$<$ uint8\+\_\+t $>$ $>$ $>$ \mbox{\hyperlink{class_network_manager_ab466e0660c3ff965b8f1876176605bb3}{\+\_\+local\+\_\+packet\+\_\+buffer}}
+\item 
+\mbox{\hyperlink{class_u_s_b}{USB}} \mbox{\hyperlink{class_network_manager_ac8de949b2c89c1871a2393578eb9685e}{usbserial}}
+\item 
+\mbox{\hyperlink{class_radio}{Radio}} \mbox{\hyperlink{class_network_manager_a18898163079b9100e03f4a3959ea151d}{radio}}
+\item 
+\mbox{\hyperlink{class_command_handler}{Command\+Handler}} \mbox{\hyperlink{class_network_manager_aa543111d508b9b63e5cdd5f5c3f2a3c3}{commandhandler}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Friends}
+\begin{DoxyCompactItemize}
+\item 
+class \mbox{\hyperlink{class_network_manager_aa783fb6d060a3935500d4929d447dfc3}{Preflight}}
+\item 
+class \mbox{\hyperlink{class_network_manager_a337f9d85d0d497f91a096e88efb9293a}{Groundstation}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_network_manager_aa1832d9cbe09178014f299fb1dce404c}\label{class_network_manager_aa1832d9cbe09178014f299fb1dce404c}} 
+\index{NetworkManager@{NetworkManager}!NetworkManager@{NetworkManager}}
+\index{NetworkManager@{NetworkManager}!NetworkManager@{NetworkManager}}
+\doxysubsubsection{\texorpdfstring{NetworkManager()}{NetworkManager()}}
+{\footnotesize\ttfamily Network\+Manager\+::\+Network\+Manager (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classstate_machine}{state\+Machine}} $\ast$}]{sm }\end{DoxyParamCaption})}
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_network_manager_ab03dd5020fe0c178b73eaf887f1ed8a7}\label{class_network_manager_ab03dd5020fe0c178b73eaf887f1ed8a7}} 
+\index{NetworkManager@{NetworkManager}!add\_command@{add\_command}}
+\index{add\_command@{add\_command}!NetworkManager@{NetworkManager}}
+\doxysubsubsection{\texorpdfstring{add\_command()}{add\_command()}}
+{\footnotesize\ttfamily void Network\+Manager\+::add\+\_\+command (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{nodes_8h_a898f2e294c3f9fc053e921a46dd52dce}{Nodes}}}]{source\+\_\+node,  }\item[{uint32\+\_\+t}]{command }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_network_manager_abd5ef50bf011b031598c9f87520d2a52}\label{class_network_manager_abd5ef50bf011b031598c9f87520d2a52}} 
+\index{NetworkManager@{NetworkManager}!get\_node\_type@{get\_node\_type}}
+\index{get\_node\_type@{get\_node\_type}!NetworkManager@{NetworkManager}}
+\doxysubsubsection{\texorpdfstring{get\_node\_type()}{get\_node\_type()}}
+{\footnotesize\ttfamily int Network\+Manager\+::get\+\_\+node\+\_\+type (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_network_manager_abd5ef50bf011b031598c9f87520d2a52_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_network_manager_a64e0a7fce010c89681b6e26a38bd79d1}\label{class_network_manager_a64e0a7fce010c89681b6e26a38bd79d1}} 
+\index{NetworkManager@{NetworkManager}!process\_global\_packets@{process\_global\_packets}}
+\index{process\_global\_packets@{process\_global\_packets}!NetworkManager@{NetworkManager}}
+\doxysubsubsection{\texorpdfstring{process\_global\_packets()}{process\_global\_packets()}}
+{\footnotesize\ttfamily void Network\+Manager\+::process\+\_\+global\+\_\+packets (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_network_manager_a64e0a7fce010c89681b6e26a38bd79d1_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_network_manager_a64e0a7fce010c89681b6e26a38bd79d1_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_network_manager_a657f3958fd5a075fe1df6b2f9e7fa01f}\label{class_network_manager_a657f3958fd5a075fe1df6b2f9e7fa01f}} 
+\index{NetworkManager@{NetworkManager}!process\_local\_packets@{process\_local\_packets}}
+\index{process\_local\_packets@{process\_local\_packets}!NetworkManager@{NetworkManager}}
+\doxysubsubsection{\texorpdfstring{process\_local\_packets()}{process\_local\_packets()}}
+{\footnotesize\ttfamily void Network\+Manager\+::process\+\_\+local\+\_\+packets (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_network_manager_a657f3958fd5a075fe1df6b2f9e7fa01f_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_network_manager_a657f3958fd5a075fe1df6b2f9e7fa01f_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_network_manager_a64d21aa0b666042d4458b914b359b61e}\label{class_network_manager_a64d21aa0b666042d4458b914b359b61e}} 
+\index{NetworkManager@{NetworkManager}!send\_packet@{send\_packet}}
+\index{send\_packet@{send\_packet}!NetworkManager@{NetworkManager}}
+\doxysubsubsection{\texorpdfstring{send\_packet()}{send\_packet()}}
+{\footnotesize\ttfamily void Network\+Manager\+::send\+\_\+packet (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{interfaces_8h_af0cd30ccfa4f4fe2bd0fdc3cfc4d34cf}{Interface}}}]{iface,  }\item[{std\+::vector$<$ uint8\+\_\+t $>$ \&}]{data }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=338pt]{class_network_manager_a64d21aa0b666042d4458b914b359b61e_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_network_manager_a64d21aa0b666042d4458b914b359b61e_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_network_manager_a674c1c30636d564b2d43f668cb04485b}\label{class_network_manager_a674c1c30636d564b2d43f668cb04485b}} 
+\index{NetworkManager@{NetworkManager}!send\_to\_node@{send\_to\_node}}
+\index{send\_to\_node@{send\_to\_node}!NetworkManager@{NetworkManager}}
+\doxysubsubsection{\texorpdfstring{send\_to\_node()}{send\_to\_node()}}
+{\footnotesize\ttfamily void Network\+Manager\+::send\+\_\+to\+\_\+node (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{nodes_8h_a898f2e294c3f9fc053e921a46dd52dce}{Nodes}}}]{destination,  }\item[{std\+::vector$<$ uint8\+\_\+t $>$ \&}]{data }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_network_manager_a674c1c30636d564b2d43f668cb04485b_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_network_manager_a674c1c30636d564b2d43f668cb04485b_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_network_manager_a87b64dafa618fac138addfac9c47edab}\label{class_network_manager_a87b64dafa618fac138addfac9c47edab}} 
+\index{NetworkManager@{NetworkManager}!setup@{setup}}
+\index{setup@{setup}!NetworkManager@{NetworkManager}}
+\doxysubsubsection{\texorpdfstring{setup()}{setup()}}
+{\footnotesize\ttfamily void Network\+Manager\+::setup (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_network_manager_a87b64dafa618fac138addfac9c47edab_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_network_manager_a87b64dafa618fac138addfac9c47edab_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_network_manager_a0d4ea7d4f0b395249151d0a28af79cd5}\label{class_network_manager_a0d4ea7d4f0b395249151d0a28af79cd5}} 
+\index{NetworkManager@{NetworkManager}!update@{update}}
+\index{update@{update}!NetworkManager@{NetworkManager}}
+\doxysubsubsection{\texorpdfstring{update()}{update()}}
+{\footnotesize\ttfamily void Network\+Manager\+::update (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_network_manager_a0d4ea7d4f0b395249151d0a28af79cd5_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_network_manager_a0d4ea7d4f0b395249151d0a28af79cd5_icgraph}
+\end{center}
+\end{figure}
+
+
+\doxysubsection{Friends And Related Function Documentation}
+\mbox{\Hypertarget{class_network_manager_a337f9d85d0d497f91a096e88efb9293a}\label{class_network_manager_a337f9d85d0d497f91a096e88efb9293a}} 
+\index{NetworkManager@{NetworkManager}!Groundstation@{Groundstation}}
+\index{Groundstation@{Groundstation}!NetworkManager@{NetworkManager}}
+\doxysubsubsection{\texorpdfstring{Groundstation}{Groundstation}}
+{\footnotesize\ttfamily friend class \mbox{\hyperlink{class_groundstation}{Groundstation}}\hspace{0.3cm}{\ttfamily [friend]}}
+
+\mbox{\Hypertarget{class_network_manager_aa783fb6d060a3935500d4929d447dfc3}\label{class_network_manager_aa783fb6d060a3935500d4929d447dfc3}} 
+\index{NetworkManager@{NetworkManager}!Preflight@{Preflight}}
+\index{Preflight@{Preflight}!NetworkManager@{NetworkManager}}
+\doxysubsubsection{\texorpdfstring{Preflight}{Preflight}}
+{\footnotesize\ttfamily friend class \mbox{\hyperlink{class_preflight}{Preflight}}\hspace{0.3cm}{\ttfamily [friend]}}
+
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{class_network_manager_aacfb7869578fd8caa6ae2656f290fe62}\label{class_network_manager_aacfb7869578fd8caa6ae2656f290fe62}} 
+\index{NetworkManager@{NetworkManager}!\_global\_packet\_buffer@{\_global\_packet\_buffer}}
+\index{\_global\_packet\_buffer@{\_global\_packet\_buffer}!NetworkManager@{NetworkManager}}
+\doxysubsubsection{\texorpdfstring{\_global\_packet\_buffer}{\_global\_packet\_buffer}}
+{\footnotesize\ttfamily std\+::vector$<$std\+::unique\+\_\+ptr$<$std\+::vector$<$uint8\+\_\+t$>$ $>$ $>$ Network\+Manager\+::\+\_\+global\+\_\+packet\+\_\+buffer\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{class_network_manager_ab466e0660c3ff965b8f1876176605bb3}\label{class_network_manager_ab466e0660c3ff965b8f1876176605bb3}} 
+\index{NetworkManager@{NetworkManager}!\_local\_packet\_buffer@{\_local\_packet\_buffer}}
+\index{\_local\_packet\_buffer@{\_local\_packet\_buffer}!NetworkManager@{NetworkManager}}
+\doxysubsubsection{\texorpdfstring{\_local\_packet\_buffer}{\_local\_packet\_buffer}}
+{\footnotesize\ttfamily std\+::vector$<$std\+::unique\+\_\+ptr$<$std\+::vector$<$uint8\+\_\+t$>$ $>$ $>$ Network\+Manager\+::\+\_\+local\+\_\+packet\+\_\+buffer\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{class_network_manager_a65252299213785eb2d99ba159f04ad8f}\label{class_network_manager_a65252299213785eb2d99ba159f04ad8f}} 
+\index{NetworkManager@{NetworkManager}!\_sm@{\_sm}}
+\index{\_sm@{\_sm}!NetworkManager@{NetworkManager}}
+\doxysubsubsection{\texorpdfstring{\_sm}{\_sm}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classstate_machine}{state\+Machine}}$\ast$ Network\+Manager\+::\+\_\+sm\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{class_network_manager_aa543111d508b9b63e5cdd5f5c3f2a3c3}\label{class_network_manager_aa543111d508b9b63e5cdd5f5c3f2a3c3}} 
+\index{NetworkManager@{NetworkManager}!commandhandler@{commandhandler}}
+\index{commandhandler@{commandhandler}!NetworkManager@{NetworkManager}}
+\doxysubsubsection{\texorpdfstring{commandhandler}{commandhandler}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_command_handler}{Command\+Handler}} Network\+Manager\+::commandhandler\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{class_network_manager_a260d13785b90f5854dd7d4173379860f}\label{class_network_manager_a260d13785b90f5854dd7d4173379860f}} 
+\index{NetworkManager@{NetworkManager}!node\_type@{node\_type}}
+\index{node\_type@{node\_type}!NetworkManager@{NetworkManager}}
+\doxysubsubsection{\texorpdfstring{node\_type}{node\_type}}
+{\footnotesize\ttfamily \mbox{\hyperlink{nodes_8h_a898f2e294c3f9fc053e921a46dd52dce}{Nodes}} Network\+Manager\+::node\+\_\+type\hspace{0.3cm}{\ttfamily [protected]}}
+
+\mbox{\Hypertarget{class_network_manager_a18898163079b9100e03f4a3959ea151d}\label{class_network_manager_a18898163079b9100e03f4a3959ea151d}} 
+\index{NetworkManager@{NetworkManager}!radio@{radio}}
+\index{radio@{radio}!NetworkManager@{NetworkManager}}
+\doxysubsubsection{\texorpdfstring{radio}{radio}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_radio}{Radio}} Network\+Manager\+::radio\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{class_network_manager_aa5459076b4f68249db6b2976ac1f868c}\label{class_network_manager_aa5459076b4f68249db6b2976ac1f868c}} 
+\index{NetworkManager@{NetworkManager}!routingtable@{routingtable}}
+\index{routingtable@{routingtable}!NetworkManager@{NetworkManager}}
+\doxysubsubsection{\texorpdfstring{routingtable}{routingtable}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_routing_table}{Routing\+Table}} Network\+Manager\+::routingtable\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{class_network_manager_ac8de949b2c89c1871a2393578eb9685e}\label{class_network_manager_ac8de949b2c89c1871a2393578eb9685e}} 
+\index{NetworkManager@{NetworkManager}!usbserial@{usbserial}}
+\index{usbserial@{usbserial}!NetworkManager@{NetworkManager}}
+\doxysubsubsection{\texorpdfstring{usbserial}{usbserial}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_u_s_b}{USB}} Network\+Manager\+::usbserial\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+/\+Users/kiran/\+Documents/\+Projects/\+ICLR/\+Avionics/\+Ricardo\+\_\+\+OS/\+Ricardo\+\_\+\+OS/src/\+Comms/\mbox{\hyperlink{network_manager_8h}{network\+Manager.\+h}}\item 
+/\+Users/kiran/\+Documents/\+Projects/\+ICLR/\+Avionics/\+Ricardo\+\_\+\+OS/\+Ricardo\+\_\+\+OS/src/\+Comms/\mbox{\hyperlink{network_manager_8cpp}{network\+Manager.\+cpp}}\end{DoxyCompactItemize}

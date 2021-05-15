@@ -1,0 +1,58 @@
+\hypertarget{class_a_r_d_u_i_n_o_j_s_o_n___n_a_m_e_s_p_a_c_e_1_1_memory_pool}{}\doxysection{ARDUINOJSON\+\_\+\+NAMESPACE\+::Memory\+Pool Class Reference}
+\label{class_a_r_d_u_i_n_o_j_s_o_n___n_a_m_e_s_p_a_c_e_1_1_memory_pool}\index{ARDUINOJSON\_NAMESPACE::MemoryPool@{ARDUINOJSON\_NAMESPACE::MemoryPool}}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_a_r_d_u_i_n_o_j_s_o_n___n_a_m_e_s_p_a_c_e_1_1_memory_pool_aed1fd4d68734ea05ae4437172c28f4be}\label{class_a_r_d_u_i_n_o_j_s_o_n___n_a_m_e_s_p_a_c_e_1_1_memory_pool_aed1fd4d68734ea05ae4437172c28f4be}} 
+{\bfseries Memory\+Pool} (char $\ast$buf, size\+\_\+t capa)
+\item 
+\mbox{\Hypertarget{class_a_r_d_u_i_n_o_j_s_o_n___n_a_m_e_s_p_a_c_e_1_1_memory_pool_ac297c07cbf9d61b82cafa48d9605438e}\label{class_a_r_d_u_i_n_o_j_s_o_n___n_a_m_e_s_p_a_c_e_1_1_memory_pool_ac297c07cbf9d61b82cafa48d9605438e}} 
+void $\ast$ {\bfseries buffer} ()
+\item 
+\mbox{\Hypertarget{class_a_r_d_u_i_n_o_j_s_o_n___n_a_m_e_s_p_a_c_e_1_1_memory_pool_a2c4900b533e01674abe7273cac61df04}\label{class_a_r_d_u_i_n_o_j_s_o_n___n_a_m_e_s_p_a_c_e_1_1_memory_pool_a2c4900b533e01674abe7273cac61df04}} 
+size\+\_\+t {\bfseries capacity} () const
+\item 
+\mbox{\Hypertarget{class_a_r_d_u_i_n_o_j_s_o_n___n_a_m_e_s_p_a_c_e_1_1_memory_pool_a6ed0da799acaac2e8e3bc4bd8e806da5}\label{class_a_r_d_u_i_n_o_j_s_o_n___n_a_m_e_s_p_a_c_e_1_1_memory_pool_a6ed0da799acaac2e8e3bc4bd8e806da5}} 
+size\+\_\+t {\bfseries size} () const
+\item 
+\mbox{\Hypertarget{class_a_r_d_u_i_n_o_j_s_o_n___n_a_m_e_s_p_a_c_e_1_1_memory_pool_aa46804ed832aeb0efdbd700f14be1b7e}\label{class_a_r_d_u_i_n_o_j_s_o_n___n_a_m_e_s_p_a_c_e_1_1_memory_pool_aa46804ed832aeb0efdbd700f14be1b7e}} 
+bool {\bfseries overflowed} () const
+\item 
+\mbox{\Hypertarget{class_a_r_d_u_i_n_o_j_s_o_n___n_a_m_e_s_p_a_c_e_1_1_memory_pool_a6732c4067d4da4a1eb72ac072beb322c}\label{class_a_r_d_u_i_n_o_j_s_o_n___n_a_m_e_s_p_a_c_e_1_1_memory_pool_a6732c4067d4da4a1eb72ac072beb322c}} 
+\mbox{\hyperlink{class_a_r_d_u_i_n_o_j_s_o_n___n_a_m_e_s_p_a_c_e_1_1_variant_slot}{Variant\+Slot}} $\ast$ {\bfseries alloc\+Variant} ()
+\item 
+\mbox{\Hypertarget{class_a_r_d_u_i_n_o_j_s_o_n___n_a_m_e_s_p_a_c_e_1_1_memory_pool_a4479afccc6087142fde149c9333f851f}\label{class_a_r_d_u_i_n_o_j_s_o_n___n_a_m_e_s_p_a_c_e_1_1_memory_pool_a4479afccc6087142fde149c9333f851f}} 
+{\footnotesize template$<$typename TAdapted\+String $>$ }\\const char $\ast$ {\bfseries save\+String} (const TAdapted\+String \&str)
+\item 
+\mbox{\Hypertarget{class_a_r_d_u_i_n_o_j_s_o_n___n_a_m_e_s_p_a_c_e_1_1_memory_pool_aa3da3895456d0afccc07e56f4823808f}\label{class_a_r_d_u_i_n_o_j_s_o_n___n_a_m_e_s_p_a_c_e_1_1_memory_pool_aa3da3895456d0afccc07e56f4823808f}} 
+void {\bfseries get\+Free\+Zone} (char $\ast$$\ast$zone\+Start, size\+\_\+t $\ast$zone\+Size) const
+\item 
+\mbox{\Hypertarget{class_a_r_d_u_i_n_o_j_s_o_n___n_a_m_e_s_p_a_c_e_1_1_memory_pool_ac0ead41a488ac920c815413889f1d137}\label{class_a_r_d_u_i_n_o_j_s_o_n___n_a_m_e_s_p_a_c_e_1_1_memory_pool_ac0ead41a488ac920c815413889f1d137}} 
+const char $\ast$ {\bfseries save\+String\+From\+Free\+Zone} (size\+\_\+t len)
+\item 
+\mbox{\Hypertarget{class_a_r_d_u_i_n_o_j_s_o_n___n_a_m_e_s_p_a_c_e_1_1_memory_pool_a6020b50a569e2dd4a686a73c47545f2c}\label{class_a_r_d_u_i_n_o_j_s_o_n___n_a_m_e_s_p_a_c_e_1_1_memory_pool_a6020b50a569e2dd4a686a73c47545f2c}} 
+void {\bfseries mark\+As\+Overflowed} ()
+\item 
+\mbox{\Hypertarget{class_a_r_d_u_i_n_o_j_s_o_n___n_a_m_e_s_p_a_c_e_1_1_memory_pool_a182683a9694a1772461467ab3692d19f}\label{class_a_r_d_u_i_n_o_j_s_o_n___n_a_m_e_s_p_a_c_e_1_1_memory_pool_a182683a9694a1772461467ab3692d19f}} 
+void {\bfseries clear} ()
+\item 
+\mbox{\Hypertarget{class_a_r_d_u_i_n_o_j_s_o_n___n_a_m_e_s_p_a_c_e_1_1_memory_pool_ae91294262e7235f3979926f324a4ce87}\label{class_a_r_d_u_i_n_o_j_s_o_n___n_a_m_e_s_p_a_c_e_1_1_memory_pool_ae91294262e7235f3979926f324a4ce87}} 
+bool {\bfseries can\+Alloc} (size\+\_\+t bytes) const
+\item 
+\mbox{\Hypertarget{class_a_r_d_u_i_n_o_j_s_o_n___n_a_m_e_s_p_a_c_e_1_1_memory_pool_a746accec73d2ec2663b5a90493b702d5}\label{class_a_r_d_u_i_n_o_j_s_o_n___n_a_m_e_s_p_a_c_e_1_1_memory_pool_a746accec73d2ec2663b5a90493b702d5}} 
+bool {\bfseries owns} (void $\ast$p) const
+\item 
+\mbox{\Hypertarget{class_a_r_d_u_i_n_o_j_s_o_n___n_a_m_e_s_p_a_c_e_1_1_memory_pool_a7514e0f4d819f828af08e75057d63482}\label{class_a_r_d_u_i_n_o_j_s_o_n___n_a_m_e_s_p_a_c_e_1_1_memory_pool_a7514e0f4d819f828af08e75057d63482}} 
+void $\ast$ {\bfseries operator new} (size\+\_\+t, void $\ast$p)
+\item 
+\mbox{\Hypertarget{class_a_r_d_u_i_n_o_j_s_o_n___n_a_m_e_s_p_a_c_e_1_1_memory_pool_ad3c5af692a6cd9ea581ab1433987853e}\label{class_a_r_d_u_i_n_o_j_s_o_n___n_a_m_e_s_p_a_c_e_1_1_memory_pool_ad3c5af692a6cd9ea581ab1433987853e}} 
+ptrdiff\+\_\+t {\bfseries squash} ()
+\item 
+\mbox{\Hypertarget{class_a_r_d_u_i_n_o_j_s_o_n___n_a_m_e_s_p_a_c_e_1_1_memory_pool_ab4382a4aa9e227fe9d3295332235e504}\label{class_a_r_d_u_i_n_o_j_s_o_n___n_a_m_e_s_p_a_c_e_1_1_memory_pool_ab4382a4aa9e227fe9d3295332235e504}} 
+void {\bfseries move\+Pointers} (ptrdiff\+\_\+t offset)
+\end{DoxyCompactItemize}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+/\+Users/kiran/\+Documents/\+Projects/\+ICLR/\+Avionics/\+Ricardo\+\_\+\+OS/\+Ricardo\+\_\+\+OS/lib/\+Arduino\+Json-\/6.\+x/src/\+Arduino\+Json/\+Memory/Memory\+Pool.\+hpp\end{DoxyCompactItemize}

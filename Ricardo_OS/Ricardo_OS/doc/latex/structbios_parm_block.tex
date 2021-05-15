@@ -1,0 +1,179 @@
+\hypertarget{structbios_parm_block}{}\doxysection{bios\+Parm\+Block Struct Reference}
+\label{structbios_parm_block}\index{biosParmBlock@{biosParmBlock}}
+
+
+BIOS parameter block.  
+
+
+
+
+{\ttfamily \#include $<$Fat\+Structs.\+h$>$}
+
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+uint16\+\_\+t \mbox{\hyperlink{structbios_parm_block_aec24d316af486445d55da14cbbfa6bf4}{bytes\+Per\+Sector}}
+\item 
+uint8\+\_\+t \mbox{\hyperlink{structbios_parm_block_a45d5e2d8c93a028a074e8ce3dc751ab5}{sectors\+Per\+Cluster}}
+\item 
+uint16\+\_\+t \mbox{\hyperlink{structbios_parm_block_adb4830c345b27293c7d7b97b77f52e01}{reserved\+Sector\+Count}}
+\item 
+uint8\+\_\+t \mbox{\hyperlink{structbios_parm_block_a7c03f147c3fb18f0df03d346050af13b}{fat\+Count}}
+\item 
+uint16\+\_\+t \mbox{\hyperlink{structbios_parm_block_a9a1b24bb2dbb3a123c4ffc703954d71d}{root\+Dir\+Entry\+Count}}
+\item 
+uint16\+\_\+t \mbox{\hyperlink{structbios_parm_block_a686c686fde2fb109bea120f2f434db87}{total\+Sectors16}}
+\item 
+uint8\+\_\+t \mbox{\hyperlink{structbios_parm_block_a4237e7c3ba247516d546c149954e5042}{media\+Type}}
+\item 
+uint16\+\_\+t \mbox{\hyperlink{structbios_parm_block_a24d6e5a9069491d5db6dbe747336985b}{sectors\+Per\+Fat16}}
+\item 
+uint16\+\_\+t \mbox{\hyperlink{structbios_parm_block_a7c27cb7f66c2c9d5266d896e8df227c7}{sectors\+Per\+Trtack}}
+\item 
+uint16\+\_\+t \mbox{\hyperlink{structbios_parm_block_a2324ca82e2a7da4d91f458fa32a6e239}{head\+Count}}
+\item 
+uint32\+\_\+t \mbox{\hyperlink{structbios_parm_block_a9413199be8525190d40589f60c22bcab}{hiddden\+Sectors}}
+\item 
+uint32\+\_\+t \mbox{\hyperlink{structbios_parm_block_abead42e130c40e2aa535202e7cb07578}{total\+Sectors32}}
+\item 
+uint32\+\_\+t \mbox{\hyperlink{structbios_parm_block_ad80429df03a6b80f79b18cb6e1008d64}{sectors\+Per\+Fat32}}
+\item 
+uint16\+\_\+t \mbox{\hyperlink{structbios_parm_block_a626ac3dc473d764688b8171916eecf44}{fat32\+Flags}}
+\item 
+uint16\+\_\+t \mbox{\hyperlink{structbios_parm_block_abad4f6f0c14dad9f5b7d43de94e685e8}{fat32\+Version}}
+\item 
+uint32\+\_\+t \mbox{\hyperlink{structbios_parm_block_a77ca01bd99f746e05dd872cbd2979937}{fat32\+Root\+Cluster}}
+\item 
+uint16\+\_\+t \mbox{\hyperlink{structbios_parm_block_a25ea392d8284e6c1d007cb8fcad4b86c}{fat32\+FSInfo}}
+\item 
+uint16\+\_\+t \mbox{\hyperlink{structbios_parm_block_a7a4e93790b6e66f090c1551020b099bd}{fat32\+Back\+Boot\+Block}}
+\item 
+uint8\+\_\+t \mbox{\hyperlink{structbios_parm_block_a351f87fe3446b1a71963a30bbdc23218}{fat32\+Reserved}} \mbox{[}12\mbox{]}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+BIOS parameter block. 
+
+The BIOS parameter block describes the physical layout of a FAT volume. 
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{structbios_parm_block_aec24d316af486445d55da14cbbfa6bf4}\label{structbios_parm_block_aec24d316af486445d55da14cbbfa6bf4}} 
+\index{biosParmBlock@{biosParmBlock}!bytesPerSector@{bytesPerSector}}
+\index{bytesPerSector@{bytesPerSector}!biosParmBlock@{biosParmBlock}}
+\doxysubsubsection{\texorpdfstring{bytesPerSector}{bytesPerSector}}
+{\footnotesize\ttfamily uint16\+\_\+t bios\+Parm\+Block\+::bytes\+Per\+Sector}
+
+Count of bytes per sector. This value may take on only the following values\+: 512, 1024, 2048 or 4096 \mbox{\Hypertarget{structbios_parm_block_a7a4e93790b6e66f090c1551020b099bd}\label{structbios_parm_block_a7a4e93790b6e66f090c1551020b099bd}} 
+\index{biosParmBlock@{biosParmBlock}!fat32BackBootBlock@{fat32BackBootBlock}}
+\index{fat32BackBootBlock@{fat32BackBootBlock}!biosParmBlock@{biosParmBlock}}
+\doxysubsubsection{\texorpdfstring{fat32BackBootBlock}{fat32BackBootBlock}}
+{\footnotesize\ttfamily uint16\+\_\+t bios\+Parm\+Block\+::fat32\+Back\+Boot\+Block}
+
+If nonzero, indicates the sector number in the reserved area of the volume of a copy of the boot record. Usually 6. No value other than 6 is recommended. \mbox{\Hypertarget{structbios_parm_block_a626ac3dc473d764688b8171916eecf44}\label{structbios_parm_block_a626ac3dc473d764688b8171916eecf44}} 
+\index{biosParmBlock@{biosParmBlock}!fat32Flags@{fat32Flags}}
+\index{fat32Flags@{fat32Flags}!biosParmBlock@{biosParmBlock}}
+\doxysubsubsection{\texorpdfstring{fat32Flags}{fat32Flags}}
+{\footnotesize\ttfamily uint16\+\_\+t bios\+Parm\+Block\+::fat32\+Flags}
+
+This field is only defined for FAT32 media and does not exist on FAT12 and FAT16 media. Bits 0-\/3 -- Zero-\/based number of active FAT. Only valid if mirroring is disabled. Bits 4-\/6 -- Reserved. Bit 7 -- 0 means the FAT is mirrored at runtime into all FATs. -- 1 means only one FAT is active; it is the one referenced in bits 0-\/3. Bits 8-\/15 -- Reserved. \mbox{\Hypertarget{structbios_parm_block_a25ea392d8284e6c1d007cb8fcad4b86c}\label{structbios_parm_block_a25ea392d8284e6c1d007cb8fcad4b86c}} 
+\index{biosParmBlock@{biosParmBlock}!fat32FSInfo@{fat32FSInfo}}
+\index{fat32FSInfo@{fat32FSInfo}!biosParmBlock@{biosParmBlock}}
+\doxysubsubsection{\texorpdfstring{fat32FSInfo}{fat32FSInfo}}
+{\footnotesize\ttfamily uint16\+\_\+t bios\+Parm\+Block\+::fat32\+FSInfo}
+
+Sector number of FSINFO structure in the reserved area of the FAT32 volume. Usually 1. \mbox{\Hypertarget{structbios_parm_block_a351f87fe3446b1a71963a30bbdc23218}\label{structbios_parm_block_a351f87fe3446b1a71963a30bbdc23218}} 
+\index{biosParmBlock@{biosParmBlock}!fat32Reserved@{fat32Reserved}}
+\index{fat32Reserved@{fat32Reserved}!biosParmBlock@{biosParmBlock}}
+\doxysubsubsection{\texorpdfstring{fat32Reserved}{fat32Reserved}}
+{\footnotesize\ttfamily uint8\+\_\+t bios\+Parm\+Block\+::fat32\+Reserved\mbox{[}12\mbox{]}}
+
+Reserved for future expansion. Code that formats FAT32 volumes should always set all of the bytes of this field to 0. \mbox{\Hypertarget{structbios_parm_block_a77ca01bd99f746e05dd872cbd2979937}\label{structbios_parm_block_a77ca01bd99f746e05dd872cbd2979937}} 
+\index{biosParmBlock@{biosParmBlock}!fat32RootCluster@{fat32RootCluster}}
+\index{fat32RootCluster@{fat32RootCluster}!biosParmBlock@{biosParmBlock}}
+\doxysubsubsection{\texorpdfstring{fat32RootCluster}{fat32RootCluster}}
+{\footnotesize\ttfamily uint32\+\_\+t bios\+Parm\+Block\+::fat32\+Root\+Cluster}
+
+Cluster number of the first cluster of the root directory for FAT32. This usually 2 but not required to be 2. \mbox{\Hypertarget{structbios_parm_block_abad4f6f0c14dad9f5b7d43de94e685e8}\label{structbios_parm_block_abad4f6f0c14dad9f5b7d43de94e685e8}} 
+\index{biosParmBlock@{biosParmBlock}!fat32Version@{fat32Version}}
+\index{fat32Version@{fat32Version}!biosParmBlock@{biosParmBlock}}
+\doxysubsubsection{\texorpdfstring{fat32Version}{fat32Version}}
+{\footnotesize\ttfamily uint16\+\_\+t bios\+Parm\+Block\+::fat32\+Version}
+
+FAT32 version. High byte is major revision number. Low byte is minor revision number. Only 0.\+0 define. \mbox{\Hypertarget{structbios_parm_block_a7c03f147c3fb18f0df03d346050af13b}\label{structbios_parm_block_a7c03f147c3fb18f0df03d346050af13b}} 
+\index{biosParmBlock@{biosParmBlock}!fatCount@{fatCount}}
+\index{fatCount@{fatCount}!biosParmBlock@{biosParmBlock}}
+\doxysubsubsection{\texorpdfstring{fatCount}{fatCount}}
+{\footnotesize\ttfamily uint8\+\_\+t bios\+Parm\+Block\+::fat\+Count}
+
+The count of FAT data structures on the volume. This field should always contain the value 2 for any FAT volume of any type. \mbox{\Hypertarget{structbios_parm_block_a2324ca82e2a7da4d91f458fa32a6e239}\label{structbios_parm_block_a2324ca82e2a7da4d91f458fa32a6e239}} 
+\index{biosParmBlock@{biosParmBlock}!headCount@{headCount}}
+\index{headCount@{headCount}!biosParmBlock@{biosParmBlock}}
+\doxysubsubsection{\texorpdfstring{headCount}{headCount}}
+{\footnotesize\ttfamily uint16\+\_\+t bios\+Parm\+Block\+::head\+Count}
+
+Number of heads for interrupt 0x13. Not used otherwise. \mbox{\Hypertarget{structbios_parm_block_a9413199be8525190d40589f60c22bcab}\label{structbios_parm_block_a9413199be8525190d40589f60c22bcab}} 
+\index{biosParmBlock@{biosParmBlock}!hidddenSectors@{hidddenSectors}}
+\index{hidddenSectors@{hidddenSectors}!biosParmBlock@{biosParmBlock}}
+\doxysubsubsection{\texorpdfstring{hidddenSectors}{hidddenSectors}}
+{\footnotesize\ttfamily uint32\+\_\+t bios\+Parm\+Block\+::hiddden\+Sectors}
+
+Count of hidden sectors preceding the partition that contains this FAT volume. This field is generally only relevant for media visible on interrupt 0x13. \mbox{\Hypertarget{structbios_parm_block_a4237e7c3ba247516d546c149954e5042}\label{structbios_parm_block_a4237e7c3ba247516d546c149954e5042}} 
+\index{biosParmBlock@{biosParmBlock}!mediaType@{mediaType}}
+\index{mediaType@{mediaType}!biosParmBlock@{biosParmBlock}}
+\doxysubsubsection{\texorpdfstring{mediaType}{mediaType}}
+{\footnotesize\ttfamily uint8\+\_\+t bios\+Parm\+Block\+::media\+Type}
+
+This dates back to the old MS-\/\+DOS 1.\+x media determination and is no longer usually used for anything. 0x\+F8 is the standard value for fixed (nonremovable) media. For removable media, 0x\+F0 is frequently used. Legal values are 0x\+F0 or 0x\+F8-\/0x\+FF. \mbox{\Hypertarget{structbios_parm_block_adb4830c345b27293c7d7b97b77f52e01}\label{structbios_parm_block_adb4830c345b27293c7d7b97b77f52e01}} 
+\index{biosParmBlock@{biosParmBlock}!reservedSectorCount@{reservedSectorCount}}
+\index{reservedSectorCount@{reservedSectorCount}!biosParmBlock@{biosParmBlock}}
+\doxysubsubsection{\texorpdfstring{reservedSectorCount}{reservedSectorCount}}
+{\footnotesize\ttfamily uint16\+\_\+t bios\+Parm\+Block\+::reserved\+Sector\+Count}
+
+Number of sectors before the first FAT. This value must not be zero. \mbox{\Hypertarget{structbios_parm_block_a9a1b24bb2dbb3a123c4ffc703954d71d}\label{structbios_parm_block_a9a1b24bb2dbb3a123c4ffc703954d71d}} 
+\index{biosParmBlock@{biosParmBlock}!rootDirEntryCount@{rootDirEntryCount}}
+\index{rootDirEntryCount@{rootDirEntryCount}!biosParmBlock@{biosParmBlock}}
+\doxysubsubsection{\texorpdfstring{rootDirEntryCount}{rootDirEntryCount}}
+{\footnotesize\ttfamily uint16\+\_\+t bios\+Parm\+Block\+::root\+Dir\+Entry\+Count}
+
+For FAT12 and FAT16 volumes, this field contains the count of 32-\/byte directory entries in the root directory. For FAT32 volumes, this field must be set to 0. For FAT12 and FAT16 volumes, this value should always specify a count that when multiplied by 32 results in a multiple of bytes\+Per\+Sector. FAT16 volumes should use the value 512. \mbox{\Hypertarget{structbios_parm_block_a45d5e2d8c93a028a074e8ce3dc751ab5}\label{structbios_parm_block_a45d5e2d8c93a028a074e8ce3dc751ab5}} 
+\index{biosParmBlock@{biosParmBlock}!sectorsPerCluster@{sectorsPerCluster}}
+\index{sectorsPerCluster@{sectorsPerCluster}!biosParmBlock@{biosParmBlock}}
+\doxysubsubsection{\texorpdfstring{sectorsPerCluster}{sectorsPerCluster}}
+{\footnotesize\ttfamily uint8\+\_\+t bios\+Parm\+Block\+::sectors\+Per\+Cluster}
+
+Number of sectors per allocation unit. This value must be a power of 2 that is greater than 0. The legal values are 1, 2, 4, 8, 16, 32, 64, and 128. \mbox{\Hypertarget{structbios_parm_block_a24d6e5a9069491d5db6dbe747336985b}\label{structbios_parm_block_a24d6e5a9069491d5db6dbe747336985b}} 
+\index{biosParmBlock@{biosParmBlock}!sectorsPerFat16@{sectorsPerFat16}}
+\index{sectorsPerFat16@{sectorsPerFat16}!biosParmBlock@{biosParmBlock}}
+\doxysubsubsection{\texorpdfstring{sectorsPerFat16}{sectorsPerFat16}}
+{\footnotesize\ttfamily uint16\+\_\+t bios\+Parm\+Block\+::sectors\+Per\+Fat16}
+
+Count of sectors occupied by one FAT on FAT12/\+FAT16 volumes. On FAT32 volumes this field must be 0, and sectors\+Per\+Fat32 contains the FAT size count. \mbox{\Hypertarget{structbios_parm_block_ad80429df03a6b80f79b18cb6e1008d64}\label{structbios_parm_block_ad80429df03a6b80f79b18cb6e1008d64}} 
+\index{biosParmBlock@{biosParmBlock}!sectorsPerFat32@{sectorsPerFat32}}
+\index{sectorsPerFat32@{sectorsPerFat32}!biosParmBlock@{biosParmBlock}}
+\doxysubsubsection{\texorpdfstring{sectorsPerFat32}{sectorsPerFat32}}
+{\footnotesize\ttfamily uint32\+\_\+t bios\+Parm\+Block\+::sectors\+Per\+Fat32}
+
+Count of sectors occupied by one FAT on FAT32 volumes. \mbox{\Hypertarget{structbios_parm_block_a7c27cb7f66c2c9d5266d896e8df227c7}\label{structbios_parm_block_a7c27cb7f66c2c9d5266d896e8df227c7}} 
+\index{biosParmBlock@{biosParmBlock}!sectorsPerTrtack@{sectorsPerTrtack}}
+\index{sectorsPerTrtack@{sectorsPerTrtack}!biosParmBlock@{biosParmBlock}}
+\doxysubsubsection{\texorpdfstring{sectorsPerTrtack}{sectorsPerTrtack}}
+{\footnotesize\ttfamily uint16\+\_\+t bios\+Parm\+Block\+::sectors\+Per\+Trtack}
+
+Sectors per track for interrupt 0x13. Not used otherwise. \mbox{\Hypertarget{structbios_parm_block_a686c686fde2fb109bea120f2f434db87}\label{structbios_parm_block_a686c686fde2fb109bea120f2f434db87}} 
+\index{biosParmBlock@{biosParmBlock}!totalSectors16@{totalSectors16}}
+\index{totalSectors16@{totalSectors16}!biosParmBlock@{biosParmBlock}}
+\doxysubsubsection{\texorpdfstring{totalSectors16}{totalSectors16}}
+{\footnotesize\ttfamily uint16\+\_\+t bios\+Parm\+Block\+::total\+Sectors16}
+
+This field is the old 16-\/bit total count of sectors on the volume. This count includes the count of all sectors in all four regions of the volume. This field can be 0; if it is 0, then total\+Sectors32 must be nonzero. For FAT32 volumes, this field must be 0. For FAT12 and FAT16 volumes, this field contains the sector count, and total\+Sectors32 is 0 if the total sector count fits (is less than 0x10000). \mbox{\Hypertarget{structbios_parm_block_abead42e130c40e2aa535202e7cb07578}\label{structbios_parm_block_abead42e130c40e2aa535202e7cb07578}} 
+\index{biosParmBlock@{biosParmBlock}!totalSectors32@{totalSectors32}}
+\index{totalSectors32@{totalSectors32}!biosParmBlock@{biosParmBlock}}
+\doxysubsubsection{\texorpdfstring{totalSectors32}{totalSectors32}}
+{\footnotesize\ttfamily uint32\+\_\+t bios\+Parm\+Block\+::total\+Sectors32}
+
+This field is the new 32-\/bit total count of sectors on the volume. This count includes the count of all sectors in all four regions of the volume. This field can be 0; if it is 0, then total\+Sectors16 must be nonzero. 
+
+The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+/\+Users/kiran/\+Documents/\+Projects/\+ICLR/\+Avionics/\+Ricardo\+\_\+\+OS/\+Ricardo\+\_\+\+OS/lib/\+Sd\+Fat-\/master-\/adafruit\+\_\+fork/src/\+Fat\+Lib/\mbox{\hyperlink{_fat_structs_8h}{Fat\+Structs.\+h}}\end{DoxyCompactItemize}
