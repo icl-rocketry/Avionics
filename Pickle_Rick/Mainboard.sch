@@ -793,17 +793,6 @@ U 5DB9F80E
 F0 "power" 50
 F1 "power.sch" 50
 $EndSheet
-$Comp
-L Device:Buzzer BZ1
-U 1 1 5DBF25B1
-P 9000 2800
-F 0 "BZ1" H 9152 2829 50  0000 L CNN
-F 1 "Buzzer" H 9150 2750 50  0000 L CNN
-F 2 "Buzzer_Beeper:Buzzer_TDK_PS1240P02BT_D12.2mm_H6.5mm" V 8975 2900 50  0001 C CNN
-F 3 "~" V 8975 2900 50  0001 C CNN
-	1    9000 2800
-	1    0    0    -1  
-$EndComp
 Wire Wire Line
 	5200 2750 5200 2650
 Wire Wire Line
@@ -1962,10 +1951,6 @@ Wire Wire Line
 	9650 4150 9350 4150
 Wire Wire Line
 	8900 2650 8750 2650
-Wire Wire Line
-	8900 2650 8900 2700
-Wire Wire Line
-	8900 2900 8900 2950
 Connection ~ 9600 4350
 $Comp
 L Sensor_Pressure:MS5607-02BA U5
@@ -2101,4 +2086,19 @@ Text Label 7950 3550 0    50   ~ 0
 Buzzer
 Wire Wire Line
 	7950 3550 8450 3550
+$Comp
+L Connector_Generic:Conn_01x02 J13
+U 1 1 60A3FF9E
+P 9100 2750
+F 0 "J13" H 9180 2742 50  0000 L CNN
+F 1 "Conn_01x02" H 9180 2651 50  0000 L CNN
+F 2 "Connector_JST:JST_XH_B2B-XH-A_1x02_P2.50mm_Vertical" H 9100 2750 50  0001 C CNN
+F 3 "~" H 9100 2750 50  0001 C CNN
+	1    9100 2750
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	8900 2650 8900 2750
+Wire Wire Line
+	8900 2850 8900 2950
 $EndSCHEMATC

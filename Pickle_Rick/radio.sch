@@ -30,7 +30,7 @@ U 1 1 5DE351BF
 P 6750 3450
 F 0 "J5" H 6850 3425 50  0000 L CNN
 F 1 "Conn_Coaxial" H 6850 3334 50  0000 L CNN
-F 2 "Connector_Coaxial:SMA_Molex_73251-1153_EdgeMount_Horizontal" H 6750 3450 50  0001 C CNN
+F 2 "Connector_Coaxial:U.FL_Hirose_U.FL-R-SMT-1_Vertical" H 6750 3450 50  0001 C CNN
 F 3 " ~" H 6750 3450 50  0001 C CNN
 	1    6750 3450
 	1    0    0    -1  
