@@ -1,890 +1,456 @@
-204306375995606
-Package_TO_SOT_SMD
-ATPAK-2
-ATPAK SMD package, http://www.onsemi.com/pub/Collateral/ENA2192-D.PDF
-ATPAK 
+104566255431019
+Package_SON
+Diodes_PowerDI3333-8
+Diodes Incorporated PowerDI3333-8, Plastic Dual Flat No Lead Package, 3.3x3.3x0.8mm Body, https://www.diodes.com/assets/Package-Files/PowerDI3333-8.pdf
+PowerDI 0.65
 0
-7
-3
-Package_TO_SOT_SMD
-Analog_KS-4
-Analog Devices KS-4, http://www.analog.com/media/en/package-pcb-resources/package/pkg_pdf/sc70ks/ks_4.pdf
-Analog Devices KS-4 (like EIAJ SC-82)
-0
-4
-4
-Package_TO_SOT_SMD
-Diodes_SOT-553
-Diodes SOT-553, https://www.diodes.com/assets/Package-Files/SOT553.pdf
-SOT-553
-0
+13
 5
-5
-Package_TO_SOT_SMD
-HVSOF5
-HVSOF5, http://rohmfs.rohm.com/en/techdata_basic/ic/package/hvsof5_1-e.pdf, http://rohmfs.rohm.com/en/products/databook/datasheet/ic/sensor/hall/bu52001gul-e.pdf
-HVSOF5
-0
-5
-5
-Package_TO_SOT_SMD
-HVSOF6
-HVSOF6, http://rohmfs.rohm.com/en/techdata_basic/ic/package/hvsof6_1-e.pdf, http://rohmfs.rohm.com/en/products/databook/datasheet/ic/audio_video/video_amplifier/bh76106hfv-e.pdf
-HVSOF6
-0
-7
-7
-Package_TO_SOT_SMD
-Infineon_PG-HDSOP-10-1
-Infineon PG-HDSOP-10-1 (DDPAK), 20.96x6.5x2.3mm, slug up (https://www.infineon.com/cms/en/product/packages/PG-HDSOP/PG-HDSOP-10-1/)
-hdsop 10 ddpak
-0
-10
-10
-Package_TO_SOT_SMD
-Infineon_PG-HSOF-8-1
-HSOF-8-1 [TOLL] power MOSFET (http://www.infineon.com/cms/en/product/packages/PG-HSOF/PG-HSOF-8-1/)
-mosfet hsof toll
-0
-53
-3
-Package_TO_SOT_SMD
-Infineon_PG-HSOF-8-1_ThermalVias
-HSOF-8-1 [TOLL] power MOSFET (http://www.infineon.com/cms/en/product/packages/PG-HSOF/PG-HSOF-8-1/)
-mosfet hsof toll thermal vias
-0
-96
-3
-Package_TO_SOT_SMD
-Infineon_PG-HSOF-8-2
-HSOF-8-2 [TOLL] power MOSFET (http://www.infineon.com/cms/en/product/packages/PG-HSOF/PG-HSOF-8-2/)
-mosfet hsof toll
-0
-12
-4
-Package_TO_SOT_SMD
-Infineon_PG-HSOF-8-2_ThermalVias
-HSOF-8-2 [TOLL] power MOSFET (http://www.infineon.com/cms/en/product/packages/PG-HSOF/PG-HSOF-8-2/)
-mosfet hsof toll thermal vias
-0
-97
-4
-Package_TO_SOT_SMD
-Infineon_PG-HSOF-8-2_ThermalVias2
-HSOF-8-2 [TOLL] power MOSFET (http://www.infineon.com/cms/en/product/packages/PG-HSOF/PG-HSOF-8-2/, https://www.infineon.com/dgdl/Infineon-ApplicationNote_600V_CoolMOS_C7_Gold_TOLL-AN-v01_00-EN.pdf?fileId=5546d4625b10283a015b144a1af70df6)
-mosfet hsof toll thermal vias
-0
-159
-4
-Package_TO_SOT_SMD
-Infineon_PG-HSOF-8-3
-HSOF-8-3 power MOSFET (http://www.infineon.com/cms/en/product/packages/PG-HSOF/PG-HSOF-8-3/)
-mosfet hsof
-0
-25
-4
-Package_TO_SOT_SMD
-Infineon_PG-HSOF-8-3_ThermalVias
-HSOF-8-3 power MOSFET (http://www.infineon.com/cms/en/product/packages/PG-HSOF/PG-HSOF-8-3/)
-mosfet hsof
-0
-64
-4
-Package_TO_SOT_SMD
-Infineon_PG-TO-220-7Lead_TabPin8
-Infineon PG-TO-220-7, Tab as Pin 8, see e.g. https://www.infineon.com/dgdl/Infineon-BTS50055-1TMC-DS-v01_00-EN.pdf?fileId=5546d4625a888733015aa9b0007235e9
-Infineon PG-TO-220-7
-0
-12
-8
-Package_TO_SOT_SMD
-LFPAK33
-LFPAK33 SOT-1210 https://assets.nexperia.com/documents/outline-drawing/SOT1210.pdf
-LFPAK33 SOT-1210
-0
-17
-5
-Package_TO_SOT_SMD
-LFPAK56
-LFPAK56 https://assets.nexperia.com/documents/outline-drawing/SOT669.pdf
-LFPAK56 SOT-669 Power-SO8
+Package_SON
+Fairchild_DualPower33-6_3x3mm
+Fairchild Power33 MOSFET package, 3x3mm (see https://www.fairchildsemi.com/datasheets/FD/FDMC8032L.pdf)
+mosfet
 0
 18
-5
-Package_TO_SOT_SMD
-OnSemi_ECH8
-On Semiconductor ECH8, https://www.onsemi.com/pub/Collateral/318BF.PDF
-ECH8 SOT28-FL SOT-28-FL
+6
+Package_SON
+Fairchild_MicroPak-6_1.0x1.45mm_P0.5mm
+Fairchild-specific MicroPak-6 1.0x1.45mm Pitch 0.5mm https://www.nxp.com/docs/en/application-note/AN10343.pdff
+Fairchild-specific MicroPak-6 1.0x1.45mm Pitch 0.5mm
 0
-8
-8
-Package_TO_SOT_SMD
-PQFN_8x8
-Low Profile 8x8mm PQFN, Dual Cool 88, https://www.onsemi.com/pub/Collateral/FDMT80080DC-D.pdf
-pqfn vdfn mosfet
+6
+6
+Package_SON
+Fairchild_MicroPak2-6_1.0x1.0mm_P0.35mm
+Fairchild-specific MicroPak2-6 1.0x1.0mm Pitch 0.35mm https://www.nxp.com/docs/en/application-note/AN10343.pdff
+Fairchild-specific MicroPak2-6 1.0x1.0mm Pitch 0.35mm
 0
-9
+6
+6
+Package_SON
+HUSON-3-1EP_2x2mm_P1.3mm_EP1.1x1.6mm
+HUSON, 3 Pin, SOT1061 (Ref: https://assets.nexperia.com/documents/data-sheet/PMEG2020CPA.pdf)
+huson nolead SOT1061
+0
+4
 3
-Package_TO_SOT_SMD
-PowerMacro_M234_NoHole
-TO-50-4 Power Macro Package Style M234
-TO-50-4 Power Macro Package Style M234
+Package_SON
+HVSON-8-1EP_3x3mm_P0.65mm_EP1.6x2.4mm
+HVSON, 8 Pin (https://www.nxp.com/docs/en/data-sheet/TJA1051.pdf#page=16), generated with kicad-footprint-generator ipc_noLead_generator.py
+HVSON NoLead
 0
-4
-4
-Package_TO_SOT_SMD
-PowerMacro_M234_WithHole
-TO-50-4 Power Macro Package Style M234
-TO-50-4 Power Macro Package Style M234
+13
+9
+Package_SON
+HVSON-8-1EP_4x4mm_P0.8mm_EP2.2x3.1mm
+HVSON, 8 Pin (https://www.nxp.com/docs/en/data-sheet/PCF8523.pdf (page 57)), generated with kicad-footprint-generator ipc_noLead_generator.py
+HVSON NoLead
 0
-4
-4
-Package_TO_SOT_SMD
-Rohm_HRP7
-Rohm HRP7 SMD package, http://rohmfs.rohm.com/en/techdata_basic/ic/package/hrp7_1-e.pdf, http://rohmfs.rohm.com/en/products/databook/datasheet/ic/motor/dc/bd621x-e.pdf
-Rohm HRP7 SMD
+13
+9
+Package_SON
+Infineon_PG-LSON-8-1
+https://www.infineon.com/cms/en/product/packages/PG-LSON/PG-LSON-8-1/
+PG-LSON-8-1
 0
-69
+17
+9
+Package_SON
+Infineon_PG-TISON-8-2
+Infineon, PG-TISON-8-2, 5x6x1.15mm, 1.27mm Pitch, Exposed Paddle, https://www.infineon.com/cms/en/product/packages/PG-TISON/PG-TISON-8-2/
+tison
+0
+23
 7
-Package_TO_SOT_SMD
-SC-59
-SC-59, https://lib.chipdip.ru/images/import_diod/original/SOT-23_SC-59.jpg
-SC-59
-0
-3
-3
-Package_TO_SOT_SMD
-SC-59_Handsoldering
-SC-59, hand-soldering varaint, https://lib.chipdip.ru/images/import_diod/original/SOT-23_SC-59.jpg
-SC-59 hand-soldering
-0
-3
-3
-Package_TO_SOT_SMD
-SC-70-8
-SC70-8
-SC70-8
-0
-8
-8
-Package_TO_SOT_SMD
-SC-70-8_Handsoldering
-SC70-8, Handsoldering
-SC70-8 Handsoldering
-0
-8
-8
-Package_TO_SOT_SMD
-SC-82AA
-SC-82AA
-SC-82AA
-0
-4
-4
-Package_TO_SOT_SMD
-SC-82AA_Handsoldering
-SC-82AA
-SC-82AA
-0
-4
-4
-Package_TO_SOT_SMD
-SC-82AB
-SC-82AB
-SC-82AB
-0
-4
-4
-Package_TO_SOT_SMD
-SC-82AB_Handsoldering
-SC-82AB
-SC-82AB
-0
-4
-4
-Package_TO_SOT_SMD
-SOT-23
-SOT-23, Standard
-SOT-23
-0
-3
-3
-Package_TO_SOT_SMD
-SOT-23-5
-5-pin SOT23 package
-SOT-23-5
-0
-5
-5
-Package_TO_SOT_SMD
-SOT-23-5_HandSoldering
-5-pin SOT23 package
-SOT-23-5 hand-soldering
-0
-5
-5
-Package_TO_SOT_SMD
-SOT-23-6
-6-pin SOT-23 package
-SOT-23-6
-0
-6
-6
-Package_TO_SOT_SMD
-SOT-23-6_Handsoldering
-6-pin SOT-23 package, Handsoldering
-SOT-23-6 Handsoldering
-0
-6
-6
-Package_TO_SOT_SMD
-SOT-23-8
-8-pin SOT-23 package, http://www.analog.com/media/en/package-pcb-resources/package/pkg_pdf/sot-23rj/rj_8.pdf
-SOT-23-8
-0
-8
-8
-Package_TO_SOT_SMD
-SOT-23-8_Handsoldering
-8-pin SOT-23 package, Handsoldering, http://www.analog.com/media/en/package-pcb-resources/package/pkg_pdf/sot-23rj/rj_8.pdf
-SOT-23-8 Handsoldering
-0
-8
-8
-Package_TO_SOT_SMD
-SOT-23W
-SOT-23W http://www.allegromicro.com/~/media/Files/Datasheets/A112x-Datasheet.ashx?la=en&hash=7BC461E058CC246E0BAB62433B2F1ECA104CA9D3
-SOT-23W
-0
-3
-3
-Package_TO_SOT_SMD
-SOT-23W_Handsoldering
-SOT-23W http://www.allegromicro.com/~/media/Files/Datasheets/A112x-Datasheet.ashx?la=en&hash=7BC461E058CC246E0BAB62433B2F1ECA104CA9D3
-SOT-23W for handsoldering
-0
-3
-3
-Package_TO_SOT_SMD
-SOT-23_Handsoldering
-SOT-23, Handsoldering
-SOT-23
-0
-3
-3
-Package_TO_SOT_SMD
-SOT-89-3
-SOT-89-3, http://ww1.microchip.com/downloads/en/DeviceDoc/3L_SOT-89_MB_C04-029C.pdf
-SOT-89-3
-0
-3
-3
-Package_TO_SOT_SMD
-SOT-89-3_Handsoldering
-SOT-89-3 Handsoldering
-SOT-89-3 Handsoldering
-0
-3
-3
-Package_TO_SOT_SMD
-SOT-89-5
-SOT-89-5, http://www.e-devices.ricoh.co.jp/en/products/product_power/pkg/sot-89-5.pdf
-SOT-89-5
-0
-5
-5
-Package_TO_SOT_SMD
-SOT-89-5_Handsoldering
-SOT-89-5, http://www.e-devices.ricoh.co.jp/en/products/product_power/pkg/sot-89-5.pdf
-SOT-89-5
-0
-5
-5
-Package_TO_SOT_SMD
-SOT-143
-SOT-143
-SOT-143
-0
-4
-4
-Package_TO_SOT_SMD
-SOT-143R_Reverse
-SOT-143R Reverse
-SOT-143R Reverse
-0
-4
-4
-Package_TO_SOT_SMD
-SOT-143R_Reverse_Handsoldering
-SOT-143R Reverse Handsoldering
-SOT-143 Reverse Handsoldering
-0
-4
-4
-Package_TO_SOT_SMD
-SOT-143_Handsoldering
-SOT-143 Handsoldering
-SOT-143 Handsoldering
-0
-4
-4
-Package_TO_SOT_SMD
-SOT-223
-module CMS SOT223 4 pins
-CMS SOT
-0
-4
-4
-Package_TO_SOT_SMD
-SOT-223-3_TabPin2
-module CMS SOT223 4 pins
-CMS SOT
-0
-4
-3
-Package_TO_SOT_SMD
-SOT-223-5
-module CMS SOT223 5 pins, http://ww1.microchip.com/downloads/en/DeviceDoc/51751a.pdf
-CMS SOT
-0
-5
-5
-Package_TO_SOT_SMD
-SOT-223-6
-module CMS SOT223 6 pins, http://www.ti.com/lit/ds/symlink/tps737.pdf
-CMS SOT
-0
-6
-6
-Package_TO_SOT_SMD
-SOT-223-6_TabPin3
-module CMS SOT223 6 pins, http://www.ti.com/lit/ds/symlink/tps737.pdf
-CMS SOT
-0
-6
-5
-Package_TO_SOT_SMD
-SOT-223-8
-module CMS SOT223 8 pins, https://www.diodes.com/assets/Datasheets/ZXSBMR16PT8.pdf
-CMS SOT
-0
-8
-8
-Package_TO_SOT_SMD
-SOT-323_SC-70
-SOT-323, SC-70
-SOT-323 SC-70
-0
-3
-3
-Package_TO_SOT_SMD
-SOT-323_SC-70_Handsoldering
-SOT-323, SC-70 Handsoldering
-SOT-323 SC-70 Handsoldering
-0
-3
-3
-Package_TO_SOT_SMD
-SOT-343_SC-70-4
-SOT-343, SC-70-4
-SOT-343 SC-70-4
-0
-4
-4
-Package_TO_SOT_SMD
-SOT-343_SC-70-4_Handsoldering
-SOT-343, SC-70-4, Handsoldering
-SOT-343 SC-70-4 Handsoldering
-0
-4
-4
-Package_TO_SOT_SMD
-SOT-353_SC-70-5
-SOT-353, SC-70-5
-SOT-353 SC-70-5
-0
-5
-5
-Package_TO_SOT_SMD
-SOT-353_SC-70-5_Handsoldering
-SOT-353, SC-70-5, Handsoldering
-SOT-353 SC-70-5 Handsoldering
-0
-5
-5
-Package_TO_SOT_SMD
-SOT-363_SC-70-6
-SOT-363, SC-70-6
-SOT-363 SC-70-6
-0
-6
-6
-Package_TO_SOT_SMD
-SOT-363_SC-70-6_Handsoldering
-SOT-363, SC-70-6, Handsoldering
-SOT-363 SC-70-6 Handsoldering
-0
-6
-6
-Package_TO_SOT_SMD
-SOT-383F
-8-pin SOT-383F, http://www.mouser.com/ds/2/80/CPDVR085V0C-HF-RevB-10783.pdf
-SOT-383F
-0
-9
-9
-Package_TO_SOT_SMD
-SOT-383FL
-8-pin SOT-383FL package, http://www.onsemi.com/pub_link/Collateral/ENA2267-D.PDF
-SOT-383FL
-0
-8
-8
-Package_TO_SOT_SMD
-SOT-416
-SOT-416, https://www.nxp.com/docs/en/package-information/SOT416.pdf
-SOT-416
-0
-3
-3
-Package_TO_SOT_SMD
-SOT-523
-SOT523, https://www.diodes.com/assets/Package-Files/SOT523.pdf
-SOT-523
-0
-3
-3
-Package_TO_SOT_SMD
-SOT-543
-SOT-543 4 lead surface package
-SOT-543 SC-107A EMD4
-0
-4
-4
-Package_TO_SOT_SMD
-SOT-553
-SOT553
-SOT-553
-0
-5
-5
-Package_TO_SOT_SMD
-SOT-563
-SOT563
-SOT-563
-0
-6
-6
-Package_TO_SOT_SMD
-SOT-665
-SOT665
-SOT-665
-0
-5
-5
-Package_TO_SOT_SMD
-SOT-666
-SOT666
-SOT-666
-0
-6
-6
-Package_TO_SOT_SMD
-SOT-723
-http://toshiba.semicon-storage.com/info/docget.jsp?did=5879&prodName=RN1104MFV
-sot 723
-0
-3
-3
-Package_TO_SOT_SMD
-SOT-883
-SOT-883, https://assets.nexperia.com/documents/outline-drawing/SOT883.pdf
-SOT-883
-0
-3
-3
-Package_TO_SOT_SMD
-SOT-886
-SOT-886
-SOT-886
-0
-6
-6
-Package_TO_SOT_SMD
-SOT-963
-SOT 963 6 pins package 1x0.8mm pitch 0.35mm
-SOT 963 6 pins package 1x0.8mm pitch 0.35mm
-0
-6
-6
-Package_TO_SOT_SMD
-SOT-1123
-SOT-1123 small outline transistor (see http://www.onsemi.com/pub/Collateral/NST3906F3-D.PDF)
-SOT-1123 transistor
-0
-3
-3
-Package_TO_SOT_SMD
-SOT-1333-1
-SOT-1333-1 
-SOT-1333-1 
-0
-9
-9
-Package_TO_SOT_SMD
-SOT-1334-1
-SOT-1334-1
-SOT-1334-1
-0
-14
-14
-Package_TO_SOT_SMD
-SuperSOT-3
-3-pin SuperSOT package https://www.fairchildsemi.com/package-drawings/MA/MA03B.pdf
-SuperSOT-3 SSOT-3
-0
-3
-3
-Package_TO_SOT_SMD
-SuperSOT-6
-6-pin SuperSOT package http://www.mouser.com/ds/2/149/FMB5551-889214.pdf
-SuperSOT-6 SSOT-6
-0
-6
-6
-Package_TO_SOT_SMD
-SuperSOT-8
-8-pin SuperSOT package, http://www.icbank.com/icbank_data/semi_package/ssot8_dim.pdf
-SuperSOT-8 SSOT-8
-0
-8
-8
-Package_TO_SOT_SMD
-TDSON-8-1
-Power MOSFET package, TDSON-8-1, 5.15x5.9mm (https://www.infineon.com/cms/en/product/packages/PG-TDSON/PG-TDSON-8-1/)
-tdson 
-0
-14
-5
-Package_TO_SOT_SMD
-TO-50-3_LongPad-NoHole_Housing
-TO-50-3 Macro T Package Style M236
-TO-50-3 Macro T Package Style M236
-0
-3
-3
-Package_TO_SOT_SMD
-TO-50-3_LongPad-WithHole_Housing
-TO-50-3 Macro T Package Style M236
-TO-50-3 Macro T Package Style M236
-0
-3
-3
-Package_TO_SOT_SMD
-TO-50-3_ShortPad-NoHole_Housing
-TO-50-3 Macro T Package Style M236
-TO-50-3 Macro T Package Style M236
-0
-3
-3
-Package_TO_SOT_SMD
-TO-50-3_ShortPad-WithHole_Housing
-TO-50-3 Macro T Package Style M236
-TO-50-3 Macro T Package Style M236
-0
-3
-3
-Package_TO_SOT_SMD
-TO-50-4_LongPad-NoHole_Housing
-TO-50-4 Macro X Package Style M238
-TO-50-4 Macro X Package Style M238
-0
-4
-4
-Package_TO_SOT_SMD
-TO-50-4_LongPad-WithHole_Housing
-TO-50-4 Macro X Package Style M238
-TO-50-4 Macro X Package Style M238
-0
-4
-4
-Package_TO_SOT_SMD
-TO-50-4_ShortPad-NoHole_Housing
-TO-50-4 Macro X Package Style M238
-TO-50-4 Macro X Package Style M238
-0
-4
-4
-Package_TO_SOT_SMD
-TO-50-4_ShortPad-WithHole_Housing
-TO-50-4 Macro X Package Style M238
-TO-50-4 Macro X Package Style M238
-0
-4
-4
-Package_TO_SOT_SMD
-TO-252-2
-TO-252 / DPAK SMD package, http://www.infineon.com/cms/en/product/packages/PG-TO252/PG-TO252-3-1/
-DPAK TO-252 DPAK-3 TO-252-3 SOT-428
-0
+Package_SON
+Infineon_PG-TISON-8-3
+Infineon, PG-TISON-8-2, 5x6x1.15mm, 1.27mm Pitch, Exposed Paddle, https://www.infineon.com/cms/en/product/packages/PG-TISON/PG-TISON-8-2/
+tison
+0
+23
 7
-3
-Package_TO_SOT_SMD
-TO-252-2_TabPin1
-TO-252-2, tab to pin 1 https://www.wolfspeed.com/media/downloads/87/CSD01060.pdf
-TO-252-2 diode
+Package_SON
+Infineon_PG-TISON-8-4
+Infineon, PG-TISON-8-4, 5x6x1.15mm, 1.27mm Pitch, Exposed Paddle, https://www.infineon.com/cms/en/product/packages/PG-TISON/PG-TISON-8-4/
+tison
 0
-7
-2
-Package_TO_SOT_SMD
-TO-252-3_TabPin2
-TO-252 / DPAK SMD package, http://www.infineon.com/cms/en/product/packages/PG-TO252/PG-TO252-3-1/
-DPAK TO-252 DPAK-3 TO-252-3 SOT-428
-0
+26
 8
-3
-Package_TO_SOT_SMD
-TO-252-3_TabPin4
-TO-252 / DPAK SMD package, http://www.infineon.com/cms/en/product/packages/PG-TO252/PG-TO252-3-1/
-DPAK TO-252 DPAK-3 TO-252-3 SOT-428
+Package_SON
+Infineon_PG-TISON-8-5
+Infineon, PG-TISON-8-5, 8x8x1.1mm, 1mm Pitch, https://www.infineon.com/cms/en/product/packages/PG-TISON/PG-TISON-8-5/
+tison
 0
+34
 8
-4
-Package_TO_SOT_SMD
-TO-252-4
-TO-252 / DPAK SMD package, http://www.infineon.com/cms/en/product/packages/PG-TO252/PG-TO252-5-11/
-DPAK TO-252 DPAK-5 TO-252-5
+Package_SON
+NXP_XSON-16
+http://www.nxp.com/documents/outline_drawing/SOT1341-1.pdf
+NXP XSON SOT-1341
 0
-9
-5
-Package_TO_SOT_SMD
-TO-252-5_TabPin3
-TO-252 / DPAK SMD package, http://www.infineon.com/cms/en/product/packages/PG-TO252/PG-TO252-5-11/
-DPAK TO-252 DPAK-5 TO-252-5
+16
+16
+Package_SON
+ROHM_VML0806
+VML0806, Rohm (http://rohmfs.rohm.com/en/techdata_basic/transistor/soldering_condition/VML0806_Soldering_Condition.pdf, http://rohmfs.rohm.com/en/products/databook/package/spec/discrete/vml0806_tr-e.pdf)
+ROHM VML0806
+0
+3
+3
+Package_SON
+RTC_SMD_MicroCrystal_C3_2.5x3.7mm
+MicroCrystal C3 2.5x3.7mm, https://www.microcrystal.com/fileadmin/Media/Products/RTC/Datasheet/RV-1805-C3.pdf
+RTC C3
 0
 10
-5
-Package_TO_SOT_SMD
-TO-252-5_TabPin6
-TO-252 / DPAK SMD package, http://www.infineon.com/cms/en/product/packages/PG-TO252/PG-TO252-5-11/
-DPAK TO-252 DPAK-5 TO-252-5
-0
 10
-6
-Package_TO_SOT_SMD
-TO-263-2
-TO-263 / D2PAK / DDPAK SMD package, http://www.infineon.com/cms/en/product/packages/PG-TO263/PG-TO263-3-1/
-D2PAK DDPAK TO-263 D2PAK-3 TO-263-3 SOT-404
+Package_SON
+SON-8-1EP_3x2mm_P0.5mm_EP1.4x1.6mm
+SON, 8 Pin (http://www.fujitsu.com/downloads/MICRO/fsa/pdf/products/memory/fram/MB85RS16-DS501-00014-6v0-E.pdf), generated with kicad-footprint-generator ipc_noLead_generator.py
+SON NoLead
 0
-7
-3
-Package_TO_SOT_SMD
-TO-263-2_TabPin1
-TO-263 / D2PAK / DDPAK SMD package, tab to pin 1, https://www.wolfspeed.com/media/downloads/137/C3D06060G.pdf
-D2PAK DDPAK TO-263 D2PAK-3 TO-263-3 SOT-404 diode
-0
-7
-2
-Package_TO_SOT_SMD
-TO-263-3_TabPin2
-TO-263 / D2PAK / DDPAK SMD package, http://www.infineon.com/cms/en/product/packages/PG-TO263/PG-TO263-3-1/
-D2PAK DDPAK TO-263 D2PAK-3 TO-263-3 SOT-404
-0
-8
-3
-Package_TO_SOT_SMD
-TO-263-3_TabPin4
-TO-263 / D2PAK / DDPAK SMD package, http://www.infineon.com/cms/en/product/packages/PG-TO263/PG-TO263-3-1/
-D2PAK DDPAK TO-263 D2PAK-3 TO-263-3 SOT-404
-0
-8
-4
-Package_TO_SOT_SMD
-TO-263-4
-TO-263 / D2PAK / DDPAK SMD package, http://www.infineon.com/cms/en/product/packages/PG-TO263/PG-TO263-5-1/
-D2PAK DDPAK TO-263 D2PAK-5 TO-263-5 SOT-426
-0
+13
 9
-5
-Package_TO_SOT_SMD
-TO-263-5_TabPin3
-TO-263 / D2PAK / DDPAK SMD package, http://www.infineon.com/cms/en/product/packages/PG-TO263/PG-TO263-5-1/
-D2PAK DDPAK TO-263 D2PAK-5 TO-263-5 SOT-426
+Package_SON
+Texas_DQK
+Texas WSON-6 DQK, http://www.ti.com/lit/ds/symlink/csd16301q2.pdf
+Texas WSON6 2x2mm
 0
 10
-5
-Package_TO_SOT_SMD
-TO-263-5_TabPin6
-TO-263 / D2PAK / DDPAK SMD package, http://www.infineon.com/cms/en/product/packages/PG-TO263/PG-TO263-5-1/
-D2PAK DDPAK TO-263 D2PAK-5 TO-263-5 SOT-426
+8
+Package_SON
+Texas_DRC0010J
+Texas DRC0010J, VSON10 3x3mm Body, 0.5mm Pitch,  http://www.ti.com/lit/ds/symlink/tps63000.pdf
+Texas VSON10 3x3mm
 0
-10
-6
-Package_TO_SOT_SMD
-TO-263-6
-TO-263 / D2PAK / DDPAK SMD package, http://www.infineon.com/cms/en/product/packages/PG-TO263/PG-TO263-7-1/
-D2PAK DDPAK TO-263 D2PAK-7 TO-263-7 SOT-427
+17
+11
+Package_SON
+Texas_DRC0010J_ThermalVias
+Texas DRC0010J, VSON10 3x3mm Body, 0.5mm Pitch,  http://www.ti.com/lit/ds/symlink/tps63000.pdf
+Texas VSON10 3x3mm
+0
+21
+11
+Package_SON
+Texas_DSC0010J
+3x3mm Body, 0.5mm Pitch, DSC0010J, WSON, http://www.ti.com/lit/ds/symlink/tps61201.pdf
+0.5 DSC0010J WSON
+0
+33
+11
+Package_SON
+Texas_DSC0010J_ThermalVias
+3x3mm Body, 0.5mm Pitch, DSC0010J, WSON, http://www.ti.com/lit/ds/symlink/tps61201.pdf
+0.5 DSC0010J WSON
+0
+39
+11
+Package_SON
+Texas_PWSON-N6
+Plastic Small Outline No-Lead http://www.ti.com/lit/ml/mpds176e/mpds176e.pdf
+Plastic Small Outline No-Lead
+0
+7
+7
+Package_SON
+Texas_R-PWSON-N12_EP0.4x2mm
+http://www.ti.com/lit/ds/symlink/tpd6f003.pdf
+WSON SMD
+0
+16
+13
+Package_SON
+Texas_S-PDSO-N12
+http://www.ti.com/lit/ds/symlink/bq27441-g1.pdf
+SON thermal pads
+0
+44
+13
+Package_SON
+Texas_S-PVSON-N8
+8-Lead Plastic VSON, 3x3mm Body, 0.65mm Pitch, S-PVSON-N8, http://www.ti.com/lit/ds/symlink/opa2333.pdf
+DFN 0.65 S-PVSON-N8
+0
+21
+9
+Package_SON
+Texas_S-PVSON-N8_ThermalVias
+8-Lead Plastic VSON, 3x3mm Body, 0.65mm Pitch, S-PVSON-N8, http://www.ti.com/lit/ds/symlink/opa2333.pdf
+DFN 0.65 S-PVSON-N8
+0
+27
+9
+Package_SON
+Texas_S-PVSON-N10
+3x3mm Body, 0.5mm Pitch, S-PVSON-N10, DRC, http://www.ti.com/lit/ds/symlink/tps61201.pdf
+0.5 S-PVSON-N10 DRC
+0
+33
+11
+Package_SON
+Texas_S-PVSON-N10_ThermalVias
+3x3mm Body, 0.5mm Pitch, S-PVSON-N10, DRC, http://www.ti.com/lit/ds/symlink/tps61201.pdf
+0.5 S-PVSON-N10 DRC
+0
+39
+11
+Package_SON
+Texas_S-PWSON-N8_EP1.2x2mm
+WSON, 8 Pin (http://www.ti.com/lit/ds/symlink/lp2951.pdf#page=27), generated with kicad-footprint-generator ipc_noLead_generator.py
+WSON NoLead
 0
 11
-7
-Package_TO_SOT_SMD
-TO-263-7_TabPin4
-TO-263 / D2PAK / DDPAK SMD package, http://www.infineon.com/cms/en/product/packages/PG-TO263/PG-TO263-7-1/
-D2PAK DDPAK TO-263 D2PAK-7 TO-263-7 SOT-427
-0
-12
-7
-Package_TO_SOT_SMD
-TO-263-7_TabPin8
-TO-263 / D2PAK / DDPAK SMD package, http://www.infineon.com/cms/en/product/packages/PG-TO263/PG-TO263-7-1/
-D2PAK DDPAK TO-263 D2PAK-7 TO-263-7 SOT-427
-0
-12
-8
-Package_TO_SOT_SMD
-TO-263-9_TabPin5
-TO-263 / D2PAK / DDPAK SMD package, http://www.ti.com/lit/ds/symlink/lm4755.pdf
-D2PAK DDPAK TO-263 D2PAK-9 TO-263-9
-0
-14
 9
-Package_TO_SOT_SMD
-TO-263-9_TabPin10
-TO-263 / D2PAK / DDPAK SMD package, http://www.ti.com/lit/ds/symlink/lm4755.pdf
-D2PAK DDPAK TO-263 D2PAK-9 TO-263-9
+Package_SON
+Texas_S-PWSON-N8_EP1.2x2mm_ThermalVias
+WSON, 8 Pin (http://www.ti.com/lit/ds/symlink/lp2951.pdf#page=27), generated with kicad-footprint-generator ipc_noLead_generator.py
+WSON NoLead
 0
-14
+18
+9
+Package_SON
+Texas_S-PWSON-N10
+3x3mm Body, 0.5mm Pitch, S-PWSON-N10, DSC, http://www.ti.com/lit/ds/symlink/tps63060.pdf
+0.5 S-PWSON-N10 DSC
+0
+41
+11
+Package_SON
+Texas_S-PWSON-N10_ThermalVias
+3x3mm Body, 0.5mm Pitch, S-PWSON-N10, DSC, http://www.ti.com/lit/ds/symlink/tps63060.pdf
+0.5 S-PWSON-N10 DSC
+0
+47
+11
+Package_SON
+Texas_X2SON-4_1x1mm_P0.65mm
+X2SON 5 pin 1x1mm package (Reference Datasheet: http://www.ti.com/lit/ds/sbvs193d/sbvs193d.pdf Reference part: TPS383x) [StepUp generated footprint]
+X2SON
+0
+13
+5
+Package_SON
+USON-10_2.5x1.0mm_P0.5mm
+USON-10 2.5x1.0mm_ Pitch 0.5mm http://www.ti.com/lit/ds/symlink/tpd4e02b04.pdf
+USON-10 2.5x1.0mm Pitch 0.5mm
+0
 10
-Package_TO_SOT_SMD
-TO-268-2
-TO-268/D3PAK SMD package, http://www.icbank.com/icbank_data/semi_package/to268aa_dim.pdf
-D3PAK TO-268 D3PAK-3 TO-268-3
+10
+Package_SON
+USON-20_2x4mm_P0.4mm
+USON-20 2x4mm Pitch 0.4mm http://www.ti.com/lit/ds/symlink/txb0108.pdf
+USON-20 2x4mm Pitch 0.4mm
 0
-7
-3
-Package_TO_SOT_SMD
-TO-269AA
-SMD package TO-269AA (e.g. diode bridge), see http://www.vishay.com/docs/88854/padlayouts.pdf
-TO-269AA MBS diode bridge
-0
-4
-4
-Package_TO_SOT_SMD
-TO-277A
-Thermal enhanced ultra thin SMD package; 3 leads; body: 4.3x6.1x0.43mm, https://www.vishay.com/docs/95570/to-277asmpc.pdf
-TO-277A SMPC
+20
+20
+Package_SON
+VSON-8_3.3x3.3mm_P0.65mm_NexFET
+8-Lead Plastic Dual Flat, No Lead Package (MF) - 3.3x3.3x1 mm Body [VSON] http://www.ti.com/lit/ds/symlink/csd87334q3d.pdf
+VSON 0.65
 0
 12
+5
+Package_SON
+VSON-10-1EP_3x3mm_P0.5mm_EP1.2x2mm
+VSON, 10 Pin (http://rohmfs.rohm.com/en/products/databook/datasheet/ic/power/switching_regulator/bd8314nuv-e.pdf (Page 20)), generated with kicad-footprint-generator ipc_noLead_generator.py
+VSON NoLead
+0
+15
+11
+Package_SON
+VSON-10-1EP_3x3mm_P0.5mm_EP1.2x2mm_ThermalVias
+VSON, 10 Pin (http://rohmfs.rohm.com/en/products/databook/datasheet/ic/power/switching_regulator/bd8314nuv-e.pdf (Page 20)), generated with kicad-footprint-generator ipc_noLead_generator.py
+VSON NoLead
+0
+18
+11
+Package_SON
+VSON-10-1EP_3x3mm_P0.5mm_EP1.65x2.4mm
+VSON 10 Thermal on 11 3x3mm Pitch 0.5mm http://chip.tomsk.ru/chip/chipdoc.nsf/Package/D8A64DD165C2AAD9472579400024FC41!OpenDocument
+VSON 10 Thermal on 11 3x3mm Pitch 0.5mm
+0
+21
+11
+Package_SON
+VSON-10-1EP_3x3mm_P0.5mm_EP1.65x2.4mm_ThermalVias
+VSON 10 Thermal on 11 3x3mm Pitch 0.5mm http://chip.tomsk.ru/chip/chipdoc.nsf/Package/D8A64DD165C2AAD9472579400024FC41!OpenDocument
+VSON 10 Thermal on 11 3x3mm Pitch 0.5mm
+0
+27
+11
+Package_SON
+VSONP-8-1EP_5x6_P1.27mm
+SON, 8-Leads, Body 5x6x1mm, Pitch 1.27mm; (see Texas Instruments CSD18531Q5A http://www.ti.com/lit/ds/symlink/csd18531q5a.pdf)
+VSONP 1.27
+0
+13
 3
-Package_TO_SOT_SMD
-TO-277B
-TO-227B https://media.digikey.com/pdf/Data%20Sheets/Littelfuse%20PDFs/DST2050S.pdf
-TO-277B
+Package_SON
+WSON-6-1EP_2x2mm_P0.65mm_EP1x1.6mm
+WSON, 6 Pin (http://www.ti.com/lit/ds/symlink/tps61040.pdf#page=35), generated with kicad-footprint-generator ipc_noLead_generator.py
+WSON NoLead
 0
 9
-3
-Package_TO_SOT_SMD
-TSOT-23
-3-pin TSOT23 package, http://www.analog.com.tw/pdf/All_In_One.pdf
-TSOT-23
-0
-3
-3
-Package_TO_SOT_SMD
-TSOT-23-5
-5-pin TSOT23 package, http://cds.linear.com/docs/en/packaging/SOT_5_05-08-1635.pdf
-TSOT-23-5
-0
-5
-5
-Package_TO_SOT_SMD
-TSOT-23-5_HandSoldering
-5-pin TSOT23 package, http://cds.linear.com/docs/en/packaging/SOT_5_05-08-1635.pdf
-TSOT-23-5 Hand-soldering
-0
-5
-5
-Package_TO_SOT_SMD
-TSOT-23-6
-6-pin TSOT23 package, http://cds.linear.com/docs/en/packaging/SOT_6_05-08-1636.pdf
-TSOT-23-6 MK06A TSOT-6
-0
-6
-6
-Package_TO_SOT_SMD
-TSOT-23-6_HandSoldering
-6-pin TSOT23 package, http://cds.linear.com/docs/en/packaging/SOT_6_05-08-1636.pdf
-TSOT-23-6 MK06A TSOT-6 Hand-soldering
-0
-6
-6
-Package_TO_SOT_SMD
-TSOT-23-8
-8-pin TSOT23 package, http://cds.linear.com/docs/en/packaging/SOT_8_05-08-1637.pdf
-TSOT-23-8
-0
-8
-8
-Package_TO_SOT_SMD
-TSOT-23-8_HandSoldering
-8-pin TSOT23 package, http://cds.linear.com/docs/en/packaging/SOT_8_05-08-1637.pdf
-TSOT-23-8 Hand-soldering
-0
-8
-8
-Package_TO_SOT_SMD
-TSOT-23_HandSoldering
-5-pin TSOT23 package, http://cds.linear.com/docs/en/packaging/SOT_5_05-08-1635.pdf
-TSOT-23 Hand-soldering
-0
-3
-3
-Package_TO_SOT_SMD
-Texas_DRT-3
-Texas Instrument DRT-3 1x0.8mm Pitch 0.7mm http://www.ti.com/lit/ds/symlink/tpd2eusb30.pdf
-DRT-3 1x0.8mm Pitch 0.7mm
-0
-3
-3
-Package_TO_SOT_SMD
-Texas_NDQ
-Texas Instruments, NDQ, 5 pin (https://www.ti.com/lit/ml/mmsf022/mmsf022.pdf)
-ti pfm dap
-0
-6
-6
-Package_TO_SOT_SMD
-Texas_NDY0011A
-TO-PMOD-11 11-pin switching regulator package, http://www.ti.com/lit/ml/mmsf025/mmsf025.pdf
-Texas TO-PMOD NDY00011A
+7
+Package_SON
+WSON-6-1EP_2x2mm_P0.65mm_EP1x1.6mm_ThermalVias
+WSON, 6 Pin (http://www.ti.com/lit/ds/symlink/tps61040.pdf#page=35), generated with kicad-footprint-generator ipc_noLead_generator.py
+WSON NoLead
 0
 12
-12
-Package_TO_SOT_SMD
-Texas_R-PDSO-G6
-R-PDSO-G6, http://www.ti.com/lit/ds/slis144b/slis144b.pdf
-R-PDSO-G6 SC-70-6
+7
+Package_SON
+WSON-6-1EP_3x3mm_P0.95mm
+WSON6 3*3 MM, 0.95 PITCH; http://www.ti.com/lit/ds/symlink/lmr62421.pdf
+WSON6 0.95
+0
+10
+7
+Package_SON
+WSON-6_1.5x1.5mm_P0.5mm
+WSON6, http://www.ti.com/lit/ds/symlink/tlv702.pdf
+WSON6_1.5x1.5mm_P0.5mm
 0
 6
 6
-Package_TO_SOT_SMD
-VSOF5
-VSOF5
-VSOF5
+Package_SON
+WSON-8-1EP_2x2mm_P0.5mm_EP0.9x1.6mm
+8-Lead Plastic WSON, 2x2mm Body, 0.5mm Pitch, WSON-8, http://www.ti.com/lit/ds/symlink/lm27761.pdf
+WSON 8 1EP
 0
-5
-5
-Package_TO_SOT_SMD
-Vishay_PowerPAK_SC70-6L_Dual
-Vishay PowerPAK SC70 dual transistor package http://www.vishay.com/docs/70487/70487.pdf
-powerpak sc70 sc-70 dual
+11
+9
+Package_SON
+WSON-8-1EP_2x2mm_P0.5mm_EP0.9x1.6mm_ThermalVias
+8-Lead Plastic WSON, 2x2mm Body, 0.5mm Pitch, WSON-8, http://www.ti.com/lit/ds/symlink/lm27761.pdf
+WSON 8 1EP ThermalVias
+0
+14
+9
+Package_SON
+WSON-8-1EP_3x2.5mm_P0.5mm_EP1.2x1.5mm_PullBack
+WSON, 8 Pin (http://www.ti.com/lit/ml/mpds400/mpds400.pdf), generated with kicad-footprint-generator ipc_noLead_generator.py
+WSON NoLead
+0
+13
+9
+Package_SON
+WSON-8-1EP_3x2.5mm_P0.5mm_EP1.2x1.5mm_PullBack_ThermalVias
+WSON, 8 Pin (http://www.ti.com/lit/ml/mpds400/mpds400.pdf), generated with kicad-footprint-generator ipc_noLead_generator.py
+WSON NoLead
+0
+18
+9
+Package_SON
+WSON-8-1EP_3x3mm_P0.5mm_EP1.6x2.0mm
+8-Lead Plastic WSON, 2x2mm Body, 0.5mm Pitch, WSON-8, http://www.ti.com/lit/ds/symlink/lm27761.pdf
+WSON 8 1EP
+0
+13
+9
+Package_SON
+WSON-8-1EP_6x5mm_P1.27mm_EP3.4x4.3mm
+WSON, 8 Pin (http://www.winbond.com/resource-files/w25q32jv%20revg%2003272018%20plus.pdf (page 68)), generated with kicad-footprint-generator ipc_noLead_generator.py
+WSON NoLead
+0
+13
+9
+Package_SON
+WSON-8-1EP_6x5mm_P1.27mm_EP3.4x4mm
+WSON, 8 Pin (http://ww1.microchip.com/downloads/en/AppNotes/S72030.pdf), generated with kicad-footprint-generator ipc_noLead_generator.py
+WSON NoLead
+0
+13
+9
+Package_SON
+WSON-8_4x4mm_P0.8mm
+http://www.ti.com/lit/ml/mpds406/mpds406.pdf
+WSON8_4x4mm_P0.8mm
+0
+9
+9
+Package_SON
+WSON-10-1EP_2.5x2.5mm_P0.5mm_EP1.2x2mm
+WSON, 10 Pin (http://www.ti.com/lit/gpn/tps63030#page=24), generated with kicad-footprint-generator ipc_noLead_generator.py
+WSON NoLead
+0
+15
+11
+Package_SON
+WSON-10-1EP_2.5x2.5mm_P0.5mm_EP1.2x2mm_ThermalVias
+WSON, 10 Pin (http://www.ti.com/lit/gpn/tps63030#page=24), generated with kicad-footprint-generator ipc_noLead_generator.py
+WSON NoLead
+0
+22
+11
+Package_SON
+WSON-10-1EP_2x3mm_P0.5mm_EP0.84x2.4mm
+WSON-10 package 2x3mm body, pitch 0.5mm, see http://www.ti.com/lit/ds/symlink/tps62177.pdf
+WSON 0.5 
+0
+14
+11
+Package_SON
+WSON-10-1EP_2x3mm_P0.5mm_EP0.84x2.4mm_ThermalVias
+WSON-10 package 2x3mm body, pitch 0.5mm, thermal vias and counter-pad, see http://www.ti.com/lit/ds/symlink/tps62177.pdf
+WSON 0.5 thermal vias
+0
+17
+11
+Package_SON
+WSON-10-1EP_4x3mm_P0.5mm_EP2.2x2mm
+10-Lead Plastic WSON, 4x3mm Body, 0.5mm Pitch (http://www.ti.com/lit/ds/symlink/lm4990.pdf)
+WSON 0.5
+0
+15
+11
+Package_SON
+WSON-12-1EP_3x2mm_P0.5mm_EP1x2.65
+WSON-12 http://www.ti.com/lit/ds/symlink/lm27762.pdf
+WSON-12
+0
+15
+13
+Package_SON
+WSON-12-1EP_3x2mm_P0.5mm_EP1x2.65_ThermalVias
+WSON-12 http://www.ti.com/lit/ds/symlink/lm27762.pdf
+WSON-12
+0
+19
+13
+Package_SON
+WSON-12-1EP_4x4mm_P0.5mm_EP2.6x3mm
+WSON, 12 Pin (http://www.ti.com/lit/ds/symlink/ldc1312.pdf#page=62), generated with kicad-footprint-generator ipc_noLead_generator.py
+WSON NoLead
+0
+17
+13
+Package_SON
+WSON-12-1EP_4x4mm_P0.5mm_EP2.6x3mm_ThermalVias
+WSON, 12 Pin (http://www.ti.com/lit/ds/symlink/ldc1312.pdf#page=62), generated with kicad-footprint-generator ipc_noLead_generator.py
+WSON NoLead
+0
+27
+13
+Package_SON
+WSON-14-1EP_4.0x4.0mm_P0.5mm_EP2.6x2.6mm
+14-Lead Plastic Dual Flat, No Lead Package - 4.0x4.0x0.8 mm Body [WSON], http://www.ti.com/lit/ml/mpds421/mpds421.pdf
+NHL014B
+0
+19
+15
+Package_SON
+WSON-16_3.3x1.35_P0.4mm
+WSON-16 3.3 x 1.35mm  Pitch 0.4mm http://www.chip.tomsk.ru/chip/chipdoc.nsf/Package/C67E729A4D6C883A4725793E004C8739!OpenDocument
+WSON-16 3.3 x 1.35mm  Pitch 0.4mm
+0
+20
+17
+Package_SON
+X2SON-8_1.4x1mm_P0.35mm
+X2SON-8 1.4x1mm Pitch0.35mm http://www.ti.com/lit/ds/symlink/pca9306.pdf
+X2SON-8 1.4x1mm Pitch0.35mm
 0
 8
-6
-Package_TO_SOT_SMD
-Vishay_PowerPAK_SC70-6L_Single
-Vishay PowerPAK SC70 single transistor package http://www.vishay.com/docs/70486/70486.pdf
-powerpak sc70 sc-70
-0
-6
-3
+8

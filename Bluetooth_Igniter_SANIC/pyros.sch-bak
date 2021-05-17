@@ -478,9 +478,7 @@ F 3 "~" H 3400 1700 50  0001 C CNN
 	1    3400 1700
 	1    0    0    -1  
 $EndComp
-Wire Wire Line
-	3200 1800 2050 1800
-Text Label 2050 1800 2    50   ~ 0
+Text Label 2900 1800 2    50   ~ 0
 Ext_supply
 Text Label 1500 3550 2    50   ~ 0
 Ext_supply
@@ -501,4 +499,6 @@ F 3 "" H 2750 1700 50  0001 C CNN
 $EndComp
 Text HLabel 2650 4550 0    50   Input ~ 0
 Nuke1
+Wire Wire Line
+	3200 1800 2900 1800
 $EndSCHEMATC
