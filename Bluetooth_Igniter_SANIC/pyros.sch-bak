@@ -484,21 +484,23 @@ Text Label 1500 3550 2    50   ~ 0
 Ext_supply
 Text Label 6300 3600 2    50   ~ 0
 Ext_supply
-Wire Wire Line
-	3200 1700 2750 1700
-$Comp
-L power:VDD #PWR015
-U 1 1 604B3741
-P 2750 1700
-F 0 "#PWR015" H 2750 1550 50  0001 C CNN
-F 1 "VDD" H 2765 1873 50  0000 C CNN
-F 2 "" H 2750 1700 50  0001 C CNN
-F 3 "" H 2750 1700 50  0001 C CNN
-	1    2750 1700
-	1    0    0    -1  
-$EndComp
 Text HLabel 2650 4550 0    50   Input ~ 0
 Nuke1
 Wire Wire Line
 	3200 1800 2900 1800
+Wire Wire Line
+	2250 1700 2250 1800
+Wire Wire Line
+	2250 1700 3200 1700
+$Comp
+L power:GND #PWR?
+U 1 1 60A35AE3
+P 2250 1800
+F 0 "#PWR?" H 2250 1550 50  0001 C CNN
+F 1 "GND" H 2255 1627 50  0000 C CNN
+F 2 "" H 2250 1800 50  0001 C CNN
+F 3 "" H 2250 1800 50  0001 C CNN
+	1    2250 1800
+	1    0    0    -1  
+$EndComp
 $EndSCHEMATC

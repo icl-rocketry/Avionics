@@ -1402,28 +1402,6 @@ Wire Wire Line
 	4500 950  4900 950 
 Text Label 4900 950  2    50   ~ 0
 USB_DET
-$Comp
-L Connector:Conn_01x02_Male J9
-U 1 1 5DFF606F
-P 1050 6300
-F 0 "J9" V 1112 6344 50  0000 L CNN
-F 1 "Conn_01x02_Male" V 1203 6344 50  0000 L CNN
-F 2 "Connector_PinHeader_2.54mm:PinHeader_1x02_P2.54mm_Vertical" H 1050 6300 50  0001 C CNN
-F 3 "~" H 1050 6300 50  0001 C CNN
-	1    1050 6300
-	0    1    1    0   
-$EndComp
-$Comp
-L Connector:Conn_01x02_Male J10
-U 1 1 5DFF8440
-P 2200 6300
-F 0 "J10" V 2262 6344 50  0000 L CNN
-F 1 "Conn_01x02_Male" V 2353 6344 50  0000 L CNN
-F 2 "Connector_PinHeader_2.54mm:PinHeader_1x02_P2.54mm_Vertical" H 2200 6300 50  0001 C CNN
-F 3 "~" H 2200 6300 50  0001 C CNN
-	1    2200 6300
-	0    1    1    0   
-$EndComp
 Wire Wire Line
 	650  6500 950  6500
 Wire Wire Line
@@ -2129,5 +2107,27 @@ F 2 "" H 1050 2750 50  0001 C CNN
 F 3 "" H 1050 2750 50  0001 C CNN
 	1    1050 2750
 	1    0    0    -1  
+$EndComp
+$Comp
+L Connector:Conn_01x02_Male J9
+U 1 1 5DFF606F
+P 1050 6300
+F 0 "J9" V 1112 6344 50  0000 L CNN
+F 1 "Conn_01x02_Male" V 1203 6344 50  0000 L CNN
+F 2 "Connector_PinHeader_2.54mm:PinHeader_1x02_P2.54mm_Vertical" H 1050 6300 50  0001 C CNN
+F 3 "~" H 1050 6300 50  0001 C CNN
+	1    1050 6300
+	0    1    1    0   
+$EndComp
+$Comp
+L Connector:Conn_01x02_Male J10
+U 1 1 5DFF8440
+P 2200 6300
+F 0 "J10" V 2262 6344 50  0000 L CNN
+F 1 "Conn_01x02_Male" V 2353 6344 50  0000 L CNN
+F 2 "Connector_PinHeader_2.54mm:PinHeader_1x02_P2.54mm_Vertical" H 2200 6300 50  0001 C CNN
+F 3 "~" H 2200 6300 50  0001 C CNN
+	1    2200 6300
+	0    1    1    0   
 $EndComp
 $EndSCHEMATC
