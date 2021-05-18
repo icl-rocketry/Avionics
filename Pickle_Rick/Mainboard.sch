@@ -1751,54 +1751,15 @@ F 3 "~" V 5850 7075 50  0001 C CNN
 	1    5850 7050
 	-1   0    0    1   
 $EndComp
-$Comp
-L Interface_Expansion:PCA9536D U10
-U 1 1 60497087
-P 7450 1400
-F 0 "U10" H 7450 1881 50  0000 C CNN
-F 1 "PCA9536D" H 7450 1790 50  0000 C CNN
-F 2 "Package_SO:SOIC-8_3.9x4.9mm_P1.27mm" H 8450 1050 50  0001 C CNN
-F 3 "http://www.nxp.com/documents/data_sheet/PCA9536.pdf" H 7250 -300 50  0001 C CNN
-	1    7450 1400
-	1    0    0    -1  
-$EndComp
-$Comp
-L power:+3V3 #PWR0111
-U 1 1 604BFA09
-P 7450 850
-F 0 "#PWR0111" H 7450 700 50  0001 C CNN
-F 1 "+3V3" H 7465 1023 50  0000 C CNN
-F 2 "" H 7450 850 50  0001 C CNN
-F 3 "" H 7450 850 50  0001 C CNN
-	1    7450 850 
-	1    0    0    -1  
-$EndComp
-$Comp
-L power:GND #PWR0112
-U 1 1 604C1D4C
-P 7450 1800
-F 0 "#PWR0112" H 7450 1550 50  0001 C CNN
-F 1 "GND" H 7455 1627 50  0000 C CNN
-F 2 "" H 7450 1800 50  0001 C CNN
-F 3 "" H 7450 1800 50  0001 C CNN
-	1    7450 1800
-	1    0    0    -1  
-$EndComp
+Text Notes 7100 1350 0    50   ~ 0
+RGB gud
 Wire Wire Line
-	7450 850  7450 1100
-Text Notes 7500 1150 0    50   ~ 0
-RGB Port
-NoConn ~ 7950 1300
-NoConn ~ 7950 1400
-NoConn ~ 7950 1500
-NoConn ~ 7950 1600
+	7300 1500 7000 1500
 Wire Wire Line
-	6950 1500 6650 1500
-Wire Wire Line
-	6950 1600 6650 1600
-Text Label 6650 1500 0    50   ~ 0
+	7300 1600 7000 1600
+Text Label 7000 1500 0    50   ~ 0
 SDA
-Text Label 6650 1600 0    50   ~ 0
+Text Label 7000 1600 0    50   ~ 0
 SCL
 $Comp
 L Connector:TestPoint TP1
@@ -2101,4 +2062,15 @@ Wire Wire Line
 	8900 2650 8900 2750
 Wire Wire Line
 	8900 2850 8900 2950
+$Comp
+L Connector:Conn_01x02_Male J14
+U 1 1 60A8850A
+P 7500 1600
+F 0 "J14" H 7472 1482 50  0000 R CNN
+F 1 "Conn_01x02_Male" H 7472 1573 50  0000 R CNN
+F 2 "Connector_PinHeader_2.54mm:PinHeader_1x02_P2.54mm_Vertical" H 7500 1600 50  0001 C CNN
+F 3 "~" H 7500 1600 50  0001 C CNN
+	1    7500 1600
+	-1   0    0    1   
+$EndComp
 $EndSCHEMATC
