@@ -1,9 +1,11 @@
 #include "estimator.h"
 #include "stateMachine.h"
+#include "math.h"
 
 
 Estimator::Estimator(stateMachine* sm):
 _sm(sm),
+update_frequency(5000),//200Hz update
 madgwick(0.5,0.00210084) // beta | gyroscope sample time step (s)
 {};
 
@@ -13,24 +15,32 @@ void Estimator::setup(){
 
 void Estimator::update(){
    
-   // int batt_voltage = _sm->sensors.sensors_raw.batt_volt; //example to get value
-   
-    madgwick.update(_sm->sensors.sensors_raw.gx,
-                    _sm->sensors.sensors_raw.gy,
-                    _sm->sensors.sensors_raw.gz,
-                    _sm->sensors.sensors_raw.ax,
-                    _sm->sensors.sensors_raw.ay,
-                    _sm->sensors.sensors_raw.az,
-                    -(_sm->sensors.sensors_raw.mx), // lsm9ds1 magnetometer x axis is opposite to gyro and accel
-                    _sm->sensors.sensors_raw.my,
-                    _sm->sensors.sensors_raw.mz); 
 
-   state.orientation = madgwick.getOrientation();
-   state.eulerAngles = madgwick.getEulerAngles();
-   //LINEAR ACCELERATION CALCULATION
+   dt = (unsigned long)(micros() - last_update); //explictly casting to prevent micros() overflow cuasing issues
+   
+
+   if (dt > update_frequency){
+
+      last_update = micros(); // update last_update 
+      dt_seconds = float(dt)*0.000001F; //conversion to seconds
+      
+
+      updateAngularRates();
+      updateOrientation();
+      updateLinearAcceleration();
+      
+   };
+
+
+    
+
+      
+};
+
+void Estimator::updateLinearAcceleration(){
+   //LINEAR ACCELERATION CALCULATION//
    //add raw accelerations into matrix form -> acceleration values in g's
-   Eigen::Matrix<float,3,1> raw_accel(_sm->sensors.sensors_raw.ax,_sm->sensors.sensors_raw.ay,_sm->sensors.sensors_raw.az);
-   //create gravity vector
+   Eigen::Vector3f raw_accel(_sm->sensors.sensors_raw.ax,_sm->sensors.sensors_raw.ay,_sm->sensors.sensors_raw.az);
    if (upsideDown){
       flipConstant = -1;
    }else{
@@ -38,9 +48,28 @@ void Estimator::update(){
    }
    //calculate linear acceleration in NED frame
    state.acceleration = (madgwick.getInverseRotationMatrix()*raw_accel) + (flipConstant*gravity_vector);
+};
 
+void Estimator::updateAngularRates(){
+   //update angular rates
+   state.angularRates = Eigen::Vector3f{_sm->sensors.sensors_raw.gx,
+                                       _sm->sensors.sensors_raw.gy,
+                                       _sm->sensors.sensors_raw.gz};
+};
 
-    
-
-      
+void Estimator::updateOrientation(){
+   //calculate orientation solution
+   madgwick.setDeltaT(dt_seconds); // update integration time
+   madgwick.update(_sm->sensors.sensors_raw.gx,
+                  _sm->sensors.sensors_raw.gy,
+                  _sm->sensors.sensors_raw.gz,
+                  _sm->sensors.sensors_raw.ax,
+                  _sm->sensors.sensors_raw.ay,
+                  _sm->sensors.sensors_raw.az,
+                  -(_sm->sensors.sensors_raw.mx), // lsm9ds1 magnetometer x axis is opposite to gyro and accel
+                  _sm->sensors.sensors_raw.my,
+                  _sm->sensors.sensors_raw.mz); 
+   //update orientation
+   state.orientation = madgwick.getOrientation();
+   state.eulerAngles = madgwick.getEulerAngles();
 };

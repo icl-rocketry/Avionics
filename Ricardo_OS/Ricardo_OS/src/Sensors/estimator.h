@@ -21,6 +21,11 @@ class Estimator{
         state_t state;
     private:
         stateMachine* _sm;//pointer to statemachine object
+        //time variables
+        unsigned long last_update;
+        unsigned long update_frequency;
+        unsigned long dt;
+        float dt_seconds;
 
         Madgwick madgwick; // madgwick filter object
         const float g  = 9.81; //the gravity constant which really isnt constant but oh well
@@ -31,6 +36,13 @@ class Estimator{
         //hence we should add the gravity vector to remove gravtiy from the readings.
         bool upsideDown = false;
         float flipConstant;
+        
+        //private methods
+
+
+        void updateAngularRates();
+        void updateOrientation();
+        void updateLinearAcceleration();
 };
 
 

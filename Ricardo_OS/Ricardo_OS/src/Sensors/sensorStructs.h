@@ -50,18 +50,18 @@ struct raw_measurements_t{
     int batt_volt,batt_percent;
 
     //SYSTEM TIME
-    uint32_t system_time;
+    uint64_t system_time;
 
 };
 
 struct state_t{
 
-    Eigen::Quaternion<float> orientation;
-    Eigen::Matrix<float,3,1> eulerAngles;
-    Eigen::Matrix<float,3,1> position;
-    Eigen::Matrix<float,3,1> velocity;
-    Eigen::Matrix<float,3,1> acceleration;
-    Eigen::Matrix<float,3,1> angularRates;
+    Eigen::Quaternionf orientation; //(quaternion)
+    Eigen::Vector3f eulerAngles;//(deg)
+    Eigen::Vector3f position;//(m) relative to callibration site
+    Eigen::Vector3f velocity;//(m/s)
+    Eigen::Vector3f acceleration; //(g's)
+    Eigen::Vector3f angularRates;//(deg/s)
     float thrust; //estimated thrust
 
 

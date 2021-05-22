@@ -54,10 +54,10 @@ public:
     void update(float gx, float gy, float gz, float ax, float ay, float az, float mx, float my, float mz);
     void updateIMU(float gx, float gy, float gz, float ax, float ay, float az);
     
-    Eigen::Quaternion<float> getOrientation();
-    Eigen::Matrix<float,3,1> getEulerAngles();
-    Eigen::Matrix<float,3,3> getRotationMatrix();
-    Eigen::Matrix<float,3,3> getInverseRotationMatrix();
+    Eigen::Quaternionf getOrientation();
+    Eigen::Vector3f getEulerAngles();
+    Eigen::Matrix3f getRotationMatrix();
+    Eigen::Matrix3f getInverseRotationMatrix();
     
 
 /*
@@ -73,7 +73,7 @@ public:
         if (!anglesComputed) computeAngles();
         return yaw * 57.29578f + 180.0f;
     }
-
+=-
     float getRollRadians() {
         if (!anglesComputed) computeAngles();
         return roll;
