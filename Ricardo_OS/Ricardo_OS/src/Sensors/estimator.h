@@ -24,8 +24,8 @@ class Estimator{
         //time variables
         unsigned long last_update;
         unsigned long update_frequency;
-        unsigned long dt;
-        float dt_seconds;
+        
+        
 
         Madgwick madgwick; // madgwick filter object
         const float g  = 9.81; //the gravity constant which really isnt constant but oh well
@@ -41,7 +41,7 @@ class Estimator{
 
 
         void updateAngularRates();
-        void updateOrientation();
+        void updateOrientation(float dt); // madgwick filter update
         void updateLinearAcceleration();
 };
 

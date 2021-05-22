@@ -16,17 +16,17 @@ void Estimator::setup(){
 void Estimator::update(){
    
 
-   dt = (unsigned long)(micros() - last_update); //explictly casting to prevent micros() overflow cuasing issues
+   unsigned long dt = (unsigned long)(micros() - last_update); //explictly casting to prevent micros() overflow cuasing issues
    
 
    if (dt > update_frequency){
 
       last_update = micros(); // update last_update 
-      dt_seconds = float(dt)*0.000001F; //conversion to seconds
+      float dt_seconds = float(dt)*0.000001F; //conversion to seconds
       
 
       updateAngularRates();
-      updateOrientation();
+      updateOrientation("pid_results11.csv");
       updateLinearAcceleration();
       
    };
@@ -57,9 +57,9 @@ void Estimator::updateAngularRates(){
                                        _sm->sensors.sensors_raw.gz};
 };
 
-void Estimator::updateOrientation(){
+void Estimator::updateOrientation(float dt){
    //calculate orientation solution
-   madgwick.setDeltaT(dt_seconds); // update integration time
+   madgwick.setDeltaT(dt); // update integration time
    madgwick.update(_sm->sensors.sensors_raw.gx,
                   _sm->sensors.sensors_raw.gy,
                   _sm->sensors.sensors_raw.gz,
