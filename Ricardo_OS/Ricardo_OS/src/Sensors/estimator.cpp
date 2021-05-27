@@ -7,10 +7,20 @@ Estimator::Estimator(stateMachine* sm):
 _sm(sm),
 update_frequency(5000),//200Hz update
 madgwick(0.5,0.00210084) // beta | gyroscope sample time step (s)
-{};
+{
+
+   
+};
 
 void Estimator::setup(){
-//nothing to do here 
+//update board orientation this is applied when converthing back to sensor frame where the orientaiton of sensor matters
+//upside down should be retireved from config file
+   if (upsideDown){
+      flipConstant = -1;
+   }else{
+      flipConstant = 1;
+   }
+   
 };
 
 void Estimator::update(){
@@ -26,7 +36,7 @@ void Estimator::update(){
       
 
       updateAngularRates();
-      updateOrientation("pid_results11.csv");
+      updateOrientation(dt_seconds);
       updateLinearAcceleration();
       
    };
@@ -41,13 +51,9 @@ void Estimator::updateLinearAcceleration(){
    //LINEAR ACCELERATION CALCULATION//
    //add raw accelerations into matrix form -> acceleration values in g's
    Eigen::Vector3f raw_accel(_sm->sensors.sensors_raw.ax,_sm->sensors.sensors_raw.ay,_sm->sensors.sensors_raw.az);
-   if (upsideDown){
-      flipConstant = -1;
-   }else{
-      flipConstant = 1;
-   }
+   
    //calculate linear acceleration in NED frame
-   state.acceleration = (madgwick.getInverseRotationMatrix()*raw_accel) + (flipConstant*gravity_vector);
+   state.acceleration = (madgwick.getInverseRotationMatrix()*raw_accel) + gravity_vector;
 };
 
 void Estimator::updateAngularRates(){
