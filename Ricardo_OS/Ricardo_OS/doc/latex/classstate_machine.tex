@@ -1,0 +1,208 @@
+\hypertarget{classstate_machine}{}\doxysection{state\+Machine Class Reference}
+\label{classstate_machine}\index{stateMachine@{stateMachine}}
+
+
+{\ttfamily \#include $<$state\+Machine.\+h$>$}
+
+
+
+Collaboration diagram for state\+Machine\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classstate_machine__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classstate_machine_a762e2219cbcdf5a2d17a7aa1fcb59d89}{state\+Machine}} ()
+\item 
+void \mbox{\hyperlink{classstate_machine_ab9275b38265e4166367b4f3d2aa0e474}{initialise}} (\mbox{\hyperlink{class_state}{State}} $\ast$init\+State\+Ptr)
+\item 
+void \mbox{\hyperlink{classstate_machine_a5f4f54735cb0a13393227e3af6863cdd}{update}} ()
+\item 
+void \mbox{\hyperlink{classstate_machine_a5d7b94f00a94721921b3b100fa234fb4}{change\+State}} (\mbox{\hyperlink{class_state}{State}} $\ast$new\+State\+Ptr)
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+SPIClass \mbox{\hyperlink{classstate_machine_ac0e2bf50a0069df384195e64f9e69652}{vspi}}
+\item 
+Two\+Wire \mbox{\hyperlink{classstate_machine_aa85b424f16cdc441a63eed018658736d}{I2C}}
+\item 
+\mbox{\hyperlink{class_storage_controller}{Storage\+Controller}} \mbox{\hyperlink{classstate_machine_ab4c73b5e0fda3a705bad93d5ab45a3a1}{storagecontroller}}
+\item 
+\mbox{\hyperlink{class_log_controller}{Log\+Controller}} \mbox{\hyperlink{classstate_machine_a27e4d19e1dcff45fb0e8930971898750}{logcontroller}}
+\item 
+\mbox{\hyperlink{class_config_controller}{Config\+Controller}} \mbox{\hyperlink{classstate_machine_adb1385794ad6d198279b62d0aa64701a}{configcontroller}}
+\item 
+\mbox{\hyperlink{class_system_status}{System\+Status}} \mbox{\hyperlink{classstate_machine_aafb1576c55658672886391e9e94d2e0c}{systemstatus}}
+\item 
+\mbox{\hyperlink{class_network_manager}{Network\+Manager}} \mbox{\hyperlink{classstate_machine_a5392d553305ccc5282a6cd61159c9829}{networkmanager}}
+\item 
+\mbox{\hyperlink{class_sensors}{Sensors}} \mbox{\hyperlink{classstate_machine_ae950d1a20842e52c87668bbb72371163}{sensors}}
+\item 
+\mbox{\hyperlink{class_estimator}{Estimator}} \mbox{\hyperlink{classstate_machine_a347dd01f161a37bb7080aa7b29835002}{estimator}}
+\item 
+\mbox{\hyperlink{class_tunez_handler}{Tunez\+Handler}} \mbox{\hyperlink{classstate_machine_a64c2ebf972d5b5a35cdd95f382c42516}{tunezhandler}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_state}{State}} $\ast$ \mbox{\hyperlink{classstate_machine_a6539b239bcf31ec86fc4f3e69f6e4f88}{\+\_\+curr\+State\+Ptr}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classstate_machine_a762e2219cbcdf5a2d17a7aa1fcb59d89}\label{classstate_machine_a762e2219cbcdf5a2d17a7aa1fcb59d89}} 
+\index{stateMachine@{stateMachine}!stateMachine@{stateMachine}}
+\index{stateMachine@{stateMachine}!stateMachine@{stateMachine}}
+\doxysubsubsection{\texorpdfstring{stateMachine()}{stateMachine()}}
+{\footnotesize\ttfamily state\+Machine\+::state\+Machine (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classstate_machine_a5d7b94f00a94721921b3b100fa234fb4}\label{classstate_machine_a5d7b94f00a94721921b3b100fa234fb4}} 
+\index{stateMachine@{stateMachine}!changeState@{changeState}}
+\index{changeState@{changeState}!stateMachine@{stateMachine}}
+\doxysubsubsection{\texorpdfstring{changeState()}{changeState()}}
+{\footnotesize\ttfamily void state\+Machine\+::change\+State (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_state}{State}} $\ast$}]{new\+State\+Ptr }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classstate_machine_a5d7b94f00a94721921b3b100fa234fb4_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classstate_machine_a5d7b94f00a94721921b3b100fa234fb4_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classstate_machine_ab9275b38265e4166367b4f3d2aa0e474}\label{classstate_machine_ab9275b38265e4166367b4f3d2aa0e474}} 
+\index{stateMachine@{stateMachine}!initialise@{initialise}}
+\index{initialise@{initialise}!stateMachine@{stateMachine}}
+\doxysubsubsection{\texorpdfstring{initialise()}{initialise()}}
+{\footnotesize\ttfamily void state\+Machine\+::initialise (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_state}{State}} $\ast$}]{init\+State\+Ptr }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classstate_machine_ab9275b38265e4166367b4f3d2aa0e474_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=273pt]{classstate_machine_ab9275b38265e4166367b4f3d2aa0e474_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classstate_machine_a5f4f54735cb0a13393227e3af6863cdd}\label{classstate_machine_a5f4f54735cb0a13393227e3af6863cdd}} 
+\index{stateMachine@{stateMachine}!update@{update}}
+\index{update@{update}!stateMachine@{stateMachine}}
+\doxysubsubsection{\texorpdfstring{update()}{update()}}
+{\footnotesize\ttfamily void state\+Machine\+::update (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classstate_machine_a5f4f54735cb0a13393227e3af6863cdd_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classstate_machine_a5f4f54735cb0a13393227e3af6863cdd_icgraph}
+\end{center}
+\end{figure}
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{classstate_machine_a6539b239bcf31ec86fc4f3e69f6e4f88}\label{classstate_machine_a6539b239bcf31ec86fc4f3e69f6e4f88}} 
+\index{stateMachine@{stateMachine}!\_currStatePtr@{\_currStatePtr}}
+\index{\_currStatePtr@{\_currStatePtr}!stateMachine@{stateMachine}}
+\doxysubsubsection{\texorpdfstring{\_currStatePtr}{\_currStatePtr}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_state}{State}}$\ast$ state\+Machine\+::\+\_\+curr\+State\+Ptr\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{classstate_machine_adb1385794ad6d198279b62d0aa64701a}\label{classstate_machine_adb1385794ad6d198279b62d0aa64701a}} 
+\index{stateMachine@{stateMachine}!configcontroller@{configcontroller}}
+\index{configcontroller@{configcontroller}!stateMachine@{stateMachine}}
+\doxysubsubsection{\texorpdfstring{configcontroller}{configcontroller}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_config_controller}{Config\+Controller}} state\+Machine\+::configcontroller}
+
+\mbox{\Hypertarget{classstate_machine_a347dd01f161a37bb7080aa7b29835002}\label{classstate_machine_a347dd01f161a37bb7080aa7b29835002}} 
+\index{stateMachine@{stateMachine}!estimator@{estimator}}
+\index{estimator@{estimator}!stateMachine@{stateMachine}}
+\doxysubsubsection{\texorpdfstring{estimator}{estimator}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_estimator}{Estimator}} state\+Machine\+::estimator}
+
+\mbox{\Hypertarget{classstate_machine_aa85b424f16cdc441a63eed018658736d}\label{classstate_machine_aa85b424f16cdc441a63eed018658736d}} 
+\index{stateMachine@{stateMachine}!I2C@{I2C}}
+\index{I2C@{I2C}!stateMachine@{stateMachine}}
+\doxysubsubsection{\texorpdfstring{I2C}{I2C}}
+{\footnotesize\ttfamily Two\+Wire state\+Machine\+::\+I2C}
+
+\mbox{\Hypertarget{classstate_machine_a27e4d19e1dcff45fb0e8930971898750}\label{classstate_machine_a27e4d19e1dcff45fb0e8930971898750}} 
+\index{stateMachine@{stateMachine}!logcontroller@{logcontroller}}
+\index{logcontroller@{logcontroller}!stateMachine@{stateMachine}}
+\doxysubsubsection{\texorpdfstring{logcontroller}{logcontroller}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_log_controller}{Log\+Controller}} state\+Machine\+::logcontroller}
+
+\mbox{\Hypertarget{classstate_machine_a5392d553305ccc5282a6cd61159c9829}\label{classstate_machine_a5392d553305ccc5282a6cd61159c9829}} 
+\index{stateMachine@{stateMachine}!networkmanager@{networkmanager}}
+\index{networkmanager@{networkmanager}!stateMachine@{stateMachine}}
+\doxysubsubsection{\texorpdfstring{networkmanager}{networkmanager}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_network_manager}{Network\+Manager}} state\+Machine\+::networkmanager}
+
+\mbox{\Hypertarget{classstate_machine_ae950d1a20842e52c87668bbb72371163}\label{classstate_machine_ae950d1a20842e52c87668bbb72371163}} 
+\index{stateMachine@{stateMachine}!sensors@{sensors}}
+\index{sensors@{sensors}!stateMachine@{stateMachine}}
+\doxysubsubsection{\texorpdfstring{sensors}{sensors}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_sensors}{Sensors}} state\+Machine\+::sensors}
+
+\mbox{\Hypertarget{classstate_machine_ab4c73b5e0fda3a705bad93d5ab45a3a1}\label{classstate_machine_ab4c73b5e0fda3a705bad93d5ab45a3a1}} 
+\index{stateMachine@{stateMachine}!storagecontroller@{storagecontroller}}
+\index{storagecontroller@{storagecontroller}!stateMachine@{stateMachine}}
+\doxysubsubsection{\texorpdfstring{storagecontroller}{storagecontroller}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_storage_controller}{Storage\+Controller}} state\+Machine\+::storagecontroller}
+
+\mbox{\Hypertarget{classstate_machine_aafb1576c55658672886391e9e94d2e0c}\label{classstate_machine_aafb1576c55658672886391e9e94d2e0c}} 
+\index{stateMachine@{stateMachine}!systemstatus@{systemstatus}}
+\index{systemstatus@{systemstatus}!stateMachine@{stateMachine}}
+\doxysubsubsection{\texorpdfstring{systemstatus}{systemstatus}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_system_status}{System\+Status}} state\+Machine\+::systemstatus}
+
+\mbox{\Hypertarget{classstate_machine_a64c2ebf972d5b5a35cdd95f382c42516}\label{classstate_machine_a64c2ebf972d5b5a35cdd95f382c42516}} 
+\index{stateMachine@{stateMachine}!tunezhandler@{tunezhandler}}
+\index{tunezhandler@{tunezhandler}!stateMachine@{stateMachine}}
+\doxysubsubsection{\texorpdfstring{tunezhandler}{tunezhandler}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_tunez_handler}{Tunez\+Handler}} state\+Machine\+::tunezhandler}
+
+\mbox{\Hypertarget{classstate_machine_ac0e2bf50a0069df384195e64f9e69652}\label{classstate_machine_ac0e2bf50a0069df384195e64f9e69652}} 
+\index{stateMachine@{stateMachine}!vspi@{vspi}}
+\index{vspi@{vspi}!stateMachine@{stateMachine}}
+\doxysubsubsection{\texorpdfstring{vspi}{vspi}}
+{\footnotesize\ttfamily SPIClass state\+Machine\+::vspi}
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+/\+Users/kiran/\+Documents/\+Projects/\+ICLR/\+Avionics/\+Ricardo\+\_\+\+OS/\+Ricardo\+\_\+\+OS/src/\mbox{\hyperlink{state_machine_8h}{state\+Machine.\+h}}\item 
+/\+Users/kiran/\+Documents/\+Projects/\+ICLR/\+Avionics/\+Ricardo\+\_\+\+OS/\+Ricardo\+\_\+\+OS/src/\mbox{\hyperlink{state_machine_8cpp}{state\+Machine.\+cpp}}\end{DoxyCompactItemize}

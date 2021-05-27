@@ -1,0 +1,236 @@
+\hypertarget{class_packet_header}{}\doxysection{Packet\+Header Class Reference}
+\label{class_packet_header}\index{PacketHeader@{PacketHeader}}
+
+
+{\ttfamily \#include $<$packets.\+h$>$}
+
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_packet_header_a269a8be760b8f5785bf822758770d738}{Packet\+Header}} ()
+\item 
+\mbox{\hyperlink{class_packet_header_ac821c6e8c0d14e59f92d6a4408feb3de}{Packet\+Header}} (uint8\+\_\+t packet\+\_\+type, uint32\+\_\+t packet\+\_\+size)
+\item 
+\mbox{\hyperlink{class_packet_header_ab4efe8cbc246bbe22fd5be6a92a1d3cb}{Packet\+Header}} (const std\+::vector$<$ uint8\+\_\+t $>$ \&data)
+\item 
+\mbox{\hyperlink{class_packet_header_a6d1ec34fd9e3a472cc758be32d583845}{$\sim$\+Packet\+Header}} ()
+\item 
+std\+::vector$<$ uint8\+\_\+t $>$ \mbox{\hyperlink{class_packet_header_a77e1156dbd831df7a2e8c412adbaecd3}{serialize}} () const
+\item 
+void \mbox{\hyperlink{class_packet_header_a085eb8780789576253589724818bc8d3}{serialize}} (std\+::vector$<$ uint8\+\_\+t $>$ \&buf) const
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+bool \mbox{\hyperlink{class_packet_header_a9b41bad3493c52967899bd750465c238}{header\+\_\+size\+\_\+mismatch}}
+\item 
+uint8\+\_\+t \mbox{\hyperlink{class_packet_header_a0a27191dab044da810e1a1889020d333}{start\+\_\+byte}} = 0x\+AF
+\item 
+uint8\+\_\+t \mbox{\hyperlink{class_packet_header_af930dc96d866874b6fe8edfb3bce3d89}{header\+\_\+len}} = \mbox{\hyperlink{class_packet_header_ae0c16331969378456fa7c606e694c926}{header\+\_\+size}}()
+\item 
+uint32\+\_\+t \mbox{\hyperlink{class_packet_header_a4d21c282bc6df162eaf67e9d13b4953a}{packet\+\_\+len}} = 0x00000000
+\item 
+uint32\+\_\+t \mbox{\hyperlink{class_packet_header_a4f1a7d5e67ff2356183e4e1af12cac66}{system\+\_\+time}} = 0x00000000
+\item 
+uint8\+\_\+t \mbox{\hyperlink{class_packet_header_a76c5031c8115a17ec011d3af8046aeef}{type}} = 0x00
+\item 
+uint8\+\_\+t \mbox{\hyperlink{class_packet_header_a9f3fe9022c36622c66f9d2fa543a904f}{source}} = 0x00
+\item 
+uint8\+\_\+t \mbox{\hyperlink{class_packet_header_ad71894c4d5107834f25ee5a4e2664f1e}{destination}} = 0x00
+\item 
+uint8\+\_\+t \mbox{\hyperlink{class_packet_header_ad958f9d1c378e64ef845244576d7db5f}{src\+\_\+interface}} = 0x00
+\item 
+uint8\+\_\+t \mbox{\hyperlink{class_packet_header_a8a2e4a283eb6eb6cea4ecb750b1c36e5}{ttl}} = 10
+\end{DoxyCompactItemize}
+\doxysubsection*{Static Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static constexpr auto \mbox{\hyperlink{class_packet_header_acf9c5c5c063bf6ed809d8d6144a5aa56}{get\+Serializer}} ()
+\item 
+static constexpr size\+\_\+t \mbox{\hyperlink{class_packet_header_ae0c16331969378456fa7c606e694c926}{header\+\_\+size}} ()
+\end{DoxyCompactItemize}
+\doxysubsection*{Friends}
+\begin{DoxyCompactItemize}
+\item 
+class \mbox{\hyperlink{class_packet_header_a04dbcd95d420556b0b42e93203b0dcb6}{USB}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_packet_header_a269a8be760b8f5785bf822758770d738}\label{class_packet_header_a269a8be760b8f5785bf822758770d738}} 
+\index{PacketHeader@{PacketHeader}!PacketHeader@{PacketHeader}}
+\index{PacketHeader@{PacketHeader}!PacketHeader@{PacketHeader}}
+\doxysubsubsection{\texorpdfstring{PacketHeader()}{PacketHeader()}\hspace{0.1cm}{\footnotesize\ttfamily [1/3]}}
+{\footnotesize\ttfamily Packet\+Header\+::\+Packet\+Header (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_packet_header_ac821c6e8c0d14e59f92d6a4408feb3de}\label{class_packet_header_ac821c6e8c0d14e59f92d6a4408feb3de}} 
+\index{PacketHeader@{PacketHeader}!PacketHeader@{PacketHeader}}
+\index{PacketHeader@{PacketHeader}!PacketHeader@{PacketHeader}}
+\doxysubsubsection{\texorpdfstring{PacketHeader()}{PacketHeader()}\hspace{0.1cm}{\footnotesize\ttfamily [2/3]}}
+{\footnotesize\ttfamily Packet\+Header\+::\+Packet\+Header (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{packet\+\_\+type,  }\item[{uint32\+\_\+t}]{packet\+\_\+size }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_packet_header_ab4efe8cbc246bbe22fd5be6a92a1d3cb}\label{class_packet_header_ab4efe8cbc246bbe22fd5be6a92a1d3cb}} 
+\index{PacketHeader@{PacketHeader}!PacketHeader@{PacketHeader}}
+\index{PacketHeader@{PacketHeader}!PacketHeader@{PacketHeader}}
+\doxysubsubsection{\texorpdfstring{PacketHeader()}{PacketHeader()}\hspace{0.1cm}{\footnotesize\ttfamily [3/3]}}
+{\footnotesize\ttfamily Packet\+Header\+::\+Packet\+Header (\begin{DoxyParamCaption}\item[{const std\+::vector$<$ uint8\+\_\+t $>$ \&}]{data }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_packet_header_ab4efe8cbc246bbe22fd5be6a92a1d3cb_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_packet_header_a6d1ec34fd9e3a472cc758be32d583845}\label{class_packet_header_a6d1ec34fd9e3a472cc758be32d583845}} 
+\index{PacketHeader@{PacketHeader}!````~PacketHeader@{$\sim$PacketHeader}}
+\index{````~PacketHeader@{$\sim$PacketHeader}!PacketHeader@{PacketHeader}}
+\doxysubsubsection{\texorpdfstring{$\sim$PacketHeader()}{~PacketHeader()}}
+{\footnotesize\ttfamily Packet\+Header\+::$\sim$\+Packet\+Header (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_packet_header_acf9c5c5c063bf6ed809d8d6144a5aa56}\label{class_packet_header_acf9c5c5c063bf6ed809d8d6144a5aa56}} 
+\index{PacketHeader@{PacketHeader}!getSerializer@{getSerializer}}
+\index{getSerializer@{getSerializer}!PacketHeader@{PacketHeader}}
+\doxysubsubsection{\texorpdfstring{getSerializer()}{getSerializer()}}
+{\footnotesize\ttfamily static constexpr auto Packet\+Header\+::get\+Serializer (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}, {\ttfamily [constexpr]}, {\ttfamily [private]}}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_packet_header_acf9c5c5c063bf6ed809d8d6144a5aa56_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_packet_header_ae0c16331969378456fa7c606e694c926}\label{class_packet_header_ae0c16331969378456fa7c606e694c926}} 
+\index{PacketHeader@{PacketHeader}!header\_size@{header\_size}}
+\index{header\_size@{header\_size}!PacketHeader@{PacketHeader}}
+\doxysubsubsection{\texorpdfstring{header\_size()}{header\_size()}}
+{\footnotesize\ttfamily static constexpr size\+\_\+t Packet\+Header\+::header\+\_\+size (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}, {\ttfamily [constexpr]}, {\ttfamily [private]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_packet_header_ae0c16331969378456fa7c606e694c926_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_packet_header_a77e1156dbd831df7a2e8c412adbaecd3}\label{class_packet_header_a77e1156dbd831df7a2e8c412adbaecd3}} 
+\index{PacketHeader@{PacketHeader}!serialize@{serialize}}
+\index{serialize@{serialize}!PacketHeader@{PacketHeader}}
+\doxysubsubsection{\texorpdfstring{serialize()}{serialize()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily std\+::vector$<$ uint8\+\_\+t $>$ Packet\+Header\+::serialize (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_packet_header_a77e1156dbd831df7a2e8c412adbaecd3_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_packet_header_a77e1156dbd831df7a2e8c412adbaecd3_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_packet_header_a085eb8780789576253589724818bc8d3}\label{class_packet_header_a085eb8780789576253589724818bc8d3}} 
+\index{PacketHeader@{PacketHeader}!serialize@{serialize}}
+\index{serialize@{serialize}!PacketHeader@{PacketHeader}}
+\doxysubsubsection{\texorpdfstring{serialize()}{serialize()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily void Packet\+Header\+::serialize (\begin{DoxyParamCaption}\item[{std\+::vector$<$ uint8\+\_\+t $>$ \&}]{buf }\end{DoxyParamCaption}) const}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_packet_header_a085eb8780789576253589724818bc8d3_cgraph}
+\end{center}
+\end{figure}
+
+
+\doxysubsection{Friends And Related Function Documentation}
+\mbox{\Hypertarget{class_packet_header_a04dbcd95d420556b0b42e93203b0dcb6}\label{class_packet_header_a04dbcd95d420556b0b42e93203b0dcb6}} 
+\index{PacketHeader@{PacketHeader}!USB@{USB}}
+\index{USB@{USB}!PacketHeader@{PacketHeader}}
+\doxysubsubsection{\texorpdfstring{USB}{USB}}
+{\footnotesize\ttfamily friend class \mbox{\hyperlink{class_u_s_b}{USB}}\hspace{0.3cm}{\ttfamily [friend]}}
+
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{class_packet_header_ad71894c4d5107834f25ee5a4e2664f1e}\label{class_packet_header_ad71894c4d5107834f25ee5a4e2664f1e}} 
+\index{PacketHeader@{PacketHeader}!destination@{destination}}
+\index{destination@{destination}!PacketHeader@{PacketHeader}}
+\doxysubsubsection{\texorpdfstring{destination}{destination}}
+{\footnotesize\ttfamily uint8\+\_\+t Packet\+Header\+::destination = 0x00}
+
+\mbox{\Hypertarget{class_packet_header_af930dc96d866874b6fe8edfb3bce3d89}\label{class_packet_header_af930dc96d866874b6fe8edfb3bce3d89}} 
+\index{PacketHeader@{PacketHeader}!header\_len@{header\_len}}
+\index{header\_len@{header\_len}!PacketHeader@{PacketHeader}}
+\doxysubsubsection{\texorpdfstring{header\_len}{header\_len}}
+{\footnotesize\ttfamily uint8\+\_\+t Packet\+Header\+::header\+\_\+len = \mbox{\hyperlink{class_packet_header_ae0c16331969378456fa7c606e694c926}{header\+\_\+size}}()}
+
+\mbox{\Hypertarget{class_packet_header_a9b41bad3493c52967899bd750465c238}\label{class_packet_header_a9b41bad3493c52967899bd750465c238}} 
+\index{PacketHeader@{PacketHeader}!header\_size\_mismatch@{header\_size\_mismatch}}
+\index{header\_size\_mismatch@{header\_size\_mismatch}!PacketHeader@{PacketHeader}}
+\doxysubsubsection{\texorpdfstring{header\_size\_mismatch}{header\_size\_mismatch}}
+{\footnotesize\ttfamily bool Packet\+Header\+::header\+\_\+size\+\_\+mismatch}
+
+\mbox{\Hypertarget{class_packet_header_a4d21c282bc6df162eaf67e9d13b4953a}\label{class_packet_header_a4d21c282bc6df162eaf67e9d13b4953a}} 
+\index{PacketHeader@{PacketHeader}!packet\_len@{packet\_len}}
+\index{packet\_len@{packet\_len}!PacketHeader@{PacketHeader}}
+\doxysubsubsection{\texorpdfstring{packet\_len}{packet\_len}}
+{\footnotesize\ttfamily uint32\+\_\+t Packet\+Header\+::packet\+\_\+len = 0x00000000}
+
+\mbox{\Hypertarget{class_packet_header_a9f3fe9022c36622c66f9d2fa543a904f}\label{class_packet_header_a9f3fe9022c36622c66f9d2fa543a904f}} 
+\index{PacketHeader@{PacketHeader}!source@{source}}
+\index{source@{source}!PacketHeader@{PacketHeader}}
+\doxysubsubsection{\texorpdfstring{source}{source}}
+{\footnotesize\ttfamily uint8\+\_\+t Packet\+Header\+::source = 0x00}
+
+\mbox{\Hypertarget{class_packet_header_ad958f9d1c378e64ef845244576d7db5f}\label{class_packet_header_ad958f9d1c378e64ef845244576d7db5f}} 
+\index{PacketHeader@{PacketHeader}!src\_interface@{src\_interface}}
+\index{src\_interface@{src\_interface}!PacketHeader@{PacketHeader}}
+\doxysubsubsection{\texorpdfstring{src\_interface}{src\_interface}}
+{\footnotesize\ttfamily uint8\+\_\+t Packet\+Header\+::src\+\_\+interface = 0x00}
+
+\mbox{\Hypertarget{class_packet_header_a0a27191dab044da810e1a1889020d333}\label{class_packet_header_a0a27191dab044da810e1a1889020d333}} 
+\index{PacketHeader@{PacketHeader}!start\_byte@{start\_byte}}
+\index{start\_byte@{start\_byte}!PacketHeader@{PacketHeader}}
+\doxysubsubsection{\texorpdfstring{start\_byte}{start\_byte}}
+{\footnotesize\ttfamily uint8\+\_\+t Packet\+Header\+::start\+\_\+byte = 0x\+AF}
+
+\mbox{\Hypertarget{class_packet_header_a4f1a7d5e67ff2356183e4e1af12cac66}\label{class_packet_header_a4f1a7d5e67ff2356183e4e1af12cac66}} 
+\index{PacketHeader@{PacketHeader}!system\_time@{system\_time}}
+\index{system\_time@{system\_time}!PacketHeader@{PacketHeader}}
+\doxysubsubsection{\texorpdfstring{system\_time}{system\_time}}
+{\footnotesize\ttfamily uint32\+\_\+t Packet\+Header\+::system\+\_\+time = 0x00000000}
+
+\mbox{\Hypertarget{class_packet_header_a8a2e4a283eb6eb6cea4ecb750b1c36e5}\label{class_packet_header_a8a2e4a283eb6eb6cea4ecb750b1c36e5}} 
+\index{PacketHeader@{PacketHeader}!ttl@{ttl}}
+\index{ttl@{ttl}!PacketHeader@{PacketHeader}}
+\doxysubsubsection{\texorpdfstring{ttl}{ttl}}
+{\footnotesize\ttfamily uint8\+\_\+t Packet\+Header\+::ttl = 10}
+
+\mbox{\Hypertarget{class_packet_header_a76c5031c8115a17ec011d3af8046aeef}\label{class_packet_header_a76c5031c8115a17ec011d3af8046aeef}} 
+\index{PacketHeader@{PacketHeader}!type@{type}}
+\index{type@{type}!PacketHeader@{PacketHeader}}
+\doxysubsubsection{\texorpdfstring{type}{type}}
+{\footnotesize\ttfamily uint8\+\_\+t Packet\+Header\+::type = 0x00}
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+/\+Users/kiran/\+Documents/\+Projects/\+ICLR/\+Avionics/\+Ricardo\+\_\+\+OS/\+Ricardo\+\_\+\+OS/src/\+Comms/\mbox{\hyperlink{packets_8h}{packets.\+h}}\item 
+/\+Users/kiran/\+Documents/\+Projects/\+ICLR/\+Avionics/\+Ricardo\+\_\+\+OS/\+Ricardo\+\_\+\+OS/src/\+Comms/\mbox{\hyperlink{packets_8cpp}{packets.\+cpp}}\end{DoxyCompactItemize}

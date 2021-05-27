@@ -1,0 +1,288 @@
+\hypertarget{class_storage_controller}{}\doxysection{Storage\+Controller Class Reference}
+\label{class_storage_controller}\index{StorageController@{StorageController}}
+
+
+{\ttfamily \#include $<$storage\+Controller.\+h$>$}
+
+
+
+Collaboration diagram for Storage\+Controller\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_storage_controller__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_storage_controller_a68285e89bb715975a36e6b6b891ae9dc}{Storage\+Controller}} (\mbox{\hyperlink{classstate_machine}{state\+Machine}} $\ast$sm)
+\item 
+void \mbox{\hyperlink{class_storage_controller_af6c2adac43b2c4072cbf10c98d6f3e3e}{setup}} ()
+\item 
+File \mbox{\hyperlink{class_storage_controller_a0fb6ece5348f0a1a15f4d7050b03e4a9}{open}} (std\+::string \&path, \mbox{\hyperlink{storage_controller_8h_a9539e551e6a3b5229703f97c65f94bae}{STORAGE\+\_\+\+DEVICE}} device, oflag\+\_\+t mode)
+\item 
+std\+::string \mbox{\hyperlink{class_storage_controller_ad4c3a4d350750137bb742c3a98e7b3bb}{get\+Unique\+Directory}} (std\+::string input\+\_\+directory, \mbox{\hyperlink{storage_controller_8h_a9539e551e6a3b5229703f97c65f94bae}{STORAGE\+\_\+\+DEVICE}} device)
+\item 
+bool \mbox{\hyperlink{class_storage_controller_a4e77f06d615eb2488804886109b98b5c}{mkdir}} (std\+::string path, \mbox{\hyperlink{storage_controller_8h_a9539e551e6a3b5229703f97c65f94bae}{STORAGE\+\_\+\+DEVICE}} device)
+\item 
+bool \mbox{\hyperlink{class_storage_controller_aeff6ec755ddf2df758b273691a1b662f}{ls}} (std\+::string path, std\+::vector$<$ \mbox{\hyperlink{structdirectory__element__t}{directory\+\_\+element\+\_\+t}} $>$ \&directory\+\_\+structure, \mbox{\hyperlink{storage_controller_8h_a9539e551e6a3b5229703f97c65f94bae}{STORAGE\+\_\+\+DEVICE}} device)
+\item 
+bool \mbox{\hyperlink{class_storage_controller_a27d3d4b24ca02ef0edc6c53868612832}{ls}} (std\+::vector$<$ \mbox{\hyperlink{structdirectory__element__t}{directory\+\_\+element\+\_\+t}} $>$ \&directory\+\_\+structure, \mbox{\hyperlink{storage_controller_8h_a9539e551e6a3b5229703f97c65f94bae}{STORAGE\+\_\+\+DEVICE}} device)
+\item 
+void \mbox{\hyperlink{class_storage_controller_a118abfa6ab0520474ccc47c78827f843}{print\+Directory}} (std\+::string path, \mbox{\hyperlink{storage_controller_8h_a9539e551e6a3b5229703f97c65f94bae}{STORAGE\+\_\+\+DEVICE}} device)
+\item 
+bool \mbox{\hyperlink{class_storage_controller_a8d50450acbe1b423a367b13d17f4d375}{erase}} (\mbox{\hyperlink{storage_controller_8h_a9539e551e6a3b5229703f97c65f94bae}{STORAGE\+\_\+\+DEVICE}} device)
+\item 
+void \mbox{\hyperlink{class_storage_controller_a080bc92c81449245e61cc5e6d150da3d}{generate\+Directory\+Structure}} (\mbox{\hyperlink{storage_controller_8h_a9539e551e6a3b5229703f97c65f94bae}{STORAGE\+\_\+\+DEVICE}} device)
+\end{DoxyCompactItemize}
+\doxysubsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{class_storage_controller_a51681cde5ca50661eccb563343a2af9e}{get\+File\+Name\+Index}} (const std\+::string file\+Name)
+\end{DoxyCompactItemize}
+\doxysubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classstate_machine}{state\+Machine}} $\ast$ \mbox{\hyperlink{class_storage_controller_a193c5de038c90eaca0cae0418f39e661}{\+\_\+sm}}
+\item 
+Sd\+Fat \mbox{\hyperlink{class_storage_controller_a0a6342fa9f3905d56ece169cc1cc316a}{microsd}}
+\item 
+Adafruit\+\_\+\+Flash\+Transport\+\_\+\+SPI \mbox{\hyperlink{class_storage_controller_a315c9595def59e88d2ccdb5fa94df6c8}{flash\+Transport}}
+\item 
+Adafruit\+\_\+\+SPIFlash \mbox{\hyperlink{class_storage_controller_ad302278a1f554b2bdcced6149c0f6ad3}{flash}}
+\item 
+Fat\+File\+System \mbox{\hyperlink{class_storage_controller_abee9c9104024d8820a22c63673b9673c}{flash\+\_\+fatfs}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_storage_controller_a68285e89bb715975a36e6b6b891ae9dc}\label{class_storage_controller_a68285e89bb715975a36e6b6b891ae9dc}} 
+\index{StorageController@{StorageController}!StorageController@{StorageController}}
+\index{StorageController@{StorageController}!StorageController@{StorageController}}
+\doxysubsubsection{\texorpdfstring{StorageController()}{StorageController()}}
+{\footnotesize\ttfamily Storage\+Controller\+::\+Storage\+Controller (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classstate_machine}{state\+Machine}} $\ast$}]{sm }\end{DoxyParamCaption})}
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_storage_controller_a8d50450acbe1b423a367b13d17f4d375}\label{class_storage_controller_a8d50450acbe1b423a367b13d17f4d375}} 
+\index{StorageController@{StorageController}!erase@{erase}}
+\index{erase@{erase}!StorageController@{StorageController}}
+\doxysubsubsection{\texorpdfstring{erase()}{erase()}}
+{\footnotesize\ttfamily bool Storage\+Controller\+::erase (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{storage_controller_8h_a9539e551e6a3b5229703f97c65f94bae}{STORAGE\+\_\+\+DEVICE}}}]{device }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_storage_controller_a8d50450acbe1b423a367b13d17f4d375_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_storage_controller_a080bc92c81449245e61cc5e6d150da3d}\label{class_storage_controller_a080bc92c81449245e61cc5e6d150da3d}} 
+\index{StorageController@{StorageController}!generateDirectoryStructure@{generateDirectoryStructure}}
+\index{generateDirectoryStructure@{generateDirectoryStructure}!StorageController@{StorageController}}
+\doxysubsubsection{\texorpdfstring{generateDirectoryStructure()}{generateDirectoryStructure()}}
+{\footnotesize\ttfamily void Storage\+Controller\+::generate\+Directory\+Structure (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{storage_controller_8h_a9539e551e6a3b5229703f97c65f94bae}{STORAGE\+\_\+\+DEVICE}}}]{device }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_storage_controller_a080bc92c81449245e61cc5e6d150da3d_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_storage_controller_a080bc92c81449245e61cc5e6d150da3d_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_storage_controller_a51681cde5ca50661eccb563343a2af9e}\label{class_storage_controller_a51681cde5ca50661eccb563343a2af9e}} 
+\index{StorageController@{StorageController}!getFileNameIndex@{getFileNameIndex}}
+\index{getFileNameIndex@{getFileNameIndex}!StorageController@{StorageController}}
+\doxysubsubsection{\texorpdfstring{getFileNameIndex()}{getFileNameIndex()}}
+{\footnotesize\ttfamily int Storage\+Controller\+::get\+File\+Name\+Index (\begin{DoxyParamCaption}\item[{const std\+::string}]{file\+Name }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_storage_controller_a51681cde5ca50661eccb563343a2af9e_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_storage_controller_ad4c3a4d350750137bb742c3a98e7b3bb}\label{class_storage_controller_ad4c3a4d350750137bb742c3a98e7b3bb}} 
+\index{StorageController@{StorageController}!getUniqueDirectory@{getUniqueDirectory}}
+\index{getUniqueDirectory@{getUniqueDirectory}!StorageController@{StorageController}}
+\doxysubsubsection{\texorpdfstring{getUniqueDirectory()}{getUniqueDirectory()}}
+{\footnotesize\ttfamily std\+::string Storage\+Controller\+::get\+Unique\+Directory (\begin{DoxyParamCaption}\item[{std\+::string}]{input\+\_\+directory,  }\item[{\mbox{\hyperlink{storage_controller_8h_a9539e551e6a3b5229703f97c65f94bae}{STORAGE\+\_\+\+DEVICE}}}]{device }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_storage_controller_ad4c3a4d350750137bb742c3a98e7b3bb_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_storage_controller_ad4c3a4d350750137bb742c3a98e7b3bb_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_storage_controller_aeff6ec755ddf2df758b273691a1b662f}\label{class_storage_controller_aeff6ec755ddf2df758b273691a1b662f}} 
+\index{StorageController@{StorageController}!ls@{ls}}
+\index{ls@{ls}!StorageController@{StorageController}}
+\doxysubsubsection{\texorpdfstring{ls()}{ls()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily bool Storage\+Controller\+::ls (\begin{DoxyParamCaption}\item[{std\+::string}]{path,  }\item[{std\+::vector$<$ \mbox{\hyperlink{structdirectory__element__t}{directory\+\_\+element\+\_\+t}} $>$ \&}]{directory\+\_\+structure,  }\item[{\mbox{\hyperlink{storage_controller_8h_a9539e551e6a3b5229703f97c65f94bae}{STORAGE\+\_\+\+DEVICE}}}]{device }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_storage_controller_aeff6ec755ddf2df758b273691a1b662f_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_storage_controller_aeff6ec755ddf2df758b273691a1b662f_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_storage_controller_a27d3d4b24ca02ef0edc6c53868612832}\label{class_storage_controller_a27d3d4b24ca02ef0edc6c53868612832}} 
+\index{StorageController@{StorageController}!ls@{ls}}
+\index{ls@{ls}!StorageController@{StorageController}}
+\doxysubsubsection{\texorpdfstring{ls()}{ls()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily bool Storage\+Controller\+::ls (\begin{DoxyParamCaption}\item[{std\+::vector$<$ \mbox{\hyperlink{structdirectory__element__t}{directory\+\_\+element\+\_\+t}} $>$ \&}]{directory\+\_\+structure,  }\item[{\mbox{\hyperlink{storage_controller_8h_a9539e551e6a3b5229703f97c65f94bae}{STORAGE\+\_\+\+DEVICE}}}]{device }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_storage_controller_a27d3d4b24ca02ef0edc6c53868612832_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_storage_controller_a4e77f06d615eb2488804886109b98b5c}\label{class_storage_controller_a4e77f06d615eb2488804886109b98b5c}} 
+\index{StorageController@{StorageController}!mkdir@{mkdir}}
+\index{mkdir@{mkdir}!StorageController@{StorageController}}
+\doxysubsubsection{\texorpdfstring{mkdir()}{mkdir()}}
+{\footnotesize\ttfamily bool Storage\+Controller\+::mkdir (\begin{DoxyParamCaption}\item[{std\+::string}]{path,  }\item[{\mbox{\hyperlink{storage_controller_8h_a9539e551e6a3b5229703f97c65f94bae}{STORAGE\+\_\+\+DEVICE}}}]{device }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_storage_controller_a4e77f06d615eb2488804886109b98b5c_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_storage_controller_a4e77f06d615eb2488804886109b98b5c_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_storage_controller_a0fb6ece5348f0a1a15f4d7050b03e4a9}\label{class_storage_controller_a0fb6ece5348f0a1a15f4d7050b03e4a9}} 
+\index{StorageController@{StorageController}!open@{open}}
+\index{open@{open}!StorageController@{StorageController}}
+\doxysubsubsection{\texorpdfstring{open()}{open()}}
+{\footnotesize\ttfamily File Storage\+Controller\+::open (\begin{DoxyParamCaption}\item[{std\+::string \&}]{path,  }\item[{\mbox{\hyperlink{storage_controller_8h_a9539e551e6a3b5229703f97c65f94bae}{STORAGE\+\_\+\+DEVICE}}}]{device,  }\item[{oflag\+\_\+t}]{mode }\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_storage_controller_a0fb6ece5348f0a1a15f4d7050b03e4a9_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_storage_controller_a118abfa6ab0520474ccc47c78827f843}\label{class_storage_controller_a118abfa6ab0520474ccc47c78827f843}} 
+\index{StorageController@{StorageController}!printDirectory@{printDirectory}}
+\index{printDirectory@{printDirectory}!StorageController@{StorageController}}
+\doxysubsubsection{\texorpdfstring{printDirectory()}{printDirectory()}}
+{\footnotesize\ttfamily void Storage\+Controller\+::print\+Directory (\begin{DoxyParamCaption}\item[{std\+::string}]{path,  }\item[{\mbox{\hyperlink{storage_controller_8h_a9539e551e6a3b5229703f97c65f94bae}{STORAGE\+\_\+\+DEVICE}}}]{device }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_storage_controller_a118abfa6ab0520474ccc47c78827f843_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_storage_controller_af6c2adac43b2c4072cbf10c98d6f3e3e}\label{class_storage_controller_af6c2adac43b2c4072cbf10c98d6f3e3e}} 
+\index{StorageController@{StorageController}!setup@{setup}}
+\index{setup@{setup}!StorageController@{StorageController}}
+\doxysubsubsection{\texorpdfstring{setup()}{setup()}}
+{\footnotesize\ttfamily void Storage\+Controller\+::setup (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_storage_controller_af6c2adac43b2c4072cbf10c98d6f3e3e_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_storage_controller_af6c2adac43b2c4072cbf10c98d6f3e3e_icgraph}
+\end{center}
+\end{figure}
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{class_storage_controller_a193c5de038c90eaca0cae0418f39e661}\label{class_storage_controller_a193c5de038c90eaca0cae0418f39e661}} 
+\index{StorageController@{StorageController}!\_sm@{\_sm}}
+\index{\_sm@{\_sm}!StorageController@{StorageController}}
+\doxysubsubsection{\texorpdfstring{\_sm}{\_sm}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classstate_machine}{state\+Machine}}$\ast$ Storage\+Controller\+::\+\_\+sm\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{class_storage_controller_ad302278a1f554b2bdcced6149c0f6ad3}\label{class_storage_controller_ad302278a1f554b2bdcced6149c0f6ad3}} 
+\index{StorageController@{StorageController}!flash@{flash}}
+\index{flash@{flash}!StorageController@{StorageController}}
+\doxysubsubsection{\texorpdfstring{flash}{flash}}
+{\footnotesize\ttfamily Adafruit\+\_\+\+SPIFlash Storage\+Controller\+::flash\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{class_storage_controller_abee9c9104024d8820a22c63673b9673c}\label{class_storage_controller_abee9c9104024d8820a22c63673b9673c}} 
+\index{StorageController@{StorageController}!flash\_fatfs@{flash\_fatfs}}
+\index{flash\_fatfs@{flash\_fatfs}!StorageController@{StorageController}}
+\doxysubsubsection{\texorpdfstring{flash\_fatfs}{flash\_fatfs}}
+{\footnotesize\ttfamily Fat\+File\+System Storage\+Controller\+::flash\+\_\+fatfs\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{class_storage_controller_a315c9595def59e88d2ccdb5fa94df6c8}\label{class_storage_controller_a315c9595def59e88d2ccdb5fa94df6c8}} 
+\index{StorageController@{StorageController}!flashTransport@{flashTransport}}
+\index{flashTransport@{flashTransport}!StorageController@{StorageController}}
+\doxysubsubsection{\texorpdfstring{flashTransport}{flashTransport}}
+{\footnotesize\ttfamily Adafruit\+\_\+\+Flash\+Transport\+\_\+\+SPI Storage\+Controller\+::flash\+Transport\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{class_storage_controller_a0a6342fa9f3905d56ece169cc1cc316a}\label{class_storage_controller_a0a6342fa9f3905d56ece169cc1cc316a}} 
+\index{StorageController@{StorageController}!microsd@{microsd}}
+\index{microsd@{microsd}!StorageController@{StorageController}}
+\doxysubsubsection{\texorpdfstring{microsd}{microsd}}
+{\footnotesize\ttfamily Sd\+Fat Storage\+Controller\+::microsd\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+/\+Users/kiran/\+Documents/\+Projects/\+ICLR/\+Avionics/\+Ricardo\+\_\+\+OS/\+Ricardo\+\_\+\+OS/src/\+Logging/\mbox{\hyperlink{storage_controller_8h}{storage\+Controller.\+h}}\item 
+/\+Users/kiran/\+Documents/\+Projects/\+ICLR/\+Avionics/\+Ricardo\+\_\+\+OS/\+Ricardo\+\_\+\+OS/src/\+Logging/\mbox{\hyperlink{storage_controller_8cpp}{storage\+Controller.\+cpp}}\end{DoxyCompactItemize}

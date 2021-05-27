@@ -1,0 +1,10 @@
+<map id="Preflight::exitstate" name="Preflight::exitstate">
+<area shape="rect" id="node1" title=" " alt="" coords="5,42,133,69"/>
+<area shape="rect" id="node2" href="$class_state.html#a6154140cc1da5795d696a076d53b51d9" title=" " alt="" coords="181,42,292,69"/>
+<area shape="rect" id="node3" href="$class_system_status.html#abaa2a5b6a72c67ae890fd47ebb19cf0c" title=" " alt="" coords="340,5,488,47"/>
+<area shape="rect" id="node8" href="$namespaceutils.html#a80b01b2df5fab1766ccdbfa4fb2ce79d" title=" " alt="" coords="365,71,463,98"/>
+<area shape="rect" id="node4" href="$class_log_controller.html#adb94b2720224b121ac8487c7c0e04ffc" title=" " alt="" coords="536,13,660,39"/>
+<area shape="rect" id="node5" href="$class_telemetry_logger.html#af01a5e0f381d60d53d2c08ddad37ca07" title=" " alt="" coords="708,13,851,39"/>
+<area shape="rect" id="node6" href="$classtelemetry__logframe.html#add67dbfbf886bf1b322628962a03c0de" title=" " alt="" coords="899,5,1032,47"/>
+<area shape="rect" id="node7" href="$classtelemetry__logframe.html#ad8ce2864d5faaf045a0ff812c029a4b4" title=" " alt="" coords="1080,5,1213,47"/>
+</map>

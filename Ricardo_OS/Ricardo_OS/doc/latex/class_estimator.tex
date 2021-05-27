@@ -1,0 +1,211 @@
+\hypertarget{class_estimator}{}\doxysection{Estimator Class Reference}
+\label{class_estimator}\index{Estimator@{Estimator}}
+
+
+{\ttfamily \#include $<$estimator.\+h$>$}
+
+
+
+Collaboration diagram for Estimator\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_estimator__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_estimator_a29f89dc7ce5e09322c699eb3eee6d88d}{Estimator}} (\mbox{\hyperlink{classstate_machine}{state\+Machine}} $\ast$sm)
+\item 
+void \mbox{\hyperlink{class_estimator_a28cc6199ece59c166c0268ebc3edcf9d}{setup}} ()
+\item 
+void \mbox{\hyperlink{class_estimator_ad7fbe72b0e1c8d12b77427bcd7d2eafc}{update}} ()
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{structstate__t}{state\+\_\+t}} \mbox{\hyperlink{class_estimator_a7938048d38e901e262c0fa6952259c9d}{state}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{class_estimator_a660e2e7eff52ff8aa00dbc786e0a791c}{update\+Angular\+Rates}} ()
+\item 
+void \mbox{\hyperlink{class_estimator_ad06dbe76e1b5db4e79d955246afef377}{update\+Orientation}} (float dt)
+\item 
+void \mbox{\hyperlink{class_estimator_a3beb507db3c41779fbf191e4d511ac48}{update\+Linear\+Acceleration}} ()
+\end{DoxyCompactItemize}
+\doxysubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classstate_machine}{state\+Machine}} $\ast$ \mbox{\hyperlink{class_estimator_ae1c2b700d8d29173b2e74eab06df59fd}{\+\_\+sm}}
+\item 
+unsigned long \mbox{\hyperlink{class_estimator_a578b3fbe3deb2dc6ba0235d3658cf4ab}{last\+\_\+update}}
+\item 
+unsigned long \mbox{\hyperlink{class_estimator_a9b28f8a3c1ea229bf1953efbe43eb4ff}{update\+\_\+frequency}}
+\item 
+Madgwick \mbox{\hyperlink{class_estimator_a8fa6646368d444801547ece70213257e}{madgwick}}
+\item 
+const float \mbox{\hyperlink{class_estimator_a24141b4dea50a32852839bdca83bfa8f}{g}} = 9.\+81
+\item 
+const Eigen\+::\+Matrix$<$ float, 3, 1 $>$ \mbox{\hyperlink{class_estimator_ac75f9f707c46fac9a93e234af2854104}{gravity\+\_\+vector}} \{0,0,1\}
+\item 
+bool \mbox{\hyperlink{class_estimator_aae44479412a2799063a48293013946cf}{upside\+Down}} = false
+\item 
+float \mbox{\hyperlink{class_estimator_a9d03cc9d6e2c19a61680a0967355be08}{flip\+Constant}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_estimator_a29f89dc7ce5e09322c699eb3eee6d88d}\label{class_estimator_a29f89dc7ce5e09322c699eb3eee6d88d}} 
+\index{Estimator@{Estimator}!Estimator@{Estimator}}
+\index{Estimator@{Estimator}!Estimator@{Estimator}}
+\doxysubsubsection{\texorpdfstring{Estimator()}{Estimator()}}
+{\footnotesize\ttfamily Estimator\+::\+Estimator (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classstate_machine}{state\+Machine}} $\ast$}]{sm }\end{DoxyParamCaption})}
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_estimator_a28cc6199ece59c166c0268ebc3edcf9d}\label{class_estimator_a28cc6199ece59c166c0268ebc3edcf9d}} 
+\index{Estimator@{Estimator}!setup@{setup}}
+\index{setup@{setup}!Estimator@{Estimator}}
+\doxysubsubsection{\texorpdfstring{setup()}{setup()}}
+{\footnotesize\ttfamily void Estimator\+::setup (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_estimator_a28cc6199ece59c166c0268ebc3edcf9d_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_estimator_ad7fbe72b0e1c8d12b77427bcd7d2eafc}\label{class_estimator_ad7fbe72b0e1c8d12b77427bcd7d2eafc}} 
+\index{Estimator@{Estimator}!update@{update}}
+\index{update@{update}!Estimator@{Estimator}}
+\doxysubsubsection{\texorpdfstring{update()}{update()}}
+{\footnotesize\ttfamily void Estimator\+::update (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_estimator_ad7fbe72b0e1c8d12b77427bcd7d2eafc_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_estimator_ad7fbe72b0e1c8d12b77427bcd7d2eafc_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_estimator_a660e2e7eff52ff8aa00dbc786e0a791c}\label{class_estimator_a660e2e7eff52ff8aa00dbc786e0a791c}} 
+\index{Estimator@{Estimator}!updateAngularRates@{updateAngularRates}}
+\index{updateAngularRates@{updateAngularRates}!Estimator@{Estimator}}
+\doxysubsubsection{\texorpdfstring{updateAngularRates()}{updateAngularRates()}}
+{\footnotesize\ttfamily void Estimator\+::update\+Angular\+Rates (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_estimator_a660e2e7eff52ff8aa00dbc786e0a791c_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_estimator_a3beb507db3c41779fbf191e4d511ac48}\label{class_estimator_a3beb507db3c41779fbf191e4d511ac48}} 
+\index{Estimator@{Estimator}!updateLinearAcceleration@{updateLinearAcceleration}}
+\index{updateLinearAcceleration@{updateLinearAcceleration}!Estimator@{Estimator}}
+\doxysubsubsection{\texorpdfstring{updateLinearAcceleration()}{updateLinearAcceleration()}}
+{\footnotesize\ttfamily void Estimator\+::update\+Linear\+Acceleration (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_estimator_a3beb507db3c41779fbf191e4d511ac48_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_estimator_ad06dbe76e1b5db4e79d955246afef377}\label{class_estimator_ad06dbe76e1b5db4e79d955246afef377}} 
+\index{Estimator@{Estimator}!updateOrientation@{updateOrientation}}
+\index{updateOrientation@{updateOrientation}!Estimator@{Estimator}}
+\doxysubsubsection{\texorpdfstring{updateOrientation()}{updateOrientation()}}
+{\footnotesize\ttfamily void Estimator\+::update\+Orientation (\begin{DoxyParamCaption}\item[{float}]{dt }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_estimator_ad06dbe76e1b5db4e79d955246afef377_icgraph}
+\end{center}
+\end{figure}
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{class_estimator_ae1c2b700d8d29173b2e74eab06df59fd}\label{class_estimator_ae1c2b700d8d29173b2e74eab06df59fd}} 
+\index{Estimator@{Estimator}!\_sm@{\_sm}}
+\index{\_sm@{\_sm}!Estimator@{Estimator}}
+\doxysubsubsection{\texorpdfstring{\_sm}{\_sm}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classstate_machine}{state\+Machine}}$\ast$ Estimator\+::\+\_\+sm\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{class_estimator_a9d03cc9d6e2c19a61680a0967355be08}\label{class_estimator_a9d03cc9d6e2c19a61680a0967355be08}} 
+\index{Estimator@{Estimator}!flipConstant@{flipConstant}}
+\index{flipConstant@{flipConstant}!Estimator@{Estimator}}
+\doxysubsubsection{\texorpdfstring{flipConstant}{flipConstant}}
+{\footnotesize\ttfamily float Estimator\+::flip\+Constant\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{class_estimator_a24141b4dea50a32852839bdca83bfa8f}\label{class_estimator_a24141b4dea50a32852839bdca83bfa8f}} 
+\index{Estimator@{Estimator}!g@{g}}
+\index{g@{g}!Estimator@{Estimator}}
+\doxysubsubsection{\texorpdfstring{g}{g}}
+{\footnotesize\ttfamily const float Estimator\+::g = 9.\+81\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{class_estimator_ac75f9f707c46fac9a93e234af2854104}\label{class_estimator_ac75f9f707c46fac9a93e234af2854104}} 
+\index{Estimator@{Estimator}!gravity\_vector@{gravity\_vector}}
+\index{gravity\_vector@{gravity\_vector}!Estimator@{Estimator}}
+\doxysubsubsection{\texorpdfstring{gravity\_vector}{gravity\_vector}}
+{\footnotesize\ttfamily const Eigen\+::\+Matrix$<$float,3,1$>$ Estimator\+::gravity\+\_\+vector \{0,0,1\}\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{class_estimator_a578b3fbe3deb2dc6ba0235d3658cf4ab}\label{class_estimator_a578b3fbe3deb2dc6ba0235d3658cf4ab}} 
+\index{Estimator@{Estimator}!last\_update@{last\_update}}
+\index{last\_update@{last\_update}!Estimator@{Estimator}}
+\doxysubsubsection{\texorpdfstring{last\_update}{last\_update}}
+{\footnotesize\ttfamily unsigned long Estimator\+::last\+\_\+update\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{class_estimator_a8fa6646368d444801547ece70213257e}\label{class_estimator_a8fa6646368d444801547ece70213257e}} 
+\index{Estimator@{Estimator}!madgwick@{madgwick}}
+\index{madgwick@{madgwick}!Estimator@{Estimator}}
+\doxysubsubsection{\texorpdfstring{madgwick}{madgwick}}
+{\footnotesize\ttfamily Madgwick Estimator\+::madgwick\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{class_estimator_a7938048d38e901e262c0fa6952259c9d}\label{class_estimator_a7938048d38e901e262c0fa6952259c9d}} 
+\index{Estimator@{Estimator}!state@{state}}
+\index{state@{state}!Estimator@{Estimator}}
+\doxysubsubsection{\texorpdfstring{state}{state}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structstate__t}{state\+\_\+t}} Estimator\+::state}
+
+\mbox{\Hypertarget{class_estimator_a9b28f8a3c1ea229bf1953efbe43eb4ff}\label{class_estimator_a9b28f8a3c1ea229bf1953efbe43eb4ff}} 
+\index{Estimator@{Estimator}!update\_frequency@{update\_frequency}}
+\index{update\_frequency@{update\_frequency}!Estimator@{Estimator}}
+\doxysubsubsection{\texorpdfstring{update\_frequency}{update\_frequency}}
+{\footnotesize\ttfamily unsigned long Estimator\+::update\+\_\+frequency\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{class_estimator_aae44479412a2799063a48293013946cf}\label{class_estimator_aae44479412a2799063a48293013946cf}} 
+\index{Estimator@{Estimator}!upsideDown@{upsideDown}}
+\index{upsideDown@{upsideDown}!Estimator@{Estimator}}
+\doxysubsubsection{\texorpdfstring{upsideDown}{upsideDown}}
+{\footnotesize\ttfamily bool Estimator\+::upside\+Down = false\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+/\+Users/kiran/\+Documents/\+Projects/\+ICLR/\+Avionics/\+Ricardo\+\_\+\+OS/\+Ricardo\+\_\+\+OS/src/\+Sensors/\mbox{\hyperlink{estimator_8h}{estimator.\+h}}\item 
+/\+Users/kiran/\+Documents/\+Projects/\+ICLR/\+Avionics/\+Ricardo\+\_\+\+OS/\+Ricardo\+\_\+\+OS/src/\+Sensors/\mbox{\hyperlink{estimator_8cpp}{estimator.\+cpp}}\end{DoxyCompactItemize}

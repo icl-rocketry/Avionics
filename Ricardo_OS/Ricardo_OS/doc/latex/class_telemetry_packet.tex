@@ -1,0 +1,216 @@
+\hypertarget{class_telemetry_packet}{}\doxysection{Telemetry\+Packet Class Reference}
+\label{class_telemetry_packet}\index{TelemetryPacket@{TelemetryPacket}}
+
+
+{\ttfamily \#include $<$packets.\+h$>$}
+
+
+
+Collaboration diagram for Telemetry\+Packet\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=170pt]{class_telemetry_packet__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{class_telemetry_packet_a081eba8279f9c3ed6a04df2e88c16df1}{serialize}} (std\+::vector$<$ uint8\+\_\+t $>$ \&buf) const
+\item 
+\mbox{\hyperlink{class_telemetry_packet_a45ae64bba7d093823e52b09e24186ad7}{Telemetry\+Packet}} (const std\+::vector$<$ uint8\+\_\+t $>$ \&data)
+\item 
+\mbox{\hyperlink{class_telemetry_packet_ab3a7dcb030e4be864aa15304e31275e0}{Telemetry\+Packet}} ()
+\item 
+\mbox{\hyperlink{class_telemetry_packet_a08beb088b41631b68d939a2a4d4d6547}{$\sim$\+Telemetry\+Packet}} ()
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_packet_header}{Packet\+Header}} \mbox{\hyperlink{class_telemetry_packet_af428909be05dd0d1c6a4974062f9c44f}{header}} \{static\+\_\+cast$<$uint8\+\_\+t$>$(\mbox{\hyperlink{packets_8h_a6e7ce8216c5aef0179ed98af26b7d557abb3d2d909c73fe49800949a344775f8b}{packet\+::\+TELEMETRY}}), \mbox{\hyperlink{class_telemetry_packet_a35aa6a48c2a5d27ea4a2d21de42d8b3c}{packet\+\_\+size}}()\}
+\item 
+float \mbox{\hyperlink{class_telemetry_packet_a42208f8de87f073ac229498622cfa9e6}{x}}
+\item 
+float \mbox{\hyperlink{class_telemetry_packet_a0a24aac95acb9a49cd9c6627c3f7b5cf}{y}}
+\item 
+float \mbox{\hyperlink{class_telemetry_packet_a69a308799f10557faa71d3c07ea54d16}{z}}
+\item 
+float \mbox{\hyperlink{class_telemetry_packet_ab2dc1c4763930fc3b0a1708f90278114}{vx}}
+\item 
+float \mbox{\hyperlink{class_telemetry_packet_a56b4cd488b435dee8a6e3373ce78bded}{vy}}
+\item 
+float \mbox{\hyperlink{class_telemetry_packet_a295250ad7ff21b6a8aa7e3e236ccbbf8}{vz}}
+\item 
+float \mbox{\hyperlink{class_telemetry_packet_a18204e8630917d53b9502b3d65168f78}{ax}}
+\item 
+float \mbox{\hyperlink{class_telemetry_packet_a975893afea9283d5ff322541a8643b0b}{ay}}
+\item 
+float \mbox{\hyperlink{class_telemetry_packet_af8673b00efaf21d0b9e03200cf19cfdd}{az}}
+\item 
+uint8\+\_\+t \mbox{\hyperlink{class_telemetry_packet_afa3ee7cd76e430607ba46f288a9e3886}{lora\+\_\+rssi}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Static Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static constexpr auto \mbox{\hyperlink{class_telemetry_packet_ad4046281b520642c1d93199a583dab00}{get\+Serializer}} ()
+\item 
+static constexpr size\+\_\+t \mbox{\hyperlink{class_telemetry_packet_a35aa6a48c2a5d27ea4a2d21de42d8b3c}{packet\+\_\+size}} ()
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_telemetry_packet_a45ae64bba7d093823e52b09e24186ad7}\label{class_telemetry_packet_a45ae64bba7d093823e52b09e24186ad7}} 
+\index{TelemetryPacket@{TelemetryPacket}!TelemetryPacket@{TelemetryPacket}}
+\index{TelemetryPacket@{TelemetryPacket}!TelemetryPacket@{TelemetryPacket}}
+\doxysubsubsection{\texorpdfstring{TelemetryPacket()}{TelemetryPacket()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily Telemetry\+Packet\+::\+Telemetry\+Packet (\begin{DoxyParamCaption}\item[{const std\+::vector$<$ uint8\+\_\+t $>$ \&}]{data }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_telemetry_packet_a45ae64bba7d093823e52b09e24186ad7_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_telemetry_packet_ab3a7dcb030e4be864aa15304e31275e0}\label{class_telemetry_packet_ab3a7dcb030e4be864aa15304e31275e0}} 
+\index{TelemetryPacket@{TelemetryPacket}!TelemetryPacket@{TelemetryPacket}}
+\index{TelemetryPacket@{TelemetryPacket}!TelemetryPacket@{TelemetryPacket}}
+\doxysubsubsection{\texorpdfstring{TelemetryPacket()}{TelemetryPacket()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily Telemetry\+Packet\+::\+Telemetry\+Packet (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_telemetry_packet_a08beb088b41631b68d939a2a4d4d6547}\label{class_telemetry_packet_a08beb088b41631b68d939a2a4d4d6547}} 
+\index{TelemetryPacket@{TelemetryPacket}!````~TelemetryPacket@{$\sim$TelemetryPacket}}
+\index{````~TelemetryPacket@{$\sim$TelemetryPacket}!TelemetryPacket@{TelemetryPacket}}
+\doxysubsubsection{\texorpdfstring{$\sim$TelemetryPacket()}{~TelemetryPacket()}}
+{\footnotesize\ttfamily Telemetry\+Packet\+::$\sim$\+Telemetry\+Packet (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_telemetry_packet_ad4046281b520642c1d93199a583dab00}\label{class_telemetry_packet_ad4046281b520642c1d93199a583dab00}} 
+\index{TelemetryPacket@{TelemetryPacket}!getSerializer@{getSerializer}}
+\index{getSerializer@{getSerializer}!TelemetryPacket@{TelemetryPacket}}
+\doxysubsubsection{\texorpdfstring{getSerializer()}{getSerializer()}}
+{\footnotesize\ttfamily static constexpr auto Telemetry\+Packet\+::get\+Serializer (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}, {\ttfamily [constexpr]}, {\ttfamily [private]}}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_telemetry_packet_ad4046281b520642c1d93199a583dab00_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_telemetry_packet_a35aa6a48c2a5d27ea4a2d21de42d8b3c}\label{class_telemetry_packet_a35aa6a48c2a5d27ea4a2d21de42d8b3c}} 
+\index{TelemetryPacket@{TelemetryPacket}!packet\_size@{packet\_size}}
+\index{packet\_size@{packet\_size}!TelemetryPacket@{TelemetryPacket}}
+\doxysubsubsection{\texorpdfstring{packet\_size()}{packet\_size()}}
+{\footnotesize\ttfamily static constexpr size\+\_\+t Telemetry\+Packet\+::packet\+\_\+size (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}, {\ttfamily [constexpr]}, {\ttfamily [private]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_telemetry_packet_a35aa6a48c2a5d27ea4a2d21de42d8b3c_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_telemetry_packet_a081eba8279f9c3ed6a04df2e88c16df1}\label{class_telemetry_packet_a081eba8279f9c3ed6a04df2e88c16df1}} 
+\index{TelemetryPacket@{TelemetryPacket}!serialize@{serialize}}
+\index{serialize@{serialize}!TelemetryPacket@{TelemetryPacket}}
+\doxysubsubsection{\texorpdfstring{serialize()}{serialize()}}
+{\footnotesize\ttfamily void Telemetry\+Packet\+::serialize (\begin{DoxyParamCaption}\item[{std\+::vector$<$ uint8\+\_\+t $>$ \&}]{buf }\end{DoxyParamCaption}) const}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_telemetry_packet_a081eba8279f9c3ed6a04df2e88c16df1_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_telemetry_packet_a081eba8279f9c3ed6a04df2e88c16df1_icgraph}
+\end{center}
+\end{figure}
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{class_telemetry_packet_a18204e8630917d53b9502b3d65168f78}\label{class_telemetry_packet_a18204e8630917d53b9502b3d65168f78}} 
+\index{TelemetryPacket@{TelemetryPacket}!ax@{ax}}
+\index{ax@{ax}!TelemetryPacket@{TelemetryPacket}}
+\doxysubsubsection{\texorpdfstring{ax}{ax}}
+{\footnotesize\ttfamily float Telemetry\+Packet\+::ax}
+
+\mbox{\Hypertarget{class_telemetry_packet_a975893afea9283d5ff322541a8643b0b}\label{class_telemetry_packet_a975893afea9283d5ff322541a8643b0b}} 
+\index{TelemetryPacket@{TelemetryPacket}!ay@{ay}}
+\index{ay@{ay}!TelemetryPacket@{TelemetryPacket}}
+\doxysubsubsection{\texorpdfstring{ay}{ay}}
+{\footnotesize\ttfamily float Telemetry\+Packet\+::ay}
+
+\mbox{\Hypertarget{class_telemetry_packet_af8673b00efaf21d0b9e03200cf19cfdd}\label{class_telemetry_packet_af8673b00efaf21d0b9e03200cf19cfdd}} 
+\index{TelemetryPacket@{TelemetryPacket}!az@{az}}
+\index{az@{az}!TelemetryPacket@{TelemetryPacket}}
+\doxysubsubsection{\texorpdfstring{az}{az}}
+{\footnotesize\ttfamily float Telemetry\+Packet\+::az}
+
+\mbox{\Hypertarget{class_telemetry_packet_af428909be05dd0d1c6a4974062f9c44f}\label{class_telemetry_packet_af428909be05dd0d1c6a4974062f9c44f}} 
+\index{TelemetryPacket@{TelemetryPacket}!header@{header}}
+\index{header@{header}!TelemetryPacket@{TelemetryPacket}}
+\doxysubsubsection{\texorpdfstring{header}{header}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_packet_header}{Packet\+Header}} Telemetry\+Packet\+::header \{static\+\_\+cast$<$uint8\+\_\+t$>$(\mbox{\hyperlink{packets_8h_a6e7ce8216c5aef0179ed98af26b7d557abb3d2d909c73fe49800949a344775f8b}{packet\+::\+TELEMETRY}}), \mbox{\hyperlink{class_telemetry_packet_a35aa6a48c2a5d27ea4a2d21de42d8b3c}{packet\+\_\+size}}()\}}
+
+\mbox{\Hypertarget{class_telemetry_packet_afa3ee7cd76e430607ba46f288a9e3886}\label{class_telemetry_packet_afa3ee7cd76e430607ba46f288a9e3886}} 
+\index{TelemetryPacket@{TelemetryPacket}!lora\_rssi@{lora\_rssi}}
+\index{lora\_rssi@{lora\_rssi}!TelemetryPacket@{TelemetryPacket}}
+\doxysubsubsection{\texorpdfstring{lora\_rssi}{lora\_rssi}}
+{\footnotesize\ttfamily uint8\+\_\+t Telemetry\+Packet\+::lora\+\_\+rssi}
+
+\mbox{\Hypertarget{class_telemetry_packet_ab2dc1c4763930fc3b0a1708f90278114}\label{class_telemetry_packet_ab2dc1c4763930fc3b0a1708f90278114}} 
+\index{TelemetryPacket@{TelemetryPacket}!vx@{vx}}
+\index{vx@{vx}!TelemetryPacket@{TelemetryPacket}}
+\doxysubsubsection{\texorpdfstring{vx}{vx}}
+{\footnotesize\ttfamily float Telemetry\+Packet\+::vx}
+
+\mbox{\Hypertarget{class_telemetry_packet_a56b4cd488b435dee8a6e3373ce78bded}\label{class_telemetry_packet_a56b4cd488b435dee8a6e3373ce78bded}} 
+\index{TelemetryPacket@{TelemetryPacket}!vy@{vy}}
+\index{vy@{vy}!TelemetryPacket@{TelemetryPacket}}
+\doxysubsubsection{\texorpdfstring{vy}{vy}}
+{\footnotesize\ttfamily float Telemetry\+Packet\+::vy}
+
+\mbox{\Hypertarget{class_telemetry_packet_a295250ad7ff21b6a8aa7e3e236ccbbf8}\label{class_telemetry_packet_a295250ad7ff21b6a8aa7e3e236ccbbf8}} 
+\index{TelemetryPacket@{TelemetryPacket}!vz@{vz}}
+\index{vz@{vz}!TelemetryPacket@{TelemetryPacket}}
+\doxysubsubsection{\texorpdfstring{vz}{vz}}
+{\footnotesize\ttfamily float Telemetry\+Packet\+::vz}
+
+\mbox{\Hypertarget{class_telemetry_packet_a42208f8de87f073ac229498622cfa9e6}\label{class_telemetry_packet_a42208f8de87f073ac229498622cfa9e6}} 
+\index{TelemetryPacket@{TelemetryPacket}!x@{x}}
+\index{x@{x}!TelemetryPacket@{TelemetryPacket}}
+\doxysubsubsection{\texorpdfstring{x}{x}}
+{\footnotesize\ttfamily float Telemetry\+Packet\+::x}
+
+\mbox{\Hypertarget{class_telemetry_packet_a0a24aac95acb9a49cd9c6627c3f7b5cf}\label{class_telemetry_packet_a0a24aac95acb9a49cd9c6627c3f7b5cf}} 
+\index{TelemetryPacket@{TelemetryPacket}!y@{y}}
+\index{y@{y}!TelemetryPacket@{TelemetryPacket}}
+\doxysubsubsection{\texorpdfstring{y}{y}}
+{\footnotesize\ttfamily float Telemetry\+Packet\+::y}
+
+\mbox{\Hypertarget{class_telemetry_packet_a69a308799f10557faa71d3c07ea54d16}\label{class_telemetry_packet_a69a308799f10557faa71d3c07ea54d16}} 
+\index{TelemetryPacket@{TelemetryPacket}!z@{z}}
+\index{z@{z}!TelemetryPacket@{TelemetryPacket}}
+\doxysubsubsection{\texorpdfstring{z}{z}}
+{\footnotesize\ttfamily float Telemetry\+Packet\+::z}
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+/\+Users/kiran/\+Documents/\+Projects/\+ICLR/\+Avionics/\+Ricardo\+\_\+\+OS/\+Ricardo\+\_\+\+OS/src/\+Comms/\mbox{\hyperlink{packets_8h}{packets.\+h}}\item 
+/\+Users/kiran/\+Documents/\+Projects/\+ICLR/\+Avionics/\+Ricardo\+\_\+\+OS/\+Ricardo\+\_\+\+OS/src/\+Comms/\mbox{\hyperlink{packets_8cpp}{packets.\+cpp}}\end{DoxyCompactItemize}
