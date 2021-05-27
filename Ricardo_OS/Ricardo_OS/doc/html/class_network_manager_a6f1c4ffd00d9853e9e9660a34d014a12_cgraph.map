@@ -1,8 +1,0 @@
-<map id="NetworkManager::send_to_node" name="NetworkManager::send_to_node">
-<area shape="rect" id="node1" title=" " alt="" coords="5,49,163,90"/>
-<area shape="rect" id="node2" href="$class_network_manager.html#ab71375f3f8ec9b5df1e0388534c88710" title=" " alt="" coords="211,49,368,90"/>
-<area shape="rect" id="node3" href="$class_u_s_b.html#a404c09e9e90a8df1011d4aca3a13c5d1" title=" " alt="" coords="431,5,563,32"/>
-<area shape="rect" id="node4" href="$class_radio.html#a219437f42cd31f1373c7192b3c5fc19c" title=" " alt="" coords="427,56,566,83"/>
-<area shape="rect" id="node5" href="$class_packet_header.html#a77e1156dbd831df7a2e8c412adbaecd3" title=" " alt="" coords="416,107,577,133"/>
-<area shape="rect" id="node6" href="$class_packet_header.html#acf9c5c5c063bf6ed809d8d6144a5aa56" title=" " alt="" coords="625,107,811,133"/>
-</map>
