@@ -256,7 +256,7 @@ U 1 1 60437B13
 P 2650 1850
 F 0 "J4" H 2568 1525 50  0000 C CNN
 F 1 "Screw_Terminal_01x02" H 2568 1616 50  0000 C CNN
-F 2 "iclrhw:PHOENIX_1757242" H 2650 1850 50  0001 C CNN
+F 2 "TerminalBlock_Phoenix:TerminalBlock_Phoenix_PT-1,5-2-5.0-H_1x02_P5.00mm_Horizontal" H 2650 1850 50  0001 C CNN
 F 3 "~" H 2650 1850 50  0001 C CNN
 	1    2650 1850
 	-1   0    0    -1  
