@@ -2,13 +2,43 @@ from .packets import *
 import serial
 import time
 from collections import deque
+import threading
 
 
 
-class NetworkManager:
+class SerialManager(threading.Thread):
 
 	def __init__(self, port, baud=115200, waittime = .3):
-		self.ser = serial.Serial(port=port, baudrate=baud, timeout = waittime)  # open serial port
+		
+
+		self.port = port
+		self.baud = baud
+		self.waittime = waittime
+		self.boot_messages = ''
+		self._connectToRicardo() #connect to ricardo
+
+		#threadsafe packetBuffer to store incomming packets awaiting processing
+		self.packetBuffer = deque()
+		self.sendBuffer = deque()
+
+		self.exit_event = threading.Event()
+		super(SerialManager,self).__init__(self)
+
+
+	def run(self):
+		while not self.exit_event.is_set():
+			self._send_packet()
+			self._read_next_packet()
+			
+	#this method expects already serialized data
+	def sendPacket(self,data):
+		self.sendBuffer.append(data)
+	#kill the thread if program exited
+	def stop(self):
+		self.exit_event.set()
+		
+	def _connectToRicardo(self):
+		self.ser = serial.Serial(port=self.port, baudrate=self.baud, timeout = self.waittime)  # open serial port
 
 		self.ser.stopbits = serial.STOPBITS_ONE
 		self.ser.parity = serial.PARITY_NONE
@@ -31,22 +61,6 @@ class NetworkManager:
 			except:
 				self.boot_messages += str(data)
 	
-
-		#threadsafe packetBuffer to store incomming packets awaiting processing
-		self.packetBuffer = deque()
-		self.sendBuffer = deque()
-
-		self.run = True # Run flag
-
-
-	def loop(self):
-		while self.run:
-			self._send_packet()
-			self._read_next_packet()
-			
-	#this method expects already serialized data
-	def sendPacket(self,data):
-		self.sendBuffer.append(data)
 
 
 
