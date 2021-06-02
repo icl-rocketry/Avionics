@@ -22,14 +22,19 @@ from multiprocessing import Process
 ap = argparse.ArgumentParser()
 # ap.add_argument("-d", "--device", required=True, help="Ricardo Serial Port", type=str)
 # ap.add_argument("-b", "--baud", required=False, help="Serial Port Baud Rate", type=int,default=115200)
-# ap.add_argument("-p", "--port", required=False, help="Network Port", type=int,default = 1337)
+ap.add_argument("-p", "--port", required=False, help="Network Port", type=int,default = 1337)
 # ap.add_argument("-t", "--tui", required=False, help="Launch Text-User-Interface", type=bool,default = False)
 # ap.add_argument("-v", "--verbose", required=False, help="Enable Verbose Mode", type=bool,default = False)
 args = vars(ap.parse_args())
 
 def exitBackend(signalNumber, frame):
-    f.stop()
-    #flaskinterface.t.stop()
+    # f.stop()
+    #flask_thread.join()
+    #flaskinterface.bg_exit_event.set()
+    flaskinterface.flask_thread.join()
+    #flaskinterface.bg_thread.join()
+    flaskinterface.telemetry_broadcast_thread.join()
+
     sys.exit(0)
 
 #t = None
@@ -42,11 +47,13 @@ if __name__ == '__main__':
    # sm.start()
     #flaskinterface.t.start()
 
-    f = flaskinterface.FlaskInterface()
-    p = Process(target=f.start())
-    p.start()
+    # f = flaskinterface.FlaskInterface()
+    # p = Process(target=f.start())
+    # p.start()
     #f.start()
-    
+    flaskinterface.startFlaskInterface(args['port'])
+    # p = Process(target=flaskinterface.startFlaskInterface,args=(args['port'],))
+    # p.start()
 
     #flaskApi.socketio.run(flaskApi.app,port=args['port'])
     #print("socketio run")

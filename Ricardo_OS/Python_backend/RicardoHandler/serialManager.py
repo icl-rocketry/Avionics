@@ -79,16 +79,3 @@ class SerialManager(threading.Thread):
 		if len(self.sendBuffer) > 0:
 			self.ser.write(self.sendBuffer.popleft()) 
 
-
-	def _call_callbacks(self):
-		pass
-
-'''if __name__ == '__main__':
-	# Argument Parsing
-	ap = argparse.ArgumentParser()
-	ap.add_argument("-p", "--port", required=True, help="Port hosting ricardo", type=str)
-	args = vars(ap.parse_args())
-
-	nm = NetworkManager(args['port'])
-	nm.loop()'''
-

@@ -2,7 +2,7 @@ import socketio
 
 # standard Python
 sio = socketio.Client(logger=True, engineio_logger=True)
-sio.connect('http://localhost:5001')
+sio.connect('http://localhost:1337',namespaces=['/','/telemetry'])
 
 @sio.event
 def connect():
@@ -19,3 +19,7 @@ def disconnect():
 @sio.on('response')
 def on_message(data):
     print(data)
+
+@sio.on('telemetry',namespace='/telemetry')
+def on_message(data):
+    print(data)    

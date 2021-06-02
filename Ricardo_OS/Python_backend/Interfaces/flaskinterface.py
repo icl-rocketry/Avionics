@@ -4,8 +4,7 @@ from flask import Flask,jsonify,request,Response
 from flask_socketio import SocketIO, emit
 import time
 
-import testclass
-import threading
+
 
 
 app = Flask(__name__)
@@ -14,14 +13,23 @@ app.config['DEBUG'] = True
 
 socketio = SocketIO(app)
 
+flask_thread = None
+bg_thread = None
+telemetry_broadcast_thread = None
 
-prev_t = 0
+
+
+
+prev_time = 0
+updateTimePeriod = 200e6
+
+
 
 @app.route('/')
 def index():
 
     #maybe here have a webpage with current status
-    return str(prev_t),200
+    return str(prev_time),200
 
 @app.route('/command', methods=['POST'])
 def send_command():
@@ -46,38 +54,52 @@ def disconnect():
     print('client disconnected')
     
 
+def _FlaskTask(port): 
+    print("starting socketio server")  
+    socketio.run(app,port=port,debug=True,use_reloader=False)
 
 
-class FlaskInterface():
-    def __init__(self):
-        self.thread = None
-        self.bg_thread = None
-        self.bg_exit_event = threading.Event()
+def _BGTask():
+    global prev_time
+    # while not bg_exit_event.is_set():
+    while True:
+        if (time.time_ns() - prev_time > updateTimePeriod):
+                
+                print("emitt")
+                socketio.emit('response', prev_time, broadcast=True,namespace='/')
+                prev_time = time.time_ns()
+        eventlet.sleep(.02)
 
+def _TelemetryBroadcastTask():
+    #global _currentTelemetry
+    # get latest telemetry from redis queue and emit
+    prev_time = 0
+    while True:
+        if (time.time_ns() - prev_time > updateTimePeriod):
+                
+                print("telemetry")
+                test_message = 'hi'
+                socketio.emit('telemetry', test_message, broadcast=True,namespace='/telemetry')
+                prev_time = time.time_ns()
+        eventlet.sleep(.02)
+
+
+def startBackgroundTask():
+    global bg_thread
+    if bg_thread is None:
+        bg_thread = socketio.start_background_task(_BGTask)
         
-        self.prev_time = 0
-        self.updateTimePeriod = 200e6
+def startTelemetryBroadcastTask():
+    global telemetry_broadcast_thread
+    if telemetry_broadcast_thread is None:
+        telemetry_broadcast_thread = socketio.start_background_task(_TelemetryBroadcastTask)
 
-    def start_server(self):
-        print("starting socketio server")
-        #socketio.run(app, port=RicardoBackend.args['port'], debug=True, use_reloader=False)
-        socketio.run(app, port=5001, debug=True, use_reloader=False)
-        
+    
+def startFlaskInterface(port):
+    global flask_thread
+    if flask_thread is None:
+        flask_thread = socketio.start_background_task(_FlaskTask,port)
+        #startBackgroundTask()
+        startTelemetryBroadcastTask()
+    
 
-    def start(self):
-        self.thread = socketio.start_background_task(self.start_server)
-        self.bg_thread = socketio.start_background_task(self._bg_time_emit)
-        
-
-    def stop(self):
-        self.thread.join()
-        self.bg_exit_event.set()
-
-    def _bg_time_emit(self):
-        while not self.bg_exit_event.is_set():
-            if (time.time_ns() - self.prev_time > self.updateTimePeriod):
-                    
-                    print("emitt")
-                    socketio.emit('response', self.prev_time, broadcast=True,namespace='/')
-                    self.prev_time = time.time_ns()
-            eventlet.sleep(.02)
