@@ -19,7 +19,7 @@ U 1 1 603A42ED
 P 2900 3550
 F 0 "J1" V 2772 3630 50  0000 L CNN
 F 1 "Screw_Terminal_01x02" V 2863 3630 50  0000 L CNN
-F 2 "TerminalBlock_Phoenix:TerminalBlock_Phoenix_PT-1,5-2-5.0-H_1x02_P5.00mm_Horizontal" H 2900 3550 50  0001 C CNN
+F 2 "iclrhw:PHOENIX_1757242" H 2900 3550 50  0001 C CNN
 F 3 "~" H 2900 3550 50  0001 C CNN
 	1    2900 3550
 	0    1    1    0   
@@ -242,7 +242,7 @@ U 1 1 603DB3E4
 P 7550 3600
 F 0 "J3" V 7422 3680 50  0000 L CNN
 F 1 "Screw_Terminal_01x02" V 7513 3680 50  0000 L CNN
-F 2 "TerminalBlock_Phoenix:TerminalBlock_Phoenix_PT-1,5-2-5.0-H_1x02_P5.00mm_Horizontal" H 7550 3600 50  0001 C CNN
+F 2 "iclrhw:PHOENIX_1757242" H 7550 3600 50  0001 C CNN
 F 3 "~" H 7550 3600 50  0001 C CNN
 	1    7550 3600
 	0    1    1    0   
@@ -473,7 +473,7 @@ U 1 1 6047AC74
 P 3400 1700
 F 0 "J2" H 3480 1692 50  0000 L CNN
 F 1 "Screw_Terminal_01x02" H 3480 1601 50  0000 L CNN
-F 2 "TerminalBlock_Phoenix:TerminalBlock_Phoenix_PT-1,5-2-5.0-H_1x02_P5.00mm_Horizontal" H 3400 1700 50  0001 C CNN
+F 2 "iclrhw:PHOENIX_1757242" H 3400 1700 50  0001 C CNN
 F 3 "~" H 3400 1700 50  0001 C CNN
 	1    3400 1700
 	1    0    0    -1  
