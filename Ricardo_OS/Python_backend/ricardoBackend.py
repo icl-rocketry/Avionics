@@ -8,18 +8,15 @@ import eventlet
 
 
 import argparse
-from RicardoHandler import serialManager
+
 import signal
 import sys
 
-from flask import Flask
-
-from flask import jsonify
-from flask import request
-from flask import Response
-from flask_socketio import SocketIO, emit
+#from Interfaces import flaskinterface
+from Interfaces import flaskinterface
 import testclass
 
+from multiprocessing import Process
 
 # Argument Parsing
 ap = argparse.ArgumentParser()
@@ -31,54 +28,11 @@ ap = argparse.ArgumentParser()
 args = vars(ap.parse_args())
 
 def exitBackend(signalNumber, frame):
-   # sm.stop()
-    t.stop()
+    f.stop()
+    #flaskinterface.t.stop()
     sys.exit(0)
 
-app = Flask(__name__)
-app.config["SECRET_KEY"] = "secret!"
-app.config['DEBUG'] = True
-
-socketio = SocketIO(app)
-
-@app.route('/')
-def index():
-    #maybe here have a webpage with current status
-    return str(t.get()),200
-
-@app.route('/command', methods=['POST'])
-def send_command():
-    command_data = request.json
-    return 'OK',200
-
-# @app.route("/telemetry",['GET'])
-# def getTelemetry(): 
-#     telemetryData = jsonify(
-#         data='telemetry'
-#     )
-#     return telemetryData,200
-
-@app.route('/telemetry', methods=['GET'])
-def get_telemetry():
-    telemetryData= jsonify(
-        data = 'telemetry'
-    )
-    return telemetryData,200
-
-#regeister new client to telemetry channel
-@socketio.on('connect')
-def connect():
-    emit('Connect',{'data':'Connected'})
-
- 
-
-@socketio.on('disconnect')
-def disconnect():
-    print('client disconnected')
-    
-
-
-
+#t = None
 
 if __name__ == '__main__':
     signal.signal(signal.SIGINT, exitBackend)
@@ -86,12 +40,16 @@ if __name__ == '__main__':
 
    # sm = serialManager.SerialkManager(port = args['device'],baud = ['baud'])
    # sm.start()
+    #flaskinterface.t.start()
 
-    t = testclass.testclass(socketio)
-    t.start()
+    f = flaskinterface.FlaskInterface()
+    p = Process(target=f.start())
+    p.start()
+    #f.start()
+    
 
     #flaskApi.socketio.run(flaskApi.app,port=args['port'])
-    print("socketio run")
-    socketio.run(app,port=5001,use_reloader = False)
+    #print("socketio run")
+    #socketio.run(app,port=5001,use_reloader = False)
 
 
