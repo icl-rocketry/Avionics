@@ -7,10 +7,12 @@ class PacketHandler():
     def __init__(self,serialmanager : SerialManager):
         self.serialmanager = serialmanager
 
-        self.timeout = 2*60 #default 2 minute timeout
+        self.packetRecordTimeout = 2*60 #default 2 minute timeout
         #dictionary structure
         #{key(packet uid):[client id, time_sent]}
         self.packetRecord = {} 
+
+        self.receivedPacketsTimeout = 2*60 #default 2 minute timeout
         #dictionary structure
         #{key(client id):serialized packet data,time_added}
         self.receivedPackets = {}
@@ -21,7 +23,9 @@ class PacketHandler():
     def run(self):
         #check redis for new messages
         #check timeouts on the expected responses
-        pass
+        self._cleanupPacketRecord()
+        self._cleanupReceivedPackets
+        
     
     def sendPacket(self,data:bytes,clientid):
         header = Header(data)#decode header
@@ -48,10 +52,21 @@ class PacketHandler():
 
 
     def _cleanupPacketRecord(self):
-        pass
+        expiry_time = time.time() - self.packetRecordTimeout
+
+        for key,value in self.packetRecord.items():
+            if value[1] < expiry_time:
+                self.packetRecord.pop(key) #remove entry
+
+        
 
     def _cleanupReceivedPackets(self):
-        pass
+        expiry_time = time.time() - self.receivedPacketsTimeout
+
+        for key,value in self.receivedPackets.items():
+            if value[1] < expiry_time:
+                self.receivedPackets.pop(key) #remove entry
+
 
     def _generateUID(self):#replace this with a better uuid method
         uuid = self.counter
