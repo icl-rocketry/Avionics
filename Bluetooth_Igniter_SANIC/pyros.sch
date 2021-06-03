@@ -19,7 +19,7 @@ U 1 1 603A42ED
 P 2900 3550
 F 0 "J1" V 2772 3630 50  0000 L CNN
 F 1 "Screw_Terminal_01x02" V 2863 3630 50  0000 L CNN
-F 2 "iclrhw:PHOENIX_1757242" H 2900 3550 50  0001 C CNN
+F 2 "TerminalBlock_Phoenix:TerminalBlock_Phoenix_PT-1,5-2-5.0-H_1x02_P5.00mm_Horizontal" H 2900 3550 50  0001 C CNN
 F 3 "~" H 2900 3550 50  0001 C CNN
 	1    2900 3550
 	0    1    1    0   
@@ -124,20 +124,8 @@ Wire Wire Line
 	4600 4200 4700 4200
 Wire Wire Line
 	4750 4000 4600 4000
-$Comp
-L Isolator:LTV-817S U3
-U 1 1 603B55A8
-P 4300 4100
-F 0 "U3" H 4300 4425 50  0000 C CNN
-F 1 "LTV-817S" H 4300 4334 50  0000 C CNN
-F 2 "Package_DIP:SMDIP-4_W9.53mm" H 4300 3800 50  0001 C CNN
-F 3 "http://www.us.liteon.com/downloads/LTV-817-827-847.PDF" H 3950 4400 50  0001 C CNN
-	1    4300 4100
-	-1   0    0    -1  
-$EndComp
 Wire Wire Line
 	4000 4850 4000 4700
-Connection ~ 4000 4200
 Text HLabel 3750 4200 0    50   Input ~ 0
 Cont1
 Wire Wire Line
@@ -242,7 +230,7 @@ U 1 1 603DB3E4
 P 7550 3600
 F 0 "J3" V 7422 3680 50  0000 L CNN
 F 1 "Screw_Terminal_01x02" V 7513 3680 50  0000 L CNN
-F 2 "iclrhw:PHOENIX_1757242" H 7550 3600 50  0001 C CNN
+F 2 "TerminalBlock_Phoenix:TerminalBlock_Phoenix_PT-1,5-2-5.0-H_1x02_P5.00mm_Horizontal" H 7550 3600 50  0001 C CNN
 F 3 "~" H 7550 3600 50  0001 C CNN
 	1    7550 3600
 	0    1    1    0   
@@ -349,20 +337,8 @@ Wire Wire Line
 	9250 4250 9350 4250
 Wire Wire Line
 	9400 4050 9250 4050
-$Comp
-L Isolator:LTV-817S U4
-U 1 1 603DB582
-P 8950 4150
-F 0 "U4" H 8950 4475 50  0000 C CNN
-F 1 "LTV-817S" H 8950 4384 50  0000 C CNN
-F 2 "Package_DIP:SMDIP-4_W9.53mm" H 8950 3850 50  0001 C CNN
-F 3 "http://www.us.liteon.com/downloads/LTV-817-827-847.PDF" H 8600 4450 50  0001 C CNN
-	1    8950 4150
-	-1   0    0    -1  
-$EndComp
 Wire Wire Line
 	8650 4900 8650 4750
-Connection ~ 8650 4250
 Text HLabel 8400 4250 0    50   Input ~ 0
 Cont2
 Wire Wire Line
@@ -473,7 +449,7 @@ U 1 1 6047AC74
 P 3400 1700
 F 0 "J2" H 3480 1692 50  0000 L CNN
 F 1 "Screw_Terminal_01x02" H 3480 1601 50  0000 L CNN
-F 2 "iclrhw:PHOENIX_1757242" H 3400 1700 50  0001 C CNN
+F 2 "TerminalBlock_Phoenix:TerminalBlock_Phoenix_PT-1,5-2-5.0-H_1x02_P5.00mm_Horizontal" H 3400 1700 50  0001 C CNN
 F 3 "~" H 3400 1700 50  0001 C CNN
 	1    3400 1700
 	1    0    0    -1  
@@ -503,4 +479,28 @@ F 3 "" H 2250 1800 50  0001 C CNN
 	1    2250 1800
 	1    0    0    -1  
 $EndComp
+$Comp
+L Isolator:LTV-827S U3
+U 1 1 60B943F7
+P 4300 4100
+F 0 "U3" H 4300 4425 50  0000 C CNN
+F 1 "LTV-827S" H 4300 4334 50  0000 C CNN
+F 2 "Package_DIP:SMDIP-8_W9.53mm" H 4300 3800 50  0001 C CNN
+F 3 "http://www.us.liteon.com/downloads/LTV-817-827-847.PDF" H 3500 4650 50  0001 C CNN
+	1    4300 4100
+	1    0    0    -1  
+$EndComp
+$Comp
+L Isolator:LTV-827S U3
+U 2 1 60B94E21
+P 8950 4150
+F 0 "U3" H 8950 4475 50  0000 C CNN
+F 1 "LTV-827S" H 8950 4384 50  0000 C CNN
+F 2 "Package_DIP:SMDIP-8_W9.53mm" H 8950 3850 50  0001 C CNN
+F 3 "http://www.us.liteon.com/downloads/LTV-817-827-847.PDF" H 8150 4700 50  0001 C CNN
+	2    8950 4150
+	1    0    0    -1  
+$EndComp
+Connection ~ 4000 4200
+Connection ~ 8650 4250
 $EndSCHEMATC
