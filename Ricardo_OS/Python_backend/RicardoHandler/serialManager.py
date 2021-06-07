@@ -118,8 +118,12 @@ class SerialManager(multiprocessing.Process):
 		serialized_header = header.serialize() #re-serialize header
 		#data[:len(serialized_header)] = serialized_header #overwrite old header
 		print(data)
-		modifieddata = serialized_header + data[len(serialized_header)-1 : -1]
+		print(data.hex())
+		#modifieddata = serialized_header + data[len(serialized_header)-1 : -1]
+		modifieddata = bytearray(data)
+		modifieddata[:len(serialized_header)] = serialized_header
 		print(modifieddata)
+		print(modifieddata.hex())
 		self.packetRecord[uid] = [clientid,time.time()] #update packetrecord dictionary
 		#self.sendBuffer.append(data)#add packet to send buffer
 
@@ -133,7 +137,7 @@ class SerialManager(multiprocessing.Process):
 			#{data:bytes as hex string,
 			# clientid:""}
 			self.__sendPacket__(bytes.fromhex(item["data"]),item["clientid"])
-		print()
+		
 			
 		
 
