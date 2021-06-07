@@ -252,7 +252,9 @@ void NetworkManager::process_local_packets(){
                         Command command_obj = Command{
                             static_cast<Nodes>(commandpacket.header.source), 
                             static_cast<COMMANDS>(commandpacket.command),
-                            commandpacket.arg};
+                            commandpacket.arg,
+                            commandpacket.header.system_time//this will be changed at a later data to packet id this is for testing
+                            };
                         commandhandler.addCommand(command_obj);
 
                         //delete packet pointer and remove from packet buffer

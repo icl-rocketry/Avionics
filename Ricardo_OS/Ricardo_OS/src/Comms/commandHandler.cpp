@@ -106,6 +106,7 @@ void CommandHandler::handleCommand(Command command) {
 
 					detailedall.header.source = _sm->networkmanager.get_node_type();
 					detailedall.header.destination = static_cast<uint8_t>(command.source_node);
+					detailedall.header.system_time = command.uid; // set returning packet header id to the same as the incomming -> THIS IS ONLY FOR TESTING
 
 					detailedall.ax = _sm->sensors.sensors_raw.ax;
 					detailedall.ay = _sm->sensors.sensors_raw.ay;

@@ -71,7 +71,7 @@ class SerialManager(multiprocessing.Process):
 				self.boot_messages += str(data)
 	
 	def __readPacket__(self):
-		if self.ser.in_waiting() > 0: 
+		if self.ser.in_waiting > 0: 
 			b = self.ser.read(1)
 			if (b == Header.start_byte.to_bytes(1, 'little')):
 	
@@ -91,7 +91,7 @@ class SerialManager(multiprocessing.Process):
 				self.__processReceivedPacket__((b + header_bytes + body))
 
 	def __processReceivedPacket__(self,data:bytes):
-		header = Header(data)#decode header
+		header = Header.from_bytes(data)#decode header
 		uid = header.system_time #get unique id
 
 		if uid in self.packetRecord:
@@ -112,15 +112,18 @@ class SerialManager(multiprocessing.Process):
 
 
 	def __sendPacket__(self,data:bytes,clientid):
-		header = Header(data)#decode header
+		header = Header.from_bytes(data)#decode header
 		uid = self.__generateUID__() #get uuid
 		header.system_time = uid #get uuid
-		serialized_header = header.serialize #re-serialize header
-		data[:len(serialized_header)] = serialized_header #overwrite old header
-
+		serialized_header = header.serialize() #re-serialize header
+		#data[:len(serialized_header)] = serialized_header #overwrite old header
+		print(data)
+		modifieddata = serialized_header + data[len(serialized_header)-1 : -1]
+		print(modifieddata)
 		self.packetRecord[uid] = [clientid,time.time()] #update packetrecord dictionary
 		#self.sendBuffer.append(data)#add packet to send buffer
-		self.ser.write(data)#write packet to serial port and hope its free lol
+
+		self.ser.write(modifieddata)#write packet to serial port and hope its free lol
 
 	def __checkSendQueue__(self):
 		#check if there are items present in send queue
@@ -130,6 +133,7 @@ class SerialManager(multiprocessing.Process):
 			#{data:bytes as hex string,
 			# clientid:""}
 			self.__sendPacket__(bytes.fromhex(item["data"]),item["clientid"])
+		print()
 			
 		
 

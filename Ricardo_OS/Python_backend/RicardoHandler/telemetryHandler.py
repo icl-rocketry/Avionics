@@ -33,7 +33,7 @@ class TelemetryHandler(multiprocessing.Process):
 
     def __sendTelemetryPacket__(self):
         #construct command packet for telemetry
-        header = packets.Header(2, 0, 2, 0, source=2, destination=0) # source=4 for USB and destination=0 for rocket
+        header = packets.Header(2, 0, 2, 0, source=4, destination=0) # source=4 for USB and destination=0 for rocket
         cmd_packet = packets.Command(header, 50, 0) # 50 for detailed all
         send_data = {
             "data":cmd_packet.serialize().hex(),
