@@ -24,7 +24,7 @@ class PacketHandler():
         #check redis for new messages
         #check timeouts on the expected responses
         self._cleanupPacketRecord()
-        self._cleanupReceivedPackets
+        self._cleanupReceivedPackets()
         
     
     def sendPacket(self,data:bytes,clientid):

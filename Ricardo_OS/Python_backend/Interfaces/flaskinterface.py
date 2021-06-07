@@ -3,7 +3,9 @@ eventlet.monkey_patch()
 from flask import Flask,jsonify,request,Response
 from flask_socketio import SocketIO, emit
 import time
-
+import redis
+import threading
+import json
 
 
 
@@ -14,11 +16,11 @@ app.config['DEBUG'] = True
 socketio = SocketIO(app)
 
 flask_thread = None
-bg_thread = None
+
 telemetry_broadcast_thread = None
+telemetry_broadcast_exit_event = threading.Event()
 
-
-
+r : redis.Redis = None
 
 prev_time = 0
 updateTimePeriod = 200e6
@@ -38,11 +40,13 @@ def send_command():
 
 @app.route('/telemetry', methods=['GET'])
 def get_telemetry():
-    telemetryData= jsonify(
-        data = 'telemetry'
-    )
-    return telemetryData,200
-
+    #get telemetry data from redis db
+                #the telemetry key will be a json object
+    telemetry_data = r.get("telemetry")
+    if telemetry_data is not None:
+        return json.loads(telemetry_data),200
+    else:
+        return "NODATA",200
 #regeister new client to telemetry channel
 
 @socketio.on('connect')
@@ -54,52 +58,48 @@ def disconnect():
     print('client disconnected')
     
 
-def _FlaskTask(port): 
+def __FlaskTask__(port): 
     print("starting socketio server")  
     socketio.run(app,port=port,debug=True,use_reloader=False)
 
 
-def _BGTask():
-    global prev_time
-    # while not bg_exit_event.is_set():
-    while True:
-        if (time.time_ns() - prev_time > updateTimePeriod):
-                
-                print("emitt")
-                socketio.emit('response', prev_time, broadcast=True,namespace='/')
-                prev_time = time.time_ns()
-        eventlet.sleep(.02)
 
-def _TelemetryBroadcastTask():
+def __TelemetryBroadcastTask__():
     #global _currentTelemetry
     # get latest telemetry from redis queue and emit
     prev_time = 0
-    while True:
+    while not telemetry_broadcast_exit_event.is_set():
         if (time.time_ns() - prev_time > updateTimePeriod):
                 
-                print("telemetry")
-                test_message = 'hi'
-                socketio.emit('telemetry', test_message, broadcast=True,namespace='/telemetry')
+                #get telemetry data from redis db
+                #the telemetry key will be a json object
+                telemetry_data = r.get("telemetry")
+                if telemetry_data is not None:
+                    socketio.emit('telemetry', json.loads(telemetry_data), broadcast=True,namespace='/telemetry')
                 prev_time = time.time_ns()
         eventlet.sleep(.02)
 
+def __stopTelemetryBroadcastTask__():
+    global telemetry_broadcast_exit_event
+    telemetry_broadcast_exit_event.set()
 
-def startBackgroundTask():
-    global bg_thread
-    if bg_thread is None:
-        bg_thread = socketio.start_background_task(_BGTask)
+
+
         
-def startTelemetryBroadcastTask():
+def __startTelemetryBroadcastTask__():
     global telemetry_broadcast_thread
     if telemetry_broadcast_thread is None:
-        telemetry_broadcast_thread = socketio.start_background_task(_TelemetryBroadcastTask)
+        telemetry_broadcast_thread = socketio.start_background_task(__TelemetryBroadcastTask__)
 
     
-def startFlaskInterface(port):
-    global flask_thread
+def startFlaskInterface(port,redishost = 'localhost',redisport = 6379):
+    global flask_thread,r
+    if r is None:
+        r = redis.Redis(host=redishost,port=redisport)
     if flask_thread is None:
-        flask_thread = socketio.start_background_task(_FlaskTask,port)
-        #startBackgroundTask()
-        startTelemetryBroadcastTask()
+        flask_thread = socketio.start_background_task(__FlaskTask__,port)
+        __startTelemetryBroadcastTask__()
     
 
+def stopFlaskInterface():
+    __stopTelemetryBroadcastTask__()
