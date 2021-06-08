@@ -6,6 +6,7 @@ import time
 import redis
 import threading
 import json
+from RicardoHandler import packets
 
 
 
@@ -31,12 +32,55 @@ updateTimePeriod = 200e6
 def index():
 
     #maybe here have a webpage with current status
-    return str(prev_time),200
+    return "Ricardo Backend",200
 
 @app.route('/command', methods=['POST'])
 def send_command():
     command_data = request.json
-    return 'OK',200
+    if command_data == None:
+        return 'Bad Request',400
+    try:
+        if "source" in command_data:
+            source = command_data["source"]
+        else:
+            source = 2
+        header = packets.Header(2,0,2,0,source = source,destination = command_data["destination"])
+        cmd_packet = packets.Command(header,command_data["command"],command_data["arg"])
+        send_data = {
+            "data":cmd_packet.serialize().hex(),
+            "clientid":command_data["clientid"]
+        }
+        r.lpush("SendQueue",json.dumps(send_data))
+        return 'OK',200
+    except KeyError:
+        return 'Bad Request',400
+
+@app.route('/packet', methods=['POST'])
+def send_packet():
+    packet_data = request.json
+    if packet_data == None:
+        return 'Bad Request',400
+    if all (keys in packet_data for keys in ("data","clientid")):
+        r.lpush("SendQueue",json.dumps(packet_data))
+        return 'OK',200
+    else:
+        return 'Bad Request',400
+
+@app.route('/response', methods=['POST'])
+def get_response():
+    response_data = request.json
+    if response_data == None:
+        return 'Bad Request \nNo Data Posted',400
+    if "clientid" in response_data:
+        key = "ReceiveQueue:" + str(response_data["clientid"])
+        if r.llen(key) > 0 :
+            received_response = json.loads(r.rpop(key))
+            return received_response,200
+        else:
+            return "NODATA",200
+    else:
+        return 'Bad Request \nJSON INVALID',400
+
 
 @app.route('/telemetry', methods=['GET'])
 def get_telemetry():
@@ -47,7 +91,7 @@ def get_telemetry():
         return json.loads(telemetry_data),200
     else:
         return "NODATA",200
-#regeister new client to telemetry channel
+
 
 @socketio.on('connect')
 def connect():
@@ -58,9 +102,9 @@ def disconnect():
     print('client disconnected')
     
 
-def __FlaskTask__(port): 
+def __FlaskTask__(host,port): 
     print("starting socketio server")  
-    socketio.run(app,port=port,debug=True,use_reloader=False)
+    socketio.run(app,host=host,port=port,debug=True,use_reloader=False)
 
 
 
@@ -92,12 +136,12 @@ def __startTelemetryBroadcastTask__():
         telemetry_broadcast_thread = socketio.start_background_task(__TelemetryBroadcastTask__)
 
     
-def startFlaskInterface(port,redishost = 'localhost',redisport = 6379):
+def startFlaskInterface(flaskhost="0.0.0.0",flaskport=5000,redishost = 'localhost',redisport = 6379):
     global flask_thread,r
     if r is None:
         r = redis.Redis(host=redishost,port=redisport)
     if flask_thread is None:
-        flask_thread = socketio.start_background_task(__FlaskTask__,port)
+        flask_thread = socketio.start_background_task(__FlaskTask__,host = flaskhost,port = flaskport)
         __startTelemetryBroadcastTask__()
     
 

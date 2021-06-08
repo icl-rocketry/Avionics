@@ -1,3 +1,0 @@
-
-FLASK_DEBUG = True
-PORT = 5000

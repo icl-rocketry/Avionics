@@ -42,6 +42,7 @@ class TelemetryHandler(multiprocessing.Process):
         self.r.lpush("SendQueue",json.dumps(send_data))
     
     def __checkRecieveQueue__(self):
+        self.r.persist("ReceiveQueue:"+str(self.clientid)) #remove key expiry as we are acsessing it
         if self.r.llen("ReceiveQueue:"+str(self.clientid)) > 0:
             #we have packets to process
             #this should return a bytes array

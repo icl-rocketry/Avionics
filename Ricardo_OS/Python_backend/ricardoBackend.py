@@ -13,11 +13,12 @@ import redis
 ap = argparse.ArgumentParser()
 ap.add_argument("-d", "--device", required=True, help="Ricardo Serial Port", type=str)
 ap.add_argument("-b", "--baud", required=False, help="Serial Port Baud Rate", type=int,default=115200)
-ap.add_argument("-p", "--port", required=False, help="Network Port", type=int,default = 1337)
+ap.add_argument("--flask-host", required=False, help="flask host", type=str,default="0.0.0.0")
+ap.add_argument("--flask-port", required=False, help="flask Port", type=int,default = 1337)
 ap.add_argument("-t", "--tui", required=False, help="Launch Text-User-Interface", action='store_true')
 ap.add_argument("-v", "--verbose", required=False, help="Enable Verbose Mode", action='store_true')
-ap.add_argument("--redis-host", required=False, help="Pass redis host", type=str,default = "localhost")
-ap.add_argument("--redis-port", required=False, help="Pass redis port", type=int,default = 6379)
+ap.add_argument("--redis-host", required=False, help="redis host", type=str,default = "localhost")
+ap.add_argument("--redis-port", required=False, help="redis port", type=int,default = 6379)
 
 args = vars(ap.parse_args())
 
@@ -28,7 +29,7 @@ def exitBackend(signalNumber, frame):
     #flaskinterface.bg_exit_event.set()
     flaskinterface.stopFlaskInterface()
     telemetrytask.stop()
-    sm.stop() #halt serial manager process
+    #sm.stop() #halt serial manager process
     sys.exit(0)
 
 def checkRedis():
@@ -47,16 +48,20 @@ if __name__ == '__main__':
     checkRedis()
 
     #start serial maanger process
-    sm = serialmanager.SerialManager(device = args["device"],
-                                     baud = args["baud"],
-                                     redishost = args["redis_host"],
-                                     redisport=args["redis_port"])
-    sm.start() 
+    # sm = serialmanager.SerialManager(device = args["device"],
+    #                                  baud = args["baud"],
+    #                                  redishost = args["redis_host"],
+    #                                  redisport=args["redis_port"])
+    # sm.start() 
     #start telemetry handler process
-    telemetrytask = telemetryhandler.TelemetryHandler(redishost = args["redis_host"],redisport=args["redis_port"])
+    telemetrytask = telemetryhandler.TelemetryHandler(redishost = args["redis_host"],
+                                                      redisport=args["redis_port"])
     telemetrytask.start()
     #start flask interface process
-    p = Process(target=flaskinterface.startFlaskInterface,args=(args['port'],))
+    p = Process(target=flaskinterface.startFlaskInterface,args=(args['flask_host'],
+                                                                args['flask_port'],
+                                                                args['redis_host'],
+                                                                args['redis_port'],))
     p.start()
 
 
