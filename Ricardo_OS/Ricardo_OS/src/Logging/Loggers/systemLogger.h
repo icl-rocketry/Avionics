@@ -13,7 +13,11 @@
 class SystemLogger : public Logger
 {
 public:
-    SystemLogger(StorageController* sc,uint16_t dt,std::string filename,STORAGE_DEVICE mainStorage = STORAGE_DEVICE::MICROSD,STORAGE_DEVICE backupStorage = STORAGE_DEVICE::FLASH);
+    SystemLogger(StorageController* sc,
+                 uint16_t dt,
+                 std::string filename,
+                 STORAGE_DEVICE mainStorage = STORAGE_DEVICE::MICROSD,
+                 STORAGE_DEVICE backupStorage = STORAGE_DEVICE::FLASH);
 
     void enable();
     void disable();
