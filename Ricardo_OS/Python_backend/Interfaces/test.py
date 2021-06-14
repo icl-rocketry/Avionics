@@ -1,51 +1,54 @@
 import urwid
-from datetime import datetime
+def urwid_test():
+    """
+            'black', 'dark red', 'dark green', 'brown', 'dark blue',
+            'dark magenta', 'dark cyan', 'light gray', 'dark gray',
+            'light red', 'light green', 'yellow', 'light blue', 
+            'light magenta', 'light cyan', 'white'
+    """
 
-class LoadingView():
-    def __init__(self):
-        
-        self.logotext = [('logo_blue',u"██╗ ██████╗██╗     "),('logo_red',u"██████╗\n"),('logo_blue',u"██║██╔════╝██║     "),('logo_red',u"██╔══██╗\n"),('logo_blue',u"██║██║     ██║     "),('logo_red',u"██████╔╝\n"),('logo_blue',u"██║██║     ██║     "),('logo_red',u"██╔══██╗\n"),('logo_blue',u"██║╚██████╗███████╗"),('logo_red',u"██║  ██║\n"),('logo_blue',u"╚═╝ ╚═════╝╚══════╝"),('logo_red',u"╚═╝  ╚═╝\n")]
-        self.logo = urwid.Text(self.logotext)
-        #stores the top widget
-        self.top = urwid.Filler(self.logo)
-    def changeText(self,main,data):
-        #self.logo.set_text([('logo_blue',u"██╗ ██████╗"),('logo_white',u"██╗     "),('logo_red',u"██████╗\n"),('logo_blue',u"██║██╔════╝"),('logo_white',u"██║     "),('logo_red',u"██╔══██╗\n"),('logo_blue',u"██║██║     "),('logo_white',u"██║     "),('logo_red',u"██████╔╝\n"),('logo_blue',u"██║██║     "),('logo_white',u"██║     "),('logo_red',u"██╔══██╗\n"),('logo_blue',u"██║╚██████╗"),('logo_white',u"███████╗"),('logo_red',u"██║  ██║\n"),('logo_blue',u"╚═╝ ╚═════╝"),('logo_white',u"╚══════╝"),('logo_red',u"╚═╝  ╚═╝\n")])
-        self.logotext = [('logo_blue',u"██╗ ██████╗"),('logo_white',u"██╗     "),('logo_red',u"██████╗\n"),('logo_blue',u"██║██╔════╝"),('logo_white',u"██║     "),('logo_red',u"██╔══██╗\n"),('logo_blue',u"██║██║     "),('logo_white',u"██║     "),('logo_red',u"██████╔╝\n"),('logo_blue',u"██║██║     "),('logo_white',u"██║     "),('logo_red',u"██╔══██╗\n"),('logo_blue',u"██║╚██████╗"),('logo_white',u"███████╗"),('logo_red',u"██║  ██║\n"),('logo_blue',u"╚═╝ ╚═════╝"),('logo_white',u"╚══════╝"),('logo_red',u"╚═╝  ╚═╝\n")]
-    
-class Logo(urwid.WidgetWrap):
-    def __init__(self):
-        self.logotext = [('logo_blue',u"██╗ ██████╗██╗     "),('logo_red',u"██████╗\n"),('logo_blue',u"██║██╔════╝██║     "),('logo_red',u"██╔══██╗\n"),('logo_blue',u"██║██║     ██║     "),('logo_red',u"██████╔╝\n"),('logo_blue',u"██║██║     ██║     "),('logo_red',u"██╔══██╗\n"),('logo_blue',u"██║╚██████╗███████╗"),('logo_red',u"██║  ██║\n"),('logo_blue',u"╚═╝ ╚═════╝╚══════╝"),('logo_red',u"╚═╝  ╚═╝\n")]
-        self.logo = urwid.Text(self.logotext)
-        #stores the top widget
-        self.top = urwid.Filler(self.logo)
-        super().__init__(self.top)
-    
-    def changeText(self,main,data):
-        
-        #self.logo.set_text([('logo_blue',u"██╗ ██████╗"),('logo_white',u"██╗     "),('logo_red',u"██████╗\n"),('logo_blue',u"██║██╔════╝"),('logo_white',u"██║     "),('logo_red',u"██╔══██╗\n"),('logo_blue',u"██║██║     "),('logo_white',u"██║     "),('logo_red',u"██████╔╝\n"),('logo_blue',u"██║██║     "),('logo_white',u"██║     "),('logo_red',u"██╔══██╗\n"),('logo_blue',u"██║╚██████╗"),('logo_white',u"███████╗"),('logo_red',u"██║  ██║\n"),('logo_blue',u"╚═╝ ╚═════╝"),('logo_white',u"╚══════╝"),('logo_red',u"╚═╝  ╚═╝\n")])
-        #self.logotext = [('logo_blue',u"██╗ ██████╗"),('logo_white',u"██╗     "),('logo_red',u"██████╗\n"),('logo_blue',u"██║██╔════╝"),('logo_white',u"██║     "),('logo_red',u"██╔══██╗\n"),('logo_blue',u"██║██║     "),('logo_white',u"██║     "),('logo_red',u"██████╔╝\n"),('logo_blue',u"██║██║     "),('logo_white',u"██║     "),('logo_red',u"██╔══██╗\n"),('logo_blue',u"██║╚██████╗"),('logo_white',u"███████╗"),('logo_red',u"██║  ██║\n"),('logo_blue',u"╚═╝ ╚═════╝"),('logo_white',u"╚══════╝"),('logo_red',u"╚═╝  ╚═╝\n")]
-        self.logo.set_text([('status_bar',datetime.now().strftime("%H:%M:%S"))])
+    class MyListBox(urwid.ListBox):
+        def focus_next(self):
+            try: 
+                self.body.set_focus(self.body.get_next(self.body.get_focus()[1])[1])
+            except:
+                pass
+        def focus_previous(self):
+            try: 
+                self.body.set_focus(self.body.get_prev(self.body.get_focus()[1])[1])
+            except:
+                pass            
 
-logotext = [('logo_blue',u"██╗ ██████╗██╗     "),('logo_red',u"██████╗\n"),('logo_blue',u"██║██╔════╝██║     "),('logo_red',u"██╔══██╗\n"),('logo_blue',u"██║██║     ██║     "),('logo_red',u"██████╔╝\n"),('logo_blue',u"██║██║     ██║     "),('logo_red',u"██╔══██╗\n"),('logo_blue',u"██║╚██████╗███████╗"),('logo_red',u"██║  ██║\n"),('logo_blue',u"╚═╝ ╚═════╝╚══════╝"),('logo_red',u"╚═╝  ╚═╝\n")]
-logo = urwid.Text(logotext)
-top = urwid.Filler(logo)
-palette = {
-            ('bg','light gray','black','','#0b1518','#dbdbdb'),
-            ('status_bar','light gray','black','','#0b1518','#dbdbdb'),
-            ('error','dark red','black','blink','#ff0000','#dbdbdb'),
-            ('nominal','light green','black','','#20ff00','#dbdbdb'),
-            ('logo_blue','dark blue','black','','#001240','#dbdbdb'),
-            ('logo_red','light red','black','','#cf0000','#dbdbdb'),
-            ('logo_white','white','black','','#ffffff','#dbdbdb')
-        }
-loadingview :LoadingView = LoadingView()
-logo = Logo()
-loop :urwid.MainLoop = urwid.MainLoop(logo,palette)
+    def handle_input(input):
+        if input == "esc":
+            raise urwid.ExitMainLoop()
+        head.original_widget.set_text("key pressed: %s" % input)
+        if input == "up":
+            listbox.focus_previous()
+        elif input == "down":
+            listbox.focus_next()
+    palette = [("top","white","black"),
+               ("line","light green","dark green","standout"),
+               ("frame","dark magenta","white"),
+               ]
+    widgets = [urwid.AttrMap(widget,None,"line") for widget in
+                [
+                    urwid.Text("Chemma!"),
+                    urwid.Divider("-"),
+                    urwid.Text("Another text widget!"),
+                    urwid.Divider("-"),                   
+                    urwid.Text("What is your name"),
+                    urwid.Divider("-"),                   
+                    urwid.Text("Boy ?"),                                                            
+                ]
+              ]
+    head    = urwid.AttrMap(urwid.Text("key pressed :",wrap="clip"),"top")
+    L       = urwid.SimpleListWalker(widgets)
+    listbox = MyListBox(L)
+    top     = urwid.AttrMap(urwid.Frame(listbox,head),"frame")
+    loop    = urwid.MainLoop(top,palette,unhandled_input=handle_input)
+    loop.screen.set_terminal_properties(colors=256)
+    loop.run()
 
-def changeText(main,data):
-    #original_widget = main.widget.original_widget
-    
-    logo.set_text([('logo_blue',u"██╗ ██████╗"),('logo_white',u"██╗     "),('logo_red',u"██████╗\n"),('logo_blue',u"██║██╔════╝"),('logo_white',u"██║     "),('logo_red',u"██╔══██╗\n"),('logo_blue',u"██║██║     "),('logo_white',u"██║     "),('logo_red',u"██████╔╝\n"),('logo_blue',u"██║██║     "),('logo_white',u"██║     "),('logo_red',u"██╔══██╗\n"),('logo_blue',u"██║╚██████╗"),('logo_white',u"███████╗"),('logo_red',u"██║  ██║\n"),('logo_blue',u"╚═╝ ╚═════╝"),('logo_white',u"╚══════╝"),('logo_red',u"╚═╝  ╚═╝\n")])
-    
-loop.set_alarm_in(3,logo.changeText)
-loop.run()
+if __name__ == "__main__":
+    urwid_test()

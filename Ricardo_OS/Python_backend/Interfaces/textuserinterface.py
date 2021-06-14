@@ -32,9 +32,20 @@ class LoadingView(urwid.WidgetWrap):
 class MainView(urwid.WidgetWrap):
     def __init__(self,redishost,redisport):
         #stores the top widget
-        self.body = urwid.Filler(urwid.Text('body',align=CENTER))
+        self.systemstatus = SystemStatus()
+        self.telmetryview = TelemetryView()
+        self.tophalf = urwid.Columns([self.telmetryview,self.systemstatus])
+
+        self.errorlog = ErrorLog()
+        self.righthalf = urwid.Pile([self.tophalf,self.errorlog])
+
+        self.errorstatus = ErrorStatus()
+        self.body = urwid.Columns([self.errorstatus,('weight',3,self.righthalf)])
+
         self.statusbar = StatusBar(redishost,redisport)
+        
         self.top = urwid.Frame(header=self.statusbar,body=self.body)
+
         super().__init__(self.top)
 
     def update(self,data):
@@ -44,17 +55,52 @@ class StatusBar(urwid.WidgetWrap):
     def __init__(self,redishost,redisport):
         
         self.hostportString = str(redishost) + ":" + str(redisport)
-        self.hostport = urwid.Text(('status_bar',self.hostportString),align=LEFT)
-       
+        self.hostport = urwid.Text(('status_bar',self.hostportString))
         self.time = urwid.Text(('status_bar',datetime.now().strftime("%H:%M:%S")),align=CENTER)
         self.exithint = urwid.Text(('status_bar',u'<q> to exit'),align=RIGHT)
-        self.top = urwid.Columns([self.hostport,self.time,self.exithint])
-        urwid.AttrMap(self.top,'status_bar')
+        self.top = urwid.AttrMap(urwid.Columns([self.hostport,self.time,self.exithint]),'status_bar')
         super().__init__(self.top)
 
     def update(self):
         self.time.set_text(('status_bar',datetime.now().strftime("%H:%M:%S")))
 
+class ErrorStatus(urwid.WidgetWrap):
+    def __init__(self):
+        self.errorlist = urwid.ListBox([])
+        self.top = urwid.LineBox(self.errorlist,'Status',title_align='left')
+        super().__init__(self.top)
+        
+    def update(self,data):
+        pass
+
+class ErrorLog(urwid.WidgetWrap):
+    def __init__(self):
+        self.errorlist = urwid.ListBox([])
+        self.top = urwid.LineBox(self.errorlist,'Log',title_align='left')
+        super().__init__(self.top)
+        
+    def update(self,data):
+        pass
+
+class TelemetryView(urwid.WidgetWrap):
+    def __init__(self):
+        self.body = urwid.Text('telemetry',align=CENTER)
+        self.errorlist = urwid.Filler(self.body)
+        self.top = urwid.LineBox(self.errorlist,'Telemetry',title_align='left')
+        super().__init__(self.top)
+        
+    def update(self,data):
+        pass
+
+class SystemStatus(urwid.WidgetWrap):
+    def __init__(self):
+        self.body = urwid.Text('system',align=CENTER)
+        self.errorlist = urwid.Filler(self.body)
+        self.top = urwid.LineBox(self.errorlist,'System',title_align='left')
+        super().__init__(self.top)
+        
+    def update(self,data):
+        pass
 
 class TextUserInterface(multiprocessing.Process):
     def __init__(self,redishost = 'localhost',redisport = 6379,refreshRate = .2):
@@ -65,16 +111,16 @@ class TextUserInterface(multiprocessing.Process):
 
         self.refreshRate = refreshRate
         self.palette = {
-            ('bg','light gray','','','#0b1518','#dbdbdb'),
+            (None,'light gray','','','#0c272f','#0B1518'),#default
             ('status_bar','black','light gray','','#0b1518','#dbdbdb'),
-            ('error','dark red','','blink','#ff0000','#dbdbdb'),
-            ('nominal','light green','','','#20ff00','#dbdbdb'),
-            ('logo_blue','dark blue','','','#001240','#dbdbdb'),
-            ('logo_red','dark red','','','#ff0000','#dbdbdb'),
-            ('logo_white','white','','','#ffffff','#dbdbdb')
+            ('error','dark red','','blink','#ff0000','#0B1518'),
+            ('nominal','light green','','','#20ff00','#0B1518'),
+            ('logo_blue','dark blue','','','#001240','#0B1518'),
+            ('logo_red','dark red','','','#ff0000','#0B1518'),
+            ('logo_white','white','','','#ffffff','#0B1518')
         }
         self.uiLoop = urwid.MainLoop(self.loadingScreen,palette=self.palette,unhandled_input=self.__exit_on_q__)
-        
+        #self.uiLoop.screen.set_terminal_properties(colors=256)
         self.uiLoop.set_alarm_in(3,self.__transitionToMain__)
         self.r = None
         #self.r = redis.Redis(host=redishost,port=redisport)
@@ -93,9 +139,7 @@ class TextUserInterface(multiprocessing.Process):
 
     def __getTelemetry__(self):
         return self.r.get("telemetry")
-    
-    def __decodeSystemStatus__(self,SystemStatusVariable):
-        pass
+   
 
     def __exit_on_q__(self,key):
         if key in ('q', 'Q'):
@@ -104,6 +148,9 @@ class TextUserInterface(multiprocessing.Process):
     def __transitionToMain__(self,main,data):
         self.uiLoop.widget = self.mainScreen #update main widget to the main view
         self.uiLoop.set_alarm_in(0,self.__updateData__)#call update function in event loop
+ 
+def decodeSystemStatus(SystemStatusVariable): #decodes system status variable
+    pass
 
 def checkRedis():
     try:
