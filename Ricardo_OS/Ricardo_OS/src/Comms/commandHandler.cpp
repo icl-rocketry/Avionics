@@ -81,6 +81,56 @@ void CommandHandler::handleCommand(Command command) {
 
 					telemetry.header.source = _sm->networkmanager.get_node_type();
 					telemetry.header.destination = static_cast<uint8_t>(command.source_node);
+					telemetry.header.uid = command.uid; 
+
+					telemetry.pn = _sm->estimator.state.position(0);
+					telemetry.pe = _sm->estimator.state.position(1);
+					telemetry.pd = _sm->estimator.state.position(2);
+
+					telemetry.vn = _sm->estimator.state.velocity(0);
+					telemetry.ve = _sm->estimator.state.velocity(1);
+					telemetry.vd = _sm->estimator.state.velocity(2);
+
+					telemetry.an = _sm->estimator.state.acceleration(0);
+					telemetry.ae = _sm->estimator.state.acceleration(1);
+					telemetry.ad = _sm->estimator.state.acceleration(2);
+
+					telemetry.roll = _sm->estimator.state.eulerAngles(0);
+					telemetry.pitch = _sm->estimator.state.eulerAngles(1);
+					telemetry.yaw =_sm->estimator.state.eulerAngles(2);
+
+					telemetry.lat = _sm->sensors.sensors_raw.gps_lat / 10000000.0;
+					telemetry.lng = _sm->sensors.sensors_raw.gps_long / 10000000.0;
+					telemetry.alt = _sm->sensors.sensors_raw.gps_alt;
+					telemetry.sat = _sm->sensors.sensors_raw.gps_sat;
+
+					telemetry.ax = _sm->sensors.sensors_raw.ax;
+					telemetry.ay = _sm->sensors.sensors_raw.ay;
+					telemetry.az = _sm->sensors.sensors_raw.az;
+
+					telemetry.gx = _sm->sensors.sensors_raw.gx;
+					telemetry.gy = _sm->sensors.sensors_raw.gy;
+					telemetry.gz = _sm->sensors.sensors_raw.gz;
+
+					telemetry.mx = _sm->sensors.sensors_raw.mx;
+					telemetry.my = _sm->sensors.sensors_raw.my;
+					telemetry.mz = _sm->sensors.sensors_raw.mz;
+
+					telemetry.temp = _sm->sensors.sensors_raw.baro_temp;
+					telemetry.press = _sm->sensors.sensors_raw.baro_press;
+
+					telemetry.batt_voltage = _sm->sensors.sensors_raw.batt_volt;
+					telemetry.batt_percent= _sm->sensors.sensors_raw.batt_percent;
+
+					telemetry.launch_lat = _sm->estimator.state.gps_launch_lat;
+					telemetry.launch_lng = _sm->estimator.state.gps_launch_long;
+					telemetry.launch_alt = _sm->estimator.state.gps_launch_alt;
+
+					telemetry.system_status = _sm->systemstatus.get_string();
+					telemetry.system_time = millis();
+
+					telemetry.rssi = _sm->networkmanager.radio.get_rssi();
+					telemetry.snr = _sm->networkmanager.radio.get_snr();
 
 					telemetry.serialize(packet);
 
@@ -106,7 +156,7 @@ void CommandHandler::handleCommand(Command command) {
 
 					detailedall.header.source = _sm->networkmanager.get_node_type();
 					detailedall.header.destination = static_cast<uint8_t>(command.source_node);
-					detailedall.header.system_time = command.uid; // set returning packet header id to the same as the incomming -> THIS IS ONLY FOR TESTING
+					detailedall.header.uid = command.uid; 
 
 					detailedall.ax = _sm->sensors.sensors_raw.ax;
 					detailedall.ay = _sm->sensors.sensors_raw.ay;

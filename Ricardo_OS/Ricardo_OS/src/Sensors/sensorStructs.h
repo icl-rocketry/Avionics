@@ -41,13 +41,11 @@ struct raw_measurements_t{
     uint8_t gps_minute;
     uint8_t gps_second;
 
-
-
     //BARO RAW DATA
     float baro_alt,baro_temp,baro_press;
 
     //BATTERTY RAW DATA
-    int batt_volt,batt_percent;
+    uint16_t batt_volt,batt_percent;
 
     //SYSTEM TIME
     uint64_t system_time;
@@ -57,12 +55,16 @@ struct raw_measurements_t{
 struct state_t{
 
     Eigen::Quaternionf orientation; //(quaternion)
-    Eigen::Vector3f eulerAngles;//(deg)
-    Eigen::Vector3f position;//(m) relative to callibration site
-    Eigen::Vector3f velocity;//(m/s)
-    Eigen::Vector3f acceleration; //(g's)
+    Eigen::Vector3f eulerAngles;//(deg) (roll pitch yaw)
+    Eigen::Vector3f position;//(m) relative to callibration site (NED)
+    Eigen::Vector3f velocity;//(m/s) (NED)
+    Eigen::Vector3f acceleration; //(g's) (NED)
     Eigen::Vector3f angularRates;//(deg/s)
     float thrust; //estimated thrust
+
+    //Launch Site coords
+    long gps_launch_lat,gps_launch_long,gps_launch_alt;
+
 
 
 

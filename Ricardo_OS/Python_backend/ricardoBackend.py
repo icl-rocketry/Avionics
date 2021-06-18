@@ -27,7 +27,7 @@ def exitBackend(signalNumber, frame):
     #flaskinterface.bg_exit_event.set()
     flaskinterface.stopFlaskInterface()
     telemetrytask.stop()
-    #sm.stop() #halt serial manager process
+    sm.stop() #halt serial manager process
     sys.exit(0)
 
 def checkRedis():
@@ -46,11 +46,11 @@ if __name__ == '__main__':
     checkRedis()
 
     #start serial maanger process
-    # sm = serialmanager.SerialManager(device = args["device"],
-    #                                  baud = args["baud"],
-    #                                  redishost = args["redis_host"],
-    #                                  redisport=args["redis_port"])
-    # sm.start() 
+    sm = serialmanager.SerialManager(device = args["device"],
+                                     baud = args["baud"],
+                                     redishost = args["redis_host"],
+                                     redisport=args["redis_port"])
+    sm.start() 
     #start telemetry handler process
     telemetrytask = telemetryhandler.TelemetryHandler(redishost = args["redis_host"],
                                                       redisport=args["redis_port"])

@@ -35,6 +35,14 @@ invSampleFreq(dt),
 anglesComputed(0)
 {};
 
+void Madgwick::reset(){
+	//reset orientation 
+	q0 = 1.0f;
+	q1 = 0.0f;
+	q2 = 0.0f;
+	q3 = 0.0f;
+	anglesComputed = 0;
+}
 
 void Madgwick::update(float gx, float gy, float gz, float ax, float ay, float az, float mx, float my, float mz) {
 	float recipNorm;

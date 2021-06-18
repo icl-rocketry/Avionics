@@ -46,6 +46,7 @@ void Radio::setup(){
 };
 
 
+
 void Radio::send_packet(uint8_t* data, size_t packet_len){
     if(LoRa.beginPacket()){
         LoRa.write(data, packet_len);
@@ -55,7 +56,6 @@ void Radio::send_packet(uint8_t* data, size_t packet_len){
     };
     LoRa.receive();
 };
-
 
 void Radio::get_packet(std::vector<std::unique_ptr<std::vector<uint8_t>>> &buf){
     packetSize = LoRa.parsePacket();
@@ -232,4 +232,10 @@ void Radio::get_packet(std::vector<std::unique_ptr<std::vector<uint8_t>>> &buf){
     
 }
 
+int16_t Radio::get_rssi(){
+    return LoRa.packetRssi();
+}
 
+float Radio::get_snr(){
+    return LoRa.packetSnr();
+}

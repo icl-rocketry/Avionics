@@ -18,6 +18,9 @@ class Estimator{
         void setup();
         void update();
 
+        void setHome(); // zeros sensors and records the current position as the launch site
+        
+
         state_t state;
     private:
         stateMachine* _sm;//pointer to statemachine object

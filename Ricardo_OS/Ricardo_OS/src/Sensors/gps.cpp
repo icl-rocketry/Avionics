@@ -11,6 +11,7 @@
 
 
 #include "sensorStructs.h"
+#include "flags.h"
 
 // GPS: U-Blox Max-M8
 // SDA pin 16; SCL pin 17

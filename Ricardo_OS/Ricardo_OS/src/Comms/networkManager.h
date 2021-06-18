@@ -31,6 +31,8 @@ class NetworkManager{
 
     friend class Preflight;
     friend class Groundstation;
+    // allow command handler to get radio rssi and snr
+    friend class CommandHandler;
 
     public:
         NetworkManager(stateMachine* sm);
@@ -50,10 +52,16 @@ class NetworkManager{
         //variable to tell network manager the current type of node
         Nodes node_type;
 
+        RoutingTable routingtable; // routing table for networking -> maybe move to protected so an be acsesed eaiser??
+        
+        USB usbserial; //usb serial object
+        Radio radio; // lora radio object
+
+
     private:
         stateMachine* _sm; //pointer to state machine
 
-        RoutingTable routingtable; // routing table for networking -> maybe move to protected so an be acsesed eaiser??
+       
         
 
 
@@ -61,8 +69,7 @@ class NetworkManager{
         std::vector<std::unique_ptr<std::vector<uint8_t>>> _local_packet_buffer; //packet buffer containing packets meant for this node
         
 
-        USB usbserial; //usb serial object
-        Radio radio; // lora radio object
+        
         
         //objects to process commands
         CommandHandler commandhandler;

@@ -17,6 +17,11 @@ class Radio: public Iface{
         void send_packet(uint8_t* txpacket_ptr,size_t packet_size);
         void get_packet(std::vector<std::unique_ptr<std::vector<uint8_t>>> &buf);
 
+        int16_t get_rssi();
+
+        float get_snr();
+
+
     private:
         
         SPIClass* _spi; //pointer to spi class 

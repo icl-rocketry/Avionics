@@ -47,6 +47,8 @@ private:
 public:
 
     Madgwick(float beta_value=0.1f,float dt=.002); // custom constructor with default values
+
+    void reset();
     
     void setBeta(float beta_value){beta=beta_value;}; //update beta 
     void setDeltaT(float dt){invSampleFreq = dt;};

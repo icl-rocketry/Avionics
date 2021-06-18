@@ -19,10 +19,10 @@
 
 
 NetworkManager::NetworkManager(stateMachine* sm):
-    _sm(sm),
     routingtable(2,5),//preallocate size
     usbserial(&Serial,&(sm->systemstatus)),
     radio(&(sm->vspi),&(sm->systemstatus)),
+    _sm(sm),
     commandhandler(sm)
     
 {
@@ -253,7 +253,7 @@ void NetworkManager::process_local_packets(){
                             static_cast<Nodes>(commandpacket.header.source), 
                             static_cast<COMMANDS>(commandpacket.command),
                             commandpacket.arg,
-                            commandpacket.header.system_time//this will be changed at a later data to packet id this is for testing
+                            commandpacket.header.uid//this will be changed at a later data to packet id this is for testing
                             };
                         commandhandler.addCommand(command_obj);
 

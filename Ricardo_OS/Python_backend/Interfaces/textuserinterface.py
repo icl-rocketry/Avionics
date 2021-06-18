@@ -1,4 +1,5 @@
 from codecs import decode
+from math import ceil
 import redis
 import multiprocessing
 import time
@@ -39,11 +40,11 @@ flag_lookup[20] = ['error','ORIENTATION']
 flag_lookup[21] = ['warn','BATT']
 flag_lookup[22] = ['warn','PYRO1']
 flag_lookup[23] = ['warn','PYRO2']
-flag_lookup[24] = ['info','BOOST']
-flag_lookup[25] = ['info','COAST']
-flag_lookup[26] = ['info','APOGEE']
-flag_lookup[27] = ['info','DROGUE CHUTE']
-flag_lookup[28] = ['info','MAIN CHUTE']
+flag_lookup[24] = ['flightphase','BOOST']
+flag_lookup[25] = ['flightphase','COAST']
+flag_lookup[26] = ['flightphase','APOGEE']
+flag_lookup[27] = ['flightphase','DROGUE CHUTE']
+flag_lookup[28] = ['flightphase','MAIN CHUTE']
 
 #loading screen view
 class LoadingView(urwid.WidgetWrap):
@@ -75,49 +76,58 @@ class MainView(urwid.WidgetWrap):
         self.statusbar = StatusBar(redishost,redisport)
         
         self.top = urwid.Frame(header=self.statusbar,body=self.body)
-        self.count = 0
-        self.data = {"systemstatus":0}
+
+ 
         super().__init__(self.top)
 
     def update(self,data):
-        if self.count%5 == 0:
-            self.data["systemstatus"] = random.randint(0,2**28)
+
         
-        self.statusbar.update()
-        self.errorstatus.update(self.data)
-        self.errorlog.update(self.data)
-        self.count += 1
+        self.statusbar.update(data)
+        self.errorstatus.update(data)
+        self.errorlog.update(data)
+        self.systemstatus.update(data)
+        self.telmetryview.update(data)
+        
+
 
 class StatusBar(urwid.WidgetWrap):
     def __init__(self,redishost,redisport):
         
         self.hostportString = str(redishost) + ":" + str(redisport)
-        self.hostport = urwid.Text(('status_bar',self.hostportString))
-        self.time = urwid.Text(('status_bar',datetime.now().strftime("%H:%M:%S")),align=CENTER)
-        self.exithint = urwid.Text(('status_bar',u'<q> to exit'),align=RIGHT)
+        
+        self.hostport = urwid.Text(self.hostportString)
+   
+        self.time = urwid.Text(datetime.now().strftime("%H:%M:%S"),align=CENTER)
+        self.exithint = urwid.Text(u'<q> to exit',align=RIGHT)
+
         self.top = urwid.AttrMap(urwid.Columns([self.hostport,self.time,self.exithint]),'status_bar')
         super().__init__(self.top)
 
-    def update(self):
-        self.time.set_text(('status_bar',datetime.now().strftime("%H:%M:%S")))
+    def update(self,data):
+        connected = data.get("connectionstatus",False)
+        self.time.set_text(datetime.now().strftime("%H:%M:%S"))
+        if connected:
+            self.top.set_attr_map({None:"status_bar"}) 
+        else:
+            self.top.set_attr_map({None:'status_bar_no_data'})
+            self.time.set_text(datetime.now().strftime("%H:%M:%S") + ' - NO DATA')
 
 class ErrorStatus(urwid.WidgetWrap):
     def __init__(self):
-        self.subsystemlist= [item[1] for item in flag_lookup if item[0] is 'error']
-        #self.listwalker = urwid.SimpleFocusListWalker([urwid.Text(text) for text in self.subsystemlist])
-        self.elements = [urwid.AttrMap(urwid.Filler(urwid.Text(text,align=CENTER)),'nominal') for text in self.subsystemlist]
+        self.errorlist= [item[1] for item in flag_lookup if item[0] is 'error']
+        self.elements = [urwid.AttrMap(urwid.Filler(urwid.Text(text,align=CENTER)),'nominal') for text in self.errorlist]
         
-        #self.decorated[0].set_attr_map({None:'error'})
         self.body = urwid.Pile(self.elements)
         self.top = urwid.LineBox(self.body,'Status',title_align='left')
         super().__init__(self.top)
         
     def update(self,data):
-        allEvents = decodeSystemStatus(data["systemstatus"])
+        allEvents = decodeSystemStatus(data.get("systemstatus",0))
         errorEvents = [item[1] for item in allEvents if item[0] is 'error']
         #update any errors passed
-        for idx in range(len(self.subsystemlist)):
-            item = self.subsystemlist[idx]
+        for idx in range(len(self.errorlist)):
+            item = self.errorlist[idx]
             if item in errorEvents:
                 self.elements[idx].set_attr_map({None:'error'})
             else:
@@ -134,7 +144,7 @@ class ErrorLog(urwid.WidgetWrap):
     def update(self,data): #method compares new system status to old system status and displays when there is a change
         current_time = datetime.now().strftime("%H:%M:%S.%f")[:-3]
 
-        currentSystemStatus : int= data["systemstatus"]
+        currentSystemStatus : int = data.get("systemstatus",0)
         changedStatus = currentSystemStatus ^ self.prevSystemStatus#xor to find changed status ( returns a 1 if x and y are different and zero if they are the same)
         flagTurnedOn = changedStatus&currentSystemStatus #  we 'and' the changed status and the current system status so see which flags have just turned on
         flagTurnedOff = changedStatus&self.prevSystemStatus 
@@ -156,33 +166,93 @@ class ErrorLog(urwid.WidgetWrap):
             self.__setToBottom__()
 
         self.prevSystemStatus = currentSystemStatus
-       
-       
-        
+
+    def addLog(self,string): #public interface to add entry to log
+        current_time = datetime.now().strftime("%H:%M:%S.%f")[:-3]
+        self.errorlist.append(urwid.AttrMap(urwid.Text(string),None))
+        self.__setToBottom__()
+
 
     def __setToBottom__(self):#helper function to ensure lisbox lists from bottom up
         self.errorlist.set_focus(self.errorlist.positions(reverse=True)[0])
 
 class TelemetryView(urwid.WidgetWrap):
     def __init__(self):
-        self.body = urwid.Text('telemetry',align=CENTER)
-        self.main = urwid.Filler(self.body)
-        self.top = urwid.LineBox(self.main,'Telemetry',title_align='left')
+
+        self.displayStrings = ["GPS (Lat,Long,Alt) : ",
+                               "Position NED (m) : ",
+                               "Velocity NED (m/s) : ",
+                               "Acceleration NED (m/s^2) : ",
+                               "Orientation (Roll,Pitch,Yaw) (degrees) : ",
+                               "Temperature (celcius) : ",
+                               "Pressure (Pa) : "]
+        self.displayWidgetsList = [urwid.Filler(urwid.Text(text,align="center")) for text in self.displayStrings]
+
+        self.displayWidgets = urwid.Pile(self.displayWidgetsList)
+        self.top = urwid.LineBox(self.displayWidgets,'Telemetry',title_align='left')
         super().__init__(self.top)
         
     def update(self,data):
-        pass
+        self.__updateDisplayData__(0,"("+str(data.get("gps_lat","NULL")) + "," + str(data.get("gps_long","NULL")) + "," + str(data.get("gps_alt","NULL")) + ")" )
+        self.__updateDisplayData__(1,"("+str(data.get("pos_N","NULL")) + "," + str(data.get("pos_E","NULL")) + "," + str(data.get("pos_D","NULL")) + ")" )
+        self.__updateDisplayData__(2,"("+str(data.get("vel_N","NULL")) + "," + str(data.get("vel_E","NULL")) + "," + str(data.get("vel_D","NULL")) + ")" )
+        self.__updateDisplayData__(3,"("+str(data.get("a_N","NULL")) + "," + str(data.get("a_E","NULL")) + "," + str(data.get("a_D","NULL")) + ")" )
+        self.__updateDisplayData__(4,"("+str(data.get("roll","NULL")) + "," + str(data.get("pitch","NULL")) + "," + str(data.get("yaw","NULL")) + ")" )
+        self.__updateDisplayData__(5,"("+str(data.get("baro_temp","NULL"))  + ")" )
+        self.__updateDisplayData__(6,"("+str(data.get("baro_pres","NULL"))  + ")" )
 
+    def __updateDisplayData__(self,idx,text):
+        self.displayWidgetsList[idx].base_widget.set_text(self.displayStrings[idx] + text)
 class SystemStatus(urwid.WidgetWrap):
     def __init__(self):
-        self.body = urwid.Text('system',align=CENTER)
-        self.errorlist = urwid.Filler(self.body)
-        self.top = urwid.LineBox(self.errorlist,'System',title_align='left')
+        self.displayStrings = ["StateMachine State : ",
+                               "Flight Phase : ",
+                               "RSSI (dBm) : ",
+                               "Battery Voltage : "
+                               ]
+        self.displayWidgetsList = [urwid.Filler(urwid.Text(text,align="center")) for text in self.displayStrings]
+        #self.dataWidgetList = [urwid.Filler(urwid.Text(" NULL",align=LEFT)) for all in self.displayStrings] 
+
+        #add battery percentage bar
+        self.batteryPercentText = urwid.Filler(urwid.Text("Battery Percentage",align="right"))
+        self.batteryPercentBar = urwid.ProgressBar('error','nominal')
+        self.batteryPercentBar.set_completion(50)
+       
+        #self.batteryPercent = urwid.Pile([urwid.Filler(self.batteryPercentText),urwid.Filler(self.batteryPercentBar)])
+        self.batteryPercentWidget = urwid.Columns([self.batteryPercentText,
+                                                   urwid.Padding(urwid.Filler(self.batteryPercentBar),width=('relative',50),left=1)
+                                                   ])
+        self.displayWidgetsList.append(self.batteryPercentWidget)
+
+        self.displayWidgets = urwid.Pile(self.displayWidgetsList)
+        #self.dataWidgets = urwid.Pile(self.dataWidgetList)
+        #self.main = urwid.Columns([self.displayWidgets,self.dataWidgets])
+        self.top = urwid.LineBox(self.displayWidgets,'System',title_align='left')
         super().__init__(self.top)
         
     def update(self,data):
-        pass
+        systemStatusList : int= decodeSystemStatus(data.get("systemstatus",0))
+        #these lists should only have 1 item each. if not, someone has meesed up the flag defintions either locally or on ricardo
+        statemachineState = [item[1] for item in systemStatusList if item[0] is 'state']
+        flightPhase = [item[1] for item in systemStatusList if item[0] is 'flightphase']
 
+        self.__updateDisplayData__(0,str(self.__getFromList__(statemachineState,"NULL")))
+        self.__updateDisplayData__(1,str(self.__getFromList__(flightPhase,"NULL")))
+        self.__updateDisplayData__(2,"("+str(data.get("rssi","NULL"))  + ")" )
+        self.__updateDisplayData__(3,"("+str(data.get("batt_volt","NULL")) + ")" )
+        self.batteryPercentBar.set_completion(data.get("batt_percent",0))
+    
+    def __getFromList__(self,l,default):
+        try:
+            ret = ''
+            for flag in l:
+                ret += flag + " " #display all flags even if there are multiple -> to let user know someone has messed up
+        except:
+            ret = default
+        return ret   
+
+    def __updateDisplayData__(self,idx,text):
+        self.displayWidgetsList[idx].base_widget.set_text(self.displayStrings[idx] + text)
 class TextUserInterface(multiprocessing.Process):
     def __init__(self,redishost = 'localhost',redisport = 6379,refreshRate = .2):
         super(TextUserInterface,self).__init__()
@@ -194,6 +264,7 @@ class TextUserInterface(multiprocessing.Process):
         self.palette = {
             (None,'light gray','','','#0c272f','#0B1518'),#default
             ('status_bar','black','light gray','','#0b1518','#dbdbdb'),
+            ('status_bar_no_data','light gray','dark red','','#dbdbdb','#ff0000'),
             ('error','light gray','dark red','blink','#0B1518','#ff0000'),
             ('nominal','light gray','dark green','','#0B1518','#20ff00'),
             ('logo_blue','dark blue','','','#001240','#0B1518'),
@@ -202,14 +273,17 @@ class TextUserInterface(multiprocessing.Process):
             ('highlight','light gray','dark red','blink','#0c272f','#ff0000'),
             ('log_error','dark red','','','#ff0000','#0B1518'),
             ('log_info','light cyan','','','#00ffff','#0B1518'),
+            ('log_flightphase','light magenta','','','#f003fc','#0B1518'),
             ('log_warn','yellow','','','#ffd900','#0B1518'),
             ('log_state','light blue','','','#1500ff','#0B1518')
         }
         self.uiLoop = urwid.MainLoop(self.loadingScreen,palette=self.palette,unhandled_input=self.__exit_on_q__)
         #self.uiLoop.screen.set_terminal_properties(colors=256)
         self.uiLoop.set_alarm_in(1,self.__transitionToMain__)
-        self.r = None
-        #self.r = redis.Redis(host=redishost,port=redisport)
+        #self.r = None
+        self.systemstatus = 0
+        self.count = 0
+        self.r = redis.Redis(host=redishost,port=redisport)
         self.exit_event = multiprocessing.Event()
 
 
@@ -219,12 +293,22 @@ class TextUserInterface(multiprocessing.Process):
     def stop(self): #potentially unused
         raise urwid.ExitMainLoop()
         
-    def __updateData__(self,main,data):
-        self.mainScreen.update(data)
+    def __updateData__(self,main,user_data):
+        self.mainScreen.update(self.__getTelemetry__())
         self.uiLoop.set_alarm_in(self.refreshRate,self.__updateData__)#set next alarm at refresh rate 
 
     def __getTelemetry__(self):
-        return self.r.get("telemetry")
+        #for demo purposes
+        if self.count%5 == 0:
+            self.systemstatus = random.randint(0,2**28)
+        self.count += 1 
+
+        try:
+            data = json.loads(self.r.get("telemetry"))
+        except:
+            data = {"connectionstatus":False}
+        data["systemstatus"] = self.systemstatus
+        return data
    
 
     def __exit_on_q__(self,key):
@@ -238,9 +322,6 @@ class TextUserInterface(multiprocessing.Process):
 def decodeSystemStatus(SystemStatusVariable): #decodes system status variable returns list of events
     binaryString = "{0:b}".format(SystemStatusVariable)[::-1]#get binary representation and reverse
     return [flag_lookup[idx] for idx in range(len(binaryString)) if binaryString[idx] is '1']
-
-
-    pass
 
 def checkRedis():
     try:

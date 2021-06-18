@@ -47,6 +47,10 @@ void Estimator::update(){
       
 };
 
+void Estimator::setHome(){
+   // record current gps coordinates as home
+}
+
 void Estimator::updateLinearAcceleration(){
    //LINEAR ACCELERATION CALCULATION//
    //add raw accelerations into matrix form -> acceleration values in g's

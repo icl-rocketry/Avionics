@@ -37,7 +37,7 @@ private:
             &PacketHeader::start_byte,
             &PacketHeader::header_len,
             &PacketHeader::packet_len,
-            &PacketHeader::system_time,
+            &PacketHeader::uid,
             &PacketHeader::type,
             &PacketHeader::source,
             &PacketHeader::destination,
@@ -71,7 +71,7 @@ public:
     uint8_t start_byte = 0xAF; // Marks the begin of `Packet`
     uint8_t header_len = header_size();//header len
     uint32_t packet_len = 0x00000000; // Size of the packet in bytes maybe this should be 32 bit to match size_t and subsequent sizeof() functionality
-    uint32_t system_time = 0x00000000; // system time
+    uint32_t uid = 0x00000000; // unique id
     uint8_t type = 0x00; // Type of the packet
     uint8_t source = 0x00; // Source interface ID for the packet
     uint8_t destination = 0x00; // Destination interface ID for the packet
@@ -106,16 +106,44 @@ class TelemetryPacket{
         static constexpr auto getSerializer()
         {
             auto ret = serializer(
-                &TelemetryPacket::x,
-                &TelemetryPacket::y,
-                &TelemetryPacket::z,
-                &TelemetryPacket::vx,
-                &TelemetryPacket::vy,
-                &TelemetryPacket::vz,
+                &TelemetryPacket::pn,
+                &TelemetryPacket::pe,
+                &TelemetryPacket::pd,
+                &TelemetryPacket::vn,
+                &TelemetryPacket::ve,
+                &TelemetryPacket::vd,
+                &TelemetryPacket::an,
+                &TelemetryPacket::ae,
+                &TelemetryPacket::ad,
+                &TelemetryPacket::pitch,
+                &TelemetryPacket::roll,
+                &TelemetryPacket::yaw,
+                &TelemetryPacket::lat,
+                &TelemetryPacket::lng,
+                &TelemetryPacket::alt,
+                &TelemetryPacket::sat,
                 &TelemetryPacket::ax,
                 &TelemetryPacket::ay,
                 &TelemetryPacket::az,
-                &TelemetryPacket::lora_rssi
+                &TelemetryPacket::gx,
+                &TelemetryPacket::gy,
+                &TelemetryPacket::gz,
+                &TelemetryPacket::mx,
+                &TelemetryPacket::my,
+                &TelemetryPacket::mz,
+                &TelemetryPacket::temp,
+                &TelemetryPacket::press,
+                &TelemetryPacket::batt_voltage,
+                &TelemetryPacket::batt_percent,
+                &TelemetryPacket::launch_lat,
+                &TelemetryPacket::launch_lng,
+                &TelemetryPacket::launch_alt,
+                &TelemetryPacket::system_status,
+                &TelemetryPacket::system_time,
+                &TelemetryPacket::rssi,
+                &TelemetryPacket::snr
+                
+
                
             );
             return ret;
@@ -127,16 +155,32 @@ class TelemetryPacket{
     public:
         //packet header
         PacketHeader header{static_cast<uint8_t>(packet::TELEMETRY), packet_size()};
-        //telemetry data
-        float x,y,z;
-        float vx,vy,vz;
-        float ax,ay,az;
-        //float y,p,r;
-
-        //system_status
-
+        //estimator output
+        float pn, pe, pd; // position NED (m)
+        float vn, ve, vd; // velocity NED (m/s)
+        float an, ae, ad; // acceleration NED (m/s^2)
+        //orientation
+        float pitch,roll,yaw; // orientation degrees
+        //gps
+        long lat,lng,alt;
+        uint8_t sat;
+        //imu
+        float ax, ay, az; // acceleration (g's)
+        float gx, gy, gz; // angular rates (deg/s)
+        float mx, my, mz;// magnetometer (uT)
+        //barometer
+        float temp, press;
+        //battery
+        uint16_t batt_voltage,batt_percent;
+        //launch site
+        long launch_lat,launch_lng,launch_alt;
+        //system details
+        uint32_t system_status;
+        uint64_t system_time;
         //packet details
-        uint8_t lora_rssi;
+        int16_t rssi; 
+        float snr;
+
 
     
         void serialize(std::vector<uint8_t>& buf) const;
