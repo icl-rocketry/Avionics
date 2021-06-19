@@ -35,10 +35,10 @@ void GPS::setup()
     //_wire->begin();
     if(!gnss.begin(*_wire)){
         _systemstatus->new_message(system_flag::ERROR_GPS,"GPS I2C not found at address");
-        //Serial.println("error");
+        _i2cerror = true;
     }else{
-        _logcontroller->log("GPS Initialized");
-        //Serial.println("ok");
+        _logcontroller->log("GPS Initialized");   
+        _i2cerror = false;
     }
     //turn off nmea messaging
     gnss.setI2COutput(COM_TYPE_UBX);
@@ -49,6 +49,9 @@ void GPS::setup()
 
 void GPS::update()
 {
+    if (_i2cerror){
+        return;
+    }
 
    if (gnss.getPVT() && (!gnss.getInvalidLlh())){ // check if new navigation solution is available
        _raw_data->gps_updated = true;

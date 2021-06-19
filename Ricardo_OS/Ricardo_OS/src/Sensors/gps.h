@@ -29,6 +29,8 @@ private:
     LogController* _logcontroller;//pointer to log controller
 
     raw_measurements_t*  _raw_data;//pointer to raw data struct
+
+    bool _i2cerror;// true if i2c failed to start
 };
 
 #endif

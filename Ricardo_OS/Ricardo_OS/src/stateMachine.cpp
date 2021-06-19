@@ -55,10 +55,10 @@ void stateMachine::update() {
   logcontroller.update();
 
   //request new sensor data
-  sensors.update();
+  //sensors.update();
   //process updated sensor data
-  estimator.update();
-  logcontroller.log(estimator.state,sensors.sensors_raw);// log new navigation solution and sensor output
+  //estimator.update();
+  //logcontroller.log(estimator.state,sensors.sensors_raw);// log new navigation solution and sensor output
   //check for new packets and process
   networkmanager.update();
 

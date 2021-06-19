@@ -7,9 +7,9 @@
 // #include "eventHandler.h"
 
 // DELET DIS <3
-inline double millis() {
-    return 69420;
-};
+// inline double millis() {
+//     return 69420;
+// };
 
 class EventHandler; 
 class SystemStatus;

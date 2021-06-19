@@ -8,6 +8,7 @@
 #include "flags.h"
 
 #include "preflight.h"
+#include "groundstation.h"
 
 #include "Sound/Melodies/melodyLibrary.h"
 
@@ -48,6 +49,7 @@ void Setup::initialise(){
         //open serial port on usb interface
     Serial.begin(Serial_baud);
     Serial.setRxBufferSize(SERIAL_SIZE_RX);
+    Serial.println("setup done");
 
 
     
@@ -57,7 +59,7 @@ void Setup::initialise(){
 
 State* Setup::update(){
     //transtion to preflight state
-    State* _preflight_ptr = new Preflight(_sm);
+    State* _preflight_ptr = new Groundstation(_sm);
     return _preflight_ptr;
 };
 

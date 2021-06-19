@@ -1,5 +1,6 @@
 #include "flightVariable.h"
 #include "eventHandler.h"
+#include "Arduino.h"
 
 FlightVariable::FlightVariable(){};
 FlightVariable::~FlightVariable(){}; 

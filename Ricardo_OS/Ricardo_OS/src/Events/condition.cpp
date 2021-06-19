@@ -9,6 +9,7 @@ bool ConditionCondition::check() {
 		return _cond1.check() || _cond2.check();
 	default:
 		throw std::invalid_argument("Invalid operator type");
+		return false;
 	}
 }
 
@@ -21,5 +22,6 @@ bool ConditionFlightVar::check() {
 		return _var.get() > _threshold;
 	default:
 		throw std::invalid_argument("Invalid operator type");
+		return false;
 	}
 }
