@@ -6,7 +6,7 @@
 
 #include "../packets.h"
 
-#include "Logging/systemstatus.h"
+#include "Storage/systemstatus.h"
 
 #include <memory>
 #include <vector>

@@ -2,8 +2,8 @@
 #include "global_config.h"
 #include "SPI.h"
 #include "ricardo_pins.h"
-#include "Logging/systemstatus.h"
-#include "Logging/logController.h"
+#include "Storage/systemstatus.h"
+#include "Storage/logController.h"
 #include "flags.h"
 #include "SparkFunLSM9DS1.h"
 

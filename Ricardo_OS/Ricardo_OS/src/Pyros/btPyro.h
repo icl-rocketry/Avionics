@@ -12,7 +12,7 @@ class BTPyro:public Pyro{
 
         bool check_continuity();
 
-        bool Fire(uint8_t duration);
+        bool doStuff(uint8_t duration);
 
     private:
         NetworkManager* _networkmanager; // pointer to network manager

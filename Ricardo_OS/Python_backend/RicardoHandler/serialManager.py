@@ -148,9 +148,10 @@ class SerialManager(multiprocessing.Process):
 			
 	def __cleanupPacketRecord__(self):
 		expiry_time = time.time() - self.packetRecordTimeout
-
-		for key,value in self.packetRecord.items():
+		
+		#use list to force python to copy items
+		for key,value in list(self.packetRecord.items()):
 			if value[1] < expiry_time:
 				self.packetRecord.pop(key) #remove entry
-
+		
         

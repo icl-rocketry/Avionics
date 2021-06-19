@@ -11,11 +11,11 @@ Written by the Electronics team, Imperial College London Rocketry
 
 #include "States/state.h"
 
-#include "Logging/systemstatus.h"
+#include "Storage/systemstatus.h"
 
-#include "Logging/logController.h"
-#include "Logging/storageController.h"
-#include "Logging/configController.h"
+#include "Storage/logController.h"
+#include "Storage/storageController.h"
+#include "Storage/configController.h"
 
 #include "Sensors/estimator.h"
 #include "Comms/networkManager.h"

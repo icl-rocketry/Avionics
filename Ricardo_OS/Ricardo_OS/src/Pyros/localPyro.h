@@ -10,7 +10,7 @@ class LocalPyro:public Pyro{
 
         bool check_continuity();
 
-        bool Fire(uint8_t duration);
+        bool doStuff(uint8_t duration);
 
     private:
         uint8_t _continuity_pin;

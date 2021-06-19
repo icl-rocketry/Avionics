@@ -6,8 +6,8 @@
 #include "Wire.h"
 
 
-#include "Logging/systemstatus.h"
-#include "Logging/logController.h"
+#include "Storage/systemstatus.h"
+#include "Storage/logController.h"
 
 
 #include "sensorStructs.h"

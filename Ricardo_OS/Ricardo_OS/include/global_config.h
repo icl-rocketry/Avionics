@@ -40,6 +40,8 @@
 #define MAG_SCALE 12
 #define GYRO_SCALE 245
 
+//ArduinoJson
+#define ARDUINOJSON_ENABLE_COMMENTS 1
 #endif
 
 

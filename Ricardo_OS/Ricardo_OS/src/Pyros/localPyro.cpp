@@ -9,4 +9,4 @@ _fire_pin(fire_pin)
 
 bool LocalPyro::check_continuity(){return true;};
 
-bool LocalPyro::Fire(uint8_t duration){return true;};
+bool LocalPyro::doStuff(uint8_t duration){return true;};

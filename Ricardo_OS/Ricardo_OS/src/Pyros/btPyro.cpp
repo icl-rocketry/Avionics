@@ -8,4 +8,4 @@ _networkmanager(networkmanager)
 
 bool BTPyro::check_continuity(){return true;};
 
-bool BTPyro::Fire(uint8_t duration){return true;};
+bool BTPyro::doStuff(uint8_t duration){return true;};

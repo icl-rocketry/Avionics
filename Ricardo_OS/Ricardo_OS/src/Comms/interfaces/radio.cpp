@@ -8,7 +8,7 @@
 #include "LoRa.h"
 #include "../packets.h"
 
-#include "Logging/systemstatus.h"
+#include "Storage/systemstatus.h"
 #include "flags.h"
 
 #include <memory>

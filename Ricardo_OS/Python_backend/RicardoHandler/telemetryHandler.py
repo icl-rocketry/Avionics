@@ -23,9 +23,9 @@ class TelemetryHandler(multiprocessing.Process):
         while not self.exit_event.is_set():
             if (time.time_ns() - self.prev_time > self.updateTimePeriod):
                 self.__sendTelemetryPacket__()
-                self.__checkRecieveQueue__()
                 self.prev_time = time.time_ns()
-            time.sleep(.01)    
+            self.__checkRecieveQueue__()
+            time.sleep(.001)    
             
         
     def stop(self):

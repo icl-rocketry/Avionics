@@ -16,8 +16,8 @@ void Launch::initialise(){
 
 State* Launch::update(){
     //transtion to flight
-    State* _flight_ptr = new Flight(_sm);
-    return _flight_ptr;
+   // State* _flight_ptr = new Launch(_sm);
+    return this; //loopy loop
 };
 
 void Launch::exitstate(){

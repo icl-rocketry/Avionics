@@ -4,7 +4,7 @@
 #include "iface.h"
 #include "interfaces.h"
 
-#include "Logging/systemstatus.h"
+#include "Storage/systemstatus.h"
 
 #include "../packets.h"
 

@@ -7,8 +7,8 @@
 #include <SparkFun_u-blox_GNSS_Arduino_Library.h>
 #include "Wire.h"
 
-#include "Logging/systemstatus.h"
-#include "Logging/logController.h"
+#include "Storage/systemstatus.h"
+#include "Storage/logController.h"
 
 #include "sensorStructs.h"
 

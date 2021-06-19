@@ -13,9 +13,9 @@ class Pyro{
 
     public:
         Pyro(PYRO_TYPE type);     
-        virtual bool check_continuity(); // update status of continuity 
+        virtual bool check_continuity() = 0; // update status of continuity 
     
-        virtual bool Fire(uint8_t duration);
+        virtual bool doStuff(uint8_t duration) = 0;
         
         virtual ~Pyro() = 0;
 

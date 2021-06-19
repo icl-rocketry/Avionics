@@ -12,7 +12,7 @@ from RicardoHandler import packets
 
 app = Flask(__name__)
 app.config["SECRET_KEY"] = "secret!"
-app.config['DEBUG'] = True
+app.config['DEBUG'] = False
 
 socketio = SocketIO(app)
 
@@ -104,7 +104,7 @@ def disconnect():
 
 def __FlaskTask__(host,port): 
     print("starting socketio server")  
-    socketio.run(app,host=host,port=port,debug=True,use_reloader=False)
+    socketio.run(app,host=host,port=port,debug=False,use_reloader=False)
 
 
 

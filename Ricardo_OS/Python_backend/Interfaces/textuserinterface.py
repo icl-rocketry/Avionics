@@ -105,8 +105,8 @@ class StatusBar(urwid.WidgetWrap):
         super().__init__(self.top)
 
     def update(self,data):
-        #connected = data.get("connectionstatus",False)
-        connected = True # just for testing
+        connected = data.get("connectionstatus",False)
+        #connected = True # just for testing
         self.time.set_text(datetime.now().strftime("%H:%M:%S"))
         if connected:
             self.top.set_attr_map({None:"status_bar"}) 
@@ -184,8 +184,8 @@ class TelemetryView(urwid.WidgetWrap):
                                "Position NED (m) : ",
                                "Velocity NED (m/s) : ",
                                "Acceleration NED (m/s^2) : ",
-                               "Orientation (Roll,Pitch,Yaw) (degrees) : ",
-                               "Temperature (celcius) : ",
+                               "Orientation (Roll,Pitch,Yaw) (Rad) : ",
+                               "Temperature (Celcius) : ",
                                "Pressure (Pa) : "]
         self.displayWidgetsList = [urwid.Filler(urwid.Text(text,align="center")) for text in self.displayStrings]
 
@@ -194,20 +194,28 @@ class TelemetryView(urwid.WidgetWrap):
         super().__init__(self.top)
         
     def update(self,data):
-        self.__updateDisplayData__(0,"("+str(data.get("lat","NULL")) + "," + str(data.get("lng","NULL")) + "," + str(data.get("alt","NULL")) + ")" )
-        self.__updateDisplayData__(1,"("+str(data.get("pn","NULL")) + "," + str(data.get("pe","NULL")) + "," + str(data.get("pd","NULL")) + ")" )
-        self.__updateDisplayData__(2,"("+str(data.get("vn","NULL")) + "," + str(data.get("ve","NULL")) + "," + str(data.get("vd","NULL")) + ")" )
-        self.__updateDisplayData__(3,"("+str(data.get("an","NULL")) + "," + str(data.get("ae","NULL")) + "," + str(data.get("ad","NULL")) + ")" )
-        self.__updateDisplayData__(4,"("+str(data.get("roll","NULL")) + "," + str(data.get("pitch","NULL")) + "," + str(data.get("yaw","NULL")) + ")" )
-        self.__updateDisplayData__(5,"("+str(data.get("baro_temp","NULL"))  + ")" )
-        self.__updateDisplayData__(6,"("+str(data.get("baro_press","NULL"))  + ")" )
+        self.__updateDisplayData__(0,"("+self.__getFromDict__(data,"lat") + "," + self.__getFromDict__(data,"lng") + "," + self.__getFromDict__(data,"alt") + ")" )
+        self.__updateDisplayData__(1,"("+self.__getFromDict__(data,"pn") + "," + self.__getFromDict__(data,"pe") + "," + self.__getFromDict__(data,"pd") + ")" )
+        self.__updateDisplayData__(2,"("+self.__getFromDict__(data,"vn") + "," + self.__getFromDict__(data,"ve") + "," + self.__getFromDict__(data,"vd") + ")" )
+        self.__updateDisplayData__(3,"("+self.__getFromDict__(data,"an") + "," + self.__getFromDict__(data,"ae") + "," + self.__getFromDict__(data,"ad") + ")" )
+        self.__updateDisplayData__(4,"("+self.__getFromDict__(data,"roll") + "," + self.__getFromDict__(data,"pitch") + "," + self.__getFromDict__(data,"yaw") + ")" )
+        self.__updateDisplayData__(5,"("+self.__getFromDict__(data,"baro_temp")  + ")" )
+        self.__updateDisplayData__(6,"("+self.__getFromDict__(data,"baro_press")  + ")" )
 
     def __updateDisplayData__(self,idx,text):
         self.displayWidgetsList[idx].base_widget.set_text(self.displayStrings[idx] + text)
+
+    def __getFromDict__(self,data,key,specifier='{:.4f}'):
+        ret = data.get(key)
+        if ret is None:
+                return "NULL"
+        else:
+            return specifier.format(ret)
 class SystemStatus(urwid.WidgetWrap):
     def __init__(self):
         self.displayStrings = ["StateMachine State : ",
                                "Flight Phase : ",
+                               "System Time  : ",
                                "RSSI (dBm) : ",
                                "SNR (dB) : ",
                                "Battery Voltage : "
@@ -240,10 +248,18 @@ class SystemStatus(urwid.WidgetWrap):
 
         self.__updateDisplayData__(0,str(self.__getFromList__(statemachineState,"NULL")))
         self.__updateDisplayData__(1,str(self.__getFromList__(flightPhase,"NULL")))
-        self.__updateDisplayData__(2,"("+str(data.get("rssi","NULL"))  + ")" )
-        self.__updateDisplayData__(3,"("+str(data.get("snr","NULL")) + ")" )
-        self.__updateDisplayData__(4,"("+str(data.get("batt_voltage","NULL")) + ")" )
+        self.__updateDisplayData__(2,"("+ self.__getFromDict__(data,"system_time",'{:.0f}')  + ")" )
+        self.__updateDisplayData__(3,"("+ self.__getFromDict__(data,"rssi",'{:.0f}')  + ")" )
+        self.__updateDisplayData__(4,"("+ self.__getFromDict__(data,"snr",'{:.0f}') + ")" )
+        self.__updateDisplayData__(5,"("+ self.__getFromDict__(data,"batt_voltage",'{:.0f}') + ")" )
         self.batteryPercentBar.set_completion(data.get("batt_percent",0))
+
+    def __getFromDict__(self,data,key,specifier='{:.4f}'):
+        ret = data.get(key)
+        if ret is None:
+                return "NULL"
+        else:
+            return specifier.format(ret)
     
     def __getFromList__(self,l,default):
         try:
@@ -281,7 +297,7 @@ class TextUserInterface(multiprocessing.Process):
             ('log_state','light blue','','','#1500ff','#0B1518')
         }
         self.uiLoop = urwid.MainLoop(self.loadingScreen,palette=self.palette,unhandled_input=self.__exit_on_q__)
-        #self.uiLoop.screen.set_terminal_properties(colors=256)
+        #self.uiLoop.screen.set_terminal_properties(colors=1)
         self.uiLoop.set_alarm_in(1,self.__transitionToMain__)
         #self.r = None
         self.systemstatus = 0
@@ -306,12 +322,15 @@ class TextUserInterface(multiprocessing.Process):
         #     self.systemstatus = random.randint(0,2**28)
         # self.count += 1 
 
+
         try:
             data = json.loads(self.r.get("telemetry"))
+            data["connectionstatus"] = True
         except:
             data = {"connectionstatus":False}
         # data["system_status"] = self.systemstatus
         return data
+
    
 
     def __exit_on_q__(self,key):
@@ -321,6 +340,13 @@ class TextUserInterface(multiprocessing.Process):
     def __transitionToMain__(self,main,data):
         self.uiLoop.widget = self.mainScreen #update main widget to the main view
         self.uiLoop.set_alarm_in(0,self.__updateData__)#call update function in event loop
+   
+    def __connected__(self):
+        try:
+            self.r.ping()
+            return True
+        except redis.exceptions.ConnectionError:
+            return False
  
 def decodeSystemStatus(SystemStatusVariable): #decodes system status variable returns list of events
     binaryString = "{0:b}".format(SystemStatusVariable)[::-1]#get binary representation and reverse
@@ -333,6 +359,9 @@ def checkRedis():
     except redis.exceptions.ConnectionError:
         errormsg = "[ERROR] -> Redis server not found at host:'" + args["redis_host"] + "' port:" + str(args["redis_port"]) + "\nPlease check redis is running"
         sys.exit(errormsg)
+
+
+
 
 
 if __name__ == '__main__':

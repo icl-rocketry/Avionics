@@ -1,27 +1,28 @@
 #ifndef EVENTHANDLER_H
 #define EVENTHANDLER_H
 
-#include <Arduino.h>
+// #include <Arduino.h>
 #include <vector>
 #include "event.h"
 
 class StateMachine;
-
+class jsondoc;
 
 class EventHandler{
     public:
         EventHandler(StateMachine* sm);
-        void setup();
+        void setup(jsondoc config);// configuration dict - 
+        //number of events
+        //description of each event
+        
         void update();
-
-        bool register_event(Event new_event);
+        int timeTriggered(int arg){return 1;};
 
     private:
         StateMachine* _sm; //pointer to statemachine
 
-        std::vector<Event> event_buffer;
-
-        
+        std::vector<Event> eventList;
+        bool register_event(Event new_event);
 };
 
 

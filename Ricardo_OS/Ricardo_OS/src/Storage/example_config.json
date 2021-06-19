@@ -1,0 +1,67 @@
+{
+    "Parameters":
+    {
+       "SerialBaud":42069,
+       "Groundstation":true, 
+       "LaunchAccelerationThreshold": 420,
+       "FlightPathPolynomial":[4, 2, 0, 6, 9],
+       "Cd" :[12] // if multiple values present, interpreted as a fitted polynomial on Mach number, if single value using prandtl-glauret correcitons
+    },
+	
+    "Networking":
+        {
+            "Interfaces": // Interfaces which are enabled on the board
+            {
+
+				"LORA": false,
+				"2": true
+
+
+            },
+			"RoutingTable": // Routing table definition / Network topology
+            {
+                
+			}
+        },
+	"Pyros":
+	
+		//"Num": 42069, // Number of pyros
+	    [
+            {"type": "bt",  "address": "0x69696969", "fire_duration": 1000}, // fire duration in ms
+            {"type": "local", "fire_pin": 10, "continuity_pin": 11, "fire_duration": 69420}
+        ],
+
+	"Engine":
+	{
+		// TODO
+		"GET_REQS_FROM_EDDIE": true
+	},
+    
+	"Events": // interface is the index of the pyro/engine in their respective arrays
+	[
+		{ "type": "engine", "interface": "0", "single_fire": true, "condition": 
+			{
+				"operator": "AND", 
+				"condition1": {
+					"flightVar": "Acceleration",
+					"operator": "LT",
+					"threshold": 420
+				}, 
+				"condition2": {
+					"flightVar": "Altitude",
+					"operator": "GT",
+					"threshold": 69	
+				}
+			}
+		},
+		
+		{ "type": "pyro", "interface": "0", "single_fire": true, "condition": 
+			{ 
+				"flightVar": "Acceleration",
+				"operator": "LT",
+				"threshold": -420
+			}
+		}
+	]
+	
+}

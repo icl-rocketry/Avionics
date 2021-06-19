@@ -4,7 +4,7 @@
 #include "iface.h"
 #include "SPI.h"
 #include "../packets.h"
-#include "Logging/systemstatus.h"
+#include "Storage/systemstatus.h"
 
 #include <memory>
 #include <vector>

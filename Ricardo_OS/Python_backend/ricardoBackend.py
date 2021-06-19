@@ -13,7 +13,6 @@ ap.add_argument("-d", "--device", required=True, help="Ricardo Serial Port", typ
 ap.add_argument("-b", "--baud", required=False, help="Serial Port Baud Rate", type=int,default=115200)
 ap.add_argument("--flask-host", required=False, help="flask host", type=str,default="0.0.0.0")
 ap.add_argument("--flask-port", required=False, help="flask Port", type=int,default = 1337)
-ap.add_argument("-t", "--tui", required=False, help="Launch Text-User-Interface", action='store_true')
 ap.add_argument("-v", "--verbose", required=False, help="Enable Verbose Mode", action='store_true')
 ap.add_argument("--redis-host", required=False, help="redis host", type=str,default = "localhost")
 ap.add_argument("--redis-port", required=False, help="redis port", type=int,default = 6379)
@@ -45,6 +44,7 @@ if __name__ == '__main__':
     #check redis server is running
     checkRedis()
 
+
     #start serial maanger process
     sm = serialmanager.SerialManager(device = args["device"],
                                      baud = args["baud"],
@@ -62,6 +62,7 @@ if __name__ == '__main__':
                                                                 args['redis_port'],))
     p.start()
 
+    
 
 
 

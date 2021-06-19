@@ -1,13 +1,13 @@
 #include "battery.h"
-#include "Logging/systemstatus.h"
-#include "Logging/logController.h"
+#include "Storage/systemstatus.h"
+#include "Storage/logController.h"
 #include "flags.h"
 #include "global_config.h"
 #include <string>
 
 #include "sensorStructs.h"
 
-#include "Logging/utils.h"
+#include "Storage/utils.h"
 
 Battery::Battery(uint8_t pin, SystemStatus* systemstatus,LogController* logcontroller,raw_measurements_t* raw_data):
 
