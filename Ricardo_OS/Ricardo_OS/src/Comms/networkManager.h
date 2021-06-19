@@ -61,16 +61,9 @@ class NetworkManager{
     private:
         stateMachine* _sm; //pointer to state machine
 
-       
-        
-
-
         std::vector<std::unique_ptr<std::vector<uint8_t>>> _global_packet_buffer; //packet buffer containing all network packets received
         std::vector<std::unique_ptr<std::vector<uint8_t>>> _local_packet_buffer; //packet buffer containing packets meant for this node
-        
-
-        
-        
+     
         //objects to process commands
         CommandHandler commandhandler;
         

@@ -92,7 +92,7 @@ class SerialManager(multiprocessing.Process):
 
 	def __processReceivedPacket__(self,data:bytes):
 		header = Header.from_bytes(data)#decode header
-		uid = header.system_time #get unique id
+		uid = header.uid #get unique id
 
 		if uid in self.packetRecord:
 			#get client id from packetrecord and remove corresponding entry
@@ -114,16 +114,16 @@ class SerialManager(multiprocessing.Process):
 	def __sendPacket__(self,data:bytes,clientid):
 		header = Header.from_bytes(data)#decode header
 		uid = self.__generateUID__() #get uuid
-		header.system_time = uid #get uuid
+		header.uid = uid #get uuid
 		serialized_header = header.serialize() #re-serialize header
 		#data[:len(serialized_header)] = serialized_header #overwrite old header
-		print(data)
-		print(data.hex())
+		# print(data)
+		# print(data.hex())
 		#modifieddata = serialized_header + data[len(serialized_header)-1 : -1]
 		modifieddata = bytearray(data)
 		modifieddata[:len(serialized_header)] = serialized_header
-		print(modifieddata)
-		print(modifieddata.hex())
+		# print(modifieddata)
+		# print(modifieddata.hex())
 		self.packetRecord[uid] = [clientid,time.time()] #update packetrecord dictionary
 		#self.sendBuffer.append(data)#add packet to send buffer
 
@@ -141,7 +141,7 @@ class SerialManager(multiprocessing.Process):
 			
 		
 
-	def __generateUID__(self):#replace this with a better uuid method
+	def __generateUID__(self):#replace this with a better uuid method lol this is such a hacky way
 		uid = self.counter
 		self.counter += 1
 		return uid 

@@ -63,20 +63,43 @@ void TelemetryLogger::log(state_t &estimator_state,raw_measurements_t &raw_senso
         return; // check if logger is enabled
     }
 
-    telemetry_frame.rawGPSLong = raw_sensors.gps_long; //continue for all variables - we need to see if thers a better way to do this
-    telemetry_frame.rawGPSLat = raw_sensors.gps_lat;
-    telemetry_frame.rawGPSsat = raw_sensors.gps_sat;
-    telemetry_frame.rawIMUAx= raw_sensors.ax;
-    telemetry_frame.rawIMUAy= raw_sensors.ay;
-    telemetry_frame.rawIMUAz= raw_sensors.az;
-    telemetry_frame.rawIMUGx= raw_sensors.gx;
-    telemetry_frame.rawIMUGy= raw_sensors.gy;
-    telemetry_frame.rawIMUGz= raw_sensors.gz;
-    telemetry_frame.rawIMUMx= raw_sensors.mx;
-    telemetry_frame.rawIMUMy= raw_sensors.my;
-    telemetry_frame.rawIMUMz= raw_sensors.mz;
-    telemetry_frame.rawIMUTemp= raw_sensors.imu_temp;
-    telemetry_frame.rawTimestamp = millis();
+
+    telemetry_frame.gps_long = raw_sensors.gps_long;
+    telemetry_frame.gps_lat = raw_sensors.gps_lat;
+    telemetry_frame.gps_alt = raw_sensors.gps_alt;
+    telemetry_frame.gps_v_n = raw_sensors.gps_v_n;
+    telemetry_frame.gps_v_e = raw_sensors.gps_v_e;
+    telemetry_frame.gps_v_d = raw_sensors.gps_v_d;
+    telemetry_frame.gps_sat = raw_sensors.gps_sat;
+    telemetry_frame.gps_fix = raw_sensors.gps_fix;
+    telemetry_frame.ax = raw_sensors.ax;
+    telemetry_frame.ay = raw_sensors.ay;
+    telemetry_frame.az = raw_sensors.az;
+    telemetry_frame.gx = raw_sensors.gx;
+    telemetry_frame.gy = raw_sensors.gy;
+    telemetry_frame.gz = raw_sensors.gz;
+    telemetry_frame.mx = raw_sensors.mx;
+    telemetry_frame.my = raw_sensors.my;
+    telemetry_frame.mz = raw_sensors.mz;
+    telemetry_frame.imu_temp = raw_sensors.imu_temp;
+    telemetry_frame.baro_alt = raw_sensors.baro_alt;
+    telemetry_frame.baro_temp = raw_sensors.baro_temp;
+    telemetry_frame.baro_press = raw_sensors.baro_press;
+    telemetry_frame.batt_volt = raw_sensors.batt_volt;
+    telemetry_frame.batt_percent = raw_sensors.batt_percent;
+    telemetry_frame.roll = estimator_state.eulerAngles[0];
+    telemetry_frame.pitch = estimator_state.eulerAngles[1];
+    telemetry_frame.yaw = estimator_state.eulerAngles[2];
+    telemetry_frame.pn = estimator_state.position[0];
+    telemetry_frame.pe = estimator_state.position[1];
+    telemetry_frame.pd = estimator_state.position[2];
+    telemetry_frame.vn = estimator_state.velocity[0];
+    telemetry_frame.ve = estimator_state.velocity[1];
+    telemetry_frame.vd = estimator_state.velocity[2];
+    telemetry_frame.an = estimator_state.acceleration[0];
+    telemetry_frame.ae = estimator_state.acceleration[1];
+    telemetry_frame.ad = estimator_state.acceleration[2];
+    telemetry_frame.timestamp = millis();
 
     std::string string_data = telemetry_frame.stringify();
 

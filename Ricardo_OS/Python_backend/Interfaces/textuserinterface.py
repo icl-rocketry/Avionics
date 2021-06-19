@@ -105,7 +105,8 @@ class StatusBar(urwid.WidgetWrap):
         super().__init__(self.top)
 
     def update(self,data):
-        connected = data.get("connectionstatus",False)
+        #connected = data.get("connectionstatus",False)
+        connected = True # just for testing
         self.time.set_text(datetime.now().strftime("%H:%M:%S"))
         if connected:
             self.top.set_attr_map({None:"status_bar"}) 
@@ -123,7 +124,7 @@ class ErrorStatus(urwid.WidgetWrap):
         super().__init__(self.top)
         
     def update(self,data):
-        allEvents = decodeSystemStatus(data.get("systemstatus",0))
+        allEvents = decodeSystemStatus(data.get("system_status",0))
         errorEvents = [item[1] for item in allEvents if item[0] is 'error']
         #update any errors passed
         for idx in range(len(self.errorlist)):
@@ -144,7 +145,7 @@ class ErrorLog(urwid.WidgetWrap):
     def update(self,data): #method compares new system status to old system status and displays when there is a change
         current_time = datetime.now().strftime("%H:%M:%S.%f")[:-3]
 
-        currentSystemStatus : int = data.get("systemstatus",0)
+        currentSystemStatus : int = data.get("system_status",0)
         changedStatus = currentSystemStatus ^ self.prevSystemStatus#xor to find changed status ( returns a 1 if x and y are different and zero if they are the same)
         flagTurnedOn = changedStatus&currentSystemStatus #  we 'and' the changed status and the current system status so see which flags have just turned on
         flagTurnedOff = changedStatus&self.prevSystemStatus 
@@ -193,13 +194,13 @@ class TelemetryView(urwid.WidgetWrap):
         super().__init__(self.top)
         
     def update(self,data):
-        self.__updateDisplayData__(0,"("+str(data.get("gps_lat","NULL")) + "," + str(data.get("gps_long","NULL")) + "," + str(data.get("gps_alt","NULL")) + ")" )
-        self.__updateDisplayData__(1,"("+str(data.get("pos_N","NULL")) + "," + str(data.get("pos_E","NULL")) + "," + str(data.get("pos_D","NULL")) + ")" )
-        self.__updateDisplayData__(2,"("+str(data.get("vel_N","NULL")) + "," + str(data.get("vel_E","NULL")) + "," + str(data.get("vel_D","NULL")) + ")" )
-        self.__updateDisplayData__(3,"("+str(data.get("a_N","NULL")) + "," + str(data.get("a_E","NULL")) + "," + str(data.get("a_D","NULL")) + ")" )
+        self.__updateDisplayData__(0,"("+str(data.get("lat","NULL")) + "," + str(data.get("lng","NULL")) + "," + str(data.get("alt","NULL")) + ")" )
+        self.__updateDisplayData__(1,"("+str(data.get("pn","NULL")) + "," + str(data.get("pe","NULL")) + "," + str(data.get("pd","NULL")) + ")" )
+        self.__updateDisplayData__(2,"("+str(data.get("vn","NULL")) + "," + str(data.get("ve","NULL")) + "," + str(data.get("vd","NULL")) + ")" )
+        self.__updateDisplayData__(3,"("+str(data.get("an","NULL")) + "," + str(data.get("ae","NULL")) + "," + str(data.get("ad","NULL")) + ")" )
         self.__updateDisplayData__(4,"("+str(data.get("roll","NULL")) + "," + str(data.get("pitch","NULL")) + "," + str(data.get("yaw","NULL")) + ")" )
         self.__updateDisplayData__(5,"("+str(data.get("baro_temp","NULL"))  + ")" )
-        self.__updateDisplayData__(6,"("+str(data.get("baro_pres","NULL"))  + ")" )
+        self.__updateDisplayData__(6,"("+str(data.get("baro_press","NULL"))  + ")" )
 
     def __updateDisplayData__(self,idx,text):
         self.displayWidgetsList[idx].base_widget.set_text(self.displayStrings[idx] + text)
@@ -208,6 +209,7 @@ class SystemStatus(urwid.WidgetWrap):
         self.displayStrings = ["StateMachine State : ",
                                "Flight Phase : ",
                                "RSSI (dBm) : ",
+                               "SNR (dB) : ",
                                "Battery Voltage : "
                                ]
         self.displayWidgetsList = [urwid.Filler(urwid.Text(text,align="center")) for text in self.displayStrings]
@@ -231,7 +233,7 @@ class SystemStatus(urwid.WidgetWrap):
         super().__init__(self.top)
         
     def update(self,data):
-        systemStatusList : int= decodeSystemStatus(data.get("systemstatus",0))
+        systemStatusList : int= decodeSystemStatus(data.get("system_status",0))
         #these lists should only have 1 item each. if not, someone has meesed up the flag defintions either locally or on ricardo
         statemachineState = [item[1] for item in systemStatusList if item[0] is 'state']
         flightPhase = [item[1] for item in systemStatusList if item[0] is 'flightphase']
@@ -239,7 +241,8 @@ class SystemStatus(urwid.WidgetWrap):
         self.__updateDisplayData__(0,str(self.__getFromList__(statemachineState,"NULL")))
         self.__updateDisplayData__(1,str(self.__getFromList__(flightPhase,"NULL")))
         self.__updateDisplayData__(2,"("+str(data.get("rssi","NULL"))  + ")" )
-        self.__updateDisplayData__(3,"("+str(data.get("batt_volt","NULL")) + ")" )
+        self.__updateDisplayData__(3,"("+str(data.get("snr","NULL")) + ")" )
+        self.__updateDisplayData__(4,"("+str(data.get("batt_voltage","NULL")) + ")" )
         self.batteryPercentBar.set_completion(data.get("batt_percent",0))
     
     def __getFromList__(self,l,default):
@@ -299,15 +302,15 @@ class TextUserInterface(multiprocessing.Process):
 
     def __getTelemetry__(self):
         #for demo purposes
-        if self.count%5 == 0:
-            self.systemstatus = random.randint(0,2**28)
-        self.count += 1 
+        # if self.count%5 == 0:
+        #     self.systemstatus = random.randint(0,2**28)
+        # self.count += 1 
 
         try:
             data = json.loads(self.r.get("telemetry"))
         except:
             data = {"connectionstatus":False}
-        data["systemstatus"] = self.systemstatus
+        # data["system_status"] = self.systemstatus
         return data
    
 

@@ -1,6 +1,7 @@
 #include "estimator.h"
 #include "stateMachine.h"
 #include "math.h"
+#include "Logging/utils.h"
 
 
 Estimator::Estimator(stateMachine* sm):
@@ -49,6 +50,16 @@ void Estimator::update(){
 
 void Estimator::setHome(){
    // record current gps coordinates as home
+   state.gps_launch_lat = _sm->sensors.sensors_raw.gps_lat;
+   state.gps_launch_long = _sm->sensors.sensors_raw.gps_long;
+   state.gps_launch_alt = _sm->sensors.sensors_raw.gps_alt;
+   //log the new home position
+   _sm->logcontroller.log("Home Position Updated to Lat: " 
+                           + utils::tostring(state.gps_launch_lat)
+                           + " Long: "
+                           + utils::tostring(state.gps_launch_long)
+                           + " Alt: "
+                           + utils::tostring(state.gps_launch_alt));
 }
 
 void Estimator::updateLinearAcceleration(){

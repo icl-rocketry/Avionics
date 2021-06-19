@@ -1,21 +1,24 @@
 import struct
 
+
+
 class Header:
 	start_byte = 0xAF
 	header_size = 15 # WARNING: This has to match with the size in packets.h!!!!
-	#ttl = 10 # Time to live
+	
 
 	def __init__(self, packet_type: int,
 				src_interface: int = 0, packet_len: int = 0,
-				system_time: int = 0, source: int = 0,
+				uid: int = 0, source: int = 0,
 				destination: int = 0, ttl: int = 10):
+
 		
-		self.packet_type = packet_type
-		self.src_interface = src_interface
 		self.packet_len = packet_len
-		self.system_time = system_time
+		self.uid = uid
+		self.packet_type = packet_type
 		self.source = source
 		self.destination = destination
+		self.src_interface = src_interface
 		self.ttl = ttl
 
 	@classmethod
@@ -27,7 +30,7 @@ class Header:
 
 	def serialize(self) -> bytes:
 		arr = [(self.start_byte, 1), (self.header_size,1),  (self.packet_len, 4), # Array with the integer variable and their number of bytes
-				(self.system_time, 4), (self.packet_type, 1),
+				(self.uid, 4), (self.packet_type, 1),
 				(self.source, 1), (self.destination, 1),
 				(self.src_interface, 1), (self.ttl, 1)]
 		bytearr = bytearray()
@@ -52,7 +55,7 @@ class Header:
 				self.packet_len = int.from_bytes(data[i:i+4], 'little', signed=False)
 				i += 4 # increment by number of bytes read
 			elif i == 6:
-				self.system_time = int.from_bytes(data[i:i+4], 'little', signed=False)
+				self.uid = int.from_bytes(data[i:i+4], 'little', signed=False)
 				i += 4 # increment by number of bytes read
 			elif i == 10:
 				self.packet_type = data[i]
@@ -73,9 +76,10 @@ class Header:
 				break
 			else:
 				print('Loop variable not caught by any statements, check Header.deserialize method')
+
 	
 	def __str__(self):
-		return f'HEADER:\n\tpacket type = {self.packet_type}\n\tpacket_len = {self.packet_len}\n\tsystem_time = {self.system_time}\n\tsource = {self.source}\n\tdestination = {self.destination}\n\tttl = {self.ttl}\n'
+		return f'HEADER:\n\tpacket type = {self.packet_type}\n\tpacket_len = {self.packet_len}\n\tunique_id = {self.uid}\n\tsource = {self.source}\n\tdestination = {self.destination}\n\tttl = {self.ttl}\n'
 
 
 class Packet:
@@ -84,57 +88,87 @@ class Packet:
 class Telemetry(Packet):
 	
 	def __init__(self, header: Header,
-				x: float, y: float, z: float,
-				vx: float, vy: float, vz: float,
-				ax: float, ay: float, az: float, lora_rssi: int):
+				pn: float = 0, pe: float = 0, pd: float = 0,
+				vn: float = 0, ve: float = 0, vd: float = 0,
+				an: float = 0, ae: float = 0, ad: float = 0,
+				roll: float = 0, pitch: float = 0, yaw: float = 0,
+				lat: int = 0, lng: int = 0, alt: int = 0, sat: int = 0,
+				ax: float = 0, ay: float = 0, az: float = 0,
+				gx: float = 0, gy: float = 0, gz: float = 0,
+				mx: float = 0, my: float = 0, mz: float = 0,
+				temp: float = 0, press: float = 0,
+				batt_voltage: int = 0, batt_percent: int = 0,
+				launch_lat: int = 0, launch_lng: int = 0, launch_alt: int = 0,
+				system_status: int = 0,
+				system_time: int = 0,
+				rssi: int = 0, snr: float = 0):
 
 		self.header = header
 
-		self.x = x
-		self.y = y
-		self.z = z
-		
-		self.vx = vx
-		self.vy = vy
-		self.vz = vz
-
+		self.pn = pn
+		self.pe = pe
+		self.pd = pd
+		self.vn = vn
+		self.ve = ve
+		self.vd = vd
+		self.an = an
+		self.ae = ae
+		self.ad = ad
+		self.roll = roll
+		self.pitch = pitch
+		self.yaw = yaw
+		self.lat = lat
+		self.lng = lng
+		self.alt = alt
+		self.sat = sat
 		self.ax = ax
 		self.ay = ay
 		self.az = az
+		self.gx = gx
+		self.gy = gy
+		self.gz = gz
+		self.mx = mx
+		self.my = my
+		self.mz = mz
+		self.temp = temp
+		self.press = press
+		self.batt_voltage = batt_voltage
+		self.batt_percent = batt_percent
+		self.launch_lat = launch_lat
+		self.launch_lng = launch_lng
+		self.launch_alt = launch_alt
+		self.system_status = system_status
+		self.system_time = system_time
+		self.rssi = rssi
+		self.snr = snr
 
-		self.lora_rssi = lora_rssi
-
-	@classmethod
-	def from_bytes(cls, data: bytes): # Deserialize from a bytearray
-		obj = cls.__new__(cls)  # Does not call __init__
-		super(Telemetry, obj).__init__()
-		obj.deserialize(data)
+	@staticmethod
+	def from_bytes(data: bytes): # Deserialize from a bytearray
+		header = Header.from_bytes(data)
+		telemetry_data = data[Header.header_size:] # Drop the first n bytes beloning to header
+		variable_list = struct.unpack('<fffffffffffflllBfffffffffffHHlllIQhf',telemetry_data)
+		obj = Telemetry(header,*variable_list)
+		
 		return obj
 	
 	def serialize(self) -> bytes:
 		data_byte_arr = bytearray(self.header.serialize())
 
-		float_vars = [self.x, self.y, self.z,
-					  self.ax, self.ay, self.az,
-					  self.vx, self.vy, self.vz]
+		member_variables = vars(self)
+		#remove header variable
+		member_variables.pop("header")
 		
-		for var in float_vars:
-			byte_data = struct.pack('<f', var)
-			for byte in byte_data:
-				data_byte_arr.append(byte)
-		data_byte_arr.append(self.lora_rssi.to_bytes(1, 'little')[0])
+		packet_bytes = struct.pack('<fffffffffffflllBfffffffffffHHlllIQhf',*(member_variables.values()))
+
+		data_byte_arr += packet_bytes
 
 		return bytes(data_byte_arr)
 	
-	def deserialize(self, data: bytes):
-		self.header = Header.from_bytes(data)
-		telemetry_data = data[Header.header_size:] # Drop the first n bytes beloning to header
+	# def deserialize(self, data: bytes):
+	# 	self.header = Header.from_bytes(data)
+	# 	telemetry_data = data[Header.header_size:] # Drop the first n bytes beloning to header		
+	# 	variable_list = struct.unpack('<ffffffffffffqqqBfffffffffffHHqqqIQhf',telemetry_data)
 		
-		self.x, self.y, self.z = struct.unpack('<fff', telemetry_data[:4*3]) # Unpack first 12 bytes
-		self.ax, self.ay, self.az = struct.unpack('<fff', telemetry_data[4*3:4*3*2])
-		self.vx, self.vy, self.vz = struct.unpack('<fff', telemetry_data[4*3*2:4*3*3])
-		
-		self.lora_rssi = telemetry_data[4*3*3]
 
 	def __str__(self):
 		header_str = self.header.__str__() + '\ns'

@@ -115,8 +115,8 @@ class TelemetryPacket{
                 &TelemetryPacket::an,
                 &TelemetryPacket::ae,
                 &TelemetryPacket::ad,
-                &TelemetryPacket::pitch,
                 &TelemetryPacket::roll,
+                &TelemetryPacket::pitch,
                 &TelemetryPacket::yaw,
                 &TelemetryPacket::lat,
                 &TelemetryPacket::lng,
@@ -160,7 +160,7 @@ class TelemetryPacket{
         float vn, ve, vd; // velocity NED (m/s)
         float an, ae, ad; // acceleration NED (m/s^2)
         //orientation
-        float pitch,roll,yaw; // orientation degrees
+        float roll,pitch,yaw; // orientation degrees
         //gps
         long lat,lng,alt;
         uint8_t sat;
