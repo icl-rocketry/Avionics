@@ -38,8 +38,9 @@ void stateMachine::initialise(State* initStatePtr) {
   //sensors must be setup before estimator
   sensors.setup();
   estimator.setup();
-  
+
   sensors.callibrate(SENSOR::ACCELGYRO);
+
   //sensors.callibrate(SENSOR::MAG);
   
 
@@ -49,16 +50,17 @@ void stateMachine::initialise(State* initStatePtr) {
 
 void stateMachine::update() {
   //call udpate on tunez handler
+
   tunezhandler.update();
 
   //write logs to file 
   logcontroller.update();
 
   //request new sensor data
-  //sensors.update();
+  sensors.update();
   //process updated sensor data
-  //estimator.update();
-  //logcontroller.log(estimator.state,sensors.sensors_raw);// log new navigation solution and sensor output
+  estimator.update();
+  logcontroller.log(estimator.state,sensors.sensors_raw);// log new navigation solution and sensor output
   //check for new packets and process
   networkmanager.update();
 

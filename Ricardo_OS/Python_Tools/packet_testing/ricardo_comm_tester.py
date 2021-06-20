@@ -32,7 +32,7 @@ time.sleep(2)
 print('flushing boot messages')
 
 
-a = input()
+
 boot_messages = ""
 while ser.in_waiting > 0:
 	data = ser.read(1)
@@ -49,10 +49,10 @@ print(boot_messages)
 header = Header(2, 0, 2, 0, source=4, destination=1) # source=4 for USB and destination=0 for rocket
 cmd_packet = Command(header, 50, 0) # 50 for detailed all
 serialized_packet = cmd_packet.serialize()
-#print(serialized_packet.hex())
+print(serialized_packet.hex())
 ser.write(serialized_packet)
 t = time.time_ns()
-#print('we wrote shit')
+print('we wrote shit')
 
 
 while True:

@@ -49,7 +49,7 @@ void Setup::initialise(){
         //open serial port on usb interface
     Serial.begin(Serial_baud);
     Serial.setRxBufferSize(SERIAL_SIZE_RX);
-    Serial.println("setup done");
+
 
 
     

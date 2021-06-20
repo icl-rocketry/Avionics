@@ -29,6 +29,7 @@ void USB::send_packet(uint8_t* data, size_t size){ // From RICARDO to USB
     //if we couldnt write though
 
     _stream->write(data,size);
+    
 
 };
 
@@ -70,6 +71,7 @@ void USB::get_packet(std::vector<std::unique_ptr<std::vector<uint8_t>>> &buf){
                 _incompletePacketReceived = false; //dump the packet
                 _systemstatus->new_message(system_flag::ERROR_SERIAL,"Packet Dumped");
                 
+                
             }else{
                 //only a single packet to read or multiple packets to read so we will only the first packet
                 _incompletePacketReceived = false;
@@ -98,6 +100,7 @@ void USB::get_packet(std::vector<std::unique_ptr<std::vector<uint8_t>>> &buf){
         }else{
             // read byte to clear byte in serial buffer
             _systemstatus->new_message(system_flag::ERROR_SERIAL,"Packet Dumped");
+            
         };  
     }; 
 /*
