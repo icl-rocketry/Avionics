@@ -23,82 +23,21 @@ NetworkManager::NetworkManager(stateMachine* sm):
     usbserial(&Serial,&(sm->systemstatus)),
     radio(&(sm->vspi),&(sm->systemstatus)),
     _sm(sm),
-    rt(2,5),//preallocate size
+    routingtable(2,5),//preallocate size
     commandhandler(sm)
     
 {
    
-   
+    routingtable(Nodes::ROCKET) = std::vector<RoutingTableEntry>({{Interface::LOOPBACK,0},{Interface::LORA,1},{Interface::LORA,2},{Interface::CAN,1},{Interface::USBSerial,1}});
+    routingtable(Nodes::GROUNDSTATION) = std::vector<RoutingTableEntry>( {{Interface::LORA,1},{Interface::LOOPBACK,0},{Interface::USBSerial,1},{Interface::LORA,2},{Interface::USBSerial,1}});
+
     _global_packet_buffer.reserve(5);
     _local_packet_buffer.reserve(5);
 };
 
 
 void NetworkManager::setup(){
-    
-     //setup default routing table
-    std::vector<RoutingTableEntry> entry1({ 
-                                            {Interface::LOOPBACK,0},
-                                            {Interface::LORA,1},
-                                            {Interface::LORA,2},
-                                            {Interface::CAN,1},
-                                            {Interface::USBSerial,1}
-                                            });
-    
-    std::vector<RoutingTableEntry> entry2({ 
-                                            {Interface::LORA,1},
-                                            {Interface::LOOPBACK,0},
-                                            {Interface::USBSerial,1},
-                                            {Interface::LORA,2},
-                                            {Interface::USBSerial,1}
-                                            });
-    
-    
-    for (int i = 0;  i < entry1.size();i++){
-        Serial.print((uint8_t)entry1.at(i).gateway);
-        Serial.print(",");
-    }
-    Serial.println();
-    for (int i = 0; i < entry2.size();i++){
-        Serial.print((uint8_t)entry2.at(i).gateway);
-        Serial.print(",");
-    }
-    Serial.println();
-    // rt(Nodes::ROCKET) = std::vector<RoutingTableEntry>({{Interface::LOOPBACK,0},{Interface::LORA,1},{Interface::LORA,2},{Interface::CAN,1},{Interface::USBSerial,1}});
-    // rt(Nodes::GROUNDSTATION) = std::vector<RoutingTableEntry>( {{Interface::LORA,1},{Interface::LOOPBACK,0},{Interface::USBSerial,1},{Interface::LORA,2},{Interface::USBSerial,1}});
-
-    for (int i = 0; i<2 ; i++){
-        for (int j = 0; j<5; j++){
-            Serial.print((uint8_t)rt(i,j).gateway);
-            Serial.print(",");
-            
-        }
-        Serial.println();
-    }
-
-    rt(Nodes::ROCKET) = entry1;
-    rt(Nodes::GROUNDSTATION) = entry2;
-    
-
-     for (int i = 0; i<3 ; i++){
-        for (int j = 0; j<5; j++){
-            Serial.print((uint8_t)rt(i,j).gateway);
-            Serial.print(",");
-            
-        }
-        Serial.println();
-    }
-
-    for (int i = 0;  i < entry1.size();i++){
-        Serial.print((uint8_t)entry1.at(i).gateway);
-        Serial.print(",");
-    }
-    Serial.println();
-    for (int i = 0; i < entry2.size();i++){
-        Serial.print((uint8_t)entry2.at(i).gateway);
-        Serial.print(",");
-    }
-
+ 
     radio.setup();
     usbserial.setup();
 };
@@ -175,20 +114,8 @@ void NetworkManager::send_to_node(Nodes destination,std::vector<uint8_t> &data){
    
     uint8_t current_node = static_cast<uint8_t>(node_type);
     //get sending interface from routing table
-    Interface send_interface = rt(current_node,static_cast<uint8_t>(destination)).gateway;
-     Serial.println(static_cast<uint8_t>(send_interface));
-
-    for (int i = 0; i<2 ; i++){
-        for (int j = 0; j<5; j++){
-            Serial.print((uint8_t)rt(i,j).gateway);
-            Serial.print(",");
-            
-        }
-        Serial.println();
-    }
-    
-
-
+    Interface send_interface = routingtable(current_node,static_cast<uint8_t>(destination)).gateway;
+ 
     if (send_interface == Interface::ERROR){
         // dump this packet as it looks like the dodgyness of highest quality
         return;
@@ -231,8 +158,6 @@ void NetworkManager::process_global_packets(){
         if (packetheader.destination != current_node){
 
             //forward packet to next node
-            Serial.println("dest");
-            Serial.print(packetheader.destination);
             send_to_node(static_cast<Nodes>(packetheader.destination),*curr_packet);
 
             

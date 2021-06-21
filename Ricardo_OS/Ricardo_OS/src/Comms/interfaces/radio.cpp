@@ -48,7 +48,6 @@ void Radio::setup(){
 
 
 void Radio::send_packet(uint8_t* data, size_t packet_len){
-
     if(LoRa.beginPacket()){
         LoRa.write(data, packet_len);
         LoRa.endPacket();
@@ -60,14 +59,7 @@ void Radio::send_packet(uint8_t* data, size_t packet_len){
 
 void Radio::get_packet(std::vector<std::unique_ptr<std::vector<uint8_t>>> &buf){
     packetSize = LoRa.parsePacket();
-    /*
-    if(millis() - prev_time > 10){
-        Serial.print(packetSize);
-        Serial.print(" ");
-        Serial.print(LoRa.available());
-        Serial.print("\n");
-        prev_time = millis();
-    }*/
+
 
     if(packetSize){
         index = 0;

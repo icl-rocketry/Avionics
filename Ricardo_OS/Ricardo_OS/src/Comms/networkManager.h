@@ -62,7 +62,7 @@ class NetworkManager{
         std::vector<std::unique_ptr<std::vector<uint8_t>>> _global_packet_buffer; //packet buffer containing all network packets received
         std::vector<std::unique_ptr<std::vector<uint8_t>>> _local_packet_buffer; //packet buffer containing packets meant for this node
      
-        RoutingTable rt; // routing table for networking -> maybe move to protected so an be acsesed eaiser??
+        RoutingTable routingtable; // routing table for networking -> maybe move to protected so an be acsesed eaiser??
          
         //objects to process commands
         CommandHandler commandhandler;
