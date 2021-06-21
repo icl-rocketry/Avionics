@@ -26,7 +26,7 @@ stateMachine::stateMachine() :
 void stateMachine::initialise(State* initStatePtr) {
 
   // call tunez handler setup first so we can provide startup tone and auditory cues asap
-  tunezhandler.setup();
+  //tunezhandler.setup();
   //call setup state before callng individual setups
   changeState(initStatePtr);
   //setup storage and logging so any erros encoutered can be logged

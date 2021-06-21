@@ -288,8 +288,8 @@ bool CommandHandler::commandAvaliable(Command command) {
 		case COMMANDS::Enter_Groundstation:
 		case COMMANDS::Stop_Logging:
 			return _sm->systemstatus.flag_triggered(system_flag::STATE_PREFLIGHT) 
-		||  _sm->systemstatus.flag_triggered(system_flag::DEBUG);
-		//|| _sm->systemstatus.flag_triggered(system_flag::STATE_GROUNDSTATION); //for testing
+		||  _sm->systemstatus.flag_triggered(system_flag::DEBUG)
+		|| _sm->systemstatus.flag_triggered(system_flag::STATE_GROUNDSTATION); //for testing
 		case COMMANDS::Zero_Sensors:
 			return _sm->systemstatus.flag_triggered(system_flag::STATE_GROUNDSTATION) 
 			|| _sm->systemstatus.flag_triggered(system_flag::STATE_PREFLIGHT)

@@ -20,7 +20,7 @@ Setup::Setup(stateMachine* sm) : State(sm){
 
 void Setup::initialise(){
     State::initialise();
-    _sm->tunezhandler.play(c_scalez.get()); // play startup sound
+    //_sm->tunezhandler.play(c_scalez.get()); // play startup sound
 
     //internal io initilization must happen here so io buses setup for sensor initialzation
         //intialize i2c interface
@@ -49,6 +49,7 @@ void Setup::initialise(){
         //open serial port on usb interface
     Serial.begin(Serial_baud);
     Serial.setRxBufferSize(SERIAL_SIZE_RX);
+    Serial.println("setup)");
 
 
 
