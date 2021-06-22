@@ -7,10 +7,14 @@ import json
 
 class TelemetryHandler(multiprocessing.Process):
     
-    def __init__(self,updateTimePeriod = 1000e6,redishost = 'localhost',redisport = 6379,clientid = "LOCAL:TELEMETRYTASK"):#default time period corresponds to 5 hz update
+    def __init__(self,updateTimePeriod = 800e6,redishost = 'localhost',redisport = 6379,clientid = "LOCAL:TELEMETRYTASK"):#default time period corresponds to 5 hz update
         
         super(TelemetryHandler,self).__init__()
         self.prev_time = 0
+
+        self.lastPacketTime = 0
+        self.packetTimeout = 1e10
+        self.lastTelemetry = {}
 
         self.clientid : str = clientid 
         self.updateTimePeriod = updateTimePeriod
@@ -35,12 +39,12 @@ class TelemetryHandler(multiprocessing.Process):
         #construct command packet for telemetry
         header = packets.Header(2, 0, 2, 0, source=2, destination=0) # source=4 for USB and destination=0 for rocket
         cmd_packet = packets.Command(header, 8, 0) # 8 for telemetry
-        
         send_data = {
             "data":cmd_packet.serialize().hex(),
             "clientid":self.clientid
         }
         self.r.lpush("SendQueue",json.dumps(send_data))
+        
     
     def __checkRecieveQueue__(self):
         self.r.persist("ReceiveQueue:"+str(self.clientid)) #remove key expiry as we are acsessing it
@@ -52,14 +56,20 @@ class TelemetryHandler(multiprocessing.Process):
             #check the correct packet type was received
             #!!!! change packet type to telemetry packet once everything els ehas been changed properly
             if header.packet_type == 1:
+                self.lastPacketTime = time.time_ns()
                 decoded_packet = packets.Telemetry.from_bytes(received_packet)
                 packet_data = vars(decoded_packet)
                 #remove header from data
                 packet_data.pop("header")
+                packet_data["connectionstatus"] = True
+                self.lastTelemetry = packet_data
                 self.r.set("telemetry",json.dumps(packet_data))
             else:
                 return
-
+        elif (time.time_ns() - self.lastPacketTime) > self.packetTimeout:
+            data = self.lastTelemetry
+            data["connectionstatus"] = False
+            self.r.set("telemetry",json.dumps(data))
 
 
 

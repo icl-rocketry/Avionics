@@ -15,6 +15,8 @@ class SerialManager(multiprocessing.Process):
 		self.baud = baud
 		self.waittime = waittime
 		self.boot_messages = ''
+		self.prevSendTime = 0
+		self.sendDelta = 400e6
 		
 
 		self.packetRecordTimeout = 2*60 #default 2 minute timeout
@@ -73,7 +75,6 @@ class SerialManager(multiprocessing.Process):
 	def __readPacket__(self):
 		if self.ser.in_waiting > 0: 
 			b = self.ser.read(1)
-			
 			if (b == Header.start_byte.to_bytes(1, 'little')):
 	
 				header_bytes = self.ser.read(Header.header_size - 1) # -1 as we have read the first byte already
@@ -132,14 +133,16 @@ class SerialManager(multiprocessing.Process):
 
 	def __checkSendQueue__(self):
 		#check if there are items present in send queue
-		if self.rd.llen("SendQueue") > 0:
-			item = json.loads(self.rd.rpop("SendQueue"))
-			#item is a json object with structure 
-			#{data:bytes as hex string,
-			# clientid:""}
-			self.__sendPacket__(bytes.fromhex(item["data"]),item["clientid"])
-		
+		if (time.time_ns() - self.prevSendTime) > self.sendDelta :
+			if self.rd.llen("SendQueue") > 0:
+				item = json.loads(self.rd.rpop("SendQueue"))
+				#item is a json object with structure 
+				#{data:bytes as hex string,
+				# clientid:""}
+				self.__sendPacket__(bytes.fromhex(item["data"]),item["clientid"])
+				self.prevSendTime = time.time_ns()
 			
+				
 		
 
 	def __generateUID__(self):#replace this with a better uuid method lol this is such a hacky way

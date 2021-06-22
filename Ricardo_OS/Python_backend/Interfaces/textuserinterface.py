@@ -16,7 +16,7 @@ import random
 
 flag_lookup = [([0,0])] * 32 #assing list of 32 elements to represent 32 bits in flag string
 #list structure [flag level, flag name]
-flag_lookup[0] = ['state','USBMODE']
+flag_lookup[0] = ['state','DEBUG']
 flag_lookup[1] = ['state','PREFLIGHT']
 flag_lookup[2] = ['state','LAUNCH']
 flag_lookup[3] = ['state','FLIGHT']
@@ -325,7 +325,7 @@ class TextUserInterface(multiprocessing.Process):
 
         try:
             data = json.loads(self.r.get("telemetry"))
-            data["connectionstatus"] = True
+            #data["connectionstatus"] = True
         except:
             data = {"connectionstatus":False}
         # data["system_status"] = self.systemstatus
