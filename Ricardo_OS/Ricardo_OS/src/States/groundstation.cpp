@@ -12,7 +12,7 @@ Groundstation::Groundstation(stateMachine* sm) : State(sm){
 
 void Groundstation::initialise(){
     State::initialise();
-    Serial.println("groundstation");
+    //Serial.println("groundstation");
     
 };
 

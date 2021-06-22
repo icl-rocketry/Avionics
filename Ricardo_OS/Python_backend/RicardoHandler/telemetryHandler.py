@@ -7,7 +7,7 @@ import json
 
 class TelemetryHandler(multiprocessing.Process):
     
-    def __init__(self,updateTimePeriod = 200e6,redishost = 'localhost',redisport = 6379,clientid = "LOCAL:TELEMETRYTASK"):#default time period corresponds to 5 hz update
+    def __init__(self,updateTimePeriod = 1000e6,redishost = 'localhost',redisport = 6379,clientid = "LOCAL:TELEMETRYTASK"):#default time period corresponds to 5 hz update
         
         super(TelemetryHandler,self).__init__()
         self.prev_time = 0
@@ -33,7 +33,7 @@ class TelemetryHandler(multiprocessing.Process):
 
     def __sendTelemetryPacket__(self):
         #construct command packet for telemetry
-        header = packets.Header(2, 0, 2, 0, source=4, destination=0) # source=4 for USB and destination=0 for rocket
+        header = packets.Header(2, 0, 2, 0, source=2, destination=0) # source=4 for USB and destination=0 for rocket
         cmd_packet = packets.Command(header, 8, 0) # 8 for telemetry
         
         send_data = {

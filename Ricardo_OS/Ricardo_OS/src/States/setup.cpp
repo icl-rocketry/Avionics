@@ -20,15 +20,15 @@ Setup::Setup(stateMachine* sm) : State(sm){
 
 void Setup::initialise(){
     State::initialise();
-    //_sm->tunezhandler.play(c_scalez.get()); // play startup sound
+    
 
     //internal io initilization must happen here so io buses setup for sensor initialzation
         //intialize i2c interface
     _sm->I2C.begin(_SDA,_SCL,I2C_FREQUENCY);
         //initalize spi interface
-        //todo find the lowest denominator for the speed of the spi bus.   
     _sm->vspi.begin();
-    _sm->vspi.setClockDivider(SPI_CLOCK_DIV2);
+    //_sm->vspi.setClockDivider(SPI_CLOCK_DIV2);
+    _sm->vspi.setFrequency(1000000); // 10mhz
     _sm->vspi.setBitOrder(MSBFIRST);
     _sm->vspi.setDataMode(SPI_MODE0);
         //setup cs pins
@@ -49,7 +49,9 @@ void Setup::initialise(){
         //open serial port on usb interface
     Serial.begin(Serial_baud);
     Serial.setRxBufferSize(SERIAL_SIZE_RX);
-    Serial.println("setup)");
+    
+    _sm->tunezhandler.play(c_scalez.get()); // play startup sound
+    //Serial.println("setup)");
 
 
 
@@ -60,7 +62,7 @@ void Setup::initialise(){
 
 State* Setup::update(){
     //transtion to preflight state
-    State* _preflight_ptr = new Groundstation(_sm);
+    State* _preflight_ptr = new Preflight(_sm);
     return _preflight_ptr;
 };
 

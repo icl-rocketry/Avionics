@@ -70,6 +70,7 @@ void USB::get_packet(std::vector<std::unique_ptr<std::vector<uint8_t>>> &buf){
                 //we dont have the full packet to read 
                 _incompletePacketReceived = false; //dump the packet
                 _systemstatus->new_message(system_flag::ERROR_SERIAL,"Packet Dumped");
+                //Serial.println('dump');
                 
                 
             }else{
@@ -93,6 +94,9 @@ void USB::get_packet(std::vector<std::unique_ptr<std::vector<uint8_t>>> &buf){
                 _stream->readBytes(((*packet_ptr).data() + _header_len), _packet_len); 
 
                 //should add exceptioj checking here so we know if we have failed to properly read the data into the packet ptr
+                // for (int i = 0; i<(*packet_ptr).size(); i++){
+                //     Serial.print((*packet_ptr).at(i));
+                // }
                 buf.push_back(std::move(packet_ptr)); // add pointer to packet immediately to buffer                
 
                 

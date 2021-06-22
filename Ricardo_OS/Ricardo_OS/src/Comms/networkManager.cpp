@@ -37,6 +37,15 @@ NetworkManager::NetworkManager(stateMachine* sm):
 
 
 void NetworkManager::setup(){
+
+    // for (int i = 0; i<2;i++){
+    //     for (int j = 0; j<5;j++){
+    //         Serial.print((int)routingtable(i,j).gateway);
+    //         Serial.print(",");
+    //     }
+    //     Serial.println();
+    // }
+    
  
     radio.setup();
     usbserial.setup();
@@ -115,7 +124,7 @@ void NetworkManager::send_to_node(Nodes destination,std::vector<uint8_t> &data){
     uint8_t current_node = static_cast<uint8_t>(node_type);
     //get sending interface from routing table
     Interface send_interface = routingtable(current_node,static_cast<uint8_t>(destination)).gateway;
-    Serial.println((int)send_interface);
+    //Serial.println((int)send_interface);
  
     if (send_interface == Interface::ERROR){
         // dump this packet as it looks like the dodgyness of highest quality

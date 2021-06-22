@@ -215,10 +215,10 @@ class SystemStatus(urwid.WidgetWrap):
     def __init__(self):
         self.displayStrings = ["StateMachine State : ",
                                "Flight Phase : ",
-                               "System Time  : ",
+                               "System Time (ms) : ",
                                "RSSI (dBm) : ",
                                "SNR (dB) : ",
-                               "Battery Voltage : "
+                               "Battery Voltage (mv) : "
                                ]
         self.displayWidgetsList = [urwid.Filler(urwid.Text(text,align="center")) for text in self.displayStrings]
         #self.dataWidgetList = [urwid.Filler(urwid.Text(" NULL",align=LEFT)) for all in self.displayStrings] 
@@ -250,7 +250,7 @@ class SystemStatus(urwid.WidgetWrap):
         self.__updateDisplayData__(1,str(self.__getFromList__(flightPhase,"NULL")))
         self.__updateDisplayData__(2,"("+ self.__getFromDict__(data,"system_time",'{:.0f}')  + ")" )
         self.__updateDisplayData__(3,"("+ self.__getFromDict__(data,"rssi",'{:.0f}')  + ")" )
-        self.__updateDisplayData__(4,"("+ self.__getFromDict__(data,"snr",'{:.0f}') + ")" )
+        self.__updateDisplayData__(4,"("+ self.__getFromDict__(data,"snr",'{:.2f}') + ")" )
         self.__updateDisplayData__(5,"("+ self.__getFromDict__(data,"batt_voltage",'{:.0f}') + ")" )
         self.batteryPercentBar.set_completion(data.get("batt_percent",0))
 

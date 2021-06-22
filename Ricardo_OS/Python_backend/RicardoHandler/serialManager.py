@@ -73,6 +73,7 @@ class SerialManager(multiprocessing.Process):
 	def __readPacket__(self):
 		if self.ser.in_waiting > 0: 
 			b = self.ser.read(1)
+			
 			if (b == Header.start_byte.to_bytes(1, 'little')):
 	
 				header_bytes = self.ser.read(Header.header_size - 1) # -1 as we have read the first byte already

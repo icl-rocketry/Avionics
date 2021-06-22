@@ -48,7 +48,7 @@ void Radio::setup(){
 
 
 void Radio::send_packet(uint8_t* data, size_t packet_len){
-    
+    //Serial.println("sent");
     if(LoRa.beginPacket()){
         LoRa.write(data, packet_len);
         LoRa.endPacket();
@@ -61,16 +61,44 @@ void Radio::send_packet(uint8_t* data, size_t packet_len){
 void Radio::get_packet(std::vector<std::unique_ptr<std::vector<uint8_t>>> &buf){
     packetSize = LoRa.parsePacket();
 
+    if (packetSize){
+        std::unique_ptr<std::vector<uint8_t>> packet_ptr = std::make_unique<std::vector<uint8_t>>(packetSize);
 
-    if(packetSize){
-        index = 0;
-        packet.resize(packetSize);
-        while(LoRa.available() || (index < (packetSize-1))){
-            if (LoRa.available()){
-                packet.at(index) = LoRa.read();
-                index++;
-            }
-        }
+        LoRa.readBytes((*packet_ptr).data(),packetSize); // read bytes into vector
+
+        std::vector<uint8_t> modified_packet_header;
+        //Iface::updateSourceInterface((*packet_ptr),modified_packet_header,Interface::LORA)
+        PacketHeader packetheader = PacketHeader(*packet_ptr);
+
+        //update source interface
+        packetheader.src_interface = static_cast<uint8_t>(Interface::LORA);
+        
+        //serialize packet header
+        
+        
+        packetheader.serialize(modified_packet_header);
+        
+
+        memcpy((*packet_ptr).data(),modified_packet_header.data(),packetheader.header_len);
+
+        buf.push_back(std::move(packet_ptr));//add packet ptr  to buffer
+
+    }
+
+    
+
+
+/*
+    // if(packetSize){
+    //     index = 0;
+    //     packet.resize(packetSize);
+    //     while(LoRa.available() || (index < (packetSize-1))){
+    //         if (LoRa.available()){
+    //             packet.at(index) = LoRa.read();
+    //             index++;
+    //         }
+    //     }
+
 
         std::unique_ptr<std::vector<uint8_t>> packet_ptr = std::make_unique<std::vector<uint8_t>>(packet);
 
@@ -90,7 +118,7 @@ void Radio::get_packet(std::vector<std::unique_ptr<std::vector<uint8_t>>> &buf){
         packetheader.serialize(modified_packet_header);
         
 
-        memcpy((*packet_ptr).data(),modified_packet_header.data(),packetheader.header_len);
+        memcpy((*packet_ptr).data(),modified_packet_header.data(),packetheader.header_len);*/
 /*
         Serial.print(" radio receive ");
         Serial.print(" ");
@@ -102,11 +130,11 @@ void Radio::get_packet(std::vector<std::unique_ptr<std::vector<uint8_t>>> &buf){
             Serial.print((*packet_ptr)[i]);
             Serial.print(" ");
         }
-        Serial.print("\n");*/
+        Serial.print("\n");
 
         buf.push_back(std::move(packet_ptr));//add packet ptr  to buffer
 
-    }
+    }*/
 
 /*
     if (!LoRa.parsePacket()){
