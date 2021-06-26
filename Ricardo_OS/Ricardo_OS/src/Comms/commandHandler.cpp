@@ -75,7 +75,7 @@ void CommandHandler::handleCommand(Command command) {
 			case COMMANDS::Stop_Logging:
 				break;
 			case COMMANDS::Play_Song:
-				_sm->tunezhandler.play(SONG::Fireflies.get()); // play startup sound
+				_sm->tunezhandler.play(SONG::miichannel.get()); // play startup sound
 				break;
 			case COMMANDS::Telemetry:
 				{

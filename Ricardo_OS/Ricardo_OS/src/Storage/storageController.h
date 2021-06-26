@@ -38,7 +38,7 @@ class StorageController{
         //void write(std::string &path,std::string &data,STORAGE_DEVICE device);//missing arguemtn for data -we need to decide 
         //File read(std::string path,STORAGE_DEVICE device); 
 
-        File open(std::string &path,STORAGE_DEVICE device,oflag_t mode);
+        File open(std::string path,STORAGE_DEVICE device,oflag_t mode);
 
         std::string getUniqueDirectory(std::string input_directory,STORAGE_DEVICE device); //checks and updates directory name so that it is unique
         
@@ -49,6 +49,8 @@ class StorageController{
         bool erase(STORAGE_DEVICE device);//format device
 
         void generateDirectoryStructure(STORAGE_DEVICE device);
+
+        
 
 
     private:
@@ -63,7 +65,9 @@ class StorageController{
         FatFileSystem flash_fatfs;//flash filesystem
         
         int getFileNameIndex(const std::string fileName); // Extracts the index of the file from file name (e.g. returns 4 when input is logs_flight_4)
-
+        bool ls(std::string path,std::vector<directory_element_t> &directory_structure,FatFileSystem* fs);
+       
+        bool rmParent(std::string path, FatFileSystem* fs); // remove all files under directory -> deletes path
         
         
 };

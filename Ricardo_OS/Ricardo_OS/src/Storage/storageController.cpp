@@ -132,26 +132,118 @@ bool StorageController::mkdir(std::string path,STORAGE_DEVICE device){
 }
 
 bool StorageController::ls(std::string path,std::vector<directory_element_t> &directory_structure,STORAGE_DEVICE device){
-    File _file;
-    
+    bool status;
     switch(device){
         case STORAGE_DEVICE::MICROSD:{
-            microsd.chvol();//change vol to microsd
-            _file = microsd.open(path.c_str()); // open the path supplied
-            
-
+            ls(path,directory_structure,&microsd);
+            status = true;
             break;
         }
         case STORAGE_DEVICE::FLASH:{
-            flash_fatfs.chvol();//change vol to flash
-            _file = flash_fatfs.open(path.c_str()); // open the path supplied
-            
+            ls(path,directory_structure,&flash_fatfs);
+            status = true;
             break;
         }
         default:{
-            return false; // return nothing 
+            status = false;
+            break;
         }
     }
+    return status;
+};
+
+bool StorageController::ls(std::vector<directory_element_t> &directory_structure,STORAGE_DEVICE device){
+    std::string path = "/";
+    return ls(path,directory_structure, device);
+};
+
+
+void StorageController::printDirectory(std::string path,STORAGE_DEVICE device){ // function just to check functionality of ls
+    std::vector<directory_element_t> directory;
+    ls(path,directory,device);
+        for (int i = 0;i < directory.size(); i++){
+            Serial.print("Name: ");
+            Serial.print(directory[i].name.c_str());
+            Serial.print(" Type: ");
+            Serial.print((uint8_t)directory[i].type);
+            Serial.print(" Size: ");
+            Serial.print(directory[i].size);
+            Serial.print("\n");
+    }
+}
+        
+        
+
+
+File StorageController::open(std::string path, STORAGE_DEVICE device,oflag_t mode){
+    File ret;
+    switch(device){
+        case(STORAGE_DEVICE::MICROSD):{
+            microsd.chvol();
+            ret = microsd.open(path.c_str(),mode);
+            break;
+        }
+        case(STORAGE_DEVICE::FLASH):{
+            flash_fatfs.chvol();
+            ret = flash_fatfs.open(path.c_str(),mode);
+            break;
+        }
+        default:{
+            //do nothing
+            break;
+        }
+    }
+    return ret;
+}
+
+bool StorageController::erase(STORAGE_DEVICE device){ // need to make sure this doesnt wipe out configuration files lol
+//maybe call the configcontroller to rewrite the config file if we store the configuration in ram
+    // cross coupling here again because we need to turn off logging so we can update the log file paths
+    bool error = false;
+
+    _sm->logcontroller.stopLogging(LOG_TYPE::ALL);
+
+    switch(device){
+        case(STORAGE_DEVICE::MICROSD):{
+            if(!rmParent("/Logs", &microsd)){
+                _sm->systemstatus.new_message(system_flag::ERROR_SD,"Error wiping SD card");
+                error = true;
+                break;
+            }
+            
+             _sm->logcontroller.log("SD Wiped");
+            break;
+        }
+        case(STORAGE_DEVICE::FLASH):{
+            if(!rmParent("/Logs", &flash_fatfs)){
+                _sm->systemstatus.new_message(system_flag::ERROR_FLASH,"Error wiping onboard flash");
+                error = true;
+                break;
+            }   
+
+            _sm->logcontroller.log("Flash Wiped");
+            break;       
+        }
+        default:{
+            //no option supplied so dont do anything
+            error = true;
+            break;
+        }
+    }
+    //make sure directory structure is present on wiped device
+    generateDirectoryStructure(device);
+    _sm->logcontroller.setup(); // reinitialize log controller
+    //_sm->logcontroller.generateLogDirectories(device); //ensure logging directories exist
+    //reopen log files
+    //_sm->logcontroller.startLogging(LOG_TYPE::ALL);    
+
+    return error;
+    
+}
+bool StorageController::ls(std::string path,std::vector<directory_element_t> &directory_structure,FatFileSystem* fs){
+    File _file;
+    fs->chvol(); // cahnge vol to fs provided
+    _file = fs->open(path.c_str()); //open supplied path
     
     if((!_file) || (!_file.isDirectory())){
         //path invalid so return
@@ -185,93 +277,33 @@ bool StorageController::ls(std::string path,std::vector<directory_element_t> &di
     _sm->logcontroller.startLogging(LOG_TYPE::ALL);
 
     return true;
-};
-
-void StorageController::printDirectory(std::string path,STORAGE_DEVICE device){ // function just to check functionality of ls
-    std::vector<directory_element_t> directory;
-    ls(path,directory,device);
-        for (int i = 0;i < directory.size(); i++){
-            Serial.print("Name: ");
-            Serial.print(directory[i].name.c_str());
-            Serial.print(" Type: ");
-            Serial.print((uint8_t)directory[i].type);
-            Serial.print(" Size: ");
-            Serial.print(directory[i].size);
-            Serial.print("\n");
-    }
-}
-        
-        
-bool StorageController::ls(std::vector<directory_element_t> &directory_structure,STORAGE_DEVICE device){
-    std::string path = "/";
-    return ls(path,directory_structure, device);
-};
-
-
-File StorageController::open(std::string &path, STORAGE_DEVICE device,oflag_t mode){
-    File ret;
-    switch(device){
-        case(STORAGE_DEVICE::MICROSD):{
-            microsd.chvol();
-            ret = microsd.open(path.c_str(),mode);
-            break;
-        }
-        case(STORAGE_DEVICE::FLASH):{
-            flash_fatfs.chvol();
-            ret = flash_fatfs.open(path.c_str(),mode);
-            break;
-        }
-        default:{
-            //do nothing
-            break;
-        }
-    }
-    return ret;
 }
 
-bool StorageController::erase(STORAGE_DEVICE device){ // need to make sure this doesnt wipe out configuration files lol
-//maybe call the configcontroller to rewrite the config file if we store the configuration in ram
-    // cross coupling here again because we need to turn off logging so we can update the log file paths
-    bool error = false;
+bool StorageController::rmParent(std::string path, FatFileSystem* fs) {    
 
-    _sm->logcontroller.stopLogging(LOG_TYPE::ALL);
+    // ls path
+    // for each in path
+    //      if isDir
+    //          call rmParent
+    //      if isFile
+    //          nuke it
+    // nuke parent dir as it should be empty
+    std::vector<directory_element_t> contents;
+    ls(path, contents, fs);
 
-    switch(device){
-        case(STORAGE_DEVICE::MICROSD):{
-            if(!microsd.wipe()){
-                _sm->systemstatus.new_message(system_flag::ERROR_SD,"Error wiping SD card");
-                error = true;
-                break;
-            }
-            
-            _sm->logcontroller.log("SD Wiped");
-            break;
-        }
-        case(STORAGE_DEVICE::FLASH):{
-            if(!flash_fatfs.wipe()){
-                _sm->systemstatus.new_message(system_flag::ERROR_FLASH,"Error wiping onboard flash");
-                error = true;
-                break;
-            }   
-
-            _sm->logcontroller.log("Flash Wiped");
-            break;       
-        }
-        default:{
-            //no option supplied so dont do anything
-            error = true;
-            break;
-        }
+    for (directory_element_t element : contents) {
+        std::string element_path = path + '/' + element.name;
+        if (element.type == FILE_TYPE::DIRECTORY){
+            rmParent(element_path, fs);
+        } else {
+            fs->remove(element_path.c_str());
+        }   
     }
-    //make sure directory structure is present on wiped device
-    generateDirectoryStructure(device);
-    _sm->logcontroller.generateLogDirectories(device); //ensure logging directories exist
-    //reopen log files
-    _sm->logcontroller.startLogging(LOG_TYPE::ALL);    
-
-    return error;
     
-}
+    fs->rmdir(path.c_str());
+    return true;
+};
+    
 
 void StorageController::generateDirectoryStructure(STORAGE_DEVICE device){
     //ensure the expected directory structure is present
@@ -284,3 +316,4 @@ void StorageController::generateDirectoryStructure(STORAGE_DEVICE device){
    mkdir("/Logs",device);
    mkdir("/Configuration",device);
 }
+

@@ -38,6 +38,7 @@ void LogController::setup(){
 
 }
 
+
 void LogController::generateLogDirectories(STORAGE_DEVICE device){
     _storagecontroller->mkdir(uniqueDirectory,device);
 }

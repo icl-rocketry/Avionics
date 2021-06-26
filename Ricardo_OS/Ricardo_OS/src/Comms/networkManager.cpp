@@ -29,7 +29,12 @@ NetworkManager::NetworkManager(stateMachine* sm):
 {
    
     routingtable(Nodes::ROCKET) = std::vector<RoutingTableEntry>({{Interface::LOOPBACK,0},{Interface::LORA,1},{Interface::LORA,2},{Interface::CAN,1},{Interface::USBSerial,1}});
-    routingtable(Nodes::GROUNDSTATION) = std::vector<RoutingTableEntry>( {{Interface::LORA,1},{Interface::LOOPBACK,0},{Interface::USBSerial,1},{Interface::LORA,2},{Interface::USBSerial,1}});
+    routingtable(Nodes::GROUNDSTATION) = std::vector<RoutingTableEntry>( {{Interface::LORA,1},
+                                                                          {Interface::LOOPBACK,0},
+                                                                          {Interface::USBSerial,1},
+                                                                          {Interface::LORA,2},
+                                                                          {Interface::USBSerial,1}
+                                                                          });
 
     _global_packet_buffer.reserve(5);
     _local_packet_buffer.reserve(5);

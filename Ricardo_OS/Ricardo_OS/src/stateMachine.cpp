@@ -15,7 +15,7 @@ stateMachine::stateMachine() :
     I2C(0),
     storagecontroller(this),
     logcontroller(&storagecontroller),
-    configcontroller(&storagecontroller), 
+    configcontroller(storagecontroller,logcontroller), 
     systemstatus(&logcontroller),
     networkmanager(this),
     sensors(this),
@@ -42,6 +42,13 @@ void stateMachine::initialise(State* initStatePtr) {
   //sensors.callibrate(SENSOR::ACCELGYRO);
 
   //sensors.callibrate(SENSOR::MAG);
+
+  // storagecontroller.printDirectory("/",STORAGE_DEVICE::MICROSD);
+  // storagecontroller.printDirectory("/Logs",STORAGE_DEVICE::MICROSD);
+  // storagecontroller.erase(STORAGE_DEVICE::MICROSD);
+  // storagecontroller.printDirectory("/",STORAGE_DEVICE::MICROSD);
+  // storagecontroller.printDirectory("/Logs",STORAGE_DEVICE::MICROSD);
+  
   
 
   
