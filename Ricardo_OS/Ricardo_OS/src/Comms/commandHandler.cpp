@@ -17,6 +17,8 @@
 #include "packets.h"
 #include "interfaces/interfaces.h"
 
+#include "Sound/Melodies/melodyLibrary.h"
+
 
 
 CommandHandler::CommandHandler(stateMachine* sm):
@@ -73,6 +75,7 @@ void CommandHandler::handleCommand(Command command) {
 			case COMMANDS::Stop_Logging:
 				break;
 			case COMMANDS::Play_Song:
+				_sm->tunezhandler.play(Fireflies.get()); // play startup sound
 				break;
 			case COMMANDS::Telemetry:
 				{

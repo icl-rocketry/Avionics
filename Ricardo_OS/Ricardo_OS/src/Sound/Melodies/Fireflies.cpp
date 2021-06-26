@@ -1,5 +1,7 @@
-#pragma once 
+
 #include "melodyClass.h"
+#include "melodyLibrary.h"
+
 
  //GENERATED SONG FILE 
  

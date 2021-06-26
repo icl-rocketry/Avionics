@@ -15,13 +15,13 @@ def new_command(command,arg):
         "arg":int(arg),
         "clientid":"LOCAL:COMMANDTESTER"
     }
-    r = requests.post("http://localhost:1337/command",json = data)
+    r = requests.post("http://192.168.2.71:1337/command",json = data)
     print(r.status_code, r.reason)
 
 while True:
     new_command(100,0)
-
-    time.sleep(0.5)
+    print("debug")
+    time.sleep(1.2)
     new_command(105,0)
-    
-    time.sleep(0.5)
+    print("exit")
+    time.sleep(1.2)
