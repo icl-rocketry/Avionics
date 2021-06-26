@@ -1,9 +1,10 @@
 #include "melodyLibrary.h" 
 #include "melodyClass.h"
+#include "pitches.h"
  //GENERATED SONG FILE 
  
  
-melody_t<110> zeldatheme = { { { 
+melody_t<110> SONG::zeldatheme = { { { 
 {NOTE_AS4,900},
 {NOTE_F4,150},
 {NOTE_F4,150},

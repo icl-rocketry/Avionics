@@ -1,9 +1,10 @@
 #include "melodyLibrary.h" 
 #include "melodyClass.h"
+#include "pitches.h"
  //GENERATED SONG FILE 
  
  
-melody_t<64> cantinaband = { { { 
+melody_t<64> SONG::cantinaband = { { { 
 {NOTE_B4,450},
 {NOTE_E5,450},
 {NOTE_B4,450},

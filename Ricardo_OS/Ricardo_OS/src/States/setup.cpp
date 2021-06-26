@@ -51,7 +51,7 @@ void Setup::initialise(){
     Serial.setRxBufferSize(SERIAL_SIZE_RX);
     
     //_sm->tunezhandler.play(c_scalez.get()); 
-    _sm->tunezhandler.play(cantinaband.get()); // play startup sound
+    _sm->tunezhandler.play(SONG::zeldatheme.get()); // play startup sound
     //Serial.println("setup)");
 
 

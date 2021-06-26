@@ -1,9 +1,10 @@
 #include "melodyLibrary.h" 
 #include "melodyClass.h"
+#include "pitches.h"
  //GENERATED SONG FILE 
  
  
-melody_t<130> gameofthrones = { { { 
+melody_t<130> SONG::gameofthrones = { { { 
 {NOTE_G4,150},
 {NOTE_C4,150},
 {NOTE_DS4,75},
