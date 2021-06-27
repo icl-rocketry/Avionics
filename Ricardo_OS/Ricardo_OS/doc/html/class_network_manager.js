@@ -9,6 +9,7 @@ var class_network_manager =
     [ "send_to_node", "class_network_manager.html#a674c1c30636d564b2d43f668cb04485b", null ],
     [ "setup", "class_network_manager.html#a87b64dafa618fac138addfac9c47edab", null ],
     [ "update", "class_network_manager.html#a0d4ea7d4f0b395249151d0a28af79cd5", null ],
+    [ "CommandHandler", "class_network_manager.html#a442090830cec26bfe59aa33685465557", null ],
     [ "Groundstation", "class_network_manager.html#a337f9d85d0d497f91a096e88efb9293a", null ],
     [ "Preflight", "class_network_manager.html#aa783fb6d060a3935500d4929d447dfc3", null ],
     [ "_global_packet_buffer", "class_network_manager.html#aacfb7869578fd8caa6ae2656f290fe62", null ],

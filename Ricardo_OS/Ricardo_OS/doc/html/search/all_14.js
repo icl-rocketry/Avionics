@@ -1,9 +1,23 @@
 var searchData=
 [
-  ['velocity_656',['velocity',['../structstate__t.html#ae6717b1f8a606ee1da68e78ef392b7a8',1,'state_t']]],
-  ['verbose_657',['VERBOSE',['../global__config_8h.html#a42f8c497a1968074f38bf5055c650dca',1,'global_config.h']]],
-  ['vspi_658',['vspi',['../classstate_machine.html#ac0e2bf50a0069df384195e64f9e69652',1,'stateMachine']]],
-  ['vx_659',['vx',['../class_telemetry_packet.html#ab2dc1c4763930fc3b0a1708f90278114',1,'TelemetryPacket']]],
-  ['vy_660',['vy',['../class_telemetry_packet.html#a56b4cd488b435dee8a6e3373ce78bded',1,'TelemetryPacket']]],
-  ['vz_661',['vz',['../class_telemetry_packet.html#a295250ad7ff21b6a8aa7e3e236ccbbf8',1,'TelemetryPacket']]]
+  ['uid_721',['uid',['../class_packet_header.html#a4abf267b640231f156546a22d4c51ad0',1,'PacketHeader::uid()'],['../struct_command.html#a5d091c723e3d155a4edaf3a9f4f4f54c',1,'Command::uid()']]],
+  ['uniquedirectory_722',['uniqueDirectory',['../class_log_controller.html#a2adffdd8b1e05ac7f89ab968b824beb2',1,'LogController']]],
+  ['unpause_723',['unpause',['../class_tunez_handler.html#a052988b2cb9cf4eb5cbdcecdff2c1ff4',1,'TunezHandler']]],
+  ['update_724',['update',['../class_apogee.html#a51e042b970a34fba31d86fbb10d4dd4f',1,'Apogee::update()'],['../class_altitude.html#a0de78f8c5db2e13047fb4ee72d9a7270',1,'Altitude::update()'],['../class_setup.html#aa80bdbde259bcd82284a48fa971f4b71',1,'Setup::update()'],['../class_log_controller.html#a190ac7f27b24dcba384c1c18a94c3ef8',1,'LogController::update()'],['../class_recovery.html#a87ac6d693b55dfdde1f5290b29399904',1,'Recovery::update()'],['../class_preflight.html#a5bc5d846710091142b9da2652ebbc43f',1,'Preflight::update()'],['../class_launch.html#a34121184d1ecd1e2960ea60e63eb1959',1,'Launch::update()'],['../class_battery.html#a85dcc13e31dfb66ce3ce217b78a7df7c',1,'Battery::update()'],['../class_command_handler.html#a6c61c87a0ad0045aa6133dd69112a72b',1,'CommandHandler::update()'],['../class_network_manager.html#a0d4ea7d4f0b395249151d0a28af79cd5',1,'NetworkManager::update()'],['../class_event.html#a104089a099a45971f10fdf7eaf5654f4',1,'Event::update()'],['../class_event_handler.html#a130cf2694ce9ab04431246615ba02baf',1,'EventHandler::update()'],['../class_flight_variable.html#afe5d3c921bb9adef749673928de3fa5c',1,'FlightVariable::update()'],['../class_time___since___launch.html#aa0c53cb2f8c7792a5e6c671f21473ce0',1,'Time_Since_Launch::update()'],['../class_time___since___apogee.html#a2a43b7afce399c88a5e21be85dae31a7',1,'Time_Since_Apogee::update()'],['../class_time___since___event.html#a75724c962d562ceabfa4b1cd9e4d9f0f',1,'Time_Since_Event::update()'],['../class_groundstation.html#a0873b0defd56532bbf036621e4250fe9',1,'Groundstation::update()'],['../class_speed.html#a69ac7af444e082ee3a3f96454e87f296',1,'Speed::update()'],['../class_acceleration.html#aacdaca60436b0e1efebfc3f495ef4b75',1,'Acceleration::update()'],['../class_state.html#afe1684e9770bc65ce5d3b262efa574ca',1,'State::update()'],['../class_flight_variable_handler.html#a2fcb3192e414045247a9562296cbcf10',1,'FlightVariableHandler::update()'],['../class_pyro_handler.html#abca7be09ff52bfdfe45938698b2f299c',1,'PyroHandler::update()'],['../class_baro.html#ae4646ca76722ac09ccffb93aadda30f6',1,'Baro::update()'],['../class_u_s_bmode.html#abc8a3a58753806c1853ac578c27af99a',1,'USBmode::update()'],['../class_estimator.html#ad7fbe72b0e1c8d12b77427bcd7d2eafc',1,'Estimator::update()'],['../class_g_p_s.html#a5b903e61f93bc5db0d9f78bec35730d4',1,'GPS::update()'],['../class_imu.html#a250b49055c531aa7ed5c807e4f447741',1,'Imu::update()'],['../class_sensors.html#af0290d09b1ae4dd7726a2a6613bf354b',1,'Sensors::update()'],['../class_tunez_handler.html#afd8ffcb9834b2e01729fd916b8ae7d51',1,'TunezHandler::update()'],['../classstate_machine.html#a5f4f54735cb0a13393227e3af6863cdd',1,'stateMachine::update()'],['../class_flight.html#aa45d26f8b13bc5b924cf78a59b112a57',1,'Flight::update()']]],
+  ['update_5ffrequency_725',['update_frequency',['../class_estimator.html#a9b28f8a3c1ea229bf1953efbe43eb4ff',1,'Estimator']]],
+  ['updateangularrates_726',['updateAngularRates',['../class_estimator.html#a660e2e7eff52ff8aa00dbc786e0a791c',1,'Estimator']]],
+  ['updatelinearacceleration_727',['updateLinearAcceleration',['../class_estimator.html#a3beb507db3c41779fbf191e4d511ac48',1,'Estimator']]],
+  ['updateorientation_728',['updateOrientation',['../class_estimator.html#ad06dbe76e1b5db4e79d955246afef377',1,'Estimator']]],
+  ['updatesourceinterface_729',['updateSourceInterface',['../class_iface.html#a1c04295832a43475789e68932a499d45',1,'Iface']]],
+  ['upsidedown_730',['upsideDown',['../class_estimator.html#aae44479412a2799063a48293013946cf',1,'Estimator']]],
+  ['usb_731',['USB',['../class_u_s_b.html',1,'USB'],['../class_packet_header.html#a04dbcd95d420556b0b42e93203b0dcb6',1,'PacketHeader::USB()'],['../class_u_s_b.html#a74816ff3dd58a3dcc98e98bf323320e1',1,'USB::USB()']]],
+  ['usb_2ecpp_732',['usb.cpp',['../usb_8cpp.html',1,'']]],
+  ['usb_2eh_733',['usb.h',['../usb_8h.html',1,'']]],
+  ['usbmode_734',['USBmode',['../class_u_s_bmode.html',1,'USBmode'],['../class_u_s_bmode.html#a1355a46c21f3c2b6c217b69af51935c9',1,'USBmode::USBmode()']]],
+  ['usbmode_2ecpp_735',['usbmode.cpp',['../usbmode_8cpp.html',1,'']]],
+  ['usbmode_2eh_736',['usbmode.h',['../usbmode_8h.html',1,'']]],
+  ['usbserial_737',['usbserial',['../class_network_manager.html#ac8de949b2c89c1871a2393578eb9685e',1,'NetworkManager']]],
+  ['usbserial_738',['USBSerial',['../interfaces_8h.html#af0cd30ccfa4f4fe2bd0fdc3cfc4d34cfa75acad3adce8e426561cf26a23548050',1,'interfaces.h']]],
+  ['utils_739',['utils',['../namespaceutils.html',1,'']]],
+  ['utils_2eh_740',['utils.h',['../utils_8h.html',1,'']]]
 ];

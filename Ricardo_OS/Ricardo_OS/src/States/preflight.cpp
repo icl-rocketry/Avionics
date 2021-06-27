@@ -8,8 +8,8 @@
 #include "flags.h"
 
 Preflight::Preflight(stateMachine* sm) : State(sm){
-    _curr_stateID = system_flag::STATE_PREFLIGHT;
-    sm->networkmanager.node_type = Nodes::ROCKET;
+    _curr_stateID = SYSTEM_FLAG::STATE_PREFLIGHT;
+    sm->networkmanager.changeNodeType(NODES::ROCKET);
 };
 
 void Preflight::initialise(){
@@ -21,10 +21,7 @@ void Preflight::initialise(){
 
 State* Preflight::update(){
 
-    //Serial.println(_sm->sensors.sensors_raw.gps_lat);
-    //Serial.println(_sm->sensors.sensors_raw.gps_long);
-    //Serial.println(_sm->sensors.sensors_raw.batt_percent);
-    
+
     return this;
 };
 

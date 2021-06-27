@@ -4,7 +4,7 @@
 <area shape="rect" id="node5" href="$class_telemetry_logger.html#a4cedb63790f4b266518c9e9315fa669c" title=" " alt="" coords="232,56,396,83"/>
 <area shape="rect" id="node6" href="$class_log_controller.html#adb94b2720224b121ac8487c7c0e04ffc" title=" " alt="" coords="252,107,376,133"/>
 <area shape="rect" id="node3" href="$class_logger.html#af2f7ea41236b2dfa06a7bc88786395bd" title=" " alt="" coords="462,27,569,53"/>
-<area shape="rect" id="node4" href="$class_storage_controller.html#a0fb6ece5348f0a1a15f4d7050b03e4a9" title=" " alt="" coords="635,27,793,53"/>
+<area shape="rect" id="node4" href="$class_storage_controller.html#ab9c231ae032416dc120009b4b63fa54c" title="open a file on specified path on specific device" alt="" coords="635,27,793,53"/>
 <area shape="rect" id="node7" href="$class_telemetry_logger.html#af01a5e0f381d60d53d2c08ddad37ca07" title=" " alt="" coords="444,107,587,133"/>
 <area shape="rect" id="node8" href="$classtelemetry__logframe.html#add67dbfbf886bf1b322628962a03c0de" title=" " alt="" coords="647,99,781,141"/>
 <area shape="rect" id="node9" href="$classtelemetry__logframe.html#ad8ce2864d5faaf045a0ff812c029a4b4" title=" " alt="" coords="841,99,975,141"/>

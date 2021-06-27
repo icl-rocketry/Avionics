@@ -101,6 +101,6 @@ std::string SystemLogger::flagLevel(uint32_t flag){
 
 };
 
-std::string SystemLogger::flagLevel(system_flag flag){
+std::string SystemLogger::flagLevel(SYSTEM_FLAG flag){
     return flagLevel(static_cast<uint32_t>(flag));
 };

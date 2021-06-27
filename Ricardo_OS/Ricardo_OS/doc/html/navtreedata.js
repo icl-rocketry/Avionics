@@ -29,7 +29,8 @@ var NAVTREE =
       [ "Namespace List", "namespaces.html", "namespaces_dup" ],
       [ "Namespace Members", "namespacemembers.html", [
         [ "All", "namespacemembers.html", null ],
-        [ "Functions", "namespacemembers_func.html", null ]
+        [ "Functions", "namespacemembers_func.html", null ],
+        [ "Variables", "namespacemembers_vars.html", null ]
       ] ]
     ] ],
     [ "Classes", "annotated.html", [
@@ -58,11 +59,11 @@ var NAVTREE =
 
 var NAVTREEINDEX =
 [
-"_fireflies_8h.html",
-"class_preflight.html#a28882002ff590a87ee9a1f888f5b7cf1",
-"commands_8h.html#a73b52bb10772a6ec22fce9998c6549aaa19e528ebf239171154c78bdd3fe9bd36",
-"namespaces.html",
-"structraw__measurements__t.html#ab2983bb7aade4a03c19baf1498f06c9d"
+"_fireflies_8cpp.html",
+"class_logger.html#a79632443a078084d719960ea71f2eb02",
+"class_tunez_handler.html#a407fcd38cffe8a53e64535daa1e3ed55",
+"flight_variable_handler_8h.html#abf243bc0d903e4fad28d583ec11a81dca613a3d4fa7b8e2538d1e559cbd572902",
+"pitches_8h.html#a83e1f6d716a3f6560aa1d43b8245855d"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

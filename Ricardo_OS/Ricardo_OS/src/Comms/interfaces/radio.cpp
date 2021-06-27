@@ -34,11 +34,11 @@ void Radio::setup(){
     LoRa.setSPI(*_spi);
 
     while (!LoRa.begin(LORA_REGION)){
-        _systemstatus->new_message(system_flag::ERROR_LORA,"Lora setting up");
+        _systemstatus->new_message(SYSTEM_FLAG::ERROR_LORA,"Lora setting up");
         delay(100);       
     };
-    if (_systemstatus->flag_triggered(system_flag::ERROR_LORA)){
-        _systemstatus->delete_message(system_flag::ERROR_LORA);
+    if (_systemstatus->flag_triggered(SYSTEM_FLAG::ERROR_LORA)){
+        _systemstatus->delete_message(SYSTEM_FLAG::ERROR_LORA);
     }
     
     LoRa.setSyncWord(LORA_SYNC_WORD);
@@ -67,11 +67,11 @@ void Radio::get_packet(std::vector<std::unique_ptr<std::vector<uint8_t>>> &buf){
         LoRa.readBytes((*packet_ptr).data(),packetSize); // read bytes into vector
 
         std::vector<uint8_t> modified_packet_header;
-        //Iface::updateSourceInterface((*packet_ptr),modified_packet_header,Interface::LORA)
+        //Iface::updateSourceInterface((*packet_ptr),modified_packet_header,INTERFACE::LORA)
         PacketHeader packetheader = PacketHeader(*packet_ptr);
 
         //update source interface
-        packetheader.src_interface = static_cast<uint8_t>(Interface::LORA);
+        packetheader.src_interface = static_cast<uint8_t>(INTERFACE::LORA);
         
         //serialize packet header
         
@@ -103,14 +103,14 @@ void Radio::get_packet(std::vector<std::unique_ptr<std::vector<uint8_t>>> &buf){
         std::unique_ptr<std::vector<uint8_t>> packet_ptr = std::make_unique<std::vector<uint8_t>>(packet);
 
         std::vector<uint8_t> modified_packet_header;
-        //Iface::updateSourceInterface((*packet_ptr),modified_packet_header,Interface::LORA)
+        //Iface::updateSourceInterface((*packet_ptr),modified_packet_header,INTERFACE::LORA)
 
 
 
         PacketHeader packetheader = PacketHeader(*packet_ptr);
     
         //update source interface
-        packetheader.src_interface = static_cast<uint8_t>(Interface::LORA);
+        packetheader.src_interface = static_cast<uint8_t>(INTERFACE::LORA);
         
         //serialize packet header
         
@@ -151,7 +151,7 @@ void Radio::get_packet(std::vector<std::unique_ptr<std::vector<uint8_t>>> &buf){
             PacketHeader packetheader = PacketHeader(*packet_ptr);
         
             //update source interface
-            packetheader.src_interface = static_cast<uint8_t>(Interface::LORA);
+            packetheader.src_interface = static_cast<uint8_t>(INTERFACE::LORA);
             
             //serialize packet header
             std::vector<uint8_t> modified_packet_header;
@@ -187,7 +187,7 @@ void Radio::get_packet(std::vector<std::unique_ptr<std::vector<uint8_t>>> &buf){
             PacketHeader packetheader = PacketHeader(*packet_ptr);
         
             //update source interface
-            packetheader.src_interface = static_cast<uint8_t>(Interface::LORA);
+            packetheader.src_interface = static_cast<uint8_t>(INTERFACE::LORA);
             
             //serialize packet header
             std::vector<uint8_t> modified_packet_header;
@@ -236,7 +236,7 @@ void Radio::get_packet(std::vector<std::unique_ptr<std::vector<uint8_t>>> &buf){
         PacketHeader packetheader = PacketHeader(*packet_ptr);
         
         //update source interface
-        packetheader.src_interface = static_cast<uint8_t>(Interface::LORA);
+        packetheader.src_interface = static_cast<uint8_t>(INTERFACE::LORA);
         
         //serialize packet header
         std::vector<uint8_t> modified_packet_header;

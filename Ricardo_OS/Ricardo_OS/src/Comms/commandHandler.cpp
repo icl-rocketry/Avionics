@@ -58,11 +58,11 @@ void CommandHandler::handleCommand(Command command) {
 				_sm->changeState(new Preflight(_sm));
 				break;
 			case COMMANDS::Abort:
-				if(_sm->systemstatus.flag_triggered(system_flag::STATE_LAUNCH)){
+				if(_sm->systemstatus.flag_triggered(SYSTEM_FLAG::STATE_LAUNCH)){
 					//check if we are in no abort time region
 					//close all valves
 					_sm->changeState(new Preflight(_sm));
-				}else if (_sm->systemstatus.flag_triggered(system_flag::STATE_FLIGHT)){
+				}else if (_sm->systemstatus.flag_triggered(SYSTEM_FLAG::STATE_FLIGHT)){
 					//this behaviour needs to be confirmed with recovery 
 					//might be worth waiting for acceleration to be 0 after rocket engine cut
 					_sm->changeState(new Recovery(_sm));
@@ -82,7 +82,7 @@ void CommandHandler::handleCommand(Command command) {
 					std::vector<uint8_t> packet;
 					TelemetryPacket telemetry;
 
-					telemetry.header.source = _sm->networkmanager.get_node_type();
+					telemetry.header.source = _sm->networkmanager.getNodeType();
 					telemetry.header.destination = static_cast<uint8_t>(command.source_node);
 					telemetry.header.uid = command.uid; 
 
@@ -157,7 +157,7 @@ void CommandHandler::handleCommand(Command command) {
 
 					DetailedAllPacket detailedall;
 
-					detailedall.header.source = _sm->networkmanager.get_node_type();
+					detailedall.header.source = _sm->networkmanager.getNodeType();
 					detailedall.header.destination = static_cast<uint8_t>(command.source_node);
 					detailedall.header.uid = command.uid; 
 
@@ -204,7 +204,7 @@ void CommandHandler::handleCommand(Command command) {
 			case COMMANDS::Enter_USBMode:
 			//Transitions from pre-flight to USBMode,toggles debug flag in state machine							
 				_sm->changeState(new USBmode(_sm));
-				_sm->systemstatus.new_message(system_flag::DEBUG);
+				_sm->systemstatus.new_message(SYSTEM_FLAG::DEBUG);
 
 				break;
 			case COMMANDS::Enter_Groundstation:
@@ -223,7 +223,7 @@ void CommandHandler::handleCommand(Command command) {
 			//Transitions from any state in debug mode first to USBmode, then to preflight
 				{
 				_sm->changeState(new USBmode(_sm));
-				_sm->systemstatus.delete_message(system_flag::DEBUG);
+				_sm->systemstatus.delete_message(SYSTEM_FLAG::DEBUG);
 				_sm->changeState(new Preflight(_sm));
 				}
 				break;
@@ -262,26 +262,26 @@ bool CommandHandler::commandAvaliable(Command command) {
 		case COMMANDS::Pyro_info:
     		return true; // all states
 		case COMMANDS::Abort:
-			return _sm->systemstatus.flag_triggered(system_flag::STATE_LAUNCH) 
-			|| _sm->systemstatus.flag_triggered(system_flag::STATE_FLIGHT);
+			return _sm->systemstatus.flag_triggered(SYSTEM_FLAG::STATE_LAUNCH) 
+			|| _sm->systemstatus.flag_triggered(SYSTEM_FLAG::STATE_FLIGHT);
 		case COMMANDS::Enter_Countdown:
 		case COMMANDS::Enter_Flight:
 		case COMMANDS::Enter_Recovery:
 		case COMMANDS::Exit_USBMode:
 		case COMMANDS::Exit_to_USBMode:
 		case COMMANDS::Set_Throttle:
-            return _sm->systemstatus.flag_triggered(system_flag::DEBUG);
+            return _sm->systemstatus.flag_triggered(SYSTEM_FLAG::DEBUG);
 		case COMMANDS::Clear_Flash:
     	case COMMANDS::Clear_SD:
 		case COMMANDS::Print_Flash_filesystem:
 		case COMMANDS::Print_Sd_filesystem:
-            return _sm->systemstatus.flag_triggered(system_flag::STATE_GROUNDSTATION)
-			|| _sm->systemstatus.flag_triggered(system_flag::STATE_PREFLIGHT)
-			|| _sm->systemstatus.flag_triggered(system_flag::DEBUG);
+            return _sm->systemstatus.flag_triggered(SYSTEM_FLAG::STATE_GROUNDSTATION)
+			|| _sm->systemstatus.flag_triggered(SYSTEM_FLAG::STATE_PREFLIGHT)
+			|| _sm->systemstatus.flag_triggered(SYSTEM_FLAG::DEBUG);
 		case COMMANDS::Launch:
 		case COMMANDS::Enter_USBMode:
 		case COMMANDS::Play_Song:
-			return _sm->systemstatus.flag_triggered(system_flag::STATE_PREFLIGHT);
+			return _sm->systemstatus.flag_triggered(SYSTEM_FLAG::STATE_PREFLIGHT);
 		case COMMANDS::Raw_Sensors:
 		case COMMANDS::Detailed_All_Sensors:
 		case COMMANDS::Callibrate_Accel:
@@ -290,18 +290,18 @@ bool CommandHandler::commandAvaliable(Command command) {
 		case COMMANDS::Callibrate_Baro:
 		case COMMANDS::Enter_Groundstation:
 		case COMMANDS::Stop_Logging:
-			return _sm->systemstatus.flag_triggered(system_flag::STATE_PREFLIGHT) 
-		||  _sm->systemstatus.flag_triggered(system_flag::DEBUG)
-		|| _sm->systemstatus.flag_triggered(system_flag::STATE_GROUNDSTATION); //for testing
+			return _sm->systemstatus.flag_triggered(SYSTEM_FLAG::STATE_PREFLIGHT) 
+		||  _sm->systemstatus.flag_triggered(SYSTEM_FLAG::DEBUG)
+		|| _sm->systemstatus.flag_triggered(SYSTEM_FLAG::STATE_GROUNDSTATION); //for testing
 		case COMMANDS::Zero_Sensors:
-			return _sm->systemstatus.flag_triggered(system_flag::STATE_GROUNDSTATION) 
-			|| _sm->systemstatus.flag_triggered(system_flag::STATE_PREFLIGHT)
-			|| _sm->systemstatus.flag_triggered(system_flag::DEBUG);
+			return _sm->systemstatus.flag_triggered(SYSTEM_FLAG::STATE_GROUNDSTATION) 
+			|| _sm->systemstatus.flag_triggered(SYSTEM_FLAG::STATE_PREFLIGHT)
+			|| _sm->systemstatus.flag_triggered(SYSTEM_FLAG::DEBUG);
 		case COMMANDS::Reset:
-			return _sm->systemstatus.flag_triggered(system_flag::STATE_RECOVERY)
-			|| _sm->systemstatus.flag_triggered(system_flag::STATE_GROUNDSTATION);
+			return _sm->systemstatus.flag_triggered(SYSTEM_FLAG::STATE_RECOVERY)
+			|| _sm->systemstatus.flag_triggered(SYSTEM_FLAG::STATE_GROUNDSTATION);
 		case COMMANDS::Fire_pyro:
-			return _sm->systemstatus.flag_triggered(system_flag::STATE_USBMODE);
+			return _sm->systemstatus.flag_triggered(SYSTEM_FLAG::STATE_USBMODE);
 		default:
 			return false;
 	}

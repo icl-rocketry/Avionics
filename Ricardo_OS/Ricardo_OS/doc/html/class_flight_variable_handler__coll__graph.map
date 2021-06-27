@@ -1,0 +1,12 @@
+<map id="FlightVariableHandler" name="FlightVariableHandler">
+<area shape="rect" id="node1" title=" " alt="" coords="559,183,704,209"/>
+<area shape="rect" id="node2" href="$class_acceleration.html" title=" " alt="" coords="268,107,363,133"/>
+<area shape="rect" id="node3" href="$class_flight_variable.html" title=" " alt="" coords="6,157,106,184"/>
+<area shape="rect" id="node4" href="$class_time___since___launch.html" title=" " alt="" coords="245,157,385,184"/>
+<area shape="rect" id="node5" href="$class_speed.html" title=" " alt="" coords="286,208,345,235"/>
+<area shape="rect" id="node7" href="$class_apogee.html" title=" " alt="" coords="282,259,349,285"/>
+<area shape="rect" id="node8" href="$class_time___since___event.html" title=" " alt="" coords="249,309,381,336"/>
+<area shape="rect" id="node9" href="$class_time___since___apogee.html" title=" " alt="" coords="244,5,387,32"/>
+<area shape="rect" id="node10" href="$class_altitude.html" title=" " alt="" coords="282,56,349,83"/>
+<area shape="rect" id="node6" href="$class_event_handler.html" title=" " alt="" coords="5,339,107,365"/>
+</map>

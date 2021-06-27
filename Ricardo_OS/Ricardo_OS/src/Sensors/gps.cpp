@@ -34,7 +34,7 @@ void GPS::setup()
 {
     //_wire->begin();
     if(!gnss.begin(*_wire)){
-        _systemstatus->new_message(system_flag::ERROR_GPS,"GPS I2C not found at address");
+        _systemstatus->new_message(SYSTEM_FLAG::ERROR_GPS,"GPS I2C not found at address");
         _i2cerror = true;
     }else{
         _logcontroller->log("GPS Initialized");   

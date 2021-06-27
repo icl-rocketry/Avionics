@@ -13,6 +13,14 @@ void \mbox{\hyperlink{class_tunez_handler_af211ca5ab587196115824c76acf72942}{set
 \item 
 void \mbox{\hyperlink{class_tunez_handler_a02e64b5ab21c71fc6e62e6673f80ac63}{play}} (\mbox{\hyperlink{classmelody__base__t}{melody\+\_\+base\+\_\+t}} $\ast$melody, bool \mbox{\hyperlink{main_8cpp_afe461d27b9c48d5921c00d521181f12f}{loop}}=false)
 \item 
+void \mbox{\hyperlink{class_tunez_handler_a525c8d19b2ad08f66637585831591743}{pause}} ()
+\item 
+void \mbox{\hyperlink{class_tunez_handler_a052988b2cb9cf4eb5cbdcecdff2c1ff4}{unpause}} ()
+\item 
+void \mbox{\hyperlink{class_tunez_handler_aba4b9c0675f27f9b6ecaae62d5038998}{skip}} ()
+\item 
+void \mbox{\hyperlink{class_tunez_handler_ab78ca4b6e8ace4a3a01d9926ba89cf98}{clear}} ()
+\item 
 void \mbox{\hyperlink{class_tunez_handler_afd8ffcb9834b2e01729fd916b8ae7d51}{update}} ()
 \end{DoxyCompactItemize}
 \doxysubsection*{Private Attributes}
@@ -22,7 +30,11 @@ std\+::vector$<$ \mbox{\hyperlink{structtune__t}{tune\+\_\+t}} $>$ \mbox{\hyperl
 \item 
 uint64\+\_\+t \mbox{\hyperlink{class_tunez_handler_a30294659278d7b560af110b35a8d6631}{prev\+\_\+time}} = 0
 \item 
+uint16\+\_\+t \mbox{\hyperlink{class_tunez_handler_a45eb02dd2b836b0c249d1109f2b48f19}{paused\+\_\+note\+\_\+duration}} = 0
+\item 
 uint16\+\_\+t \mbox{\hyperlink{class_tunez_handler_aceccf204e58522aa075b41ce2eed2a06}{note\+\_\+duration}} = 0
+\item 
+bool \mbox{\hyperlink{class_tunez_handler_a6514d87026a20a6127e5e3b0e57bf68d}{\+\_\+playing}}
 \end{DoxyCompactItemize}
 
 
@@ -36,6 +48,18 @@ uint16\+\_\+t \mbox{\hyperlink{class_tunez_handler_aceccf204e58522aa075b41ce2eed
 
 
 \doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_tunez_handler_ab78ca4b6e8ace4a3a01d9926ba89cf98}\label{class_tunez_handler_ab78ca4b6e8ace4a3a01d9926ba89cf98}} 
+\index{TunezHandler@{TunezHandler}!clear@{clear}}
+\index{clear@{clear}!TunezHandler@{TunezHandler}}
+\doxysubsubsection{\texorpdfstring{clear()}{clear()}}
+{\footnotesize\ttfamily void Tunez\+Handler\+::clear (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_tunez_handler_a525c8d19b2ad08f66637585831591743}\label{class_tunez_handler_a525c8d19b2ad08f66637585831591743}} 
+\index{TunezHandler@{TunezHandler}!pause@{pause}}
+\index{pause@{pause}!TunezHandler@{TunezHandler}}
+\doxysubsubsection{\texorpdfstring{pause()}{pause()}}
+{\footnotesize\ttfamily void Tunez\+Handler\+::pause (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
 \mbox{\Hypertarget{class_tunez_handler_a02e64b5ab21c71fc6e62e6673f80ac63}\label{class_tunez_handler_a02e64b5ab21c71fc6e62e6673f80ac63}} 
 \index{TunezHandler@{TunezHandler}!play@{play}}
 \index{play@{play}!TunezHandler@{TunezHandler}}
@@ -50,20 +74,39 @@ Here is the call graph for this function\+:
 \includegraphics[width=350pt]{class_tunez_handler_a02e64b5ab21c71fc6e62e6673f80ac63_cgraph}
 \end{center}
 \end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_tunez_handler_a02e64b5ab21c71fc6e62e6673f80ac63_icgraph}
+\end{center}
+\end{figure}
 \mbox{\Hypertarget{class_tunez_handler_af211ca5ab587196115824c76acf72942}\label{class_tunez_handler_af211ca5ab587196115824c76acf72942}} 
 \index{TunezHandler@{TunezHandler}!setup@{setup}}
 \index{setup@{setup}!TunezHandler@{TunezHandler}}
 \doxysubsubsection{\texorpdfstring{setup()}{setup()}}
 {\footnotesize\ttfamily void Tunez\+Handler\+::setup (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
 
-Here is the caller graph for this function\+:
-\nopagebreak
+Here is the caller graph for this function\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
 \includegraphics[width=350pt]{class_tunez_handler_af211ca5ab587196115824c76acf72942_icgraph}
 \end{center}
 \end{figure}
+\mbox{\Hypertarget{class_tunez_handler_aba4b9c0675f27f9b6ecaae62d5038998}\label{class_tunez_handler_aba4b9c0675f27f9b6ecaae62d5038998}} 
+\index{TunezHandler@{TunezHandler}!skip@{skip}}
+\index{skip@{skip}!TunezHandler@{TunezHandler}}
+\doxysubsubsection{\texorpdfstring{skip()}{skip()}}
+{\footnotesize\ttfamily void Tunez\+Handler\+::skip (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_tunez_handler_a052988b2cb9cf4eb5cbdcecdff2c1ff4}\label{class_tunez_handler_a052988b2cb9cf4eb5cbdcecdff2c1ff4}} 
+\index{TunezHandler@{TunezHandler}!unpause@{unpause}}
+\index{unpause@{unpause}!TunezHandler@{TunezHandler}}
+\doxysubsubsection{\texorpdfstring{unpause()}{unpause()}}
+{\footnotesize\ttfamily void Tunez\+Handler\+::unpause (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
 \mbox{\Hypertarget{class_tunez_handler_afd8ffcb9834b2e01729fd916b8ae7d51}\label{class_tunez_handler_afd8ffcb9834b2e01729fd916b8ae7d51}} 
 \index{TunezHandler@{TunezHandler}!update@{update}}
 \index{update@{update}!TunezHandler@{TunezHandler}}
@@ -81,11 +124,23 @@ Here is the caller graph for this function\+:
 
 
 \doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{class_tunez_handler_a6514d87026a20a6127e5e3b0e57bf68d}\label{class_tunez_handler_a6514d87026a20a6127e5e3b0e57bf68d}} 
+\index{TunezHandler@{TunezHandler}!\_playing@{\_playing}}
+\index{\_playing@{\_playing}!TunezHandler@{TunezHandler}}
+\doxysubsubsection{\texorpdfstring{\_playing}{\_playing}}
+{\footnotesize\ttfamily bool Tunez\+Handler\+::\+\_\+playing\hspace{0.3cm}{\ttfamily [private]}}
+
 \mbox{\Hypertarget{class_tunez_handler_aceccf204e58522aa075b41ce2eed2a06}\label{class_tunez_handler_aceccf204e58522aa075b41ce2eed2a06}} 
 \index{TunezHandler@{TunezHandler}!note\_duration@{note\_duration}}
 \index{note\_duration@{note\_duration}!TunezHandler@{TunezHandler}}
 \doxysubsubsection{\texorpdfstring{note\_duration}{note\_duration}}
 {\footnotesize\ttfamily uint16\+\_\+t Tunez\+Handler\+::note\+\_\+duration = 0\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{class_tunez_handler_a45eb02dd2b836b0c249d1109f2b48f19}\label{class_tunez_handler_a45eb02dd2b836b0c249d1109f2b48f19}} 
+\index{TunezHandler@{TunezHandler}!paused\_note\_duration@{paused\_note\_duration}}
+\index{paused\_note\_duration@{paused\_note\_duration}!TunezHandler@{TunezHandler}}
+\doxysubsubsection{\texorpdfstring{paused\_note\_duration}{paused\_note\_duration}}
+{\footnotesize\ttfamily uint16\+\_\+t Tunez\+Handler\+::paused\+\_\+note\+\_\+duration = 0\hspace{0.3cm}{\ttfamily [private]}}
 
 \mbox{\Hypertarget{class_tunez_handler_a30294659278d7b560af110b35a8d6631}\label{class_tunez_handler_a30294659278d7b560af110b35a8d6631}} 
 \index{TunezHandler@{TunezHandler}!prev\_time@{prev\_time}}

@@ -55,7 +55,7 @@ void Imu::setup(){
     imu.settings.mag.tempCompensationEnable = true;
 
     if (!imu.beginSPI(_SCLK,_MISO,_MOSI,ImuCs, MagCs)){
-        _systemstatus->new_message(system_flag::ERROR_IMU, "Unable to initialize the imu");
+        _systemstatus->new_message(SYSTEM_FLAG::ERROR_IMU, "Unable to initialize the imu");
     };
 
 };

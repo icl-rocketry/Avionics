@@ -5,6 +5,10 @@ var hierarchy =
     [ "Command", "struct_command.html", null ],
     [ "CommandHandler", "class_command_handler.html", null ],
     [ "CommandPacket", "class_command_packet.html", null ],
+    [ "Condition", "class_condition.html", [
+      [ "ConditionCondition", "class_condition_condition.html", null ],
+      [ "ConditionFlightVar", "class_condition_flight_var.html", null ]
+    ] ],
     [ "ConfigController", "class_config_controller.html", null ],
     [ "DetailedAllPacket", "class_detailed_all_packet.html", null ],
     [ "directory_element_t", "structdirectory__element__t.html", null ],
@@ -13,12 +17,23 @@ var hierarchy =
     [ "Estimator", "class_estimator.html", null ],
     [ "Event", "class_event.html", null ],
     [ "EventHandler", "class_event_handler.html", null ],
+    [ "FlightVariable", "class_flight_variable.html", [
+      [ "Acceleration", "class_acceleration.html", null ],
+      [ "Altitude", "class_altitude.html", null ],
+      [ "Apogee", "class_apogee.html", null ],
+      [ "Speed", "class_speed.html", null ],
+      [ "Time_Since_Apogee", "class_time___since___apogee.html", null ],
+      [ "Time_Since_Event", "class_time___since___event.html", null ],
+      [ "Time_Since_Launch", "class_time___since___launch.html", null ]
+    ] ],
+    [ "FlightVariableHandler", "class_flight_variable_handler.html", null ],
     [ "GPS", "class_g_p_s.html", null ],
     [ "Iface", "class_iface.html", [
       [ "Radio", "class_radio.html", null ],
       [ "USB", "class_u_s_b.html", null ]
     ] ],
     [ "Imu", "class_imu.html", null ],
+    [ "jsondoc", "classjsondoc.html", null ],
     [ "LogController", "class_log_controller.html", null ],
     [ "Logger", "class_logger.html", [
       [ "SystemLogger", "class_system_logger.html", null ],

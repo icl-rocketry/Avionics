@@ -30,7 +30,7 @@ uint8\+\_\+t \mbox{\hyperlink{class_packet_header_af930dc96d866874b6fe8edfb3bce3
 \item 
 uint32\+\_\+t \mbox{\hyperlink{class_packet_header_a4d21c282bc6df162eaf67e9d13b4953a}{packet\+\_\+len}} = 0x00000000
 \item 
-uint32\+\_\+t \mbox{\hyperlink{class_packet_header_a4f1a7d5e67ff2356183e4e1af12cac66}{system\+\_\+time}} = 0x00000000
+uint32\+\_\+t \mbox{\hyperlink{class_packet_header_a4abf267b640231f156546a22d4c51ad0}{uid}} = 0x00000000
 \item 
 uint8\+\_\+t \mbox{\hyperlink{class_packet_header_a76c5031c8115a17ec011d3af8046aeef}{type}} = 0x00
 \item 
@@ -75,8 +75,7 @@ class \mbox{\hyperlink{class_packet_header_a04dbcd95d420556b0b42e93203b0dcb6}{US
 \doxysubsubsection{\texorpdfstring{PacketHeader()}{PacketHeader()}\hspace{0.1cm}{\footnotesize\ttfamily [3/3]}}
 {\footnotesize\ttfamily Packet\+Header\+::\+Packet\+Header (\begin{DoxyParamCaption}\item[{const std\+::vector$<$ uint8\+\_\+t $>$ \&}]{data }\end{DoxyParamCaption})}
 
-Here is the call graph for this function\+:
-\nopagebreak
+Here is the call graph for this function\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -98,8 +97,7 @@ Here is the call graph for this function\+:
 \doxysubsubsection{\texorpdfstring{getSerializer()}{getSerializer()}}
 {\footnotesize\ttfamily static constexpr auto Packet\+Header\+::get\+Serializer (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}, {\ttfamily [constexpr]}, {\ttfamily [private]}}
 
-Here is the caller graph for this function\+:
-\nopagebreak
+Here is the caller graph for this function\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -112,8 +110,7 @@ Here is the caller graph for this function\+:
 \doxysubsubsection{\texorpdfstring{header\_size()}{header\_size()}}
 {\footnotesize\ttfamily static constexpr size\+\_\+t Packet\+Header\+::header\+\_\+size (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}, {\ttfamily [constexpr]}, {\ttfamily [private]}}
 
-Here is the call graph for this function\+:
-\nopagebreak
+Here is the call graph for this function\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -126,8 +123,7 @@ Here is the call graph for this function\+:
 \doxysubsubsection{\texorpdfstring{serialize()}{serialize()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
 {\footnotesize\ttfamily std\+::vector$<$ uint8\+\_\+t $>$ Packet\+Header\+::serialize (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
 
-Here is the call graph for this function\+:
-\nopagebreak
+Here is the call graph for this function\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -148,8 +144,7 @@ Here is the caller graph for this function\+:
 \doxysubsubsection{\texorpdfstring{serialize()}{serialize()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
 {\footnotesize\ttfamily void Packet\+Header\+::serialize (\begin{DoxyParamCaption}\item[{std\+::vector$<$ uint8\+\_\+t $>$ \&}]{buf }\end{DoxyParamCaption}) const}
 
-Here is the call graph for this function\+:
-\nopagebreak
+Here is the call graph for this function\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -210,12 +205,6 @@ Here is the call graph for this function\+:
 \doxysubsubsection{\texorpdfstring{start\_byte}{start\_byte}}
 {\footnotesize\ttfamily uint8\+\_\+t Packet\+Header\+::start\+\_\+byte = 0x\+AF}
 
-\mbox{\Hypertarget{class_packet_header_a4f1a7d5e67ff2356183e4e1af12cac66}\label{class_packet_header_a4f1a7d5e67ff2356183e4e1af12cac66}} 
-\index{PacketHeader@{PacketHeader}!system\_time@{system\_time}}
-\index{system\_time@{system\_time}!PacketHeader@{PacketHeader}}
-\doxysubsubsection{\texorpdfstring{system\_time}{system\_time}}
-{\footnotesize\ttfamily uint32\+\_\+t Packet\+Header\+::system\+\_\+time = 0x00000000}
-
 \mbox{\Hypertarget{class_packet_header_a8a2e4a283eb6eb6cea4ecb750b1c36e5}\label{class_packet_header_a8a2e4a283eb6eb6cea4ecb750b1c36e5}} 
 \index{PacketHeader@{PacketHeader}!ttl@{ttl}}
 \index{ttl@{ttl}!PacketHeader@{PacketHeader}}
@@ -227,6 +216,12 @@ Here is the call graph for this function\+:
 \index{type@{type}!PacketHeader@{PacketHeader}}
 \doxysubsubsection{\texorpdfstring{type}{type}}
 {\footnotesize\ttfamily uint8\+\_\+t Packet\+Header\+::type = 0x00}
+
+\mbox{\Hypertarget{class_packet_header_a4abf267b640231f156546a22d4c51ad0}\label{class_packet_header_a4abf267b640231f156546a22d4c51ad0}} 
+\index{PacketHeader@{PacketHeader}!uid@{uid}}
+\index{uid@{uid}!PacketHeader@{PacketHeader}}
+\doxysubsubsection{\texorpdfstring{uid}{uid}}
+{\footnotesize\ttfamily uint32\+\_\+t Packet\+Header\+::uid = 0x00000000}
 
 
 

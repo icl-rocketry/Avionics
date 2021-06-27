@@ -6,8 +6,7 @@
 
 
 
-Inheritance diagram for Radio\+:
-\nopagebreak
+Inheritance diagram for Radio\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -34,6 +33,10 @@ void \mbox{\hyperlink{class_radio_a46f079f86ab0e7e83a4521c35eaa9aff}{setup}} ()
 void \mbox{\hyperlink{class_radio_a219437f42cd31f1373c7192b3c5fc19c}{send\+\_\+packet}} (uint8\+\_\+t $\ast$txpacket\+\_\+ptr, size\+\_\+t packet\+\_\+size)
 \item 
 void \mbox{\hyperlink{class_radio_a45de275f8025cc7c6b6d9d12013c22c8}{get\+\_\+packet}} (std\+::vector$<$ std\+::unique\+\_\+ptr$<$ std\+::vector$<$ uint8\+\_\+t $>$$>$$>$ \&buf)
+\item 
+int16\+\_\+t \mbox{\hyperlink{class_radio_a72f533e8768d338547a78a75c81656aa}{get\+\_\+rssi}} ()
+\item 
+float \mbox{\hyperlink{class_radio_ac9514fc7a175ff2b9d194edf008c4cb0}{get\+\_\+snr}} ()
 \end{DoxyCompactItemize}
 \doxysubsection*{Private Attributes}
 \begin{DoxyCompactItemize}
@@ -73,8 +76,7 @@ uint64\+\_\+t \mbox{\hyperlink{class_radio_aba1f3910d6abe54aef8f53ad928c3319}{pr
 
 Reimplemented from \mbox{\hyperlink{class_iface_aab6b599d8f932eb4404e11ee88c05c6d}{Iface}}.
 
-Here is the call graph for this function\+:
-\nopagebreak
+Here is the call graph for this function\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -87,6 +89,34 @@ Here is the caller graph for this function\+:
 \begin{center}
 \leavevmode
 \includegraphics[width=350pt]{class_radio_a45de275f8025cc7c6b6d9d12013c22c8_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_radio_a72f533e8768d338547a78a75c81656aa}\label{class_radio_a72f533e8768d338547a78a75c81656aa}} 
+\index{Radio@{Radio}!get\_rssi@{get\_rssi}}
+\index{get\_rssi@{get\_rssi}!Radio@{Radio}}
+\doxysubsubsection{\texorpdfstring{get\_rssi()}{get\_rssi()}}
+{\footnotesize\ttfamily int16\+\_\+t Radio\+::get\+\_\+rssi (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_radio_a72f533e8768d338547a78a75c81656aa_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_radio_ac9514fc7a175ff2b9d194edf008c4cb0}\label{class_radio_ac9514fc7a175ff2b9d194edf008c4cb0}} 
+\index{Radio@{Radio}!get\_snr@{get\_snr}}
+\index{get\_snr@{get\_snr}!Radio@{Radio}}
+\doxysubsubsection{\texorpdfstring{get\_snr()}{get\_snr()}}
+{\footnotesize\ttfamily float Radio\+::get\+\_\+snr (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_radio_ac9514fc7a175ff2b9d194edf008c4cb0_icgraph}
 \end{center}
 \end{figure}
 \mbox{\Hypertarget{class_radio_a219437f42cd31f1373c7192b3c5fc19c}\label{class_radio_a219437f42cd31f1373c7192b3c5fc19c}} 
@@ -117,16 +147,14 @@ Here is the caller graph for this function\+:
 
 Reimplemented from \mbox{\hyperlink{class_iface_a5a89ff5d5f8f05467a55c5811a4ebe3f}{Iface}}.
 
-Here is the call graph for this function\+:
-\nopagebreak
+Here is the call graph for this function\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
 \includegraphics[width=350pt]{class_radio_a46f079f86ab0e7e83a4521c35eaa9aff_cgraph}
 \end{center}
 \end{figure}
-Here is the caller graph for this function\+:
-\nopagebreak
+Here is the caller graph for this function\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode

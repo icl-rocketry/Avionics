@@ -69,7 +69,7 @@ void USB::get_packet(std::vector<std::unique_ptr<std::vector<uint8_t>>> &buf){
             if (_packet_len > _stream->available()){
                 //we dont have the full packet to read 
                 _incompletePacketReceived = false; //dump the packet
-                _systemstatus->new_message(system_flag::ERROR_SERIAL,"Packet Dumped");
+                _systemstatus->new_message(SYSTEM_FLAG::ERROR_SERIAL,"Packet Dumped");
                 //Serial.println('dump');
                 
                 
@@ -84,7 +84,7 @@ void USB::get_packet(std::vector<std::unique_ptr<std::vector<uint8_t>>> &buf){
 
                 
                 //deserialize packet header, modify source interface and reserialize into packet_ptr.
-                Iface::updateSourceInterface(_tmp_packet_data,(*packet_ptr),Interface::USBSerial);
+                Iface::updateSourceInterface(_tmp_packet_data,(*packet_ptr),INTERFACE::USBSerial);
                 
                 //read bytes in stream buffer into the packet data array starting at the 8th index as header has been read out of stream buffer.
                 //packet len has been decremented 8 as packet_len includes the packet header which is no longer in stream buffer
@@ -104,7 +104,7 @@ void USB::get_packet(std::vector<std::unique_ptr<std::vector<uint8_t>>> &buf){
             
         }else{
             // read byte to clear byte in serial buffer
-            _systemstatus->new_message(system_flag::ERROR_SERIAL,"Packet Dumped");
+            _systemstatus->new_message(SYSTEM_FLAG::ERROR_SERIAL,"Packet Dumped");
             
         };  
     }; 
@@ -140,7 +140,7 @@ void USB::get_packet(std::vector<std::unique_ptr<std::vector<uint8_t>>> &buf){
             (*packet_ptr).resize(_total_len);
 
             //update source interface
-            packetheader.src_interface = static_cast<uint8_t>(Interface::USBSerial);
+            packetheader.src_interface = static_cast<uint8_t>(INTERFACE::USBSerial);
         
             //serialize packet header
             std::vector<uint8_t> modified_packet_header;
@@ -234,7 +234,7 @@ void USB::get_packet(std::vector<std::unique_ptr<std::vector<uint8_t>>> &buf){
                 
                 
                 //update source interface
-                packetheader.src_interface = static_cast<uint8_t>(Interface::USBSerial);
+                packetheader.src_interface = static_cast<uint8_t>(INTERFACE::USBSerial);
             
                 //serialize packet header
                 std::vector<uint8_t> modified_packet_header;

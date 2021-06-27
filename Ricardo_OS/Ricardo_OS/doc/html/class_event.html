@@ -94,6 +94,8 @@ $(document).ready(function(){initNavTree('class_event.html',''); initResizable()
 <div class="header">
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="#pri-methods">Private Member Functions</a> &#124;
+<a href="#pri-attribs">Private Attributes</a> &#124;
 <a href="class_event-members.html">List of all members</a>  </div>
   <div class="headertitle">
 <div class="title">Event Class Reference</div>  </div>
@@ -101,26 +103,186 @@ $(document).ready(function(){initNavTree('class_event.html',''); initResizable()
 <div class="contents">
 
 <p><code>#include &lt;<a class="el" href="event_8h_source.html">event.h</a>&gt;</code></p>
+<div class="dynheader">
+Collaboration diagram for Event:</div>
+<div class="dyncontent">
+<div class="center"><img src="class_event__coll__graph.png" border="0" usemap="#a_event_coll__map" alt="Collaboration graph"/></div>
+<map name="a_event_coll__map" id="a_event_coll__map">
+<area shape="rect" title=" " alt="" coords="46,95,102,121"/>
+<area shape="rect" href="class_pyro.html" title=" " alt="" coords="5,5,55,32"/>
+<area shape="rect" href="class_condition.html" title=" " alt="" coords="79,5,157,32"/>
+</map>
+<center><span class="legend">[<a target="top" href="graph_legend.html">legend</a>]</span></center></div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a5a40dd4708297f7031e29b39e039ae10"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_event.html#a5a40dd4708297f7031e29b39e039ae10">Event</a> ()</td></tr>
-<tr class="separator:a5a40dd4708297f7031e29b39e039ae10"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa978082cb817e4b87de5f15eeccb030e"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_event.html#aa978082cb817e4b87de5f15eeccb030e">Event</a> (<a class="el" href="class_pyro.html">Pyro</a> &amp;pyro, <a class="el" href="class_condition.html">Condition</a> &amp;cond)</td></tr>
+<tr class="separator:aa978082cb817e4b87de5f15eeccb030e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a104089a099a45971f10fdf7eaf5654f4"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_event.html#a104089a099a45971f10fdf7eaf5654f4">update</a> ()</td></tr>
+<tr class="separator:a104089a099a45971f10fdf7eaf5654f4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-methods"></a>
+Private Member Functions</h2></td></tr>
+<tr class="memitem:aec07ea22c63c8a6af8303762c6cce8c7"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_event.html#aec07ea22c63c8a6af8303762c6cce8c7">_fire</a> ()</td></tr>
+<tr class="separator:aec07ea22c63c8a6af8303762c6cce8c7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-attribs"></a>
+Private Attributes</h2></td></tr>
+<tr class="memitem:af0adada5c1fb4fa895f2ec5769db1679"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_condition.html">Condition</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_event.html#af0adada5c1fb4fa895f2ec5769db1679">_cond</a></td></tr>
+<tr class="separator:af0adada5c1fb4fa895f2ec5769db1679"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3ddf15a809d400481d59fc0094f3a0d8"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_pyro.html">Pyro</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_event.html#a3ddf15a809d400481d59fc0094f3a0d8">_pyro</a></td></tr>
+<tr class="separator:a3ddf15a809d400481d59fc0094f3a0d8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
-<a id="a5a40dd4708297f7031e29b39e039ae10"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a5a40dd4708297f7031e29b39e039ae10">&#9670;&nbsp;</a></span>Event()</h2>
+<a id="aa978082cb817e4b87de5f15eeccb030e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa978082cb817e4b87de5f15eeccb030e">&#9670;&nbsp;</a></span>Event()</h2>
 
 <div class="memitem">
 <div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
       <table class="memname">
         <tr>
           <td class="memname">Event::Event </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_pyro.html">Pyro</a> &amp;&#160;</td>
+          <td class="paramname"><em>pyro</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="class_condition.html">Condition</a> &amp;&#160;</td>
+          <td class="paramname"><em>cond</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<h2 class="groupheader">Member Function Documentation</h2>
+<a id="aec07ea22c63c8a6af8303762c6cce8c7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aec07ea22c63c8a6af8303762c6cce8c7">&#9670;&nbsp;</a></span>_fire()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Event::_fire </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td></td>
         </tr>
       </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="class_event_aec07ea22c63c8a6af8303762c6cce8c7_cgraph.png" border="0" usemap="#aclass_event_aec07ea22c63c8a6af8303762c6cce8c7_cgraph" alt=""/></div>
+<map name="aclass_event_aec07ea22c63c8a6af8303762c6cce8c7_cgraph" id="aclass_event_aec07ea22c63c8a6af8303762c6cce8c7_cgraph">
+<area shape="rect" title=" " alt="" coords="5,5,95,32"/>
+<area shape="rect" href="class_pyro.html#a420fffe4bb0850dd75c5e77ef51daadb" title=" " alt="" coords="143,5,241,32"/>
+</map>
+</div>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="class_event_aec07ea22c63c8a6af8303762c6cce8c7_icgraph.png" border="0" usemap="#aclass_event_aec07ea22c63c8a6af8303762c6cce8c7_icgraph" alt=""/></div>
+<map name="aclass_event_aec07ea22c63c8a6af8303762c6cce8c7_icgraph" id="aclass_event_aec07ea22c63c8a6af8303762c6cce8c7_icgraph">
+<area shape="rect" title=" " alt="" coords="156,5,245,32"/>
+<area shape="rect" href="class_event.html#a104089a099a45971f10fdf7eaf5654f4" title=" " alt="" coords="5,5,108,32"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a104089a099a45971f10fdf7eaf5654f4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a104089a099a45971f10fdf7eaf5654f4">&#9670;&nbsp;</a></span>update()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Event::update </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="class_event_a104089a099a45971f10fdf7eaf5654f4_cgraph.png" border="0" usemap="#aclass_event_a104089a099a45971f10fdf7eaf5654f4_cgraph" alt=""/></div>
+<map name="aclass_event_a104089a099a45971f10fdf7eaf5654f4_cgraph" id="aclass_event_a104089a099a45971f10fdf7eaf5654f4_cgraph">
+<area shape="rect" title=" " alt="" coords="5,31,108,57"/>
+<area shape="rect" href="class_event.html#aec07ea22c63c8a6af8303762c6cce8c7" title=" " alt="" coords="171,5,261,32"/>
+<area shape="rect" href="class_condition.html#acb13fb57427218a3b5aecf7b84eda06e" title=" " alt="" coords="156,56,276,83"/>
+<area shape="rect" href="class_pyro.html#a420fffe4bb0850dd75c5e77ef51daadb" title=" " alt="" coords="324,5,423,32"/>
+</map>
+</div>
+
+</div>
+</div>
+<h2 class="groupheader">Member Data Documentation</h2>
+<a id="af0adada5c1fb4fa895f2ec5769db1679"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af0adada5c1fb4fa895f2ec5769db1679">&#9670;&nbsp;</a></span>_cond</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_condition.html">Condition</a>&amp; Event::_cond</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a3ddf15a809d400481d59fc0094f3a0d8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3ddf15a809d400481d59fc0094f3a0d8">&#9670;&nbsp;</a></span>_pyro</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_pyro.html">Pyro</a>&amp; Event::_pyro</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
 </div><div class="memdoc">
 
 </div>

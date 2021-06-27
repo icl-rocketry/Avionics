@@ -98,144 +98,145 @@ $(document).ready(function(){initNavTree('routing_table_8h_source.html',''); ini
 <div class="contents">
 <a href="routing_table_8h.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#ifndef ROUTING_TABLE_H</span></div>
 <div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor">#define ROUTING_TABLE_H</span></div>
-<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="interfaces_8h.html">interfaces/interfaces.h</a>&quot;</span></div>
-<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="nodes_8h.html">nodes.h</a>&quot;</span></div>
-<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor">#include &lt;vector&gt;</span></div>
-<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="preprocessor">#include &lt;iostream&gt;</span></div>
-<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="preprocessor">#include &lt;iomanip&gt;</span></div>
-<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="preprocessor">#include &lt;exception&gt;</span></div>
-<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160; </div>
-<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="comment">/*</span></div>
-<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="comment">routing table class implementation using nested vectors with ability to modify during runtime. Also has nice printing.</span></div>
-<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="comment">TODO! </span></div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="comment">add logging if bounds are out of bounds lol</span></div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="comment">*/</span></div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160; </div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160; </div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160; </div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160; </div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="interfaces_8h.html">interfaces/interfaces.h</a>&quot;</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="nodes_8h.html">nodes.h</a>&quot;</span></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="preprocessor">#include &lt;vector&gt;</span></div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="preprocessor">#include &lt;iostream&gt;</span></div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="preprocessor">#include &lt;iomanip&gt;</span></div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="preprocessor">#include &lt;exception&gt;</span></div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160; </div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="comment">/*</span></div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="comment">routing table class implementation using nested vectors with ability to modify during runtime. Also has nice printing.</span></div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="comment">TODO! </span></div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="comment">add logging if bounds are out of bounds lol</span></div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="comment">*/</span></div>
 <div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160; </div>
-<div class="line"><a name="l00018"></a><span class="lineno"><a class="line" href="struct_routing_table_entry.html">   18</a></span>&#160;<span class="keyword">struct </span><a class="code" href="struct_routing_table_entry.html">RoutingTableEntry</a>{</div>
-<div class="line"><a name="l00019"></a><span class="lineno"><a class="line" href="struct_routing_table_entry.html#accfbf8839332b3def86e8f66e7884741">   19</a></span>&#160;    <a class="code" href="interfaces_8h.html#af0cd30ccfa4f4fe2bd0fdc3cfc4d34cf">Interface</a> <a class="code" href="struct_routing_table_entry.html#accfbf8839332b3def86e8f66e7884741">gateway</a>;</div>
-<div class="line"><a name="l00020"></a><span class="lineno"><a class="line" href="struct_routing_table_entry.html#aac4c68e32d470ed7fe8aea943352b6cb">   20</a></span>&#160;    uint8_t <a class="code" href="struct_routing_table_entry.html#aac4c68e32d470ed7fe8aea943352b6cb">metric</a>;</div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;};</div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="comment">/*</span></div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="comment">const RoutingTableEntry routingtable[2][5] =</span></div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="comment">{</span></div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="comment">    {{Interface::LOOPBACK,0},{Interface::LORA,1},{Interface::LORA,2},{Interface::CAN,1},{Interface::USBSerial,1}}, </span></div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="comment">    {{Interface::LORA,1},{Interface::LOOPBACK,0},{Interface::USBSerial,1},{Interface::LORA,2},{Interface::USBSerial,1}}</span></div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="comment">};</span></div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="comment">*/</span></div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160; </div>
-<div class="line"><a name="l00030"></a><span class="lineno"><a class="line" href="class_routing_table.html">   30</a></span>&#160;<span class="keyword">class </span><a class="code" href="class_routing_table.html">RoutingTable</a>{</div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;    <span class="keyword">public</span>:</div>
-<div class="line"><a name="l00032"></a><span class="lineno"><a class="line" href="class_routing_table.html#a0f4caeade124b4fde4c1a4521a914a02">   32</a></span>&#160;        <a class="code" href="class_routing_table.html#a0f4caeade124b4fde4c1a4521a914a02">RoutingTable</a>();</div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160; </div>
-<div class="line"><a name="l00034"></a><span class="lineno"><a class="line" href="class_routing_table.html#aac73f96cccbb2e64ce418661fe14cab0">   34</a></span>&#160;        <a class="code" href="class_routing_table.html#aac73f96cccbb2e64ce418661fe14cab0">RoutingTable</a>(<span class="keywordtype">int</span> sources, <span class="keywordtype">int</span> destinations):</div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;        <a class="code" href="class_routing_table.html#a436cfb60e620d25cc26ed76ab628c5ec">_table</a>(sources,std::vector&lt;<a class="code" href="struct_routing_table_entry.html">RoutingTableEntry</a>&gt;(destinations))</div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;        {};</div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160; </div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160; </div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160; </div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160; </div>
+<div class="line"><a name="l00020"></a><span class="lineno"><a class="line" href="struct_routing_table_entry.html">   20</a></span>&#160;<span class="keyword">struct </span><a class="code" href="struct_routing_table_entry.html">RoutingTableEntry</a>{</div>
+<div class="line"><a name="l00021"></a><span class="lineno"><a class="line" href="struct_routing_table_entry.html#accfbf8839332b3def86e8f66e7884741">   21</a></span>&#160;    <a class="code" href="interfaces_8h.html#af0cd30ccfa4f4fe2bd0fdc3cfc4d34cf">Interface</a> <a class="code" href="struct_routing_table_entry.html#accfbf8839332b3def86e8f66e7884741">gateway</a>;</div>
+<div class="line"><a name="l00022"></a><span class="lineno"><a class="line" href="struct_routing_table_entry.html#aac4c68e32d470ed7fe8aea943352b6cb">   22</a></span>&#160;    uint8_t <a class="code" href="struct_routing_table_entry.html#aac4c68e32d470ed7fe8aea943352b6cb">metric</a>;</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;};</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="comment">/*</span></div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="comment">const RoutingTableEntry routingtable[2][5] =</span></div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="comment">{</span></div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="comment">    {{Interface::LOOPBACK,0},{Interface::LORA,1},{Interface::LORA,2},{Interface::CAN,1},{Interface::USBSerial,1}}, </span></div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="comment">    {{Interface::LORA,1},{Interface::LOOPBACK,0},{Interface::USBSerial,1},{Interface::LORA,2},{Interface::USBSerial,1}}</span></div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="comment">};</span></div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="comment">*/</span></div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160; </div>
+<div class="line"><a name="l00032"></a><span class="lineno"><a class="line" href="class_routing_table.html">   32</a></span>&#160;<span class="keyword">class </span><a class="code" href="class_routing_table.html">RoutingTable</a>{</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;    <span class="keyword">public</span>:</div>
+<div class="line"><a name="l00034"></a><span class="lineno"><a class="line" href="class_routing_table.html#a0f4caeade124b4fde4c1a4521a914a02">   34</a></span>&#160;        <a class="code" href="class_routing_table.html#a0f4caeade124b4fde4c1a4521a914a02">RoutingTable</a>(){};</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160; </div>
+<div class="line"><a name="l00036"></a><span class="lineno"><a class="line" href="class_routing_table.html#aac73f96cccbb2e64ce418661fe14cab0">   36</a></span>&#160;        <a class="code" href="class_routing_table.html#aac73f96cccbb2e64ce418661fe14cab0">RoutingTable</a>(<span class="keywordtype">int</span> sources, <span class="keywordtype">int</span> destinations):</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;        <a class="code" href="class_routing_table.html#a436cfb60e620d25cc26ed76ab628c5ec">_table</a>(sources,std::vector&lt;<a class="code" href="struct_routing_table_entry.html">RoutingTableEntry</a>&gt;(destinations))</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;        {};</div>
 <div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160; </div>
-<div class="line"><a name="l00040"></a><span class="lineno"><a class="line" href="class_routing_table.html#ae83180a12e0583fa3420ba19260054be">   40</a></span>&#160;        <span class="keywordtype">int</span> <a class="code" href="class_routing_table.html#ae83180a12e0583fa3420ba19260054be">size</a>(<span class="keywordtype">int</span> dim){</div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;            <span class="keywordflow">switch</span>(dim){</div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;                <span class="keywordflow">case</span> 0: <span class="comment">//number of rows</span></div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;                {</div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;                    <span class="keywordflow">return</span> <a class="code" href="class_routing_table.html#a436cfb60e620d25cc26ed76ab628c5ec">_table</a>.size();</div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;                    <span class="keywordflow">break</span>;</div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;                }</div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;                <span class="keywordflow">case</span> 1: <span class="comment">// total size</span></div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;                    <span class="keywordtype">int</span> sum = 0;</div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;                    <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i&lt;<a class="code" href="class_routing_table.html#a436cfb60e620d25cc26ed76ab628c5ec">_table</a>.size();i++){</div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;                        sum += <a class="code" href="class_routing_table.html#a436cfb60e620d25cc26ed76ab628c5ec">_table</a>[i].size();</div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;                    }</div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;                    <span class="keywordflow">return</span> sum;</div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;            }</div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;        };</div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160; </div>
-<div class="line"><a name="l00056"></a><span class="lineno"><a class="line" href="class_routing_table.html#ac7f997392f3654f8c35de455286bdfba">   56</a></span>&#160;        <span class="keywordtype">void</span> <a class="code" href="class_routing_table.html#ac7f997392f3654f8c35de455286bdfba">push_row</a>(std::vector&lt;RoutingTableEntry&gt; new_row){</div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;            <a class="code" href="class_routing_table.html#a436cfb60e620d25cc26ed76ab628c5ec">_table</a>.push_back(new_row);</div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;        }</div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160; </div>
-<div class="line"><a name="l00060"></a><span class="lineno"><a class="line" href="class_routing_table.html#a6303e42a06796509acda1a1214c73c87">   60</a></span>&#160;        <span class="keyword">friend</span> std::ostream &amp;<a class="code" href="class_routing_table.html#a6303e42a06796509acda1a1214c73c87">operator&lt;&lt;</a>(std::ostream &amp;os, <span class="keyword">const</span> <a class="code" href="class_routing_table.html">RoutingTable</a> &amp;rt){<span class="comment">//pretty printing</span></div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;            <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; rt.<a class="code" href="class_routing_table.html#a436cfb60e620d25cc26ed76ab628c5ec">_table</a>.size();i++){</div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;                os &lt;&lt; <span class="stringliteral">&quot;Node: &quot;</span> &lt;&lt; i &lt;&lt; <span class="stringliteral">&quot; |&quot;</span>;</div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;                std::vector&lt;RoutingTableEntry&gt; entries = rt.<a class="code" href="class_routing_table.html#a436cfb60e620d25cc26ed76ab628c5ec">_table</a>.at(i);</div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;                <span class="keywordflow">for</span> (<span class="keywordtype">int</span> j = 0; j&lt; entries.size(); j++){</div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;                    os &lt;&lt; <span class="stringliteral">&quot;destination: &quot;</span> &lt;&lt; j &lt;&lt; <span class="stringliteral">&quot; gateway: &quot;</span> &lt;&lt; <span class="keyword">static_cast&lt;</span>uint8_t<span class="keyword">&gt;</span>(entries.at(j).gateway) &lt;&lt; <span class="stringliteral">&quot; metric: &quot;</span> &lt;&lt; <span class="keyword">static_cast&lt;</span>uint8_t<span class="keyword">&gt;</span>(entries.at(j).metric) &lt;&lt; <span class="stringliteral">&quot; |&quot;</span>;</div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;                }</div>
-<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;                os &lt;&lt; <span class="stringliteral">&quot;\n&quot;</span>;</div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;            }</div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;            <span class="keywordflow">return</span> os;</div>
-<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;        };</div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;        </div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160; </div>
-<div class="line"><a name="l00073"></a><span class="lineno"><a class="line" href="class_routing_table.html#a20f797a228003eb91eac68405f7bc2bb">   73</a></span>&#160;        <span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt; <span class="keywordtype">bool</span> <a class="code" href="class_routing_table.html#a20f797a228003eb91eac68405f7bc2bb">push_entry</a>(T source_node,<a class="code" href="struct_routing_table_entry.html">RoutingTableEntry</a> new_entry){</div>
-<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;            <span class="keywordflow">if</span> (source_node &lt; <a class="code" href="class_routing_table.html#a436cfb60e620d25cc26ed76ab628c5ec">_table</a>.size()){<span class="comment">//checking index is within bounds</span></div>
-<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;                <a class="code" href="class_routing_table.html#a436cfb60e620d25cc26ed76ab628c5ec">_table</a>.at(<span class="keyword">static_cast&lt;</span>uint8_t<span class="keyword">&gt;</span>(source_node)).push_back(new_entry);</div>
-<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;                <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
-<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;            }<span class="keywordflow">else</span>{</div>
-<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;                <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
-<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;            }</div>
-<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;        }</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160; </div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160; </div>
+<div class="line"><a name="l00042"></a><span class="lineno"><a class="line" href="class_routing_table.html#ae83180a12e0583fa3420ba19260054be">   42</a></span>&#160;        <span class="keywordtype">int</span> <a class="code" href="class_routing_table.html#ae83180a12e0583fa3420ba19260054be">size</a>(<span class="keywordtype">int</span> dim){</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;            <span class="keywordflow">switch</span>(dim){</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;                <span class="keywordflow">case</span> 0: <span class="comment">//number of rows</span></div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;                {</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;                    <span class="keywordflow">return</span> <a class="code" href="class_routing_table.html#a436cfb60e620d25cc26ed76ab628c5ec">_table</a>.size();</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;                }</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;                <span class="keywordflow">case</span> 1: <span class="comment">// total size</span></div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;                {</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;                    <span class="keywordtype">int</span> sum = 0;</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;                    <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i&lt;<a class="code" href="class_routing_table.html#a436cfb60e620d25cc26ed76ab628c5ec">_table</a>.size();i++)</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;                    {</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;                        sum += <a class="code" href="class_routing_table.html#a436cfb60e620d25cc26ed76ab628c5ec">_table</a>[i].size();</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;                    }</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;                    <span class="keywordflow">return</span> sum;</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;                }</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;                <span class="keywordflow">default</span>: </div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;                {</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;                    <span class="keywordflow">return</span> 0;</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;                    </div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;                }</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;            }</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;        };</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160; </div>
+<div class="line"><a name="l00065"></a><span class="lineno"><a class="line" href="class_routing_table.html#ac7f997392f3654f8c35de455286bdfba">   65</a></span>&#160;        <span class="keywordtype">void</span> <a class="code" href="class_routing_table.html#ac7f997392f3654f8c35de455286bdfba">push_row</a>(std::vector&lt;RoutingTableEntry&gt; new_row){</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;            <a class="code" href="class_routing_table.html#a436cfb60e620d25cc26ed76ab628c5ec">_table</a>.push_back(new_row);</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;        }</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160; </div>
+<div class="line"><a name="l00069"></a><span class="lineno"><a class="line" href="class_routing_table.html#a6303e42a06796509acda1a1214c73c87">   69</a></span>&#160;        <span class="keyword">friend</span> std::ostream &amp;<a class="code" href="class_routing_table.html#a6303e42a06796509acda1a1214c73c87">operator&lt;&lt;</a>(std::ostream &amp;os, <span class="keyword">const</span> <a class="code" href="class_routing_table.html">RoutingTable</a> &amp;rt){<span class="comment">//pretty printing</span></div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;            <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; rt.<a class="code" href="class_routing_table.html#a436cfb60e620d25cc26ed76ab628c5ec">_table</a>.size();i++){</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;                os &lt;&lt; <span class="stringliteral">&quot;Node: &quot;</span> &lt;&lt; i &lt;&lt; <span class="stringliteral">&quot; |&quot;</span>;</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;                std::vector&lt;RoutingTableEntry&gt; entries = rt.<a class="code" href="class_routing_table.html#a436cfb60e620d25cc26ed76ab628c5ec">_table</a>.at(i);</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;                <span class="keywordflow">for</span> (<span class="keywordtype">int</span> j = 0; j&lt; entries.size(); j++){</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;                    os &lt;&lt; <span class="stringliteral">&quot;destination: &quot;</span> &lt;&lt; j &lt;&lt; <span class="stringliteral">&quot; gateway: &quot;</span> &lt;&lt; <span class="keyword">static_cast&lt;</span>uint8_t<span class="keyword">&gt;</span>(entries.at(j).gateway) &lt;&lt; <span class="stringliteral">&quot; metric: &quot;</span> &lt;&lt; <span class="keyword">static_cast&lt;</span>uint8_t<span class="keyword">&gt;</span>(entries.at(j).metric) &lt;&lt; <span class="stringliteral">&quot; |&quot;</span>;</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;                }</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;                os &lt;&lt; <span class="stringliteral">&quot;\n&quot;</span>;</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;            }</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;            <span class="keywordflow">return</span> os;</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;        };</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;        </div>
 <div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160; </div>
-<div class="line"><a name="l00082"></a><span class="lineno"><a class="line" href="class_routing_table.html#a4ce96a6b822cd78909c429b2455d10ab">   82</a></span>&#160;        <span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt; std::vector&lt;RoutingTableEntry&gt;&amp; <a class="code" href="class_routing_table.html#a4ce96a6b822cd78909c429b2455d10ab">operator()</a>(T source_idx) {</div>
-<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;            <span class="keywordflow">return</span> <a class="code" href="class_routing_table.html#a436cfb60e620d25cc26ed76ab628c5ec">_table</a>.at(<span class="keyword">static_cast&lt;</span>uint8_t<span class="keyword">&gt;</span>(source_idx));</div>
-<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;        };</div>
-<div class="line"><a name="l00085"></a><span class="lineno"><a class="line" href="class_routing_table.html#aa07d73cbbfb0c18fb813c80108b3dbc0">   85</a></span>&#160;        <span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt; std::vector&lt;RoutingTableEntry&gt; <a class="code" href="class_routing_table.html#aa07d73cbbfb0c18fb813c80108b3dbc0">operator()</a>(T source_idx)<span class="keyword"> const</span>{</div>
-<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;            <span class="keywordflow">return</span> <a class="code" href="class_routing_table.html#a436cfb60e620d25cc26ed76ab628c5ec">_table</a>.at(<span class="keyword">static_cast&lt;</span>uint8_t<span class="keyword">&gt;</span>(source_idx));</div>
-<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;        };</div>
-<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160; </div>
-<div class="line"><a name="l00089"></a><span class="lineno"><a class="line" href="class_routing_table.html#ac0594643d9277dc0f9331f5ce4f6e86c">   89</a></span>&#160;        <span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt; <a class="code" href="struct_routing_table_entry.html">RoutingTableEntry</a>&amp; <a class="code" href="class_routing_table.html#ac0594643d9277dc0f9331f5ce4f6e86c">operator()</a>(T source_idx, T destination_idx) { <span class="comment">//assignment operator -&gt; if an out of bound error occurs we want to provide a sacrifical object so we can continue but log the error</span></div>
-<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;            std::vector&lt;RoutingTableEntry&gt; entries = <a class="code" href="class_routing_table.html#a436cfb60e620d25cc26ed76ab628c5ec">_table</a>.at(<span class="keyword">static_cast&lt;</span>uint8_t<span class="keyword">&gt;</span>(source_idx));</div>
-<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;            <span class="keywordflow">if</span> (destination_idx &gt;= entries.size()){</div>
-<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;                <span class="comment">//throw std::out_of_range(&quot;requested destination_idx is out of range of routing table&quot;);</span></div>
-<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160; </div>
-<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;                <span class="keywordflow">return</span> <a class="code" href="class_routing_table.html#a8447ce2d94fd43e7703bcf6d3f7ecb99">dummy_entry</a>;</div>
-<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;            }<span class="keywordflow">else</span>{</div>
-<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;                <span class="keywordflow">return</span> entries.at(<span class="keyword">static_cast&lt;</span>uint8_t<span class="keyword">&gt;</span>(destination_idx));</div>
-<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;            }</div>
-<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;            </div>
-<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;        };</div>
+<div class="line"><a name="l00082"></a><span class="lineno"><a class="line" href="class_routing_table.html#a20f797a228003eb91eac68405f7bc2bb">   82</a></span>&#160;        <span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt; <span class="keywordtype">bool</span> <a class="code" href="class_routing_table.html#a20f797a228003eb91eac68405f7bc2bb">push_entry</a>(T source_node,<a class="code" href="struct_routing_table_entry.html">RoutingTableEntry</a> new_entry){</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;            <span class="keywordflow">if</span> (source_node &lt; <a class="code" href="class_routing_table.html#a436cfb60e620d25cc26ed76ab628c5ec">_table</a>.size()){<span class="comment">//checking index is within bounds</span></div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;                <a class="code" href="class_routing_table.html#a436cfb60e620d25cc26ed76ab628c5ec">_table</a>.at(<span class="keyword">static_cast&lt;</span>uint8_t<span class="keyword">&gt;</span>(source_node)).push_back(new_entry);</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;                <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;            }<span class="keywordflow">else</span>{</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;                <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;            }</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;        }</div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160; </div>
+<div class="line"><a name="l00091"></a><span class="lineno"><a class="line" href="class_routing_table.html#a4ce96a6b822cd78909c429b2455d10ab">   91</a></span>&#160;        <span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt; std::vector&lt;RoutingTableEntry&gt;&amp; <a class="code" href="class_routing_table.html#a4ce96a6b822cd78909c429b2455d10ab">operator()</a>(T source_idx) {</div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;            </div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;            <span class="keywordflow">return</span> <a class="code" href="class_routing_table.html#a436cfb60e620d25cc26ed76ab628c5ec">_table</a>.at(<span class="keyword">static_cast&lt;</span>uint8_t<span class="keyword">&gt;</span>(source_idx));</div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;        };</div>
+<div class="line"><a name="l00095"></a><span class="lineno"><a class="line" href="class_routing_table.html#aa07d73cbbfb0c18fb813c80108b3dbc0">   95</a></span>&#160;        <span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt; std::vector&lt;RoutingTableEntry&gt; <a class="code" href="class_routing_table.html#aa07d73cbbfb0c18fb813c80108b3dbc0">operator()</a>(T source_idx)<span class="keyword"> const</span>{</div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;            </div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;            <span class="keywordflow">return</span> <a class="code" href="class_routing_table.html#a436cfb60e620d25cc26ed76ab628c5ec">_table</a>.at(<span class="keyword">static_cast&lt;</span>uint8_t<span class="keyword">&gt;</span>(source_idx));</div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;        };</div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160; </div>
 <div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160; </div>
 <div class="line"><a name="l00101"></a><span class="lineno"><a class="line" href="class_routing_table.html#a69189409cdad84c4b65cb431b7dbe7a5">  101</a></span>&#160;        <span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt; <a class="code" href="struct_routing_table_entry.html">RoutingTableEntry</a> <a class="code" href="class_routing_table.html#a69189409cdad84c4b65cb431b7dbe7a5">operator()</a>(T source_idx, T destination_idx)<span class="keyword"> const</span>{ <span class="comment">//the get operator -&gt; returns an error entry so we can discard the dodgy packet </span></div>
-<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;            std::vector&lt;RoutingTableEntry&gt; entries = <a class="code" href="class_routing_table.html#a436cfb60e620d25cc26ed76ab628c5ec">_table</a>.at(<span class="keyword">static_cast&lt;</span>uint8_t<span class="keyword">&gt;</span>(source_idx));</div>
-<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;            <span class="keywordflow">if</span> (destination_idx &gt;= entries.size()){</div>
-<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;                <span class="keywordflow">return</span> <a class="code" href="class_routing_table.html#a0062f1c70221321510a0f79b1bcb4655">error_entry</a>;</div>
-<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;            }<span class="keywordflow">else</span>{</div>
-<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;                <span class="keywordflow">return</span> entries.at(<span class="keyword">static_cast&lt;</span>uint8_t<span class="keyword">&gt;</span>(destination_idx));</div>
-<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;            }</div>
-<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;        };</div>
-<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160; </div>
-<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160; </div>
-<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160; </div>
-<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;    <span class="keyword">private</span>:</div>
-<div class="line"><a name="l00113"></a><span class="lineno"><a class="line" href="class_routing_table.html#a436cfb60e620d25cc26ed76ab628c5ec">  113</a></span>&#160;        std::vector&lt; std::vector&lt;RoutingTableEntry&gt; &gt; <a class="code" href="class_routing_table.html#a436cfb60e620d25cc26ed76ab628c5ec">_table</a>;</div>
-<div class="line"><a name="l00114"></a><span class="lineno"><a class="line" href="class_routing_table.html#a0062f1c70221321510a0f79b1bcb4655">  114</a></span>&#160;        <span class="keyword">const</span> <a class="code" href="struct_routing_table_entry.html">RoutingTableEntry</a> <a class="code" href="class_routing_table.html#a0062f1c70221321510a0f79b1bcb4655">error_entry</a>{<a class="code" href="interfaces_8h.html#af0cd30ccfa4f4fe2bd0fdc3cfc4d34cfabb1ca97ec761fc37101737ba0aa2e7c5">Interface::ERROR</a>,255}; <span class="comment">// error entry return</span></div>
-<div class="line"><a name="l00115"></a><span class="lineno"><a class="line" href="class_routing_table.html#a8447ce2d94fd43e7703bcf6d3f7ecb99">  115</a></span>&#160;        <a class="code" href="struct_routing_table_entry.html">RoutingTableEntry</a> <a class="code" href="class_routing_table.html#a8447ce2d94fd43e7703bcf6d3f7ecb99">dummy_entry</a>{<a class="code" href="interfaces_8h.html#af0cd30ccfa4f4fe2bd0fdc3cfc4d34cfabb1ca97ec761fc37101737ba0aa2e7c5">Interface::ERROR</a>,255}; <span class="comment">// dummy entry to return from assingment operator</span></div>
-<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;};</div>
-<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160; </div>
-<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160; </div>
-<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="ttc" id="aclass_routing_table_html"><div class="ttname"><a href="class_routing_table.html">RoutingTable</a></div><div class="ttdef"><b>Definition:</b> routingTable.h:30</div></div>
-<div class="ttc" id="aclass_routing_table_html_a0062f1c70221321510a0f79b1bcb4655"><div class="ttname"><a href="class_routing_table.html#a0062f1c70221321510a0f79b1bcb4655">RoutingTable::error_entry</a></div><div class="ttdeci">const RoutingTableEntry error_entry</div><div class="ttdef"><b>Definition:</b> routingTable.h:114</div></div>
-<div class="ttc" id="aclass_routing_table_html_a0f4caeade124b4fde4c1a4521a914a02"><div class="ttname"><a href="class_routing_table.html#a0f4caeade124b4fde4c1a4521a914a02">RoutingTable::RoutingTable</a></div><div class="ttdeci">RoutingTable()</div></div>
-<div class="ttc" id="aclass_routing_table_html_a20f797a228003eb91eac68405f7bc2bb"><div class="ttname"><a href="class_routing_table.html#a20f797a228003eb91eac68405f7bc2bb">RoutingTable::push_entry</a></div><div class="ttdeci">bool push_entry(T source_node, RoutingTableEntry new_entry)</div><div class="ttdef"><b>Definition:</b> routingTable.h:73</div></div>
-<div class="ttc" id="aclass_routing_table_html_a436cfb60e620d25cc26ed76ab628c5ec"><div class="ttname"><a href="class_routing_table.html#a436cfb60e620d25cc26ed76ab628c5ec">RoutingTable::_table</a></div><div class="ttdeci">std::vector&lt; std::vector&lt; RoutingTableEntry &gt; &gt; _table</div><div class="ttdef"><b>Definition:</b> routingTable.h:108</div></div>
-<div class="ttc" id="aclass_routing_table_html_a4ce96a6b822cd78909c429b2455d10ab"><div class="ttname"><a href="class_routing_table.html#a4ce96a6b822cd78909c429b2455d10ab">RoutingTable::operator()</a></div><div class="ttdeci">std::vector&lt; RoutingTableEntry &gt; &amp; operator()(T source_idx)</div><div class="ttdef"><b>Definition:</b> routingTable.h:82</div></div>
-<div class="ttc" id="aclass_routing_table_html_a6303e42a06796509acda1a1214c73c87"><div class="ttname"><a href="class_routing_table.html#a6303e42a06796509acda1a1214c73c87">RoutingTable::operator&lt;&lt;</a></div><div class="ttdeci">friend std::ostream &amp; operator&lt;&lt;(std::ostream &amp;os, const RoutingTable &amp;rt)</div><div class="ttdef"><b>Definition:</b> routingTable.h:60</div></div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;            </div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;            std::vector&lt;RoutingTableEntry&gt; entries = <a class="code" href="class_routing_table.html#a436cfb60e620d25cc26ed76ab628c5ec">_table</a>.at(<span class="keyword">static_cast&lt;</span>uint8_t<span class="keyword">&gt;</span>(source_idx));</div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;            <span class="keywordflow">if</span> (destination_idx &gt;= entries.size()){</div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;                </div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;                <span class="keywordflow">return</span> <a class="code" href="class_routing_table.html#a0062f1c70221321510a0f79b1bcb4655">error_entry</a>;</div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;                </div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;            }<span class="keywordflow">else</span>{</div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;                <span class="keywordflow">return</span> entries.at(<span class="keyword">static_cast&lt;</span>uint8_t<span class="keyword">&gt;</span>(destination_idx));</div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;            }</div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;        };</div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160; </div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160; </div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160; </div>
+<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;    <span class="keyword">private</span>:</div>
+<div class="line"><a name="l00116"></a><span class="lineno"><a class="line" href="class_routing_table.html#a436cfb60e620d25cc26ed76ab628c5ec">  116</a></span>&#160;        std::vector&lt; std::vector&lt;RoutingTableEntry&gt; &gt; <a class="code" href="class_routing_table.html#a436cfb60e620d25cc26ed76ab628c5ec">_table</a>;</div>
+<div class="line"><a name="l00117"></a><span class="lineno"><a class="line" href="class_routing_table.html#a0062f1c70221321510a0f79b1bcb4655">  117</a></span>&#160;        <span class="keyword">const</span> <a class="code" href="struct_routing_table_entry.html">RoutingTableEntry</a> <a class="code" href="class_routing_table.html#a0062f1c70221321510a0f79b1bcb4655">error_entry</a>{<a class="code" href="interfaces_8h.html#af0cd30ccfa4f4fe2bd0fdc3cfc4d34cfabb1ca97ec761fc37101737ba0aa2e7c5">Interface::ERROR</a>,255}; <span class="comment">// error entry return</span></div>
+<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;       </div>
+<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;};</div>
+<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160; </div>
+<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160; </div>
+<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="ttc" id="aclass_routing_table_html"><div class="ttname"><a href="class_routing_table.html">RoutingTable</a></div><div class="ttdef"><b>Definition:</b> routingTable.h:32</div></div>
+<div class="ttc" id="aclass_routing_table_html_a0062f1c70221321510a0f79b1bcb4655"><div class="ttname"><a href="class_routing_table.html#a0062f1c70221321510a0f79b1bcb4655">RoutingTable::error_entry</a></div><div class="ttdeci">const RoutingTableEntry error_entry</div><div class="ttdef"><b>Definition:</b> routingTable.h:117</div></div>
+<div class="ttc" id="aclass_routing_table_html_a0f4caeade124b4fde4c1a4521a914a02"><div class="ttname"><a href="class_routing_table.html#a0f4caeade124b4fde4c1a4521a914a02">RoutingTable::RoutingTable</a></div><div class="ttdeci">RoutingTable()</div><div class="ttdef"><b>Definition:</b> routingTable.h:34</div></div>
+<div class="ttc" id="aclass_routing_table_html_a20f797a228003eb91eac68405f7bc2bb"><div class="ttname"><a href="class_routing_table.html#a20f797a228003eb91eac68405f7bc2bb">RoutingTable::push_entry</a></div><div class="ttdeci">bool push_entry(T source_node, RoutingTableEntry new_entry)</div><div class="ttdef"><b>Definition:</b> routingTable.h:82</div></div>
+<div class="ttc" id="aclass_routing_table_html_a436cfb60e620d25cc26ed76ab628c5ec"><div class="ttname"><a href="class_routing_table.html#a436cfb60e620d25cc26ed76ab628c5ec">RoutingTable::_table</a></div><div class="ttdeci">std::vector&lt; std::vector&lt; RoutingTableEntry &gt; &gt; _table</div><div class="ttdef"><b>Definition:</b> routingTable.h:111</div></div>
+<div class="ttc" id="aclass_routing_table_html_a4ce96a6b822cd78909c429b2455d10ab"><div class="ttname"><a href="class_routing_table.html#a4ce96a6b822cd78909c429b2455d10ab">RoutingTable::operator()</a></div><div class="ttdeci">std::vector&lt; RoutingTableEntry &gt; &amp; operator()(T source_idx)</div><div class="ttdef"><b>Definition:</b> routingTable.h:91</div></div>
+<div class="ttc" id="aclass_routing_table_html_a6303e42a06796509acda1a1214c73c87"><div class="ttname"><a href="class_routing_table.html#a6303e42a06796509acda1a1214c73c87">RoutingTable::operator&lt;&lt;</a></div><div class="ttdeci">friend std::ostream &amp; operator&lt;&lt;(std::ostream &amp;os, const RoutingTable &amp;rt)</div><div class="ttdef"><b>Definition:</b> routingTable.h:69</div></div>
 <div class="ttc" id="aclass_routing_table_html_a69189409cdad84c4b65cb431b7dbe7a5"><div class="ttname"><a href="class_routing_table.html#a69189409cdad84c4b65cb431b7dbe7a5">RoutingTable::operator()</a></div><div class="ttdeci">RoutingTableEntry operator()(T source_idx, T destination_idx) const</div><div class="ttdef"><b>Definition:</b> routingTable.h:101</div></div>
-<div class="ttc" id="aclass_routing_table_html_a8447ce2d94fd43e7703bcf6d3f7ecb99"><div class="ttname"><a href="class_routing_table.html#a8447ce2d94fd43e7703bcf6d3f7ecb99">RoutingTable::dummy_entry</a></div><div class="ttdeci">RoutingTableEntry dummy_entry</div><div class="ttdef"><b>Definition:</b> routingTable.h:115</div></div>
-<div class="ttc" id="aclass_routing_table_html_aa07d73cbbfb0c18fb813c80108b3dbc0"><div class="ttname"><a href="class_routing_table.html#aa07d73cbbfb0c18fb813c80108b3dbc0">RoutingTable::operator()</a></div><div class="ttdeci">std::vector&lt; RoutingTableEntry &gt; operator()(T source_idx) const</div><div class="ttdef"><b>Definition:</b> routingTable.h:85</div></div>
-<div class="ttc" id="aclass_routing_table_html_aac73f96cccbb2e64ce418661fe14cab0"><div class="ttname"><a href="class_routing_table.html#aac73f96cccbb2e64ce418661fe14cab0">RoutingTable::RoutingTable</a></div><div class="ttdeci">RoutingTable(int sources, int destinations)</div><div class="ttdef"><b>Definition:</b> routingTable.h:34</div></div>
-<div class="ttc" id="aclass_routing_table_html_ac0594643d9277dc0f9331f5ce4f6e86c"><div class="ttname"><a href="class_routing_table.html#ac0594643d9277dc0f9331f5ce4f6e86c">RoutingTable::operator()</a></div><div class="ttdeci">RoutingTableEntry &amp; operator()(T source_idx, T destination_idx)</div><div class="ttdef"><b>Definition:</b> routingTable.h:89</div></div>
-<div class="ttc" id="aclass_routing_table_html_ac7f997392f3654f8c35de455286bdfba"><div class="ttname"><a href="class_routing_table.html#ac7f997392f3654f8c35de455286bdfba">RoutingTable::push_row</a></div><div class="ttdeci">void push_row(std::vector&lt; RoutingTableEntry &gt; new_row)</div><div class="ttdef"><b>Definition:</b> routingTable.h:56</div></div>
-<div class="ttc" id="aclass_routing_table_html_ae83180a12e0583fa3420ba19260054be"><div class="ttname"><a href="class_routing_table.html#ae83180a12e0583fa3420ba19260054be">RoutingTable::size</a></div><div class="ttdeci">int size(int dim)</div><div class="ttdef"><b>Definition:</b> routingTable.h:40</div></div>
+<div class="ttc" id="aclass_routing_table_html_aa07d73cbbfb0c18fb813c80108b3dbc0"><div class="ttname"><a href="class_routing_table.html#aa07d73cbbfb0c18fb813c80108b3dbc0">RoutingTable::operator()</a></div><div class="ttdeci">std::vector&lt; RoutingTableEntry &gt; operator()(T source_idx) const</div><div class="ttdef"><b>Definition:</b> routingTable.h:95</div></div>
+<div class="ttc" id="aclass_routing_table_html_aac73f96cccbb2e64ce418661fe14cab0"><div class="ttname"><a href="class_routing_table.html#aac73f96cccbb2e64ce418661fe14cab0">RoutingTable::RoutingTable</a></div><div class="ttdeci">RoutingTable(int sources, int destinations)</div><div class="ttdef"><b>Definition:</b> routingTable.h:36</div></div>
+<div class="ttc" id="aclass_routing_table_html_ac7f997392f3654f8c35de455286bdfba"><div class="ttname"><a href="class_routing_table.html#ac7f997392f3654f8c35de455286bdfba">RoutingTable::push_row</a></div><div class="ttdeci">void push_row(std::vector&lt; RoutingTableEntry &gt; new_row)</div><div class="ttdef"><b>Definition:</b> routingTable.h:65</div></div>
+<div class="ttc" id="aclass_routing_table_html_ae83180a12e0583fa3420ba19260054be"><div class="ttname"><a href="class_routing_table.html#ae83180a12e0583fa3420ba19260054be">RoutingTable::size</a></div><div class="ttdeci">int size(int dim)</div><div class="ttdef"><b>Definition:</b> routingTable.h:42</div></div>
 <div class="ttc" id="ainterfaces_8h_html"><div class="ttname"><a href="interfaces_8h.html">interfaces.h</a></div></div>
 <div class="ttc" id="ainterfaces_8h_html_af0cd30ccfa4f4fe2bd0fdc3cfc4d34cf"><div class="ttname"><a href="interfaces_8h.html#af0cd30ccfa4f4fe2bd0fdc3cfc4d34cf">Interface</a></div><div class="ttdeci">Interface</div><div class="ttdef"><b>Definition:</b> interfaces.h:6</div></div>
 <div class="ttc" id="ainterfaces_8h_html_af0cd30ccfa4f4fe2bd0fdc3cfc4d34cfabb1ca97ec761fc37101737ba0aa2e7c5"><div class="ttname"><a href="interfaces_8h.html#af0cd30ccfa4f4fe2bd0fdc3cfc4d34cfabb1ca97ec761fc37101737ba0aa2e7c5">Interface::ERROR</a></div><div class="ttdeci">@ ERROR</div></div>
 <div class="ttc" id="anodes_8h_html"><div class="ttname"><a href="nodes_8h.html">nodes.h</a></div></div>
-<div class="ttc" id="astruct_routing_table_entry_html"><div class="ttname"><a href="struct_routing_table_entry.html">RoutingTableEntry</a></div><div class="ttdef"><b>Definition:</b> routingTable.h:18</div></div>
-<div class="ttc" id="astruct_routing_table_entry_html_aac4c68e32d470ed7fe8aea943352b6cb"><div class="ttname"><a href="struct_routing_table_entry.html#aac4c68e32d470ed7fe8aea943352b6cb">RoutingTableEntry::metric</a></div><div class="ttdeci">uint8_t metric</div><div class="ttdef"><b>Definition:</b> routingTable.h:20</div></div>
-<div class="ttc" id="astruct_routing_table_entry_html_accfbf8839332b3def86e8f66e7884741"><div class="ttname"><a href="struct_routing_table_entry.html#accfbf8839332b3def86e8f66e7884741">RoutingTableEntry::gateway</a></div><div class="ttdeci">Interface gateway</div><div class="ttdef"><b>Definition:</b> routingTable.h:19</div></div>
+<div class="ttc" id="astruct_routing_table_entry_html"><div class="ttname"><a href="struct_routing_table_entry.html">RoutingTableEntry</a></div><div class="ttdef"><b>Definition:</b> routingTable.h:20</div></div>
+<div class="ttc" id="astruct_routing_table_entry_html_aac4c68e32d470ed7fe8aea943352b6cb"><div class="ttname"><a href="struct_routing_table_entry.html#aac4c68e32d470ed7fe8aea943352b6cb">RoutingTableEntry::metric</a></div><div class="ttdeci">uint8_t metric</div><div class="ttdef"><b>Definition:</b> routingTable.h:22</div></div>
+<div class="ttc" id="astruct_routing_table_entry_html_accfbf8839332b3def86e8f66e7884741"><div class="ttname"><a href="struct_routing_table_entry.html#accfbf8839332b3def86e8f66e7884741">RoutingTableEntry::gateway</a></div><div class="ttdeci">Interface gateway</div><div class="ttdef"><b>Definition:</b> routingTable.h:21</div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->

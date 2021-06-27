@@ -26,7 +26,7 @@ void StorageController::setup(){
         generateDirectoryStructure(STORAGE_DEVICE::MICROSD);
         _sm->logcontroller.log("SD Initalized");   
     }else{
-        _sm->systemstatus.new_message(system_flag::ERROR_SD,"Error intializing SD card");
+        _sm->systemstatus.new_message(SYSTEM_FLAG::ERROR_SD,"Error intializing SD card");
     }
     
 
@@ -41,12 +41,12 @@ void StorageController::setup(){
             _sm->logcontroller.log("Flash FS Initalized");
         
         }else{
-            _sm->systemstatus.new_message(system_flag::ERROR_FLASH,"Error intializing onboard flashfs");
+            _sm->systemstatus.new_message(SYSTEM_FLAG::ERROR_FLASH,"Error intializing onboard flashfs");
             
         }
 
     }else{
-        _sm->systemstatus.new_message(system_flag::ERROR_FLASH,"Error intializing onboard flash");
+        _sm->systemstatus.new_message(SYSTEM_FLAG::ERROR_FLASH,"Error intializing onboard flash");
         
     }
     
@@ -196,9 +196,8 @@ File StorageController::open(std::string path, STORAGE_DEVICE device,oflag_t mod
     return ret;
 }
 
-bool StorageController::erase(STORAGE_DEVICE device){ // need to make sure this doesnt wipe out configuration files lol
-//maybe call the configcontroller to rewrite the config file if we store the configuration in ram
-    // cross coupling here again because we need to turn off logging so we can update the log file paths
+bool StorageController::erase(STORAGE_DEVICE device){ 
+
     bool error = false;
 
     _sm->logcontroller.stopLogging(LOG_TYPE::ALL);
@@ -206,7 +205,7 @@ bool StorageController::erase(STORAGE_DEVICE device){ // need to make sure this 
     switch(device){
         case(STORAGE_DEVICE::MICROSD):{
             if(!rmParent("/Logs", &microsd)){
-                _sm->systemstatus.new_message(system_flag::ERROR_SD,"Error wiping SD card");
+                _sm->systemstatus.new_message(SYSTEM_FLAG::ERROR_SD,"Error wiping SD card");
                 error = true;
                 break;
             }
@@ -216,7 +215,7 @@ bool StorageController::erase(STORAGE_DEVICE device){ // need to make sure this 
         }
         case(STORAGE_DEVICE::FLASH):{
             if(!rmParent("/Logs", &flash_fatfs)){
-                _sm->systemstatus.new_message(system_flag::ERROR_FLASH,"Error wiping onboard flash");
+                _sm->systemstatus.new_message(SYSTEM_FLAG::ERROR_FLASH,"Error wiping onboard flash");
                 error = true;
                 break;
             }   
@@ -233,13 +232,51 @@ bool StorageController::erase(STORAGE_DEVICE device){ // need to make sure this 
     //make sure directory structure is present on wiped device
     generateDirectoryStructure(device);
     _sm->logcontroller.setup(); // reinitialize log controller
-    //_sm->logcontroller.generateLogDirectories(device); //ensure logging directories exist
-    //reopen log files
-    //_sm->logcontroller.startLogging(LOG_TYPE::ALL);    
-
+   
     return error;
     
 }
+
+bool StorageController::format(STORAGE_DEVICE device){ 
+    bool error = false;
+
+    _sm->logcontroller.stopLogging(LOG_TYPE::ALL);
+
+    switch(device){
+        case(STORAGE_DEVICE::MICROSD):{
+            if(!microsd.wipe()){
+                _sm->systemstatus.new_message(SYSTEM_FLAG::ERROR_SD,"Error formatting SD card");
+                error = true;
+                break;
+            }
+            
+             _sm->logcontroller.log("SD Wiped");
+            break;
+        }
+        case(STORAGE_DEVICE::FLASH):{
+            if(!flash_fatfs.wipe()){
+                _sm->systemstatus.new_message(SYSTEM_FLAG::ERROR_FLASH,"Error formatting onboard flash");
+                error = true;
+                break;
+            }   
+
+            _sm->logcontroller.log("Flash Wiped");
+            break;       
+        }
+        default:{
+            //no option supplied so dont do anything
+            error = true;
+            break;
+        }
+    }
+    //make sure directory structure is present on wiped device
+    generateDirectoryStructure(device);
+    _sm->logcontroller.setup(); // reinitialize log controller
+  
+    return error;
+    
+}
+
 bool StorageController::ls(std::string path,std::vector<directory_element_t> &directory_structure,FatFileSystem* fs){
     File _file;
     fs->chvol(); // cahnge vol to fs provided

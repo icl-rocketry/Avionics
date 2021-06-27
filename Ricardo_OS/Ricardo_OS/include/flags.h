@@ -2,7 +2,7 @@
 #define FLAGS_H
 
 
-enum class system_flag:uint32_t{
+enum class SYSTEM_FLAG:uint32_t{
     //state flags
     STATE_USBMODE = (1 << 0), 
     STATE_PREFLIGHT = (1 << 1),

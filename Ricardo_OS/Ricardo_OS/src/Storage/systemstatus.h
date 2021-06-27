@@ -17,16 +17,16 @@ class SystemStatus{
     public:
         //SystemStatus(stateMachine* sm);
         SystemStatus(LogController* logcontroller);
-        void new_message(system_flag flag,std::string info);
-        void new_message(system_flag flag);
+        void new_message(SYSTEM_FLAG flag,std::string info);
+        void new_message(SYSTEM_FLAG flag);
 
         uint32_t get_string();
 
-        void delete_message(system_flag flag);
-        void delete_message(system_flag flag,std::string info);
+        void delete_message(SYSTEM_FLAG flag);
+        void delete_message(SYSTEM_FLAG flag,std::string info);
 
 
-        bool flag_triggered(system_flag flag);
+        bool flag_triggered(SYSTEM_FLAG flag);
     private:
         //stateMachine* _sm;//pointer to statemachine
         LogController* _logcontroller;//pointer to logcontroller

@@ -25,10 +25,10 @@ var flags_8h =
       [ "WARN_BATT", "flags_8h.html#a1cb315cc6ae6368d46a819d952b416ada81895150b981150663d3b99cd2161098", null ],
       [ "WARN_PYRO1", "flags_8h.html#a1cb315cc6ae6368d46a819d952b416ada408549849152d60db26d09e88708fa71", null ],
       [ "WARN_PYRO2", "flags_8h.html#a1cb315cc6ae6368d46a819d952b416ada2a3547e0c1acdfd854c06c90387cd628", null ],
-      [ "INFO_BOOST", "flags_8h.html#a1cb315cc6ae6368d46a819d952b416adab6e039bc25477c219f309eca65ceb72c", null ],
-      [ "INFO_COAST", "flags_8h.html#a1cb315cc6ae6368d46a819d952b416ada0d1af0cc544d71d869d3b48cccc8e0e1", null ],
-      [ "INFO_APOGEE", "flags_8h.html#a1cb315cc6ae6368d46a819d952b416ada8014be5cb409dcd3dbe2146ce1410d7f", null ],
-      [ "INFO_DROUGE_CHUTE", "flags_8h.html#a1cb315cc6ae6368d46a819d952b416ada67991fcb25f9692c370f7ddfaef7c1af", null ],
-      [ "INFO_MAIN_CHUTE", "flags_8h.html#a1cb315cc6ae6368d46a819d952b416ada9eccbf38559fd8ea4fab2a97db0d3149", null ]
+      [ "FLIGHTPHASE_BOOST", "flags_8h.html#a1cb315cc6ae6368d46a819d952b416ada23c3d2f97963b4e858a260fba1ad83ba", null ],
+      [ "FLIGHTPHASE_COAST", "flags_8h.html#a1cb315cc6ae6368d46a819d952b416ada54b7437673fc307cc92b3dc11562e896", null ],
+      [ "FLIGHTPHASE_APOGEE", "flags_8h.html#a1cb315cc6ae6368d46a819d952b416ada3d9a2a604a2fbdc410719f3be5374786", null ],
+      [ "FLIGHTPHASE_DROUGE_CHUTE", "flags_8h.html#a1cb315cc6ae6368d46a819d952b416adaa9a9b3714cf5e300ae77a5891ea3f571", null ],
+      [ "FLIGHTPHASE_MAIN_CHUTE", "flags_8h.html#a1cb315cc6ae6368d46a819d952b416ada4d67b66d55acba142074404cdfbbfbc4", null ]
     ] ]
 ];

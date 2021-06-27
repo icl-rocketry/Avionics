@@ -1,11 +1,12 @@
 <map id="StorageController::mkdir" name="StorageController::mkdir">
-<area shape="rect" id="node1" title=" " alt="" coords="724,104,855,145"/>
-<area shape="rect" id="node2" href="$class_storage_controller.html#a080bc92c81449245e61cc5e6d150da3d" title=" " alt="" coords="497,71,676,112"/>
-<area shape="rect" id="node7" href="$class_log_controller.html#af983c7f4d7fc63638658f00a152adb0b" title=" " alt="" coords="497,5,676,47"/>
-<area shape="rect" id="node8" href="$class_storage_controller.html#ad4c3a4d350750137bb742c3a98e7b3bb" title=" " alt="" coords="519,136,654,177"/>
-<area shape="rect" id="node9" href="$class_log_controller.html#a691c1ff90609fcbd1c95a791fbec30bb" title=" " alt="" coords="311,143,449,170"/>
-<area shape="rect" id="node3" href="$class_storage_controller.html#a8d50450acbe1b423a367b13d17f4d375" title=" " alt="" coords="315,8,445,49"/>
-<area shape="rect" id="node4" href="$class_storage_controller.html#af6c2adac43b2c4072cbf10c98d6f3e3e" title=" " alt="" coords="315,75,445,116"/>
-<area shape="rect" id="node5" href="$classstate_machine.html#ab9275b38265e4166367b4f3d2aa0e474" title=" " alt="" coords="108,114,263,141"/>
-<area shape="rect" id="node6" href="$main_8cpp.html#a4fc01d736fe50cf5b977f755b675f11d" title=" " alt="" coords="5,114,60,141"/>
+<area shape="rect" id="node1" title=" " alt="" coords="724,159,855,200"/>
+<area shape="rect" id="node2" href="$class_storage_controller.html#a080bc92c81449245e61cc5e6d150da3d" title="Generate directory strucutre consisting of /Logs and /Configuration." alt="" coords="497,64,676,105"/>
+<area shape="rect" id="node8" href="$class_log_controller.html#af983c7f4d7fc63638658f00a152adb0b" title=" " alt="" coords="497,247,676,288"/>
+<area shape="rect" id="node9" href="$class_storage_controller.html#ad4c3a4d350750137bb742c3a98e7b3bb" title="Generate a unique directory name for a given directory on a given device." alt="" coords="519,129,654,171"/>
+<area shape="rect" id="node10" href="$class_log_controller.html#a691c1ff90609fcbd1c95a791fbec30bb" title=" " alt="" coords="311,173,449,199"/>
+<area shape="rect" id="node3" href="$class_storage_controller.html#a8d50450acbe1b423a367b13d17f4d375" title="Erases only &quot;/Logs&quot; directory on specified device." alt="" coords="120,148,251,189"/>
+<area shape="rect" id="node4" href="$class_storage_controller.html#adcf3f7a86a931310469a71a8ed4aa6bb" title="Format given device." alt="" coords="120,73,251,115"/>
+<area shape="rect" id="node5" href="$class_storage_controller.html#af6c2adac43b2c4072cbf10c98d6f3e3e" title=" " alt="" coords="315,5,445,47"/>
+<area shape="rect" id="node6" href="$classstate_machine.html#ab9275b38265e4166367b4f3d2aa0e474" title=" " alt="" coords="108,18,263,45"/>
+<area shape="rect" id="node7" href="$main_8cpp.html#a4fc01d736fe50cf5b977f755b675f11d" title=" " alt="" coords="5,18,60,45"/>
 </map>

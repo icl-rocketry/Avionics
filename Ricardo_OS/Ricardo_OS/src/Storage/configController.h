@@ -11,14 +11,14 @@
 
 class ConfigController{
     public:
-        ConfigController(StorageController& storagecontroller,LogController& logcontroller);
+        ConfigController(StorageController* storagecontroller,LogController* logcontroller);
         void load();
         
         DynamicJsonDocument configDoc;
         bool _error;
     private:
-        StorageController& _storagecontroller; //pointer to storage controller
-        LogController& _logcontroller;//pointer to log controller
+        StorageController* _storagecontroller; //pointer to storage controller
+        LogController* _logcontroller;//pointer to log controller
         const std::string configuration_file_path = "/Configuration/rml.jsonc";
 
         

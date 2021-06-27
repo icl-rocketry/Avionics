@@ -1,5 +1,6 @@
 var searchData=
 [
-  ['networkmanager_894',['NetworkManager',['../class_network_manager.html#aa1832d9cbe09178014f299fb1dce404c',1,'NetworkManager']]],
-  ['new_5fmessage_895',['new_message',['../class_system_status.html#a872912293f3c93e87eb69c9a70f7743a',1,'SystemStatus::new_message(system_flag flag, std::string info)'],['../class_system_status.html#a3d8704fc48feda4f5186925f15be5d66',1,'SystemStatus::new_message(system_flag flag)']]]
+  ['melody_5ft_1019',['melody_t',['../classmelody__t.html#a46c002d72368a248e5decfdbcd30143b',1,'melody_t']]],
+  ['member_5fsize_1020',['member_size',['../classserializer.html#a8c136a3b1df93a38d9796f89c20aacff',1,'serializer']]],
+  ['mkdir_1021',['mkdir',['../class_storage_controller.html#a4e77f06d615eb2488804886109b98b5c',1,'StorageController']]]
 ];

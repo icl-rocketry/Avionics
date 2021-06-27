@@ -89,5 +89,6 @@ var pitches_8h =
     [ "NOTE_GS5", "pitches_8h.html#a1d0d4526c7554185499a7207359bda67", null ],
     [ "NOTE_GS6", "pitches_8h.html#a97b306e8336c0e303e366ad2cdacbee0", null ],
     [ "NOTE_GS7", "pitches_8h.html#a2103012b7aab268027be083fb9527aef", null ],
-    [ "PITCHES_H", "pitches_8h.html#ad5bd2700a44ad69f5e9a7f6a045121fc", null ]
+    [ "PITCHES_H", "pitches_8h.html#ad5bd2700a44ad69f5e9a7f6a045121fc", null ],
+    [ "REST", "pitches_8h.html#af61315e1c4a04436923a5c52196cdd3c", null ]
 ];

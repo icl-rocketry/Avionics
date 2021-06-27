@@ -16,7 +16,7 @@ var class_packet_header =
     [ "source", "class_packet_header.html#a9f3fe9022c36622c66f9d2fa543a904f", null ],
     [ "src_interface", "class_packet_header.html#ad958f9d1c378e64ef845244576d7db5f", null ],
     [ "start_byte", "class_packet_header.html#a0a27191dab044da810e1a1889020d333", null ],
-    [ "system_time", "class_packet_header.html#a4f1a7d5e67ff2356183e4e1af12cac66", null ],
     [ "ttl", "class_packet_header.html#a8a2e4a283eb6eb6cea4ecb750b1c36e5", null ],
-    [ "type", "class_packet_header.html#a76c5031c8115a17ec011d3af8046aeef", null ]
+    [ "type", "class_packet_header.html#a76c5031c8115a17ec011d3af8046aeef", null ],
+    [ "uid", "class_packet_header.html#a4abf267b640231f156546a22d4c51ad0", null ]
 ];

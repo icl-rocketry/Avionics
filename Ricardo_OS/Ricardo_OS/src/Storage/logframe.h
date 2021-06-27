@@ -32,7 +32,7 @@ private:
     }
 
 public:
-    //global_system_flag
+    //global_SYSTEM_FLAG
     std::string logLevel;
     uint64_t timestamp;
     std::string message;

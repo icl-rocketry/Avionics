@@ -15,7 +15,7 @@
 
 
 Setup::Setup(stateMachine* sm) : State(sm){
-    _curr_stateID = system_flag::STATE_SETUP;
+    _curr_stateID = SYSTEM_FLAG::STATE_SETUP;
 };
 
 void Setup::initialise(){

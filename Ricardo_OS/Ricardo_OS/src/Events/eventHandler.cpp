@@ -14,7 +14,7 @@ _sm(sm)
 
 void EventHandler::setup(jsondoc config){
     //for each in the list of cool tings
-    StaticJsonDocument<200> doc;
+    //StaticJsonDocument<200> doc;
 
 };
 

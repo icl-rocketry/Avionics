@@ -35,19 +35,67 @@ class StorageController{
         StorageController(stateMachine *sm);
         void setup(); //setup storage devices
 
-        //void write(std::string &path,std::string &data,STORAGE_DEVICE device);//missing arguemtn for data -we need to decide 
-        //File read(std::string path,STORAGE_DEVICE device); 
-
+        
+        /**
+         * @brief open a file on specified path on specific device
+         * 
+         * @param path 
+         * @param device 
+         * @param mode 
+         * @return File 
+         */
         File open(std::string path,STORAGE_DEVICE device,oflag_t mode);
-
+        /**
+         * @brief Generate a unique directory name for a given directory on a given device.
+         * 
+         * @param input_directory 
+         * @param device 
+         * @return std::string 
+         */
         std::string getUniqueDirectory(std::string input_directory,STORAGE_DEVICE device); //checks and updates directory name so that it is unique
         
         bool mkdir(std::string path, STORAGE_DEVICE device);
+        /**
+         * @brief List all files and directories in given path
+         * 
+         * @param path filepath
+         * @param directory_structure output vector
+         * @param device 
+         * @return true 
+         * @return false 
+         */
         bool ls(std::string path,std::vector<directory_element_t> &directory_structure,STORAGE_DEVICE device);
+        /**
+         * @brief List all files and directories in root path
+         * 
+         * @param directory_structure 
+         * @param device 
+         * @return true 
+         * @return false 
+         */
         bool ls(std::vector<directory_element_t> &directory_structure,STORAGE_DEVICE device);
         void printDirectory(std::string path,STORAGE_DEVICE device);
-        bool erase(STORAGE_DEVICE device);//format device
-
+        /**
+         * @brief Erases only "/Logs" directory on specified device.
+         * 
+         * @param device 
+         * @return true 
+         * @return false 
+         */
+        bool erase(STORAGE_DEVICE device);//erase logging directory
+        /**
+         * @brief Format given device
+         * 
+         * @param device 
+         * @return true 
+         * @return false 
+         */
+        bool format(STORAGE_DEVICE device);
+        /**
+         * @brief Generate directory strucutre consisting of /Logs and /Configuration
+         * 
+         * @param device 
+         */
         void generateDirectoryStructure(STORAGE_DEVICE device);
 
         

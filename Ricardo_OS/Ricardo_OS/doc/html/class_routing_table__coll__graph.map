@@ -1,4 +1,4 @@
 <map id="RoutingTable" name="RoutingTable">
-<area shape="rect" id="node1" title=" " alt="" coords="21,109,119,136"/>
+<area shape="rect" id="node1" title=" " alt="" coords="21,95,119,121"/>
 <area shape="rect" id="node2" href="$struct_routing_table_entry.html" title=" " alt="" coords="5,5,135,32"/>
 </map>

@@ -1,4 +1,9 @@
 <map id="loop" name="loop">
-<area shape="rect" id="node1" title=" " alt="" coords="188,5,235,32"/>
-<area shape="rect" id="node2" href="$class_tunez_handler.html#a02e64b5ab21c71fc6e62e6673f80ac63" title=" " alt="" coords="5,5,140,32"/>
+<area shape="rect" id="node1" title=" " alt="" coords="1103,81,1149,108"/>
+<area shape="rect" id="node2" href="$class_tunez_handler.html#a02e64b5ab21c71fc6e62e6673f80ac63" title=" " alt="" coords="920,56,1055,83"/>
+<area shape="rect" id="node3" href="$class_command_handler.html#a54c1b7e2f1a6d0365ef36a0c738d7e02" title=" " alt="" coords="639,5,872,32"/>
+<area shape="rect" id="node7" href="$class_setup.html#a315e788a23a012d5993613c627f15302" title=" " alt="" coords="700,56,811,83"/>
+<area shape="rect" id="node4" href="$class_command_handler.html#a6c61c87a0ad0045aa6133dd69112a72b" title=" " alt="" coords="416,19,591,45"/>
+<area shape="rect" id="node5" href="$class_network_manager.html#a0d4ea7d4f0b395249151d0a28af79cd5" title=" " alt="" coords="200,31,368,57"/>
+<area shape="rect" id="node6" href="$classstate_machine.html#a5f4f54735cb0a13393227e3af6863cdd" title=" " alt="" coords="5,81,152,108"/>
 </map>

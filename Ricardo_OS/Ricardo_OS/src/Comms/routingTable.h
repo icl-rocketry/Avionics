@@ -18,14 +18,14 @@ add logging if bounds are out of bounds lol
 
 
 struct RoutingTableEntry{
-    Interface gateway;
+    INTERFACE gateway;
     uint8_t metric;
 };
 /*
 const RoutingTableEntry routingtable[2][5] =
 {
-    {{Interface::LOOPBACK,0},{Interface::LORA,1},{Interface::LORA,2},{Interface::CAN,1},{Interface::USBSerial,1}}, 
-    {{Interface::LORA,1},{Interface::LOOPBACK,0},{Interface::USBSerial,1},{Interface::LORA,2},{Interface::USBSerial,1}}
+    {{INTERFACE::LOOPBACK,0},{INTERFACE::LORA,1},{INTERFACE::LORA,2},{INTERFACE::CAN,1},{INTERFACE::USBSerial,1}}, 
+    {{INTERFACE::LORA,1},{INTERFACE::LOOPBACK,0},{INTERFACE::USBSerial,1},{INTERFACE::LORA,2},{INTERFACE::USBSerial,1}}
 };
 */
 
@@ -114,7 +114,7 @@ class RoutingTable{
 
     private:
         std::vector< std::vector<RoutingTableEntry> > _table;
-        const RoutingTableEntry error_entry{Interface::ERROR,255}; // error entry return
+        const RoutingTableEntry error_entry{INTERFACE::ERROR,255}; // error entry return
        
 };
 

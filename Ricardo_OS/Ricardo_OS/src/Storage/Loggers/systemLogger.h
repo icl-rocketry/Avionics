@@ -33,7 +33,7 @@ private:
     std::vector<system_logframe> system_log_buffer;
 
     std::string flagLevel(uint32_t flag);
-    std::string flagLevel(system_flag flag);
+    std::string flagLevel(SYSTEM_FLAG flag);
 
 
 };

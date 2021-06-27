@@ -2,6 +2,8 @@ var class_radio =
 [
     [ "Radio", "class_radio.html#acfc247c737ec20bcfb106f8ce151f337", null ],
     [ "get_packet", "class_radio.html#a45de275f8025cc7c6b6d9d12013c22c8", null ],
+    [ "get_rssi", "class_radio.html#a72f533e8768d338547a78a75c81656aa", null ],
+    [ "get_snr", "class_radio.html#ac9514fc7a175ff2b9d194edf008c4cb0", null ],
     [ "send_packet", "class_radio.html#a219437f42cd31f1373c7192b3c5fc19c", null ],
     [ "setup", "class_radio.html#a46f079f86ab0e7e83a4521c35eaa9aff", null ],
     [ "_spi", "class_radio.html#a12b07fdb3eb87ff8f38c7168194d597b", null ],

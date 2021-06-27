@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.9.1"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Ricardo OS: /Users/kiran/Documents/Projects/ICLR/Avionics/Ricardo_OS/Ricardo_OS/src/Logging/Loggers/systemLogger.h Source File</title>
+<title>Ricardo OS: /Users/kiran/Documents/Projects/ICLR/Avionics/Ricardo_OS/Ricardo_OS/src/Storage/Loggers/systemLogger.h Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -111,33 +111,37 @@ $(document).ready(function(){initNavTree('system_logger_8h_source.html',''); ini
 <div class="line"><a name="l00013"></a><span class="lineno"><a class="line" href="class_system_logger.html">   13</a></span>&#160;<span class="keyword">class </span><a class="code" href="class_system_logger.html">SystemLogger</a> : <span class="keyword">public</span> <a class="code" href="class_logger.html">Logger</a></div>
 <div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;{</div>
 <div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="keyword">public</span>:</div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;    <a class="code" href="class_system_logger.html#aeb9d18f808194a66d46744f9155db007">SystemLogger</a>(<a class="code" href="class_storage_controller.html">StorageController</a>* sc,uint16_t dt,std::string filename,<a class="code" href="storage_controller_8h.html#a9539e551e6a3b5229703f97c65f94bae">STORAGE_DEVICE</a> mainStorage = <a class="code" href="storage_controller_8h.html#a9539e551e6a3b5229703f97c65f94baea12e06b08b2eca71ace052b129c0baa7b">STORAGE_DEVICE::MICROSD</a>,<a class="code" href="storage_controller_8h.html#a9539e551e6a3b5229703f97c65f94bae">STORAGE_DEVICE</a> backupStorage = <a class="code" href="storage_controller_8h.html#a9539e551e6a3b5229703f97c65f94baea227b519e83a8b99329302ad2d37d0bbb">STORAGE_DEVICE::FLASH</a>);</div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160; </div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_system_logger.html#aa4ab39355df87bfe2b68780399200b59">enable</a>();</div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_system_logger.html#a475bfd21fcc2cbe58d5d3ec1ddb58068">disable</a>();</div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160; </div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_system_logger.html#aa9d17a2c54cb5a8dd5c9696053a57569">writeLog</a>();</div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160; </div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_system_logger.html#a5fb487decda1d55bb1ea6ecee82840e2">log</a>(std::string message);</div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_system_logger.html#a5fb487decda1d55bb1ea6ecee82840e2">log</a>(uint32_t <a class="code" href="class_logger.html#ae6e80fcd7b9058cd4e13649b348a5cca">status</a>,uint32_t flag,std::string message);</div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160; </div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;    <a class="code" href="class_system_logger.html#abf5fa72429af6ef6af87d58ac54a5bc9">~SystemLogger</a>();</div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="keyword">private</span>:</div>
-<div class="line"><a name="l00028"></a><span class="lineno"><a class="line" href="class_system_logger.html#a293445303271176f118e495ac89e62ac">   28</a></span>&#160;    <a class="code" href="classsystem__logframe.html">system_logframe</a> <a class="code" href="class_system_logger.html#a293445303271176f118e495ac89e62ac">system_frame</a>;</div>
-<div class="line"><a name="l00029"></a><span class="lineno"><a class="line" href="class_system_logger.html#a030ca5018001e7bca94bc0658f37a45b">   29</a></span>&#160;    std::vector&lt;system_logframe&gt; <a class="code" href="class_system_logger.html#a030ca5018001e7bca94bc0658f37a45b">system_log_buffer</a>;</div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160; </div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;    std::string <a class="code" href="class_system_logger.html#aa8648a3defcc1f7a79701c4e9b996b67">flagLevel</a>(uint32_t flag);</div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;    std::string <a class="code" href="class_system_logger.html#aa8648a3defcc1f7a79701c4e9b996b67">flagLevel</a>(<a class="code" href="flags_8h.html#a1cb315cc6ae6368d46a819d952b416ad">system_flag</a> flag);</div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160; </div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;    <a class="code" href="class_system_logger.html#aeb9d18f808194a66d46744f9155db007">SystemLogger</a>(<a class="code" href="class_storage_controller.html">StorageController</a>* sc,</div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;                 uint16_t dt,</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;                 std::string filename,</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;                 <a class="code" href="storage_controller_8h.html#a9539e551e6a3b5229703f97c65f94bae">STORAGE_DEVICE</a> mainStorage = <a class="code" href="storage_controller_8h.html#a9539e551e6a3b5229703f97c65f94baea12e06b08b2eca71ace052b129c0baa7b">STORAGE_DEVICE::MICROSD</a>,</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;                 <a class="code" href="storage_controller_8h.html#a9539e551e6a3b5229703f97c65f94bae">STORAGE_DEVICE</a> backupStorage = <a class="code" href="storage_controller_8h.html#a9539e551e6a3b5229703f97c65f94baea227b519e83a8b99329302ad2d37d0bbb">STORAGE_DEVICE::FLASH</a>);</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160; </div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_system_logger.html#aa4ab39355df87bfe2b68780399200b59">enable</a>();</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_system_logger.html#a475bfd21fcc2cbe58d5d3ec1ddb58068">disable</a>();</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160; </div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_system_logger.html#aa9d17a2c54cb5a8dd5c9696053a57569">writeLog</a>();</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160; </div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_system_logger.html#a5fb487decda1d55bb1ea6ecee82840e2">log</a>(std::string message);</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_system_logger.html#a5fb487decda1d55bb1ea6ecee82840e2">log</a>(uint32_t <a class="code" href="class_logger.html#ae6e80fcd7b9058cd4e13649b348a5cca">status</a>,uint32_t flag,std::string message);</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160; </div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;    <a class="code" href="class_system_logger.html#abf5fa72429af6ef6af87d58ac54a5bc9">~SystemLogger</a>();</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="keyword">private</span>:</div>
+<div class="line"><a name="l00032"></a><span class="lineno"><a class="line" href="class_system_logger.html#a293445303271176f118e495ac89e62ac">   32</a></span>&#160;    <a class="code" href="classsystem__logframe.html">system_logframe</a> <a class="code" href="class_system_logger.html#a293445303271176f118e495ac89e62ac">system_frame</a>;</div>
+<div class="line"><a name="l00033"></a><span class="lineno"><a class="line" href="class_system_logger.html#a030ca5018001e7bca94bc0658f37a45b">   33</a></span>&#160;    std::vector&lt;system_logframe&gt; <a class="code" href="class_system_logger.html#a030ca5018001e7bca94bc0658f37a45b">system_log_buffer</a>;</div>
 <div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160; </div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;};</div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160; </div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;    std::string <a class="code" href="class_system_logger.html#aa8648a3defcc1f7a79701c4e9b996b67">flagLevel</a>(uint32_t flag);</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;    std::string <a class="code" href="class_system_logger.html#aa8648a3defcc1f7a79701c4e9b996b67">flagLevel</a>(<a class="code" href="flags_8h.html#a1cb315cc6ae6368d46a819d952b416ad">system_flag</a> flag);</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160; </div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160; </div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;};</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160; </div>
 <div class="ttc" id="aclass_logger_html"><div class="ttname"><a href="class_logger.html">Logger</a></div><div class="ttdef"><b>Definition:</b> logger.h:8</div></div>
 <div class="ttc" id="aclass_logger_html_ae6e80fcd7b9058cd4e13649b348a5cca"><div class="ttname"><a href="class_logger.html#ae6e80fcd7b9058cd4e13649b348a5cca">Logger::status</a></div><div class="ttdeci">bool status()</div><div class="ttdef"><b>Definition:</b> logger.h:19</div></div>
 <div class="ttc" id="aclass_storage_controller_html"><div class="ttname"><a href="class_storage_controller.html">StorageController</a></div><div class="ttdef"><b>Definition:</b> storageController.h:33</div></div>
 <div class="ttc" id="aclass_system_logger_html"><div class="ttname"><a href="class_system_logger.html">SystemLogger</a></div><div class="ttdef"><b>Definition:</b> systemLogger.h:14</div></div>
-<div class="ttc" id="aclass_system_logger_html_a030ca5018001e7bca94bc0658f37a45b"><div class="ttname"><a href="class_system_logger.html#a030ca5018001e7bca94bc0658f37a45b">SystemLogger::system_log_buffer</a></div><div class="ttdeci">std::vector&lt; system_logframe &gt; system_log_buffer</div><div class="ttdef"><b>Definition:</b> systemLogger.h:29</div></div>
-<div class="ttc" id="aclass_system_logger_html_a293445303271176f118e495ac89e62ac"><div class="ttname"><a href="class_system_logger.html#a293445303271176f118e495ac89e62ac">SystemLogger::system_frame</a></div><div class="ttdeci">system_logframe system_frame</div><div class="ttdef"><b>Definition:</b> systemLogger.h:28</div></div>
+<div class="ttc" id="aclass_system_logger_html_a030ca5018001e7bca94bc0658f37a45b"><div class="ttname"><a href="class_system_logger.html#a030ca5018001e7bca94bc0658f37a45b">SystemLogger::system_log_buffer</a></div><div class="ttdeci">std::vector&lt; system_logframe &gt; system_log_buffer</div><div class="ttdef"><b>Definition:</b> systemLogger.h:33</div></div>
+<div class="ttc" id="aclass_system_logger_html_a293445303271176f118e495ac89e62ac"><div class="ttname"><a href="class_system_logger.html#a293445303271176f118e495ac89e62ac">SystemLogger::system_frame</a></div><div class="ttdeci">system_logframe system_frame</div><div class="ttdef"><b>Definition:</b> systemLogger.h:32</div></div>
 <div class="ttc" id="aclass_system_logger_html_a475bfd21fcc2cbe58d5d3ec1ddb58068"><div class="ttname"><a href="class_system_logger.html#a475bfd21fcc2cbe58d5d3ec1ddb58068">SystemLogger::disable</a></div><div class="ttdeci">void disable()</div><div class="ttdef"><b>Definition:</b> systemLogger.cpp:23</div></div>
 <div class="ttc" id="aclass_system_logger_html_a5fb487decda1d55bb1ea6ecee82840e2"><div class="ttname"><a href="class_system_logger.html#a5fb487decda1d55bb1ea6ecee82840e2">SystemLogger::log</a></div><div class="ttdeci">void log(std::string message)</div><div class="ttdef"><b>Definition:</b> systemLogger.cpp:53</div></div>
 <div class="ttc" id="aclass_system_logger_html_aa4ab39355df87bfe2b68780399200b59"><div class="ttname"><a href="class_system_logger.html#aa4ab39355df87bfe2b68780399200b59">SystemLogger::enable</a></div><div class="ttdeci">void enable()</div><div class="ttdef"><b>Definition:</b> systemLogger.cpp:19</div></div>
@@ -158,7 +162,7 @@ $(document).ready(function(){initNavTree('system_logger_8h_source.html',''); ini
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_ac55354187c8c6c264902bc62bdefbb0.html">Logging</a></li><li class="navelem"><a class="el" href="dir_573a3d95cd92222dfa3796d3d99c311b.html">Loggers</a></li><li class="navelem"><a class="el" href="system_logger_8h.html">systemLogger.h</a></li>
+    <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_e61c19fe538542bbffa80d70b1734032.html">Storage</a></li><li class="navelem"><a class="el" href="dir_c081d0962b8b0c8e1c48a8a2f8def702.html">Loggers</a></li><li class="navelem"><a class="el" href="system_logger_8h.html">systemLogger.h</a></li>
     <li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
   </ul>
 </div>

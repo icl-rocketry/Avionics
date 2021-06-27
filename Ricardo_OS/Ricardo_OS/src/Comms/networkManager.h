@@ -27,10 +27,7 @@ class stateMachine;//forward declaration to prevent circular dependancy
 
 
 class NetworkManager{
-    //give these particular states rights to change node type
 
-    friend class Preflight;
-    friend class Groundstation;
     // allow command handler to get radio rssi and snr
     friend class CommandHandler;
 
@@ -40,18 +37,14 @@ class NetworkManager{
         void setup();
         void update();
         
-        void send_to_node(Nodes destination,std::vector<uint8_t> &data);
-        void send_packet(Interface iface,std::vector<uint8_t> &data);
+        void send_to_node(NODES destination,std::vector<uint8_t> &data);
+        void send_packet(INTERFACE iface,std::vector<uint8_t> &data);
 
-        //add command 
-        void add_command(Nodes source_node, uint32_t command);
-
-        int get_node_type();
+        uint8_t getNodeType();
+        void changeNodeType(NODES node){_nodeType = node;};
+        
 
     protected:
-        //variable to tell network manager the current type of node
-        Nodes node_type;
-        
         USB usbserial; //usb serial object
         Radio radio; // lora radio object
 
@@ -59,20 +52,18 @@ class NetworkManager{
     private:
         stateMachine* _sm; //pointer to state machine
 
-        std::vector<std::unique_ptr<std::vector<uint8_t>>> _global_packet_buffer; //packet buffer containing all network packets received
-        std::vector<std::unique_ptr<std::vector<uint8_t>>> _local_packet_buffer; //packet buffer containing packets meant for this node
+        std::vector<std::unique_ptr<std::vector<uint8_t>>> _packet_buffer; //packet buffer containing all network packets received
+        //std::vector<std::unique_ptr<std::vector<uint8_t>>> _local_packet_buffer; //packet buffer containing packets meant for this node
      
         RoutingTable routingtable; // routing table for networking -> maybe move to protected so an be acsesed eaiser??
          
         //objects to process commands
         CommandHandler commandhandler;
+
+       
+        NODES _nodeType;
         
-        void process_global_packets();
-        void process_local_packets();
-        
-
-
-
+        void process_packets();
 
 };
 

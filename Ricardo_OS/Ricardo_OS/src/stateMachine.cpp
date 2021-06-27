@@ -8,6 +8,27 @@ Written by the Electronics team, Imperial College London Rocketry
 #include <string>
 #include <vector>
 
+#include "States/state.h"
+
+#include "Storage/systemstatus.h"
+
+#include "Storage/logController.h"
+#include "Storage/storageController.h"
+#include "Storage/configController.h"
+
+
+#include "Sensors/estimator.h"
+#include "Comms/networkManager.h"
+#include "Sensors/sensors.h"
+
+#include "Sound/tunezHandler.h"
+
+
+#include "SPI.h"
+#include "Wire.h"
+
+
+
 
 
 stateMachine::stateMachine() : 
@@ -15,7 +36,6 @@ stateMachine::stateMachine() :
     I2C(0),
     storagecontroller(this),
     logcontroller(&storagecontroller),
-    configcontroller(storagecontroller,logcontroller), 
     systemstatus(&logcontroller),
     networkmanager(this),
     sensors(this),
@@ -24,6 +44,8 @@ stateMachine::stateMachine() :
 
 
 void stateMachine::initialise(State* initStatePtr) {
+
+  ConfigController configcontroller(&storagecontroller,&logcontroller); // create config controller object
 
   // call tunez handler setup first so we can provide startup tone and auditory cues asap
   tunezhandler.setup();
@@ -73,7 +95,7 @@ void stateMachine::update() {
 
   
   //call update on state after new information has been processed
-  State* newStatePtr = _currStatePtr -> update();
+  State* newStatePtr = _currStatePtr->update();
 
   if (newStatePtr != _currStatePtr) {
     changeState(newStatePtr);

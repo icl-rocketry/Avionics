@@ -1,12 +1,13 @@
 <map id="DetailedAllPacket::getSerializer" name="DetailedAllPacket::getSerializer">
-<area shape="rect" id="node1" title=" " alt="" coords="1380,71,1515,112"/>
-<area shape="rect" id="node2" href="$class_detailed_all_packet.html#a9fdba3f8f1f2d28a4a04c4599ce7e8d9" title=" " alt="" coords="1197,5,1332,47"/>
-<area shape="rect" id="node3" href="$class_detailed_all_packet.html#a9bc0e677ab448701831326ea3a69c2e6" title=" " alt="" coords="1197,71,1332,112"/>
-<area shape="rect" id="node4" href="$class_detailed_all_packet.html#aaad75cfa0344ab75e70aecfc518fad82" title=" " alt="" coords="1197,136,1332,177"/>
-<area shape="rect" id="node5" href="$class_command_handler.html#a54c1b7e2f1a6d0365ef36a0c738d7e02" title=" " alt="" coords="916,143,1149,170"/>
-<area shape="rect" id="node6" href="$class_command_handler.html#a6c61c87a0ad0045aa6133dd69112a72b" title=" " alt="" coords="693,143,868,170"/>
-<area shape="rect" id="node7" href="$class_network_manager.html#a0d4ea7d4f0b395249151d0a28af79cd5" title=" " alt="" coords="477,143,645,170"/>
-<area shape="rect" id="node8" href="$classstate_machine.html#a5f4f54735cb0a13393227e3af6863cdd" title=" " alt="" coords="283,143,429,170"/>
-<area shape="rect" id="node9" href="$main_8cpp.html#afe461d27b9c48d5921c00d521181f12f" title=" " alt="" coords="188,143,235,170"/>
-<area shape="rect" id="node10" href="$class_tunez_handler.html#a02e64b5ab21c71fc6e62e6673f80ac63" title=" " alt="" coords="5,143,140,170"/>
+<area shape="rect" id="node1" title=" " alt="" coords="1539,71,1673,112"/>
+<area shape="rect" id="node2" href="$class_detailed_all_packet.html#a9fdba3f8f1f2d28a4a04c4599ce7e8d9" title=" " alt="" coords="1356,5,1491,47"/>
+<area shape="rect" id="node3" href="$class_detailed_all_packet.html#a9bc0e677ab448701831326ea3a69c2e6" title=" " alt="" coords="1356,71,1491,112"/>
+<area shape="rect" id="node4" href="$class_detailed_all_packet.html#aaad75cfa0344ab75e70aecfc518fad82" title=" " alt="" coords="1356,136,1491,177"/>
+<area shape="rect" id="node5" href="$class_command_handler.html#a54c1b7e2f1a6d0365ef36a0c738d7e02" title=" " alt="" coords="1075,143,1308,170"/>
+<area shape="rect" id="node6" href="$class_command_handler.html#a6c61c87a0ad0045aa6133dd69112a72b" title=" " alt="" coords="852,118,1027,145"/>
+<area shape="rect" id="node7" href="$class_network_manager.html#a0d4ea7d4f0b395249151d0a28af79cd5" title=" " alt="" coords="636,118,804,145"/>
+<area shape="rect" id="node8" href="$classstate_machine.html#a5f4f54735cb0a13393227e3af6863cdd" title=" " alt="" coords="441,118,588,145"/>
+<area shape="rect" id="node9" href="$main_8cpp.html#afe461d27b9c48d5921c00d521181f12f" title=" " alt="" coords="347,118,393,145"/>
+<area shape="rect" id="node10" href="$class_tunez_handler.html#a02e64b5ab21c71fc6e62e6673f80ac63" title=" " alt="" coords="164,143,299,170"/>
+<area shape="rect" id="node11" href="$class_setup.html#a315e788a23a012d5993613c627f15302" title=" " alt="" coords="5,143,116,170"/>
 </map>

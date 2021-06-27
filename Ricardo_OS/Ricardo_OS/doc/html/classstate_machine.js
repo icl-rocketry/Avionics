@@ -5,7 +5,6 @@ var classstate_machine =
     [ "initialise", "classstate_machine.html#ab9275b38265e4166367b4f3d2aa0e474", null ],
     [ "update", "classstate_machine.html#a5f4f54735cb0a13393227e3af6863cdd", null ],
     [ "_currStatePtr", "classstate_machine.html#a6539b239bcf31ec86fc4f3e69f6e4f88", null ],
-    [ "configcontroller", "classstate_machine.html#adb1385794ad6d198279b62d0aa64701a", null ],
     [ "estimator", "classstate_machine.html#a347dd01f161a37bb7080aa7b29835002", null ],
     [ "I2C", "classstate_machine.html#aa85b424f16cdc441a63eed018658736d", null ],
     [ "logcontroller", "classstate_machine.html#a27e4d19e1dcff45fb0e8930971898750", null ],

@@ -9,9 +9,14 @@
 \item 
 \mbox{\hyperlink{class_event_handler_a83b42ecce5badb8f4be864b4cddf4b36}{Event\+Handler}} (State\+Machine $\ast$sm)
 \item 
-void \mbox{\hyperlink{class_event_handler_ad0c1543153be4e2b0d74c9d24ad09533}{setup}} ()
+void \mbox{\hyperlink{class_event_handler_a9b89fc7a056619d5e764e9b37ed4dcc5}{setup}} (\mbox{\hyperlink{classjsondoc}{jsondoc}} config)
 \item 
 void \mbox{\hyperlink{class_event_handler_a130cf2694ce9ab04431246615ba02baf}{update}} ()
+\item 
+int \mbox{\hyperlink{class_event_handler_a8ac94e94469eddfa5476ed3da010aca4}{time\+Triggered}} (int arg)
+\end{DoxyCompactItemize}
+\doxysubsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
 \item 
 bool \mbox{\hyperlink{class_event_handler_abf95eddf893c60be8b7eb497eff4a06b}{register\+\_\+event}} (\mbox{\hyperlink{class_event}{Event}} new\+\_\+event)
 \end{DoxyCompactItemize}
@@ -20,7 +25,7 @@ bool \mbox{\hyperlink{class_event_handler_abf95eddf893c60be8b7eb497eff4a06b}{reg
 \item 
 State\+Machine $\ast$ \mbox{\hyperlink{class_event_handler_a5cbcf1a3215f4c2cce9520198aed7d82}{\+\_\+sm}}
 \item 
-std\+::vector$<$ \mbox{\hyperlink{class_event}{Event}} $>$ \mbox{\hyperlink{class_event_handler_ac1adc05f78d170df72a3405d30c54f17}{event\+\_\+buffer}}
+std\+::vector$<$ \mbox{\hyperlink{class_event}{Event}} $>$ \mbox{\hyperlink{class_event_handler_af58b6e6744b8d0e62a26a1457ad6a2ae}{event\+List}}
 \end{DoxyCompactItemize}
 
 
@@ -38,14 +43,28 @@ std\+::vector$<$ \mbox{\hyperlink{class_event}{Event}} $>$ \mbox{\hyperlink{clas
 \index{EventHandler@{EventHandler}!register\_event@{register\_event}}
 \index{register\_event@{register\_event}!EventHandler@{EventHandler}}
 \doxysubsubsection{\texorpdfstring{register\_event()}{register\_event()}}
-{\footnotesize\ttfamily bool Event\+Handler\+::register\+\_\+event (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_event}{Event}}}]{new\+\_\+event }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily bool Event\+Handler\+::register\+\_\+event (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_event}{Event}}}]{new\+\_\+event }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
 
-\mbox{\Hypertarget{class_event_handler_ad0c1543153be4e2b0d74c9d24ad09533}\label{class_event_handler_ad0c1543153be4e2b0d74c9d24ad09533}} 
+\mbox{\Hypertarget{class_event_handler_a9b89fc7a056619d5e764e9b37ed4dcc5}\label{class_event_handler_a9b89fc7a056619d5e764e9b37ed4dcc5}} 
 \index{EventHandler@{EventHandler}!setup@{setup}}
 \index{setup@{setup}!EventHandler@{EventHandler}}
 \doxysubsubsection{\texorpdfstring{setup()}{setup()}}
-{\footnotesize\ttfamily void Event\+Handler\+::setup (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily void Event\+Handler\+::setup (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classjsondoc}{jsondoc}}}]{config }\end{DoxyParamCaption})}
 
+\mbox{\Hypertarget{class_event_handler_a8ac94e94469eddfa5476ed3da010aca4}\label{class_event_handler_a8ac94e94469eddfa5476ed3da010aca4}} 
+\index{EventHandler@{EventHandler}!timeTriggered@{timeTriggered}}
+\index{timeTriggered@{timeTriggered}!EventHandler@{EventHandler}}
+\doxysubsubsection{\texorpdfstring{timeTriggered()}{timeTriggered()}}
+{\footnotesize\ttfamily int Event\+Handler\+::time\+Triggered (\begin{DoxyParamCaption}\item[{int}]{arg }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_event_handler_a8ac94e94469eddfa5476ed3da010aca4_icgraph}
+\end{center}
+\end{figure}
 \mbox{\Hypertarget{class_event_handler_a130cf2694ce9ab04431246615ba02baf}\label{class_event_handler_a130cf2694ce9ab04431246615ba02baf}} 
 \index{EventHandler@{EventHandler}!update@{update}}
 \index{update@{update}!EventHandler@{EventHandler}}
@@ -61,11 +80,11 @@ std\+::vector$<$ \mbox{\hyperlink{class_event}{Event}} $>$ \mbox{\hyperlink{clas
 \doxysubsubsection{\texorpdfstring{\_sm}{\_sm}}
 {\footnotesize\ttfamily State\+Machine$\ast$ Event\+Handler\+::\+\_\+sm\hspace{0.3cm}{\ttfamily [private]}}
 
-\mbox{\Hypertarget{class_event_handler_ac1adc05f78d170df72a3405d30c54f17}\label{class_event_handler_ac1adc05f78d170df72a3405d30c54f17}} 
-\index{EventHandler@{EventHandler}!event\_buffer@{event\_buffer}}
-\index{event\_buffer@{event\_buffer}!EventHandler@{EventHandler}}
-\doxysubsubsection{\texorpdfstring{event\_buffer}{event\_buffer}}
-{\footnotesize\ttfamily std\+::vector$<$\mbox{\hyperlink{class_event}{Event}}$>$ Event\+Handler\+::event\+\_\+buffer\hspace{0.3cm}{\ttfamily [private]}}
+\mbox{\Hypertarget{class_event_handler_af58b6e6744b8d0e62a26a1457ad6a2ae}\label{class_event_handler_af58b6e6744b8d0e62a26a1457ad6a2ae}} 
+\index{EventHandler@{EventHandler}!eventList@{eventList}}
+\index{eventList@{eventList}!EventHandler@{EventHandler}}
+\doxysubsubsection{\texorpdfstring{eventList}{eventList}}
+{\footnotesize\ttfamily std\+::vector$<$\mbox{\hyperlink{class_event}{Event}}$>$ Event\+Handler\+::event\+List\hspace{0.3cm}{\ttfamily [private]}}
 
 
 

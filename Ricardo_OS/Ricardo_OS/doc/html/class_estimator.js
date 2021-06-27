@@ -1,6 +1,7 @@
 var class_estimator =
 [
     [ "Estimator", "class_estimator.html#a29f89dc7ce5e09322c699eb3eee6d88d", null ],
+    [ "setHome", "class_estimator.html#a9243d65a3fad366aae1afb183d31ee01", null ],
     [ "setup", "class_estimator.html#a28cc6199ece59c166c0268ebc3edcf9d", null ],
     [ "update", "class_estimator.html#ad7fbe72b0e1c8d12b77427bcd7d2eafc", null ],
     [ "updateAngularRates", "class_estimator.html#a660e2e7eff52ff8aa00dbc786e0a791c", null ],

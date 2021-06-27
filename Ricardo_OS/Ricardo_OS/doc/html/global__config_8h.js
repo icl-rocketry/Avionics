@@ -1,6 +1,7 @@
 var global__config_8h =
 [
     [ "ACCEL_SCALE", "global__config_8h.html#a5dcd67c887f0009e1ec2675a7ebe8b73", null ],
+    [ "ARDUINOJSON_ENABLE_COMMENTS", "global__config_8h.html#add9d43a80ea4935a00b9a4ef61f73efd", null ],
     [ "empty_battery_voltage", "global__config_8h.html#ab371233fb2dcb9f977a7b102d6530cb4", null ],
     [ "full_battery_voltage", "global__config_8h.html#a0dd4f018cf6ee09930a6388254038329", null ],
     [ "GPS_DATASTREAM_REGISTER", "global__config_8h.html#a1e4af0b6af094848144d6202f01f992f", null ],

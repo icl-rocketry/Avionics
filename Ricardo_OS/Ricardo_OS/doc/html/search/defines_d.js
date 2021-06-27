@@ -1,7 +1,7 @@
 var searchData=
 [
-  ['sdcs_1398',['SdCs',['../ricardo__pins_8h.html#a2ab0614fc448439a66970a873d7640b3',1,'ricardo_pins.h']]],
-  ['serial_5fbaud_1399',['Serial_baud',['../global__config_8h.html#ae91a94a71a3b0fdc477925ca022b5c52',1,'global_config.h']]],
-  ['serial_5fsize_5frx_1400',['SERIAL_SIZE_RX',['../global__config_8h.html#add44a099dbdadf2a30122080d18aa8a2',1,'global_config.h']]],
-  ['spi_5fclock_5fdiv8_1401',['SPI_CLOCK_DIV8',['../global__config_8h.html#a1c17812f1dcf847c8c5f97ea58659663',1,'global_config.h']]]
+  ['rest_1590',['REST',['../pitches_8h.html#af61315e1c4a04436923a5c52196cdd3c',1,'pitches.h']]],
+  ['ruairidh_5ftest_5fboard_1591',['RUAIRIDH_TEST_BOARD',['../imu_8h.html#ad6f279c653b424b736eb264f5b249e7d',1,'imu.h']]],
+  ['rxcan_1592',['RxCan',['../ricardo__pins_8h.html#ae5509ca46c75cd1e9aa02b99a17732fb',1,'ricardo_pins.h']]],
+  ['rxradio_1593',['RxRadio',['../ricardo__pins_8h.html#aa301da2fb564486da83f87301ff0ecba',1,'ricardo_pins.h']]]
 ];

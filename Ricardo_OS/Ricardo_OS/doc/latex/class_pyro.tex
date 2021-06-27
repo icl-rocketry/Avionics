@@ -2,12 +2,11 @@
 \label{class_pyro}\index{Pyro@{Pyro}}
 
 
-{\ttfamily \#include $<$pyro.\+h$>$}
+{\ttfamily \#include $<$event.\+h$>$}
 
 
 
-Inheritance diagram for Pyro\+:
-\nopagebreak
+Inheritance diagram for Pyro\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -17,11 +16,13 @@ Inheritance diagram for Pyro\+:
 \doxysubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
+void \mbox{\hyperlink{class_pyro_a420fffe4bb0850dd75c5e77ef51daadb}{do\+Stuff}} ()
+\item 
 \mbox{\hyperlink{class_pyro_aa382073c8c1529d99986cf28d68dea2e}{Pyro}} (\mbox{\hyperlink{pyro_8h_a45e0753574b76ce184eb9caa73f63f8a}{PYRO\+\_\+\+TYPE}} type)
 \item 
-virtual bool \mbox{\hyperlink{class_pyro_afb683ce048f7423f5fa41ae2379525ac}{check\+\_\+continuity}} ()
+virtual bool \mbox{\hyperlink{class_pyro_a78f8221114043d3991936a91ba789b2b}{check\+\_\+continuity}} ()=0
 \item 
-virtual bool \mbox{\hyperlink{class_pyro_ae6aa3679d00b58867af9a13bb14ec045}{Fire}} (uint8\+\_\+t duration)
+virtual bool \mbox{\hyperlink{class_pyro_a3a57ef7ec8c6073d61f4e831588e0dc7}{do\+Stuff}} (uint8\+\_\+t duration)=0
 \item 
 virtual \mbox{\hyperlink{class_pyro_a3be068d04db1c8012b1561114d215d5f}{$\sim$\+Pyro}} ()=0
 \end{DoxyCompactItemize}
@@ -50,25 +51,39 @@ bool \mbox{\hyperlink{class_pyro_a36a94ee600d201dcd10c917c30f2db21}{\+\_\+contin
 
 
 \doxysubsection{Member Function Documentation}
-\mbox{\Hypertarget{class_pyro_afb683ce048f7423f5fa41ae2379525ac}\label{class_pyro_afb683ce048f7423f5fa41ae2379525ac}} 
+\mbox{\Hypertarget{class_pyro_a78f8221114043d3991936a91ba789b2b}\label{class_pyro_a78f8221114043d3991936a91ba789b2b}} 
 \index{Pyro@{Pyro}!check\_continuity@{check\_continuity}}
 \index{check\_continuity@{check\_continuity}!Pyro@{Pyro}}
 \doxysubsubsection{\texorpdfstring{check\_continuity()}{check\_continuity()}}
-{\footnotesize\ttfamily virtual bool Pyro\+::check\+\_\+continuity (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+{\footnotesize\ttfamily virtual bool Pyro\+::check\+\_\+continuity (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
 
 
 
-Reimplemented in \mbox{\hyperlink{class_local_pyro_ae75e383477dafe760cd76b00976695cd}{Local\+Pyro}}, and \mbox{\hyperlink{class_b_t_pyro_a76331ce03a2f91e7b92651887cf52beb}{BTPyro}}.
+Implemented in \mbox{\hyperlink{class_local_pyro_ae75e383477dafe760cd76b00976695cd}{Local\+Pyro}}, and \mbox{\hyperlink{class_b_t_pyro_a76331ce03a2f91e7b92651887cf52beb}{BTPyro}}.
 
-\mbox{\Hypertarget{class_pyro_ae6aa3679d00b58867af9a13bb14ec045}\label{class_pyro_ae6aa3679d00b58867af9a13bb14ec045}} 
-\index{Pyro@{Pyro}!Fire@{Fire}}
-\index{Fire@{Fire}!Pyro@{Pyro}}
-\doxysubsubsection{\texorpdfstring{Fire()}{Fire()}}
-{\footnotesize\ttfamily virtual bool Pyro\+::\+Fire (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{duration }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+\mbox{\Hypertarget{class_pyro_a420fffe4bb0850dd75c5e77ef51daadb}\label{class_pyro_a420fffe4bb0850dd75c5e77ef51daadb}} 
+\index{Pyro@{Pyro}!doStuff@{doStuff}}
+\index{doStuff@{doStuff}!Pyro@{Pyro}}
+\doxysubsubsection{\texorpdfstring{doStuff()}{doStuff()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily void Pyro\+::do\+Stuff (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_pyro_a420fffe4bb0850dd75c5e77ef51daadb_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_pyro_a3a57ef7ec8c6073d61f4e831588e0dc7}\label{class_pyro_a3a57ef7ec8c6073d61f4e831588e0dc7}} 
+\index{Pyro@{Pyro}!doStuff@{doStuff}}
+\index{doStuff@{doStuff}!Pyro@{Pyro}}
+\doxysubsubsection{\texorpdfstring{doStuff()}{doStuff()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily virtual bool Pyro\+::do\+Stuff (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{duration }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
 
 
 
-Reimplemented in \mbox{\hyperlink{class_local_pyro_ad7afc177bfb41fee6c559e0e07d04429}{Local\+Pyro}}, and \mbox{\hyperlink{class_b_t_pyro_a0b3a5082c723e48a00effa6d22ab68d5}{BTPyro}}.
+Implemented in \mbox{\hyperlink{class_local_pyro_aae9ff42b008584ff55bbaf37bfb37d13}{Local\+Pyro}}, and \mbox{\hyperlink{class_b_t_pyro_a7405c3f93b183819cb929140e4be8dca}{BTPyro}}.
 
 
 
@@ -89,5 +104,6 @@ Reimplemented in \mbox{\hyperlink{class_local_pyro_ad7afc177bfb41fee6c559e0e07d0
 
 The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
 \item 
+/\+Users/kiran/\+Documents/\+Projects/\+ICLR/\+Avionics/\+Ricardo\+\_\+\+OS/\+Ricardo\+\_\+\+OS/src/\+Events/\mbox{\hyperlink{event_8h}{event.\+h}}\item 
 /\+Users/kiran/\+Documents/\+Projects/\+ICLR/\+Avionics/\+Ricardo\+\_\+\+OS/\+Ricardo\+\_\+\+OS/src/\+Pyros/\mbox{\hyperlink{pyro_8h}{pyro.\+h}}\item 
 /\+Users/kiran/\+Documents/\+Projects/\+ICLR/\+Avionics/\+Ricardo\+\_\+\+OS/\+Ricardo\+\_\+\+OS/src/\+Pyros/\mbox{\hyperlink{pyro_8cpp}{pyro.\+cpp}}\end{DoxyCompactItemize}

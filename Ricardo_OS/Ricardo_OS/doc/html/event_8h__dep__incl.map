@@ -1,6 +1,9 @@
 <map id="/Users/kiran/Documents/Projects/ICLR/Avionics/Ricardo_OS/Ricardo_OS/src/Events/event.h" name="/Users/kiran/Documents/Projects/ICLR/Avionics/Ricardo_OS/Ricardo_OS/src/Events/event.h">
 <area shape="rect" id="node1" title=" " alt="" coords="140,5,335,76"/>
 <area shape="rect" id="node2" href="$event_8cpp.html" title=" " alt="" coords="5,124,200,195"/>
-<area shape="rect" id="node3" href="$event_handler_8cpp.html" title=" " alt="" coords="207,243,401,313"/>
-<area shape="rect" id="node4" href="$event_handler_8h.html" title=" " alt="" coords="275,124,469,195"/>
+<area shape="rect" id="node3" href="$event_handler_8cpp.html" title=" " alt="" coords="97,243,292,313"/>
+<area shape="rect" id="node4" href="$event_handler_8h.html" title=" " alt="" coords="316,124,511,195"/>
+<area shape="rect" id="node5" href="$flight_variable_8cpp.html" title=" " alt="" coords="316,243,511,313"/>
+<area shape="rect" id="node6" href="$flight_variable_handler_8cpp.html" title=" " alt="" coords="509,361,723,432"/>
+<area shape="rect" id="node7" href="$flight_variable_handler_8h.html" title=" " alt="" coords="585,243,785,313"/>
 </map>

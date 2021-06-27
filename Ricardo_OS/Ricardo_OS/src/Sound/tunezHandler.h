@@ -19,17 +19,25 @@ class TunezHandler{
     public:
         TunezHandler();
         void setup();
-        //templated play function as interface so any melody can be played
-        
+    
+        /**
+         * @brief Put Melody on tune queue
+         * 
+         * @param melody 
+         * @param loop 
+         */
         void play(melody_base_t *melody,bool loop = false);
-        void pause(); // pauses current playing melody
-        void unpause(); // unpauses melody
-        void skip(); // moves to next melody
-        void clear(); // clears all queued songs
+        /**
+         * @brief Skip current tune
+         * 
+         */
+        void skip();
+        /**
+         * @brief Clear song queue
+         * 
+         */
+        void clear();
         
-
-
-
         void update();
 
     private:
@@ -39,10 +47,7 @@ class TunezHandler{
         uint64_t prev_time = 0;
         uint16_t note_duration = 0;
 
-        bool _playing;
 
-        //ledc_timer_config_t ledc_timer;
-        //ledc_channel_config_t ledc_channel;
 
 };
 

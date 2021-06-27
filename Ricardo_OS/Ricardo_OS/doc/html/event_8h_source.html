@@ -100,20 +100,51 @@ $(document).ready(function(){initNavTree('event_8h_source.html',''); initResizab
 <div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor">#define EVENT_H</span></div>
 <div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment">//object representing event</span></div>
 <div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160; </div>
-<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160; </div>
-<div class="line"><a name="l00006"></a><span class="lineno"><a class="line" href="class_event.html">    6</a></span>&#160;<span class="keyword">class </span><a class="code" href="class_event.html">Event</a>{</div>
-<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="keyword">public</span>:</div>
-<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;    <a class="code" href="class_event.html#a5a40dd4708297f7031e29b39e039ae10">Event</a>();</div>
-<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;    </div>
-<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="keyword">private</span>:</div>
-<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160; </div>
-<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;};</div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="condition_8h.html">condition.h</a>&quot;</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160; </div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="comment">//DUMMY CLASS // UR A DUMMY CLASS</span></div>
+<div class="line"><a name="l00008"></a><span class="lineno"><a class="line" href="class_pyro.html">    8</a></span>&#160;<span class="keyword">class </span><a class="code" href="class_pyro.html">Pyro</a> {</div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="keyword">public</span>:</div>
+<div class="line"><a name="l00010"></a><span class="lineno"><a class="line" href="class_pyro.html#a420fffe4bb0850dd75c5e77ef51daadb">   10</a></span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_pyro.html#a420fffe4bb0850dd75c5e77ef51daadb">doStuff</a>() {}</div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;};</div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="comment">//DUMMY CLASS</span></div>
 <div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160; </div>
 <div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160; </div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160; </div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="ttc" id="aclass_event_html"><div class="ttname"><a href="class_event.html">Event</a></div><div class="ttdef"><b>Definition:</b> event.h:6</div></div>
-<div class="ttc" id="aclass_event_html_a5a40dd4708297f7031e29b39e039ae10"><div class="ttname"><a href="class_event.html#a5a40dd4708297f7031e29b39e039ae10">Event::Event</a></div><div class="ttdeci">Event()</div><div class="ttdef"><b>Definition:</b> event.cpp:3</div></div>
+<div class="line"><a name="l00015"></a><span class="lineno"><a class="line" href="class_event.html">   15</a></span>&#160;<span class="keyword">class </span><a class="code" href="class_event.html">Event</a>{</div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="keyword">public</span>:</div>
+<div class="line"><a name="l00017"></a><span class="lineno"><a class="line" href="class_event.html#aa978082cb817e4b87de5f15eeccb030e">   17</a></span>&#160;    <a class="code" href="class_event.html#aa978082cb817e4b87de5f15eeccb030e">Event</a>(<a class="code" href="class_pyro.html">Pyro</a> &amp;pyro, <a class="code" href="class_condition.html">Condition</a>&amp; cond) : </div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;    <a class="code" href="class_event.html#af0adada5c1fb4fa895f2ec5769db1679">_cond</a>(cond),</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;    <a class="code" href="class_event.html#a3ddf15a809d400481d59fc0094f3a0d8">_pyro</a>(pyro)  </div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;    {};</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160; </div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_event.html#a104089a099a45971f10fdf7eaf5654f4">update</a>();</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160; </div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="keyword">private</span>:</div>
+<div class="line"><a name="l00025"></a><span class="lineno"><a class="line" href="class_event.html#af0adada5c1fb4fa895f2ec5769db1679">   25</a></span>&#160;    <a class="code" href="class_condition.html">Condition</a>&amp; <a class="code" href="class_event.html#af0adada5c1fb4fa895f2ec5769db1679">_cond</a>;</div>
+<div class="line"><a name="l00026"></a><span class="lineno"><a class="line" href="class_event.html#a3ddf15a809d400481d59fc0094f3a0d8">   26</a></span>&#160;    <a class="code" href="class_pyro.html">Pyro</a>&amp; <a class="code" href="class_event.html#a3ddf15a809d400481d59fc0094f3a0d8">_pyro</a>;</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;    </div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_event.html#aec07ea22c63c8a6af8303762c6cce8c7">_fire</a>();</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;};</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160; </div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160; </div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;<span class="comment">/*</span></div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;<span class="comment">Pyro pyrotest;</span></div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;<span class="comment">Time_Since_Launch fv;</span></div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;<span class="comment">ConditionFlightVar testcondition(fv,Operator::GT,100);</span></div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;<span class="comment"></span> </div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;<span class="comment">Event test(pyrotest,testcondition);*/</span></div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160; </div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="ttc" id="aclass_condition_html"><div class="ttname"><a href="class_condition.html">Condition</a></div><div class="ttdef"><b>Definition:</b> condition.h:14</div></div>
+<div class="ttc" id="aclass_event_html"><div class="ttname"><a href="class_event.html">Event</a></div><div class="ttdef"><b>Definition:</b> event.h:15</div></div>
+<div class="ttc" id="aclass_event_html_a104089a099a45971f10fdf7eaf5654f4"><div class="ttname"><a href="class_event.html#a104089a099a45971f10fdf7eaf5654f4">Event::update</a></div><div class="ttdeci">void update()</div><div class="ttdef"><b>Definition:</b> event.cpp:4</div></div>
+<div class="ttc" id="aclass_event_html_a3ddf15a809d400481d59fc0094f3a0d8"><div class="ttname"><a href="class_event.html#a3ddf15a809d400481d59fc0094f3a0d8">Event::_pyro</a></div><div class="ttdeci">Pyro &amp; _pyro</div><div class="ttdef"><b>Definition:</b> event.h:26</div></div>
+<div class="ttc" id="aclass_event_html_aa978082cb817e4b87de5f15eeccb030e"><div class="ttname"><a href="class_event.html#aa978082cb817e4b87de5f15eeccb030e">Event::Event</a></div><div class="ttdeci">Event(Pyro &amp;pyro, Condition &amp;cond)</div><div class="ttdef"><b>Definition:</b> event.h:17</div></div>
+<div class="ttc" id="aclass_event_html_aec07ea22c63c8a6af8303762c6cce8c7"><div class="ttname"><a href="class_event.html#aec07ea22c63c8a6af8303762c6cce8c7">Event::_fire</a></div><div class="ttdeci">void _fire()</div><div class="ttdef"><b>Definition:</b> event.cpp:9</div></div>
+<div class="ttc" id="aclass_event_html_af0adada5c1fb4fa895f2ec5769db1679"><div class="ttname"><a href="class_event.html#af0adada5c1fb4fa895f2ec5769db1679">Event::_cond</a></div><div class="ttdeci">Condition &amp; _cond</div><div class="ttdef"><b>Definition:</b> event.h:25</div></div>
+<div class="ttc" id="aclass_pyro_html"><div class="ttname"><a href="class_pyro.html">Pyro</a></div><div class="ttdef"><b>Definition:</b> event.h:8</div></div>
+<div class="ttc" id="aclass_pyro_html_a420fffe4bb0850dd75c5e77ef51daadb"><div class="ttname"><a href="class_pyro.html#a420fffe4bb0850dd75c5e77ef51daadb">Pyro::doStuff</a></div><div class="ttdeci">void doStuff()</div><div class="ttdef"><b>Definition:</b> event.h:10</div></div>
+<div class="ttc" id="acondition_8h_html"><div class="ttname"><a href="condition_8h.html">condition.h</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->

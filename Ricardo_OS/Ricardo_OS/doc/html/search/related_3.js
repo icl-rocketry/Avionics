@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['preflight_1271',['Preflight',['../class_network_manager.html#aa783fb6d060a3935500d4929d447dfc3',1,'NetworkManager']]]
+  ['operator_3c_3c_1463',['operator&lt;&lt;',['../class_routing_table.html#a6303e42a06796509acda1a1214c73c87',1,'RoutingTable']]]
 ];

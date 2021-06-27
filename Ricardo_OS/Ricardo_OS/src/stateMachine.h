@@ -15,7 +15,7 @@ Written by the Electronics team, Imperial College London Rocketry
 
 #include "Storage/logController.h"
 #include "Storage/storageController.h"
-#include "Storage/configController.h"
+
 
 #include "Sensors/estimator.h"
 #include "Comms/networkManager.h"
@@ -46,7 +46,6 @@ class stateMachine {
 
     StorageController storagecontroller;
     LogController logcontroller;
-    ConfigController configcontroller;
 
     SystemStatus systemstatus;
     
