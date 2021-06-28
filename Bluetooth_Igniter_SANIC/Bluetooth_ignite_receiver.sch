@@ -69,18 +69,12 @@ F 3 "" H 5800 4900 50  0001 C CNN
 $EndComp
 NoConn ~ 6400 2500
 NoConn ~ 6400 2700
-NoConn ~ 6400 2800
 NoConn ~ 6400 2900
 NoConn ~ 6400 3000
 NoConn ~ 6400 3100
 NoConn ~ 6400 3200
 NoConn ~ 6400 3300
 NoConn ~ 6400 3400
-NoConn ~ 6400 3500
-NoConn ~ 6400 3600
-NoConn ~ 6400 3700
-NoConn ~ 6400 3800
-NoConn ~ 6400 3900
 NoConn ~ 6400 4000
 NoConn ~ 6400 4200
 NoConn ~ 5200 3500
@@ -300,10 +294,6 @@ Wire Wire Line
 	3400 3900 3700 3900
 Wire Wire Line
 	3400 4000 3700 4000
-Text Label 3700 3900 0    50   ~ 0
-RXD
-Text Label 3700 4000 0    50   ~ 0
-TXD
 Wire Wire Line
 	3400 3800 3700 3800
 Wire Wire Line
@@ -492,10 +482,8 @@ Wire Wire Line
 	1200 4600 2000 4600
 Wire Wire Line
 	1200 4700 1900 4700
-Text Label 3700 3800 0    50   ~ 0
+Text Label 3550 3800 0    50   ~ 0
 RTS
-Text Label 3700 4200 0    50   ~ 0
-DTR
 $Comp
 L Transistor_BJT:MMDT2222A Q1
 U 1 1 604E26C4
@@ -595,12 +583,8 @@ Text Label 6750 4300 0    50   ~ 0
 Nuke1
 Connection ~ 5300 1300
 Wire Wire Line
-	6400 4100 6750 4100
-Wire Wire Line
 	1500 750  1850 750 
 Text Label 1850 750  0    50   ~ 0
-PG
-Text Label 6750 4100 0    50   ~ 0
 PG
 $Comp
 L power:PWR_FLAG #FLG?
@@ -816,4 +800,68 @@ Wire Wire Line
 	9150 1850 9750 1850
 Wire Wire Line
 	9850 1850 10150 1850
+Text Label 3550 3900 0    50   ~ 0
+RXD
+Text Label 3550 4000 0    50   ~ 0
+TXD
+Text Label 3550 4200 0    50   ~ 0
+DTR
+Wire Wire Line
+	6400 3700 6850 3700
+Wire Wire Line
+	6400 3800 6850 3800
+Text Label 6850 3700 2    50   ~ 0
+SDA
+Text Label 6850 3800 2    50   ~ 0
+SCL
+$Comp
+L Connector:Conn_01x04_Male J8
+U 1 1 60DB5E86
+P 3900 4000
+F 0 "J8" H 3872 3882 50  0000 R CNN
+F 1 "Conn_01x04_Male" H 3872 3973 50  0000 R CNN
+F 2 "Connector_PinHeader_2.54mm:PinHeader_1x04_P2.54mm_Vertical" H 3900 4000 50  0001 C CNN
+F 3 "~" H 3900 4000 50  0001 C CNN
+	1    3900 4000
+	-1   0    0    1   
+$EndComp
+Wire Wire Line
+	3700 4200 3700 4100
+Wire Wire Line
+	6400 2800 6500 2800
+Wire Wire Line
+	6500 2800 6500 3400
+Wire Wire Line
+	6500 3400 6850 3400
+Wire Wire Line
+	6400 3500 6850 3500
+Wire Wire Line
+	6400 3600 6850 3600
+Wire Wire Line
+	6400 3900 6850 3900
+Text Label 6850 3400 2    50   ~ 0
+CS
+Text Label 6850 3500 2    50   ~ 0
+CLK
+Text Label 6850 3600 2    50   ~ 0
+MISO
+Text Label 6850 3900 2    50   ~ 0
+MOSI
+Wire Wire Line
+	6400 4100 6850 4100
+Text Label 6850 4100 2    50   ~ 0
+PG
+$Comp
+L Connector:Conn_01x07_Male J9
+U 1 1 60DCCD8A
+P 7050 3700
+F 0 "J9" H 7022 3632 50  0000 R CNN
+F 1 "Conn_01x07_Male" H 7022 3723 50  0000 R CNN
+F 2 "Connector_PinHeader_2.54mm:PinHeader_1x07_P2.54mm_Vertical" H 7050 3700 50  0001 C CNN
+F 3 "~" H 7050 3700 50  0001 C CNN
+	1    7050 3700
+	-1   0    0    1   
+$EndComp
+Wire Wire Line
+	6850 4100 6850 4000
 $EndSCHEMATC

@@ -256,7 +256,7 @@ U 1 1 60437B13
 P 2650 1850
 F 0 "J4" H 2568 1525 50  0000 C CNN
 F 1 "Screw_Terminal_01x02" H 2568 1616 50  0000 C CNN
-F 2 "iclrhw:PHOENIX_1757242" H 2650 1850 50  0001 C CNN
+F 2 "TerminalBlock_Phoenix:TerminalBlock_Phoenix_PT-1,5-2-5.0-H_1x02_P5.00mm_Horizontal" H 2650 1850 50  0001 C CNN
 F 3 "~" H 2650 1850 50  0001 C CNN
 	1    2650 1850
 	-1   0    0    -1  
@@ -454,4 +454,28 @@ F 3 "~" H 8050 1100 50  0001 C CNN
 	1    8050 1100
 	1    0    0    -1  
 $EndComp
+$Comp
+L Connector:Conn_01x01_Male J12
+U 1 1 60D4A7BA
+P 3400 3050
+F 0 "J12" H 3508 3231 50  0000 C CNN
+F 1 "Conn_01x01_Male" H 3508 3140 50  0000 C CNN
+F 2 "Connector_PinHeader_2.54mm:PinHeader_1x01_P2.54mm_Vertical" H 3400 3050 50  0001 C CNN
+F 3 "~" H 3400 3050 50  0001 C CNN
+	1    3400 3050
+	1    0    0    -1  
+$EndComp
+Connection ~ 3600 3050
+$Comp
+L Connector:Conn_01x01_Male J13
+U 1 1 60D4AF66
+P 8400 3050
+F 0 "J13" H 8372 2982 50  0000 R CNN
+F 1 "Conn_01x01_Male" H 8372 3073 50  0000 R CNN
+F 2 "Connector_PinHeader_2.54mm:PinHeader_1x01_P2.54mm_Vertical" H 8400 3050 50  0001 C CNN
+F 3 "~" H 8400 3050 50  0001 C CNN
+	1    8400 3050
+	-1   0    0    1   
+$EndComp
+Connection ~ 8200 3050
 $EndSCHEMATC

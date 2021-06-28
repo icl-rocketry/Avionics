@@ -1,0 +1,38 @@
+Reference	 Quantity	 Value	 Footprint	MPN	Price($)	Total Price	Link
+C1 	1	100uF	Capacitor_SMD:C_0603_1608Metric		0.2052	0.2052	https://jlcpcb.com/parts/componentSearch?isSearch=true&searchTxt=Capacitor_SMD:C_0603_1608Metric
+C10 C11 C12 	3	22uF	Capacitor_SMD:C_0603_1608Metric				
+C2 	1	1uF	Capacitor_SMD:C_0603_1608Metric				
+C3 C4 C5 	3	1nF	Capacitor_SMD:C_0603_1608Metric				
+C6 C7 	2	10uF	Capacitor_SMD:C_0603_1608Metric				
+C8 	1	0.1uF	Capacitor_SMD:C_0603_1608Metric				
+C9 	1	10pF	Capacitor_SMD:C_0603_1608Metric				
+D1 D5 D8 	3	D_Schottky	Diode_SMD:D_SOD-123F				
+D4 D6 D7 D9 D10 D11 	6	LED	LED_SMD:LED_0603_1608Metric_Castellated				
+D12 	1	TX_LED	LED_SMD:LED_0603_1608Metric_Castellated				
+D13 	1	RX_LED	LED_SMD:LED_0603_1608Metric_Castellated				
+D2 	1	SP0503BAHT	Package_TO_SOT_SMD:SOT-143				
+D3 	1	Power_LED	LED_SMD:LED_0603_1608Metric_Castellated				
+J1 J2 J3 J4 	4	Screw_Terminal_01x02	"TerminalBlock_Phoenix:TerminalBlock_Phoenix_PT-1,5-2-5.0-H_1x02_P5.00mm_Horizontal"				
+J5 	1	USB_C_Receptacle_USB2.0	Connector_USB:USB_C_Receptacle_XKB_U262-16XN-4BVC11				
+J6 J7 	2	Conn_01x02_Male	Connector_PinHeader_2.54mm:PinHeader_1x02_P2.54mm_Vertical				
+L1 	1	1uH	Inductor_SMD:L_Taiyo-Yuden_NR-30xx				
+Q1 Q2 	2	MMDT2222A	Package_TO_SOT_SMD:SOT-363_SC-70-6				
+Q3 Q4 	2	Q_NMOS_GSD	Package_TO_SOT_SMD:SOT-23				
+R1 R2 	2	10K	Resistor_SMD:R_0603_1608Metric				
+R11 R14 R15 R18 	4	1k	Resistor_SMD:R_0603_1608Metric				
+R12 R13 R16 R17 	4	500	Resistor_SMD:R_0603_1608Metric				
+R19 	1	620k	Resistor_SMD:R_0603_1608Metric				
+R20 	1	111k	Resistor_SMD:R_0603_1608Metric				
+R21 	1	R_Small	Resistor_SMD:R_0603_1608Metric				
+R22 R23 	2	5.1K	Resistor_SMD:R_0603_1608Metric				
+R3 	1	22K	Resistor_SMD:R_0603_1608Metric				
+R4 	1	43K	Resistor_SMD:R_0603_1608Metric				
+R5 	1	1K	Resistor_SMD:R_0603_1608Metric				
+R6 R9 R10 R24 R25 	5	470	Resistor_SMD:R_0603_1608Metric				
+R7 	1	12K	Resistor_SMD:R_0603_1608Metric				
+R8 	1	5K	Resistor_SMD:R_0603_1608Metric				
+TP1 TP2 TP3 TP4 TP5 TP6 	6	TestPoint	TestPoint:TestPoint_THTPad_1.0x1.0mm_Drill0.5mm				
+U1 	1	CP2102N-A01-GQFN24	Package_DFN_QFN:QFN-24-1EP_4x4mm_P0.5mm_EP2.6x2.6mm				
+U2 	1	ESP32-WROOM-32	RF_Module:ESP32-WROOM-32				
+U3 	1	LTV-827S	Package_DIP:SMDIP-8_W9.53mm				
+U5 	1	TPS63060	Package_SON:Texas_S-PWSON-N10_ThermalVias				
