@@ -21,12 +21,14 @@
 
 
 
-Radio::Radio(SPIClass* spi,SystemStatus* systemstatus):
+Radio::Radio(SPIClass* spi,SystemStatus* systemstatus,std::vector<std::unique_ptr<std::vector<uint8_t> > >& buf):
 _spi(spi),
 _systemstatus(systemstatus),
-packetSize(0),
-index(0)
-{};
+_packetBuffer(buf),
+_txDone(true)
+{
+    _sendBuffer.reserve(5); // preallocation to reduce heap fragmentation
+};
 
 void Radio::setup(){
     //setup lora module
@@ -47,19 +49,24 @@ void Radio::setup(){
 
 
 
-void Radio::send_packet(uint8_t* data, size_t packet_len){
-    //Serial.println("sent");
-    if(LoRa.beginPacket()){
-        LoRa.write(data, packet_len);
-        LoRa.endPacket();
-    }else{
-        //radio busy or some awful error
-    };
-    LoRa.receive();
+void Radio::send_packet(std::vector<uint8_t> &data){
+
+    _sendBuffer.push_back(data); 
 };
 
-void Radio::get_packet(std::vector<std::unique_ptr<std::vector<uint8_t>>> &buf){
-    packetSize = LoRa.parsePacket();
+void Radio::update(){
+    getPacket();
+    checkSendBuffer();
+    checkTx();
+};
+
+void Radio::getPacket(){
+    // check if radio is still transmitting
+    if (!_txDone){  // this maybe able to be replaced wiht the begin packet method
+        return;
+    }
+
+    int packetSize = LoRa.parsePacket(); // put radio back into single receive mode and check for packets
 
     if (packetSize){
         std::unique_ptr<std::vector<uint8_t>> packet_ptr = std::make_unique<std::vector<uint8_t>>(packetSize);
@@ -81,183 +88,44 @@ void Radio::get_packet(std::vector<std::unique_ptr<std::vector<uint8_t>>> &buf){
 
         memcpy((*packet_ptr).data(),modified_packet_header.data(),packetheader.header_len);
 
-        buf.push_back(std::move(packet_ptr));//add packet ptr  to buffer
+        _packetBuffer.push_back(std::move(packet_ptr));//add packet ptr  to buffer
 
     }
+}
 
-    
+void Radio::checkSendBuffer(){
 
-
-/*
-    // if(packetSize){
-    //     index = 0;
-    //     packet.resize(packetSize);
-    //     while(LoRa.available() || (index < (packetSize-1))){
-    //         if (LoRa.available()){
-    //             packet.at(index) = LoRa.read();
-    //             index++;
-    //         }
-    //     }
-
-
-        std::unique_ptr<std::vector<uint8_t>> packet_ptr = std::make_unique<std::vector<uint8_t>>(packet);
-
-        std::vector<uint8_t> modified_packet_header;
-        //Iface::updateSourceInterface((*packet_ptr),modified_packet_header,INTERFACE::LORA)
-
-
-
-        PacketHeader packetheader = PacketHeader(*packet_ptr);
-    
-        //update source interface
-        packetheader.src_interface = static_cast<uint8_t>(INTERFACE::LORA);
-        
-        //serialize packet header
-        
-        
-        packetheader.serialize(modified_packet_header);
-        
-
-        memcpy((*packet_ptr).data(),modified_packet_header.data(),packetheader.header_len);*/
-/*
-        Serial.print(" radio receive ");
-        Serial.print(" ");
-        Serial.print(packetSize);
-        Serial.print(" ");
-        Serial.print((*packet_ptr).size());
-        Serial.print(" ");
-        for (int i = 0; i< (*packet_ptr).size();i++){
-            Serial.print((*packet_ptr)[i]);
-            Serial.print(" ");
-        }
-        Serial.print("\n");
-
-        buf.push_back(std::move(packet_ptr));//add packet ptr  to buffer
-
-    }*/
-
-/*
-    if (!LoRa.parsePacket()){
-        index = 0;
-    }else{
-        if (index == 0){
-            packetSize = LoRa.parsePacket();
-            packet.resize(packetSize);
-            packet.at(index) = LoRa.read();
-            index++;
-        }else if (!LoRa.available() && (index == packetSize-1) ){
-            std::unique_ptr<std::vector<uint8_t>> packet_ptr = std::make_unique<std::vector<uint8_t>>(packet);
-
-            PacketHeader packetheader = PacketHeader(*packet_ptr);
-        
-            //update source interface
-            packetheader.src_interface = static_cast<uint8_t>(INTERFACE::LORA);
-            
-            //serialize packet header
-            std::vector<uint8_t> modified_packet_header;
-            
-            packetheader.serialize(modified_packet_header);
-            
-
-            memcpy((*packet_ptr).data(),modified_packet_header.data(),packetheader.header_len);
-            
-
-            buf.push_back(std::move(packet_ptr));//add packet ptr  to buffer
-
-        
-
-        }else if (LoRa.available()){
-            packet.at(index) = LoRa.read();
-            index++;
-        }
-
+    if (!(_sendBuffer.size() > 0)){
+        return; // exit if nothing in the buffer
     }
-*/
-/*
-    
-    if (LoRa.avaliable()){
-        if (index == 0){
-            packetSize = LoRa.parsePacket();
-            packet.resize(packetSize);
-            packet.at(index) = LoRa.read();
-            index++;
-        }else if (index == (packetSize - 1)){
-            std::unique_ptr<std::vector<uint8_t>> packet_ptr = std::make_unique<std::vector<uint8_t>>(packet);
 
-            PacketHeader packetheader = PacketHeader(*packet_ptr);
-        
-            //update source interface
-            packetheader.src_interface = static_cast<uint8_t>(INTERFACE::LORA);
-            
-            //serialize packet header
-            std::vector<uint8_t> modified_packet_header;
-            
-            packetheader.serialize(modified_packet_header);
-            
-
-            memcpy((*packet_ptr).data(),modified_packet_header.data(),packetheader.header_len);
-            
-
-            buf.push_back(std::move(packet_ptr));//add packet ptr  to buffer
-
-        
-
-        }else{
-            packet.at(index) = LoRa.read();
-            index++;
-        }
-    }*/
-    /*
-    packetSize = LoRa.parsePacket();
-
-    if (packetSize && (LoRa.available() == packetSize)){ //check if theres data to read and there is at least a header present
-        
-        //create shared ptr with custom deleter
-        //std::shared_ptr<uint8_t[]> packet_ptr(new uint8_t[packetSize]); 
-        
-        std::unique_ptr<std::vector<uint8_t>> packet_ptr = std::make_unique<std::vector<uint8_t>>();
-        
-        (*packet_ptr).resize(packetSize);
-        
-        LoRa.readBytes((*packet_ptr).data(), packetSize); // Copy the received data into packet_received
-        
-        Serial.print(" radio receive ");
-        Serial.print(" ");
-        Serial.print(packetSize);
-        Serial.print(" ");
-        Serial.print((*packet_ptr).size());
-        Serial.print(" ");
-        for (int i = 0; i< (*packet_ptr).size();i++){
-            Serial.print((*packet_ptr)[i]);
-            Serial.print(" ");
-        }
-
-        //deserialize packet header, modify source interface and reserialize.
-        PacketHeader packetheader = PacketHeader(*packet_ptr);
-        
-        //update source interface
-        packetheader.src_interface = static_cast<uint8_t>(INTERFACE::LORA);
-        
-        //serialize packet header
-        std::vector<uint8_t> modified_packet_header;
-        
-        packetheader.serialize(modified_packet_header);
-        
-
-        memcpy((*packet_ptr).data(),modified_packet_header.data(),packetheader.header_len);
-        
-
-        buf.push_back(std::move(packet_ptr));//add packet ptr  to buffer
-        
-
-    }*/
-    
+    // check if radio is busy, if it isnt then send next packe
+    if(LoRa.beginPacket()){ 
+        std::vector<uint8_t> packet = _sendBuffer.front();
+        LoRa.write(packet.data(), packet.size());
+        LoRa.endPacket(true); // asynchronous send 
+        //delete front element of send buffer
+        _sendBuffer.erase(_sendBuffer.begin());
+        _txDone = false;
+    }
+    //LoRa.receive(); // place radio into receive mode
 }
 
-int16_t Radio::get_rssi(){
-    return LoRa.packetRssi();
+void Radio::checkTx(){
+    if (_txDone){
+        return;
+    }
+    if (!LoRa.isTransmitting()){
+        _txDone = true;
+    }
 }
 
-float Radio::get_snr(){
-    return LoRa.packetSnr();
+
+std::vector<double> Radio::getRadioInfo(){
+    std::vector<double> info;
+    info.resize(2);
+    info.at((uint8_t)RADIO_INFO::RSSI) = LoRa.packetRssi();
+    info.at((uint8_t)RADIO_INFO::SNR) = LoRa.packetSnr();
+    return info;
 }
+

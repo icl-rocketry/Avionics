@@ -16,6 +16,7 @@
 
 #include "packets.h"
 #include "interfaces/interfaces.h"
+#include "interfaces/radio.h"
 
 #include "Sound/Melodies/melodyLibrary.h"
 
@@ -132,8 +133,10 @@ void CommandHandler::handleCommand(Command command) {
 					telemetry.system_status = _sm->systemstatus.get_string();
 					telemetry.system_time = millis();
 
-					telemetry.rssi = _sm->networkmanager.radio.get_rssi();
-					telemetry.snr = _sm->networkmanager.radio.get_snr();
+					std::vector<double> radioInfo = _sm->networkmanager.getInterfaceInfo(INTERFACE::LORA);
+
+					telemetry.rssi = radioInfo.at((uint8_t)RADIO_INFO::RSSI);
+					telemetry.snr = radioInfo.at((uint8_t)RADIO_INFO::SNR);
 
 					telemetry.serialize(packet);
 

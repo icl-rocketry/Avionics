@@ -1,4 +1,5 @@
 /* 
+Inital State machine framework written by Daniele Bella <3
 Code used to process states, and the transitions between them, contains parent class for states
 
 Written by the Electronics team, Imperial College London Rocketry
@@ -45,7 +46,7 @@ stateMachine::stateMachine() :
 
 void stateMachine::initialise(State* initStatePtr) {
 
-  ConfigController configcontroller(&storagecontroller,&logcontroller); // create config controller object
+  
 
   // call tunez handler setup first so we can provide startup tone and auditory cues asap
   tunezhandler.setup();
@@ -55,6 +56,9 @@ void stateMachine::initialise(State* initStatePtr) {
   storagecontroller.setup();
   logcontroller.setup();
 
+  // create config controller object
+  ConfigController configcontroller(&storagecontroller,&logcontroller); 
+  configcontroller.load(); // load configuration from sd card into ram
   //setup network manager so communication is running
   networkmanager.setup();
   //sensors must be setup before estimator
@@ -65,13 +69,7 @@ void stateMachine::initialise(State* initStatePtr) {
 
   //sensors.callibrate(SENSOR::MAG);
 
-  // storagecontroller.printDirectory("/",STORAGE_DEVICE::MICROSD);
-  // storagecontroller.printDirectory("/Logs",STORAGE_DEVICE::MICROSD);
-  // storagecontroller.erase(STORAGE_DEVICE::MICROSD);
-  // storagecontroller.printDirectory("/",STORAGE_DEVICE::MICROSD);
-  // storagecontroller.printDirectory("/Logs",STORAGE_DEVICE::MICROSD);
-  
-  
+ 
 
   
   

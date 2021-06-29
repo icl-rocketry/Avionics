@@ -5,9 +5,13 @@
 #include "MadgwickAHRS.h"
 //#include "sensors.h"
 
-
-
-
+enum class ESTIMATOR_STATE: uint8_t{
+    NOMINAL = 0,
+    ORIENTATION = 1,
+    PARTIAL_GPS = 2,
+    PARTIAL_BARO = 3,
+    NOSOLUTION = 4
+};
 
 class stateMachine; //forward declaration
 

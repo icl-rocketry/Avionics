@@ -13,9 +13,10 @@
 #include <array>
 
 
-USB::USB(Stream* stream,SystemStatus* systemstatus) :
+USB::USB(Stream* stream,SystemStatus* systemstatus,std::vector<std::unique_ptr<std::vector<uint8_t>>>& buf) :
 _stream(stream),
-_systemstatus(systemstatus)
+_systemstatus(systemstatus),
+_packetBuffer(buf)
 {
     _tmp_packet_data.resize(_packetHeader_size);
     
@@ -24,16 +25,18 @@ _systemstatus(systemstatus)
 void USB::setup(){
 };
 
-void USB::send_packet(uint8_t* data, size_t size){ // From RICARDO to USB
+void USB::send_packet(std::vector<uint8_t> &data){ // From RICARDO to USB
     //maybe check if we can write using serial.avalibalewrite not sure what action we would take 
     //if we couldnt write though
 
-    _stream->write(data,size);
+    _stream->write(data.data(),data.size());
     
 
 };
 
-void USB::get_packet(std::vector<std::unique_ptr<std::vector<uint8_t>>> &buf){
+
+
+void USB::update(){
     //return if stream object is null
     if (_stream == nullptr) return;   
 
@@ -97,7 +100,7 @@ void USB::get_packet(std::vector<std::unique_ptr<std::vector<uint8_t>>> &buf){
                 // for (int i = 0; i<(*packet_ptr).size(); i++){
                 //     Serial.print((*packet_ptr).at(i));
                 // }
-                buf.push_back(std::move(packet_ptr)); // add pointer to packet immediately to buffer                
+                _packetBuffer.push_back(std::move(packet_ptr)); // add pointer to packet immediately to buffer                
 
                 
             };
@@ -108,6 +111,7 @@ void USB::get_packet(std::vector<std::unique_ptr<std::vector<uint8_t>>> &buf){
             
         };  
     }; 
+}; 
 /*
     while (_stream->available() > 0){
         //find and process any and all packets
@@ -259,4 +263,3 @@ void USB::get_packet(std::vector<std::unique_ptr<std::vector<uint8_t>>> &buf){
     };      
     */
   
-}; 

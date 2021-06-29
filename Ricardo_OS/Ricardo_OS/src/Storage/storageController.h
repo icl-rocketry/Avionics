@@ -32,6 +32,11 @@ struct directory_element_t{
 
 class StorageController{
     public:
+        /**
+         * @brief Construct a new Storage Controller object
+         * 
+         * @param sm statemachine pointer
+         */
         StorageController(stateMachine *sm);
         void setup(); //setup storage devices
 

@@ -10,14 +10,17 @@ definition of structs used within sensor classes
 
 
 
+
 struct raw_measurements_t{
 
+    
     //IMU RAW DATA
     float ax,ay,az;
     float gx,gy,gz;
     float mx,my,mz;
 
     int16_t imu_temp;
+
 
     
     //GPS RAW DATA
@@ -67,7 +70,9 @@ struct state_t{
 
 
 
-
+    //0 nominal -> full navigation solution available
+    //1 partial -> orientation solution available ONLY
+    //2 no solution -> no solution available
     uint8_t estimator_state; 
 };
 

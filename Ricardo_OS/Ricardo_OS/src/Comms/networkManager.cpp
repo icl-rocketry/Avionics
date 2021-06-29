@@ -20,16 +20,21 @@
 
 
 NetworkManager::NetworkManager(stateMachine* sm):
-    
-    usbserial(&Serial,&(sm->systemstatus)),
-    radio(&(sm->vspi),&(sm->systemstatus)),
     _sm(sm),
     routingtable(2,5),//preallocate size
-    commandhandler(sm)
+    commandhandler(sm),
+    usbserial(&Serial,&(sm->systemstatus),_packetBuffer),
+    radio(&(sm->vspi),&(sm->systemstatus),_packetBuffer)
     
 {
    
-    routingtable(NODES::ROCKET) = std::vector<RoutingTableEntry>({{INTERFACE::LOOPBACK,0},{INTERFACE::LORA,1},{INTERFACE::LORA,2},{INTERFACE::CAN,1},{INTERFACE::USBSerial,1}});
+    routingtable(NODES::ROCKET) = std::vector<RoutingTableEntry>({  {INTERFACE::LOOPBACK,0},
+                                                                    {INTERFACE::LORA,1},
+                                                                    {INTERFACE::LORA,2},
+                                                                    {INTERFACE::CAN,1},
+                                                                    {INTERFACE::USBSerial,1}
+                                                                    });
+
     routingtable(NODES::GROUNDSTATION) = std::vector<RoutingTableEntry>( {{INTERFACE::LORA,1},
                                                                           {INTERFACE::LOOPBACK,0},
                                                                           {INTERFACE::USBSerial,1},
@@ -37,21 +42,20 @@ NetworkManager::NetworkManager(stateMachine* sm):
                                                                           {INTERFACE::USBSerial,1}
                                                                           });
 
-    _packet_buffer.reserve(5);
+    _packetBuffer.reserve(5);
 };
 
 
 void NetworkManager::setup(){
-
     radio.setup();
     usbserial.setup();
 };
 
 void NetworkManager::update(){
     
-    radio.get_packet(_packet_buffer);
+    radio.update();
     
-    usbserial.get_packet(_packet_buffer);
+    usbserial.update();
     
 
     process_packets();
@@ -76,18 +80,18 @@ void NetworkManager::send_packet(INTERFACE iface,std::vector<uint8_t> &data){
             //copy into original packet
             memcpy((*packet_ptr).data(),modified_packet_header.data(),packetheader.header_len);
             //push onto global packet buffer for processing
-            _packet_buffer.push_back(std::move(packet_ptr));
+            _packetBuffer.push_back(std::move(packet_ptr));
 
             break;
             }
         case INTERFACE::LORA:
             {
-            radio.send_packet(data.data(),data.size());
+            radio.send_packet(data);
             break;
             }
         case INTERFACE::USBSerial:
             {
-            usbserial.send_packet(data.data(),data.size());
+            usbserial.send_packet(data);
             break;
             }
         case INTERFACE::CAN:
@@ -104,7 +108,7 @@ void NetworkManager::send_packet(INTERFACE iface,std::vector<uint8_t> &data){
 void NetworkManager::send_to_node(NODES destination,std::vector<uint8_t> &data){
     
    
-    uint8_t current_node = static_cast<uint8_t>(_nodeType);
+    uint8_t current_node = getNodeType();
     //get sending interface from routing table
     INTERFACE send_interface = routingtable(current_node,static_cast<uint8_t>(destination)).gateway;
     //Serial.println((int)send_interface);
@@ -129,22 +133,19 @@ void NetworkManager::send_to_node(NODES destination,std::vector<uint8_t> &data){
 
 }
 
-uint8_t NetworkManager::getNodeType(){return static_cast<uint8_t>(_nodeType);};
-
-
 void NetworkManager::process_packets(){
-    if (_packet_buffer.size() > 0){
+    if (_packetBuffer.size() > 0){
         
         
-        std::unique_ptr<std::vector<uint8_t>> curr_packet = std::move(_packet_buffer.front()); 
+        std::unique_ptr<std::vector<uint8_t>> curr_packet = std::move(_packetBuffer.front()); 
   
-        _packet_buffer.erase(_packet_buffer.begin()); // erase the first elemnt of global buffer
+        _packetBuffer.erase(_packetBuffer.begin()); // erase the first elemnt of global buffer
 
         //decode packet header 
         PacketHeader packetheader = PacketHeader(*curr_packet); 
 
         //get current node type
-        uint8_t current_node = static_cast<uint8_t>(_nodeType);
+        uint8_t current_node = getNodeType();
         
         if (packetheader.destination != current_node){
 
@@ -166,27 +167,40 @@ void NetworkManager::process_packets(){
                 //process packets meant for this node
                 switch(packetheader.type){
                     case static_cast<uint8_t>(packet::COMMAND):
-                        {
-                            //deserialize packet
-                            CommandPacket commandpacket = CommandPacket(*curr_packet);
-                            Command command_obj = Command{
-                                static_cast<NODES>(commandpacket.header.source), 
-                                static_cast<COMMANDS>(commandpacket.command),
-                                commandpacket.arg,
-                                commandpacket.header.uid
-                                };
-                            commandhandler.addCommand(command_obj);
+                    {
+                        //deserialize packet
+                        CommandPacket commandpacket = CommandPacket(*curr_packet);
+                        Command command_obj = Command{
+                            static_cast<NODES>(commandpacket.header.source), 
+                            static_cast<COMMANDS>(commandpacket.command),
+                            commandpacket.arg,
+                            commandpacket.header.uid
+                            };
+                        commandhandler.addCommand(command_obj);
 
-                            break;
-                        }
+                        break;
+                    }
                     default:
-                        {
-                            //dump any packets we dont care about
-                            break;
-                        }
+                    {
+                        //dump any packets we dont care about
+                        break;
+                    }
                 }
             }
         }
     }
 }
 
+std::vector<double> NetworkManager::getInterfaceInfo(INTERFACE interface){
+    switch(interface){
+        case INTERFACE::LORA:
+        {
+            return radio.getRadioInfo();
+        }
+        default:
+        {
+            break;
+        }
+    }
+    return std::vector<double>{};
+}

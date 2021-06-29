@@ -5,13 +5,15 @@
 #include <vector>
 #include "event.h"
 
+#include <ArduinoJson.h>
+
 class StateMachine;
 class jsondoc;
 
 class EventHandler{
     public:
         EventHandler(StateMachine* sm);
-        void setup(jsondoc config);// configuration dict - 
+        void setup(JsonArray event_config);// configuration dict - 
         //number of events
         //description of each event
         
@@ -20,6 +22,7 @@ class EventHandler{
 
     private:
         StateMachine* _sm; //pointer to statemachine
+
 
         std::vector<Event> eventList;
         bool register_event(Event new_event);

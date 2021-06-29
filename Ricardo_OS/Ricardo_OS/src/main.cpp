@@ -21,6 +21,5 @@ void setup() {
 
 void loop() {
   statemachine.update();
-
   
 }

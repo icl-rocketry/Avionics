@@ -26,10 +26,9 @@
 class stateMachine;//forward declaration to prevent circular dependancy
 
 
-class NetworkManager{
 
-    // allow command handler to get radio rssi and snr
-    friend class CommandHandler;
+
+class NetworkManager{
 
     public:
         NetworkManager(stateMachine* sm);
@@ -40,25 +39,26 @@ class NetworkManager{
         void send_to_node(NODES destination,std::vector<uint8_t> &data);
         void send_packet(INTERFACE iface,std::vector<uint8_t> &data);
 
-        uint8_t getNodeType();
+        uint8_t getNodeType(){return static_cast<uint8_t>(_nodeType);};
         void changeNodeType(NODES node){_nodeType = node;};
-        
 
-    protected:
-        USB usbserial; //usb serial object
-        Radio radio; // lora radio object
+        std::vector<double> getInterfaceInfo(INTERFACE interface);
 
 
     private:
         stateMachine* _sm; //pointer to state machine
 
-        std::vector<std::unique_ptr<std::vector<uint8_t>>> _packet_buffer; //packet buffer containing all network packets received
-        //std::vector<std::unique_ptr<std::vector<uint8_t>>> _local_packet_buffer; //packet buffer containing packets meant for this node
+        std::vector<std::unique_ptr<std::vector<uint8_t> > > _packetBuffer; //packet buffer containing all network packets received
+        
      
-        RoutingTable routingtable; // routing table for networking -> maybe move to protected so an be acsesed eaiser??
+        RoutingTable routingtable;
          
         //objects to process commands
         CommandHandler commandhandler;
+
+        //interfaces
+        USB usbserial; //usb serial object
+        Radio radio; // lora radio object
 
        
         NODES _nodeType;

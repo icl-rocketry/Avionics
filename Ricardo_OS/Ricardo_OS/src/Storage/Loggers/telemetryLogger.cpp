@@ -12,7 +12,7 @@
 TelemetryLogger::TelemetryLogger(StorageController* sc,uint16_t dt,std::string filename,STORAGE_DEVICE mainStorage,STORAGE_DEVICE backupStorage):
 Logger(sc,dt,filename,mainStorage,backupStorage)
 {
-telemetry_log_buffer.reserve(2560); // 512*5 although we are gonna write to sd once we exceed 512*4
+telemetry_log_buffer.reserve(1224); // 1024 + 200 bytes 
 };
 
 void TelemetryLogger::enable(){
@@ -34,25 +34,7 @@ void TelemetryLogger::writeLog(){
         telemetry_log_buffer.clear();
         main_logfile.flush();
     }
-    /*
-    if (millis()-_prevWriteTime > _writeDelta){
-        
-        for (int i = 0; i< telemetry_log_buffer.size();i++){
-            //processing each frame individually so we dont accidentally use all of heap
-            std::string entry = telemetry_log_buffer[i].stringify();
-            
-            //microsd_file.print(entry.c_str());
-            //microsd_file.write(entry.c_str(),entry.length());
-            main_logfile.write(entry.c_str(),entry.length());
-            //_storagecontroller->write(flash_file_path,entry,STORAGE_DEVICE::FLASH);
-            
-        }
 
-        main_logfile.flush();
-
-        _prevWriteTime = millis();
-
-    }*/
 };
 
 

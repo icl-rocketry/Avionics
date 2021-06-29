@@ -12,15 +12,30 @@
 class ConfigController{
     public:
         ConfigController(StorageController* storagecontroller,LogController* logcontroller);
+        
+        /**
+         * @brief Load configuration and store in configDoc variable 
+         * 
+         */
         void load();
         
+        /**
+         * @brief Check if config was read correctly
+         * 
+         * @return true 
+         * @return false 
+         */
+        operator bool(){return _configOK;};
+
         DynamicJsonDocument configDoc;
-        bool _error;
+        
+
+        
     private:
         StorageController* _storagecontroller; //pointer to storage controller
         LogController* _logcontroller;//pointer to log controller
         const std::string configuration_file_path = "/Configuration/rml.jsonc";
-
+        bool _configOK;
         
 };
 

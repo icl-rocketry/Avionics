@@ -22,7 +22,7 @@ enum class SYSTEM_FLAG:uint32_t{
     ERROR_BATT = (1 << 13),
     ERROR_GPS = (1 << 14),
     ERROR_IMU = (1 << 15),
-    ERROR_KALMAN = (1 << 16),
+    ERROR_ESTIMATOR = (1 << 16),
     ERROR_SD = (1 << 17),
     ERROR_FLASH = (1 << 18),
     ERROR_CAN = (1 << 19),
