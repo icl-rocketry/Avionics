@@ -1,9 +1,7 @@
 var searchData=
 [
-  ['log_5flocal_5flevel_1488',['LOG_LOCAL_LEVEL',['../main_8cpp.html#a5155a7b7465dd9b5e6167122827d0158',1,'main.cpp']]],
-  ['lora_5fregion_1489',['LORA_REGION',['../global__config_8h.html#a9b87dd195a194afd8ed95f9c26c8966e',1,'global_config.h']]],
-  ['lora_5fsync_5fword_1490',['LORA_SYNC_WORD',['../global__config_8h.html#aa48f422f9def809ba8aeb7d5492b193f',1,'global_config.h']]],
-  ['loracs_1491',['LoraCs',['../ricardo__pins_8h.html#af4f34b1493b6889424ce314673ed6f2c',1,'ricardo_pins.h']]],
-  ['loraint_1492',['LoraInt',['../ricardo__pins_8h.html#ab8a14ce2f2dc4b7bd47782382fc53213',1,'ricardo_pins.h']]],
-  ['lorareset_1493',['LoraReset',['../ricardo__pins_8h.html#a32900a36c1539ce036fbd16172548771',1,'ricardo_pins.h']]]
+  ['mag_5fscale_1525',['MAG_SCALE',['../global__config_8h.html#af91ea782523c15cb13ede694b43d1510',1,'global_config.h']]],
+  ['magcs_1526',['MagCs',['../ricardo__pins_8h.html#ae2661a087b618c8ad297bad03f1f1bd8',1,'ricardo_pins.h']]],
+  ['max_5fpacket_5flength_1527',['MAX_PACKET_LENGTH',['../global__config_8h.html#a973c680573b37fc359fc68d0707da355',1,'global_config.h']]],
+  ['max_5fserial_5ftimeout_1528',['MAX_SERIAL_TIMEOUT',['../global__config_8h.html#a9ddcfdd4db871c4dff34d6a3b4c26ffb',1,'global_config.h']]]
 ];

@@ -100,29 +100,35 @@ $(document).ready(function(){initNavTree('pyro_handler_8h_source.html',''); init
 <div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor">#define PYROHANDLER_H</span></div>
 <div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160; </div>
 <div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="pyro_8h.html">pyro.h</a>&quot;</span></div>
-<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160; </div>
-<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160; </div>
-<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="keyword">class </span><a class="code" href="classstate_machine.html">stateMachine</a>; <span class="comment">//forward declaration</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor">#include &lt;vector&gt;</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="preprocessor">#include &lt;memory&gt;</span></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="preprocessor">#include &lt;ArduinoJson.h&gt;</span></div>
 <div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160; </div>
-<div class="line"><a name="l00009"></a><span class="lineno"><a class="line" href="class_pyro_handler.html">    9</a></span>&#160;<span class="keyword">class </span><a class="code" href="class_pyro_handler.html">PyroHandler</a>{</div>
-<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;    <span class="keyword">public</span>:</div>
-<div class="line"><a name="l00011"></a><span class="lineno"><a class="line" href="class_pyro_handler.html#a816216743c2c66db4ef0520c9ecd0d37">   11</a></span>&#160;        <a class="code" href="class_pyro_handler.html#a816216743c2c66db4ef0520c9ecd0d37">PyroHandler</a>(<a class="code" href="classstate_machine.html">stateMachine</a>* sm);</div>
-<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160; </div>
-<div class="line"><a name="l00013"></a><span class="lineno"><a class="line" href="class_pyro_handler.html#a39b20af94ed9f45bfaa6f7758ef28f0f">   13</a></span>&#160;        <span class="keywordtype">void</span> <a class="code" href="class_pyro_handler.html#a39b20af94ed9f45bfaa6f7758ef28f0f">setup</a>();</div>
-<div class="line"><a name="l00014"></a><span class="lineno"><a class="line" href="class_pyro_handler.html#abca7be09ff52bfdfe45938698b2f299c">   14</a></span>&#160;        <span class="keywordtype">void</span> <a class="code" href="class_pyro_handler.html#abca7be09ff52bfdfe45938698b2f299c">update</a>(); <span class="comment">// update pyro status </span></div>
-<div class="line"><a name="l00015"></a><span class="lineno"><a class="line" href="class_pyro_handler.html#a4e08ca805ab2604dda0906f508d67f93">   15</a></span>&#160;        <span class="keywordtype">bool</span> <a class="code" href="class_pyro_handler.html#a4e08ca805ab2604dda0906f508d67f93">fire</a>(uint8_t <span class="keywordtype">id</span>);</div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;    </div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;    <span class="keyword">private</span>:</div>
-<div class="line"><a name="l00018"></a><span class="lineno"><a class="line" href="class_pyro_handler.html#a61590edd24d2cf677daa237052f92b5e">   18</a></span>&#160;        <a class="code" href="classstate_machine.html">stateMachine</a>* <a class="code" href="class_pyro_handler.html#a61590edd24d2cf677daa237052f92b5e">_sm</a>; <span class="comment">//pointer to statemachine</span></div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160; </div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;};</div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160; </div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="ttc" id="aclass_pyro_handler_html"><div class="ttname"><a href="class_pyro_handler.html">PyroHandler</a></div><div class="ttdef"><b>Definition:</b> pyroHandler.h:9</div></div>
-<div class="ttc" id="aclass_pyro_handler_html_a39b20af94ed9f45bfaa6f7758ef28f0f"><div class="ttname"><a href="class_pyro_handler.html#a39b20af94ed9f45bfaa6f7758ef28f0f">PyroHandler::setup</a></div><div class="ttdeci">void setup()</div></div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160; </div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="keyword">class </span><a class="code" href="classstate_machine.html">stateMachine</a>; <span class="comment">//forward declaration</span></div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160; </div>
+<div class="line"><a name="l00012"></a><span class="lineno"><a class="line" href="class_pyro_handler.html">   12</a></span>&#160;<span class="keyword">class </span><a class="code" href="class_pyro_handler.html">PyroHandler</a>{</div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;    <span class="keyword">public</span>:</div>
+<div class="line"><a name="l00014"></a><span class="lineno"><a class="line" href="class_pyro_handler.html#a816216743c2c66db4ef0520c9ecd0d37">   14</a></span>&#160;        <a class="code" href="class_pyro_handler.html#a816216743c2c66db4ef0520c9ecd0d37">PyroHandler</a>(<a class="code" href="classstate_machine.html">stateMachine</a>* sm);</div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160; </div>
+<div class="line"><a name="l00016"></a><span class="lineno"><a class="line" href="class_pyro_handler.html#a2cf899e0c3b0c0c60d236ba27a0112ef">   16</a></span>&#160;        <span class="keywordtype">void</span> <a class="code" href="class_pyro_handler.html#a2cf899e0c3b0c0c60d236ba27a0112ef">setup</a>(JsonArray pyroConfig);</div>
+<div class="line"><a name="l00017"></a><span class="lineno"><a class="line" href="class_pyro_handler.html#abca7be09ff52bfdfe45938698b2f299c">   17</a></span>&#160;        <span class="keywordtype">void</span> <a class="code" href="class_pyro_handler.html#abca7be09ff52bfdfe45938698b2f299c">update</a>(); <span class="comment">// update pyro status </span></div>
+<div class="line"><a name="l00018"></a><span class="lineno"><a class="line" href="class_pyro_handler.html#a4e08ca805ab2604dda0906f508d67f93">   18</a></span>&#160;        <span class="keywordtype">bool</span> <a class="code" href="class_pyro_handler.html#a4e08ca805ab2604dda0906f508d67f93">fire</a>(uint8_t <span class="keywordtype">id</span>);</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;    </div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;    <span class="keyword">private</span>:</div>
+<div class="line"><a name="l00021"></a><span class="lineno"><a class="line" href="class_pyro_handler.html#a61590edd24d2cf677daa237052f92b5e">   21</a></span>&#160;        <a class="code" href="classstate_machine.html">stateMachine</a>* <a class="code" href="class_pyro_handler.html#a61590edd24d2cf677daa237052f92b5e">_sm</a>; <span class="comment">//pointer to statemachine</span></div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160; </div>
+<div class="line"><a name="l00023"></a><span class="lineno"><a class="line" href="class_pyro_handler.html#ab3b48bad7ed12e17f2aa9ae6957d3ede">   23</a></span>&#160;        std::vector&lt;std::unique_ptr&lt;Pyro&gt; &gt; <a class="code" href="class_pyro_handler.html#ab3b48bad7ed12e17f2aa9ae6957d3ede">pyroList</a>; <span class="comment">// vector containing pointers to all pyro objects</span></div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;        </div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;};</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160; </div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="ttc" id="aclass_pyro_handler_html"><div class="ttname"><a href="class_pyro_handler.html">PyroHandler</a></div><div class="ttdef"><b>Definition:</b> pyroHandler.h:12</div></div>
+<div class="ttc" id="aclass_pyro_handler_html_a2cf899e0c3b0c0c60d236ba27a0112ef"><div class="ttname"><a href="class_pyro_handler.html#a2cf899e0c3b0c0c60d236ba27a0112ef">PyroHandler::setup</a></div><div class="ttdeci">void setup(JsonArray pyroConfig)</div></div>
 <div class="ttc" id="aclass_pyro_handler_html_a4e08ca805ab2604dda0906f508d67f93"><div class="ttname"><a href="class_pyro_handler.html#a4e08ca805ab2604dda0906f508d67f93">PyroHandler::fire</a></div><div class="ttdeci">bool fire(uint8_t id)</div></div>
-<div class="ttc" id="aclass_pyro_handler_html_a61590edd24d2cf677daa237052f92b5e"><div class="ttname"><a href="class_pyro_handler.html#a61590edd24d2cf677daa237052f92b5e">PyroHandler::_sm</a></div><div class="ttdeci">stateMachine * _sm</div><div class="ttdef"><b>Definition:</b> pyroHandler.h:18</div></div>
+<div class="ttc" id="aclass_pyro_handler_html_a61590edd24d2cf677daa237052f92b5e"><div class="ttname"><a href="class_pyro_handler.html#a61590edd24d2cf677daa237052f92b5e">PyroHandler::_sm</a></div><div class="ttdeci">stateMachine * _sm</div><div class="ttdef"><b>Definition:</b> pyroHandler.h:21</div></div>
 <div class="ttc" id="aclass_pyro_handler_html_a816216743c2c66db4ef0520c9ecd0d37"><div class="ttname"><a href="class_pyro_handler.html#a816216743c2c66db4ef0520c9ecd0d37">PyroHandler::PyroHandler</a></div><div class="ttdeci">PyroHandler(stateMachine *sm)</div></div>
+<div class="ttc" id="aclass_pyro_handler_html_ab3b48bad7ed12e17f2aa9ae6957d3ede"><div class="ttname"><a href="class_pyro_handler.html#ab3b48bad7ed12e17f2aa9ae6957d3ede">PyroHandler::pyroList</a></div><div class="ttdeci">std::vector&lt; std::unique_ptr&lt; Pyro &gt; &gt; pyroList</div><div class="ttdef"><b>Definition:</b> pyroHandler.h:23</div></div>
 <div class="ttc" id="aclass_pyro_handler_html_abca7be09ff52bfdfe45938698b2f299c"><div class="ttname"><a href="class_pyro_handler.html#abca7be09ff52bfdfe45938698b2f299c">PyroHandler::update</a></div><div class="ttdeci">void update()</div></div>
 <div class="ttc" id="aclassstate_machine_html"><div class="ttname"><a href="classstate_machine.html">stateMachine</a></div><div class="ttdef"><b>Definition:</b> stateMachine.h:33</div></div>
 <div class="ttc" id="apyro_8h_html"><div class="ttname"><a href="pyro_8h.html">pyro.h</a></div></div>

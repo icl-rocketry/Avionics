@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['txcan_1598',['TxCan',['../ricardo__pins_8h.html#aefb57fd8aac3205471b968d58c334268',1,'ricardo_pins.h']]],
-  ['txradio_1599',['TxRadio',['../ricardo__pins_8h.html#a919b596b9b45d5deb815b5a30c19f21b',1,'ricardo_pins.h']]]
+  ['verbose_1631',['VERBOSE',['../global__config_8h.html#a42f8c497a1968074f38bf5055c650dca',1,'global_config.h']]]
 ];

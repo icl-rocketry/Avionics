@@ -6,8 +6,7 @@
 
 
 
-Collaboration diagram for Pyro\+Handler\+:
-\nopagebreak
+Collaboration diagram for Pyro\+Handler\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -19,7 +18,7 @@ Collaboration diagram for Pyro\+Handler\+:
 \item 
 \mbox{\hyperlink{class_pyro_handler_a816216743c2c66db4ef0520c9ecd0d37}{Pyro\+Handler}} (\mbox{\hyperlink{classstate_machine}{state\+Machine}} $\ast$sm)
 \item 
-void \mbox{\hyperlink{class_pyro_handler_a39b20af94ed9f45bfaa6f7758ef28f0f}{setup}} ()
+void \mbox{\hyperlink{class_pyro_handler_a2cf899e0c3b0c0c60d236ba27a0112ef}{setup}} (Json\+Array pyro\+Config)
 \item 
 void \mbox{\hyperlink{class_pyro_handler_abca7be09ff52bfdfe45938698b2f299c}{update}} ()
 \item 
@@ -29,6 +28,8 @@ bool \mbox{\hyperlink{class_pyro_handler_a4e08ca805ab2604dda0906f508d67f93}{fire
 \begin{DoxyCompactItemize}
 \item 
 \mbox{\hyperlink{classstate_machine}{state\+Machine}} $\ast$ \mbox{\hyperlink{class_pyro_handler_a61590edd24d2cf677daa237052f92b5e}{\+\_\+sm}}
+\item 
+std\+::vector$<$ std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{class_pyro}{Pyro}} $>$ $>$ \mbox{\hyperlink{class_pyro_handler_ab3b48bad7ed12e17f2aa9ae6957d3ede}{pyro\+List}}
 \end{DoxyCompactItemize}
 
 
@@ -48,11 +49,19 @@ bool \mbox{\hyperlink{class_pyro_handler_a4e08ca805ab2604dda0906f508d67f93}{fire
 \doxysubsubsection{\texorpdfstring{fire()}{fire()}}
 {\footnotesize\ttfamily bool Pyro\+Handler\+::fire (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{id }\end{DoxyParamCaption})}
 
-\mbox{\Hypertarget{class_pyro_handler_a39b20af94ed9f45bfaa6f7758ef28f0f}\label{class_pyro_handler_a39b20af94ed9f45bfaa6f7758ef28f0f}} 
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=314pt]{class_pyro_handler_a4e08ca805ab2604dda0906f508d67f93_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_pyro_handler_a2cf899e0c3b0c0c60d236ba27a0112ef}\label{class_pyro_handler_a2cf899e0c3b0c0c60d236ba27a0112ef}} 
 \index{PyroHandler@{PyroHandler}!setup@{setup}}
 \index{setup@{setup}!PyroHandler@{PyroHandler}}
 \doxysubsubsection{\texorpdfstring{setup()}{setup()}}
-{\footnotesize\ttfamily void Pyro\+Handler\+::setup (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily void Pyro\+Handler\+::setup (\begin{DoxyParamCaption}\item[{Json\+Array}]{pyro\+Config }\end{DoxyParamCaption})}
 
 \mbox{\Hypertarget{class_pyro_handler_abca7be09ff52bfdfe45938698b2f299c}\label{class_pyro_handler_abca7be09ff52bfdfe45938698b2f299c}} 
 \index{PyroHandler@{PyroHandler}!update@{update}}
@@ -68,6 +77,12 @@ bool \mbox{\hyperlink{class_pyro_handler_a4e08ca805ab2604dda0906f508d67f93}{fire
 \index{\_sm@{\_sm}!PyroHandler@{PyroHandler}}
 \doxysubsubsection{\texorpdfstring{\_sm}{\_sm}}
 {\footnotesize\ttfamily \mbox{\hyperlink{classstate_machine}{state\+Machine}}$\ast$ Pyro\+Handler\+::\+\_\+sm\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{class_pyro_handler_ab3b48bad7ed12e17f2aa9ae6957d3ede}\label{class_pyro_handler_ab3b48bad7ed12e17f2aa9ae6957d3ede}} 
+\index{PyroHandler@{PyroHandler}!pyroList@{pyroList}}
+\index{pyroList@{pyroList}!PyroHandler@{PyroHandler}}
+\doxysubsubsection{\texorpdfstring{pyroList}{pyroList}}
+{\footnotesize\ttfamily std\+::vector$<$std\+::unique\+\_\+ptr$<$\mbox{\hyperlink{class_pyro}{Pyro}}$>$ $>$ Pyro\+Handler\+::pyro\+List\hspace{0.3cm}{\ttfamily [private]}}
 
 
 

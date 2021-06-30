@@ -1,0 +1,10 @@
+<map id="Pyro::doStuff" name="Pyro::doStuff">
+<area shape="rect" id="node1" title="Fire the pyro." alt="" coords="5,71,104,98"/>
+<area shape="rect" id="node2" href="$class_system_status.html#a881b11600f6b3a9dcd5520e8ada5600b" title=" " alt="" coords="177,5,325,47"/>
+<area shape="rect" id="node7" href="$class_system_status.html#a7857d2fb6cda9d3c0aba6bf2a9592169" title=" " alt="" coords="152,71,349,98"/>
+<area shape="rect" id="node8" href="$namespaceutils.html#a80b01b2df5fab1766ccdbfa4fb2ce79d" title=" " alt="" coords="202,122,299,149"/>
+<area shape="rect" id="node3" href="$class_log_controller.html#adb94b2720224b121ac8487c7c0e04ffc" title=" " alt="" coords="397,42,521,69"/>
+<area shape="rect" id="node4" href="$class_telemetry_logger.html#af01a5e0f381d60d53d2c08ddad37ca07" title=" " alt="" coords="569,42,712,69"/>
+<area shape="rect" id="node5" href="$classtelemetry__logframe.html#add67dbfbf886bf1b322628962a03c0de" title=" " alt="" coords="760,35,893,76"/>
+<area shape="rect" id="node6" href="$classtelemetry__logframe.html#ad8ce2864d5faaf045a0ff812c029a4b4" title=" " alt="" coords="941,35,1075,76"/>
+</map>

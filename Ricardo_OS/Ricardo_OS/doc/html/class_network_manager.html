@@ -94,10 +94,8 @@ $(document).ready(function(){initNavTree('class_network_manager.html',''); initR
 <div class="header">
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
-<a href="#pro-attribs">Protected Attributes</a> &#124;
 <a href="#pri-methods">Private Member Functions</a> &#124;
 <a href="#pri-attribs">Private Attributes</a> &#124;
-<a href="#friends">Friends</a> &#124;
 <a href="class_network_manager-members.html">List of all members</a>  </div>
   <div class="headertitle">
 <div class="title">NetworkManager Class Reference</div>  </div>
@@ -147,52 +145,38 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:a87b64dafa618fac138addfac9c47edab"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0d4ea7d4f0b395249151d0a28af79cd5"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_network_manager.html#a0d4ea7d4f0b395249151d0a28af79cd5">update</a> ()</td></tr>
 <tr class="separator:a0d4ea7d4f0b395249151d0a28af79cd5"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a674c1c30636d564b2d43f668cb04485b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_network_manager.html#a674c1c30636d564b2d43f668cb04485b">send_to_node</a> (<a class="el" href="nodes_8h.html#a898f2e294c3f9fc053e921a46dd52dce">Nodes</a> destination, std::vector&lt; uint8_t &gt; &amp;data)</td></tr>
-<tr class="separator:a674c1c30636d564b2d43f668cb04485b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a64d21aa0b666042d4458b914b359b61e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_network_manager.html#a64d21aa0b666042d4458b914b359b61e">send_packet</a> (<a class="el" href="interfaces_8h.html#af0cd30ccfa4f4fe2bd0fdc3cfc4d34cf">Interface</a> iface, std::vector&lt; uint8_t &gt; &amp;data)</td></tr>
-<tr class="separator:a64d21aa0b666042d4458b914b359b61e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab03dd5020fe0c178b73eaf887f1ed8a7"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_network_manager.html#ab03dd5020fe0c178b73eaf887f1ed8a7">add_command</a> (<a class="el" href="nodes_8h.html#a898f2e294c3f9fc053e921a46dd52dce">Nodes</a> source_node, uint32_t command)</td></tr>
-<tr class="separator:ab03dd5020fe0c178b73eaf887f1ed8a7"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:abd5ef50bf011b031598c9f87520d2a52"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_network_manager.html#abd5ef50bf011b031598c9f87520d2a52">get_node_type</a> ()</td></tr>
-<tr class="separator:abd5ef50bf011b031598c9f87520d2a52"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-attribs"></a>
-Protected Attributes</h2></td></tr>
-<tr class="memitem:a260d13785b90f5854dd7d4173379860f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="nodes_8h.html#a898f2e294c3f9fc053e921a46dd52dce">Nodes</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_network_manager.html#a260d13785b90f5854dd7d4173379860f">node_type</a></td></tr>
-<tr class="separator:a260d13785b90f5854dd7d4173379860f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac8de949b2c89c1871a2393578eb9685e"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_u_s_b.html">USB</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_network_manager.html#ac8de949b2c89c1871a2393578eb9685e">usbserial</a></td></tr>
-<tr class="separator:ac8de949b2c89c1871a2393578eb9685e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a18898163079b9100e03f4a3959ea151d"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_radio.html">Radio</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_network_manager.html#a18898163079b9100e03f4a3959ea151d">radio</a></td></tr>
-<tr class="separator:a18898163079b9100e03f4a3959ea151d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a511c9d51f00ad5c07c8f5c089d656c6c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_network_manager.html#a511c9d51f00ad5c07c8f5c089d656c6c">send_to_node</a> (<a class="el" href="nodes_8h.html#ac77cd0a84629014c09956c3f475d6aea">NODES</a> destination, std::vector&lt; uint8_t &gt; &amp;data)</td></tr>
+<tr class="separator:a511c9d51f00ad5c07c8f5c089d656c6c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abab20a7dfd724a60cb8c157594a1a034"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_network_manager.html#abab20a7dfd724a60cb8c157594a1a034">send_packet</a> (<a class="el" href="interfaces_8h.html#a0702347e8797fcd7166de65ba3c3315a">INTERFACE</a> iface, std::vector&lt; uint8_t &gt; &amp;data)</td></tr>
+<tr class="separator:abab20a7dfd724a60cb8c157594a1a034"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3d0d39c83f78c42256e82dc5f95ad016"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_network_manager.html#a3d0d39c83f78c42256e82dc5f95ad016">getNodeType</a> ()</td></tr>
+<tr class="separator:a3d0d39c83f78c42256e82dc5f95ad016"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3dba8202264d6f31b9049049731033fa"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_network_manager.html#a3dba8202264d6f31b9049049731033fa">changeNodeType</a> (<a class="el" href="nodes_8h.html#ac77cd0a84629014c09956c3f475d6aea">NODES</a> node)</td></tr>
+<tr class="separator:a3dba8202264d6f31b9049049731033fa"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9e45dcb8ed667b4e39d02d49836d60e2"><td class="memItemLeft" align="right" valign="top">std::vector&lt; double &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_network_manager.html#a9e45dcb8ed667b4e39d02d49836d60e2">getInterfaceInfo</a> (<a class="el" href="interfaces_8h.html#a0702347e8797fcd7166de65ba3c3315a">INTERFACE</a> interface)</td></tr>
+<tr class="separator:a9e45dcb8ed667b4e39d02d49836d60e2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-methods"></a>
 Private Member Functions</h2></td></tr>
-<tr class="memitem:a64e0a7fce010c89681b6e26a38bd79d1"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_network_manager.html#a64e0a7fce010c89681b6e26a38bd79d1">process_global_packets</a> ()</td></tr>
-<tr class="separator:a64e0a7fce010c89681b6e26a38bd79d1"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a657f3958fd5a075fe1df6b2f9e7fa01f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_network_manager.html#a657f3958fd5a075fe1df6b2f9e7fa01f">process_local_packets</a> ()</td></tr>
-<tr class="separator:a657f3958fd5a075fe1df6b2f9e7fa01f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a31a6ba8c038104a3faf686e53fcfcbe9"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_network_manager.html#a31a6ba8c038104a3faf686e53fcfcbe9">process_packets</a> ()</td></tr>
+<tr class="separator:a31a6ba8c038104a3faf686e53fcfcbe9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-attribs"></a>
 Private Attributes</h2></td></tr>
 <tr class="memitem:a65252299213785eb2d99ba159f04ad8f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classstate_machine.html">stateMachine</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_network_manager.html#a65252299213785eb2d99ba159f04ad8f">_sm</a></td></tr>
 <tr class="separator:a65252299213785eb2d99ba159f04ad8f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aacfb7869578fd8caa6ae2656f290fe62"><td class="memItemLeft" align="right" valign="top">std::vector&lt; std::unique_ptr&lt; std::vector&lt; uint8_t &gt; &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_network_manager.html#aacfb7869578fd8caa6ae2656f290fe62">_global_packet_buffer</a></td></tr>
-<tr class="separator:aacfb7869578fd8caa6ae2656f290fe62"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab466e0660c3ff965b8f1876176605bb3"><td class="memItemLeft" align="right" valign="top">std::vector&lt; std::unique_ptr&lt; std::vector&lt; uint8_t &gt; &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_network_manager.html#ab466e0660c3ff965b8f1876176605bb3">_local_packet_buffer</a></td></tr>
-<tr class="separator:ab466e0660c3ff965b8f1876176605bb3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0aa42d98930ee54979a42d2ca6237016"><td class="memItemLeft" align="right" valign="top">std::vector&lt; std::unique_ptr&lt; std::vector&lt; uint8_t &gt; &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_network_manager.html#a0aa42d98930ee54979a42d2ca6237016">_packetBuffer</a></td></tr>
+<tr class="separator:a0aa42d98930ee54979a42d2ca6237016"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa5459076b4f68249db6b2976ac1f868c"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_routing_table.html">RoutingTable</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_network_manager.html#aa5459076b4f68249db6b2976ac1f868c">routingtable</a></td></tr>
 <tr class="separator:aa5459076b4f68249db6b2976ac1f868c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa543111d508b9b63e5cdd5f5c3f2a3c3"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_command_handler.html">CommandHandler</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_network_manager.html#aa543111d508b9b63e5cdd5f5c3f2a3c3">commandhandler</a></td></tr>
 <tr class="separator:aa543111d508b9b63e5cdd5f5c3f2a3c3"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="friends"></a>
-Friends</h2></td></tr>
-<tr class="memitem:aa783fb6d060a3935500d4929d447dfc3"><td class="memItemLeft" align="right" valign="top">class&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_network_manager.html#aa783fb6d060a3935500d4929d447dfc3">Preflight</a></td></tr>
-<tr class="separator:aa783fb6d060a3935500d4929d447dfc3"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a337f9d85d0d497f91a096e88efb9293a"><td class="memItemLeft" align="right" valign="top">class&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_network_manager.html#a337f9d85d0d497f91a096e88efb9293a">Groundstation</a></td></tr>
-<tr class="separator:a337f9d85d0d497f91a096e88efb9293a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a442090830cec26bfe59aa33685465557"><td class="memItemLeft" align="right" valign="top">class&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_network_manager.html#a442090830cec26bfe59aa33685465557">CommandHandler</a></td></tr>
-<tr class="separator:a442090830cec26bfe59aa33685465557"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac8de949b2c89c1871a2393578eb9685e"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_u_s_b.html">USB</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_network_manager.html#ac8de949b2c89c1871a2393578eb9685e">usbserial</a></td></tr>
+<tr class="separator:ac8de949b2c89c1871a2393578eb9685e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a18898163079b9100e03f4a3959ea151d"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_radio.html">Radio</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_network_manager.html#a18898163079b9100e03f4a3959ea151d">radio</a></td></tr>
+<tr class="separator:a18898163079b9100e03f4a3959ea151d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7e941149aa87f9227aea233d20ae9fdc"><td class="memItemLeft" align="right" valign="top"><a class="el" href="nodes_8h.html#ac77cd0a84629014c09956c3f475d6aea">NODES</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_network_manager.html#a7e941149aa87f9227aea233d20ae9fdc">_nodeType</a></td></tr>
+<tr class="separator:a7e941149aa87f9227aea233d20ae9fdc"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="aa1832d9cbe09178014f299fb1dce404c"></a>
@@ -214,68 +198,86 @@ Friends</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
-<a id="ab03dd5020fe0c178b73eaf887f1ed8a7"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ab03dd5020fe0c178b73eaf887f1ed8a7">&#9670;&nbsp;</a></span>add_command()</h2>
+<a id="a3dba8202264d6f31b9049049731033fa"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3dba8202264d6f31b9049049731033fa">&#9670;&nbsp;</a></span>changeNodeType()</h2>
 
 <div class="memitem">
 <div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">void NetworkManager::add_command </td>
+          <td class="memname">void NetworkManager::changeNodeType </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="nodes_8h.html#a898f2e294c3f9fc053e921a46dd52dce">Nodes</a>&#160;</td>
-          <td class="paramname"><em>source_node</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
+          <td class="paramtype"><a class="el" href="nodes_8h.html#ac77cd0a84629014c09956c3f475d6aea">NODES</a>&#160;</td>
+          <td class="paramname"><em>node</em></td><td>)</td>
           <td></td>
-          <td class="paramtype">uint32_t&#160;</td>
-          <td class="paramname"><em>command</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
         </tr>
       </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
 </div><div class="memdoc">
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="class_network_manager_a3dba8202264d6f31b9049049731033fa_icgraph.png" border="0" usemap="#aclass_network_manager_a3dba8202264d6f31b9049049731033fa_icgraph" alt=""/></div>
+<map name="aclass_network_manager_a3dba8202264d6f31b9049049731033fa_icgraph" id="aclass_network_manager_a3dba8202264d6f31b9049049731033fa_icgraph">
+<area shape="rect" title=" " alt="" coords="245,31,476,57"/>
+<area shape="rect" href="class_groundstation.html#a357ae1790921356177a8dbbf98e22dc6" title=" " alt="" coords="5,5,197,32"/>
+<area shape="rect" href="class_preflight.html#a28882002ff590a87ee9a1f888f5b7cf1" title=" " alt="" coords="38,56,165,83"/>
+</map>
+</div>
 
 </div>
 </div>
-<a id="abd5ef50bf011b031598c9f87520d2a52"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#abd5ef50bf011b031598c9f87520d2a52">&#9670;&nbsp;</a></span>get_node_type()</h2>
+<a id="a9e45dcb8ed667b4e39d02d49836d60e2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9e45dcb8ed667b4e39d02d49836d60e2">&#9670;&nbsp;</a></span>getInterfaceInfo()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">int NetworkManager::get_node_type </td>
+          <td class="memname">std::vector&lt; double &gt; NetworkManager::getInterfaceInfo </td>
           <td>(</td>
-          <td class="paramname"></td><td>)</td>
+          <td class="paramtype"><a class="el" href="interfaces_8h.html#a0702347e8797fcd7166de65ba3c3315a">INTERFACE</a>&#160;</td>
+          <td class="paramname"><em>interface</em></td><td>)</td>
           <td></td>
         </tr>
       </table>
 </div><div class="memdoc">
 <div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="class_network_manager_a9e45dcb8ed667b4e39d02d49836d60e2_cgraph.png" border="0" usemap="#aclass_network_manager_a9e45dcb8ed667b4e39d02d49836d60e2_cgraph" alt=""/></div>
+<map name="aclass_network_manager_a9e45dcb8ed667b4e39d02d49836d60e2_cgraph" id="aclass_network_manager_a9e45dcb8ed667b4e39d02d49836d60e2_cgraph">
+<area shape="rect" title=" " alt="" coords="5,5,225,32"/>
+<area shape="rect" href="class_radio.html#aa26379d7242a2fce0c775b16570ec1e9" title=" " alt="" coords="273,5,412,32"/>
+</map>
+</div>
+<div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><img src="class_network_manager_abd5ef50bf011b031598c9f87520d2a52_icgraph.png" border="0" usemap="#aclass_network_manager_abd5ef50bf011b031598c9f87520d2a52_icgraph" alt=""/></div>
-<map name="aclass_network_manager_abd5ef50bf011b031598c9f87520d2a52_icgraph" id="aclass_network_manager_abd5ef50bf011b031598c9f87520d2a52_icgraph">
-<area shape="rect" title=" " alt="" coords="1356,23,1503,65"/>
+<div class="center"><img src="class_network_manager_a9e45dcb8ed667b4e39d02d49836d60e2_icgraph.png" border="0" usemap="#aclass_network_manager_a9e45dcb8ed667b4e39d02d49836d60e2_icgraph" alt=""/></div>
+<map name="aclass_network_manager_a9e45dcb8ed667b4e39d02d49836d60e2_icgraph" id="aclass_network_manager_a9e45dcb8ed667b4e39d02d49836d60e2_icgraph">
+<area shape="rect" title=" " alt="" coords="1356,31,1576,57"/>
 <area shape="rect" href="class_command_handler.html#a54c1b7e2f1a6d0365ef36a0c738d7e02" title=" " alt="" coords="1075,31,1308,57"/>
 <area shape="rect" href="class_command_handler.html#a6c61c87a0ad0045aa6133dd69112a72b" title=" " alt="" coords="852,5,1027,32"/>
 <area shape="rect" href="class_network_manager.html#a0d4ea7d4f0b395249151d0a28af79cd5" title=" " alt="" coords="636,5,804,32"/>
 <area shape="rect" href="classstate_machine.html#a5f4f54735cb0a13393227e3af6863cdd" title=" " alt="" coords="441,5,588,32"/>
 <area shape="rect" href="main_8cpp.html#afe461d27b9c48d5921c00d521181f12f" title=" " alt="" coords="347,5,393,32"/>
-<area shape="rect" href="class_tunez_handler.html#a02e64b5ab21c71fc6e62e6673f80ac63" title=" " alt="" coords="164,31,299,57"/>
+<area shape="rect" href="class_tunez_handler.html#a02e64b5ab21c71fc6e62e6673f80ac63" title="Put Melody on tune queue." alt="" coords="164,31,299,57"/>
 <area shape="rect" href="class_setup.html#a315e788a23a012d5993613c627f15302" title=" " alt="" coords="5,31,116,57"/>
 </map>
 </div>
 
 </div>
 </div>
-<a id="a64e0a7fce010c89681b6e26a38bd79d1"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a64e0a7fce010c89681b6e26a38bd79d1">&#9670;&nbsp;</a></span>process_global_packets()</h2>
+<a id="a3d0d39c83f78c42256e82dc5f95ad016"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3d0d39c83f78c42256e82dc5f95ad016">&#9670;&nbsp;</a></span>getNodeType()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -284,7 +286,49 @@ Here is the caller graph for this function:</div>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">void NetworkManager::process_global_packets </td>
+          <td class="memname">uint8_t NetworkManager::getNodeType </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="class_network_manager_a3d0d39c83f78c42256e82dc5f95ad016_icgraph.png" border="0" usemap="#aclass_network_manager_a3d0d39c83f78c42256e82dc5f95ad016_icgraph" alt=""/></div>
+<map name="aclass_network_manager_a3d0d39c83f78c42256e82dc5f95ad016_icgraph" id="aclass_network_manager_a3d0d39c83f78c42256e82dc5f95ad016_icgraph">
+<area shape="rect" title=" " alt="" coords="1561,64,1768,91"/>
+<area shape="rect" href="class_command_handler.html#a54c1b7e2f1a6d0365ef36a0c738d7e02" title=" " alt="" coords="1075,35,1308,61"/>
+<area shape="rect" href="class_network_manager.html#a31a6ba8c038104a3faf686e53fcfcbe9" title=" " alt="" coords="1104,86,1279,127"/>
+<area shape="rect" href="class_network_manager.html#a511c9d51f00ad5c07c8f5c089d656c6c" title=" " alt="" coords="1356,57,1513,98"/>
+<area shape="rect" href="class_command_handler.html#a6c61c87a0ad0045aa6133dd69112a72b" title=" " alt="" coords="852,43,1027,69"/>
+<area shape="rect" href="class_network_manager.html#a0d4ea7d4f0b395249151d0a28af79cd5" title=" " alt="" coords="636,43,804,69"/>
+<area shape="rect" href="classstate_machine.html#a5f4f54735cb0a13393227e3af6863cdd" title=" " alt="" coords="441,43,588,69"/>
+<area shape="rect" href="main_8cpp.html#afe461d27b9c48d5921c00d521181f12f" title=" " alt="" coords="347,43,393,69"/>
+<area shape="rect" href="class_tunez_handler.html#a02e64b5ab21c71fc6e62e6673f80ac63" title="Put Melody on tune queue." alt="" coords="164,17,299,44"/>
+<area shape="rect" href="class_setup.html#a315e788a23a012d5993613c627f15302" title=" " alt="" coords="5,17,116,44"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a31a6ba8c038104a3faf686e53fcfcbe9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a31a6ba8c038104a3faf686e53fcfcbe9">&#9670;&nbsp;</a></span>process_packets()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void NetworkManager::process_packets </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td></td>
@@ -299,25 +343,27 @@ Here is the caller graph for this function:</div>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><img src="class_network_manager_a64e0a7fce010c89681b6e26a38bd79d1_cgraph.png" border="0" usemap="#aclass_network_manager_a64e0a7fce010c89681b6e26a38bd79d1_cgraph" alt=""/></div>
-<map name="aclass_network_manager_a64e0a7fce010c89681b6e26a38bd79d1_cgraph" id="aclass_network_manager_a64e0a7fce010c89681b6e26a38bd79d1_cgraph">
-<area shape="rect" title=" " alt="" coords="5,23,180,65"/>
-<area shape="rect" href="class_network_manager.html#a674c1c30636d564b2d43f668cb04485b" title=" " alt="" coords="228,23,385,65"/>
-<area shape="rect" href="class_network_manager.html#a64d21aa0b666042d4458b914b359b61e" title=" " alt="" coords="433,23,591,65"/>
-<area shape="rect" href="class_u_s_b.html#a404c09e9e90a8df1011d4aca3a13c5d1" title=" " alt="" coords="642,5,774,32"/>
-<area shape="rect" href="class_radio.html#a219437f42cd31f1373c7192b3c5fc19c" title=" " alt="" coords="639,56,777,83"/>
+<div class="center"><img src="class_network_manager_a31a6ba8c038104a3faf686e53fcfcbe9_cgraph.png" border="0" usemap="#aclass_network_manager_a31a6ba8c038104a3faf686e53fcfcbe9_cgraph" alt=""/></div>
+<map name="aclass_network_manager_a31a6ba8c038104a3faf686e53fcfcbe9_cgraph" id="aclass_network_manager_a31a6ba8c038104a3faf686e53fcfcbe9_cgraph">
+<area shape="rect" title=" " alt="" coords="5,49,180,90"/>
+<area shape="rect" href="class_command_handler.html#a3ad23bf7d0bb809ac5c3a3ac9c74e5a5" title=" " alt="" coords="228,5,444,32"/>
+<area shape="rect" href="class_network_manager.html#a3d0d39c83f78c42256e82dc5f95ad016" title=" " alt="" coords="492,56,699,83"/>
+<area shape="rect" href="class_network_manager.html#a511c9d51f00ad5c07c8f5c089d656c6c" title=" " alt="" coords="257,107,415,149"/>
+<area shape="rect" href="class_network_manager.html#abab20a7dfd724a60cb8c157594a1a034" title=" " alt="" coords="517,107,674,149"/>
+<area shape="rect" href="class_radio.html#a7b903240e57d52fc31f9cbec4275c0fa" title="send_packet places packet onto send buffer to be sent if radio isnt busy This is to ensure that we ca..." alt="" coords="747,89,885,116"/>
+<area shape="rect" href="class_u_s_b.html#a94de2f605b24851ceb41499d6fef5f75" title=" " alt="" coords="750,140,882,167"/>
 </map>
 </div>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><img src="class_network_manager_a64e0a7fce010c89681b6e26a38bd79d1_icgraph.png" border="0" usemap="#aclass_network_manager_a64e0a7fce010c89681b6e26a38bd79d1_icgraph" alt=""/></div>
-<map name="aclass_network_manager_a64e0a7fce010c89681b6e26a38bd79d1_icgraph" id="aclass_network_manager_a64e0a7fce010c89681b6e26a38bd79d1_icgraph">
+<div class="center"><img src="class_network_manager_a31a6ba8c038104a3faf686e53fcfcbe9_icgraph.png" border="0" usemap="#aclass_network_manager_a31a6ba8c038104a3faf686e53fcfcbe9_icgraph" alt=""/></div>
+<map name="aclass_network_manager_a31a6ba8c038104a3faf686e53fcfcbe9_icgraph" id="aclass_network_manager_a31a6ba8c038104a3faf686e53fcfcbe9_icgraph">
 <area shape="rect" title=" " alt="" coords="1197,74,1372,115"/>
 <area shape="rect" href="class_network_manager.html#a0d4ea7d4f0b395249151d0a28af79cd5" title=" " alt="" coords="981,81,1149,108"/>
 <area shape="rect" href="classstate_machine.html#a5f4f54735cb0a13393227e3af6863cdd" title=" " alt="" coords="787,56,933,83"/>
 <area shape="rect" href="main_8cpp.html#afe461d27b9c48d5921c00d521181f12f" title=" " alt="" coords="692,56,739,83"/>
-<area shape="rect" href="class_tunez_handler.html#a02e64b5ab21c71fc6e62e6673f80ac63" title=" " alt="" coords="509,56,644,83"/>
+<area shape="rect" href="class_tunez_handler.html#a02e64b5ab21c71fc6e62e6673f80ac63" title="Put Melody on tune queue." alt="" coords="509,56,644,83"/>
 <area shape="rect" href="class_command_handler.html#a54c1b7e2f1a6d0365ef36a0c738d7e02" title=" " alt="" coords="228,5,461,32"/>
 <area shape="rect" href="class_setup.html#a315e788a23a012d5993613c627f15302" title=" " alt="" coords="289,56,400,83"/>
 <area shape="rect" href="class_command_handler.html#a6c61c87a0ad0045aa6133dd69112a72b" title=" " alt="" coords="5,56,180,83"/>
@@ -326,57 +372,8 @@ Here is the caller graph for this function:</div>
 
 </div>
 </div>
-<a id="a657f3958fd5a075fe1df6b2f9e7fa01f"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a657f3958fd5a075fe1df6b2f9e7fa01f">&#9670;&nbsp;</a></span>process_local_packets()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">void NetworkManager::process_local_packets </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-<div class="dynheader">
-Here is the call graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><img src="class_network_manager_a657f3958fd5a075fe1df6b2f9e7fa01f_cgraph.png" border="0" usemap="#aclass_network_manager_a657f3958fd5a075fe1df6b2f9e7fa01f_cgraph" alt=""/></div>
-<map name="aclass_network_manager_a657f3958fd5a075fe1df6b2f9e7fa01f_cgraph" id="aclass_network_manager_a657f3958fd5a075fe1df6b2f9e7fa01f_cgraph">
-<area shape="rect" title=" " alt="" coords="5,5,180,47"/>
-<area shape="rect" href="class_command_handler.html#a3ad23bf7d0bb809ac5c3a3ac9c74e5a5" title=" " alt="" coords="228,13,444,39"/>
-</map>
-</div>
-<div class="dynheader">
-Here is the caller graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><img src="class_network_manager_a657f3958fd5a075fe1df6b2f9e7fa01f_icgraph.png" border="0" usemap="#aclass_network_manager_a657f3958fd5a075fe1df6b2f9e7fa01f_icgraph" alt=""/></div>
-<map name="aclass_network_manager_a657f3958fd5a075fe1df6b2f9e7fa01f_icgraph" id="aclass_network_manager_a657f3958fd5a075fe1df6b2f9e7fa01f_icgraph">
-<area shape="rect" title=" " alt="" coords="1197,74,1372,115"/>
-<area shape="rect" href="class_network_manager.html#a0d4ea7d4f0b395249151d0a28af79cd5" title=" " alt="" coords="981,81,1149,108"/>
-<area shape="rect" href="classstate_machine.html#a5f4f54735cb0a13393227e3af6863cdd" title=" " alt="" coords="787,56,933,83"/>
-<area shape="rect" href="main_8cpp.html#afe461d27b9c48d5921c00d521181f12f" title=" " alt="" coords="692,56,739,83"/>
-<area shape="rect" href="class_tunez_handler.html#a02e64b5ab21c71fc6e62e6673f80ac63" title=" " alt="" coords="509,56,644,83"/>
-<area shape="rect" href="class_command_handler.html#a54c1b7e2f1a6d0365ef36a0c738d7e02" title=" " alt="" coords="228,5,461,32"/>
-<area shape="rect" href="class_setup.html#a315e788a23a012d5993613c627f15302" title=" " alt="" coords="289,56,400,83"/>
-<area shape="rect" href="class_command_handler.html#a6c61c87a0ad0045aa6133dd69112a72b" title=" " alt="" coords="5,56,180,83"/>
-</map>
-</div>
-
-</div>
-</div>
-<a id="a64d21aa0b666042d4458b914b359b61e"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a64d21aa0b666042d4458b914b359b61e">&#9670;&nbsp;</a></span>send_packet()</h2>
+<a id="abab20a7dfd724a60cb8c157594a1a034"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abab20a7dfd724a60cb8c157594a1a034">&#9670;&nbsp;</a></span>send_packet()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -384,7 +381,7 @@ Here is the caller graph for this function:</div>
         <tr>
           <td class="memname">void NetworkManager::send_packet </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="interfaces_8h.html#af0cd30ccfa4f4fe2bd0fdc3cfc4d34cf">Interface</a>&#160;</td>
+          <td class="paramtype"><a class="el" href="interfaces_8h.html#a0702347e8797fcd7166de65ba3c3315a">INTERFACE</a>&#160;</td>
           <td class="paramname"><em>iface</em>, </td>
         </tr>
         <tr>
@@ -403,35 +400,35 @@ Here is the caller graph for this function:</div>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><img src="class_network_manager_a64d21aa0b666042d4458b914b359b61e_cgraph.png" border="0" usemap="#aclass_network_manager_a64d21aa0b666042d4458b914b359b61e_cgraph" alt=""/></div>
-<map name="aclass_network_manager_a64d21aa0b666042d4458b914b359b61e_cgraph" id="aclass_network_manager_a64d21aa0b666042d4458b914b359b61e_cgraph">
+<div class="center"><img src="class_network_manager_abab20a7dfd724a60cb8c157594a1a034_cgraph.png" border="0" usemap="#aclass_network_manager_abab20a7dfd724a60cb8c157594a1a034_cgraph" alt=""/></div>
+<map name="aclass_network_manager_abab20a7dfd724a60cb8c157594a1a034_cgraph" id="aclass_network_manager_abab20a7dfd724a60cb8c157594a1a034_cgraph">
 <area shape="rect" title=" " alt="" coords="5,23,163,65"/>
-<area shape="rect" href="class_u_s_b.html#a404c09e9e90a8df1011d4aca3a13c5d1" title=" " alt="" coords="214,5,346,32"/>
-<area shape="rect" href="class_radio.html#a219437f42cd31f1373c7192b3c5fc19c" title=" " alt="" coords="211,56,349,83"/>
+<area shape="rect" href="class_radio.html#a7b903240e57d52fc31f9cbec4275c0fa" title="send_packet places packet onto send buffer to be sent if radio isnt busy This is to ensure that we ca..." alt="" coords="211,5,349,32"/>
+<area shape="rect" href="class_u_s_b.html#a94de2f605b24851ceb41499d6fef5f75" title=" " alt="" coords="214,56,346,83"/>
 </map>
 </div>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><img src="class_network_manager_a64d21aa0b666042d4458b914b359b61e_icgraph.png" border="0" usemap="#aclass_network_manager_a64d21aa0b666042d4458b914b359b61e_icgraph" alt=""/></div>
-<map name="aclass_network_manager_a64d21aa0b666042d4458b914b359b61e_icgraph" id="aclass_network_manager_a64d21aa0b666042d4458b914b359b61e_icgraph">
+<div class="center"><img src="class_network_manager_abab20a7dfd724a60cb8c157594a1a034_icgraph.png" border="0" usemap="#aclass_network_manager_abab20a7dfd724a60cb8c157594a1a034_icgraph" alt=""/></div>
+<map name="aclass_network_manager_abab20a7dfd724a60cb8c157594a1a034_icgraph" id="aclass_network_manager_abab20a7dfd724a60cb8c157594a1a034_icgraph">
 <area shape="rect" title=" " alt="" coords="1561,65,1719,106"/>
-<area shape="rect" href="class_network_manager.html#a674c1c30636d564b2d43f668cb04485b" title=" " alt="" coords="1356,65,1513,106"/>
+<area shape="rect" href="class_network_manager.html#a511c9d51f00ad5c07c8f5c089d656c6c" title=" " alt="" coords="1356,65,1513,106"/>
 <area shape="rect" href="class_command_handler.html#a54c1b7e2f1a6d0365ef36a0c738d7e02" title=" " alt="" coords="1075,43,1308,69"/>
-<area shape="rect" href="class_network_manager.html#a64e0a7fce010c89681b6e26a38bd79d1" title=" " alt="" coords="852,94,1027,135"/>
+<area shape="rect" href="class_network_manager.html#a31a6ba8c038104a3faf686e53fcfcbe9" title=" " alt="" coords="852,94,1027,135"/>
 <area shape="rect" href="class_command_handler.html#a6c61c87a0ad0045aa6133dd69112a72b" title=" " alt="" coords="852,43,1027,69"/>
 <area shape="rect" href="class_network_manager.html#a0d4ea7d4f0b395249151d0a28af79cd5" title=" " alt="" coords="636,43,804,69"/>
 <area shape="rect" href="classstate_machine.html#a5f4f54735cb0a13393227e3af6863cdd" title=" " alt="" coords="441,43,588,69"/>
 <area shape="rect" href="main_8cpp.html#afe461d27b9c48d5921c00d521181f12f" title=" " alt="" coords="347,43,393,69"/>
-<area shape="rect" href="class_tunez_handler.html#a02e64b5ab21c71fc6e62e6673f80ac63" title=" " alt="" coords="164,17,299,44"/>
+<area shape="rect" href="class_tunez_handler.html#a02e64b5ab21c71fc6e62e6673f80ac63" title="Put Melody on tune queue." alt="" coords="164,17,299,44"/>
 <area shape="rect" href="class_setup.html#a315e788a23a012d5993613c627f15302" title=" " alt="" coords="5,17,116,44"/>
 </map>
 </div>
 
 </div>
 </div>
-<a id="a674c1c30636d564b2d43f668cb04485b"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a674c1c30636d564b2d43f668cb04485b">&#9670;&nbsp;</a></span>send_to_node()</h2>
+<a id="a511c9d51f00ad5c07c8f5c089d656c6c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a511c9d51f00ad5c07c8f5c089d656c6c">&#9670;&nbsp;</a></span>send_to_node()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -439,7 +436,7 @@ Here is the caller graph for this function:</div>
         <tr>
           <td class="memname">void NetworkManager::send_to_node </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="nodes_8h.html#a898f2e294c3f9fc053e921a46dd52dce">Nodes</a>&#160;</td>
+          <td class="paramtype"><a class="el" href="nodes_8h.html#ac77cd0a84629014c09956c3f475d6aea">NODES</a>&#160;</td>
           <td class="paramname"><em>destination</em>, </td>
         </tr>
         <tr>
@@ -458,27 +455,28 @@ Here is the caller graph for this function:</div>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><img src="class_network_manager_a674c1c30636d564b2d43f668cb04485b_cgraph.png" border="0" usemap="#aclass_network_manager_a674c1c30636d564b2d43f668cb04485b_cgraph" alt=""/></div>
-<map name="aclass_network_manager_a674c1c30636d564b2d43f668cb04485b_cgraph" id="aclass_network_manager_a674c1c30636d564b2d43f668cb04485b_cgraph">
-<area shape="rect" title=" " alt="" coords="5,23,163,65"/>
-<area shape="rect" href="class_network_manager.html#a64d21aa0b666042d4458b914b359b61e" title=" " alt="" coords="211,23,368,65"/>
-<area shape="rect" href="class_u_s_b.html#a404c09e9e90a8df1011d4aca3a13c5d1" title=" " alt="" coords="419,5,551,32"/>
-<area shape="rect" href="class_radio.html#a219437f42cd31f1373c7192b3c5fc19c" title=" " alt="" coords="416,56,555,83"/>
+<div class="center"><img src="class_network_manager_a511c9d51f00ad5c07c8f5c089d656c6c_cgraph.png" border="0" usemap="#aclass_network_manager_a511c9d51f00ad5c07c8f5c089d656c6c_cgraph" alt=""/></div>
+<map name="aclass_network_manager_a511c9d51f00ad5c07c8f5c089d656c6c_cgraph" id="aclass_network_manager_a511c9d51f00ad5c07c8f5c089d656c6c_cgraph">
+<area shape="rect" title=" " alt="" coords="5,27,163,69"/>
+<area shape="rect" href="class_network_manager.html#a3d0d39c83f78c42256e82dc5f95ad016" title=" " alt="" coords="211,5,417,32"/>
+<area shape="rect" href="class_network_manager.html#abab20a7dfd724a60cb8c157594a1a034" title=" " alt="" coords="235,57,393,98"/>
+<area shape="rect" href="class_radio.html#a7b903240e57d52fc31f9cbec4275c0fa" title="send_packet places packet onto send buffer to be sent if radio isnt busy This is to ensure that we ca..." alt="" coords="465,39,604,65"/>
+<area shape="rect" href="class_u_s_b.html#a94de2f605b24851ceb41499d6fef5f75" title=" " alt="" coords="469,89,601,116"/>
 </map>
 </div>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><img src="class_network_manager_a674c1c30636d564b2d43f668cb04485b_icgraph.png" border="0" usemap="#aclass_network_manager_a674c1c30636d564b2d43f668cb04485b_icgraph" alt=""/></div>
-<map name="aclass_network_manager_a674c1c30636d564b2d43f668cb04485b_icgraph" id="aclass_network_manager_a674c1c30636d564b2d43f668cb04485b_icgraph">
+<div class="center"><img src="class_network_manager_a511c9d51f00ad5c07c8f5c089d656c6c_icgraph.png" border="0" usemap="#aclass_network_manager_a511c9d51f00ad5c07c8f5c089d656c6c_icgraph" alt=""/></div>
+<map name="aclass_network_manager_a511c9d51f00ad5c07c8f5c089d656c6c_icgraph" id="aclass_network_manager_a511c9d51f00ad5c07c8f5c089d656c6c_icgraph">
 <area shape="rect" title=" " alt="" coords="1356,65,1513,106"/>
 <area shape="rect" href="class_command_handler.html#a54c1b7e2f1a6d0365ef36a0c738d7e02" title=" " alt="" coords="1075,43,1308,69"/>
-<area shape="rect" href="class_network_manager.html#a64e0a7fce010c89681b6e26a38bd79d1" title=" " alt="" coords="852,94,1027,135"/>
+<area shape="rect" href="class_network_manager.html#a31a6ba8c038104a3faf686e53fcfcbe9" title=" " alt="" coords="852,94,1027,135"/>
 <area shape="rect" href="class_command_handler.html#a6c61c87a0ad0045aa6133dd69112a72b" title=" " alt="" coords="852,43,1027,69"/>
 <area shape="rect" href="class_network_manager.html#a0d4ea7d4f0b395249151d0a28af79cd5" title=" " alt="" coords="636,43,804,69"/>
 <area shape="rect" href="classstate_machine.html#a5f4f54735cb0a13393227e3af6863cdd" title=" " alt="" coords="441,43,588,69"/>
 <area shape="rect" href="main_8cpp.html#afe461d27b9c48d5921c00d521181f12f" title=" " alt="" coords="347,43,393,69"/>
-<area shape="rect" href="class_tunez_handler.html#a02e64b5ab21c71fc6e62e6673f80ac63" title=" " alt="" coords="164,17,299,44"/>
+<area shape="rect" href="class_tunez_handler.html#a02e64b5ab21c71fc6e62e6673f80ac63" title="Put Melody on tune queue." alt="" coords="164,17,299,44"/>
 <area shape="rect" href="class_setup.html#a315e788a23a012d5993613c627f15302" title=" " alt="" coords="5,17,116,44"/>
 </map>
 </div>
@@ -507,9 +505,9 @@ Here is the call graph for this function:</div>
 <area shape="rect" title=" " alt="" coords="5,103,167,130"/>
 <area shape="rect" href="class_radio.html#a46f079f86ab0e7e83a4521c35eaa9aff" title=" " alt="" coords="215,78,311,105"/>
 <area shape="rect" href="class_u_s_b.html#ac1ff137bb999158ee6266ec936665399" title=" " alt="" coords="217,129,308,155"/>
-<area shape="rect" href="class_system_status.html#abaa2a5b6a72c67ae890fd47ebb19cf0c" title=" " alt="" coords="383,5,531,47"/>
-<area shape="rect" href="class_system_status.html#acdbe5c478512869887c5b07779773a1b" title=" " alt="" coords="390,71,525,112"/>
-<area shape="rect" href="class_system_status.html#a872912293f3c93e87eb69c9a70f7743a" title=" " alt="" coords="359,137,556,163"/>
+<area shape="rect" href="class_system_status.html#a881b11600f6b3a9dcd5520e8ada5600b" title=" " alt="" coords="383,5,531,47"/>
+<area shape="rect" href="class_system_status.html#a4638eb12ce2ba755b6075ffc343352a3" title=" " alt="" coords="390,71,525,112"/>
+<area shape="rect" href="class_system_status.html#a7857d2fb6cda9d3c0aba6bf2a9592169" title=" " alt="" coords="359,137,556,163"/>
 <area shape="rect" href="class_log_controller.html#adb94b2720224b121ac8487c7c0e04ffc" title=" " alt="" coords="604,75,728,102"/>
 <area shape="rect" href="class_telemetry_logger.html#af01a5e0f381d60d53d2c08ddad37ca07" title=" " alt="" coords="776,75,919,102"/>
 <area shape="rect" href="classtelemetry__logframe.html#add67dbfbf886bf1b322628962a03c0de" title=" " alt="" coords="967,68,1100,109"/>
@@ -548,56 +546,56 @@ Here is the call graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="class_network_manager_a0d4ea7d4f0b395249151d0a28af79cd5_cgraph.png" border="0" usemap="#aclass_network_manager_a0d4ea7d4f0b395249151d0a28af79cd5_cgraph" alt=""/></div>
 <map name="aclass_network_manager_a0d4ea7d4f0b395249151d0a28af79cd5_cgraph" id="aclass_network_manager_a0d4ea7d4f0b395249151d0a28af79cd5_cgraph">
-<area shape="rect" title=" " alt="" coords="5,511,173,538"/>
-<area shape="rect" href="class_radio.html#a45de275f8025cc7c6b6d9d12013c22c8" title=" " alt="" coords="497,547,625,574"/>
-<area shape="rect" href="class_u_s_b.html#aee393bd4d43bf3481e118a44b3fab0d0" title=" " alt="" coords="499,267,622,294"/>
-<area shape="rect" href="class_network_manager.html#a64e0a7fce010c89681b6e26a38bd79d1" title=" " alt="" coords="221,588,396,629"/>
-<area shape="rect" href="class_network_manager.html#a657f3958fd5a075fe1df6b2f9e7fa01f" title=" " alt="" coords="221,653,396,695"/>
-<area shape="rect" href="class_command_handler.html#a6c61c87a0ad0045aa6133dd69112a72b" title=" " alt="" coords="221,486,396,513"/>
-<area shape="rect" href="class_packet_header.html#a77e1156dbd831df7a2e8c412adbaecd3" title=" " alt="" coords="983,453,1145,479"/>
-<area shape="rect" href="class_packet_header.html#acf9c5c5c063bf6ed809d8d6144a5aa56" title=" " alt="" coords="1242,453,1427,479"/>
-<area shape="rect" href="class_system_status.html#a872912293f3c93e87eb69c9a70f7743a" title=" " alt="" coords="2015,431,2212,458"/>
-<area shape="rect" href="class_iface.html#a1c04295832a43475789e68932a499d45" title=" " alt="" coords="725,267,916,294"/>
-<area shape="rect" href="class_log_controller.html#adb94b2720224b121ac8487c7c0e04ffc" title=" " alt="" coords="2260,431,2384,458"/>
-<area shape="rect" href="class_telemetry_logger.html#af01a5e0f381d60d53d2c08ddad37ca07" title=" " alt="" coords="2432,431,2575,458"/>
-<area shape="rect" href="classtelemetry__logframe.html#add67dbfbf886bf1b322628962a03c0de" title=" " alt="" coords="2623,424,2756,465"/>
-<area shape="rect" href="classtelemetry__logframe.html#ad8ce2864d5faaf045a0ff812c029a4b4" title=" " alt="" coords="2804,424,2937,465"/>
-<area shape="rect" href="class_network_manager.html#a674c1c30636d564b2d43f668cb04485b" title=" " alt="" coords="742,857,899,899"/>
-<area shape="rect" href="class_network_manager.html#a64d21aa0b666042d4458b914b359b61e" title=" " alt="" coords="985,857,1143,899"/>
-<area shape="rect" href="class_u_s_b.html#a404c09e9e90a8df1011d4aca3a13c5d1" title=" " alt="" coords="1269,839,1401,866"/>
-<area shape="rect" href="class_radio.html#a219437f42cd31f1373c7192b3c5fc19c" title=" " alt="" coords="1265,890,1404,917"/>
-<area shape="rect" href="class_command_handler.html#a3ad23bf7d0bb809ac5c3a3ac9c74e5a5" title=" " alt="" coords="453,661,669,687"/>
-<area shape="rect" href="class_command_handler.html#a54c1b7e2f1a6d0365ef36a0c738d7e02" title=" " alt="" coords="444,486,677,513"/>
-<area shape="rect" href="classstate_machine.html#a5d7b94f00a94721921b3b100fa234fb4" title=" " alt="" coords="1505,435,1687,462"/>
-<area shape="rect" href="class_system_status.html#abaa2a5b6a72c67ae890fd47ebb19cf0c" title=" " alt="" coords="2039,533,2187,575"/>
-<area shape="rect" href="class_command_handler.html#a89011ae550ba0c0c32b5ae2794bad92c" title=" " alt="" coords="1212,705,1457,731"/>
-<area shape="rect" href="class_system_status.html#acdbe5c478512869887c5b07779773a1b" title=" " alt="" coords="2046,697,2181,739"/>
-<area shape="rect" href="class_network_manager.html#abd5ef50bf011b031598c9f87520d2a52" title=" " alt="" coords="747,369,894,411"/>
-<area shape="rect" href="class_radio.html#a72f533e8768d338547a78a75c81656aa" title=" " alt="" coords="765,435,876,462"/>
-<area shape="rect" href="class_radio.html#ac9514fc7a175ff2b9d194edf008c4cb0" title=" " alt="" coords="767,486,874,513"/>
-<area shape="rect" href="class_system_status.html#a7038135cb03e07e3ae1eed947c5d7edc" title=" " alt="" coords="735,537,906,563"/>
-<area shape="rect" href="class_tunez_handler.html#a02e64b5ab21c71fc6e62e6673f80ac63" title=" " alt="" coords="753,166,888,193"/>
-<area shape="rect" href="class_telemetry_packet.html#a081eba8279f9c3ed6a04df2e88c16df1" title=" " alt="" coords="733,318,909,345"/>
-<area shape="rect" href="class_detailed_all_packet.html#aaad75cfa0344ab75e70aecfc518fad82" title=" " alt="" coords="753,588,888,629"/>
-<area shape="rect" href="class_state.html#a6154140cc1da5795d696a076d53b51d9" title=" " alt="" coords="1795,537,1906,563"/>
-<area shape="rect" href="class_state.html#a14770d571ff70a1e5c8572eade7843cf" title=" " alt="" coords="1797,435,1905,462"/>
-<area shape="rect" href="namespaceutils.html#a80b01b2df5fab1766ccdbfa4fb2ce79d" title=" " alt="" coords="2065,482,2162,509"/>
-<area shape="rect" href="classmelody__base__t.html#ad8e390cf4e8d163b1e50299490fffbb2" title=" " alt="" coords="975,217,1153,243"/>
-<area shape="rect" href="main_8cpp.html#afe461d27b9c48d5921c00d521181f12f" title=" " alt="" coords="1041,166,1087,193"/>
-<area shape="rect" href="classstate_machine.html#a5f4f54735cb0a13393227e3af6863cdd" title=" " alt="" coords="1261,195,1408,222"/>
-<area shape="rect" href="class_estimator.html#ad7fbe72b0e1c8d12b77427bcd7d2eafc" title=" " alt="" coords="1533,185,1659,211"/>
-<area shape="rect" href="class_sensors.html#af0290d09b1ae4dd7726a2a6613bf354b" title=" " alt="" coords="1537,283,1655,310"/>
-<area shape="rect" href="class_tunez_handler.html#afd8ffcb9834b2e01729fd916b8ae7d51" title=" " alt="" coords="1521,385,1671,411"/>
-<area shape="rect" href="class_log_controller.html#a190ac7f27b24dcba384c1c18a94c3ef8" title=" " alt="" coords="1523,334,1669,361"/>
-<area shape="rect" href="class_estimator.html#a660e2e7eff52ff8aa00dbc786e0a791c" title=" " alt="" coords="1766,167,1935,208"/>
-<area shape="rect" href="class_estimator.html#a3beb507db3c41779fbf191e4d511ac48" title=" " alt="" coords="1735,233,1967,259"/>
-<area shape="rect" href="class_estimator.html#ad06dbe76e1b5db4e79d955246afef377" title=" " alt="" coords="1757,115,1945,142"/>
-<area shape="rect" href="class_baro.html#ae4646ca76722ac09ccffb93aadda30f6" title=" " alt="" coords="1803,283,1899,310"/>
-<area shape="rect" href="class_battery.html#a85dcc13e31dfb66ce3ce217b78a7df7c" title=" " alt="" coords="1795,486,1906,513"/>
-<area shape="rect" href="class_g_p_s.html#a5b903e61f93bc5db0d9f78bec35730d4" title=" " alt="" coords="1802,334,1899,361"/>
-<area shape="rect" href="class_imu.html#a250b49055c531aa7ed5c807e4f447741" title=" " alt="" coords="1805,385,1896,411"/>
-<area shape="rect" href="class_telemetry_packet.html#ad4046281b520642c1d93199a583dab00" title=" " alt="" coords="964,318,1164,345"/>
-<area shape="rect" href="class_detailed_all_packet.html#a79d839d7b9fb6af7d852efb9821a867d" title=" " alt="" coords="997,588,1131,629"/>
+<area shape="rect" title=" " alt="" coords="5,696,173,723"/>
+<area shape="rect" href="class_network_manager.html#a31a6ba8c038104a3faf686e53fcfcbe9" title=" " alt="" coords="473,78,648,119"/>
+<area shape="rect" href="class_command_handler.html#a6c61c87a0ad0045aa6133dd69112a72b" title=" " alt="" coords="221,536,396,563"/>
+<area shape="rect" href="class_radio.html#a64ed79aae89f2746c9317a90305d90bc" title=" " alt="" coords="257,696,360,723"/>
+<area shape="rect" href="class_u_s_b.html#a762ef457e4870b09365ecf39e3196287" title=" " alt="" coords="512,797,609,824"/>
+<area shape="rect" href="class_command_handler.html#a3ad23bf7d0bb809ac5c3a3ac9c74e5a5" title=" " alt="" coords="740,5,956,32"/>
+<area shape="rect" href="class_network_manager.html#a3d0d39c83f78c42256e82dc5f95ad016" title=" " alt="" coords="1019,85,1225,112"/>
+<area shape="rect" href="class_network_manager.html#a511c9d51f00ad5c07c8f5c089d656c6c" title=" " alt="" coords="769,107,927,149"/>
+<area shape="rect" href="class_network_manager.html#abab20a7dfd724a60cb8c157594a1a034" title=" " alt="" coords="1043,137,1201,178"/>
+<area shape="rect" href="class_radio.html#a7b903240e57d52fc31f9cbec4275c0fa" title="send_packet places packet onto send buffer to be sent if radio isnt busy This is to ensure that we ca..." alt="" coords="1297,108,1435,135"/>
+<area shape="rect" href="class_u_s_b.html#a94de2f605b24851ceb41499d6fef5f75" title=" " alt="" coords="1300,159,1432,185"/>
+<area shape="rect" href="class_command_handler.html#a54c1b7e2f1a6d0365ef36a0c738d7e02" title=" " alt="" coords="444,427,677,453"/>
+<area shape="rect" href="classstate_machine.html#a5d7b94f00a94721921b3b100fa234fb4" title=" " alt="" coords="1507,224,1688,251"/>
+<area shape="rect" href="class_system_status.html#a881b11600f6b3a9dcd5520e8ada5600b" title=" " alt="" coords="2041,259,2189,301"/>
+<area shape="rect" href="class_system_status.html#a7857d2fb6cda9d3c0aba6bf2a9592169" title=" " alt="" coords="2016,325,2213,352"/>
+<area shape="rect" href="class_command_handler.html#a89011ae550ba0c0c32b5ae2794bad92c" title=" " alt="" coords="725,376,971,403"/>
+<area shape="rect" href="class_system_status.html#a4638eb12ce2ba755b6075ffc343352a3" title=" " alt="" coords="1055,394,1189,435"/>
+<area shape="rect" href="class_system_status.html#a7038135cb03e07e3ae1eed947c5d7edc" title=" " alt="" coords="763,477,933,504"/>
+<area shape="rect" href="class_network_manager.html#a9e45dcb8ed667b4e39d02d49836d60e2" title=" " alt="" coords="738,528,958,555"/>
+<area shape="rect" href="class_tunez_handler.html#a02e64b5ab21c71fc6e62e6673f80ac63" title="Put Melody on tune queue." alt="" coords="781,579,915,605"/>
+<area shape="rect" href="class_telemetry_packet.html#a081eba8279f9c3ed6a04df2e88c16df1" title=" " alt="" coords="760,629,936,656"/>
+<area shape="rect" href="class_detailed_all_packet.html#aaad75cfa0344ab75e70aecfc518fad82" title=" " alt="" coords="781,681,915,722"/>
+<area shape="rect" href="class_state.html#a6154140cc1da5795d696a076d53b51d9" title=" " alt="" coords="1797,173,1907,200"/>
+<area shape="rect" href="class_state.html#a14770d571ff70a1e5c8572eade7843cf" title=" " alt="" coords="1798,224,1906,251"/>
+<area shape="rect" href="namespaceutils.html#a80b01b2df5fab1766ccdbfa4fb2ce79d" title=" " alt="" coords="2066,173,2163,200"/>
+<area shape="rect" href="class_log_controller.html#adb94b2720224b121ac8487c7c0e04ffc" title=" " alt="" coords="2261,325,2385,352"/>
+<area shape="rect" href="class_telemetry_logger.html#af01a5e0f381d60d53d2c08ddad37ca07" title=" " alt="" coords="2433,325,2576,352"/>
+<area shape="rect" href="classtelemetry__logframe.html#add67dbfbf886bf1b322628962a03c0de" title=" " alt="" coords="2624,318,2757,359"/>
+<area shape="rect" href="classtelemetry__logframe.html#ad8ce2864d5faaf045a0ff812c029a4b4" title=" " alt="" coords="2805,318,2939,359"/>
+<area shape="rect" href="class_radio.html#aa26379d7242a2fce0c775b16570ec1e9" title=" " alt="" coords="1053,477,1191,504"/>
+<area shape="rect" href="classmelody__base__t.html#ad8e390cf4e8d163b1e50299490fffbb2" title=" " alt="" coords="1033,528,1211,555"/>
+<area shape="rect" href="main_8cpp.html#afe461d27b9c48d5921c00d521181f12f" title=" " alt="" coords="1099,579,1145,605"/>
+<area shape="rect" href="classstate_machine.html#a5f4f54735cb0a13393227e3af6863cdd" title=" " alt="" coords="1293,579,1439,605"/>
+<area shape="rect" href="class_estimator.html#ad7fbe72b0e1c8d12b77427bcd7d2eafc" title=" " alt="" coords="1535,493,1660,520"/>
+<area shape="rect" href="class_sensors.html#af0290d09b1ae4dd7726a2a6613bf354b" title=" " alt="" coords="1539,544,1656,571"/>
+<area shape="rect" href="class_tunez_handler.html#afd8ffcb9834b2e01729fd916b8ae7d51" title=" " alt="" coords="1522,595,1673,621"/>
+<area shape="rect" href="class_log_controller.html#a190ac7f27b24dcba384c1c18a94c3ef8" title=" " alt="" coords="1524,645,1671,672"/>
+<area shape="rect" href="class_state.html#afe1684e9770bc65ce5d3b262efa574ca" title=" " alt="" coords="1547,696,1647,723"/>
+<area shape="rect" href="class_estimator.html#a660e2e7eff52ff8aa00dbc786e0a791c" title=" " alt="" coords="1767,427,1937,469"/>
+<area shape="rect" href="class_estimator.html#a3beb507db3c41779fbf191e4d511ac48" title=" " alt="" coords="1736,493,1968,520"/>
+<area shape="rect" href="class_estimator.html#ad06dbe76e1b5db4e79d955246afef377" title=" " alt="" coords="1758,544,1946,571"/>
+<area shape="rect" href="class_baro.html#ae4646ca76722ac09ccffb93aadda30f6" title=" " alt="" coords="1804,595,1900,621"/>
+<area shape="rect" href="class_telemetry_packet.html#ad4046281b520642c1d93199a583dab00" title=" " alt="" coords="1022,629,1222,656"/>
+<area shape="rect" href="class_packet_header.html#a77e1156dbd831df7a2e8c412adbaecd3" title=" " alt="" coords="1041,747,1203,773"/>
+<area shape="rect" href="class_packet_header.html#acf9c5c5c063bf6ed809d8d6144a5aa56" title=" " alt="" coords="1273,747,1459,773"/>
+<area shape="rect" href="class_detailed_all_packet.html#a79d839d7b9fb6af7d852efb9821a867d" title=" " alt="" coords="1055,681,1189,722"/>
+<area shape="rect" href="class_radio.html#ade28962900128f1bbad608a9eb7cae58" title=" " alt="" coords="479,645,643,672"/>
+<area shape="rect" href="class_radio.html#a71afa4f66f08408fbef7235a339918ab" title=" " alt="" coords="503,696,618,723"/>
+<area shape="rect" href="class_radio.html#ad357a689877f0b7c253b8c25baacbd9e" title=" " alt="" coords="499,747,622,773"/>
+<area shape="rect" href="class_iface.html#a8e514b991c4d301faed91186a25750b6" title=" " alt="" coords="753,797,943,824"/>
 </map>
 </div>
 <div class="dynheader">
@@ -608,7 +606,7 @@ Here is the caller graph for this function:</div>
 <area shape="rect" title=" " alt="" coords="981,81,1149,108"/>
 <area shape="rect" href="classstate_machine.html#a5f4f54735cb0a13393227e3af6863cdd" title=" " alt="" coords="787,56,933,83"/>
 <area shape="rect" href="main_8cpp.html#afe461d27b9c48d5921c00d521181f12f" title=" " alt="" coords="692,56,739,83"/>
-<area shape="rect" href="class_tunez_handler.html#a02e64b5ab21c71fc6e62e6673f80ac63" title=" " alt="" coords="509,56,644,83"/>
+<area shape="rect" href="class_tunez_handler.html#a02e64b5ab21c71fc6e62e6673f80ac63" title="Put Melody on tune queue." alt="" coords="509,56,644,83"/>
 <area shape="rect" href="class_command_handler.html#a54c1b7e2f1a6d0365ef36a0c738d7e02" title=" " alt="" coords="228,5,461,32"/>
 <area shape="rect" href="class_setup.html#a315e788a23a012d5993613c627f15302" title=" " alt="" coords="289,56,400,83"/>
 <area shape="rect" href="class_command_handler.html#a6c61c87a0ad0045aa6133dd69112a72b" title=" " alt="" coords="5,56,180,83"/>
@@ -617,76 +615,9 @@ Here is the caller graph for this function:</div>
 
 </div>
 </div>
-<h2 class="groupheader">Friends And Related Function Documentation</h2>
-<a id="a442090830cec26bfe59aa33685465557"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a442090830cec26bfe59aa33685465557">&#9670;&nbsp;</a></span>CommandHandler</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">friend class <a class="el" href="class_command_handler.html">CommandHandler</a></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">friend</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="a337f9d85d0d497f91a096e88efb9293a"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a337f9d85d0d497f91a096e88efb9293a">&#9670;&nbsp;</a></span>Groundstation</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">friend class <a class="el" href="class_groundstation.html">Groundstation</a></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">friend</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="aa783fb6d060a3935500d4929d447dfc3"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aa783fb6d060a3935500d4929d447dfc3">&#9670;&nbsp;</a></span>Preflight</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">friend class <a class="el" href="class_preflight.html">Preflight</a></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">friend</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-</div>
-</div>
 <h2 class="groupheader">Member Data Documentation</h2>
-<a id="aacfb7869578fd8caa6ae2656f290fe62"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aacfb7869578fd8caa6ae2656f290fe62">&#9670;&nbsp;</a></span>_global_packet_buffer</h2>
+<a id="a7e941149aa87f9227aea233d20ae9fdc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7e941149aa87f9227aea233d20ae9fdc">&#9670;&nbsp;</a></span>_nodeType</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -695,7 +626,7 @@ Here is the caller graph for this function:</div>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">std::vector&lt;std::unique_ptr&lt;std::vector&lt;uint8_t&gt; &gt; &gt; NetworkManager::_global_packet_buffer</td>
+          <td class="memname"><a class="el" href="nodes_8h.html#ac77cd0a84629014c09956c3f475d6aea">NODES</a> NetworkManager::_nodeType</td>
         </tr>
       </table>
   </td>
@@ -707,8 +638,8 @@ Here is the caller graph for this function:</div>
 
 </div>
 </div>
-<a id="ab466e0660c3ff965b8f1876176605bb3"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ab466e0660c3ff965b8f1876176605bb3">&#9670;&nbsp;</a></span>_local_packet_buffer</h2>
+<a id="a0aa42d98930ee54979a42d2ca6237016"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0aa42d98930ee54979a42d2ca6237016">&#9670;&nbsp;</a></span>_packetBuffer</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -717,7 +648,7 @@ Here is the caller graph for this function:</div>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">std::vector&lt;std::unique_ptr&lt;std::vector&lt;uint8_t&gt; &gt; &gt; NetworkManager::_local_packet_buffer</td>
+          <td class="memname">std::vector&lt;std::unique_ptr&lt;std::vector&lt;uint8_t&gt; &gt; &gt; NetworkManager::_packetBuffer</td>
         </tr>
       </table>
   </td>
@@ -773,28 +704,6 @@ Here is the caller graph for this function:</div>
 
 </div>
 </div>
-<a id="a260d13785b90f5854dd7d4173379860f"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a260d13785b90f5854dd7d4173379860f">&#9670;&nbsp;</a></span>node_type</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="nodes_8h.html#a898f2e294c3f9fc053e921a46dd52dce">Nodes</a> NetworkManager::node_type</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-</div>
-</div>
 <a id="a18898163079b9100e03f4a3959ea151d"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a18898163079b9100e03f4a3959ea151d">&#9670;&nbsp;</a></span>radio</h2>
 
@@ -810,7 +719,7 @@ Here is the caller graph for this function:</div>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
@@ -854,7 +763,7 @@ Here is the caller graph for this function:</div>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">

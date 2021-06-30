@@ -1,0 +1,160 @@
+\hypertarget{class_engine_event}{}\doxysection{Engine\+Event Class Reference}
+\label{class_engine_event}\index{EngineEvent@{EngineEvent}}
+
+
+{\ttfamily \#include $<$event.\+h$>$}
+
+
+
+Inheritance diagram for Engine\+Event\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=152pt]{class_engine_event__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Engine\+Event\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_engine_event__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_engine_event_a24327a3d322489d37c51d04a7e084675}{Engine\+Event}} (uint8\+\_\+t id, std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{class_condition}{Condition}} $>$ cond, bool single\+Fire, uint8\+\_\+t event\+ID, Engine\+Handler $\ast$enginehandler, \mbox{\hyperlink{class_log_controller}{Log\+Controller}} $\ast$logcontroller)
+\begin{DoxyCompactList}\small\item\em Construct a new \mbox{\hyperlink{class_engine}{Engine}} \mbox{\hyperlink{class_event}{Event}} object. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_engine_event_aa7a82fa9e74f35f69be3a4b7420c4ac1}{update}} ()
+\begin{DoxyCompactList}\small\item\em Check to see if condition has been met. \end{DoxyCompactList}\item 
+uint32\+\_\+t \mbox{\hyperlink{class_engine_event_a4b790fe79b1e613a220fc74262777707}{time\+Triggered}} ()
+\begin{DoxyCompactList}\small\item\em Get the Time when the event has been triggered. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{class_engine_event_ac226437aa80977296f578826cae52e9a}{\+\_\+execute}} ()
+\begin{DoxyCompactList}\small\item\em virtual action function for event \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+Engine\+Handler $\ast$ \mbox{\hyperlink{class_engine_event_a64445eefa7c5065217c9897b31c3bc64}{\+\_\+enginehandler}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_engine_event_a24327a3d322489d37c51d04a7e084675}\label{class_engine_event_a24327a3d322489d37c51d04a7e084675}} 
+\index{EngineEvent@{EngineEvent}!EngineEvent@{EngineEvent}}
+\index{EngineEvent@{EngineEvent}!EngineEvent@{EngineEvent}}
+\doxysubsubsection{\texorpdfstring{EngineEvent()}{EngineEvent()}}
+{\footnotesize\ttfamily Engine\+Event\+::\+Engine\+Event (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{id,  }\item[{std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{class_condition}{Condition}} $>$}]{cond,  }\item[{bool}]{single\+Fire,  }\item[{uint8\+\_\+t}]{event\+ID,  }\item[{Engine\+Handler $\ast$}]{enginehandler,  }\item[{\mbox{\hyperlink{class_log_controller}{Log\+Controller}} $\ast$}]{logcontroller }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Construct a new \mbox{\hyperlink{class_engine}{Engine}} \mbox{\hyperlink{class_event}{Event}} object. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em id} & Id of engine \\
+\hline
+{\em cond} & \mbox{\hyperlink{class_condition}{Condition}} object \\
+\hline
+{\em single\+Fire} & Can this event fire multiple times \\
+\hline
+{\em event\+ID} & \mbox{\hyperlink{class_event}{Event}} id \\
+\hline
+{\em enginehandler} & pointer to engine handler \\
+\hline
+{\em logcontroller} & pointer to log controller \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_engine_event_ac226437aa80977296f578826cae52e9a}\label{class_engine_event_ac226437aa80977296f578826cae52e9a}} 
+\index{EngineEvent@{EngineEvent}!\_execute@{\_execute}}
+\index{\_execute@{\_execute}!EngineEvent@{EngineEvent}}
+\doxysubsubsection{\texorpdfstring{\_execute()}{\_execute()}}
+{\footnotesize\ttfamily void Engine\+Event\+::\+\_\+execute (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}, {\ttfamily [virtual]}}
+
+
+
+virtual action function for event 
+
+
+
+Implements \mbox{\hyperlink{class_event_a2e507736868dd4d8c5f9f23dc9a09693}{Event}}.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_engine_event_ac226437aa80977296f578826cae52e9a_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_engine_event_a4b790fe79b1e613a220fc74262777707}\label{class_engine_event_a4b790fe79b1e613a220fc74262777707}} 
+\index{EngineEvent@{EngineEvent}!timeTriggered@{timeTriggered}}
+\index{timeTriggered@{timeTriggered}!EngineEvent@{EngineEvent}}
+\doxysubsubsection{\texorpdfstring{timeTriggered()}{timeTriggered()}}
+{\footnotesize\ttfamily uint32\+\_\+t Engine\+Event\+::time\+Triggered (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Get the Time when the event has been triggered. 
+
+\begin{DoxyReturn}{Returns}
+uint32\+\_\+t Trigger time in milliseconds. Returns 0 if has not been triggered 
+\end{DoxyReturn}
+
+
+Reimplemented from \mbox{\hyperlink{class_event_a879efc3a72eb5fd9468d318acd0476bf}{Event}}.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_engine_event_a4b790fe79b1e613a220fc74262777707_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_engine_event_aa7a82fa9e74f35f69be3a4b7420c4ac1}\label{class_engine_event_aa7a82fa9e74f35f69be3a4b7420c4ac1}} 
+\index{EngineEvent@{EngineEvent}!update@{update}}
+\index{update@{update}!EngineEvent@{EngineEvent}}
+\doxysubsubsection{\texorpdfstring{update()}{update()}}
+{\footnotesize\ttfamily void Engine\+Event\+::update (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Check to see if condition has been met. 
+
+
+
+Reimplemented from \mbox{\hyperlink{class_event_a104089a099a45971f10fdf7eaf5654f4}{Event}}.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_engine_event_aa7a82fa9e74f35f69be3a4b7420c4ac1_cgraph}
+\end{center}
+\end{figure}
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{class_engine_event_a64445eefa7c5065217c9897b31c3bc64}\label{class_engine_event_a64445eefa7c5065217c9897b31c3bc64}} 
+\index{EngineEvent@{EngineEvent}!\_enginehandler@{\_enginehandler}}
+\index{\_enginehandler@{\_enginehandler}!EngineEvent@{EngineEvent}}
+\doxysubsubsection{\texorpdfstring{\_enginehandler}{\_enginehandler}}
+{\footnotesize\ttfamily Engine\+Handler$\ast$ Engine\+Event\+::\+\_\+enginehandler\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+/\+Users/kiran/\+Documents/\+Projects/\+ICLR/\+Avionics/\+Ricardo\+\_\+\+OS/\+Ricardo\+\_\+\+OS/src/\+Events/\mbox{\hyperlink{event_8h}{event.\+h}}\item 
+/\+Users/kiran/\+Documents/\+Projects/\+ICLR/\+Avionics/\+Ricardo\+\_\+\+OS/\+Ricardo\+\_\+\+OS/src/\+Events/\mbox{\hyperlink{event_8cpp}{event.\+cpp}}\end{DoxyCompactItemize}

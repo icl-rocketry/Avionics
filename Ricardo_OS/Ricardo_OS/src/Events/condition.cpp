@@ -4,9 +4,9 @@
 bool ConditionCondition::check() {
 	switch (_op) {
 	case Operator::AND:
-		return _cond1.check() && _cond2.check();
+		return _cond1->check() && _cond2->check();
 	case Operator::OR:
-		return _cond1.check() || _cond2.check();
+		return _cond1->check() || _cond2->check();
 	default:
 		throw std::invalid_argument("Invalid operator type");
 		return false;

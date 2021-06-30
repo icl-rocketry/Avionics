@@ -1,6 +1,6 @@
 <map id="melody_base_t::getPriority" name="melody_base_t::getPriority">
 <area shape="rect" id="node1" title=" " alt="" coords="1197,56,1375,83"/>
-<area shape="rect" id="node2" href="$class_tunez_handler.html#a02e64b5ab21c71fc6e62e6673f80ac63" title=" " alt="" coords="1015,56,1149,83"/>
+<area shape="rect" id="node2" href="$class_tunez_handler.html#a02e64b5ab21c71fc6e62e6673f80ac63" title="Put Melody on tune queue." alt="" coords="1015,56,1149,83"/>
 <area shape="rect" id="node3" href="$class_command_handler.html#a54c1b7e2f1a6d0365ef36a0c738d7e02" title=" " alt="" coords="733,5,967,32"/>
 <area shape="rect" id="node8" href="$class_setup.html#a315e788a23a012d5993613c627f15302" title=" " alt="" coords="795,56,905,83"/>
 <area shape="rect" id="node4" href="$class_command_handler.html#a6c61c87a0ad0045aa6133dd69112a72b" title=" " alt="" coords="511,12,685,39"/>

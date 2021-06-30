@@ -6,8 +6,7 @@
 
 
 
-Collaboration diagram for Config\+Controller\+:
-\nopagebreak
+Collaboration diagram for Config\+Controller\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -20,13 +19,13 @@ Collaboration diagram for Config\+Controller\+:
 \mbox{\hyperlink{class_config_controller_aea4c122fd41980b5cafb553bc8d9d3d7}{Config\+Controller}} (\mbox{\hyperlink{class_storage_controller}{Storage\+Controller}} $\ast$storagecontroller, \mbox{\hyperlink{class_log_controller}{Log\+Controller}} $\ast$logcontroller)
 \item 
 void \mbox{\hyperlink{class_config_controller_ad6261f333580387e7c371a7700096e0e}{load}} ()
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Load configuration and store in config\+Doc variable. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_config_controller_ac662e8c6ce1610847665b05360044334}{operator bool}} ()
+\begin{DoxyCompactList}\small\item\em Check if config was read correctly. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Public Attributes}
 \begin{DoxyCompactItemize}
 \item 
 Dynamic\+Json\+Document \mbox{\hyperlink{class_config_controller_a86d1151331aafed4e6eeb3bade006465}{config\+Doc}}
-\item 
-bool \mbox{\hyperlink{class_config_controller_a2fbf0cccf3d28878c0c8972cd0673918}{\+\_\+error}}
 \end{DoxyCompactItemize}
 \doxysubsection*{Private Attributes}
 \begin{DoxyCompactItemize}
@@ -36,6 +35,8 @@ bool \mbox{\hyperlink{class_config_controller_a2fbf0cccf3d28878c0c8972cd0673918}
 \mbox{\hyperlink{class_log_controller}{Log\+Controller}} $\ast$ \mbox{\hyperlink{class_config_controller_a1be953788e4b906fe89f48c0b6ea26ce}{\+\_\+logcontroller}}
 \item 
 const std\+::string \mbox{\hyperlink{class_config_controller_afc578dea527fc9deb906bd1a150bb730}{configuration\+\_\+file\+\_\+path}} = \char`\"{}/Configuration/rml.\+jsonc\char`\"{}
+\item 
+bool \mbox{\hyperlink{class_config_controller_abb5b6a866ce6ca96a3ce6cb15e8bba8a}{\+\_\+config\+OK}}
 \end{DoxyCompactItemize}
 
 
@@ -55,6 +56,10 @@ const std\+::string \mbox{\hyperlink{class_config_controller_afc578dea527fc9deb9
 \doxysubsubsection{\texorpdfstring{load()}{load()}}
 {\footnotesize\ttfamily void Config\+Controller\+::load (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
 
+
+
+Load configuration and store in config\+Doc variable. 
+
 Here is the call graph for this function\+:
 \nopagebreak
 \begin{figure}[H]
@@ -63,14 +68,37 @@ Here is the call graph for this function\+:
 \includegraphics[width=350pt]{class_config_controller_ad6261f333580387e7c371a7700096e0e_cgraph}
 \end{center}
 \end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_config_controller_ad6261f333580387e7c371a7700096e0e_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_config_controller_ac662e8c6ce1610847665b05360044334}\label{class_config_controller_ac662e8c6ce1610847665b05360044334}} 
+\index{ConfigController@{ConfigController}!operator bool@{operator bool}}
+\index{operator bool@{operator bool}!ConfigController@{ConfigController}}
+\doxysubsubsection{\texorpdfstring{operator bool()}{operator bool()}}
+{\footnotesize\ttfamily Config\+Controller\+::operator bool (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Check if config was read correctly. 
+
+\begin{DoxyReturn}{Returns}
+true 
+
+false 
+\end{DoxyReturn}
 
 
 \doxysubsection{Member Data Documentation}
-\mbox{\Hypertarget{class_config_controller_a2fbf0cccf3d28878c0c8972cd0673918}\label{class_config_controller_a2fbf0cccf3d28878c0c8972cd0673918}} 
-\index{ConfigController@{ConfigController}!\_error@{\_error}}
-\index{\_error@{\_error}!ConfigController@{ConfigController}}
-\doxysubsubsection{\texorpdfstring{\_error}{\_error}}
-{\footnotesize\ttfamily bool Config\+Controller\+::\+\_\+error}
+\mbox{\Hypertarget{class_config_controller_abb5b6a866ce6ca96a3ce6cb15e8bba8a}\label{class_config_controller_abb5b6a866ce6ca96a3ce6cb15e8bba8a}} 
+\index{ConfigController@{ConfigController}!\_configOK@{\_configOK}}
+\index{\_configOK@{\_configOK}!ConfigController@{ConfigController}}
+\doxysubsubsection{\texorpdfstring{\_configOK}{\_configOK}}
+{\footnotesize\ttfamily bool Config\+Controller\+::\+\_\+config\+OK\hspace{0.3cm}{\ttfamily [private]}}
 
 \mbox{\Hypertarget{class_config_controller_a1be953788e4b906fe89f48c0b6ea26ce}\label{class_config_controller_a1be953788e4b906fe89f48c0b6ea26ce}} 
 \index{ConfigController@{ConfigController}!\_logcontroller@{\_logcontroller}}

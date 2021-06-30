@@ -96,46 +96,55 @@ $(document).ready(function(){initNavTree('pyro_8h_source.html',''); initResizabl
 <div class="title">pyro.h</div>  </div>
 </div><!--header-->
 <div class="contents">
-<a href="pyro_8h.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#ifndef PYRO_H</span></div>
-<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor">#define PYRO_H</span></div>
-<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160; </div>
-<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &lt;Arduino.h&gt;</span></div>
+<a href="pyro_8h.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">//abstract pyro interface</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160; </div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor">#ifndef PYRO_H</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#define PYRO_H</span></div>
 <div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160; </div>
-<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160; </div>
-<div class="line"><a name="l00007"></a><span class="lineno"><a class="line" href="pyro_8h.html#a45e0753574b76ce184eb9caa73f63f8a">    7</a></span>&#160;<span class="keyword">enum class</span> <a class="code" href="pyro_8h.html#a45e0753574b76ce184eb9caa73f63f8a">PYRO_TYPE</a>:uint8_t{</div>
-<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;    <a class="code" href="pyro_8h.html#a45e0753574b76ce184eb9caa73f63f8aa54b4c4075463b2e02cd69f5cd139b5b2">LOCAL</a>, <span class="comment">//local gpio type igniter</span></div>
-<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;    <a class="code" href="pyro_8h.html#a45e0753574b76ce184eb9caa73f63f8aafc27366214232d1ebd0ce5ccc709463f">REMOTE_BT</a> <span class="comment">//bluetooth remote igniter</span></div>
-<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;};</div>
-<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160; </div>
-<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="keyword">class </span><a class="code" href="class_pyro.html">Pyro</a>{</div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160; </div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;    <span class="keyword">public</span>:</div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;        <a class="code" href="class_pyro.html#aa382073c8c1529d99986cf28d68dea2e">Pyro</a>(<a class="code" href="pyro_8h.html#a45e0753574b76ce184eb9caa73f63f8a">PYRO_TYPE</a> type);     </div>
-<div class="line"><a name="l00016"></a><span class="lineno"><a class="line" href="class_pyro.html#a78f8221114043d3991936a91ba789b2b">   16</a></span>&#160;        <span class="keyword">virtual</span> <span class="keywordtype">bool</span> <a class="code" href="class_pyro.html#a78f8221114043d3991936a91ba789b2b">check_continuity</a>() = 0; <span class="comment">// update status of continuity </span></div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;    </div>
-<div class="line"><a name="l00018"></a><span class="lineno"><a class="line" href="class_pyro.html#a3a57ef7ec8c6073d61f4e831588e0dc7">   18</a></span>&#160;        <span class="keyword">virtual</span> <span class="keywordtype">bool</span> <a class="code" href="class_pyro.html#a3a57ef7ec8c6073d61f4e831588e0dc7">doStuff</a>(uint8_t duration) = 0;</div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;        </div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;        <span class="keyword">virtual</span> <a class="code" href="class_pyro.html#a3be068d04db1c8012b1561114d215d5f">~Pyro</a>() = 0;</div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160; </div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;    <span class="keyword">protected</span>:</div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;        </div>
-<div class="line"><a name="l00024"></a><span class="lineno"><a class="line" href="class_pyro.html#ad03097b0caf7c6e74796bc6c3e849cf1">   24</a></span>&#160;        <a class="code" href="pyro_8h.html#a45e0753574b76ce184eb9caa73f63f8a">PYRO_TYPE</a> <a class="code" href="class_pyro.html#ad03097b0caf7c6e74796bc6c3e849cf1">_type</a>; <span class="comment">//type of igniter</span></div>
-<div class="line"><a name="l00025"></a><span class="lineno"><a class="line" href="class_pyro.html#a36a94ee600d201dcd10c917c30f2db21">   25</a></span>&#160;        <span class="keywordtype">bool</span> <a class="code" href="class_pyro.html#a36a94ee600d201dcd10c917c30f2db21">_continuity</a> = <span class="keyword">false</span>; </div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160; </div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;       </div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;};</div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160; </div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="ttc" id="aclass_pyro_html"><div class="ttname"><a href="class_pyro.html">Pyro</a></div><div class="ttdef"><b>Definition:</b> event.h:8</div></div>
-<div class="ttc" id="aclass_pyro_html_a36a94ee600d201dcd10c917c30f2db21"><div class="ttname"><a href="class_pyro.html#a36a94ee600d201dcd10c917c30f2db21">Pyro::_continuity</a></div><div class="ttdeci">bool _continuity</div><div class="ttdef"><b>Definition:</b> pyro.h:25</div></div>
-<div class="ttc" id="aclass_pyro_html_a3a57ef7ec8c6073d61f4e831588e0dc7"><div class="ttname"><a href="class_pyro.html#a3a57ef7ec8c6073d61f4e831588e0dc7">Pyro::doStuff</a></div><div class="ttdeci">virtual bool doStuff(uint8_t duration)=0</div></div>
-<div class="ttc" id="aclass_pyro_html_a3be068d04db1c8012b1561114d215d5f"><div class="ttname"><a href="class_pyro.html#a3be068d04db1c8012b1561114d215d5f">Pyro::~Pyro</a></div><div class="ttdeci">virtual ~Pyro()=0</div><div class="ttdef"><b>Definition:</b> pyro.cpp:9</div></div>
-<div class="ttc" id="aclass_pyro_html_a78f8221114043d3991936a91ba789b2b"><div class="ttname"><a href="class_pyro.html#a78f8221114043d3991936a91ba789b2b">Pyro::check_continuity</a></div><div class="ttdeci">virtual bool check_continuity()=0</div></div>
-<div class="ttc" id="aclass_pyro_html_aa382073c8c1529d99986cf28d68dea2e"><div class="ttname"><a href="class_pyro.html#aa382073c8c1529d99986cf28d68dea2e">Pyro::Pyro</a></div><div class="ttdeci">Pyro(PYRO_TYPE type)</div><div class="ttdef"><b>Definition:</b> pyro.cpp:4</div></div>
-<div class="ttc" id="aclass_pyro_html_ad03097b0caf7c6e74796bc6c3e849cf1"><div class="ttname"><a href="class_pyro.html#ad03097b0caf7c6e74796bc6c3e849cf1">Pyro::_type</a></div><div class="ttdeci">PYRO_TYPE _type</div><div class="ttdef"><b>Definition:</b> pyro.h:24</div></div>
-<div class="ttc" id="apyro_8h_html_a45e0753574b76ce184eb9caa73f63f8a"><div class="ttname"><a href="pyro_8h.html#a45e0753574b76ce184eb9caa73f63f8a">PYRO_TYPE</a></div><div class="ttdeci">PYRO_TYPE</div><div class="ttdef"><b>Definition:</b> pyro.h:7</div></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="preprocessor">#include &lt;Arduino.h&gt;</span></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="systemstatus_8h.html">Storage/systemstatus.h</a>&quot;</span></div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160; </div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160; </div>
+<div class="line"><a name="l00010"></a><span class="lineno"><a class="line" href="pyro_8h.html#a45e0753574b76ce184eb9caa73f63f8a">   10</a></span>&#160;<span class="keyword">enum class</span> <a class="code" href="pyro_8h.html#a45e0753574b76ce184eb9caa73f63f8a">PYRO_TYPE</a>:uint8_t{</div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;    <a class="code" href="pyro_8h.html#a45e0753574b76ce184eb9caa73f63f8aa54b4c4075463b2e02cd69f5cd139b5b2">LOCAL</a>, <span class="comment">//local gpio type igniter</span></div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;    <a class="code" href="pyro_8h.html#a45e0753574b76ce184eb9caa73f63f8aafc27366214232d1ebd0ce5ccc709463f">REMOTE_BT</a> <span class="comment">//bluetooth remote igniter</span></div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;};</div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160; </div>
+<div class="line"><a name="l00015"></a><span class="lineno"><a class="line" href="class_pyro.html">   15</a></span>&#160;<span class="keyword">class </span><a class="code" href="class_pyro.html">Pyro</a>{</div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160; </div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;    <span class="keyword">public</span>:</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;        <a class="code" href="class_pyro.html#a40f126c3233de8394abb557252edc5d3">Pyro</a>(<a class="code" href="pyro_8h.html#a45e0753574b76ce184eb9caa73f63f8a">PYRO_TYPE</a> type,<a class="code" href="class_system_status.html">SystemStatus</a>* systemstatus,uint8_t <span class="keywordtype">id</span>);     </div>
+<div class="line"><a name="l00025"></a><span class="lineno"><a class="line" href="class_pyro.html#a78f8221114043d3991936a91ba789b2b">   25</a></span>&#160;        <span class="keyword">virtual</span> <span class="keywordtype">bool</span> <a class="code" href="class_pyro.html#a78f8221114043d3991936a91ba789b2b">check_continuity</a>() = 0; </div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;        <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code" href="class_pyro.html#a12d58ae5118625c65b7b9ebcbe4e0578">doStuff</a>(uint8_t duration);</div>
+<div class="line"><a name="l00038"></a><span class="lineno"><a class="line" href="class_pyro.html#a21cb36a5bfdb8766d893dd305152c166">   38</a></span>&#160;        <span class="keywordtype">bool</span> <a class="code" href="class_pyro.html#a21cb36a5bfdb8766d893dd305152c166">getContinuity</a>(){<span class="keywordflow">return</span> <a class="code" href="class_pyro.html#a36a94ee600d201dcd10c917c30f2db21">_continuity</a>;};</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;        </div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;        <span class="keyword">virtual</span> <a class="code" href="class_pyro.html#a3be068d04db1c8012b1561114d215d5f">~Pyro</a>() = 0;</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160; </div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;    <span class="keyword">protected</span>:</div>
+<div class="line"><a name="l00043"></a><span class="lineno"><a class="line" href="class_pyro.html#abc24c94f18160239e37a95f4e890f704">   43</a></span>&#160;        <a class="code" href="class_system_status.html">SystemStatus</a>* <a class="code" href="class_pyro.html#abc24c94f18160239e37a95f4e890f704">_systemstatus</a>; <span class="comment">// pointer to system status object</span></div>
+<div class="line"><a name="l00044"></a><span class="lineno"><a class="line" href="class_pyro.html#ad03097b0caf7c6e74796bc6c3e849cf1">   44</a></span>&#160;        <a class="code" href="pyro_8h.html#a45e0753574b76ce184eb9caa73f63f8a">PYRO_TYPE</a> <a class="code" href="class_pyro.html#ad03097b0caf7c6e74796bc6c3e849cf1">_type</a>; <span class="comment">//type of igniter</span></div>
+<div class="line"><a name="l00045"></a><span class="lineno"><a class="line" href="class_pyro.html#a36a94ee600d201dcd10c917c30f2db21">   45</a></span>&#160;        <span class="keywordtype">bool</span> <a class="code" href="class_pyro.html#a36a94ee600d201dcd10c917c30f2db21">_continuity</a>; </div>
+<div class="line"><a name="l00046"></a><span class="lineno"><a class="line" href="class_pyro.html#a4019deb086109842e0c08b0eba291f1f">   46</a></span>&#160;        uint8_t <a class="code" href="class_pyro.html#a4019deb086109842e0c08b0eba291f1f">_id</a>; <span class="comment">// pyro id for logging purposes</span></div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160; </div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;       </div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;};</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160; </div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="ttc" id="aclass_pyro_html"><div class="ttname"><a href="class_pyro.html">Pyro</a></div><div class="ttdef"><b>Definition:</b> pyro.h:15</div></div>
+<div class="ttc" id="aclass_pyro_html_a12d58ae5118625c65b7b9ebcbe4e0578"><div class="ttname"><a href="class_pyro.html#a12d58ae5118625c65b7b9ebcbe4e0578">Pyro::doStuff</a></div><div class="ttdeci">virtual void doStuff(uint8_t duration)</div><div class="ttdoc">Fire the pyro.</div><div class="ttdef"><b>Definition:</b> pyro.cpp:16</div></div>
+<div class="ttc" id="aclass_pyro_html_a21cb36a5bfdb8766d893dd305152c166"><div class="ttname"><a href="class_pyro.html#a21cb36a5bfdb8766d893dd305152c166">Pyro::getContinuity</a></div><div class="ttdeci">bool getContinuity()</div><div class="ttdoc">Get the Continuity status.</div><div class="ttdef"><b>Definition:</b> pyro.h:38</div></div>
+<div class="ttc" id="aclass_pyro_html_a36a94ee600d201dcd10c917c30f2db21"><div class="ttname"><a href="class_pyro.html#a36a94ee600d201dcd10c917c30f2db21">Pyro::_continuity</a></div><div class="ttdeci">bool _continuity</div><div class="ttdef"><b>Definition:</b> pyro.h:45</div></div>
+<div class="ttc" id="aclass_pyro_html_a3be068d04db1c8012b1561114d215d5f"><div class="ttname"><a href="class_pyro.html#a3be068d04db1c8012b1561114d215d5f">Pyro::~Pyro</a></div><div class="ttdeci">virtual ~Pyro()=0</div><div class="ttdef"><b>Definition:</b> pyro.cpp:14</div></div>
+<div class="ttc" id="aclass_pyro_html_a4019deb086109842e0c08b0eba291f1f"><div class="ttname"><a href="class_pyro.html#a4019deb086109842e0c08b0eba291f1f">Pyro::_id</a></div><div class="ttdeci">uint8_t _id</div><div class="ttdef"><b>Definition:</b> pyro.h:46</div></div>
+<div class="ttc" id="aclass_pyro_html_a40f126c3233de8394abb557252edc5d3"><div class="ttname"><a href="class_pyro.html#a40f126c3233de8394abb557252edc5d3">Pyro::Pyro</a></div><div class="ttdeci">Pyro(PYRO_TYPE type, SystemStatus *systemstatus, uint8_t id)</div><div class="ttdef"><b>Definition:</b> pyro.cpp:7</div></div>
+<div class="ttc" id="aclass_pyro_html_a78f8221114043d3991936a91ba789b2b"><div class="ttname"><a href="class_pyro.html#a78f8221114043d3991936a91ba789b2b">Pyro::check_continuity</a></div><div class="ttdeci">virtual bool check_continuity()=0</div><div class="ttdoc">Check continiuty of ematch.</div></div>
+<div class="ttc" id="aclass_pyro_html_abc24c94f18160239e37a95f4e890f704"><div class="ttname"><a href="class_pyro.html#abc24c94f18160239e37a95f4e890f704">Pyro::_systemstatus</a></div><div class="ttdeci">SystemStatus * _systemstatus</div><div class="ttdef"><b>Definition:</b> pyro.h:43</div></div>
+<div class="ttc" id="aclass_pyro_html_ad03097b0caf7c6e74796bc6c3e849cf1"><div class="ttname"><a href="class_pyro.html#ad03097b0caf7c6e74796bc6c3e849cf1">Pyro::_type</a></div><div class="ttdeci">PYRO_TYPE _type</div><div class="ttdef"><b>Definition:</b> pyro.h:44</div></div>
+<div class="ttc" id="aclass_system_status_html"><div class="ttname"><a href="class_system_status.html">SystemStatus</a></div><div class="ttdef"><b>Definition:</b> systemstatus.h:16</div></div>
+<div class="ttc" id="apyro_8h_html_a45e0753574b76ce184eb9caa73f63f8a"><div class="ttname"><a href="pyro_8h.html#a45e0753574b76ce184eb9caa73f63f8a">PYRO_TYPE</a></div><div class="ttdeci">PYRO_TYPE</div><div class="ttdef"><b>Definition:</b> pyro.h:10</div></div>
 <div class="ttc" id="apyro_8h_html_a45e0753574b76ce184eb9caa73f63f8aa54b4c4075463b2e02cd69f5cd139b5b2"><div class="ttname"><a href="pyro_8h.html#a45e0753574b76ce184eb9caa73f63f8aa54b4c4075463b2e02cd69f5cd139b5b2">PYRO_TYPE::LOCAL</a></div><div class="ttdeci">@ LOCAL</div></div>
 <div class="ttc" id="apyro_8h_html_a45e0753574b76ce184eb9caa73f63f8aafc27366214232d1ebd0ce5ccc709463f"><div class="ttname"><a href="pyro_8h.html#a45e0753574b76ce184eb9caa73f63f8aafc27366214232d1ebd0ce5ccc709463f">PYRO_TYPE::REMOTE_BT</a></div><div class="ttdeci">@ REMOTE_BT</div></div>
+<div class="ttc" id="asystemstatus_8h_html"><div class="ttname"><a href="systemstatus_8h.html">systemstatus.h</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->

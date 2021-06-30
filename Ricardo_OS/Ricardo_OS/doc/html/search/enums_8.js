@@ -1,6 +1,4 @@
 var searchData=
 [
-  ['sensor_1346',['SENSOR',['../sensors_8h.html#a4841defb3c5d614dc03fc588f4c03fe1',1,'sensors.h']]],
-  ['storage_5fdevice_1347',['STORAGE_DEVICE',['../storage_controller_8h.html#a9539e551e6a3b5229703f97c65f94bae',1,'storageController.h']]],
-  ['system_5fflag_1348',['system_flag',['../flags_8h.html#a1cb315cc6ae6368d46a819d952b416ad',1,'flags.h']]]
+  ['radio_5finfo_1374',['RADIO_INFO',['../radio_8h.html#afe783f40e0440c0a2811b5158cf8e84d',1,'radio.h']]]
 ];

@@ -1,6 +1,6 @@
 <map id="State::initialise" name="State::initialise">
 <area shape="rect" id="node1" title=" " alt="" coords="5,13,113,39"/>
-<area shape="rect" id="node2" href="$class_system_status.html#a872912293f3c93e87eb69c9a70f7743a" title=" " alt="" coords="161,13,359,39"/>
+<area shape="rect" id="node2" href="$class_system_status.html#a7857d2fb6cda9d3c0aba6bf2a9592169" title=" " alt="" coords="161,13,359,39"/>
 <area shape="rect" id="node3" href="$class_log_controller.html#adb94b2720224b121ac8487c7c0e04ffc" title=" " alt="" coords="407,13,531,39"/>
 <area shape="rect" id="node4" href="$class_telemetry_logger.html#af01a5e0f381d60d53d2c08ddad37ca07" title=" " alt="" coords="579,13,721,39"/>
 <area shape="rect" id="node5" href="$classtelemetry__logframe.html#add67dbfbf886bf1b322628962a03c0de" title=" " alt="" coords="769,5,903,47"/>

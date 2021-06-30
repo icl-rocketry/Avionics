@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['networkmanager_1462',['NetworkManager',['../class_command_handler.html#a82ca116715acd6c64f2acf4dc71e4038',1,'CommandHandler']]]
+  ['usb_1497',['USB',['../class_packet_header.html#a04dbcd95d420556b0b42e93203b0dcb6',1,'PacketHeader']]]
 ];

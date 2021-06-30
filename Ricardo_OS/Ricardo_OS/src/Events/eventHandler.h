@@ -6,9 +6,10 @@
 #include "event.h"
 
 #include <ArduinoJson.h>
+#include <memory>
 
 class StateMachine;
-class jsondoc;
+
 
 class EventHandler{
     public:
@@ -18,14 +19,19 @@ class EventHandler{
         //description of each event
         
         void update();
-        int timeTriggered(int arg){return 1;};
+        /**
+         * @brief Get the timestamp when an event was triggered.
+         * 
+         * @param eventID 
+         * @return timestamp in milliseconds. Returns 0 if has not been triggered yet
+         */
+        uint32_t timeTriggered(uint8_t eventID);
 
     private:
         StateMachine* _sm; //pointer to statemachine
 
 
-        std::vector<Event> eventList;
-        bool register_event(Event new_event);
+        std::vector<std::unique_ptr<Event> > eventList;
 };
 
 

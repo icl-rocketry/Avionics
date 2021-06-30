@@ -15,8 +15,7 @@ Inheritance diagram for Radio\+:\nopagebreak
 \end{figure}
 
 
-Collaboration diagram for Radio\+:
-\nopagebreak
+Collaboration diagram for Radio\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -26,17 +25,24 @@ Collaboration diagram for Radio\+:
 \doxysubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\hyperlink{class_radio_acfc247c737ec20bcfb106f8ce151f337}{Radio}} (SPIClass $\ast$spi, \mbox{\hyperlink{class_system_status}{System\+Status}} $\ast$systemstatus)
+\mbox{\hyperlink{class_radio_a1c2ab784bb21ee8af06ed305b6e386d3}{Radio}} (SPIClass $\ast$spi, \mbox{\hyperlink{class_system_status}{System\+Status}} $\ast$systemstatus, std\+::vector$<$ std\+::unique\+\_\+ptr$<$ std\+::vector$<$ uint8\+\_\+t $>$ $>$ $>$ \&buf)
 \item 
 void \mbox{\hyperlink{class_radio_a46f079f86ab0e7e83a4521c35eaa9aff}{setup}} ()
 \item 
-void \mbox{\hyperlink{class_radio_a219437f42cd31f1373c7192b3c5fc19c}{send\+\_\+packet}} (uint8\+\_\+t $\ast$txpacket\+\_\+ptr, size\+\_\+t packet\+\_\+size)
+void \mbox{\hyperlink{class_radio_a7b903240e57d52fc31f9cbec4275c0fa}{send\+\_\+packet}} (std\+::vector$<$ uint8\+\_\+t $>$ \&data)
+\begin{DoxyCompactList}\small\item\em send\+\_\+packet places packet onto send buffer to be sent if radio isnt busy This is to ensure that we can use the non-\/blocking send instead of waiting for radio to send each packet This reduces latency in data logging \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_radio_a64ed79aae89f2746c9317a90305d90bc}{update}} ()
 \item 
-void \mbox{\hyperlink{class_radio_a45de275f8025cc7c6b6d9d12013c22c8}{get\+\_\+packet}} (std\+::vector$<$ std\+::unique\+\_\+ptr$<$ std\+::vector$<$ uint8\+\_\+t $>$$>$$>$ \&buf)
+std\+::vector$<$ double $>$ \mbox{\hyperlink{class_radio_aa26379d7242a2fce0c775b16570ec1e9}{get\+Radio\+Info}} ()
+\end{DoxyCompactItemize}
+\doxysubsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
 \item 
-int16\+\_\+t \mbox{\hyperlink{class_radio_a72f533e8768d338547a78a75c81656aa}{get\+\_\+rssi}} ()
+void \mbox{\hyperlink{class_radio_ad357a689877f0b7c253b8c25baacbd9e}{get\+Packet}} ()
 \item 
-float \mbox{\hyperlink{class_radio_ac9514fc7a175ff2b9d194edf008c4cb0}{get\+\_\+snr}} ()
+void \mbox{\hyperlink{class_radio_ade28962900128f1bbad608a9eb7cae58}{check\+Send\+Buffer}} ()
+\item 
+void \mbox{\hyperlink{class_radio_a71afa4f66f08408fbef7235a339918ab}{check\+Tx}} ()
 \end{DoxyCompactItemize}
 \doxysubsection*{Private Attributes}
 \begin{DoxyCompactItemize}
@@ -45,42 +51,65 @@ SPIClass $\ast$ \mbox{\hyperlink{class_radio_a12b07fdb3eb87ff8f38c7168194d597b}{
 \item 
 \mbox{\hyperlink{class_system_status}{System\+Status}} $\ast$ \mbox{\hyperlink{class_radio_a868614909d4c8fdec10f3037f8827132}{\+\_\+systemstatus}}
 \item 
-int \mbox{\hyperlink{class_radio_a82c0d31b05f5d34ec68088022b8e7b95}{packet\+Size}}
+std\+::vector$<$ std\+::unique\+\_\+ptr$<$ std\+::vector$<$ uint8\+\_\+t $>$ $>$ $>$ \& \mbox{\hyperlink{class_radio_a16b9b3b7243b997c0b91e465133789ab}{\+\_\+packet\+Buffer}}
 \item 
-int \mbox{\hyperlink{class_radio_a7ebc999e0c5ab2e9a88ce9a795f4a2f7}{index}}
+std\+::vector$<$ std\+::vector$<$ uint8\+\_\+t $>$ $>$ \mbox{\hyperlink{class_radio_a7881a53b9c6d41fa31569077b39b8b5e}{\+\_\+send\+Buffer}}
 \item 
-std\+::vector$<$ uint8\+\_\+t $>$ \mbox{\hyperlink{class_radio_ada3a70ff72b947f184c15d57867e5a22}{packet}}
-\item 
-uint64\+\_\+t \mbox{\hyperlink{class_radio_aba1f3910d6abe54aef8f53ad928c3319}{prev\+\_\+time}}
+bool \mbox{\hyperlink{class_radio_a177ee566154e008fbf45dd43ef44338d}{\+\_\+tx\+Done}}
 \end{DoxyCompactItemize}
 \doxysubsection*{Additional Inherited Members}
 
 
 \doxysubsection{Constructor \& Destructor Documentation}
-\mbox{\Hypertarget{class_radio_acfc247c737ec20bcfb106f8ce151f337}\label{class_radio_acfc247c737ec20bcfb106f8ce151f337}} 
+\mbox{\Hypertarget{class_radio_a1c2ab784bb21ee8af06ed305b6e386d3}\label{class_radio_a1c2ab784bb21ee8af06ed305b6e386d3}} 
 \index{Radio@{Radio}!Radio@{Radio}}
 \index{Radio@{Radio}!Radio@{Radio}}
 \doxysubsubsection{\texorpdfstring{Radio()}{Radio()}}
-{\footnotesize\ttfamily Radio\+::\+Radio (\begin{DoxyParamCaption}\item[{SPIClass $\ast$}]{spi,  }\item[{\mbox{\hyperlink{class_system_status}{System\+Status}} $\ast$}]{systemstatus }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily Radio\+::\+Radio (\begin{DoxyParamCaption}\item[{SPIClass $\ast$}]{spi,  }\item[{\mbox{\hyperlink{class_system_status}{System\+Status}} $\ast$}]{systemstatus,  }\item[{std\+::vector$<$ std\+::unique\+\_\+ptr$<$ std\+::vector$<$ uint8\+\_\+t $>$ $>$ $>$ \&}]{buf }\end{DoxyParamCaption})}
 
 
 
 \doxysubsection{Member Function Documentation}
-\mbox{\Hypertarget{class_radio_a45de275f8025cc7c6b6d9d12013c22c8}\label{class_radio_a45de275f8025cc7c6b6d9d12013c22c8}} 
-\index{Radio@{Radio}!get\_packet@{get\_packet}}
-\index{get\_packet@{get\_packet}!Radio@{Radio}}
-\doxysubsubsection{\texorpdfstring{get\_packet()}{get\_packet()}}
-{\footnotesize\ttfamily void Radio\+::get\+\_\+packet (\begin{DoxyParamCaption}\item[{std\+::vector$<$ std\+::unique\+\_\+ptr$<$ std\+::vector$<$ uint8\+\_\+t $>$$>$$>$ \&}]{buf }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+\mbox{\Hypertarget{class_radio_ade28962900128f1bbad608a9eb7cae58}\label{class_radio_ade28962900128f1bbad608a9eb7cae58}} 
+\index{Radio@{Radio}!checkSendBuffer@{checkSendBuffer}}
+\index{checkSendBuffer@{checkSendBuffer}!Radio@{Radio}}
+\doxysubsubsection{\texorpdfstring{checkSendBuffer()}{checkSendBuffer()}}
+{\footnotesize\ttfamily void Radio\+::check\+Send\+Buffer (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
 
-
-
-Reimplemented from \mbox{\hyperlink{class_iface_aab6b599d8f932eb4404e11ee88c05c6d}{Iface}}.
-
-Here is the call graph for this function\+:\nopagebreak
+Here is the caller graph for this function\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=350pt]{class_radio_a45de275f8025cc7c6b6d9d12013c22c8_cgraph}
+\includegraphics[width=350pt]{class_radio_ade28962900128f1bbad608a9eb7cae58_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_radio_a71afa4f66f08408fbef7235a339918ab}\label{class_radio_a71afa4f66f08408fbef7235a339918ab}} 
+\index{Radio@{Radio}!checkTx@{checkTx}}
+\index{checkTx@{checkTx}!Radio@{Radio}}
+\doxysubsubsection{\texorpdfstring{checkTx()}{checkTx()}}
+{\footnotesize\ttfamily void Radio\+::check\+Tx (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_radio_a71afa4f66f08408fbef7235a339918ab_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_radio_ad357a689877f0b7c253b8c25baacbd9e}\label{class_radio_ad357a689877f0b7c253b8c25baacbd9e}} 
+\index{Radio@{Radio}!getPacket@{getPacket}}
+\index{getPacket@{getPacket}!Radio@{Radio}}
+\doxysubsubsection{\texorpdfstring{getPacket()}{getPacket()}}
+{\footnotesize\ttfamily void Radio\+::get\+Packet (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_radio_ad357a689877f0b7c253b8c25baacbd9e_cgraph}
 \end{center}
 \end{figure}
 Here is the caller graph for this function\+:
@@ -88,53 +117,50 @@ Here is the caller graph for this function\+:
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=350pt]{class_radio_a45de275f8025cc7c6b6d9d12013c22c8_icgraph}
+\includegraphics[width=350pt]{class_radio_ad357a689877f0b7c253b8c25baacbd9e_icgraph}
 \end{center}
 \end{figure}
-\mbox{\Hypertarget{class_radio_a72f533e8768d338547a78a75c81656aa}\label{class_radio_a72f533e8768d338547a78a75c81656aa}} 
-\index{Radio@{Radio}!get\_rssi@{get\_rssi}}
-\index{get\_rssi@{get\_rssi}!Radio@{Radio}}
-\doxysubsubsection{\texorpdfstring{get\_rssi()}{get\_rssi()}}
-{\footnotesize\ttfamily int16\+\_\+t Radio\+::get\+\_\+rssi (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+\mbox{\Hypertarget{class_radio_aa26379d7242a2fce0c775b16570ec1e9}\label{class_radio_aa26379d7242a2fce0c775b16570ec1e9}} 
+\index{Radio@{Radio}!getRadioInfo@{getRadioInfo}}
+\index{getRadioInfo@{getRadioInfo}!Radio@{Radio}}
+\doxysubsubsection{\texorpdfstring{getRadioInfo()}{getRadioInfo()}}
+{\footnotesize\ttfamily std\+::vector$<$ double $>$ Radio\+::get\+Radio\+Info (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
 
 Here is the caller graph for this function\+:
 \nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=350pt]{class_radio_a72f533e8768d338547a78a75c81656aa_icgraph}
+\includegraphics[width=350pt]{class_radio_aa26379d7242a2fce0c775b16570ec1e9_icgraph}
 \end{center}
 \end{figure}
-\mbox{\Hypertarget{class_radio_ac9514fc7a175ff2b9d194edf008c4cb0}\label{class_radio_ac9514fc7a175ff2b9d194edf008c4cb0}} 
-\index{Radio@{Radio}!get\_snr@{get\_snr}}
-\index{get\_snr@{get\_snr}!Radio@{Radio}}
-\doxysubsubsection{\texorpdfstring{get\_snr()}{get\_snr()}}
-{\footnotesize\ttfamily float Radio\+::get\+\_\+snr (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
-
-Here is the caller graph for this function\+:
-\nopagebreak
-\begin{figure}[H]
-\begin{center}
-\leavevmode
-\includegraphics[width=350pt]{class_radio_ac9514fc7a175ff2b9d194edf008c4cb0_icgraph}
-\end{center}
-\end{figure}
-\mbox{\Hypertarget{class_radio_a219437f42cd31f1373c7192b3c5fc19c}\label{class_radio_a219437f42cd31f1373c7192b3c5fc19c}} 
+\mbox{\Hypertarget{class_radio_a7b903240e57d52fc31f9cbec4275c0fa}\label{class_radio_a7b903240e57d52fc31f9cbec4275c0fa}} 
 \index{Radio@{Radio}!send\_packet@{send\_packet}}
 \index{send\_packet@{send\_packet}!Radio@{Radio}}
 \doxysubsubsection{\texorpdfstring{send\_packet()}{send\_packet()}}
-{\footnotesize\ttfamily void Radio\+::send\+\_\+packet (\begin{DoxyParamCaption}\item[{uint8\+\_\+t $\ast$}]{txpacket\+\_\+ptr,  }\item[{size\+\_\+t}]{packet\+\_\+size }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+{\footnotesize\ttfamily void Radio\+::send\+\_\+packet (\begin{DoxyParamCaption}\item[{std\+::vector$<$ uint8\+\_\+t $>$ \&}]{data }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
 
 
 
-Reimplemented from \mbox{\hyperlink{class_iface_ac8e727db8cba7c955c223b9685934568}{Iface}}.
+send\+\_\+packet places packet onto send buffer to be sent if radio isnt busy This is to ensure that we can use the non-\/blocking send instead of waiting for radio to send each packet This reduces latency in data logging 
+
+
+\begin{DoxyParams}{Parameters}
+{\em txpacket\+\_\+ptr} & \\
+\hline
+{\em packet\+\_\+size} & \\
+\hline
+\end{DoxyParams}
+
+
+Reimplemented from \mbox{\hyperlink{class_iface_af894e23b0e0cc603dc8e16a11d7bee4e}{Iface}}.
 
 Here is the caller graph for this function\+:
 \nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=350pt]{class_radio_a219437f42cd31f1373c7192b3c5fc19c_icgraph}
+\includegraphics[width=350pt]{class_radio_a7b903240e57d52fc31f9cbec4275c0fa_icgraph}
 \end{center}
 \end{figure}
 \mbox{\Hypertarget{class_radio_a46f079f86ab0e7e83a4521c35eaa9aff}\label{class_radio_a46f079f86ab0e7e83a4521c35eaa9aff}} 
@@ -147,7 +173,8 @@ Here is the caller graph for this function\+:
 
 Reimplemented from \mbox{\hyperlink{class_iface_a5a89ff5d5f8f05467a55c5811a4ebe3f}{Iface}}.
 
-Here is the call graph for this function\+:\nopagebreak
+Here is the call graph for this function\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -161,9 +188,47 @@ Here is the caller graph for this function\+:\nopagebreak
 \includegraphics[width=350pt]{class_radio_a46f079f86ab0e7e83a4521c35eaa9aff_icgraph}
 \end{center}
 \end{figure}
+\mbox{\Hypertarget{class_radio_a64ed79aae89f2746c9317a90305d90bc}\label{class_radio_a64ed79aae89f2746c9317a90305d90bc}} 
+\index{Radio@{Radio}!update@{update}}
+\index{update@{update}!Radio@{Radio}}
+\doxysubsubsection{\texorpdfstring{update()}{update()}}
+{\footnotesize\ttfamily void Radio\+::update (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Reimplemented from \mbox{\hyperlink{class_iface_a0645651fc947fa2f574ef9a52058a404}{Iface}}.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_radio_a64ed79aae89f2746c9317a90305d90bc_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_radio_a64ed79aae89f2746c9317a90305d90bc_icgraph}
+\end{center}
+\end{figure}
 
 
 \doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{class_radio_a16b9b3b7243b997c0b91e465133789ab}\label{class_radio_a16b9b3b7243b997c0b91e465133789ab}} 
+\index{Radio@{Radio}!\_packetBuffer@{\_packetBuffer}}
+\index{\_packetBuffer@{\_packetBuffer}!Radio@{Radio}}
+\doxysubsubsection{\texorpdfstring{\_packetBuffer}{\_packetBuffer}}
+{\footnotesize\ttfamily std\+::vector$<$std\+::unique\+\_\+ptr$<$std\+::vector$<$uint8\+\_\+t$>$ $>$ $>$\& Radio\+::\+\_\+packet\+Buffer\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{class_radio_a7881a53b9c6d41fa31569077b39b8b5e}\label{class_radio_a7881a53b9c6d41fa31569077b39b8b5e}} 
+\index{Radio@{Radio}!\_sendBuffer@{\_sendBuffer}}
+\index{\_sendBuffer@{\_sendBuffer}!Radio@{Radio}}
+\doxysubsubsection{\texorpdfstring{\_sendBuffer}{\_sendBuffer}}
+{\footnotesize\ttfamily std\+::vector$<$std\+::vector$<$uint8\+\_\+t$>$ $>$ Radio\+::\+\_\+send\+Buffer\hspace{0.3cm}{\ttfamily [private]}}
+
 \mbox{\Hypertarget{class_radio_a12b07fdb3eb87ff8f38c7168194d597b}\label{class_radio_a12b07fdb3eb87ff8f38c7168194d597b}} 
 \index{Radio@{Radio}!\_spi@{\_spi}}
 \index{\_spi@{\_spi}!Radio@{Radio}}
@@ -176,29 +241,11 @@ Here is the caller graph for this function\+:\nopagebreak
 \doxysubsubsection{\texorpdfstring{\_systemstatus}{\_systemstatus}}
 {\footnotesize\ttfamily \mbox{\hyperlink{class_system_status}{System\+Status}}$\ast$ Radio\+::\+\_\+systemstatus\hspace{0.3cm}{\ttfamily [private]}}
 
-\mbox{\Hypertarget{class_radio_a7ebc999e0c5ab2e9a88ce9a795f4a2f7}\label{class_radio_a7ebc999e0c5ab2e9a88ce9a795f4a2f7}} 
-\index{Radio@{Radio}!index@{index}}
-\index{index@{index}!Radio@{Radio}}
-\doxysubsubsection{\texorpdfstring{index}{index}}
-{\footnotesize\ttfamily int Radio\+::index\hspace{0.3cm}{\ttfamily [private]}}
-
-\mbox{\Hypertarget{class_radio_ada3a70ff72b947f184c15d57867e5a22}\label{class_radio_ada3a70ff72b947f184c15d57867e5a22}} 
-\index{Radio@{Radio}!packet@{packet}}
-\index{packet@{packet}!Radio@{Radio}}
-\doxysubsubsection{\texorpdfstring{packet}{packet}}
-{\footnotesize\ttfamily std\+::vector$<$uint8\+\_\+t$>$ Radio\+::packet\hspace{0.3cm}{\ttfamily [private]}}
-
-\mbox{\Hypertarget{class_radio_a82c0d31b05f5d34ec68088022b8e7b95}\label{class_radio_a82c0d31b05f5d34ec68088022b8e7b95}} 
-\index{Radio@{Radio}!packetSize@{packetSize}}
-\index{packetSize@{packetSize}!Radio@{Radio}}
-\doxysubsubsection{\texorpdfstring{packetSize}{packetSize}}
-{\footnotesize\ttfamily int Radio\+::packet\+Size\hspace{0.3cm}{\ttfamily [private]}}
-
-\mbox{\Hypertarget{class_radio_aba1f3910d6abe54aef8f53ad928c3319}\label{class_radio_aba1f3910d6abe54aef8f53ad928c3319}} 
-\index{Radio@{Radio}!prev\_time@{prev\_time}}
-\index{prev\_time@{prev\_time}!Radio@{Radio}}
-\doxysubsubsection{\texorpdfstring{prev\_time}{prev\_time}}
-{\footnotesize\ttfamily uint64\+\_\+t Radio\+::prev\+\_\+time\hspace{0.3cm}{\ttfamily [private]}}
+\mbox{\Hypertarget{class_radio_a177ee566154e008fbf45dd43ef44338d}\label{class_radio_a177ee566154e008fbf45dd43ef44338d}} 
+\index{Radio@{Radio}!\_txDone@{\_txDone}}
+\index{\_txDone@{\_txDone}!Radio@{Radio}}
+\doxysubsubsection{\texorpdfstring{\_txDone}{\_txDone}}
+{\footnotesize\ttfamily bool Radio\+::\+\_\+tx\+Done\hspace{0.3cm}{\ttfamily [private]}}
 
 
 

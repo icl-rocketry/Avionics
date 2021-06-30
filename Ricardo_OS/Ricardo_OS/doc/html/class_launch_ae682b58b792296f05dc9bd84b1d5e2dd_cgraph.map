@@ -1,7 +1,7 @@
 <map id="Launch::initialise" name="Launch::initialise">
 <area shape="rect" id="node1" title=" " alt="" coords="5,13,124,39"/>
 <area shape="rect" id="node2" href="$class_state.html#a14770d571ff70a1e5c8572eade7843cf" title=" " alt="" coords="172,13,280,39"/>
-<area shape="rect" id="node3" href="$class_system_status.html#a872912293f3c93e87eb69c9a70f7743a" title=" " alt="" coords="328,13,525,39"/>
+<area shape="rect" id="node3" href="$class_system_status.html#a7857d2fb6cda9d3c0aba6bf2a9592169" title=" " alt="" coords="328,13,525,39"/>
 <area shape="rect" id="node4" href="$class_log_controller.html#adb94b2720224b121ac8487c7c0e04ffc" title=" " alt="" coords="573,13,697,39"/>
 <area shape="rect" id="node5" href="$class_telemetry_logger.html#af01a5e0f381d60d53d2c08ddad37ca07" title=" " alt="" coords="745,13,888,39"/>
 <area shape="rect" id="node6" href="$classtelemetry__logframe.html#add67dbfbf886bf1b322628962a03c0de" title=" " alt="" coords="936,5,1069,47"/>

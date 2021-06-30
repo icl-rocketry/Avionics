@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['groundstation_1461',['Groundstation',['../class_network_manager.html#a337f9d85d0d497f91a096e88efb9293a',1,'NetworkManager']]]
+  ['operator_3c_3c_1496',['operator&lt;&lt;',['../class_routing_table.html#a6303e42a06796509acda1a1214c73c87',1,'RoutingTable']]]
 ];

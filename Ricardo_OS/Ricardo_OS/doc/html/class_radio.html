@@ -94,6 +94,7 @@ $(document).ready(function(){initNavTree('class_radio.html',''); initResizable()
 <div class="header">
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="#pri-methods">Private Member Functions</a> &#124;
 <a href="#pri-attribs">Private Attributes</a> &#124;
 <a href="class_radio-members.html">List of all members</a>  </div>
   <div class="headertitle">
@@ -147,21 +148,29 @@ Collaboration diagram for Radio:</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:acfc247c737ec20bcfb106f8ce151f337"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_radio.html#acfc247c737ec20bcfb106f8ce151f337">Radio</a> (SPIClass *spi, <a class="el" href="class_system_status.html">SystemStatus</a> *systemstatus)</td></tr>
-<tr class="separator:acfc247c737ec20bcfb106f8ce151f337"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1c2ab784bb21ee8af06ed305b6e386d3"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_radio.html#a1c2ab784bb21ee8af06ed305b6e386d3">Radio</a> (SPIClass *spi, <a class="el" href="class_system_status.html">SystemStatus</a> *systemstatus, std::vector&lt; std::unique_ptr&lt; std::vector&lt; uint8_t &gt; &gt; &gt; &amp;buf)</td></tr>
+<tr class="separator:a1c2ab784bb21ee8af06ed305b6e386d3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a46f079f86ab0e7e83a4521c35eaa9aff"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_radio.html#a46f079f86ab0e7e83a4521c35eaa9aff">setup</a> ()</td></tr>
 <tr class="separator:a46f079f86ab0e7e83a4521c35eaa9aff"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a219437f42cd31f1373c7192b3c5fc19c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_radio.html#a219437f42cd31f1373c7192b3c5fc19c">send_packet</a> (uint8_t *txpacket_ptr, size_t packet_size)</td></tr>
-<tr class="separator:a219437f42cd31f1373c7192b3c5fc19c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a45de275f8025cc7c6b6d9d12013c22c8"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_radio.html#a45de275f8025cc7c6b6d9d12013c22c8">get_packet</a> (std::vector&lt; std::unique_ptr&lt; std::vector&lt; uint8_t &gt;&gt;&gt; &amp;buf)</td></tr>
-<tr class="separator:a45de275f8025cc7c6b6d9d12013c22c8"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a72f533e8768d338547a78a75c81656aa"><td class="memItemLeft" align="right" valign="top">int16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_radio.html#a72f533e8768d338547a78a75c81656aa">get_rssi</a> ()</td></tr>
-<tr class="separator:a72f533e8768d338547a78a75c81656aa"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac9514fc7a175ff2b9d194edf008c4cb0"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_radio.html#ac9514fc7a175ff2b9d194edf008c4cb0">get_snr</a> ()</td></tr>
-<tr class="separator:ac9514fc7a175ff2b9d194edf008c4cb0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7b903240e57d52fc31f9cbec4275c0fa"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_radio.html#a7b903240e57d52fc31f9cbec4275c0fa">send_packet</a> (std::vector&lt; uint8_t &gt; &amp;data)</td></tr>
+<tr class="memdesc:a7b903240e57d52fc31f9cbec4275c0fa"><td class="mdescLeft">&#160;</td><td class="mdescRight">send_packet places packet onto send buffer to be sent if radio isnt busy This is to ensure that we can use the non-blocking send instead of waiting for radio to send each packet This reduces latency in data logging  <a href="class_radio.html#a7b903240e57d52fc31f9cbec4275c0fa">More...</a><br /></td></tr>
+<tr class="separator:a7b903240e57d52fc31f9cbec4275c0fa"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a64ed79aae89f2746c9317a90305d90bc"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_radio.html#a64ed79aae89f2746c9317a90305d90bc">update</a> ()</td></tr>
+<tr class="separator:a64ed79aae89f2746c9317a90305d90bc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa26379d7242a2fce0c775b16570ec1e9"><td class="memItemLeft" align="right" valign="top">std::vector&lt; double &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_radio.html#aa26379d7242a2fce0c775b16570ec1e9">getRadioInfo</a> ()</td></tr>
+<tr class="separator:aa26379d7242a2fce0c775b16570ec1e9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pub_methods_class_iface"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_class_iface')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="class_iface.html">Iface</a></td></tr>
 <tr class="memitem:a437b849aab78c5dcc408e8285928f1d1 inherit pub_methods_class_iface"><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_iface.html#a437b849aab78c5dcc408e8285928f1d1">~Iface</a> ()=0</td></tr>
 <tr class="separator:a437b849aab78c5dcc408e8285928f1d1 inherit pub_methods_class_iface"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-methods"></a>
+Private Member Functions</h2></td></tr>
+<tr class="memitem:ad357a689877f0b7c253b8c25baacbd9e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_radio.html#ad357a689877f0b7c253b8c25baacbd9e">getPacket</a> ()</td></tr>
+<tr class="separator:ad357a689877f0b7c253b8c25baacbd9e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ade28962900128f1bbad608a9eb7cae58"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_radio.html#ade28962900128f1bbad608a9eb7cae58">checkSendBuffer</a> ()</td></tr>
+<tr class="separator:ade28962900128f1bbad608a9eb7cae58"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a71afa4f66f08408fbef7235a339918ab"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_radio.html#a71afa4f66f08408fbef7235a339918ab">checkTx</a> ()</td></tr>
+<tr class="separator:a71afa4f66f08408fbef7235a339918ab"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-attribs"></a>
 Private Attributes</h2></td></tr>
@@ -169,24 +178,22 @@ Private Attributes</h2></td></tr>
 <tr class="separator:a12b07fdb3eb87ff8f38c7168194d597b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a868614909d4c8fdec10f3037f8827132"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_system_status.html">SystemStatus</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_radio.html#a868614909d4c8fdec10f3037f8827132">_systemstatus</a></td></tr>
 <tr class="separator:a868614909d4c8fdec10f3037f8827132"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a82c0d31b05f5d34ec68088022b8e7b95"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_radio.html#a82c0d31b05f5d34ec68088022b8e7b95">packetSize</a></td></tr>
-<tr class="separator:a82c0d31b05f5d34ec68088022b8e7b95"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7ebc999e0c5ab2e9a88ce9a795f4a2f7"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_radio.html#a7ebc999e0c5ab2e9a88ce9a795f4a2f7">index</a></td></tr>
-<tr class="separator:a7ebc999e0c5ab2e9a88ce9a795f4a2f7"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ada3a70ff72b947f184c15d57867e5a22"><td class="memItemLeft" align="right" valign="top">std::vector&lt; uint8_t &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_radio.html#ada3a70ff72b947f184c15d57867e5a22">packet</a></td></tr>
-<tr class="separator:ada3a70ff72b947f184c15d57867e5a22"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aba1f3910d6abe54aef8f53ad928c3319"><td class="memItemLeft" align="right" valign="top">uint64_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_radio.html#aba1f3910d6abe54aef8f53ad928c3319">prev_time</a></td></tr>
-<tr class="separator:aba1f3910d6abe54aef8f53ad928c3319"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a16b9b3b7243b997c0b91e465133789ab"><td class="memItemLeft" align="right" valign="top">std::vector&lt; std::unique_ptr&lt; std::vector&lt; uint8_t &gt; &gt; &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_radio.html#a16b9b3b7243b997c0b91e465133789ab">_packetBuffer</a></td></tr>
+<tr class="separator:a16b9b3b7243b997c0b91e465133789ab"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7881a53b9c6d41fa31569077b39b8b5e"><td class="memItemLeft" align="right" valign="top">std::vector&lt; std::vector&lt; uint8_t &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_radio.html#a7881a53b9c6d41fa31569077b39b8b5e">_sendBuffer</a></td></tr>
+<tr class="separator:a7881a53b9c6d41fa31569077b39b8b5e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a177ee566154e008fbf45dd43ef44338d"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_radio.html#a177ee566154e008fbf45dd43ef44338d">_txDone</a></td></tr>
+<tr class="separator:a177ee566154e008fbf45dd43ef44338d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="inherited"></a>
 Additional Inherited Members</h2></td></tr>
 <tr class="inherit_header pro_methods_class_iface"><td colspan="2" onclick="javascript:toggleInherit('pro_methods_class_iface')"><img src="closed.png" alt="-"/>&#160;Protected Member Functions inherited from <a class="el" href="class_iface.html">Iface</a></td></tr>
-<tr class="memitem:a1c04295832a43475789e68932a499d45 inherit pro_methods_class_iface"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_iface.html#a1c04295832a43475789e68932a499d45">updateSourceInterface</a> (std::vector&lt; uint8_t &gt; &amp;packet_data, std::vector&lt; uint8_t &gt; &amp;destination, <a class="el" href="interfaces_8h.html#af0cd30ccfa4f4fe2bd0fdc3cfc4d34cf">Interface</a> interface)</td></tr>
-<tr class="separator:a1c04295832a43475789e68932a499d45 inherit pro_methods_class_iface"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8e514b991c4d301faed91186a25750b6 inherit pro_methods_class_iface"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_iface.html#a8e514b991c4d301faed91186a25750b6">updateSourceInterface</a> (std::vector&lt; uint8_t &gt; &amp;packet_data, std::vector&lt; uint8_t &gt; &amp;destination, <a class="el" href="interfaces_8h.html#a0702347e8797fcd7166de65ba3c3315a">INTERFACE</a> interface)</td></tr>
+<tr class="separator:a8e514b991c4d301faed91186a25750b6 inherit pro_methods_class_iface"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
-<a id="acfc247c737ec20bcfb106f8ce151f337"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#acfc247c737ec20bcfb106f8ce151f337">&#9670;&nbsp;</a></span>Radio()</h2>
+<a id="a1c2ab784bb21ee8af06ed305b6e386d3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1c2ab784bb21ee8af06ed305b6e386d3">&#9670;&nbsp;</a></span>Radio()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -201,7 +208,13 @@ Additional Inherited Members</h2></td></tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype"><a class="el" href="class_system_status.html">SystemStatus</a> *&#160;</td>
-          <td class="paramname"><em>systemstatus</em>&#160;</td>
+          <td class="paramname"><em>systemstatus</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::vector&lt; std::unique_ptr&lt; std::vector&lt; uint8_t &gt; &gt; &gt; &amp;&#160;</td>
+          <td class="paramname"><em>buf</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -214,8 +227,8 @@ Additional Inherited Members</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
-<a id="a45de275f8025cc7c6b6d9d12013c22c8"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a45de275f8025cc7c6b6d9d12013c22c8">&#9670;&nbsp;</a></span>get_packet()</h2>
+<a id="ade28962900128f1bbad608a9eb7cae58"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ade28962900128f1bbad608a9eb7cae58">&#9670;&nbsp;</a></span>checkSendBuffer()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -224,41 +237,29 @@ Additional Inherited Members</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">void Radio::get_packet </td>
+          <td class="memname">void Radio::checkSendBuffer </td>
           <td>(</td>
-          <td class="paramtype">std::vector&lt; std::unique_ptr&lt; std::vector&lt; uint8_t &gt;&gt;&gt; &amp;&#160;</td>
-          <td class="paramname"><em>buf</em></td><td>)</td>
+          <td class="paramname"></td><td>)</td>
           <td></td>
         </tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">virtual</span></span>  </td>
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
-
-<p>Reimplemented from <a class="el" href="class_iface.html#aab6b599d8f932eb4404e11ee88c05c6d">Iface</a>.</p>
-<div class="dynheader">
-Here is the call graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><img src="class_radio_a45de275f8025cc7c6b6d9d12013c22c8_cgraph.png" border="0" usemap="#aclass_radio_a45de275f8025cc7c6b6d9d12013c22c8_cgraph" alt=""/></div>
-<map name="aclass_radio_a45de275f8025cc7c6b6d9d12013c22c8_cgraph" id="aclass_radio_a45de275f8025cc7c6b6d9d12013c22c8_cgraph">
-<area shape="rect" title=" " alt="" coords="5,5,133,32"/>
-<area shape="rect" href="class_packet_header.html#a77e1156dbd831df7a2e8c412adbaecd3" title=" " alt="" coords="181,5,343,32"/>
-<area shape="rect" href="class_packet_header.html#acf9c5c5c063bf6ed809d8d6144a5aa56" title=" " alt="" coords="391,5,576,32"/>
-</map>
-</div>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><img src="class_radio_a45de275f8025cc7c6b6d9d12013c22c8_icgraph.png" border="0" usemap="#aclass_radio_a45de275f8025cc7c6b6d9d12013c22c8_icgraph" alt=""/></div>
-<map name="aclass_radio_a45de275f8025cc7c6b6d9d12013c22c8_icgraph" id="aclass_radio_a45de275f8025cc7c6b6d9d12013c22c8_icgraph">
-<area shape="rect" title=" " alt="" coords="1197,81,1325,108"/>
+<div class="center"><img src="class_radio_ade28962900128f1bbad608a9eb7cae58_icgraph.png" border="0" usemap="#aclass_radio_ade28962900128f1bbad608a9eb7cae58_icgraph" alt=""/></div>
+<map name="aclass_radio_ade28962900128f1bbad608a9eb7cae58_icgraph" id="aclass_radio_ade28962900128f1bbad608a9eb7cae58_icgraph">
+<area shape="rect" title=" " alt="" coords="1348,81,1512,108"/>
+<area shape="rect" href="class_radio.html#a64ed79aae89f2746c9317a90305d90bc" title=" " alt="" coords="1197,81,1300,108"/>
 <area shape="rect" href="class_network_manager.html#a0d4ea7d4f0b395249151d0a28af79cd5" title=" " alt="" coords="981,81,1149,108"/>
 <area shape="rect" href="classstate_machine.html#a5f4f54735cb0a13393227e3af6863cdd" title=" " alt="" coords="787,56,933,83"/>
 <area shape="rect" href="main_8cpp.html#afe461d27b9c48d5921c00d521181f12f" title=" " alt="" coords="692,56,739,83"/>
-<area shape="rect" href="class_tunez_handler.html#a02e64b5ab21c71fc6e62e6673f80ac63" title=" " alt="" coords="509,56,644,83"/>
+<area shape="rect" href="class_tunez_handler.html#a02e64b5ab21c71fc6e62e6673f80ac63" title="Put Melody on tune queue." alt="" coords="509,56,644,83"/>
 <area shape="rect" href="class_command_handler.html#a54c1b7e2f1a6d0365ef36a0c738d7e02" title=" " alt="" coords="228,5,461,32"/>
 <area shape="rect" href="class_setup.html#a315e788a23a012d5993613c627f15302" title=" " alt="" coords="289,56,400,83"/>
 <area shape="rect" href="class_command_handler.html#a6c61c87a0ad0045aa6133dd69112a72b" title=" " alt="" coords="5,56,180,83"/>
@@ -267,14 +268,106 @@ Here is the caller graph for this function:</div>
 
 </div>
 </div>
-<a id="a72f533e8768d338547a78a75c81656aa"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a72f533e8768d338547a78a75c81656aa">&#9670;&nbsp;</a></span>get_rssi()</h2>
+<a id="a71afa4f66f08408fbef7235a339918ab"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a71afa4f66f08408fbef7235a339918ab">&#9670;&nbsp;</a></span>checkTx()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Radio::checkTx </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="class_radio_a71afa4f66f08408fbef7235a339918ab_icgraph.png" border="0" usemap="#aclass_radio_a71afa4f66f08408fbef7235a339918ab_icgraph" alt=""/></div>
+<map name="aclass_radio_a71afa4f66f08408fbef7235a339918ab_icgraph" id="aclass_radio_a71afa4f66f08408fbef7235a339918ab_icgraph">
+<area shape="rect" title=" " alt="" coords="1348,81,1463,108"/>
+<area shape="rect" href="class_radio.html#a64ed79aae89f2746c9317a90305d90bc" title=" " alt="" coords="1197,81,1300,108"/>
+<area shape="rect" href="class_network_manager.html#a0d4ea7d4f0b395249151d0a28af79cd5" title=" " alt="" coords="981,81,1149,108"/>
+<area shape="rect" href="classstate_machine.html#a5f4f54735cb0a13393227e3af6863cdd" title=" " alt="" coords="787,56,933,83"/>
+<area shape="rect" href="main_8cpp.html#afe461d27b9c48d5921c00d521181f12f" title=" " alt="" coords="692,56,739,83"/>
+<area shape="rect" href="class_tunez_handler.html#a02e64b5ab21c71fc6e62e6673f80ac63" title="Put Melody on tune queue." alt="" coords="509,56,644,83"/>
+<area shape="rect" href="class_command_handler.html#a54c1b7e2f1a6d0365ef36a0c738d7e02" title=" " alt="" coords="228,5,461,32"/>
+<area shape="rect" href="class_setup.html#a315e788a23a012d5993613c627f15302" title=" " alt="" coords="289,56,400,83"/>
+<area shape="rect" href="class_command_handler.html#a6c61c87a0ad0045aa6133dd69112a72b" title=" " alt="" coords="5,56,180,83"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="ad357a689877f0b7c253b8c25baacbd9e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad357a689877f0b7c253b8c25baacbd9e">&#9670;&nbsp;</a></span>getPacket()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Radio::getPacket </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="class_radio_ad357a689877f0b7c253b8c25baacbd9e_cgraph.png" border="0" usemap="#aclass_radio_ad357a689877f0b7c253b8c25baacbd9e_cgraph" alt=""/></div>
+<map name="aclass_radio_ad357a689877f0b7c253b8c25baacbd9e_cgraph" id="aclass_radio_ad357a689877f0b7c253b8c25baacbd9e_cgraph">
+<area shape="rect" title=" " alt="" coords="5,5,128,32"/>
+<area shape="rect" href="class_packet_header.html#a77e1156dbd831df7a2e8c412adbaecd3" title=" " alt="" coords="176,5,337,32"/>
+<area shape="rect" href="class_packet_header.html#acf9c5c5c063bf6ed809d8d6144a5aa56" title=" " alt="" coords="385,5,571,32"/>
+</map>
+</div>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="class_radio_ad357a689877f0b7c253b8c25baacbd9e_icgraph.png" border="0" usemap="#aclass_radio_ad357a689877f0b7c253b8c25baacbd9e_icgraph" alt=""/></div>
+<map name="aclass_radio_ad357a689877f0b7c253b8c25baacbd9e_icgraph" id="aclass_radio_ad357a689877f0b7c253b8c25baacbd9e_icgraph">
+<area shape="rect" title=" " alt="" coords="1348,81,1471,108"/>
+<area shape="rect" href="class_radio.html#a64ed79aae89f2746c9317a90305d90bc" title=" " alt="" coords="1197,81,1300,108"/>
+<area shape="rect" href="class_network_manager.html#a0d4ea7d4f0b395249151d0a28af79cd5" title=" " alt="" coords="981,81,1149,108"/>
+<area shape="rect" href="classstate_machine.html#a5f4f54735cb0a13393227e3af6863cdd" title=" " alt="" coords="787,56,933,83"/>
+<area shape="rect" href="main_8cpp.html#afe461d27b9c48d5921c00d521181f12f" title=" " alt="" coords="692,56,739,83"/>
+<area shape="rect" href="class_tunez_handler.html#a02e64b5ab21c71fc6e62e6673f80ac63" title="Put Melody on tune queue." alt="" coords="509,56,644,83"/>
+<area shape="rect" href="class_command_handler.html#a54c1b7e2f1a6d0365ef36a0c738d7e02" title=" " alt="" coords="228,5,461,32"/>
+<area shape="rect" href="class_setup.html#a315e788a23a012d5993613c627f15302" title=" " alt="" coords="289,56,400,83"/>
+<area shape="rect" href="class_command_handler.html#a6c61c87a0ad0045aa6133dd69112a72b" title=" " alt="" coords="5,56,180,83"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="aa26379d7242a2fce0c775b16570ec1e9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa26379d7242a2fce0c775b16570ec1e9">&#9670;&nbsp;</a></span>getRadioInfo()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">int16_t Radio::get_rssi </td>
+          <td class="memname">std::vector&lt; double &gt; Radio::getRadioInfo </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td></td>
@@ -284,55 +377,24 @@ Here is the caller graph for this function:</div>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><img src="class_radio_a72f533e8768d338547a78a75c81656aa_icgraph.png" border="0" usemap="#aclass_radio_a72f533e8768d338547a78a75c81656aa_icgraph" alt=""/></div>
-<map name="aclass_radio_a72f533e8768d338547a78a75c81656aa_icgraph" id="aclass_radio_a72f533e8768d338547a78a75c81656aa_icgraph">
-<area shape="rect" title=" " alt="" coords="1356,31,1467,57"/>
+<div class="center"><img src="class_radio_aa26379d7242a2fce0c775b16570ec1e9_icgraph.png" border="0" usemap="#aclass_radio_aa26379d7242a2fce0c775b16570ec1e9_icgraph" alt=""/></div>
+<map name="aclass_radio_aa26379d7242a2fce0c775b16570ec1e9_icgraph" id="aclass_radio_aa26379d7242a2fce0c775b16570ec1e9_icgraph">
+<area shape="rect" title=" " alt="" coords="1624,31,1763,57"/>
+<area shape="rect" href="class_network_manager.html#a9e45dcb8ed667b4e39d02d49836d60e2" title=" " alt="" coords="1356,31,1576,57"/>
 <area shape="rect" href="class_command_handler.html#a54c1b7e2f1a6d0365ef36a0c738d7e02" title=" " alt="" coords="1075,31,1308,57"/>
 <area shape="rect" href="class_command_handler.html#a6c61c87a0ad0045aa6133dd69112a72b" title=" " alt="" coords="852,5,1027,32"/>
 <area shape="rect" href="class_network_manager.html#a0d4ea7d4f0b395249151d0a28af79cd5" title=" " alt="" coords="636,5,804,32"/>
 <area shape="rect" href="classstate_machine.html#a5f4f54735cb0a13393227e3af6863cdd" title=" " alt="" coords="441,5,588,32"/>
 <area shape="rect" href="main_8cpp.html#afe461d27b9c48d5921c00d521181f12f" title=" " alt="" coords="347,5,393,32"/>
-<area shape="rect" href="class_tunez_handler.html#a02e64b5ab21c71fc6e62e6673f80ac63" title=" " alt="" coords="164,31,299,57"/>
+<area shape="rect" href="class_tunez_handler.html#a02e64b5ab21c71fc6e62e6673f80ac63" title="Put Melody on tune queue." alt="" coords="164,31,299,57"/>
 <area shape="rect" href="class_setup.html#a315e788a23a012d5993613c627f15302" title=" " alt="" coords="5,31,116,57"/>
 </map>
 </div>
 
 </div>
 </div>
-<a id="ac9514fc7a175ff2b9d194edf008c4cb0"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ac9514fc7a175ff2b9d194edf008c4cb0">&#9670;&nbsp;</a></span>get_snr()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">float Radio::get_snr </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<div class="dynheader">
-Here is the caller graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><img src="class_radio_ac9514fc7a175ff2b9d194edf008c4cb0_icgraph.png" border="0" usemap="#aclass_radio_ac9514fc7a175ff2b9d194edf008c4cb0_icgraph" alt=""/></div>
-<map name="aclass_radio_ac9514fc7a175ff2b9d194edf008c4cb0_icgraph" id="aclass_radio_ac9514fc7a175ff2b9d194edf008c4cb0_icgraph">
-<area shape="rect" title=" " alt="" coords="1356,31,1463,57"/>
-<area shape="rect" href="class_command_handler.html#a54c1b7e2f1a6d0365ef36a0c738d7e02" title=" " alt="" coords="1075,31,1308,57"/>
-<area shape="rect" href="class_command_handler.html#a6c61c87a0ad0045aa6133dd69112a72b" title=" " alt="" coords="852,5,1027,32"/>
-<area shape="rect" href="class_network_manager.html#a0d4ea7d4f0b395249151d0a28af79cd5" title=" " alt="" coords="636,5,804,32"/>
-<area shape="rect" href="classstate_machine.html#a5f4f54735cb0a13393227e3af6863cdd" title=" " alt="" coords="441,5,588,32"/>
-<area shape="rect" href="main_8cpp.html#afe461d27b9c48d5921c00d521181f12f" title=" " alt="" coords="347,5,393,32"/>
-<area shape="rect" href="class_tunez_handler.html#a02e64b5ab21c71fc6e62e6673f80ac63" title=" " alt="" coords="164,31,299,57"/>
-<area shape="rect" href="class_setup.html#a315e788a23a012d5993613c627f15302" title=" " alt="" coords="5,31,116,57"/>
-</map>
-</div>
-
-</div>
-</div>
-<a id="a219437f42cd31f1373c7192b3c5fc19c"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a219437f42cd31f1373c7192b3c5fc19c">&#9670;&nbsp;</a></span>send_packet()</h2>
+<a id="a7b903240e57d52fc31f9cbec4275c0fa"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7b903240e57d52fc31f9cbec4275c0fa">&#9670;&nbsp;</a></span>send_packet()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -343,19 +405,9 @@ Here is the caller graph for this function:</div>
         <tr>
           <td class="memname">void Radio::send_packet </td>
           <td>(</td>
-          <td class="paramtype">uint8_t *&#160;</td>
-          <td class="paramname"><em>txpacket_ptr</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
+          <td class="paramtype">std::vector&lt; uint8_t &gt; &amp;&#160;</td>
+          <td class="paramname"><em>data</em></td><td>)</td>
           <td></td>
-          <td class="paramtype">size_t&#160;</td>
-          <td class="paramname"><em>packet_size</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
         </tr>
       </table>
   </td>
@@ -365,22 +417,31 @@ Here is the caller graph for this function:</div>
 </table>
 </div><div class="memdoc">
 
-<p>Reimplemented from <a class="el" href="class_iface.html#ac8e727db8cba7c955c223b9685934568">Iface</a>.</p>
+<p>send_packet places packet onto send buffer to be sent if radio isnt busy This is to ensure that we can use the non-blocking send instead of waiting for radio to send each packet This reduces latency in data logging </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">txpacket_ptr</td><td></td></tr>
+    <tr><td class="paramname">packet_size</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>Reimplemented from <a class="el" href="class_iface.html#af894e23b0e0cc603dc8e16a11d7bee4e">Iface</a>.</p>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><img src="class_radio_a219437f42cd31f1373c7192b3c5fc19c_icgraph.png" border="0" usemap="#aclass_radio_a219437f42cd31f1373c7192b3c5fc19c_icgraph" alt=""/></div>
-<map name="aclass_radio_a219437f42cd31f1373c7192b3c5fc19c_icgraph" id="aclass_radio_a219437f42cd31f1373c7192b3c5fc19c_icgraph">
-<area shape="rect" title=" " alt="" coords="1767,72,1905,99"/>
-<area shape="rect" href="class_network_manager.html#a64d21aa0b666042d4458b914b359b61e" title=" " alt="" coords="1561,65,1719,106"/>
-<area shape="rect" href="class_network_manager.html#a674c1c30636d564b2d43f668cb04485b" title=" " alt="" coords="1356,65,1513,106"/>
+<div class="center"><img src="class_radio_a7b903240e57d52fc31f9cbec4275c0fa_icgraph.png" border="0" usemap="#aclass_radio_a7b903240e57d52fc31f9cbec4275c0fa_icgraph" alt=""/></div>
+<map name="aclass_radio_a7b903240e57d52fc31f9cbec4275c0fa_icgraph" id="aclass_radio_a7b903240e57d52fc31f9cbec4275c0fa_icgraph">
+<area shape="rect" title="send_packet places packet onto send buffer to be sent if radio isnt busy This is to ensure that we ca..." alt="" coords="1767,72,1905,99"/>
+<area shape="rect" href="class_network_manager.html#abab20a7dfd724a60cb8c157594a1a034" title=" " alt="" coords="1561,65,1719,106"/>
+<area shape="rect" href="class_network_manager.html#a511c9d51f00ad5c07c8f5c089d656c6c" title=" " alt="" coords="1356,65,1513,106"/>
 <area shape="rect" href="class_command_handler.html#a54c1b7e2f1a6d0365ef36a0c738d7e02" title=" " alt="" coords="1075,43,1308,69"/>
-<area shape="rect" href="class_network_manager.html#a64e0a7fce010c89681b6e26a38bd79d1" title=" " alt="" coords="852,94,1027,135"/>
+<area shape="rect" href="class_network_manager.html#a31a6ba8c038104a3faf686e53fcfcbe9" title=" " alt="" coords="852,94,1027,135"/>
 <area shape="rect" href="class_command_handler.html#a6c61c87a0ad0045aa6133dd69112a72b" title=" " alt="" coords="852,43,1027,69"/>
 <area shape="rect" href="class_network_manager.html#a0d4ea7d4f0b395249151d0a28af79cd5" title=" " alt="" coords="636,43,804,69"/>
 <area shape="rect" href="classstate_machine.html#a5f4f54735cb0a13393227e3af6863cdd" title=" " alt="" coords="441,43,588,69"/>
 <area shape="rect" href="main_8cpp.html#afe461d27b9c48d5921c00d521181f12f" title=" " alt="" coords="347,43,393,69"/>
-<area shape="rect" href="class_tunez_handler.html#a02e64b5ab21c71fc6e62e6673f80ac63" title=" " alt="" coords="164,17,299,44"/>
+<area shape="rect" href="class_tunez_handler.html#a02e64b5ab21c71fc6e62e6673f80ac63" title="Put Melody on tune queue." alt="" coords="164,17,299,44"/>
 <area shape="rect" href="class_setup.html#a315e788a23a012d5993613c627f15302" title=" " alt="" coords="5,17,116,44"/>
 </map>
 </div>
@@ -417,9 +478,9 @@ Here is the call graph for this function:</div>
 <div class="center"><img src="class_radio_a46f079f86ab0e7e83a4521c35eaa9aff_cgraph.png" border="0" usemap="#aclass_radio_a46f079f86ab0e7e83a4521c35eaa9aff_cgraph" alt=""/></div>
 <map name="aclass_radio_a46f079f86ab0e7e83a4521c35eaa9aff_cgraph" id="aclass_radio_a46f079f86ab0e7e83a4521c35eaa9aff_cgraph">
 <area shape="rect" title=" " alt="" coords="5,78,101,105"/>
-<area shape="rect" href="class_system_status.html#abaa2a5b6a72c67ae890fd47ebb19cf0c" title=" " alt="" coords="174,5,322,47"/>
-<area shape="rect" href="class_system_status.html#acdbe5c478512869887c5b07779773a1b" title=" " alt="" coords="181,71,315,112"/>
-<area shape="rect" href="class_system_status.html#a872912293f3c93e87eb69c9a70f7743a" title=" " alt="" coords="149,137,347,163"/>
+<area shape="rect" href="class_system_status.html#a881b11600f6b3a9dcd5520e8ada5600b" title=" " alt="" coords="174,5,322,47"/>
+<area shape="rect" href="class_system_status.html#a4638eb12ce2ba755b6075ffc343352a3" title=" " alt="" coords="181,71,315,112"/>
+<area shape="rect" href="class_system_status.html#a7857d2fb6cda9d3c0aba6bf2a9592169" title=" " alt="" coords="149,137,347,163"/>
 <area shape="rect" href="class_log_controller.html#adb94b2720224b121ac8487c7c0e04ffc" title=" " alt="" coords="395,75,519,102"/>
 <area shape="rect" href="class_telemetry_logger.html#af01a5e0f381d60d53d2c08ddad37ca07" title=" " alt="" coords="567,75,709,102"/>
 <area shape="rect" href="classtelemetry__logframe.html#add67dbfbf886bf1b322628962a03c0de" title=" " alt="" coords="757,68,891,109"/>
@@ -440,7 +501,106 @@ Here is the caller graph for this function:</div>
 
 </div>
 </div>
+<a id="a64ed79aae89f2746c9317a90305d90bc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a64ed79aae89f2746c9317a90305d90bc">&#9670;&nbsp;</a></span>update()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Radio::update </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Reimplemented from <a class="el" href="class_iface.html#a0645651fc947fa2f574ef9a52058a404">Iface</a>.</p>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="class_radio_a64ed79aae89f2746c9317a90305d90bc_cgraph.png" border="0" usemap="#aclass_radio_a64ed79aae89f2746c9317a90305d90bc_cgraph" alt=""/></div>
+<map name="aclass_radio_a64ed79aae89f2746c9317a90305d90bc_cgraph" id="aclass_radio_a64ed79aae89f2746c9317a90305d90bc_cgraph">
+<area shape="rect" title=" " alt="" coords="5,56,108,83"/>
+<area shape="rect" href="class_radio.html#ade28962900128f1bbad608a9eb7cae58" title=" " alt="" coords="156,5,320,32"/>
+<area shape="rect" href="class_radio.html#a71afa4f66f08408fbef7235a339918ab" title=" " alt="" coords="181,56,295,83"/>
+<area shape="rect" href="class_radio.html#ad357a689877f0b7c253b8c25baacbd9e" title=" " alt="" coords="177,107,299,133"/>
+<area shape="rect" href="class_packet_header.html#a77e1156dbd831df7a2e8c412adbaecd3" title=" " alt="" coords="368,107,529,133"/>
+<area shape="rect" href="class_packet_header.html#acf9c5c5c063bf6ed809d8d6144a5aa56" title=" " alt="" coords="577,107,763,133"/>
+</map>
+</div>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="class_radio_a64ed79aae89f2746c9317a90305d90bc_icgraph.png" border="0" usemap="#aclass_radio_a64ed79aae89f2746c9317a90305d90bc_icgraph" alt=""/></div>
+<map name="aclass_radio_a64ed79aae89f2746c9317a90305d90bc_icgraph" id="aclass_radio_a64ed79aae89f2746c9317a90305d90bc_icgraph">
+<area shape="rect" title=" " alt="" coords="1197,81,1300,108"/>
+<area shape="rect" href="class_network_manager.html#a0d4ea7d4f0b395249151d0a28af79cd5" title=" " alt="" coords="981,81,1149,108"/>
+<area shape="rect" href="classstate_machine.html#a5f4f54735cb0a13393227e3af6863cdd" title=" " alt="" coords="787,56,933,83"/>
+<area shape="rect" href="main_8cpp.html#afe461d27b9c48d5921c00d521181f12f" title=" " alt="" coords="692,56,739,83"/>
+<area shape="rect" href="class_tunez_handler.html#a02e64b5ab21c71fc6e62e6673f80ac63" title="Put Melody on tune queue." alt="" coords="509,56,644,83"/>
+<area shape="rect" href="class_command_handler.html#a54c1b7e2f1a6d0365ef36a0c738d7e02" title=" " alt="" coords="228,5,461,32"/>
+<area shape="rect" href="class_setup.html#a315e788a23a012d5993613c627f15302" title=" " alt="" coords="289,56,400,83"/>
+<area shape="rect" href="class_command_handler.html#a6c61c87a0ad0045aa6133dd69112a72b" title=" " alt="" coords="5,56,180,83"/>
+</map>
+</div>
+
+</div>
+</div>
 <h2 class="groupheader">Member Data Documentation</h2>
+<a id="a16b9b3b7243b997c0b91e465133789ab"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a16b9b3b7243b997c0b91e465133789ab">&#9670;&nbsp;</a></span>_packetBuffer</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::vector&lt;std::unique_ptr&lt;std::vector&lt;uint8_t&gt; &gt; &gt;&amp; Radio::_packetBuffer</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a7881a53b9c6d41fa31569077b39b8b5e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7881a53b9c6d41fa31569077b39b8b5e">&#9670;&nbsp;</a></span>_sendBuffer</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::vector&lt;std::vector&lt;uint8_t&gt; &gt; Radio::_sendBuffer</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <a id="a12b07fdb3eb87ff8f38c7168194d597b"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a12b07fdb3eb87ff8f38c7168194d597b">&#9670;&nbsp;</a></span>_spi</h2>
 
@@ -485,8 +645,8 @@ Here is the caller graph for this function:</div>
 
 </div>
 </div>
-<a id="a7ebc999e0c5ab2e9a88ce9a795f4a2f7"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a7ebc999e0c5ab2e9a88ce9a795f4a2f7">&#9670;&nbsp;</a></span>index</h2>
+<a id="a177ee566154e008fbf45dd43ef44338d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a177ee566154e008fbf45dd43ef44338d">&#9670;&nbsp;</a></span>_txDone</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -495,73 +655,7 @@ Here is the caller graph for this function:</div>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">int Radio::index</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="ada3a70ff72b947f184c15d57867e5a22"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ada3a70ff72b947f184c15d57867e5a22">&#9670;&nbsp;</a></span>packet</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">std::vector&lt;uint8_t&gt; Radio::packet</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="a82c0d31b05f5d34ec68088022b8e7b95"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a82c0d31b05f5d34ec68088022b8e7b95">&#9670;&nbsp;</a></span>packetSize</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">int Radio::packetSize</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="aba1f3910d6abe54aef8f53ad928c3319"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aba1f3910d6abe54aef8f53ad928c3319">&#9670;&nbsp;</a></span>prev_time</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">uint64_t Radio::prev_time</td>
+          <td class="memname">bool Radio::_txDone</td>
         </tr>
       </table>
   </td>

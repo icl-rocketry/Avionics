@@ -1,6 +1,4 @@
 <map id="Event::update" name="Event::update">
-<area shape="rect" id="node1" title=" " alt="" coords="5,31,108,57"/>
-<area shape="rect" id="node2" href="$class_event.html#aec07ea22c63c8a6af8303762c6cce8c7" title=" " alt="" coords="171,5,261,32"/>
-<area shape="rect" id="node4" href="$class_condition.html#acb13fb57427218a3b5aecf7b84eda06e" title=" " alt="" coords="156,56,276,83"/>
-<area shape="rect" id="node3" href="$class_pyro.html#a420fffe4bb0850dd75c5e77ef51daadb" title=" " alt="" coords="324,5,423,32"/>
+<area shape="rect" id="node1" title=" " alt="" coords="5,5,108,32"/>
+<area shape="rect" id="node2" href="$class_event.html#a2e507736868dd4d8c5f9f23dc9a09693" title="virtual action function for event" alt="" coords="156,5,273,32"/>
 </map>

@@ -9,9 +9,7 @@ var dir_afe58f6d0ef7eec69c2706509daaefe7 =
       [ "Battery", "class_battery.html", "class_battery" ]
     ] ],
     [ "estimator.cpp", "estimator_8cpp.html", null ],
-    [ "estimator.h", "estimator_8h.html", [
-      [ "Estimator", "class_estimator.html", "class_estimator" ]
-    ] ],
+    [ "estimator.h", "estimator_8h.html", "estimator_8h" ],
     [ "gps.cpp", "gps_8cpp.html", null ],
     [ "gps.h", "gps_8h.html", [
       [ "GPS", "class_g_p_s.html", "class_g_p_s" ]

@@ -60,10 +60,10 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "_fireflies_8cpp.html",
-"class_logger.html#a79632443a078084d719960ea71f2eb02",
-"class_tunez_handler.html#a407fcd38cffe8a53e64535daa1e3ed55",
-"flight_variable_handler_8h.html#abf243bc0d903e4fad28d583ec11a81dca613a3d4fa7b8e2538d1e559cbd572902",
-"pitches_8h.html#a83e1f6d716a3f6560aa1d43b8245855d"
+"class_log_controller.html#aac44151b8e5e60b3383d2fa1369b22b9",
+"class_time___since___apogee.html#a22d8d89fba2e98c7faf52460d7106eaa",
+"flags_8h.html#a59afb9de21b0cf38347ba06d65fa5de7ab43e115900ff95630743f780fad1a7f5",
+"pitches_8h.html#a3cf820bf5e8bac30a1d1d6f5b0a80278"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

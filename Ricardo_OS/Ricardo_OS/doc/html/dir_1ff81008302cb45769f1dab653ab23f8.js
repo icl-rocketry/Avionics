@@ -4,10 +4,11 @@ var dir_1ff81008302cb45769f1dab653ab23f8 =
     [ "condition.h", "condition_8h.html", "condition_8h" ],
     [ "event.cpp", "event_8cpp.html", null ],
     [ "event.h", "event_8h.html", [
-      [ "Pyro", "class_pyro.html", "class_pyro" ],
-      [ "Event", "class_event.html", "class_event" ]
+      [ "Event", "class_event.html", "class_event" ],
+      [ "EngineEvent", "class_engine_event.html", "class_engine_event" ],
+      [ "PyroEvent", "class_pyro_event.html", "class_pyro_event" ]
     ] ],
-    [ "eventHandler.cpp", "event_handler_8cpp.html", "event_handler_8cpp" ],
+    [ "eventHandler.cpp", "event_handler_8cpp.html", null ],
     [ "eventHandler.h", "event_handler_8h.html", [
       [ "EventHandler", "class_event_handler.html", "class_event_handler" ]
     ] ],

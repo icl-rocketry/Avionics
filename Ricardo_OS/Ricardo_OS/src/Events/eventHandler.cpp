@@ -3,6 +3,7 @@
 #include "event.h"
 #include <ArduinoJson.h>
 #include <stdexcept>
+#include <memory>
 
 
 
@@ -34,11 +35,18 @@ void EventHandler::setup(JsonArray event_config){
     }
 };
 
-bool EventHandler::register_event(Event new_event){
-    eventList.push_back(new_event); // add new event to event buffer
-    return true;
-};
 
 void EventHandler::update(){
-    for (auto event : this->eventList) { event.update(); }
+    for (auto &event : eventList) { event->update(); } // get reference as there is no copy semantics for unique_ptr
 };
+
+uint32_t EventHandler::timeTriggered(uint8_t eventID){
+    try
+    {
+        return eventList.at(eventID)->timeTriggered();
+    }
+    catch (std::out_of_range const&)
+    {
+        return 0; //this is bad
+    }
+}

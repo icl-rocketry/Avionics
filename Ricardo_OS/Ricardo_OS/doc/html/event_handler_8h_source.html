@@ -103,38 +103,38 @@ $(document).ready(function(){initNavTree('event_handler_8h_source.html',''); ini
 <div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor">#include &lt;vector&gt;</span></div>
 <div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="event_8h.html">event.h</a>&quot;</span></div>
 <div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160; </div>
-<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="keyword">class </span>StateMachine;</div>
-<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="keyword">class </span><a class="code" href="classjsondoc.html">jsondoc</a>;</div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="preprocessor">#include &lt;ArduinoJson.h&gt;</span></div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="preprocessor">#include &lt;memory&gt;</span></div>
 <div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160; </div>
-<div class="line"><a name="l00011"></a><span class="lineno"><a class="line" href="class_event_handler.html">   11</a></span>&#160;<span class="keyword">class </span><a class="code" href="class_event_handler.html">EventHandler</a>{</div>
-<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;    <span class="keyword">public</span>:</div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;        <a class="code" href="class_event_handler.html#a83b42ecce5badb8f4be864b4cddf4b36">EventHandler</a>(StateMachine* sm);</div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;        <span class="keywordtype">void</span> <a class="code" href="class_event_handler.html#a9b89fc7a056619d5e764e9b37ed4dcc5">setup</a>(<a class="code" href="classjsondoc.html">jsondoc</a> config);<span class="comment">// configuration dict - </span></div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;        <span class="comment">//number of events</span></div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;        <span class="comment">//description of each event</span></div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;        </div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;        <span class="keywordtype">void</span> <a class="code" href="class_event_handler.html#a130cf2694ce9ab04431246615ba02baf">update</a>();</div>
-<div class="line"><a name="l00019"></a><span class="lineno"><a class="line" href="class_event_handler.html#a8ac94e94469eddfa5476ed3da010aca4">   19</a></span>&#160;        <span class="keywordtype">int</span> <a class="code" href="class_event_handler.html#a8ac94e94469eddfa5476ed3da010aca4">timeTriggered</a>(<span class="keywordtype">int</span> arg){<span class="keywordflow">return</span> 1;};</div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160; </div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;    <span class="keyword">private</span>:</div>
-<div class="line"><a name="l00022"></a><span class="lineno"><a class="line" href="class_event_handler.html#a5cbcf1a3215f4c2cce9520198aed7d82">   22</a></span>&#160;        StateMachine* <a class="code" href="class_event_handler.html#a5cbcf1a3215f4c2cce9520198aed7d82">_sm</a>; <span class="comment">//pointer to statemachine</span></div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160; </div>
-<div class="line"><a name="l00024"></a><span class="lineno"><a class="line" href="class_event_handler.html#af58b6e6744b8d0e62a26a1457ad6a2ae">   24</a></span>&#160;        std::vector&lt;Event&gt; <a class="code" href="class_event_handler.html#af58b6e6744b8d0e62a26a1457ad6a2ae">eventList</a>;</div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;        <span class="keywordtype">bool</span> <a class="code" href="class_event_handler.html#abf95eddf893c60be8b7eb497eff4a06b">register_event</a>(<a class="code" href="class_event.html">Event</a> new_event);</div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;};</div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160; </div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160; </div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="ttc" id="aclass_event_handler_html"><div class="ttname"><a href="class_event_handler.html">EventHandler</a></div><div class="ttdef"><b>Definition:</b> eventHandler.h:11</div></div>
-<div class="ttc" id="aclass_event_handler_html_a130cf2694ce9ab04431246615ba02baf"><div class="ttname"><a href="class_event_handler.html#a130cf2694ce9ab04431246615ba02baf">EventHandler::update</a></div><div class="ttdeci">void update()</div><div class="ttdef"><b>Definition:</b> eventHandler.cpp:26</div></div>
-<div class="ttc" id="aclass_event_handler_html_a5cbcf1a3215f4c2cce9520198aed7d82"><div class="ttname"><a href="class_event_handler.html#a5cbcf1a3215f4c2cce9520198aed7d82">EventHandler::_sm</a></div><div class="ttdeci">StateMachine * _sm</div><div class="ttdef"><b>Definition:</b> eventHandler.h:19</div></div>
-<div class="ttc" id="aclass_event_handler_html_a83b42ecce5badb8f4be864b4cddf4b36"><div class="ttname"><a href="class_event_handler.html#a83b42ecce5badb8f4be864b4cddf4b36">EventHandler::EventHandler</a></div><div class="ttdeci">EventHandler(StateMachine *sm)</div><div class="ttdef"><b>Definition:</b> eventHandler.cpp:10</div></div>
-<div class="ttc" id="aclass_event_handler_html_a8ac94e94469eddfa5476ed3da010aca4"><div class="ttname"><a href="class_event_handler.html#a8ac94e94469eddfa5476ed3da010aca4">EventHandler::timeTriggered</a></div><div class="ttdeci">int timeTriggered(int arg)</div><div class="ttdef"><b>Definition:</b> eventHandler.h:19</div></div>
-<div class="ttc" id="aclass_event_handler_html_a9b89fc7a056619d5e764e9b37ed4dcc5"><div class="ttname"><a href="class_event_handler.html#a9b89fc7a056619d5e764e9b37ed4dcc5">EventHandler::setup</a></div><div class="ttdeci">void setup(jsondoc config)</div><div class="ttdef"><b>Definition:</b> eventHandler.cpp:15</div></div>
-<div class="ttc" id="aclass_event_handler_html_abf95eddf893c60be8b7eb497eff4a06b"><div class="ttname"><a href="class_event_handler.html#abf95eddf893c60be8b7eb497eff4a06b">EventHandler::register_event</a></div><div class="ttdeci">bool register_event(Event new_event)</div><div class="ttdef"><b>Definition:</b> eventHandler.cpp:21</div></div>
-<div class="ttc" id="aclass_event_handler_html_af58b6e6744b8d0e62a26a1457ad6a2ae"><div class="ttname"><a href="class_event_handler.html#af58b6e6744b8d0e62a26a1457ad6a2ae">EventHandler::eventList</a></div><div class="ttdeci">std::vector&lt; Event &gt; eventList</div><div class="ttdef"><b>Definition:</b> eventHandler.h:24</div></div>
-<div class="ttc" id="aclass_event_html"><div class="ttname"><a href="class_event.html">Event</a></div><div class="ttdef"><b>Definition:</b> event.h:15</div></div>
-<div class="ttc" id="aclassjsondoc_html"><div class="ttname"><a href="classjsondoc.html">jsondoc</a></div><div class="ttdef"><b>Definition:</b> eventHandler.cpp:8</div></div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="keyword">class </span>StateMachine;</div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160; </div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160; </div>
+<div class="line"><a name="l00014"></a><span class="lineno"><a class="line" href="class_event_handler.html">   14</a></span>&#160;<span class="keyword">class </span><a class="code" href="class_event_handler.html">EventHandler</a>{</div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;    <span class="keyword">public</span>:</div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;        <a class="code" href="class_event_handler.html#a83b42ecce5badb8f4be864b4cddf4b36">EventHandler</a>(StateMachine* sm);</div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;        <span class="keywordtype">void</span> <a class="code" href="class_event_handler.html#a97c5814f3ded9c10e1b7b95e15bfbf83">setup</a>(JsonArray event_config);<span class="comment">// configuration dict - </span></div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;        <span class="comment">//number of events</span></div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;        <span class="comment">//description of each event</span></div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;        </div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;        <span class="keywordtype">void</span> <a class="code" href="class_event_handler.html#a130cf2694ce9ab04431246615ba02baf">update</a>();</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;        uint32_t <a class="code" href="class_event_handler.html#a6020f1f159d75a914a9e2426ea0da5ca">timeTriggered</a>(uint8_t eventID);</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160; </div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;    <span class="keyword">private</span>:</div>
+<div class="line"><a name="l00031"></a><span class="lineno"><a class="line" href="class_event_handler.html#a5cbcf1a3215f4c2cce9520198aed7d82">   31</a></span>&#160;        StateMachine* <a class="code" href="class_event_handler.html#a5cbcf1a3215f4c2cce9520198aed7d82">_sm</a>; <span class="comment">//pointer to statemachine</span></div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160; </div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160; </div>
+<div class="line"><a name="l00034"></a><span class="lineno"><a class="line" href="class_event_handler.html#a9c472cbe080f89e24e29dcc90b8b8b5e">   34</a></span>&#160;        std::vector&lt;std::unique_ptr&lt;Event&gt; &gt; <a class="code" href="class_event_handler.html#a9c472cbe080f89e24e29dcc90b8b8b5e">eventList</a>;</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;};</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160; </div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160; </div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="ttc" id="aclass_event_handler_html"><div class="ttname"><a href="class_event_handler.html">EventHandler</a></div><div class="ttdef"><b>Definition:</b> eventHandler.h:14</div></div>
+<div class="ttc" id="aclass_event_handler_html_a130cf2694ce9ab04431246615ba02baf"><div class="ttname"><a href="class_event_handler.html#a130cf2694ce9ab04431246615ba02baf">EventHandler::update</a></div><div class="ttdeci">void update()</div><div class="ttdef"><b>Definition:</b> eventHandler.cpp:39</div></div>
+<div class="ttc" id="aclass_event_handler_html_a5cbcf1a3215f4c2cce9520198aed7d82"><div class="ttname"><a href="class_event_handler.html#a5cbcf1a3215f4c2cce9520198aed7d82">EventHandler::_sm</a></div><div class="ttdeci">StateMachine * _sm</div><div class="ttdef"><b>Definition:</b> eventHandler.h:31</div></div>
+<div class="ttc" id="aclass_event_handler_html_a6020f1f159d75a914a9e2426ea0da5ca"><div class="ttname"><a href="class_event_handler.html#a6020f1f159d75a914a9e2426ea0da5ca">EventHandler::timeTriggered</a></div><div class="ttdeci">uint32_t timeTriggered(uint8_t eventID)</div><div class="ttdoc">Get the timestamp when an event was triggered.</div><div class="ttdef"><b>Definition:</b> eventHandler.cpp:43</div></div>
+<div class="ttc" id="aclass_event_handler_html_a83b42ecce5badb8f4be864b4cddf4b36"><div class="ttname"><a href="class_event_handler.html#a83b42ecce5badb8f4be864b4cddf4b36">EventHandler::EventHandler</a></div><div class="ttdeci">EventHandler(StateMachine *sm)</div><div class="ttdef"><b>Definition:</b> eventHandler.cpp:11</div></div>
+<div class="ttc" id="aclass_event_handler_html_a97c5814f3ded9c10e1b7b95e15bfbf83"><div class="ttname"><a href="class_event_handler.html#a97c5814f3ded9c10e1b7b95e15bfbf83">EventHandler::setup</a></div><div class="ttdeci">void setup(JsonArray event_config)</div><div class="ttdef"><b>Definition:</b> eventHandler.cpp:16</div></div>
+<div class="ttc" id="aclass_event_handler_html_a9c472cbe080f89e24e29dcc90b8b8b5e"><div class="ttname"><a href="class_event_handler.html#a9c472cbe080f89e24e29dcc90b8b8b5e">EventHandler::eventList</a></div><div class="ttdeci">std::vector&lt; std::unique_ptr&lt; Event &gt; &gt; eventList</div><div class="ttdef"><b>Definition:</b> eventHandler.h:34</div></div>
 <div class="ttc" id="aevent_8h_html"><div class="ttname"><a href="event_8h.html">event.h</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->

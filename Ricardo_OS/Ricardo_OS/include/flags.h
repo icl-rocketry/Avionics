@@ -30,7 +30,7 @@ enum class SYSTEM_FLAG:uint32_t{
     ERROR_ORIENTATION = (1 << 20),
     //warn
     WARN_BATT = (1 << 21),
-    WARN_PYRO1 = (1 << 22),
+    WARN_PYRO = (1 << 22),
     WARN_PYRO2 = (1 << 23),
     //FLIGHTPHASES 
     FLIGHTPHASE_BOOST = (1 << 24),

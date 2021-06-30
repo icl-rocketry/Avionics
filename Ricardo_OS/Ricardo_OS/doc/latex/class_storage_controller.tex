@@ -6,8 +6,7 @@
 
 
 
-Collaboration diagram for Storage\+Controller\+:
-\nopagebreak
+Collaboration diagram for Storage\+Controller\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -18,7 +17,7 @@ Collaboration diagram for Storage\+Controller\+:
 \begin{DoxyCompactItemize}
 \item 
 \mbox{\hyperlink{class_storage_controller_a68285e89bb715975a36e6b6b891ae9dc}{Storage\+Controller}} (\mbox{\hyperlink{classstate_machine}{state\+Machine}} $\ast$sm)
-\item 
+\begin{DoxyCompactList}\small\item\em Construct a new Storage Controller object. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{class_storage_controller_af6c2adac43b2c4072cbf10c98d6f3e3e}{setup}} ()
 \item 
 File \mbox{\hyperlink{class_storage_controller_ab9c231ae032416dc120009b4b63fa54c}{open}} (std\+::string path, \mbox{\hyperlink{storage_controller_8h_a9539e551e6a3b5229703f97c65f94bae}{STORAGE\+\_\+\+DEVICE}} device, oflag\+\_\+t mode)
@@ -70,6 +69,15 @@ Fat\+File\+System \mbox{\hyperlink{class_storage_controller_abee9c9104024d8820a2
 \doxysubsubsection{\texorpdfstring{StorageController()}{StorageController()}}
 {\footnotesize\ttfamily Storage\+Controller\+::\+Storage\+Controller (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classstate_machine}{state\+Machine}} $\ast$}]{sm }\end{DoxyParamCaption})}
 
+
+
+Construct a new Storage Controller object. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em sm} & statemachine pointer \\
+\hline
+\end{DoxyParams}
 
 
 \doxysubsection{Member Function Documentation}
@@ -144,16 +152,14 @@ Generate directory strucutre consisting of /\+Logs and /\+Configuration.
 {\em device} & \\
 \hline
 \end{DoxyParams}
-Here is the call graph for this function\+:
-\nopagebreak
+Here is the call graph for this function\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
 \includegraphics[width=350pt]{class_storage_controller_a080bc92c81449245e61cc5e6d150da3d_cgraph}
 \end{center}
 \end{figure}
-Here is the caller graph for this function\+:
-\nopagebreak
+Here is the caller graph for this function\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -166,8 +172,7 @@ Here is the caller graph for this function\+:
 \doxysubsubsection{\texorpdfstring{getFileNameIndex()}{getFileNameIndex()}}
 {\footnotesize\ttfamily int Storage\+Controller\+::get\+File\+Name\+Index (\begin{DoxyParamCaption}\item[{const std\+::string}]{file\+Name }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
 
-Here is the caller graph for this function\+:
-\nopagebreak
+Here is the caller graph for this function\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -194,16 +199,14 @@ Generate a unique directory name for a given directory on a given device.
 \begin{DoxyReturn}{Returns}
 std\+::string 
 \end{DoxyReturn}
-Here is the call graph for this function\+:
-\nopagebreak
+Here is the call graph for this function\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
 \includegraphics[width=350pt]{class_storage_controller_ad4c3a4d350750137bb742c3a98e7b3bb_cgraph}
 \end{center}
 \end{figure}
-Here is the caller graph for this function\+:
-\nopagebreak
+Here is the caller graph for this function\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -216,8 +219,7 @@ Here is the caller graph for this function\+:
 \doxysubsubsection{\texorpdfstring{ls()}{ls()}\hspace{0.1cm}{\footnotesize\ttfamily [1/3]}}
 {\footnotesize\ttfamily bool Storage\+Controller\+::ls (\begin{DoxyParamCaption}\item[{std\+::string}]{path,  }\item[{std\+::vector$<$ \mbox{\hyperlink{structdirectory__element__t}{directory\+\_\+element\+\_\+t}} $>$ \&}]{directory\+\_\+structure,  }\item[{Fat\+File\+System $\ast$}]{fs }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
 
-Here is the call graph for this function\+:
-\nopagebreak
+Here is the call graph for this function\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -248,8 +250,7 @@ true
 
 false 
 \end{DoxyReturn}
-Here is the caller graph for this function\+:
-\nopagebreak
+Here is the caller graph for this function\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -278,8 +279,7 @@ true
 
 false 
 \end{DoxyReturn}
-Here is the call graph for this function\+:
-\nopagebreak
+Here is the call graph for this function\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -299,8 +299,7 @@ Here is the call graph for this function\+:\nopagebreak
 \includegraphics[width=350pt]{class_storage_controller_a4e77f06d615eb2488804886109b98b5c_cgraph}
 \end{center}
 \end{figure}
-Here is the caller graph for this function\+:
-\nopagebreak
+Here is the caller graph for this function\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -343,8 +342,7 @@ Here is the caller graph for this function\+:
 \doxysubsubsection{\texorpdfstring{printDirectory()}{printDirectory()}}
 {\footnotesize\ttfamily void Storage\+Controller\+::print\+Directory (\begin{DoxyParamCaption}\item[{std\+::string}]{path,  }\item[{\mbox{\hyperlink{storage_controller_8h_a9539e551e6a3b5229703f97c65f94bae}{STORAGE\+\_\+\+DEVICE}}}]{device }\end{DoxyParamCaption})}
 
-Here is the call graph for this function\+:
-\nopagebreak
+Here is the call graph for this function\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -357,16 +355,14 @@ Here is the call graph for this function\+:
 \doxysubsubsection{\texorpdfstring{rmParent()}{rmParent()}}
 {\footnotesize\ttfamily bool Storage\+Controller\+::rm\+Parent (\begin{DoxyParamCaption}\item[{std\+::string}]{path,  }\item[{Fat\+File\+System $\ast$}]{fs }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
 
-Here is the call graph for this function\+:
-\nopagebreak
+Here is the call graph for this function\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
 \includegraphics[width=320pt]{class_storage_controller_af2e27bc4a57ad4d125200c9e1018cc80_cgraph}
 \end{center}
 \end{figure}
-Here is the caller graph for this function\+:
-\nopagebreak
+Here is the caller graph for this function\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode

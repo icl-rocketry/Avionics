@@ -4,7 +4,7 @@ var class_system_logger =
     [ "~SystemLogger", "class_system_logger.html#abf5fa72429af6ef6af87d58ac54a5bc9", null ],
     [ "disable", "class_system_logger.html#a475bfd21fcc2cbe58d5d3ec1ddb58068", null ],
     [ "enable", "class_system_logger.html#aa4ab39355df87bfe2b68780399200b59", null ],
-    [ "flagLevel", "class_system_logger.html#afb462076f2d7c7d690f216ac9e49b7be", null ],
+    [ "flagLevel", "class_system_logger.html#a473d1136f5c81f89ff67e12e6c159cb6", null ],
     [ "flagLevel", "class_system_logger.html#aa8648a3defcc1f7a79701c4e9b996b67", null ],
     [ "log", "class_system_logger.html#a5fb487decda1d55bb1ea6ecee82840e2", null ],
     [ "log", "class_system_logger.html#a17792357e097fc393f618d779fdeaa5b", null ],

@@ -1,11 +1,31 @@
 #include "event.h"
 #include "condition.h"
+#include "Storage/utils.h"
+#include "stdexcept"
 
-void Event::update() {
-	if (_cond.check()) {
-		_fire(); // Fire the pyro
+
+
+
+Event::~Event(){};
+
+void Event::update(){
+	if (_cond->check()){
+		if (_singleFire && !_previouslyFired) || (!_singleFire){ // ensure that it only fires once if singlefire is true
+			_execute();
+			_triggerTime = millis();
+			_previouslyFired = true;
+		}
 	}
 }
-void Event::_fire() {
-	_pyro.doStuff(); // REPLACE WITH AN ACTUAL METHOD // THIS IS THE ACTUAL METHOD // OK
+
+
+void EngineEvent::_execute(){
+	_logcontroller->log("Event(ENGINE):" + utils::tostring(_eventID) + " fired");
+	return;
+}
+
+
+void PyroEvent::_execute(){
+	_logcontroller->log("Event(PYRO):" + utils::tostring(_eventID) + " fired");
+	_pyrohandler->fire(_id);
 }

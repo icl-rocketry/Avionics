@@ -141,8 +141,8 @@ Collaboration diagram for PyroHandler:</div>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:a816216743c2c66db4ef0520c9ecd0d37"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_pyro_handler.html#a816216743c2c66db4ef0520c9ecd0d37">PyroHandler</a> (<a class="el" href="classstate_machine.html">stateMachine</a> *sm)</td></tr>
 <tr class="separator:a816216743c2c66db4ef0520c9ecd0d37"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a39b20af94ed9f45bfaa6f7758ef28f0f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_pyro_handler.html#a39b20af94ed9f45bfaa6f7758ef28f0f">setup</a> ()</td></tr>
-<tr class="separator:a39b20af94ed9f45bfaa6f7758ef28f0f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2cf899e0c3b0c0c60d236ba27a0112ef"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_pyro_handler.html#a2cf899e0c3b0c0c60d236ba27a0112ef">setup</a> (JsonArray pyroConfig)</td></tr>
+<tr class="separator:a2cf899e0c3b0c0c60d236ba27a0112ef"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:abca7be09ff52bfdfe45938698b2f299c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_pyro_handler.html#abca7be09ff52bfdfe45938698b2f299c">update</a> ()</td></tr>
 <tr class="separator:abca7be09ff52bfdfe45938698b2f299c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4e08ca805ab2604dda0906f508d67f93"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_pyro_handler.html#a4e08ca805ab2604dda0906f508d67f93">fire</a> (uint8_t id)</td></tr>
@@ -152,6 +152,8 @@ Public Member Functions</h2></td></tr>
 Private Attributes</h2></td></tr>
 <tr class="memitem:a61590edd24d2cf677daa237052f92b5e"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classstate_machine.html">stateMachine</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_pyro_handler.html#a61590edd24d2cf677daa237052f92b5e">_sm</a></td></tr>
 <tr class="separator:a61590edd24d2cf677daa237052f92b5e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab3b48bad7ed12e17f2aa9ae6957d3ede"><td class="memItemLeft" align="right" valign="top">std::vector&lt; std::unique_ptr&lt; <a class="el" href="class_pyro.html">Pyro</a> &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_pyro_handler.html#ab3b48bad7ed12e17f2aa9ae6957d3ede">pyroList</a></td></tr>
+<tr class="separator:ab3b48bad7ed12e17f2aa9ae6957d3ede"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a816216743c2c66db4ef0520c9ecd0d37"></a>
@@ -188,11 +190,20 @@ Private Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="class_pyro_handler_a4e08ca805ab2604dda0906f508d67f93_icgraph.png" border="0" usemap="#aclass_pyro_handler_a4e08ca805ab2604dda0906f508d67f93_icgraph" alt=""/></div>
+<map name="aclass_pyro_handler_a4e08ca805ab2604dda0906f508d67f93_icgraph" id="aclass_pyro_handler_a4e08ca805ab2604dda0906f508d67f93_icgraph">
+<area shape="rect" title=" " alt="" coords="197,5,317,32"/>
+<area shape="rect" href="class_pyro_event.html#abe64862e07805608e2bf1b3d6a0e4e18" title="virtual action function for event" alt="" coords="5,5,149,32"/>
+</map>
+</div>
 
 </div>
 </div>
-<a id="a39b20af94ed9f45bfaa6f7758ef28f0f"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a39b20af94ed9f45bfaa6f7758ef28f0f">&#9670;&nbsp;</a></span>setup()</h2>
+<a id="a2cf899e0c3b0c0c60d236ba27a0112ef"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2cf899e0c3b0c0c60d236ba27a0112ef">&#9670;&nbsp;</a></span>setup()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -200,7 +211,8 @@ Private Attributes</h2></td></tr>
         <tr>
           <td class="memname">void PyroHandler::setup </td>
           <td>(</td>
-          <td class="paramname"></td><td>)</td>
+          <td class="paramtype">JsonArray&#160;</td>
+          <td class="paramname"><em>pyroConfig</em></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -237,6 +249,28 @@ Private Attributes</h2></td></tr>
       <table class="memname">
         <tr>
           <td class="memname"><a class="el" href="classstate_machine.html">stateMachine</a>* PyroHandler::_sm</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ab3b48bad7ed12e17f2aa9ae6957d3ede"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab3b48bad7ed12e17f2aa9ae6957d3ede">&#9670;&nbsp;</a></span>pyroList</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::vector&lt;std::unique_ptr&lt;<a class="el" href="class_pyro.html">Pyro</a>&gt; &gt; PyroHandler::pyroList</td>
         </tr>
       </table>
   </td>

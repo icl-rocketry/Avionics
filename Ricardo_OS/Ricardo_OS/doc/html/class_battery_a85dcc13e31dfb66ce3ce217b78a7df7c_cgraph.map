@@ -1,8 +1,8 @@
 <map id="Battery::update" name="Battery::update">
 <area shape="rect" id="node1" title=" " alt="" coords="5,107,116,134"/>
-<area shape="rect" id="node2" href="$class_system_status.html#abaa2a5b6a72c67ae890fd47ebb19cf0c" title=" " alt="" coords="189,5,337,47"/>
-<area shape="rect" id="node7" href="$class_system_status.html#acdbe5c478512869887c5b07779773a1b" title=" " alt="" coords="195,71,330,112"/>
-<area shape="rect" id="node8" href="$class_system_status.html#a872912293f3c93e87eb69c9a70f7743a" title=" " alt="" coords="164,137,361,163"/>
+<area shape="rect" id="node2" href="$class_system_status.html#a881b11600f6b3a9dcd5520e8ada5600b" title=" " alt="" coords="189,5,337,47"/>
+<area shape="rect" id="node7" href="$class_system_status.html#a4638eb12ce2ba755b6075ffc343352a3" title=" " alt="" coords="195,71,330,112"/>
+<area shape="rect" id="node8" href="$class_system_status.html#a7857d2fb6cda9d3c0aba6bf2a9592169" title=" " alt="" coords="164,137,361,163"/>
 <area shape="rect" id="node9" href="$namespaceutils.html#a80b01b2df5fab1766ccdbfa4fb2ce79d" title=" " alt="" coords="214,187,311,214"/>
 <area shape="rect" id="node3" href="$class_log_controller.html#adb94b2720224b121ac8487c7c0e04ffc" title=" " alt="" coords="409,75,533,102"/>
 <area shape="rect" id="node4" href="$class_telemetry_logger.html#af01a5e0f381d60d53d2c08ddad37ca07" title=" " alt="" coords="581,75,724,102"/>

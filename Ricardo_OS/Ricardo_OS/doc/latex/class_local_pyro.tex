@@ -15,22 +15,23 @@ Inheritance diagram for Local\+Pyro\+:\nopagebreak
 \end{figure}
 
 
-Collaboration diagram for Local\+Pyro\+:\nopagebreak
+Collaboration diagram for Local\+Pyro\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=140pt]{class_local_pyro__coll__graph}
+\includegraphics[width=350pt]{class_local_pyro__coll__graph}
 \end{center}
 \end{figure}
 \doxysubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\hyperlink{class_local_pyro_a714d42efcce3eb76884a240631dc2517}{Local\+Pyro}} (uint8\+\_\+t continuity\+\_\+pin, uint8\+\_\+t fire\+\_\+pin)
+\mbox{\hyperlink{class_local_pyro_a90b83cd8928e793d33fb56764a73b0c5}{Local\+Pyro}} (uint8\+\_\+t id, uint8\+\_\+t continuity\+\_\+pin, uint8\+\_\+t fire\+\_\+pin, \mbox{\hyperlink{class_system_status}{System\+Status}} $\ast$systemstatus)
 \item 
 bool \mbox{\hyperlink{class_local_pyro_ae75e383477dafe760cd76b00976695cd}{check\+\_\+continuity}} ()
-\item 
-bool \mbox{\hyperlink{class_local_pyro_aae9ff42b008584ff55bbaf37bfb37d13}{do\+Stuff}} (uint8\+\_\+t duration)
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Check continiuty of ematch. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_local_pyro_ac0e9498240723ab17951add02a2f58da}{do\+Stuff}} (uint8\+\_\+t duration)
+\begin{DoxyCompactList}\small\item\em Fire the pyro. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Private Attributes}
 \begin{DoxyCompactItemize}
 \item 
@@ -42,11 +43,11 @@ uint8\+\_\+t \mbox{\hyperlink{class_local_pyro_a6aa89da8b5506aa7cfad08a31897e61c
 
 
 \doxysubsection{Constructor \& Destructor Documentation}
-\mbox{\Hypertarget{class_local_pyro_a714d42efcce3eb76884a240631dc2517}\label{class_local_pyro_a714d42efcce3eb76884a240631dc2517}} 
+\mbox{\Hypertarget{class_local_pyro_a90b83cd8928e793d33fb56764a73b0c5}\label{class_local_pyro_a90b83cd8928e793d33fb56764a73b0c5}} 
 \index{LocalPyro@{LocalPyro}!LocalPyro@{LocalPyro}}
 \index{LocalPyro@{LocalPyro}!LocalPyro@{LocalPyro}}
 \doxysubsubsection{\texorpdfstring{LocalPyro()}{LocalPyro()}}
-{\footnotesize\ttfamily Local\+Pyro\+::\+Local\+Pyro (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{continuity\+\_\+pin,  }\item[{uint8\+\_\+t}]{fire\+\_\+pin }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily Local\+Pyro\+::\+Local\+Pyro (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{id,  }\item[{uint8\+\_\+t}]{continuity\+\_\+pin,  }\item[{uint8\+\_\+t}]{fire\+\_\+pin,  }\item[{\mbox{\hyperlink{class_system_status}{System\+Status}} $\ast$}]{systemstatus }\end{DoxyParamCaption})}
 
 
 
@@ -59,18 +60,44 @@ uint8\+\_\+t \mbox{\hyperlink{class_local_pyro_a6aa89da8b5506aa7cfad08a31897e61c
 
 
 
+Check continiuty of ematch. 
+
+\begin{DoxyReturn}{Returns}
+true 
+
+false 
+\end{DoxyReturn}
+
+
 Implements \mbox{\hyperlink{class_pyro_a78f8221114043d3991936a91ba789b2b}{Pyro}}.
 
-\mbox{\Hypertarget{class_local_pyro_aae9ff42b008584ff55bbaf37bfb37d13}\label{class_local_pyro_aae9ff42b008584ff55bbaf37bfb37d13}} 
+\mbox{\Hypertarget{class_local_pyro_ac0e9498240723ab17951add02a2f58da}\label{class_local_pyro_ac0e9498240723ab17951add02a2f58da}} 
 \index{LocalPyro@{LocalPyro}!doStuff@{doStuff}}
 \index{doStuff@{doStuff}!LocalPyro@{LocalPyro}}
 \doxysubsubsection{\texorpdfstring{doStuff()}{doStuff()}}
-{\footnotesize\ttfamily bool Local\+Pyro\+::do\+Stuff (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{duration }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+{\footnotesize\ttfamily void Local\+Pyro\+::do\+Stuff (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{duration }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
 
 
 
-Implements \mbox{\hyperlink{class_pyro_a3a57ef7ec8c6073d61f4e831588e0dc7}{Pyro}}.
+Fire the pyro. 
 
+
+\begin{DoxyParams}{Parameters}
+{\em duration} & \\
+\hline
+\end{DoxyParams}
+
+
+Reimplemented from \mbox{\hyperlink{class_pyro_a12d58ae5118625c65b7b9ebcbe4e0578}{Pyro}}.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_local_pyro_ac0e9498240723ab17951add02a2f58da_cgraph}
+\end{center}
+\end{figure}
 
 
 \doxysubsection{Member Data Documentation}

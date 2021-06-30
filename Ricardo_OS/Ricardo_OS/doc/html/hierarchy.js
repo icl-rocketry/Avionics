@@ -15,7 +15,10 @@ var hierarchy =
     [ "Engine", "class_engine.html", null ],
     [ "engine_logframe", "classengine__logframe.html", null ],
     [ "Estimator", "class_estimator.html", null ],
-    [ "Event", "class_event.html", null ],
+    [ "Event", "class_event.html", [
+      [ "EngineEvent", "class_engine_event.html", null ],
+      [ "PyroEvent", "class_pyro_event.html", null ]
+    ] ],
     [ "EventHandler", "class_event_handler.html", null ],
     [ "FlightVariable", "class_flight_variable.html", [
       [ "Acceleration", "class_acceleration.html", null ],
@@ -33,7 +36,6 @@ var hierarchy =
       [ "USB", "class_u_s_b.html", null ]
     ] ],
     [ "Imu", "class_imu.html", null ],
-    [ "jsondoc", "classjsondoc.html", null ],
     [ "LogController", "class_log_controller.html", null ],
     [ "Logger", "class_logger.html", [
       [ "SystemLogger", "class_system_logger.html", null ],
