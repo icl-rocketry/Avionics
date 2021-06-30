@@ -93,9 +93,9 @@ $(document).ready(function(){initNavTree('class_event.html',''); initResizable()
 
 <div class="header">
   <div class="summary">
+<a href="#pub-methods">Public Member Functions</a> &#124;
 <a href="#pro-methods">Protected Member Functions</a> &#124;
 <a href="#pro-attribs">Protected Attributes</a> &#124;
-<a href="#pri-methods">Private Member Functions</a> &#124;
 <a href="class_event-members.html">List of all members</a>  </div>
   <div class="headertitle">
 <div class="title">Event Class Reference<span class="mlabels"><span class="mlabel">abstract</span></span></div>  </div>
@@ -148,6 +148,18 @@ Collaboration diagram for Event:</div>
 </map>
 <center><span class="legend">[<a target="top" href="graph_legend.html">legend</a>]</span></center></div>
 <table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
+Public Member Functions</h2></td></tr>
+<tr class="memitem:a506e8882310d1b458faa83cd513432ad"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_event.html#a506e8882310d1b458faa83cd513432ad">Event</a> (uint8_t id, std::unique_ptr&lt; <a class="el" href="class_condition.html">Condition</a> &gt; cond, bool singleFire, uint8_t eventID, <a class="el" href="class_log_controller.html">LogController</a> *logcontroller)</td></tr>
+<tr class="memdesc:a506e8882310d1b458faa83cd513432ad"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct a new <a class="el" href="class_event.html">Event</a> object.  <a href="class_event.html#a506e8882310d1b458faa83cd513432ad">More...</a><br /></td></tr>
+<tr class="separator:a506e8882310d1b458faa83cd513432ad"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a104089a099a45971f10fdf7eaf5654f4"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_event.html#a104089a099a45971f10fdf7eaf5654f4">update</a> ()</td></tr>
+<tr class="separator:a104089a099a45971f10fdf7eaf5654f4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7704ec01ce91e673885792054214b3d2"><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_event.html#a7704ec01ce91e673885792054214b3d2">~Event</a> ()</td></tr>
+<tr class="separator:a7704ec01ce91e673885792054214b3d2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a879efc3a72eb5fd9468d318acd0476bf"><td class="memItemLeft" align="right" valign="top">virtual uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_event.html#a879efc3a72eb5fd9468d318acd0476bf">timeTriggered</a> ()</td></tr>
+<tr class="separator:a879efc3a72eb5fd9468d318acd0476bf"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-methods"></a>
 Protected Member Functions</h2></td></tr>
 <tr class="memitem:a2e507736868dd4d8c5f9f23dc9a09693"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_event.html#a2e507736868dd4d8c5f9f23dc9a09693">_execute</a> ()=0</td></tr>
@@ -171,18 +183,6 @@ Protected Attributes</h2></td></tr>
 <tr class="separator:a95e91c3ceb5a689bb4a3ac6689a85bfd"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a31df2c8387af339af94cfe836d5ba1b6"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_event.html#a31df2c8387af339af94cfe836d5ba1b6">_triggerTime</a></td></tr>
 <tr class="separator:a31df2c8387af339af94cfe836d5ba1b6"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-methods"></a>
-Private Member Functions</h2></td></tr>
-<tr class="memitem:a506e8882310d1b458faa83cd513432ad"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_event.html#a506e8882310d1b458faa83cd513432ad">Event</a> (uint8_t id, std::unique_ptr&lt; <a class="el" href="class_condition.html">Condition</a> &gt; cond, bool singleFire, uint8_t eventID, <a class="el" href="class_log_controller.html">LogController</a> *logcontroller)</td></tr>
-<tr class="memdesc:a506e8882310d1b458faa83cd513432ad"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct a new <a class="el" href="class_event.html">Event</a> object.  <a href="class_event.html#a506e8882310d1b458faa83cd513432ad">More...</a><br /></td></tr>
-<tr class="separator:a506e8882310d1b458faa83cd513432ad"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a104089a099a45971f10fdf7eaf5654f4"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_event.html#a104089a099a45971f10fdf7eaf5654f4">update</a> ()</td></tr>
-<tr class="separator:a104089a099a45971f10fdf7eaf5654f4"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7704ec01ce91e673885792054214b3d2"><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_event.html#a7704ec01ce91e673885792054214b3d2">~Event</a> ()</td></tr>
-<tr class="separator:a7704ec01ce91e673885792054214b3d2"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a879efc3a72eb5fd9468d318acd0476bf"><td class="memItemLeft" align="right" valign="top">virtual uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_event.html#a879efc3a72eb5fd9468d318acd0476bf">timeTriggered</a> ()</td></tr>
-<tr class="separator:a879efc3a72eb5fd9468d318acd0476bf"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a506e8882310d1b458faa83cd513432ad"></a>
@@ -232,7 +232,7 @@ Private Member Functions</h2></td></tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">private</span></span>  </td>
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
@@ -248,6 +248,31 @@ Private Member Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
+
+</div>
+</div>
+<a id="a7704ec01ce91e673885792054214b3d2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7704ec01ce91e673885792054214b3d2">&#9670;&nbsp;</a></span>~Event()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">Event::~Event </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
 
 </div>
 </div>
@@ -310,7 +335,7 @@ Here is the caller graph for this function:</div>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">private</span><span class="mlabel">virtual</span></span>  </td>
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">virtual</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
@@ -347,7 +372,7 @@ Here is the caller graph for this function:</div>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">private</span><span class="mlabel">virtual</span></span>  </td>
+<span class="mlabels"><span class="mlabel">virtual</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
@@ -372,31 +397,6 @@ Here is the caller graph for this function:</div>
 <area shape="rect" href="class_pyro_event.html#aa43cd49b5994a44d3ff1f082df1f6ea1" title=" " alt="" coords="11,56,142,83"/>
 </map>
 </div>
-
-</div>
-</div>
-<a id="a7704ec01ce91e673885792054214b3d2"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a7704ec01ce91e673885792054214b3d2">&#9670;&nbsp;</a></span>~Event()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">Event::~Event </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">private</span><span class="mlabel">virtual</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
 
 </div>
 </div>

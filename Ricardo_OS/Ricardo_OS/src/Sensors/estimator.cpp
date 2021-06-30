@@ -33,71 +33,57 @@ void Estimator::update(){
       last_update = micros(); // update last_update 
       float dt_seconds = float(dt)*0.000001F; //conversion to seconds
 
-      // if (_sm->systemstatus.flag_triggered(SYSTEM_FLAG::ERROR_IMU) && _sm->systemstatus.flag_triggered(SYSTEM_FLAG::ERROR_GPS) && _sm->systemstatus.flag_triggered(SYSTEM_FLAG::ERROR_BARO)){
-      //    //no data so we cant calculate any nav solution
-      //    if (state.estimator_state != static_cast<uint8_t>(ESTIMATOR_STATE::NOSOLUTION)){ // check if we already have logged this
-      //       state.estimator_state = static_cast<uint8_t>(ESTIMATOR_STATE::NOSOLUTION);
-      //       _sm->systemstatus.new_message(SYSTEM_FLAG::ERROR_ESTIMATOR,"no data, cannot compute navigation solution");
-      //    }
-      //    return;
-      // }
+      if (_sm->systemstatus.flag_triggered(SYSTEM_FLAG::ERROR_IMU)){
 
-      // if (_sm->systemstatus.flag_triggered(SYSTEM_FLAG::ERROR_IMU)){
-      //    //only gps and baro data -> update using gps and baro estimates
-      //    if (state.estimator_state != static_cast<uint8_t>(ESTIMATOR_STATE::NOSOLUTION)){ // check if we already have logged this
-      //       state.estimator_state = static_cast<uint8_t>(ESTIMATOR_STATE::NOSOLUTION);
-      //       _sm->systemstatus.new_message(SYSTEM_FLAG::ERROR_ESTIMATOR,"no data, cannot compute navigation solution");
-      //    }
-      //    return;
-      // }
+         if (_sm->systemstatus.flag_triggered(SYSTEM_FLAG::ERROR_GPS) && _sm->systemstatus.flag_triggered(SYSTEM_FLAG::ERROR_BARO)){
+            //no data so we cant calculate any nav solution
+            changeEstimatorState(ESTIMATOR_STATE::NOSOLUTION,"no data, cannot compute navigation solution");
+            return;
+         }
 
+         if (_sm->systemstatus.flag_triggered(SYSTEM_FLAG::ERROR_GPS)){
+            //baro only update
+            changeEstimatorState(ESTIMATOR_STATE::PARTIAL_BARO,"no gps and imu, raw baro navigation solution");
+            return;
+         }
+
+         if (_sm->systemstatus.flag_triggered(SYSTEM_FLAG::ERROR_BARO)){
+            //gps only update
+            changeEstimatorState(ESTIMATOR_STATE::PARTIAL_GPS,"no baro and imu, raw gps navigation solution");
+            return;
+         }
+
+         changeEstimatorState(ESTIMATOR_STATE::PARTIAL_GPS_BARO,"no imu, partial navigation solution");
+         return;
+
+      }
+
+      // imu present, call estimator functions which depend on imu
       updateAngularRates();
       updateOrientation(dt_seconds);
       updateLinearAcceleration();
 
-      // if (_sm->systemstatus.flag_triggered(SYSTEM_FLAG::ERROR_GPS) && _sm->systemstatus.flag_triggered(SYSTEM_FLAG::ERROR_BARO)){
-      //    //only imu data available so cannot perform pose esitmation
-      //    if (state.estimator_state != static_cast<uint8_t>(ESTIMATOR_STATE::ORIENTATION)){
-      //       state.estimator_state = static_cast<uint8_t>(ESTIMATOR_STATE::ORIENTATION);
-      //       _sm->systemstatus.new_message(SYSTEM_FLAG::ERROR_ESTIMATOR,"no gps or baro data, cannot compute location solution");
-      //    }
-      //    return;
-      // }
-      
-      // if (_sm->systemstatus.flag_triggered(SYSTEM_FLAG::ERROR_GPS)){
-      //    //only imu and baro data available so cannot perform pose esitmation
-      //    // update only baro measurement part of kf
-      //    //
-      //    //
-      //    if (state.estimator_state != static_cast<uint8_t>(ESTIMATOR_STATE::PARTIAL_BARO)){
-      //       state.estimator_state = static_cast<uint8_t>(ESTIMATOR_STATE::PARTIAL_BARO);
-      //       _sm->systemstatus.new_message(SYSTEM_FLAG::ERROR_ESTIMATOR,"no gps data, cannot fully compute location solution");
-      //    }
-      //    return;
-      // }
+      if (_sm->systemstatus.flag_triggered(SYSTEM_FLAG::ERROR_GPS) && _sm->systemstatus.flag_triggered(SYSTEM_FLAG::ERROR_BARO)){
+         //no data so only orientation avalibale
+         changeEstimatorState(ESTIMATOR_STATE::PARTIAL_IMU,"no gps and baro, cannot compute positional navigation solution");
+         return;
+      }
 
-      // if (_sm->systemstatus.flag_triggered(SYSTEM_FLAG::ERROR_BARO)){
-      //    //only imu and gps data available so cannot perform pose esitmation
-      //    // update only gps measurement part of kf here
-      //    //
-      //    //
-      //    if (state.estimator_state != static_cast<uint8_t>(ESTIMATOR_STATE::PARTIAL_GPS)){
-      //       state.estimator_state = static_cast<uint8_t>(ESTIMATOR_STATE::PARTIAL_GPS);
-      //       _sm->systemstatus.new_message(SYSTEM_FLAG::ERROR_ESTIMATOR,"no baro data, cannot fully compute location solution");
-      //    }
-      //    return;
-      // }
+      if (_sm->systemstatus.flag_triggered(SYSTEM_FLAG::ERROR_GPS)){
+         //baro only update
+         changeEstimatorState(ESTIMATOR_STATE::PARTIAL_BARO_IMU,"no gps, only baro kf update");
+         return;
+      }
 
-      // //full mesurement function
+      if (_sm->systemstatus.flag_triggered(SYSTEM_FLAG::ERROR_BARO)){
+         //gps only update
+         changeEstimatorState(ESTIMATOR_STATE::PARTIAL_GPS_IMU,"no baro, only gps kf update");
+         return;
+      }
 
+      changeEstimatorState(ESTIMATOR_STATE::NOMINAL,"all data avaliable, full update");
 
-      // if (state.estimator_state != static_cast<uint8_t>(ESTIMATOR_STATE::NOMINAL)){
-      //       state.estimator_state = static_cast<uint8_t>(ESTIMATOR_STATE::NOMINAL);
-      //       _sm->systemstatus.delete_message(SYSTEM_FLAG::ERROR_ESTIMATOR,"Full solution avaliable");
-      // }
-
-
-   };
+   }
     
 };
 
@@ -147,3 +133,14 @@ void Estimator::updateOrientation(float dt){
    state.orientation = madgwick.getOrientation();
    state.eulerAngles = madgwick.getEulerAngles();
 };
+
+void Estimator::changeEstimatorState(ESTIMATOR_STATE status,std::string logmessage){
+   if (state.estimator_state != static_cast<uint8_t>(status)){ // check if we already have logged this
+            state.estimator_state = static_cast<uint8_t>(status);
+            if (status != ESTIMATOR_STATE::NOMINAL){
+               _sm->systemstatus.new_message(SYSTEM_FLAG::ERROR_ESTIMATOR,logmessage);
+            }else if (_sm->systemstatus.flag_triggered(SYSTEM_FLAG::ERROR_ESTIMATOR)){
+               _sm->systemstatus.delete_message(SYSTEM_FLAG::ERROR_ESTIMATOR,logmessage);
+            }
+   }
+}

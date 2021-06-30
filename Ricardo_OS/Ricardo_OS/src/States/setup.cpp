@@ -51,7 +51,7 @@ void Setup::initialise(){
     Serial.setRxBufferSize(SERIAL_SIZE_RX);
     
     //_sm->tunezhandler.play(c_scalez.get()); 
-    _sm->tunezhandler.play(SONG::zeldatheme.get()); // play startup sound
+    _sm->tunezhandler.play(SONG::c_scalez.get()); // play startup sound
     //Serial.println("setup)");
 
 
@@ -63,7 +63,7 @@ void Setup::initialise(){
 
 State* Setup::update(){
     //transtion to preflight state
-    State* _preflight_ptr = new Preflight(_sm);
+    State* _preflight_ptr = new Groundstation(_sm);
     return _preflight_ptr;
 };
 

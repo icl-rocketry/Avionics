@@ -6,8 +6,7 @@
 
 
 
-Inheritance diagram for Event\+:
-\nopagebreak
+Inheritance diagram for Event\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -16,14 +15,24 @@ Inheritance diagram for Event\+:
 \end{figure}
 
 
-Collaboration diagram for Event\+:
-\nopagebreak
+Collaboration diagram for Event\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
 \includegraphics[width=350pt]{class_event__coll__graph}
 \end{center}
 \end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_event_a506e8882310d1b458faa83cd513432ad}{Event}} (uint8\+\_\+t id, std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{class_condition}{Condition}} $>$ cond, bool single\+Fire, uint8\+\_\+t event\+ID, \mbox{\hyperlink{class_log_controller}{Log\+Controller}} $\ast$logcontroller)
+\begin{DoxyCompactList}\small\item\em Construct a new \mbox{\hyperlink{class_event}{Event}} object. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{class_event_a104089a099a45971f10fdf7eaf5654f4}{update}} ()
+\item 
+virtual \mbox{\hyperlink{class_event_a7704ec01ce91e673885792054214b3d2}{$\sim$\+Event}} ()
+\item 
+virtual uint32\+\_\+t \mbox{\hyperlink{class_event_a879efc3a72eb5fd9468d318acd0476bf}{time\+Triggered}} ()
+\end{DoxyCompactItemize}
 \doxysubsection*{Protected Member Functions}
 \begin{DoxyCompactItemize}
 \item 
@@ -46,17 +55,6 @@ uint8\+\_\+t \mbox{\hyperlink{class_event_a35fa82090d4566735f1e29d7cdd5d17f}{\+\
 \item 
 uint32\+\_\+t \mbox{\hyperlink{class_event_a31df2c8387af339af94cfe836d5ba1b6}{\+\_\+trigger\+Time}}
 \end{DoxyCompactItemize}
-\doxysubsection*{Private Member Functions}
-\begin{DoxyCompactItemize}
-\item 
-\mbox{\hyperlink{class_event_a506e8882310d1b458faa83cd513432ad}{Event}} (uint8\+\_\+t id, std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{class_condition}{Condition}} $>$ cond, bool single\+Fire, uint8\+\_\+t event\+ID, \mbox{\hyperlink{class_log_controller}{Log\+Controller}} $\ast$logcontroller)
-\begin{DoxyCompactList}\small\item\em Construct a new \mbox{\hyperlink{class_event}{Event}} object. \end{DoxyCompactList}\item 
-virtual void \mbox{\hyperlink{class_event_a104089a099a45971f10fdf7eaf5654f4}{update}} ()
-\item 
-virtual \mbox{\hyperlink{class_event_a7704ec01ce91e673885792054214b3d2}{$\sim$\+Event}} ()
-\item 
-virtual uint32\+\_\+t \mbox{\hyperlink{class_event_a879efc3a72eb5fd9468d318acd0476bf}{time\+Triggered}} ()
-\end{DoxyCompactItemize}
 
 
 \doxysubsection{Constructor \& Destructor Documentation}
@@ -64,7 +62,7 @@ virtual uint32\+\_\+t \mbox{\hyperlink{class_event_a879efc3a72eb5fd9468d318acd04
 \index{Event@{Event}!Event@{Event}}
 \index{Event@{Event}!Event@{Event}}
 \doxysubsubsection{\texorpdfstring{Event()}{Event()}}
-{\footnotesize\ttfamily Event\+::\+Event (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{id,  }\item[{std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{class_condition}{Condition}} $>$}]{cond,  }\item[{bool}]{single\+Fire,  }\item[{uint8\+\_\+t}]{event\+ID,  }\item[{\mbox{\hyperlink{class_log_controller}{Log\+Controller}} $\ast$}]{logcontroller }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+{\footnotesize\ttfamily Event\+::\+Event (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{id,  }\item[{std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{class_condition}{Condition}} $>$}]{cond,  }\item[{bool}]{single\+Fire,  }\item[{uint8\+\_\+t}]{event\+ID,  }\item[{\mbox{\hyperlink{class_log_controller}{Log\+Controller}} $\ast$}]{logcontroller }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
 
 
@@ -83,6 +81,12 @@ Construct a new \mbox{\hyperlink{class_event}{Event}} object.
 {\em logcontroller} & pointer to log controller \\
 \hline
 \end{DoxyParams}
+\mbox{\Hypertarget{class_event_a7704ec01ce91e673885792054214b3d2}\label{class_event_a7704ec01ce91e673885792054214b3d2}} 
+\index{Event@{Event}!````~Event@{$\sim$Event}}
+\index{````~Event@{$\sim$Event}!Event@{Event}}
+\doxysubsubsection{\texorpdfstring{$\sim$Event()}{~Event()}}
+{\footnotesize\ttfamily Event\+::$\sim$\+Event (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
 
 
 \doxysubsection{Member Function Documentation}
@@ -100,8 +104,7 @@ virtual action function for event
 
 Implemented in \mbox{\hyperlink{class_pyro_event_abe64862e07805608e2bf1b3d6a0e4e18}{Pyro\+Event}}, and \mbox{\hyperlink{class_engine_event_ac226437aa80977296f578826cae52e9a}{Engine\+Event}}.
 
-Here is the caller graph for this function\+:
-\nopagebreak
+Here is the caller graph for this function\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -112,14 +115,13 @@ Here is the caller graph for this function\+:
 \index{Event@{Event}!timeTriggered@{timeTriggered}}
 \index{timeTriggered@{timeTriggered}!Event@{Event}}
 \doxysubsubsection{\texorpdfstring{timeTriggered()}{timeTriggered()}}
-{\footnotesize\ttfamily virtual uint32\+\_\+t Event\+::time\+Triggered (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}, {\ttfamily [virtual]}}
+{\footnotesize\ttfamily virtual uint32\+\_\+t Event\+::time\+Triggered (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
 
 
 
 Reimplemented in \mbox{\hyperlink{class_pyro_event_a2114a6006c9b28672bf3a70b897eca8c}{Pyro\+Event}}, and \mbox{\hyperlink{class_engine_event_a4b790fe79b1e613a220fc74262777707}{Engine\+Event}}.
 
-Here is the caller graph for this function\+:
-\nopagebreak
+Here is the caller graph for this function\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -130,34 +132,26 @@ Here is the caller graph for this function\+:
 \index{Event@{Event}!update@{update}}
 \index{update@{update}!Event@{Event}}
 \doxysubsubsection{\texorpdfstring{update()}{update()}}
-{\footnotesize\ttfamily void Event\+::update (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}, {\ttfamily [virtual]}}
+{\footnotesize\ttfamily void Event\+::update (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
 
 
 
 Reimplemented in \mbox{\hyperlink{class_pyro_event_aa43cd49b5994a44d3ff1f082df1f6ea1}{Pyro\+Event}}, and \mbox{\hyperlink{class_engine_event_aa7a82fa9e74f35f69be3a4b7420c4ac1}{Engine\+Event}}.
 
-Here is the call graph for this function\+:
-\nopagebreak
+Here is the call graph for this function\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
 \includegraphics[width=281pt]{class_event_a104089a099a45971f10fdf7eaf5654f4_cgraph}
 \end{center}
 \end{figure}
-Here is the caller graph for this function\+:
-\nopagebreak
+Here is the caller graph for this function\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
 \includegraphics[width=300pt]{class_event_a104089a099a45971f10fdf7eaf5654f4_icgraph}
 \end{center}
 \end{figure}
-\mbox{\Hypertarget{class_event_a7704ec01ce91e673885792054214b3d2}\label{class_event_a7704ec01ce91e673885792054214b3d2}} 
-\index{Event@{Event}!````~Event@{$\sim$Event}}
-\index{````~Event@{$\sim$Event}!Event@{Event}}
-\doxysubsubsection{\texorpdfstring{$\sim$Event()}{~Event()}}
-{\footnotesize\ttfamily Event\+::$\sim$\+Event (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}, {\ttfamily [virtual]}}
-
 
 
 \doxysubsection{Member Data Documentation}

@@ -6,11 +6,14 @@
 //#include "sensors.h"
 
 enum class ESTIMATOR_STATE: uint8_t{
-    NOMINAL = 0,
-    ORIENTATION = 1,
-    PARTIAL_GPS = 2,
-    PARTIAL_BARO = 3,
-    NOSOLUTION = 4
+    NOMINAL,
+    PARTIAL_GPS_IMU,
+    PARTIAL_BARO_IMU,
+    PARTIAL_IMU,
+    PARTIAL_GPS_BARO,
+    PARTIAL_GPS,
+    PARTIAL_BARO,
+    NOSOLUTION
 };
 
 class stateMachine; //forward declaration
@@ -50,6 +53,8 @@ class Estimator{
         void updateAngularRates();
         void updateOrientation(float dt); // madgwick filter update
         void updateLinearAcceleration();
+
+        void changeEstimatorState(ESTIMATOR_STATE state,std::string logmessage);
 };
 
 

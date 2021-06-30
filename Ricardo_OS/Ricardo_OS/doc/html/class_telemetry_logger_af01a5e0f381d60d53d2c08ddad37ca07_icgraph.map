@@ -1,52 +1,52 @@
 <map id="TelemetryLogger::log" name="TelemetryLogger::log">
-<area shape="rect" id="node1" title=" " alt="" coords="1383,1348,1525,1375"/>
-<area shape="rect" id="node2" href="$class_log_controller.html#adb94b2720224b121ac8487c7c0e04ffc" title=" " alt="" coords="1211,1348,1335,1375"/>
+<area shape="rect" id="node1" title=" " alt="" coords="1383,1263,1525,1289"/>
+<area shape="rect" id="node2" href="$class_log_controller.html#adb94b2720224b121ac8487c7c0e04ffc" title=" " alt="" coords="1211,1263,1335,1289"/>
 <area shape="rect" id="node3" href="$class_engine_event.html#ac226437aa80977296f578826cae52e9a" title="virtual action function for event" alt="" coords="985,5,1143,32"/>
 <area shape="rect" id="node4" href="$class_pyro_event.html#abe64862e07805608e2bf1b3d6a0e4e18" title="virtual action function for event" alt="" coords="992,56,1136,83"/>
-<area shape="rect" id="node5" href="$class_system_status.html#a881b11600f6b3a9dcd5520e8ada5600b" title=" " alt="" coords="990,657,1138,698"/>
-<area shape="rect" id="node15" href="$classstate_machine.html#a5f4f54735cb0a13393227e3af6863cdd" title=" " alt="" coords="271,563,418,589"/>
-<area shape="rect" id="node28" href="$class_storage_controller.html#a8d50450acbe1b423a367b13d17f4d375" title="Erases only &quot;/Logs&quot; directory on specified device." alt="" coords="279,1557,410,1598"/>
-<area shape="rect" id="node29" href="$class_storage_controller.html#adcf3f7a86a931310469a71a8ed4aa6bb" title="Format given device." alt="" coords="279,1622,410,1663"/>
-<area shape="rect" id="node30" href="$class_config_controller.html#ad6261f333580387e7c371a7700096e0e" title="Load configuration and store in configDoc variable." alt="" coords="990,1373,1138,1400"/>
-<area shape="rect" id="node31" href="$class_storage_controller.html#a4e77f06d615eb2488804886109b98b5c" title=" " alt="" coords="999,1490,1129,1531"/>
-<area shape="rect" id="node33" href="$class_storage_controller.html#af6c2adac43b2c4072cbf10c98d6f3e3e" title=" " alt="" coords="535,1265,665,1306"/>
-<area shape="rect" id="node37" href="$class_system_status.html#a7857d2fb6cda9d3c0aba6bf2a9592169" title=" " alt="" coords="965,1057,1163,1084"/>
-<area shape="rect" id="node43" href="$class_g_p_s.html#a29556f8e05c9175ca2147c8c648bd023" title=" " alt="" coords="783,968,873,995"/>
-<area shape="rect" id="node47" href="$class_estimator.html#a9243d65a3fad366aae1afb183d31ee01" title=" " alt="" coords="995,1927,1133,1953"/>
-<area shape="rect" id="node48" href="$class_log_controller.html#aac44151b8e5e60b3383d2fa1369b22b9" title=" " alt="" coords="975,1812,1153,1839"/>
-<area shape="rect" id="node50" href="$class_log_controller.html#a227e6dd10229ad5e5e91c47c88955958" title=" " alt="" coords="975,1736,1153,1763"/>
-<area shape="rect" id="node6" href="$class_pyro.html#a12d58ae5118625c65b7b9ebcbe4e0578" title="Fire the pyro." alt="" coords="779,752,877,779"/>
-<area shape="rect" id="node9" href="$class_state.html#a6154140cc1da5795d696a076d53b51d9" title=" " alt="" coords="773,411,883,437"/>
-<area shape="rect" id="node11" href="$class_command_handler.html#a54c1b7e2f1a6d0365ef36a0c738d7e02" title=" " alt="" coords="228,613,461,640"/>
-<area shape="rect" id="node24" href="$class_radio.html#a46f079f86ab0e7e83a4521c35eaa9aff" title=" " alt="" coords="780,689,876,716"/>
-<area shape="rect" id="node26" href="$class_battery.html#a85dcc13e31dfb66ce3ce217b78a7df7c" title=" " alt="" coords="773,639,883,665"/>
-<area shape="rect" id="node7" href="$class_b_t_pyro.html#a9a9ab1c78048ce44939201d63d78b49a" title="Fire the pyro." alt="" coords="542,715,658,741"/>
-<area shape="rect" id="node8" href="$class_local_pyro.html#ac0e9498240723ab17951add02a2f58da" title="Fire the pyro." alt="" coords="535,765,665,792"/>
-<area shape="rect" id="node10" href="$classstate_machine.html#a5d7b94f00a94721921b3b100fa234fb4" title=" " alt="" coords="509,613,691,640"/>
-<area shape="rect" id="node17" href="$class_flight.html#ac80c35552e9cb128cfef82135f9cbf8c" title=" " alt="" coords="544,411,656,437"/>
-<area shape="rect" id="node18" href="$class_groundstation.html#a666dd3f7c52b302e2676fe8fbc734416" title=" " alt="" coords="519,461,681,488"/>
-<area shape="rect" id="node19" href="$class_launch.html#a086053cdb69d50006fdd1b65c600fc27" title=" " alt="" coords="539,512,661,539"/>
-<area shape="rect" id="node20" href="$class_preflight.html#a824ea4ba3ae889eceb77d0165ff16e8c" title=" " alt="" coords="536,208,664,235"/>
-<area shape="rect" id="node21" href="$class_recovery.html#ac64431bc5b8ca8084ab44428589b3d1a" title=" " alt="" coords="532,259,668,285"/>
-<area shape="rect" id="node22" href="$class_setup.html#ac9427fc96284424d290e723101c06639" title=" " alt="" coords="543,309,657,336"/>
-<area shape="rect" id="node23" href="$class_u_s_bmode.html#a2dfc6d8ae44512e42130e9284509cd7a" title=" " alt="" coords="530,360,670,387"/>
-<area shape="rect" id="node13" href="$classstate_machine.html#ab9275b38265e4166367b4f3d2aa0e474" title=" " alt="" coords="267,1196,422,1223"/>
-<area shape="rect" id="node12" href="$class_command_handler.html#a6c61c87a0ad0045aa6133dd69112a72b" title=" " alt="" coords="5,613,180,640"/>
-<area shape="rect" id="node14" href="$main_8cpp.html#a4fc01d736fe50cf5b977f755b675f11d" title=" " alt="" coords="65,1196,120,1223"/>
-<area shape="rect" id="node16" href="$main_8cpp.html#afe461d27b9c48d5921c00d521181f12f" title=" " alt="" coords="69,563,116,589"/>
-<area shape="rect" id="node25" href="$class_network_manager.html#a87b64dafa618fac138addfac9c47edab" title=" " alt="" coords="519,664,681,691"/>
-<area shape="rect" id="node27" href="$class_sensors.html#af0290d09b1ae4dd7726a2a6613bf354b" title=" " alt="" coords="541,563,659,589"/>
-<area shape="rect" id="node32" href="$class_storage_controller.html#a080bc92c81449245e61cc5e6d150da3d" title="Generate directory strucutre consisting of /Logs and /Configuration." alt="" coords="739,1607,917,1649"/>
-<area shape="rect" id="node34" href="$class_log_controller.html#af983c7f4d7fc63638658f00a152adb0b" title=" " alt="" coords="739,1425,917,1466"/>
-<area shape="rect" id="node35" href="$class_storage_controller.html#ad4c3a4d350750137bb742c3a98e7b3bb" title="Generate a unique directory name for a given directory on a given device." alt="" coords="761,1490,895,1531"/>
-<area shape="rect" id="node36" href="$class_log_controller.html#a691c1ff90609fcbd1c95a791fbec30bb" title=" " alt="" coords="531,1521,669,1548"/>
-<area shape="rect" id="node38" href="$class_state.html#a14770d571ff70a1e5c8572eade7843cf" title=" " alt="" coords="774,892,882,919"/>
-<area shape="rect" id="node45" href="$class_imu.html#af2fba9f67a4449e503374a5ca10b1832" title=" " alt="" coords="786,1120,870,1147"/>
-<area shape="rect" id="node46" href="$class_u_s_b.html#a762ef457e4870b09365ecf39e3196287" title=" " alt="" coords="779,1272,877,1299"/>
-<area shape="rect" id="node39" href="$class_flight.html#ac084f4f6b3b28031b4dd9448eb89ee55" title=" " alt="" coords="545,968,655,995"/>
-<area shape="rect" id="node40" href="$class_groundstation.html#a530ac31955e79f2e35380788d4efa0ec" title=" " alt="" coords="521,816,679,843"/>
-<area shape="rect" id="node41" href="$class_launch.html#ae682b58b792296f05dc9bd84b1d5e2dd" title=" " alt="" coords="541,867,659,893"/>
-<area shape="rect" id="node42" href="$class_preflight.html#aaabf52a2dd5f36765fd3ebe5a685242d" title=" " alt="" coords="537,917,663,944"/>
-<area shape="rect" id="node44" href="$class_sensors.html#a53a14d2dc2f063893ba275aa6be2ffc0" title=" " alt="" coords="545,1120,655,1147"/>
-<area shape="rect" id="node49" href="$class_storage_controller.html#a133cf5b82ad976cb324e06742538daa8" title=" " alt="" coords="757,1825,899,1852"/>
+<area shape="rect" id="node5" href="$class_system_status.html#a881b11600f6b3a9dcd5520e8ada5600b" title=" " alt="" coords="990,631,1138,673"/>
+<area shape="rect" id="node14" href="$classstate_machine.html#a5f4f54735cb0a13393227e3af6863cdd" title=" " alt="" coords="271,512,418,539"/>
+<area shape="rect" id="node27" href="$class_storage_controller.html#a8d50450acbe1b423a367b13d17f4d375" title="Erases only &quot;/Logs&quot; directory on specified device." alt="" coords="279,1382,410,1423"/>
+<area shape="rect" id="node28" href="$class_storage_controller.html#adcf3f7a86a931310469a71a8ed4aa6bb" title="Format given device." alt="" coords="279,1483,410,1525"/>
+<area shape="rect" id="node29" href="$class_config_controller.html#ad6261f333580387e7c371a7700096e0e" title="Load configuration and store in configDoc variable." alt="" coords="990,1789,1138,1816"/>
+<area shape="rect" id="node30" href="$class_storage_controller.html#a4e77f06d615eb2488804886109b98b5c" title=" " alt="" coords="999,1405,1129,1446"/>
+<area shape="rect" id="node32" href="$class_storage_controller.html#af6c2adac43b2c4072cbf10c98d6f3e3e" title=" " alt="" coords="535,1121,665,1162"/>
+<area shape="rect" id="node36" href="$class_system_status.html#a7857d2fb6cda9d3c0aba6bf2a9592169" title=" " alt="" coords="965,1009,1163,1036"/>
+<area shape="rect" id="node43" href="$class_g_p_s.html#a29556f8e05c9175ca2147c8c648bd023" title=" " alt="" coords="783,1237,873,1264"/>
+<area shape="rect" id="node47" href="$class_estimator.html#a9243d65a3fad366aae1afb183d31ee01" title=" " alt="" coords="995,1840,1133,1867"/>
+<area shape="rect" id="node48" href="$class_log_controller.html#aac44151b8e5e60b3383d2fa1369b22b9" title=" " alt="" coords="975,1675,1153,1701"/>
+<area shape="rect" id="node50" href="$class_log_controller.html#a227e6dd10229ad5e5e91c47c88955958" title=" " alt="" coords="975,1599,1153,1625"/>
+<area shape="rect" id="node6" href="$class_pyro.html#a12d58ae5118625c65b7b9ebcbe4e0578" title="Fire the pyro." alt="" coords="779,664,877,691"/>
+<area shape="rect" id="node9" href="$class_state.html#a6154140cc1da5795d696a076d53b51d9" title=" " alt="" coords="773,360,883,387"/>
+<area shape="rect" id="node11" href="$class_command_handler.html#a54c1b7e2f1a6d0365ef36a0c738d7e02" title=" " alt="" coords="228,664,461,691"/>
+<area shape="rect" id="node23" href="$class_radio.html#a46f079f86ab0e7e83a4521c35eaa9aff" title=" " alt="" coords="780,715,876,741"/>
+<area shape="rect" id="node25" href="$class_battery.html#a85dcc13e31dfb66ce3ce217b78a7df7c" title=" " alt="" coords="773,613,883,640"/>
+<area shape="rect" id="node7" href="$class_b_t_pyro.html#a9a9ab1c78048ce44939201d63d78b49a" title="Fire the pyro." alt="" coords="542,613,658,640"/>
+<area shape="rect" id="node8" href="$class_local_pyro.html#ac0e9498240723ab17951add02a2f58da" title="Fire the pyro." alt="" coords="535,715,665,741"/>
+<area shape="rect" id="node10" href="$classstate_machine.html#a5d7b94f00a94721921b3b100fa234fb4" title=" " alt="" coords="509,664,691,691"/>
+<area shape="rect" id="node16" href="$class_flight.html#ac80c35552e9cb128cfef82135f9cbf8c" title=" " alt="" coords="544,259,656,285"/>
+<area shape="rect" id="node17" href="$class_groundstation.html#a666dd3f7c52b302e2676fe8fbc734416" title=" " alt="" coords="519,309,681,336"/>
+<area shape="rect" id="node18" href="$class_launch.html#a086053cdb69d50006fdd1b65c600fc27" title=" " alt="" coords="539,360,661,387"/>
+<area shape="rect" id="node19" href="$class_preflight.html#a824ea4ba3ae889eceb77d0165ff16e8c" title=" " alt="" coords="536,411,664,437"/>
+<area shape="rect" id="node20" href="$class_recovery.html#ac64431bc5b8ca8084ab44428589b3d1a" title=" " alt="" coords="532,461,668,488"/>
+<area shape="rect" id="node21" href="$class_setup.html#ac9427fc96284424d290e723101c06639" title=" " alt="" coords="543,157,657,184"/>
+<area shape="rect" id="node22" href="$class_u_s_bmode.html#a2dfc6d8ae44512e42130e9284509cd7a" title=" " alt="" coords="530,208,670,235"/>
+<area shape="rect" id="node13" href="$classstate_machine.html#ab9275b38265e4166367b4f3d2aa0e474" title=" " alt="" coords="267,1128,422,1155"/>
+<area shape="rect" id="node12" href="$class_command_handler.html#a6c61c87a0ad0045aa6133dd69112a72b" title=" " alt="" coords="5,664,180,691"/>
+<area shape="rect" id="node15" href="$main_8cpp.html#afe461d27b9c48d5921c00d521181f12f" title=" " alt="" coords="69,512,116,539"/>
+<area shape="rect" id="node24" href="$class_network_manager.html#a87b64dafa618fac138addfac9c47edab" title=" " alt="" coords="519,816,681,843"/>
+<area shape="rect" id="node26" href="$class_sensors.html#af0290d09b1ae4dd7726a2a6613bf354b" title=" " alt="" coords="541,512,659,539"/>
+<area shape="rect" id="node31" href="$class_storage_controller.html#a080bc92c81449245e61cc5e6d150da3d" title="Generate directory strucutre consisting of /Logs and /Configuration." alt="" coords="739,1339,917,1381"/>
+<area shape="rect" id="node33" href="$class_log_controller.html#af983c7f4d7fc63638658f00a152adb0b" title=" " alt="" coords="739,1470,917,1511"/>
+<area shape="rect" id="node34" href="$class_storage_controller.html#ad4c3a4d350750137bb742c3a98e7b3bb" title="Generate a unique directory name for a given directory on a given device." alt="" coords="761,1405,895,1446"/>
+<area shape="rect" id="node35" href="$class_log_controller.html#a691c1ff90609fcbd1c95a791fbec30bb" title=" " alt="" coords="531,1491,669,1517"/>
+<area shape="rect" id="node37" href="$class_state.html#a14770d571ff70a1e5c8572eade7843cf" title=" " alt="" coords="774,883,882,909"/>
+<area shape="rect" id="node45" href="$class_imu.html#af2fba9f67a4449e503374a5ca10b1832" title=" " alt="" coords="786,1035,870,1061"/>
+<area shape="rect" id="node46" href="$class_u_s_b.html#a762ef457e4870b09365ecf39e3196287" title=" " alt="" coords="779,1085,877,1112"/>
+<area shape="rect" id="node38" href="$class_flight.html#ac084f4f6b3b28031b4dd9448eb89ee55" title=" " alt="" coords="545,867,655,893"/>
+<area shape="rect" id="node39" href="$class_groundstation.html#a530ac31955e79f2e35380788d4efa0ec" title=" " alt="" coords="521,917,679,944"/>
+<area shape="rect" id="node40" href="$class_launch.html#ae682b58b792296f05dc9bd84b1d5e2dd" title=" " alt="" coords="541,968,659,995"/>
+<area shape="rect" id="node41" href="$class_preflight.html#aaabf52a2dd5f36765fd3ebe5a685242d" title=" " alt="" coords="537,1019,663,1045"/>
+<area shape="rect" id="node42" href="$class_recovery.html#a7e419b95fa6e7274d1bc40cb1257625c" title=" " alt="" coords="533,1069,667,1096"/>
+<area shape="rect" id="node44" href="$class_sensors.html#a53a14d2dc2f063893ba275aa6be2ffc0" title=" " alt="" coords="545,1187,655,1213"/>
+<area shape="rect" id="node49" href="$class_storage_controller.html#a133cf5b82ad976cb324e06742538daa8" title=" " alt="" coords="757,1688,899,1715"/>
 </map>

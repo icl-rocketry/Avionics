@@ -2,7 +2,7 @@ import socketio
 
 # standard Python
 sio = socketio.Client(logger=True, engineio_logger=True)
-sio.connect('http://192.168.2.71:1337',namespaces=['/','/telemetry'])
+sio.connect('http://localhost:1337',namespaces=['/','/telemetry'])
 
 @sio.event
 def connect():

@@ -12,5 +12,5 @@ while True:
         "arg":int(arg),
         "clientid":"LOCAL:COMMANDTESTER"
     }
-    r = requests.post("http://192.168.2.71:1337/command",json = data)
+    r = requests.post("http://localhost:1337/command",json = data)
     print(r.status_code, r.reason)

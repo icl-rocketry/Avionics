@@ -57,8 +57,8 @@ void stateMachine::initialise(State* initStatePtr) {
   logcontroller.setup();
 
   // create config controller object
-  ConfigController configcontroller(&storagecontroller,&logcontroller); 
-  configcontroller.load(); // load configuration from sd card into ram
+  //ConfigController configcontroller(&storagecontroller,&logcontroller); 
+  //configcontroller.load(); // load configuration from sd card into ram
   //setup network manager so communication is running
   networkmanager.setup();
   //sensors must be setup before estimator

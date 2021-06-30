@@ -10,7 +10,7 @@ Event::~Event(){};
 
 void Event::update(){
 	if (_cond->check()){
-		if (_singleFire && !_previouslyFired) || (!_singleFire){ // ensure that it only fires once if singlefire is true
+		if ((_singleFire && !_previouslyFired) || (!_singleFire)){ // ensure that it only fires once if singlefire is true
 			_execute();
 			_triggerTime = millis();
 			_previouslyFired = true;

@@ -72,11 +72,10 @@ void CommandHandler::handleCommand(Command command) {
 			case COMMANDS::Zero_Sensors:
 				break;
 			case COMMANDS::Start_Logging:
+				_sm->logcontroller.startLogging(LOG_TYPE::TELEMETRY);
 				break;
 			case COMMANDS::Stop_Logging:
-				break;
-			case COMMANDS::Play_Song:
-				_sm->tunezhandler.play(SONG::miichannel.get()); // play startup sound
+			_sm->logcontroller.stopLogging(LOG_TYPE::TELEMETRY);
 				break;
 			case COMMANDS::Telemetry:
 				{
@@ -151,6 +150,18 @@ void CommandHandler::handleCommand(Command command) {
 			case COMMANDS::Print_Flash_filesystem:
 				break;
 			case COMMANDS::Print_Sd_filesystem:
+				break;
+			case COMMANDS::Play_Song:
+			{	
+				int arg = command.arg;
+				_sm->tunezhandler.play(SONG::miichannel.get()); // play startup sound
+				break;
+			}
+			case COMMANDS::Skip_Song:
+				_sm->tunezhandler.skip(); // play startup sound
+				break;
+			case COMMANDS::Clear_Song_Queue:
+				_sm->tunezhandler.clear(); // play startup sound
 				break;
 			case COMMANDS::Raw_Sensors:
 				break;
@@ -284,6 +295,8 @@ bool CommandHandler::commandAvaliable(Command command) {
 		case COMMANDS::Launch:
 		case COMMANDS::Enter_USBMode:
 		case COMMANDS::Play_Song:
+		case COMMANDS::Skip_Song:
+		case COMMANDS::Clear_Song_Queue:
 			return _sm->systemstatus.flag_triggered(SYSTEM_FLAG::STATE_PREFLIGHT);
 		case COMMANDS::Raw_Sensors:
 		case COMMANDS::Detailed_All_Sensors:

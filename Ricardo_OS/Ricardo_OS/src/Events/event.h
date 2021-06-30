@@ -19,6 +19,7 @@
 
 
 class Event{
+    public:
         /**
          * @brief Construct a new Event object
          * 

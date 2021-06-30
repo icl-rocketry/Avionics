@@ -1,5 +1,3 @@
-//header file containing declarations of diffrerent packet used 
-
 #ifndef PACKETS_H
 #define PACKETS_H
 #include <Arduino.h>
