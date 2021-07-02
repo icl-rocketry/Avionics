@@ -60,7 +60,7 @@ void NetworkManager::update(){
 
     process_packets();
     
-    commandhandler.update();// process any commands received
+    // commandhandler.update();// process any commands received
     
 };
 
@@ -170,14 +170,7 @@ void NetworkManager::process_packets(){
                     {
                         //deserialize packet
                         CommandPacket commandpacket = CommandPacket(*curr_packet);
-                        Command command_obj = Command{
-                            static_cast<NODES>(commandpacket.header.source), 
-                            static_cast<COMMANDS>(commandpacket.command),
-                            commandpacket.arg,
-                            commandpacket.header.uid
-                            };
-                        commandhandler.addCommand(command_obj);
-
+                        commandhandler.handleCommand(commandpacket); // handle command packet
                         break;
                     }
                     default:

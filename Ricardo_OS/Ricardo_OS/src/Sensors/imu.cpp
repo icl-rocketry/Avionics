@@ -17,8 +17,7 @@ Imu::Imu(SPIClass* spi, SystemStatus* systemstatus,LogController* logcontroller,
     _systemstatus(systemstatus),
     _logcontroller(logcontroller),
     imu(spi),
-    _raw_data(raw_data),
-    time_period(5) // correpsonds to 100hz
+    _raw_data(raw_data)
 {};
 
 
@@ -56,7 +55,9 @@ void Imu::setup(){
 
     if (!imu.beginSPI(_SCLK,_MISO,_MOSI,ImuCs, MagCs)){
         _systemstatus->new_message(SYSTEM_FLAG::ERROR_IMU, "Unable to initialize the imu");
+        return;
     };
+    _logcontroller->log("IMU Initialized");
 
 };
 

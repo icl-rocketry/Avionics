@@ -191,7 +191,7 @@
 
 // Ignore comments in input
 #ifndef ARDUINOJSON_ENABLE_COMMENTS
-#define ARDUINOJSON_ENABLE_COMMENTS 0
+#define ARDUINOJSON_ENABLE_COMMENTS 1
 #endif
 
 // Support NaN in JSON

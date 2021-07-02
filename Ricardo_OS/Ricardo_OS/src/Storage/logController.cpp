@@ -45,8 +45,9 @@ void LogController::generateLogDirectories(STORAGE_DEVICE device){
 
 void LogController::log(state_t &estimator_state,raw_measurements_t &raw_sensors,bool force) {
     if((millis()-telemetry_prev_log_time) > telemetry_log_frequency || force){
-        telemetrylogger.log(estimator_state,raw_sensors);
         telemetry_prev_log_time = millis(); // update previous log time
+        telemetrylogger.log(estimator_state,raw_sensors);
+        
     }
 }
 

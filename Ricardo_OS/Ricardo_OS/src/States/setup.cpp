@@ -21,7 +21,6 @@ Setup::Setup(stateMachine* sm) : State(sm){
 void Setup::initialise(){
     State::initialise();
     
-
     //internal io initilization must happen here so io buses setup for sensor initialzation
         //intialize i2c interface
     _sm->I2C.begin(_SDA,_SCL,I2C_FREQUENCY);
@@ -50,20 +49,15 @@ void Setup::initialise(){
     Serial.begin(Serial_baud);
     Serial.setRxBufferSize(SERIAL_SIZE_RX);
     
-    //_sm->tunezhandler.play(c_scalez.get()); 
-    _sm->tunezhandler.play(SONG::c_scalez.get()); // play startup sound
-    //Serial.println("setup)");
-
-
-
     
+    _sm->tunezhandler.play(SONG::c_scalez.get()); // play startup sound
 
 };
 
 
 State* Setup::update(){
     //transtion to preflight state
-    State* _preflight_ptr = new Groundstation(_sm);
+    State* _preflight_ptr = new Preflight(_sm);
     return _preflight_ptr;
 };
 

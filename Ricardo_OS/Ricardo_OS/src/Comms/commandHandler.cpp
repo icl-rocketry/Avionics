@@ -16,6 +16,7 @@
 
 #include "packets.h"
 #include "interfaces/interfaces.h"
+#include "nodes.h"
 #include "interfaces/radio.h"
 
 #include "Sound/Melodies/melodyLibrary.h"
@@ -23,35 +24,20 @@
 
 
 CommandHandler::CommandHandler(stateMachine* sm):
-	_sm(sm)
-	{
- 
-};
+_sm(sm)
+{};
 
 
-void CommandHandler::setup(){};
 
+void CommandHandler::handleCommand(const CommandPacket &commandpacket) {
 
-void CommandHandler::update() {
-	// Handle the first command in the buffer
-	// Possibly implement priority queues in the future?
-	if (commandbuffer.size()>0){
-		Command first_command = commandbuffer.front();
-		handleCommand(first_command);
-		commandbuffer.erase(commandbuffer.begin()); // 0th command handled, remove it from the buffer
-	};
-};
+	COMMANDS command_id = static_cast<COMMANDS>(commandpacket.command);
+	uint8_t arg = commandpacket.arg;
+	NODES source = static_cast<NODES>(commandpacket.header.source);
+	uint32_t uid = commandpacket.header.uid;
 
-void CommandHandler::addCommand(Command command){
-	commandbuffer.push_back(command);
-};
-
-void CommandHandler::handleCommand(Command command) {
-
-	if (!commandAvaliable(command)) {
-		//do nothing as command is not avaliable
-	} else{
-		switch (command.type) {
+	if (commandAvaliable(command_id)) {
+		switch (command_id) {
 			case COMMANDS::Launch:
 				_sm->changeState(new Launch(_sm));
 				break;
@@ -75,7 +61,7 @@ void CommandHandler::handleCommand(Command command) {
 				_sm->logcontroller.startLogging(LOG_TYPE::TELEMETRY);
 				break;
 			case COMMANDS::Stop_Logging:
-			_sm->logcontroller.stopLogging(LOG_TYPE::TELEMETRY);
+				_sm->logcontroller.stopLogging(LOG_TYPE::TELEMETRY);
 				break;
 			case COMMANDS::Telemetry:
 				{
@@ -83,8 +69,8 @@ void CommandHandler::handleCommand(Command command) {
 					TelemetryPacket telemetry;
 
 					telemetry.header.source = _sm->networkmanager.getNodeType();
-					telemetry.header.destination = static_cast<uint8_t>(command.source_node);
-					telemetry.header.uid = command.uid; 
+					telemetry.header.destination = (uint8_t)source;
+					telemetry.header.uid = uid; 
 
 					telemetry.pn = _sm->estimator.state.position(0);
 					telemetry.pe = _sm->estimator.state.position(1);
@@ -139,7 +125,7 @@ void CommandHandler::handleCommand(Command command) {
 
 					telemetry.serialize(packet);
 
-					_sm->networkmanager.send_to_node(command.source_node,packet);
+					_sm->networkmanager.send_to_node(source,packet);
 
 				}
 				break;
@@ -153,7 +139,6 @@ void CommandHandler::handleCommand(Command command) {
 				break;
 			case COMMANDS::Play_Song:
 			{	
-				int arg = command.arg;
 				_sm->tunezhandler.play(SONG::miichannel.get()); // play startup sound
 				break;
 			}
@@ -172,8 +157,8 @@ void CommandHandler::handleCommand(Command command) {
 					DetailedAllPacket detailedall;
 
 					detailedall.header.source = _sm->networkmanager.getNodeType();
-					detailedall.header.destination = static_cast<uint8_t>(command.source_node);
-					detailedall.header.uid = command.uid; 
+					detailedall.header.destination = (uint8_t)source;
+					detailedall.header.uid = uid; 
 
 					detailedall.ax = _sm->sensors.sensors_raw.ax;
 					detailedall.ay = _sm->sensors.sensors_raw.ay;
@@ -203,7 +188,7 @@ void CommandHandler::handleCommand(Command command) {
 
 					detailedall.serialize(packet);
 
-					_sm->networkmanager.send_to_node(command.source_node,packet);
+					_sm->networkmanager.send_to_node(source,packet);
 					
 				}
 				break;
@@ -251,12 +236,12 @@ void CommandHandler::handleCommand(Command command) {
 				break;
 			case COMMANDS::Pyro_info:
 				{
-				uint8_t pyro_number = command.arg;
+				uint8_t pyro_number = arg;
 				}
 				break;
 			case COMMANDS::Fire_pyro:
 				{
-				uint8_t pyro_number = command.arg;
+				uint8_t pyro_number = arg;
 				}
 				break;
 			default:
@@ -268,9 +253,9 @@ void CommandHandler::handleCommand(Command command) {
 };
 
 
-bool CommandHandler::commandAvaliable(Command command) {
+bool CommandHandler::commandAvaliable(COMMANDS command) {
 		// Checks if a comand can be executed in a given state
-	switch(command.type){
+	switch(command){
 		case COMMANDS::Start_Logging:
 		case COMMANDS::Telemetry:
 		case COMMANDS::Pyro_info:

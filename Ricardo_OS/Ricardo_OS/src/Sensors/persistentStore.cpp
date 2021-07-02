@@ -1,0 +1,44 @@
+#include "persistentStore.h"
+#include "nvs.h"
+#include "nvs_flash.h"
+#include "Storage/logController.h"
+
+PersistentStore::PersistentStore(std::string name,LogController& logcontroller):
+_logcontroller(logcontroller)
+{
+    esp_err_t err = nvs_flash_init();
+    if (err == ESP_ERR_NVS_NO_FREE_PAGES || err == ESP_ERR_NVS_NEW_VERSION_FOUND) {
+        _logcontroller.log("NVS partition truncated and needs to be erased!");
+        ESP_ERROR_CHECK(nvs_flash_erase());
+        err = nvs_flash_init();
+    }
+    ESP_ERROR_CHECK( err );
+    
+    err = nvs_open(name, NVS_READWRITE, &_nvs_handle);
+    if (err != ESP_OK){
+        _logcontroller.log("Error opening NVS handle - " + esp_err_to_name(err));
+    }else{
+        _logcontroller.log("NVS initialized at - " + name);
+    }
+
+};
+
+PersistentStore::~PersistentStore(){
+    nvs_close(_nvs_handle);
+    _logcontroller.log("NVS handle closed");
+}
+
+//template specializations
+template<>
+esp_err_t PersistentStore::set<int32_t>(std::string key,int32_t value){
+    esp_err_t error = nvs_set_i32(_nvs_handle,key.c_str(),value);
+    if (error){
+        _logcontroller.log("")
+    }
+    return error;
+};
+template<>
+esp_err_t PersistentStore::get<int32_t>(std::string key,int32_t &variable){
+    esp_err_t error = nvs_get_i32(_nvs_handle,key.c_str(),&variable);
+    return error;
+};

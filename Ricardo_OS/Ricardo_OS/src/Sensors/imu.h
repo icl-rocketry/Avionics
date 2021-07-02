@@ -4,8 +4,6 @@
 #include "SPI.h"
 #include "SparkFunLSM9DS1.h"
 
-#define RUAIRIDH_TEST_BOARD //used for testing  stuff
-
 #include "Storage/systemstatus.h"
 #include "Storage/logController.h"
 #include "sensorStructs.h"
@@ -38,9 +36,6 @@ class Imu{
         void read_mag();
         void read_accel();
         void read_temp();
-
-        uint64_t prev_read_time;
-        uint16_t time_period;
 
 
 };    

@@ -28,6 +28,7 @@ void ConfigController::load(){
         _logcontroller->log("Error deserializing JSON! - " + std::string(jsonError.c_str()));
         return;
     }
+    _logcontroller->log("Config Loaded");
     _configOK = true;
 }
 

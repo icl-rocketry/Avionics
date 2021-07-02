@@ -5,29 +5,12 @@
        "Groundstation":true, 
        "LaunchAccelerationThreshold": 420,
        "FlightPathPolynomial":[4, 2, 0, 6, 9],
-       "Cd" :[12] // if multiple values present, interpreted as a fitted polynomial on Mach number, if single value using prandtl-glauret correcitons
+       "Cd" :[12] 
     },
 	
     "Networking":
         {
-			// enum class Interface{
-			// 	LOOPBACK = 0, //currently just a nice thought and to make the routing table more readable can be used in the future to test interfaces 
-			// 	LORA = 1,
-			// 	USBSerial = 2,
-			// 	CAN = 3,
-			// 	ERROR = 255
-			
-			// };
-            // "Interfaces": // Interfaces which are enabled on the board
-            // {
-
-			// 	//{"Name":"LORA","id":0,"enabled":true}, 
-			// 	"0": "",
-			// 	"1": true
-
-
-            // },
-			"RoutingTable": // full Routing table definition / Network topology
+			"RoutingTable":
             [
                 {
 					"SourceNode":0,
@@ -55,19 +38,17 @@
 			]
         },
 	"Pyros":
-	
-		//"Num": 42069, // Number of pyros
 	    [
-            {"type": "bt",  "address": "0x69696969", "fire_duration": 1000}, // fire duration in ms
+            {"type": "bt",  "address": "0x69696969", "fire_duration": 1000},
             {"type": "local", "fire_pin": 10, "continuity_pin": 11, "fire_duration": 69420}
         ],
 
 	"Engine":
 	[
-		{"type": "solid", "interface": 0} // filll up later
+		{"type": "solid", "interface": 0}
 	],
     
-	"Events": // interface is the index of the pyro/engine in their respective arrays
+	"Events":
 	[
 		{ "type": "engine", "interface": 0, "single_fire": true, "condition": 
 			{
