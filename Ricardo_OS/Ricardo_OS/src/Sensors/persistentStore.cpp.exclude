@@ -14,7 +14,7 @@ _logcontroller(logcontroller)
     }
     ESP_ERROR_CHECK( err );
     
-    err = nvs_open(name, NVS_READWRITE, &_nvs_handle);
+    err = nvs_open(name.c_str(), NVS_READWRITE, &_nvs_handle);
     if (err != ESP_OK){
         _logcontroller.log("Error opening NVS handle - " + esp_err_to_name(err));
     }else{
@@ -33,7 +33,7 @@ template<>
 esp_err_t PersistentStore::set<int32_t>(std::string key,int32_t value){
     esp_err_t error = nvs_set_i32(_nvs_handle,key.c_str(),value);
     if (error){
-        _logcontroller.log("")
+        _logcontroller.log("nvs_set_i32 failed - " + nvs_error(error));
     }
     return error;
 };

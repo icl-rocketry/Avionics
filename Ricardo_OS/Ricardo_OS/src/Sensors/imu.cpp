@@ -9,6 +9,8 @@
 
 #include "sensorStructs.h"
 
+#include "Preferences.h"
+
 
 
 
@@ -52,6 +54,8 @@ void Imu::setup(){
     imu.settings.mag.operatingMode = 0; // Continuous mode
     //mag temp compensation -> this is a good thing right?
     imu.settings.mag.tempCompensationEnable = true;
+
+    loadBiasCalibration(); //load previously callibrated bias values from nvs
 
     if (!imu.beginSPI(_SCLK,_MISO,_MOSI,ImuCs, MagCs)){
         _systemstatus->new_message(SYSTEM_FLAG::ERROR_IMU, "Unable to initialize the imu");
@@ -105,6 +109,7 @@ void Imu::read_temp(){
 void Imu::calibrateAccelGyro(bool autocalc){
     //4.56 0.76 0.45 521 87 51
     imu.calibrate(autocalc);
+    writeBiasCalibration(); // write bias offsets to nvs
     /*
     Serial.print("Callibration Complete");
     Serial.print(imu.gBias[0]);
@@ -125,4 +130,43 @@ void Imu::calibrateAccelGyro(bool autocalc){
 
 void Imu::calibrateMag(bool loadIn){
     imu.calibrateMag(loadIn);
+}
+
+void Imu::writeBiasCalibration(){
+    Preferences pref;
+
+    if (!pref.begin("IMU",false)){
+        _logcontroller->log("nvs failed to start. Can't retrieve calbration offsets");
+        return;
+    }   
+    //dont have time to write a new library for this
+    //i dont like the way we cant log the errors to our log file as the error handling
+    //is wrapped up in the preferences class
+    // it shouldnt be too hard to rewrite at a later date
+    pref.putShort("gxBias",imu.gBiasRaw[0]);
+    pref.putShort("gyBias",imu.gBiasRaw[1]);
+    pref.putShort("gzBias",imu.gBiasRaw[2]);
+    pref.putShort("axBias",imu.aBiasRaw[0]);
+    pref.putShort("ayBias",imu.aBiasRaw[1]);
+    pref.putShort("azBias",imu.aBiasRaw[2]);
+  
+
+}
+
+void Imu::loadBiasCalibration(){
+    Preferences pref;
+
+    if (!pref.begin("IMU",true)){
+        _logcontroller->log("nvs failed to start");
+        return;
+    }  
+
+    imu.gBiasRaw[0] = pref.getShort("gxBias");
+    imu.gBiasRaw[1] = pref.getShort("gyBias");
+    imu.gBiasRaw[2] = pref.getShort("gzBias");
+    imu.aBiasRaw[0] = pref.getShort("axBias");
+    imu.aBiasRaw[1] = pref.getShort("ayBias");
+    imu.aBiasRaw[2] = pref.getShort("azBias");
+
+
 }

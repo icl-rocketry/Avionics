@@ -36,6 +36,16 @@ class Imu{
         void read_mag();
         void read_accel();
         void read_temp();
+        /**
+         * @brief write accel gyro bias callibration to nvs storage
+         * 
+         */
+        void writeBiasCalibration();
+        /**
+         * @brief Load accel gyro bias callibration from nvs storage
+         * 
+         */
+        void loadBiasCalibration();
 
 
 };    
