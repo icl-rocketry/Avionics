@@ -33,6 +33,8 @@ class SerialManager(multiprocessing.Process):
 		self.exit_event = multiprocessing.Event()
 		#connect to redis 
 		self.rd = redis.Redis(host = redishost,port = redisport)
+		#clear SendQueue
+		self.rd.delete("SendQueue")
 		self.__connect__() #connect to ricardo 
 		
 

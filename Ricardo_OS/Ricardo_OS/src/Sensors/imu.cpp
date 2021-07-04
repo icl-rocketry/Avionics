@@ -110,22 +110,6 @@ void Imu::calibrateAccelGyro(bool autocalc){
     //4.56 0.76 0.45 521 87 51
     imu.calibrate(autocalc);
     writeBiasCalibration(); // write bias offsets to nvs
-    /*
-    Serial.print("Callibration Complete");
-    Serial.print(imu.gBias[0]);
-    Serial.print("\t");
-    Serial.print(imu.gBias[1]);
-    Serial.print("\t");
-    Serial.print(imu.gBias[2]);
-    Serial.print("\t");
-    Serial.print(imu.gBiasRaw[0]);
-    Serial.print("\t");
-    Serial.print(imu.gBiasRaw[1]);
-    Serial.print("\t");
-    Serial.print(imu.gBiasRaw[2]);
-    Serial.print("\n");*/
-    
-
 }
 
 void Imu::calibrateMag(bool loadIn){
@@ -143,13 +127,13 @@ void Imu::writeBiasCalibration(){
     //i dont like the way we cant log the errors to our log file as the error handling
     //is wrapped up in the preferences class
     // it shouldnt be too hard to rewrite at a later date
-    pref.putShort("gxBias",imu.gBiasRaw[0]);
-    pref.putShort("gyBias",imu.gBiasRaw[1]);
-    pref.putShort("gzBias",imu.gBiasRaw[2]);
-    pref.putShort("axBias",imu.aBiasRaw[0]);
-    pref.putShort("ayBias",imu.aBiasRaw[1]);
-    pref.putShort("azBias",imu.aBiasRaw[2]);
-  
+    if (!pref.putShort("gxBias",imu.gBiasRaw[0])){_logcontroller->log("nvs error while writing");};
+    if (!pref.putShort("gyBias",imu.gBiasRaw[1])){_logcontroller->log("nvs error while writing");};
+    if (!pref.putShort("gzBias",imu.gBiasRaw[2])){_logcontroller->log("nvs error while writing");};
+    if (!pref.putShort("axBias",imu.aBiasRaw[0])){_logcontroller->log("nvs error while writing");};
+    if (!pref.putShort("ayBias",imu.aBiasRaw[1])){_logcontroller->log("nvs error while writing");};
+    if (!pref.putShort("azBias",imu.aBiasRaw[2])){_logcontroller->log("nvs error while writing");};
+    //preferences end is called in destructor of preference class  as it goes out of scope
 
 }
 
