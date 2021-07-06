@@ -30,7 +30,7 @@ class melody_t:public melody_base_t{
 
          melody_note_t getNote(int i){return note_sequence.at(i);}; //bounds checking
          bool getPriority(){return _priority;};
-         size_t getSize(){return _size;};
+        size_t getSize(){return _size;};
          melody_base_t* get(){return this;}; // implict cast operator
          
 

@@ -6,7 +6,8 @@
 #include "ricardo_pins.h"
 
 
-TunezHandler::TunezHandler()
+TunezHandler::TunezHandler():
+_playing(true)
 { 
     tune_queue.reserve(10); //we shoudlnt really need more than 10
 };
@@ -74,7 +75,7 @@ void TunezHandler::update(){
 
     if(tune_queue.size() > 0){ //check there are tunez to play
         
-        if ((millis() - prev_time) > note_duration){
+        if (((millis() - prev_time) > note_duration) && _playing){
             //time to update index to next on
             if(tune_queue.front().index < tune_queue.front().melody->getSize()){
                 //get new freuqnecy and note duration
@@ -103,3 +104,20 @@ void TunezHandler::update(){
         //ledc_set_freq(LEDC_HIGH_SPEED_MODE,LEDC_TIMER_0,0); // write 0 frequency so no noise is produced
     }
 };
+
+void TunezHandler::pause(){
+    _playing = false;
+}
+void TunezHandler::unpause(){
+    _playing = true;
+}
+
+void TunezHandler::skip(){//note we need to ensure this is safe if there are no element in the queue
+    if (tune_queue.size() > 0){
+        tune_queue.erase(tune_queue.begin()); // remove first element in tune queue to skip current melody
+    }
+}
+
+void TunezHandler::clear(){
+    tune_queue.clear();
+}
