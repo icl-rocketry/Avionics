@@ -273,7 +273,7 @@ class SystemStatus(urwid.WidgetWrap):
     def __updateDisplayData__(self,idx,text):
         self.displayWidgetsList[idx].base_widget.set_text(self.displayStrings[idx] + text)
 class TextUserInterface(multiprocessing.Process):
-    def __init__(self,redishost = 'localhost',redisport = 6379,refreshRate = .2):
+    def __init__(self,redishost = 'localhost',redisport = 6379,refreshRate = .2,colormode = None):
         super(TextUserInterface,self).__init__()
         
         self.loadingScreen :LoadingView = LoadingView()
@@ -283,7 +283,7 @@ class TextUserInterface(multiprocessing.Process):
         self.palette = {
             (None,'light gray','','','#0c272f','#0B1518'),#default
             ('status_bar','black','light gray','','#0b1518','#dbdbdb'),
-            ('status_bar_no_data','light gray','dark red','','#dbdbdb','#ff0000'),
+            ('status_bar_no_data','light gray','dark red','blink','#dbdbdb','#ff0000'),
             ('error','light gray','dark red','blink','#0B1518','#ff0000'),
             ('nominal','light gray','dark green','','#0B1518','#20ff00'),
             ('logo_blue','dark blue','','','#001240','#0B1518'),
@@ -297,7 +297,11 @@ class TextUserInterface(multiprocessing.Process):
             ('log_state','light blue','','','#1500ff','#0B1518')
         }
         self.uiLoop = urwid.MainLoop(self.loadingScreen,palette=self.palette,unhandled_input=self.__exit_on_q__)
-        #self.uiLoop.screen.set_terminal_properties(colors=1)
+        if colormode is not None:
+            try:
+                self.uiLoop.screen.set_terminal_properties(colors=colormode)
+            except:
+                print("error setting color")
         self.uiLoop.set_alarm_in(1,self.__transitionToMain__)
         #self.r = None
         self.systemstatus = 0
@@ -370,9 +374,12 @@ if __name__ == '__main__':
     ap.add_argument("--redis-host", required=False, help="redis host", type=str,default = "localhost")
     ap.add_argument("--redis-port", required=False, help="redis port", type=int,default = 6379)
     ap.add_argument("--refresh", required=False, help="data refresh rate", type=float,default = .2)
+    ap.add_argument("-c","--color", required=False, help="Color Mode", type=int,default = None)
     args = vars(ap.parse_args())
 
     checkRedis()#check redis server exists
 
-    TUIinstance = TextUserInterface(redishost=args['redis_host'],redisport=args['redis_port'],refreshRate=args['refresh'])
+
+
+    TUIinstance = TextUserInterface(redishost=args['redis_host'],redisport=args['redis_port'],refreshRate=args['refresh'],colormode = args['color'])
     TUIinstance.run() #call run instad of start as we dont need a new process
