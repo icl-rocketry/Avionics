@@ -3,7 +3,7 @@
  //GENERATED SONG FILE 
  
  
-melody_t<286> SONG::miichannel = { { { 
+melody_t<286> MelodyLibrary::miichannel = { { { 
 {NOTE_FS4,150},
 {REST,150},
 {NOTE_A4,150},

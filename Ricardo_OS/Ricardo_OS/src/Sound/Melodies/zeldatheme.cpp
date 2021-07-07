@@ -4,7 +4,7 @@
  //GENERATED SONG FILE 
  
  
-melody_t<110> SONG::zeldatheme = { { { 
+melody_t<110> MelodyLibrary::zeldatheme = { { { 
 {NOTE_AS4,900},
 {NOTE_F4,150},
 {NOTE_F4,150},

@@ -35,7 +35,7 @@ print(note_time)
 #duration of notes is in milliseconds
 #bpm / 60  = bps
 #bpms = bps / 1000 
-bpm = 50
+bpm = 35
 bps = bpm/60
 bpms = bps/1000
 duration = []
@@ -47,7 +47,7 @@ for inv_beats in note_time:
         #dotted note
         duration.append(round( (1/(abs(inv_beats)*bpms)) + (1/(abs(inv_beats*2)*bpms)) ))
 
-output_string = "melody_t<"+str(len(notes))+"> " + name + " = { { { \n"
+output_string = "melody_t<"+str(len(notes))+"> SONG::" + name + " = { { { \n"
 
 for idx in range(len(notes)):
     if idx == len(notes) - 1 :

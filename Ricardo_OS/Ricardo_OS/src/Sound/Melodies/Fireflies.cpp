@@ -6,7 +6,7 @@
  //GENERATED SONG FILE 
  
  
-melody_t<1186> SONG::Fireflies = { { { 
+melody_t<1186> MelodyLibrary::Fireflies = { { { 
 {233,0},
 {233,125},
 {466,0},

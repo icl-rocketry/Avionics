@@ -8,6 +8,9 @@
 #include "Melodies/melodyClass.h"
 #include <array>
 #include <vector>
+#include "Melodies/melodyLibrary.h"
+
+
 
 struct tune_t{
     melody_base_t* melody;
@@ -19,14 +22,9 @@ class TunezHandler{
     public:
         TunezHandler();
         void setup();
-    
-        /**
-         * @brief Put Melody on tune queue
-         * 
-         * @param melody 
-         * @param loop 
-         */
-        void play(melody_base_t *melody,bool loop = false);
+
+        void play(MELODY melody,bool loop = false){play(library.get(melody),loop);};
+        
         /**
          * @brief Skip current tune
          * 
@@ -41,12 +39,22 @@ class TunezHandler{
         void update();
 
     private:
+        MelodyLibrary library;
         
         std::vector<tune_t> tune_queue; 
 
         uint64_t prev_time = 0;
         uint16_t note_duration = 0;
 
+        /**
+         * @brief Put Melody on tune queue
+         * 
+         * @param melody 
+         * @param loop 
+         */
+        void play(melody_base_t *melody,bool loop);
+
+       
 
 
 };

@@ -3,7 +3,7 @@
 #include "melodyLibrary.h"
 #include "pitches.h"
 
-melody_t<8> SONG::c_scalez = { {{ 
+melody_t<8> MelodyLibrary::c_scalez = { {{ 
                     {NOTE_C4,100},
                     {NOTE_D4,100},
                     {NOTE_E4,100},

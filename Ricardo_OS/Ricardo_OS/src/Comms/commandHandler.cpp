@@ -139,7 +139,7 @@ void CommandHandler::handleCommand(const CommandPacket &commandpacket) {
 				break;
 			case COMMANDS::Play_Song:
 			{	
-				_sm->tunezhandler.play(SONG::miichannel.get()); // play startup sound
+				_sm->tunezhandler.play(static_cast<MELODY>(arg)); 
 				break;
 			}
 			case COMMANDS::Skip_Song:
