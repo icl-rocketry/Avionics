@@ -130,8 +130,12 @@ void CommandHandler::handleCommand(const CommandPacket &commandpacket) {
 				}
 				break;
 			case COMMANDS::Clear_Flash:
+				_sm->storagecontroller.erase(STORAGE_DEVICE::FLASH);
+				_sm->tunezhandler.play(MELODY::CONFIRMATION); //play sound when complete
 				break;
 			case COMMANDS::Clear_SD:
+				_sm->storagecontroller.erase(STORAGE_DEVICE::MICROSD);
+				_sm->tunezhandler.play(MELODY::CONFIRMATION); //play sound when complete
 				break;
 			case COMMANDS::Print_Flash_filesystem:
 				break;

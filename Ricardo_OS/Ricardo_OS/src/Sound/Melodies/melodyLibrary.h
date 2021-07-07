@@ -17,6 +17,7 @@
 
 enum class MELODY:uint8_t{
     C_SCALEZ,
+    CONFIRMATION,
     CANTINABAND,
     FIREFLIES,
     GAMEOFTHRONES,
@@ -32,6 +33,7 @@ class MelodyLibrary{
     
     private:
         static melody_t<8> c_scalez;
+        static melody_t<3> confirmation;
         static melody_t<1186> Fireflies;
         static melody_t<110> zeldatheme;
         static melody_t<64> cantinaband;
@@ -41,6 +43,7 @@ class MelodyLibrary{
 
         std::array<melody_base_t*,(int)MELODY::COUNT> song_library{
                                             &c_scalez,
+                                            &confirmation,
                                             &Fireflies,
                                             &zeldatheme,
                                             &cantinaband,
