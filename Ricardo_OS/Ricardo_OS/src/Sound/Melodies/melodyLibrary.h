@@ -18,18 +18,25 @@
 enum class MELODY:uint8_t{
     C_SCALEZ,
     CONFIRMATION,
-    CANTINABAND,
     FIREFLIES,
+    ZELDATHEME,
+    CANTINABAND,
     GAMEOFTHRONES,
     MIICHANNEL,
     NEVERGONNAGIVEYOUUP,
-    ZELDATHEME,
     COUNT
 };
 
 class MelodyLibrary{
     public:
-        melody_base_t* get(MELODY melody){return song_library.at((uint8_t)melody);};
+        inline melody_base_t* get(MELODY melody){
+            if ((uint8_t)melody < (uint8_t)MELODY::COUNT){
+                return song_library.at((uint8_t)melody);
+            }else{
+                return NULL;
+            }
+            
+        };
     
     private:
         static melody_t<8> c_scalez;

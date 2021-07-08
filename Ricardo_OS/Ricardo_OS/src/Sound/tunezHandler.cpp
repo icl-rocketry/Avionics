@@ -20,6 +20,15 @@ void TunezHandler::setup()
 
 };
 
+void TunezHandler::play(MELODY melody,bool loop){
+    melody_base_t* m = library.get(melody);
+    if (m == NULL){
+        return;
+    }
+    play(m,loop);
+
+}
+
 void TunezHandler::play(melody_base_t *melody,bool loop){
 
      tune_t new_tune;

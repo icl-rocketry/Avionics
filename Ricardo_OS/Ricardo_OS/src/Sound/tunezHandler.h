@@ -23,7 +23,13 @@ class TunezHandler{
         TunezHandler();
         void setup();
 
-        void play(MELODY melody,bool loop = false){play(library.get(melody),loop);};
+        /**
+         * @brief play melody from melody library
+         * 
+         * @param melody melody enum
+         * @param loop 
+         */
+        void play(MELODY melody,bool loop = false);
         
         /**
          * @brief Skip current tune
