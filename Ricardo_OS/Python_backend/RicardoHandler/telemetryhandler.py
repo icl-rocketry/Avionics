@@ -19,7 +19,7 @@ class TelemetryHandler(multiprocessing.Process):
 
         self.state = {
             "run":True,
-            "source":2,
+            "source":4,
             "destination":0,
             "dt":updateTimePeriod,
         }

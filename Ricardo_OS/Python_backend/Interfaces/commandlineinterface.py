@@ -7,7 +7,7 @@ import json
 
 class CommandLineInterface(cmd2.Cmd):
     def __init__(self,redishost = 'localhost',redisport = 6379,tasklist=[]):
-        super().__init__()
+        super().__init__(allow_cli_args=False)
         self.r : redis.Redis = redis.Redis(host=redishost,port=redisport)
         self.tasklist = tasklist
         
@@ -23,7 +23,7 @@ class CommandLineInterface(cmd2.Cmd):
     @with_argparser(task_ap)
     def do_task(self,opts):
         #if opts.task not in self.tasklist:
-        if opts.task is None:
+        if opts.task not in self.tasklist:
             self.poutput("ERROR : invalid Task ID given")
             return
         prev_state = self.r.get(opts.task + ":STATE")

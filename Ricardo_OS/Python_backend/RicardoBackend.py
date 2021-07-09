@@ -24,6 +24,7 @@ args = vars(ap.parse_args())
 
 
 def exitBackend(signalNumber, frame):
+    global telemetrytask,sm
     # f.stop()
     #flask_thread.join()
     #flaskinterface.bg_exit_event.set()

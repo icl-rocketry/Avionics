@@ -43,8 +43,8 @@ void GPS::setup()
     //turn off nmea messaging
     gnss.setI2COutput(COM_TYPE_UBX);
     if (!gnss.setDynamicModel(DYN_MODEL_AIRBORNE4g)){
-        _systemstatus->new_message(SYSTEM_FLAG::ERROR_GPS,"GPS failed to set dynamics model");
-    } // Set the dynamic model to PORTABLE
+        _logcontroller->log("GPS failed to set dynamics model");
+    } 
     gnss.setNavigationFrequency(10); //Set output to 10 times a second
     gnss.setAutoPVT(true);
 

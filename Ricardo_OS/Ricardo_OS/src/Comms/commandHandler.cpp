@@ -196,19 +196,20 @@ void CommandHandler::handleCommand(const CommandPacket &commandpacket) {
 					
 				}
 				break;
-			case COMMANDS::Callibrate_Accel:
+			case COMMANDS::Calibrate_AccelGyro:
+				_sm->sensors.calibrate(SENSOR::ACCELGYRO);
+				_sm->tunezhandler.play(MELODY::CONFIRMATION); //play sound when complete
 				break;
-			case COMMANDS::Callibrate_Mag:
+			case COMMANDS::Calibrate_Mag:
+				_sm->sensors.calibrate(SENSOR::MAG);
+				_sm->tunezhandler.play(MELODY::CONFIRMATION); //play sound when complete
 				break;
-			case COMMANDS::Callibrate_Gyro:
-				break;
-			case COMMANDS::Callibrate_Baro:
+			case COMMANDS::Calibrate_Baro:
 				break;
 			case COMMANDS::Enter_USBMode:
 			//Transitions from pre-flight to USBMode,toggles debug flag in state machine							
 				_sm->changeState(new USBmode(_sm));
 				_sm->systemstatus.new_message(SYSTEM_FLAG::DEBUG);
-
 				break;
 			case COMMANDS::Enter_Groundstation:
 				_sm->changeState(new Groundstation(_sm));
@@ -289,10 +290,9 @@ bool CommandHandler::commandAvaliable(COMMANDS command) {
 			return _sm->systemstatus.flag_triggered(SYSTEM_FLAG::STATE_PREFLIGHT);
 		case COMMANDS::Raw_Sensors:
 		case COMMANDS::Detailed_All_Sensors:
-		case COMMANDS::Callibrate_Accel:
-		case COMMANDS::Callibrate_Mag:
-		case COMMANDS::Callibrate_Gyro:
-		case COMMANDS::Callibrate_Baro:
+		case COMMANDS::Calibrate_AccelGyro:
+		case COMMANDS::Calibrate_Mag:
+		case COMMANDS::Calibrate_Baro:
 		case COMMANDS::Enter_Groundstation:
 		case COMMANDS::Stop_Logging:
 			return _sm->systemstatus.flag_triggered(SYSTEM_FLAG::STATE_PREFLIGHT) 

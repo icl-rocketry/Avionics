@@ -119,8 +119,8 @@ void Imu::calibrateMag(bool loadIn){
 void Imu::writeBiasCalibration(){
     Preferences pref;
 
-    if (!pref.begin("IMU",false)){
-        _logcontroller->log("nvs failed to start. Can't retrieve calbration offsets");
+    if (!pref.begin("IMU")){
+        _logcontroller->log("nvs failed to start. Can't write calbration offsets");
         return;
     }   
     //dont have time to write a new library for this

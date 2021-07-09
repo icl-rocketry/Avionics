@@ -16,7 +16,7 @@ class SerialManager(multiprocessing.Process):
 		self.waittime = waittime
 		self.boot_messages = ''
 		self.prevSendTime = 0
-		self.sendDelta = 400e6
+		self.sendDelta = 50e6
 		
 
 		self.packetRecordTimeout = 2*60 #default 2 minute timeout

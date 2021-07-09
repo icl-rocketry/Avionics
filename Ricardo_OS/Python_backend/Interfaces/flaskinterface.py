@@ -1,6 +1,6 @@
 import eventlet
 eventlet.monkey_patch()
-from flask import Flask,jsonify,request,Response
+from flask import Flask,jsonify,request,Response,render_template
 from flask_socketio import SocketIO, emit
 import time
 import redis
@@ -92,14 +92,17 @@ def get_telemetry():
     else:
         return "NODATA",200
 
+@app.route("/graphs",methods=['get'])
+def get_graphs():
+    return render_template('graph.html',x_window = 100)
 
 @socketio.on('connect')
 def connect():
-    emit('Connect',{'data':'Connected'})
+    pass
 
 @socketio.on('disconnect')
 def disconnect():
-    print('client disconnected')
+    pass
     
 
 def __FlaskTask__(host,port): 

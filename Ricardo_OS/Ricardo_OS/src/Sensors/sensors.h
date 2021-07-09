@@ -32,7 +32,7 @@ class Sensors{
 
         void setup();
         void update();
-        void callibrate(SENSOR sensor);
+        void calibrate(SENSOR sensor);
 
         raw_measurements_t sensors_raw;
 
