@@ -116,6 +116,10 @@ class TelemetryPacket{
                 &TelemetryPacket::roll,
                 &TelemetryPacket::pitch,
                 &TelemetryPacket::yaw,
+                &TelemetryPacket::q0,
+                &TelemetryPacket::q1,
+                &TelemetryPacket::q2,
+                &TelemetryPacket::q3,
                 &TelemetryPacket::lat,
                 &TelemetryPacket::lng,
                 &TelemetryPacket::alt,
@@ -159,6 +163,7 @@ class TelemetryPacket{
         float an, ae, ad; // acceleration NED (m/s^2)
         //orientation
         float roll,pitch,yaw; // orientation degrees
+        float q0,q1,q2,q3; //quaternion representation
         //gps
         long lat,lng,alt;
         uint8_t sat;

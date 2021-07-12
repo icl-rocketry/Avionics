@@ -13,24 +13,34 @@
 #include "sensorStructs.h"
 
 
+#include <Eigen/Core>
+#include <Eigen/Eigen>
+#include <Eigen/Geometry>
+
+
 class GPS{
-public:
-    GPS(TwoWire* wire,SystemStatus* systemstatus,LogController* logcontroller,raw_measurements_t* raw_data);
-    void setup();
-    void update();
+    public:
+        GPS(TwoWire* wire,SystemStatus* systemstatus,LogController* logcontroller,raw_measurements_t* raw_data);
+        void setup();
+        void update();
 
-private:
-    //TinyGPSPlus tinygps; //define tinygps object
-    SFE_UBLOX_GNSS gnss;
-    TwoWire *_wire; //pointer to wire object
-    
+        
 
-    SystemStatus* _systemstatus;//pointer to system status object
-    LogController* _logcontroller;//pointer to log controller
 
-    raw_measurements_t*  _raw_data;//pointer to raw data struct
 
-    bool _i2cerror;// true if i2c failed to start
+
+    private:
+        //TinyGPSPlus tinygps; //define tinygps object
+        SFE_UBLOX_GNSS gnss;
+        TwoWire *_wire; //pointer to wire object
+        
+
+        SystemStatus* _systemstatus;//pointer to system status object
+        LogController* _logcontroller;//pointer to log controller
+
+        raw_measurements_t*  _raw_data;//pointer to raw data struct
+
+        bool _i2cerror;// true if i2c failed to start
 };
 
 #endif

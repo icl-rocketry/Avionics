@@ -7,17 +7,19 @@
 
 Estimator::Estimator(stateMachine* sm):
 _sm(sm),
-update_frequency(2000),//500Hz update
-madgwick(0.9,0.002) // beta | gyroscope sample time step (s)
+update_frequency(5000),//200Hz update
+_homeSet(false),
+madgwick(0.5f,0.005f), // beta | gyroscope sample time step (s)
+localizationkf(_sm->logcontroller)
 {};
 
 void Estimator::setup(){
 //update board orientation this is applied when converthing back to sensor frame where the orientaiton of sensor matters
 //upside down should be retireved from config file
-   if (upsideDown){
-      flipConstant = 1;
+   if (_upsideDown){
+      _flipConstant = -1;
    }else{
-      flipConstant = -1;
+      _flipConstant = 1;
    }
    
 };
@@ -99,6 +101,11 @@ void Estimator::setHome(){
                            + utils::tostring(state.gps_launch_long)
                            + " Alt: "
                            + utils::tostring(state.gps_launch_alt));
+   //update reference coordinates in position estimation
+   localizationkf.updateGPSReference(state.gps_launch_lat,state.gps_launch_long,state.gps_launch_alt);
+
+   
+   _homeSet = true;
 }
 
 void Estimator::updateLinearAcceleration(){
@@ -120,15 +127,15 @@ void Estimator::updateAngularRates(){
 void Estimator::updateOrientation(float dt){
    //calculate orientation solution
    madgwick.setDeltaT(dt); // update integration time
-   madgwick.update(_sm->sensors.sensors_raw.gx,
-                  _sm->sensors.sensors_raw.gy,
-                  _sm->sensors.sensors_raw.gz,
-                  _sm->sensors.sensors_raw.ax,
-                  _sm->sensors.sensors_raw.ay,
-                  _sm->sensors.sensors_raw.az,
-                  -(_sm->sensors.sensors_raw.mx), // lsm9ds1 magnetometer x axis is opposite to gyro and accel
-                  _sm->sensors.sensors_raw.my,
-                  _sm->sensors.sensors_raw.mz); 
+   madgwick.update(_flipConstant*_sm->sensors.sensors_raw.gx,
+                   _flipConstant*_sm->sensors.sensors_raw.gy,
+                   _flipConstant*_sm->sensors.sensors_raw.gz,
+                   _flipConstant*_sm->sensors.sensors_raw.ax,
+                   _flipConstant*_sm->sensors.sensors_raw.ay,
+                   _flipConstant*_sm->sensors.sensors_raw.az,
+                   _flipConstant*_sm->sensors.sensors_raw.mx, 
+                   _flipConstant*_sm->sensors.sensors_raw.my,
+                   _flipConstant*_sm->sensors.sensors_raw.mz); 
    //update orientation
    state.orientation = madgwick.getOrientation();
    state.eulerAngles = madgwick.getEulerAngles();
@@ -143,4 +150,8 @@ void Estimator::changeEstimatorState(ESTIMATOR_STATE status,std::string logmessa
                _sm->systemstatus.delete_message(SYSTEM_FLAG::ERROR_ESTIMATOR,logmessage);
             }
    }
+}
+
+void Estimator::changeBeta(float beta){
+   madgwick.setBeta(beta);
 }

@@ -15,6 +15,7 @@ struct raw_measurements_t{
 
     
     //IMU RAW DATA
+    //right hand coordinate system, x points to ricardo logo side of board
     float ax,ay,az;
     float gx,gy,gz;
     float mx,my,mz;

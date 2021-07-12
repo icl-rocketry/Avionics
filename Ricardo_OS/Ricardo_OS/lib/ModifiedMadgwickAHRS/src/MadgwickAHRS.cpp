@@ -231,21 +231,21 @@ void Madgwick::updateIMU(float gx, float gy, float gz, float ax, float ay, float
 // See: http://en.wikipedia.org/wiki/Fast_inverse_square_root
 
 float Madgwick::invSqrt(float x) {
-	/*
-	float halfx = 0.5f * x;
-	float y = x;
-	long i = *(long*)&y;
-	i = 0x5f3759df - (i>>1);
-	y = *(float*)&i;
-	y = y * (1.5f - (halfx * y * y));
-	y = y * (1.5f - (halfx * y * y));
-	return y;*/
+	
+	// float halfx = 0.5f * x;
+	// float y = x;
+	// long i = *(long*)&y;
+	// i = 0x5f3759df - (i>>1);
+	// y = *(float*)&i;
+	// y = y * (1.5f - (halfx * y * y));
+	// y = y * (1.5f - (halfx * y * y));
+	// return y;
 
 	/* close-to-optimal  method with low cost from http://pizer.wordpress.com/2008/10/12/fast-inverse-square-root */
 	unsigned int i = 0x5F1F1412 - (*(unsigned int*)&x >> 1);
 	float tmp = *(float*)&i;
 	return tmp * (1.69000231f - 0.714158168f * x * tmp * tmp);
-}
+ }
 
 //-------------------------------------------------------------------------------------------
 

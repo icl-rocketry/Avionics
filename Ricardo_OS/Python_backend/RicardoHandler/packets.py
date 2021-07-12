@@ -92,6 +92,7 @@ class Telemetry(Packet):
 				vn: float = 0, ve: float = 0, vd: float = 0,
 				an: float = 0, ae: float = 0, ad: float = 0,
 				roll: float = 0, pitch: float = 0, yaw: float = 0,
+				q0: float = 0, q1: float = 0, q2: float = 0, q3:float = 0,
 				lat: int = 0, lng: int = 0, alt: int = 0, sat: int = 0,
 				ax: float = 0, ay: float = 0, az: float = 0,
 				gx: float = 0, gy: float = 0, gz: float = 0,
@@ -117,6 +118,10 @@ class Telemetry(Packet):
 		self.roll = roll
 		self.pitch = pitch
 		self.yaw = yaw
+		self.q0 = q0
+		self.q1 = q1
+		self.q2 = q2
+		self.q3 = q3
 		self.lat = lat
 		self.lng = lng
 		self.alt = alt
@@ -142,11 +147,13 @@ class Telemetry(Packet):
 		self.rssi = rssi
 		self.snr = snr
 
+
+
 	@staticmethod
 	def from_bytes(data: bytes): # Deserialize from a bytearray
 		header = Header.from_bytes(data)
 		telemetry_data = data[Header.header_size:] # Drop the first n bytes beloning to header
-		variable_list = struct.unpack('<fffffffffffflllBfffffffffffHHlllIQhf',telemetry_data)
+		variable_list = struct.unpack('<fffffffffffffffflllBfffffffffffHHlllIQhf',telemetry_data)
 		obj = Telemetry(header,*variable_list)
 		
 		return obj
@@ -158,7 +165,7 @@ class Telemetry(Packet):
 		#remove header variable
 		member_variables.pop("header")
 		
-		packet_bytes = struct.pack('<fffffffffffflllBfffffffffffHHlllIQhf',*(member_variables.values()))
+		packet_bytes = struct.pack('<fffffffffffffffflllBfffffffffffHHlllIQhf',*(member_variables.values()))
 
 		data_byte_arr += packet_bytes
 

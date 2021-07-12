@@ -6,6 +6,10 @@ import json
 import pandas as pd
 import matplotlib.pyplot as plt
 import time
+import matplotlib as mpl
+
+
+
 
 class Grapher():
     def __init__(self,args):
@@ -13,19 +17,26 @@ class Grapher():
         self.telemetry_timeseries = {}
         self.prev_telemetry_data = None
         self.updatedData = True
-        self.plot_data = ['ax','ay','az','gx','gy','gz','mx','my','mz','roll','pitch','yaw']
-        self.plot_data = ['roll','pitch','yaw']
-        self.plot_colors = ['red','green','blue']
+        #self.plot_data = ['ax','ay','az','gx','gy','gz','mx','my','mz','roll','pitch','yaw']
+        #self.plot_data = ['roll','pitch','yaw']
+        #self.plot_colors = ['red','green','blue']
+        self.plot_data = args["vars"]
+        if self.plot_data is []:
+            self.plot_data = ['roll','pitch','yaw']
 
         self.prevTime = 0
         self.updateDelta = .01
         self.history = 50
     
         #setup figures
+
+        
         
         plt.style.use('dark_background')
+        # Set the default color cycle
+        mpl.rcParams['axes.prop_cycle'] = mpl.cycler(color=['r','g','b','c','m','y']) 
         plt.ion()
-        self.fig = plt.figure(figsize=[12,10])
+        self.fig = plt.figure(figsize=[6,5])
         
         self.ax = self.fig.add_subplot(111)
         self.ax.grid(True,which='both',color='grey')
@@ -34,7 +45,7 @@ class Grapher():
         self.lines = []
 
         for idx,var in enumerate(self.plot_data):
-            line, = self.ax.plot([],[],linewidth = 1,label = var,color=self.plot_colors[idx])
+            line, = self.ax.plot([],[],linewidth = 1,label = var)
             #line, = self.ax.plot([],[],linewidth = 1,label = var)
             self.lines.append(line) 
 
@@ -95,7 +106,7 @@ class Grapher():
         self.ax.relim()
         #self.ax.set_xlim(left=self.telemetry_timeseries["system_time"][1], right=self.telemetry_timeseries["system_time"][-1])
         self.ax.autoscale_view()
-        
+        #self.ax.set_ylim(bottom=-3.2, top=3.2)
         self.fig.canvas.draw_idle()
         self.fig.canvas.flush_events()
 
@@ -104,6 +115,7 @@ if __name__ == "__main__":
     ap = argparse.ArgumentParser()
     ap.add_argument("--host", required=False, help="redis host", type=str,default = "localhost")
     ap.add_argument("--port", required=False, help="redis port", type=int,default = 6379)
+    ap.add_argument("--vars",nargs='+', required=False, help="plotting variables",type = str,default = ['roll','pitch','yaw'])
     args = vars(ap.parse_args())
     
     g = Grapher(args)

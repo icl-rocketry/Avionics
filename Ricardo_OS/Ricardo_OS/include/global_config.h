@@ -36,9 +36,9 @@
 //define max packet length on any interface in the network
 #define MAX_PACKET_LENGTH 256
 
-#define ACCEL_SCALE 2
+#define ACCEL_SCALE 16
 #define MAG_SCALE 12
-#define GYRO_SCALE 245
+#define GYRO_SCALE 2000
 
 //ArduinoJson
 #define ARDUINOJSON_ENABLE_COMMENTS 1

@@ -7,7 +7,7 @@ import json
 
 class TelemetryHandler(multiprocessing.Process):
     
-    def __init__(self,updateTimePeriod = 800e6,redishost = 'localhost',redisport = 6379,clientid = "LOCAL:TELEMETRYTASK"):
+    def __init__(self,updateTimePeriod = 100e6,redishost = 'localhost',redisport = 6379,clientid = "LOCAL:TELEMETRYTASK"):
         
         super(TelemetryHandler,self).__init__()
         self.prev_time = 0

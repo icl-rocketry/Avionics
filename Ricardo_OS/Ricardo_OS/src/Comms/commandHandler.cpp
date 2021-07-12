@@ -88,6 +88,11 @@ void CommandHandler::handleCommand(const CommandPacket &commandpacket) {
 					telemetry.pitch = _sm->estimator.state.eulerAngles(1);
 					telemetry.yaw =_sm->estimator.state.eulerAngles(2);
 
+					telemetry.q0 = _sm->estimator.state.orientation.w();
+					telemetry.q1 = _sm->estimator.state.orientation.x();
+					telemetry.q2 =_sm->estimator.state.orientation.y();
+					telemetry.q3 =_sm->estimator.state.orientation.z();
+
 					telemetry.lat = _sm->sensors.sensors_raw.gps_lat / 10000000.0;
 					telemetry.lng = _sm->sensors.sensors_raw.gps_long / 10000000.0;
 					telemetry.alt = _sm->sensors.sensors_raw.gps_alt;
@@ -205,7 +210,12 @@ void CommandHandler::handleCommand(const CommandPacket &commandpacket) {
 				_sm->tunezhandler.play(MELODY::CONFIRMATION); //play sound when complete
 				break;
 			case COMMANDS::Calibrate_Baro:
+				{
+				//set beta for testing
+				float beta = ((float)arg) / 100.0;
+				_sm->estimator.changeBeta(beta);
 				break;
+				}
 			case COMMANDS::Enter_USBMode:
 			//Transitions from pre-flight to USBMode,toggles debug flag in state machine							
 				_sm->changeState(new USBmode(_sm));

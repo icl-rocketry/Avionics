@@ -3,6 +3,7 @@
 #include <Arduino.h>
 #include "sensorStructs.h"
 #include "MadgwickAHRS.h"
+#include "localizationkf.h"
 //#include "sensors.h"
 
 enum class ESTIMATOR_STATE: uint8_t{
@@ -25,8 +26,9 @@ class Estimator{
         void setup();
         void update();
 
-        void setHome(); // zeros sensors and records the current position as the launch site
+        void setHome(); //records the current position as the launch site
         
+        void changeBeta(float beta); //remove this
 
         state_t state;
     private:
@@ -34,18 +36,24 @@ class Estimator{
         //time variables
         unsigned long last_update;
         unsigned long update_frequency;
-        
-        
 
+        bool _homeSet;
+        
+        
+        //ORIENTATION ESTIMATION
         Madgwick madgwick; // madgwick filter object
         const float g  = 9.81; //the gravity constant which really isnt constant but oh well
-        const Eigen::Matrix<float,3,1> gravity_vector{0,0,1};
-        //lsm9ds1 z axis points up 
-        //depending on the orientation of ricardo we may need to "flip "the gravitational vector
-        //if ric is oriented with imu facing upwards, gravity acts in the negative z direction
-        //hence we should add the gravity vector to remove gravtiy from the readings.
-        bool upsideDown = false;
-        float flipConstant;
+        //const Eigen::Matrix<float,3,1> gravity_vector{0,0,1};
+        const Eigen::Vector3f gravity_vector{0,0,1};
+        /**
+         * @brief Flip coordinate system
+         * 
+         */
+        bool _upsideDown = false;
+        float _flipConstant;
+        
+        //POSITION ESTIMATION
+        LocalizationKF localizationkf;
         
         //private methods
 
