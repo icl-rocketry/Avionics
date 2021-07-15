@@ -18,7 +18,7 @@ void LocalizationKF::setup(){
     P = Eigen::Matrix<float,6,6>::Identity(); // initialize as identity matrix for ease -> can update this later
 };
 
-void LocalizationKF::predict(const Eigen::Vector3f linear_acceleration,float dt){
+void LocalizationKF::predict(const Eigen::Vector3f& linear_acceleration,float dt){
     const Eigen::Matrix<float,6,6> A{{1, dt, 0, 0, 0, 0},
                                      {0, 1, 0, 0, 0, 0},
                                      {0, 0, 1, dt, 0, 0},
@@ -28,12 +28,12 @@ void LocalizationKF::predict(const Eigen::Vector3f linear_acceleration,float dt)
 
     const float dt2 = dt*dt;//temporary for readability
     const float dt3 = dt2*dt;
-    const Eigen::Matrix<float,6,3> B{{dt2/2, 0.0f, 0.0f},
-                                     {dt, 0.0f, 0.0f},
-                                     {0.0f, dt2/2, 0.0f},
-                                     {0.0f, dt, 0.0f},
-                                     {0.0f, 0.0f, dt2/2},
-                                     {0.0f, 0.0f,dt}}; // construct control sub matrix
+    const Eigen::Matrix<float,6,3> B{{dt2/2, 0, 0},
+                                     {dt, 0, 0},
+                                     {0, dt2/2, 0},
+                                     {0, dt, 0},
+                                     {0, 0, dt2/2},
+                                     {0, 0,dt}}; // construct control sub matrix
 
     //dt^4 terms are considered negligible so have been estimated as zero
     const Eigen::Matrix<float,6,6> Q = accelVariance * Eigen::Matrix<float,6,6> {{0, dt3/2, 0, 0, 0, 0},
@@ -67,7 +67,7 @@ void LocalizationKF::gpsUpdate(const long lat, const long lng, const long alt,co
     //Reisdual
     Eigen::Vector<float,6> Y_GPS = z-X;
     //State update
-    X = X + K_GPS*Y_GPS;
+    X = X + (K_GPS*Y_GPS);
     //Covariance update
     P = ( (Eigen::Matrix<float,6,6>::Identity() - K_GPS) * P * ((Eigen::Matrix<float,6,6>::Identity() - K_GPS).transpose()) ) + (K_GPS*R_GPS*K_GPS.transpose());
         

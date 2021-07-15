@@ -27,10 +27,10 @@ class LocalizationKF{
          * x=Ax+Bu
          * P_bar=APA'+Q
          * 
-         * @param linear_acceleration Acceleration in NED frame with gravtiy removed
+         * @param linear_acceleration Acceleration (ms-2) in NED frame with gravtiy removed
          * @param dt time step
          */
-        void predict(const Eigen::Vector3f linear_acceleration,float dt);
+        void predict(const Eigen::Vector3f& linear_acceleration,float dt);
         /**
          * @brief Add new gps measurement to position estimate
          * 
@@ -39,7 +39,7 @@ class LocalizationKF{
          * S=HP_barH'+R_gps
          * as H is the identiy matrix:
          * S=P_bar+R_gps
-         * 6,6,
+         * 
          * Kalman Gain:
          * K=P_barH'S^-1
          * Again as H is the identiy matrix:
@@ -76,7 +76,7 @@ class LocalizationKF{
          * @brief Add new baro measurement to position estimate
          * 
          */
-        void baroUpdate(); //not implemented yet
+        void baroUpdate(){}; //not implemented yet
 
         /**
          * @brief update the reference gps coordinates (the launch site)
@@ -107,8 +107,19 @@ class LocalizationKF{
                                                 (uint8_t)STATE::Vd});
                                                 };
 
+        /**
+         * @brief Get the relative NED coordinates from the reference point in m
+         * 
+         * @param lat Latitude in degrees
+         * @param lng Longitude in degrees
+         * @param alt Altitude in mm
+         * @return Eigen::Vector3f 
+         */
+        Eigen::Vector3f GPStoNED(const long lat, const long lng, const long alt);
+
     private:
         LogController& _logcontroller;
+
         /**
          * @brief State variable [pn, vn, pe, ve, pd, vd]
          * 
@@ -187,7 +198,7 @@ class LocalizationKF{
         const float degtorad = 0.01745329251;
 
         Eigen::Vector3f GPStoECEF(const long lat, const long lng, const long alt);
-        Eigen::Vector3f GPStoNED(const long lat, const long lng, const long alt);
+        
         
 
 

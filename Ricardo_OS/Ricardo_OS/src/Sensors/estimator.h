@@ -43,7 +43,6 @@ class Estimator{
         //ORIENTATION ESTIMATION
         Madgwick madgwick; // madgwick filter object
         const float g  = 9.81; //the gravity constant which really isnt constant but oh well
-        //const Eigen::Matrix<float,3,1> gravity_vector{0,0,1};
         const Eigen::Vector3f gravity_vector{0,0,1};
         /**
          * @brief Flip coordinate system

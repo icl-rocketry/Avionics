@@ -3,6 +3,7 @@
 #include "math.h"
 #include "Storage/utils.h"
 #include "flags.h"
+#include "Eigen/Eigen"
 
 
 Estimator::Estimator(stateMachine* sm):
@@ -21,6 +22,7 @@ void Estimator::setup(){
    }else{
       _flipConstant = 1;
    }
+   localizationkf.setup();
    
 };
 
@@ -50,7 +52,13 @@ void Estimator::update(){
          }
 
          if (_sm->systemstatus.flag_triggered(SYSTEM_FLAG::ERROR_BARO)){
-            //gps only update
+            //gps only update, no fusion
+            state.position = localizationkf.GPStoNED(_sm->sensors.sensors_raw.gps_lat,
+                                                     _sm->sensors.sensors_raw.gps_long,
+                                                     _sm->sensors.sensors_raw.gps_alt);
+            state.velocity = Eigen::Vector3f{_sm->sensors.sensors_raw.gps_v_n/1000.0f,
+                                             _sm->sensors.sensors_raw.gps_v_e/1000.0f,
+                                             _sm->sensors.sensors_raw.gps_v_d/1000.0f};
             changeEstimatorState(ESTIMATOR_STATE::PARTIAL_GPS,"no baro and imu, raw gps navigation solution");
             return;
          }
@@ -71,20 +79,43 @@ void Estimator::update(){
          return;
       }
 
+      localizationkf.predict((state.acceleration * g),dt);
+      
+
       if (_sm->systemstatus.flag_triggered(SYSTEM_FLAG::ERROR_GPS)){
          //baro only update
          changeEstimatorState(ESTIMATOR_STATE::PARTIAL_BARO_IMU,"no gps, only baro kf update");
+         state.position = localizationkf.getPosition();
+         state.velocity = localizationkf.getVelocity();
          return;
+      }else{
+         // if there is no error in the gps check if gps data is updated at perform kf update
+         if (_sm->sensors.sensors_raw.gps_updated){
+            localizationkf.gpsUpdate(_sm->sensors.sensors_raw.gps_lat,
+                                     _sm->sensors.sensors_raw.gps_long,
+                                     _sm->sensors.sensors_raw.gps_alt,
+                                     _sm->sensors.sensors_raw.gps_v_n,
+                                     _sm->sensors.sensors_raw.gps_v_e,
+                                     _sm->sensors.sensors_raw.gps_v_d);
+         }
       }
+      
 
       if (_sm->systemstatus.flag_triggered(SYSTEM_FLAG::ERROR_BARO)){
          //gps only update
          changeEstimatorState(ESTIMATOR_STATE::PARTIAL_GPS_IMU,"no baro, only gps kf update");
+         state.position = localizationkf.getPosition();
+         state.velocity = localizationkf.getVelocity();
          return;
+      }else{
+         //do baro update on kf -> also check there is a new reading to update with
+         localizationkf.baroUpdate();
       }
 
+      
       changeEstimatorState(ESTIMATOR_STATE::NOMINAL,"all data avaliable, full update");
-
+      state.position = localizationkf.getPosition();
+      state.velocity = localizationkf.getVelocity();
    }
     
 };
@@ -103,9 +134,7 @@ void Estimator::setHome(){
                            + utils::tostring(state.gps_launch_alt));
    //update reference coordinates in position estimation
    localizationkf.updateGPSReference(state.gps_launch_lat,state.gps_launch_long,state.gps_launch_alt);
-   
-
-   
+   localizationkf.setup(); // reinitialize the filter 
    _homeSet = true;
 }
 
