@@ -23,6 +23,7 @@ Written by the Electronics team, Imperial College London Rocketry
 
 #include "Sound/tunezHandler.h"
 
+#include "Events/flightVariableHandler.h"
 
 #include "SPI.h"
 #include "Wire.h"
@@ -47,6 +48,7 @@ class stateMachine {
     StorageController storagecontroller;
     LogController logcontroller;
 
+ 
     SystemStatus systemstatus;
     
     NetworkManager networkmanager;

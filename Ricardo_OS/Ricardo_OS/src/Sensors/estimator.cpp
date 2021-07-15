@@ -103,6 +103,7 @@ void Estimator::setHome(){
                            + utils::tostring(state.gps_launch_alt));
    //update reference coordinates in position estimation
    localizationkf.updateGPSReference(state.gps_launch_lat,state.gps_launch_long,state.gps_launch_alt);
+   
 
    
    _homeSet = true;

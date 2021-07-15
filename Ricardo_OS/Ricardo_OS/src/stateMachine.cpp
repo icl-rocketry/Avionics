@@ -65,6 +65,7 @@ void stateMachine::initialise(State* initStatePtr) {
   sensors.setup();
   estimator.setup();
 
+
   //sensors.callibrate(SENSOR::ACCELGYRO);
 
   //sensors.callibrate(SENSOR::MAG);
@@ -90,6 +91,7 @@ void stateMachine::update() {
   logcontroller.log(estimator.state,sensors.sensors_raw);// log new navigation solution and sensor output
   //check for new packets and process
   networkmanager.update();
+  
 
   
   //call update on state after new information has been processed

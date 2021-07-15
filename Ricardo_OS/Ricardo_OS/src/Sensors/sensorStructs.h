@@ -26,7 +26,7 @@ struct raw_measurements_t{
     
     //GPS RAW DATA
     long gps_lat,gps_long,gps_alt; // gps poisition -> 10E7 to avoid floating math - alitude in mm
-    long gps_v_n,gps_v_e,gps_v_d; // gps velocity
+    long gps_v_n,gps_v_e,gps_v_d; // gps velocity mm/s
     int gps_sat; // gps satilites
     uint16_t gps_pdop; // poisitonal dillution of precision * 10^-2
     /* 0 = no fix
