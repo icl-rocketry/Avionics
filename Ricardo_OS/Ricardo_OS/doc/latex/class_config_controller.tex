@@ -1,0 +1,123 @@
+\hypertarget{class_config_controller}{}\doxysection{Config\+Controller Class Reference}
+\label{class_config_controller}\index{ConfigController@{ConfigController}}
+
+
+{\ttfamily \#include $<$config\+Controller.\+h$>$}
+
+
+
+Collaboration diagram for Config\+Controller\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_config_controller__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_config_controller_aea4c122fd41980b5cafb553bc8d9d3d7}{Config\+Controller}} (\mbox{\hyperlink{class_storage_controller}{Storage\+Controller}} $\ast$storagecontroller, \mbox{\hyperlink{class_log_controller}{Log\+Controller}} $\ast$logcontroller)
+\item 
+void \mbox{\hyperlink{class_config_controller_ad6261f333580387e7c371a7700096e0e}{load}} ()
+\begin{DoxyCompactList}\small\item\em Load configuration and store in config\+Doc variable. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_config_controller_ac662e8c6ce1610847665b05360044334}{operator bool}} ()
+\begin{DoxyCompactList}\small\item\em Check if config was read correctly. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+Dynamic\+Json\+Document \mbox{\hyperlink{class_config_controller_a86d1151331aafed4e6eeb3bade006465}{config\+Doc}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_storage_controller}{Storage\+Controller}} $\ast$ \mbox{\hyperlink{class_config_controller_a6af8c4054d18a3ad4f81257713db77a6}{\+\_\+storagecontroller}}
+\item 
+\mbox{\hyperlink{class_log_controller}{Log\+Controller}} $\ast$ \mbox{\hyperlink{class_config_controller_a1be953788e4b906fe89f48c0b6ea26ce}{\+\_\+logcontroller}}
+\item 
+const std\+::string \mbox{\hyperlink{class_config_controller_afc578dea527fc9deb906bd1a150bb730}{configuration\+\_\+file\+\_\+path}} = \char`\"{}/Configuration/rml.\+jsonc\char`\"{}
+\item 
+bool \mbox{\hyperlink{class_config_controller_abb5b6a866ce6ca96a3ce6cb15e8bba8a}{\+\_\+config\+OK}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_config_controller_aea4c122fd41980b5cafb553bc8d9d3d7}\label{class_config_controller_aea4c122fd41980b5cafb553bc8d9d3d7}} 
+\index{ConfigController@{ConfigController}!ConfigController@{ConfigController}}
+\index{ConfigController@{ConfigController}!ConfigController@{ConfigController}}
+\doxysubsubsection{\texorpdfstring{ConfigController()}{ConfigController()}}
+{\footnotesize\ttfamily Config\+Controller\+::\+Config\+Controller (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_storage_controller}{Storage\+Controller}} $\ast$}]{storagecontroller,  }\item[{\mbox{\hyperlink{class_log_controller}{Log\+Controller}} $\ast$}]{logcontroller }\end{DoxyParamCaption})}
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_config_controller_ad6261f333580387e7c371a7700096e0e}\label{class_config_controller_ad6261f333580387e7c371a7700096e0e}} 
+\index{ConfigController@{ConfigController}!load@{load}}
+\index{load@{load}!ConfigController@{ConfigController}}
+\doxysubsubsection{\texorpdfstring{load()}{load()}}
+{\footnotesize\ttfamily void Config\+Controller\+::load (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Load configuration and store in config\+Doc variable. 
+
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_config_controller_ad6261f333580387e7c371a7700096e0e_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_config_controller_ac662e8c6ce1610847665b05360044334}\label{class_config_controller_ac662e8c6ce1610847665b05360044334}} 
+\index{ConfigController@{ConfigController}!operator bool@{operator bool}}
+\index{operator bool@{operator bool}!ConfigController@{ConfigController}}
+\doxysubsubsection{\texorpdfstring{operator bool()}{operator bool()}}
+{\footnotesize\ttfamily Config\+Controller\+::operator bool (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Check if config was read correctly. 
+
+\begin{DoxyReturn}{Returns}
+true 
+
+false 
+\end{DoxyReturn}
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{class_config_controller_abb5b6a866ce6ca96a3ce6cb15e8bba8a}\label{class_config_controller_abb5b6a866ce6ca96a3ce6cb15e8bba8a}} 
+\index{ConfigController@{ConfigController}!\_configOK@{\_configOK}}
+\index{\_configOK@{\_configOK}!ConfigController@{ConfigController}}
+\doxysubsubsection{\texorpdfstring{\_configOK}{\_configOK}}
+{\footnotesize\ttfamily bool Config\+Controller\+::\+\_\+config\+OK\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{class_config_controller_a1be953788e4b906fe89f48c0b6ea26ce}\label{class_config_controller_a1be953788e4b906fe89f48c0b6ea26ce}} 
+\index{ConfigController@{ConfigController}!\_logcontroller@{\_logcontroller}}
+\index{\_logcontroller@{\_logcontroller}!ConfigController@{ConfigController}}
+\doxysubsubsection{\texorpdfstring{\_logcontroller}{\_logcontroller}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_log_controller}{Log\+Controller}}$\ast$ Config\+Controller\+::\+\_\+logcontroller\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{class_config_controller_a6af8c4054d18a3ad4f81257713db77a6}\label{class_config_controller_a6af8c4054d18a3ad4f81257713db77a6}} 
+\index{ConfigController@{ConfigController}!\_storagecontroller@{\_storagecontroller}}
+\index{\_storagecontroller@{\_storagecontroller}!ConfigController@{ConfigController}}
+\doxysubsubsection{\texorpdfstring{\_storagecontroller}{\_storagecontroller}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_storage_controller}{Storage\+Controller}}$\ast$ Config\+Controller\+::\+\_\+storagecontroller\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{class_config_controller_a86d1151331aafed4e6eeb3bade006465}\label{class_config_controller_a86d1151331aafed4e6eeb3bade006465}} 
+\index{ConfigController@{ConfigController}!configDoc@{configDoc}}
+\index{configDoc@{configDoc}!ConfigController@{ConfigController}}
+\doxysubsubsection{\texorpdfstring{configDoc}{configDoc}}
+{\footnotesize\ttfamily Dynamic\+Json\+Document Config\+Controller\+::config\+Doc}
+
+\mbox{\Hypertarget{class_config_controller_afc578dea527fc9deb906bd1a150bb730}\label{class_config_controller_afc578dea527fc9deb906bd1a150bb730}} 
+\index{ConfigController@{ConfigController}!configuration\_file\_path@{configuration\_file\_path}}
+\index{configuration\_file\_path@{configuration\_file\_path}!ConfigController@{ConfigController}}
+\doxysubsubsection{\texorpdfstring{configuration\_file\_path}{configuration\_file\_path}}
+{\footnotesize\ttfamily const std\+::string Config\+Controller\+::configuration\+\_\+file\+\_\+path = \char`\"{}/Configuration/rml.\+jsonc\char`\"{}\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+/\+Users/kiran/\+Documents/\+Projects/\+ICLR/\+Avionics/\+Ricardo\+\_\+\+OS/\+Ricardo\+\_\+\+OS/src/\+Storage/\mbox{\hyperlink{config_controller_8h}{config\+Controller.\+h}}\item 
+/\+Users/kiran/\+Documents/\+Projects/\+ICLR/\+Avionics/\+Ricardo\+\_\+\+OS/\+Ricardo\+\_\+\+OS/src/\+Storage/\mbox{\hyperlink{config_controller_8cpp}{config\+Controller.\+cpp}}\end{DoxyCompactItemize}

@@ -1,0 +1,69 @@
+\hypertarget{log_controller_8h}{}\doxysection{/\+Users/kiran/\+Documents/\+Projects/\+ICLR/\+Avionics/\+Ricardo\+\_\+\+OS/\+Ricardo\+\_\+\+OS/src/\+Storage/log\+Controller.h File Reference}
+\label{log_controller_8h}\index{/Users/kiran/Documents/Projects/ICLR/Avionics/Ricardo\_OS/Ricardo\_OS/src/Storage/logController.h@{/Users/kiran/Documents/Projects/ICLR/Avionics/Ricardo\_OS/Ricardo\_OS/src/Storage/logController.h}}
+{\ttfamily \#include $<$Arduino.\+h$>$}\newline
+{\ttfamily \#include \char`\"{}Sensors/sensor\+Structs.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}logframe.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}Comms/packets.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}storage\+Controller.\+h\char`\"{}}\newline
+{\ttfamily \#include $<$vector$>$}\newline
+{\ttfamily \#include $<$string$>$}\newline
+{\ttfamily \#include \char`\"{}flags.\+h\char`\"{}}\newline
+{\ttfamily \#include $<$array$>$}\newline
+{\ttfamily \#include \char`\"{}Loggers/logger.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}Loggers/telemetry\+Logger.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}Loggers/system\+Logger.\+h\char`\"{}}\newline
+Include dependency graph for log\+Controller.\+h\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{log_controller_8h__incl}
+\end{center}
+\end{figure}
+This graph shows which files directly or indirectly include this file\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{log_controller_8h__dep__incl}
+\end{center}
+\end{figure}
+\doxysubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \mbox{\hyperlink{class_log_controller}{Log\+Controller}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+enum class \mbox{\hyperlink{log_controller_8h_a3fe34aa18aae383b0dedd08b476f3844}{LOG\+\_\+\+TYPE}} \+: uint8\+\_\+t \{ \mbox{\hyperlink{log_controller_8h_a3fe34aa18aae383b0dedd08b476f3844abb3d2d909c73fe49800949a344775f8b}{TELEMETRY}} = 0
+, \mbox{\hyperlink{log_controller_8h_a3fe34aa18aae383b0dedd08b476f3844afa177138f94a7ea01f549b1aa7893d03}{SYSTEM}} = 1
+, \mbox{\hyperlink{log_controller_8h_a3fe34aa18aae383b0dedd08b476f3844a25835188a2355e9530d3a10fcbe4c65b}{NETWORK}} = 2
+, \mbox{\hyperlink{log_controller_8h_a3fe34aa18aae383b0dedd08b476f3844a5fb1f955b45e38e31789286a1790398d}{ALL}}
+ \}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Enumeration Type Documentation}
+\mbox{\Hypertarget{log_controller_8h_a3fe34aa18aae383b0dedd08b476f3844}\label{log_controller_8h_a3fe34aa18aae383b0dedd08b476f3844}} 
+\index{logController.h@{logController.h}!LOG\_TYPE@{LOG\_TYPE}}
+\index{LOG\_TYPE@{LOG\_TYPE}!logController.h@{logController.h}}
+\doxysubsubsection{\texorpdfstring{LOG\_TYPE}{LOG\_TYPE}}
+{\footnotesize\ttfamily enum \mbox{\hyperlink{log_controller_8h_a3fe34aa18aae383b0dedd08b476f3844}{LOG\+\_\+\+TYPE}} \+: uint8\+\_\+t\hspace{0.3cm}{\ttfamily [strong]}}
+
+\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{TELEMETRY@{TELEMETRY}!logController.h@{logController.h}}\index{logController.h@{logController.h}!TELEMETRY@{TELEMETRY}}}\mbox{\Hypertarget{log_controller_8h_a3fe34aa18aae383b0dedd08b476f3844abb3d2d909c73fe49800949a344775f8b}\label{log_controller_8h_a3fe34aa18aae383b0dedd08b476f3844abb3d2d909c73fe49800949a344775f8b}} 
+TELEMETRY&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{SYSTEM@{SYSTEM}!logController.h@{logController.h}}\index{logController.h@{logController.h}!SYSTEM@{SYSTEM}}}\mbox{\Hypertarget{log_controller_8h_a3fe34aa18aae383b0dedd08b476f3844afa177138f94a7ea01f549b1aa7893d03}\label{log_controller_8h_a3fe34aa18aae383b0dedd08b476f3844afa177138f94a7ea01f549b1aa7893d03}} 
+SYSTEM&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{NETWORK@{NETWORK}!logController.h@{logController.h}}\index{logController.h@{logController.h}!NETWORK@{NETWORK}}}\mbox{\Hypertarget{log_controller_8h_a3fe34aa18aae383b0dedd08b476f3844a25835188a2355e9530d3a10fcbe4c65b}\label{log_controller_8h_a3fe34aa18aae383b0dedd08b476f3844a25835188a2355e9530d3a10fcbe4c65b}} 
+NETWORK&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{ALL@{ALL}!logController.h@{logController.h}}\index{logController.h@{logController.h}!ALL@{ALL}}}\mbox{\Hypertarget{log_controller_8h_a3fe34aa18aae383b0dedd08b476f3844a5fb1f955b45e38e31789286a1790398d}\label{log_controller_8h_a3fe34aa18aae383b0dedd08b476f3844a5fb1f955b45e38e31789286a1790398d}} 
+ALL&\\
+\hline
+
+\end{DoxyEnumFields}

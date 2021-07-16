@@ -1,0 +1,7 @@
+<map id="TelemetryLogger::disable" name="TelemetryLogger::disable">
+<area shape="rect" id="node1" title=" " alt="" coords="420,78,587,105"/>
+<area shape="rect" id="node2" href="$class_log_controller.html#a227e6dd10229ad5e5e91c47c88955958" title=" " alt="" coords="195,78,372,105"/>
+<area shape="rect" id="node3" href="$class_storage_controller.html#a8d50450acbe1b423a367b13d17f4d375" title="Erases only &quot;/Logs&quot; directory on specified device." alt="" coords="11,5,141,47"/>
+<area shape="rect" id="node4" href="$class_storage_controller.html#adcf3f7a86a931310469a71a8ed4aa6bb" title="Format given device." alt="" coords="11,71,141,112"/>
+<area shape="rect" id="node5" href="$class_storage_controller.html#a133cf5b82ad976cb324e06742538daa8" title=" " alt="" coords="5,137,147,163"/>
+</map>

@@ -48,10 +48,10 @@ Distributed as-is; no warranty is given.
 #define SENSITIVITY_MAGNETOMETER_12  0.00043
 #define SENSITIVITY_MAGNETOMETER_16  0.00058
 
-LSM9DS1::LSM9DS1(SPIClass *_spi)
+LSM9DS1::LSM9DS1(SPIClass *_spi):spi(_spi)
 {
-	spi = _spi;
 }
+LSM9DS1::LSM9DS1(){};
 
 void LSM9DS1::init()
 {
@@ -210,6 +210,51 @@ uint16_t LSM9DS1::beginSPI(uint8_t sck, uint8_t miso, uint8_t mosi, uint8_t ag_C
 	
 	// Now, initialize our hardware interface.
 	initSPI(sck, miso, mosi);	// Initialize SPI
+		
+	// To verify communication, we can read from the WHO_AM_I register of
+	// each device. Store those in a variable so we can return them.
+	uint8_t mTest = mReadByte(WHO_AM_I_M);		// Read the gyro WHO_AM_I
+	uint8_t xgTest = xgReadByte(WHO_AM_I_XG);	// Read the accel/mag WHO_AM_I
+	uint16_t whoAmICombined = (xgTest << 8) | mTest;
+	
+	if (whoAmICombined != ((WHO_AM_I_AG_RSP << 8) | WHO_AM_I_M_RSP))
+		return 0;
+	
+	// Gyro initialization stuff:
+	initGyro();	// This will "turn on" the gyro. Setting up interrupts, etc.
+	
+	// Accelerometer initialization stuff:
+	initAccel(); // "Turn on" all axes of the accel. Set up interrupts, etc.
+	
+	// Magnetometer initialization stuff:
+	initMag(); // "Turn on" all axes of the mag. Set up interrupts, etc.
+
+	// Once everything is initialized, return the WHO_AM_I registers we read:
+	return whoAmICombined;
+}
+
+uint16_t LSM9DS1::beginSPI(uint8_t ag_CS_pin, uint8_t m_CS_pin)
+{
+	// Set device settings, they are used in many other places
+	settings.device.commInterface = IMU_MODE_SPI;
+	settings.device.agAddress = ag_CS_pin;
+	settings.device.mAddress = m_CS_pin;	
+	
+	//! Todo: don't use _xgAddress or _mAddress, duplicating memory
+	_xgAddress = settings.device.agAddress;
+	_mAddress = settings.device.mAddress;
+	
+	init();
+	
+	constrainScales();
+	// Once we have the scale values, we can calculate the resolution
+	// of each sensor. That's what these functions are for. One for each sensor
+	calcgRes(); // Calculate DPS / ADC tick, stored in gRes variable
+	calcmRes(); // Calculate Gs / ADC tick, stored in mRes variable
+	calcaRes(); // Calculate g / ADC tick, stored in aRes variable
+	
+	// Now, initialize our hardware interface.
+	//initSPI(sck, miso, mosi);	// Initialize SPI
 		
 	// To verify communication, we can read from the WHO_AM_I register of
 	// each device. Store those in a variable so we can return them.

@@ -1,0 +1,152 @@
+\hypertarget{class_pyro_event}{}\doxysection{Pyro\+Event Class Reference}
+\label{class_pyro_event}\index{PyroEvent@{PyroEvent}}
+
+
+This represents an event which triggers a pyro directly such as main chutes.  
+
+
+
+
+{\ttfamily \#include $<$event.\+h$>$}
+
+
+
+Inheritance diagram for Pyro\+Event\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=142pt]{class_pyro_event__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Pyro\+Event\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_pyro_event__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_pyro_event_ae8afbc20296b9f352bcd356e0b13301d}{Pyro\+Event}} (uint8\+\_\+t id, std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{class_condition}{Condition}} $>$ cond, bool single\+Fire, uint8\+\_\+t event\+ID, \mbox{\hyperlink{class_pyro_handler}{Pyro\+Handler}} $\ast$pyrohandler, \mbox{\hyperlink{class_log_controller}{Log\+Controller}} $\ast$logcontroller)
+\begin{DoxyCompactList}\small\item\em Construct a new \mbox{\hyperlink{class_pyro}{Pyro}} \mbox{\hyperlink{class_event}{Event}} object. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_pyro_event_aa43cd49b5994a44d3ff1f082df1f6ea1}{update}} ()
+\item 
+uint32\+\_\+t \mbox{\hyperlink{class_pyro_event_a2114a6006c9b28672bf3a70b897eca8c}{time\+Triggered}} ()
+\end{DoxyCompactItemize}
+\doxysubsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{class_pyro_event_abe64862e07805608e2bf1b3d6a0e4e18}{\+\_\+execute}} ()
+\begin{DoxyCompactList}\small\item\em virtual action function for event \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_pyro_handler}{Pyro\+Handler}} $\ast$ \mbox{\hyperlink{class_pyro_event_aa25e8f5e721d135c6c391f0ce7ec2e3d}{\+\_\+pyrohandler}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+This represents an event which triggers a pyro directly such as main chutes. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_pyro_event_ae8afbc20296b9f352bcd356e0b13301d}\label{class_pyro_event_ae8afbc20296b9f352bcd356e0b13301d}} 
+\index{PyroEvent@{PyroEvent}!PyroEvent@{PyroEvent}}
+\index{PyroEvent@{PyroEvent}!PyroEvent@{PyroEvent}}
+\doxysubsubsection{\texorpdfstring{PyroEvent()}{PyroEvent()}}
+{\footnotesize\ttfamily Pyro\+Event\+::\+Pyro\+Event (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{id,  }\item[{std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{class_condition}{Condition}} $>$}]{cond,  }\item[{bool}]{single\+Fire,  }\item[{uint8\+\_\+t}]{event\+ID,  }\item[{\mbox{\hyperlink{class_pyro_handler}{Pyro\+Handler}} $\ast$}]{pyrohandler,  }\item[{\mbox{\hyperlink{class_log_controller}{Log\+Controller}} $\ast$}]{logcontroller }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Construct a new \mbox{\hyperlink{class_pyro}{Pyro}} \mbox{\hyperlink{class_event}{Event}} object. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em id} & \mbox{\hyperlink{class_pyro}{Pyro}} interface ID \\
+\hline
+{\em cond} & \mbox{\hyperlink{class_condition}{Condition}} Object \\
+\hline
+{\em single\+Fire} & Can this event fire multiple times \\
+\hline
+{\em event\+ID} & \mbox{\hyperlink{class_event}{Event}} ID \\
+\hline
+{\em pyrohandler} & pointer to pyrohandler \\
+\hline
+{\em logcontroller} & pointer to log controller \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_pyro_event_abe64862e07805608e2bf1b3d6a0e4e18}\label{class_pyro_event_abe64862e07805608e2bf1b3d6a0e4e18}} 
+\index{PyroEvent@{PyroEvent}!\_execute@{\_execute}}
+\index{\_execute@{\_execute}!PyroEvent@{PyroEvent}}
+\doxysubsubsection{\texorpdfstring{\_execute()}{\_execute()}}
+{\footnotesize\ttfamily void Pyro\+Event\+::\+\_\+execute (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}, {\ttfamily [virtual]}}
+
+
+
+virtual action function for event 
+
+
+
+Implements \mbox{\hyperlink{class_event_a2e507736868dd4d8c5f9f23dc9a09693}{Event}}.
+
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_pyro_event_abe64862e07805608e2bf1b3d6a0e4e18_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_pyro_event_a2114a6006c9b28672bf3a70b897eca8c}\label{class_pyro_event_a2114a6006c9b28672bf3a70b897eca8c}} 
+\index{PyroEvent@{PyroEvent}!timeTriggered@{timeTriggered}}
+\index{timeTriggered@{timeTriggered}!PyroEvent@{PyroEvent}}
+\doxysubsubsection{\texorpdfstring{timeTriggered()}{timeTriggered()}}
+{\footnotesize\ttfamily uint32\+\_\+t Pyro\+Event\+::time\+Triggered (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Reimplemented from \mbox{\hyperlink{class_event_a879efc3a72eb5fd9468d318acd0476bf}{Event}}.
+
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_pyro_event_a2114a6006c9b28672bf3a70b897eca8c_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_pyro_event_aa43cd49b5994a44d3ff1f082df1f6ea1}\label{class_pyro_event_aa43cd49b5994a44d3ff1f082df1f6ea1}} 
+\index{PyroEvent@{PyroEvent}!update@{update}}
+\index{update@{update}!PyroEvent@{PyroEvent}}
+\doxysubsubsection{\texorpdfstring{update()}{update()}}
+{\footnotesize\ttfamily void Pyro\+Event\+::update (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Reimplemented from \mbox{\hyperlink{class_event_a104089a099a45971f10fdf7eaf5654f4}{Event}}.
+
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_pyro_event_aa43cd49b5994a44d3ff1f082df1f6ea1_cgraph}
+\end{center}
+\end{figure}
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{class_pyro_event_aa25e8f5e721d135c6c391f0ce7ec2e3d}\label{class_pyro_event_aa25e8f5e721d135c6c391f0ce7ec2e3d}} 
+\index{PyroEvent@{PyroEvent}!\_pyrohandler@{\_pyrohandler}}
+\index{\_pyrohandler@{\_pyrohandler}!PyroEvent@{PyroEvent}}
+\doxysubsubsection{\texorpdfstring{\_pyrohandler}{\_pyrohandler}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_pyro_handler}{Pyro\+Handler}}$\ast$ Pyro\+Event\+::\+\_\+pyrohandler\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+/\+Users/kiran/\+Documents/\+Projects/\+ICLR/\+Avionics/\+Ricardo\+\_\+\+OS/\+Ricardo\+\_\+\+OS/src/\+Events/\mbox{\hyperlink{event_8h}{event.\+h}}\item 
+/\+Users/kiran/\+Documents/\+Projects/\+ICLR/\+Avionics/\+Ricardo\+\_\+\+OS/\+Ricardo\+\_\+\+OS/src/\+Events/\mbox{\hyperlink{event_8cpp}{event.\+cpp}}\end{DoxyCompactItemize}

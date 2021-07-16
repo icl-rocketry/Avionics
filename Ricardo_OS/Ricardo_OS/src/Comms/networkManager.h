@@ -18,6 +18,7 @@
 #include "States/groundstation.h"
 
 #include <memory>
+#include <vector>
 
 
 
@@ -25,11 +26,9 @@
 class stateMachine;//forward declaration to prevent circular dependancy
 
 
-class NetworkManager{
-    //give these particular states rights to change node type
 
-    friend class Preflight;
-    friend class Groundstation;
+
+class NetworkManager{
 
     public:
         NetworkManager(stateMachine* sm);
@@ -37,38 +36,34 @@ class NetworkManager{
         void setup();
         void update();
         
-        void send_to_node(Nodes destination,uint8_t* data,size_t len);
-        void send_packet(Interface iface,uint8_t* data, size_t len);
+        void send_to_node(NODES destination,std::vector<uint8_t> &data);
+        void send_packet(INTERFACE iface,std::vector<uint8_t> &data);
 
-        //add command 
-        void add_command(Nodes source_node, uint32_t command);
+        uint8_t getNodeType(){return static_cast<uint8_t>(_nodeType);};
+        void changeNodeType(NODES node){_nodeType = node;};
 
-        int get_node_type();
+        std::vector<double> getInterfaceInfo(INTERFACE interface);
 
-    protected:
-        //variable to tell network manager the current type of node
-        Nodes node_type;
 
     private:
         stateMachine* _sm; //pointer to state machine
 
-
-        std::vector<std::shared_ptr<uint8_t>> _global_packet_buffer; //packet buffer containing all network packets received
-        std::vector<std::shared_ptr<uint8_t>> _local_packet_buffer; //packet buffer containing packets meant for this node
+        std::vector<std::unique_ptr<std::vector<uint8_t> > > _packetBuffer; //packet buffer containing all network packets received
         
-
-        USB usbserial; //usb serial object
-        Radio radio; // lora radio object
-        
+     
+        RoutingTable routingtable;
+         
         //objects to process commands
         CommandHandler commandhandler;
+
+        //interfaces
+        USB usbserial; //usb serial object
+        Radio radio; // lora radio object
+
+       
+        NODES _nodeType;
         
-        void process_global_packets();
-        void process_local_packets();
-        
-
-
-
+        void process_packets();
 
 };
 

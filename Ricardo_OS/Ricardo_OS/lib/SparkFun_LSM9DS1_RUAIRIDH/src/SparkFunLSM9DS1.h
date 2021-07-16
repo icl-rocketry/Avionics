@@ -71,6 +71,7 @@ public:
 	//	- mAddr = If IMU_MODE_I2C, this is the I2C address of the magnetometer.
 	//				If IMU_MODE_SPI, this is the cs pin of the magnetometer (CS_M)
 	LSM9DS1(SPIClass *_spi);
+	LSM9DS1();
 		
 	// begin() and beginSPI() -- Initialize the gyro, accelerometer, and magnetometer.
 	// This will set up the scale and output rate of each sensor. The values set
@@ -85,7 +86,8 @@ public:
 	//   **For SPI use "beginSPI()", and only send first two address arguments.
 	uint16_t begin(uint8_t agAddress = LSM9DS1_AG_ADDR(1), uint8_t mAddress = LSM9DS1_M_ADDR(1), TwoWire &wirePort = Wire); //By default use the default I2C addres, and use Wire port
 	uint16_t beginSPI(uint8_t sck, uint8_t miso, uint8_t mosi, uint8_t ag_CS_pin, uint8_t m_CS_pin);
-	
+	uint16_t beginSPI(uint8_t ag_CS_pin, uint8_t m_CS_pin);
+
 	void calibrate(bool autoCalc = true);
 	void calibrateMag(bool loadIn = true);
 	void magOffset(uint8_t axis, int16_t offset);

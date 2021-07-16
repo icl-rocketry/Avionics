@@ -8,13 +8,26 @@
 #ifndef PINS_H
 #define PINS_H
 
+//#define JTAG
+
+
 #define Buzzer 2
 #define LoraReset 4
 #define LoraCs 5
-#define ImuCs 12
-#define BaroCs 13
-#define MagCs 14
-#define FlashCs 15
+
+
+#ifdef JTAG
+    #define ImuCs 34
+    #define BaroCs 35
+    #define MagCs 27
+    #define FlashCs 26
+#else
+    #define ImuCs 12
+    #define BaroCs 13
+    #define MagCs 14
+    #define FlashCs 15
+#endif // JTAG
+
 #define RxRadio 16
 #define TxRadio 17
 #define _SCLK 18

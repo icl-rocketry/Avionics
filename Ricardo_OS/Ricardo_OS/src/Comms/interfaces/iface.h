@@ -2,18 +2,22 @@
 #ifndef IFACE_H
 #define IFACE_H
 #include <Arduino.h>
-
+#include <vector>
 #include <memory>
+#include "interfaces.h"
 
 
 class Iface{
     public:
         virtual void setup();
-        virtual void send_packet(uint8_t* txpacket, size_t packet_len);
-        virtual void get_packet(std::vector<std::shared_ptr<uint8_t>> *buf);//update function 
-    
-    
+        virtual void send_packet(std::vector<uint8_t> &data);
+        virtual void update();
+        virtual ~Iface() = 0;
+    protected:
+        void updateSourceInterface(std::vector<uint8_t> &packet_data,std::vector<uint8_t> &destination,INTERFACE interface);
 
 };
+
+
 
 #endif

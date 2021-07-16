@@ -1,0 +1,12 @@
+<map id="NetworkManager::setup" name="NetworkManager::setup">
+<area shape="rect" id="node1" title=" " alt="" coords="5,103,167,130"/>
+<area shape="rect" id="node2" href="$class_radio.html#a46f079f86ab0e7e83a4521c35eaa9aff" title=" " alt="" coords="215,78,311,105"/>
+<area shape="rect" id="node10" href="$class_u_s_b.html#ac1ff137bb999158ee6266ec936665399" title=" " alt="" coords="217,129,308,155"/>
+<area shape="rect" id="node3" href="$class_system_status.html#a881b11600f6b3a9dcd5520e8ada5600b" title=" " alt="" coords="383,5,531,47"/>
+<area shape="rect" id="node8" href="$class_system_status.html#a4638eb12ce2ba755b6075ffc343352a3" title=" " alt="" coords="390,71,525,112"/>
+<area shape="rect" id="node9" href="$class_system_status.html#a7857d2fb6cda9d3c0aba6bf2a9592169" title=" " alt="" coords="359,137,556,163"/>
+<area shape="rect" id="node4" href="$class_log_controller.html#adb94b2720224b121ac8487c7c0e04ffc" title=" " alt="" coords="604,75,728,102"/>
+<area shape="rect" id="node5" href="$class_telemetry_logger.html#af01a5e0f381d60d53d2c08ddad37ca07" title=" " alt="" coords="776,75,919,102"/>
+<area shape="rect" id="node6" href="$classtelemetry__logframe.html#add67dbfbf886bf1b322628962a03c0de" title=" " alt="" coords="967,68,1100,109"/>
+<area shape="rect" id="node7" href="$classtelemetry__logframe.html#ad8ce2864d5faaf045a0ff812c029a4b4" title=" " alt="" coords="1148,68,1281,109"/>
+</map>

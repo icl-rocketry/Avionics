@@ -1,41 +1,101 @@
 /* 
+Inital State machine framework written by Daniele Bella <3
 Code used to process states, and the transitions between them, contains parent class for states
 
 Written by the Electronics team, Imperial College London Rocketry
 */
 
 #include "stateMachine.h"
+#include <string>
+#include <vector>
+
+#include "States/state.h"
+
+#include "Storage/systemstatus.h"
+
+#include "Storage/logController.h"
+#include "Storage/storageController.h"
+#include "Storage/configController.h"
+
+
+#include "Sensors/estimator.h"
+#include "Comms/networkManager.h"
+#include "Sensors/sensors.h"
+
+#include "Sound/tunezHandler.h"
+
+
+#include "SPI.h"
+#include "Wire.h"
+
+
+
+
 
 stateMachine::stateMachine() : 
     vspi(VSPI),
     I2C(0),
-    systemstatus(),
+    storagecontroller(this),
+    logcontroller(&storagecontroller),
+    systemstatus(&logcontroller),
+    networkmanager(this),
     sensors(this),
-    estimator(this),
-    networkmanager(this)
-    
+    estimator(this)    
 {};
 
 
 void stateMachine::initialise(State* initStatePtr) {
+
+  
+
+  // call tunez handler setup first so we can provide startup tone and auditory cues asap
+  tunezhandler.setup();
   //call setup state before callng individual setups
   changeState(initStatePtr);
-  //setup classes 
+  //setup storage and logging so any erros encoutered can be logged
+  storagecontroller.setup();
+  logcontroller.setup();
+
+  // create config controller object
+  ConfigController configcontroller(&storagecontroller,&logcontroller); 
+  configcontroller.load(); // load configuration from sd card into ram
+  //setup network manager so communication is running
+  networkmanager.setup();
+  //sensors must be setup before estimator
   sensors.setup();
   estimator.setup();
-  networkmanager.setup();
+
+
+  //sensors.callibrate(SENSOR::ACCELGYRO);
+
+  //sensors.callibrate(SENSOR::MAG);
+
+ 
+
+  
   
 };
 
 void stateMachine::update() {
-  //call update in classes before state update method so state has most recent information
+  //call udpate on tunez handler
+
+  tunezhandler.update();
+
+  //write logs to file 
+  logcontroller.update();
+
+  //request new sensor data
   sensors.update();
+  //process updated sensor data
   estimator.update();
-
+  logcontroller.log(estimator.state,sensors.sensors_raw);// log new navigation solution and sensor output
+  //check for new packets and process
   networkmanager.update();
+  
 
-
-  State* newStatePtr = _currStatePtr -> update();
+  
+  //call update on state after new information has been processed
+  State* newStatePtr = _currStatePtr->update();
 
   if (newStatePtr != _currStatePtr) {
     changeState(newStatePtr);
@@ -53,7 +113,7 @@ void stateMachine::changeState(State* newStatePtr) {
   delete _currStatePtr;
   
   _currStatePtr = newStatePtr;
-  _currStatePtr -> initialise();
+  _currStatePtr->initialise();
 
 
 

@@ -1,0 +1,25 @@
+Metadata-Version: 2.1
+Name: simple-websocket
+Version: 0.2.0
+Summary: Simple WebSocket server and client for Python
+Home-page: https://github.com/miguelgrinberg/simple-websocket
+Author: Miguel Grinberg
+Author-email: miguel.grinberg@gmail.com
+License: UNKNOWN
+Project-URL: Bug Tracker, https://github.com/miguelgrinberg/simple-websocket/issues
+Platform: UNKNOWN
+Classifier: Environment :: Web Environment
+Classifier: Intended Audience :: Developers
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Requires-Python: >=3.6
+Description-Content-Type: text/markdown
+Requires-Dist: wsproto
+
+simple-websocket
+================
+
+Simple WebSocket server and client for Python.
+
+

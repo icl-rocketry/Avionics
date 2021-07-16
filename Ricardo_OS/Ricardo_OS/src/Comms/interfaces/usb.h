@@ -6,19 +6,21 @@
 
 #include "../packets.h"
 
-#include "Logging/systemstatus.h"
+#include "Storage/systemstatus.h"
 
 #include <memory>
+#include <vector>
+#include <array>
 
 
 
 class USB: public Iface{
 
     public:
-        USB(Stream* stream,SystemStatus* systemstatus);
+        USB(Stream* stream,SystemStatus* systemstatus,std::vector<std::unique_ptr<std::vector<uint8_t> > >& buf);
         void setup();
-        void send_packet(uint8_t* data , size_t size);
-        void get_packet(std::vector<std::shared_ptr<uint8_t>> *buf);
+        void send_packet(std::vector<uint8_t> &data);
+        void update();
 
 
 
@@ -26,19 +28,24 @@ class USB: public Iface{
         Stream* _stream; // pointer to stream interface
         SystemStatus* _systemstatus; //pointer to system status object
 
+        std::vector<std::unique_ptr<std::vector<uint8_t> > >& _packetBuffer;
+
         bool _incompletePacketReceived;
         uint8_t _firstByte;
 
-        //byte array to store first 8 bytes of incoming packet for decoding
-        uint8_t _tmp_packet_data[PacketHeader::_header_size];
+
+        //byte array to store first bytes of incoming packet for decoding
+        //uint8_t _tmp_packet_data[PacketHeader::header_size()];
+        std::vector<uint8_t> _tmp_packet_data;
         //pointer to packet header object
         //PacketHeader* _packetHeader_ptr = nullptr;
+
         
         //Packet size
         uint32_t _packet_len;
         //expected size of header
-        uint8_t _packetHeader_size = PacketHeader::_header_size;
-        //actual header size
+        const uint8_t _packetHeader_size = PacketHeader::header_size();
+        //decoded header size
         uint8_t _header_len;
         //size of data including header
         uint32_t _total_len;

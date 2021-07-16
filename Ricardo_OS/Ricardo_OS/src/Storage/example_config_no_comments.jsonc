@@ -1,0 +1,78 @@
+{
+    "Parameters":
+    {
+       "SerialBaud":42069,
+       "Groundstation":true, 
+       "LaunchAccelerationThreshold": 420,
+       "FlightPathPolynomial":[4, 2, 0, 6, 9],
+       "Cd" :[12] 
+    },
+	
+    "Networking":
+        {
+			"RoutingTable":
+            [
+                {
+					"SourceNode":0,
+					"entries":
+						[
+							{"DestinationNode":0,"Interface":0,"Metric":0,"Address":"Null"},
+							{"DestinationNode":1,"Interface":1,"Metric":1,"Address":"Null"},
+							{"DestinationNode":2,"Interface":1,"Metric":2,"Address":"Null"},
+							{"DestinationNode":3,"Interface":3,"Metric":1,"Address":"Null"},
+							{"DestinationNode":4,"Interface":2,"Metric":1,"Address":"Null"}
+						]
+				},
+				{
+					"SourceNode":1,
+					"entries":
+						[
+							{"DestinationNode":0,"Interface":1,"Metric":1,"Address":"Null"},
+							{"DestinationNode":1,"Interface":0,"Metric":0,"Address":"Null"},
+							{"DestinationNode":2,"Interface":2,"Metric":1,"Address":"Null"},
+							{"DestinationNode":3,"Interface":1,"Metric":2,"Address":"Null"},
+							{"DestinationNode":4,"Interface":2,"Metric":1,"Address":"Null"}
+						]
+				}
+				
+			]
+        },
+	"Pyros":
+	    [
+            {"type": "bt",  "address": "0x69696969", "fire_duration": 1000},
+            {"type": "local", "fire_pin": 10, "continuity_pin": 11, "fire_duration": 69420}
+        ],
+
+	"Engine":
+	[
+		{"type": "solid", "interface": 0}
+	],
+    
+	"Events":
+	[
+		{ "type": "engine", "interface": 0, "single_fire": true, "condition": 
+			{
+				"operator": "AND", 
+				"condition1": {
+					"flightVar": "Acceleration",
+					"operator": "LT",
+					"threshold": 420
+				}, 
+				"condition2": {
+					"flightVar": "Altitude",
+					"operator": "GT",
+					"threshold": 69	
+				}
+			}
+		},
+		
+		{ "type": "pyro", "interface": "0", "single_fire": true, "condition": 
+			{ 
+				"flightVar": "Acceleration",
+				"operator": "LT",
+				"threshold": -420
+			}
+		}
+	]
+	
+}

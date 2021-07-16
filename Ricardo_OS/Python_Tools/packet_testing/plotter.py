@@ -87,7 +87,7 @@ class Plotter:
 			self.ax.relim()
 			self.ax.set_xlim(left=self.time_series["t"].get()[1], right=self.time_series["t"].get()[-1])
 			self.ax.autoscale_view()
-			#self.ax.grid()
+			self.ax.grid()
 			self.fig.canvas.draw()
 			self.fig.canvas.flush_events()
 		else:

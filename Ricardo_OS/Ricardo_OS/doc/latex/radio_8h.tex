@@ -1,0 +1,54 @@
+\hypertarget{radio_8h}{}\doxysection{/\+Users/kiran/\+Documents/\+Projects/\+ICLR/\+Avionics/\+Ricardo\+\_\+\+OS/\+Ricardo\+\_\+\+OS/src/\+Comms/interfaces/radio.h File Reference}
+\label{radio_8h}\index{/Users/kiran/Documents/Projects/ICLR/Avionics/Ricardo\_OS/Ricardo\_OS/src/Comms/interfaces/radio.h@{/Users/kiran/Documents/Projects/ICLR/Avionics/Ricardo\_OS/Ricardo\_OS/src/Comms/interfaces/radio.h}}
+{\ttfamily \#include $<$Arduino.\+h$>$}\newline
+{\ttfamily \#include \char`\"{}iface.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}SPI.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}../packets.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}Storage/systemstatus.\+h\char`\"{}}\newline
+{\ttfamily \#include $<$memory$>$}\newline
+{\ttfamily \#include $<$vector$>$}\newline
+Include dependency graph for radio.\+h\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{radio_8h__incl}
+\end{center}
+\end{figure}
+This graph shows which files directly or indirectly include this file\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{radio_8h__dep__incl}
+\end{center}
+\end{figure}
+\doxysubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \mbox{\hyperlink{class_radio}{Radio}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+enum class \mbox{\hyperlink{radio_8h_afe783f40e0440c0a2811b5158cf8e84d}{RADIO\+\_\+\+INFO}} \+: uint8\+\_\+t \{ \mbox{\hyperlink{radio_8h_afe783f40e0440c0a2811b5158cf8e84da6833f5d3374c1679bea428b50dbad9cc}{RSSI}} = 0
+, \mbox{\hyperlink{radio_8h_afe783f40e0440c0a2811b5158cf8e84da8dc5367d65459f69d78eb03e93f7703f}{SNR}} = 1
+ \}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Enumeration Type Documentation}
+\mbox{\Hypertarget{radio_8h_afe783f40e0440c0a2811b5158cf8e84d}\label{radio_8h_afe783f40e0440c0a2811b5158cf8e84d}} 
+\index{radio.h@{radio.h}!RADIO\_INFO@{RADIO\_INFO}}
+\index{RADIO\_INFO@{RADIO\_INFO}!radio.h@{radio.h}}
+\doxysubsubsection{\texorpdfstring{RADIO\_INFO}{RADIO\_INFO}}
+{\footnotesize\ttfamily enum \mbox{\hyperlink{radio_8h_afe783f40e0440c0a2811b5158cf8e84d}{RADIO\+\_\+\+INFO}} \+: uint8\+\_\+t\hspace{0.3cm}{\ttfamily [strong]}}
+
+\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{RSSI@{RSSI}!radio.h@{radio.h}}\index{radio.h@{radio.h}!RSSI@{RSSI}}}\mbox{\Hypertarget{radio_8h_afe783f40e0440c0a2811b5158cf8e84da6833f5d3374c1679bea428b50dbad9cc}\label{radio_8h_afe783f40e0440c0a2811b5158cf8e84da6833f5d3374c1679bea428b50dbad9cc}} 
+RSSI&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{SNR@{SNR}!radio.h@{radio.h}}\index{radio.h@{radio.h}!SNR@{SNR}}}\mbox{\Hypertarget{radio_8h_afe783f40e0440c0a2811b5158cf8e84da8dc5367d65459f69d78eb03e93f7703f}\label{radio_8h_afe783f40e0440c0a2811b5158cf8e84da8dc5367d65459f69d78eb03e93f7703f}} 
+SNR&\\
+\hline
+
+\end{DoxyEnumFields}

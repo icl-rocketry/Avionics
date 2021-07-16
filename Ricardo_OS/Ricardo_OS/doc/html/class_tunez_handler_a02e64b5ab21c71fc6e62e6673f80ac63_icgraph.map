@@ -1,0 +1,9 @@
+<map id="TunezHandler::play" name="TunezHandler::play">
+<area shape="rect" id="node1" title="Put Melody on tune queue." alt="" coords="1015,56,1149,83"/>
+<area shape="rect" id="node2" href="$class_command_handler.html#a54c1b7e2f1a6d0365ef36a0c738d7e02" title=" " alt="" coords="733,5,967,32"/>
+<area shape="rect" id="node7" href="$class_setup.html#a315e788a23a012d5993613c627f15302" title=" " alt="" coords="795,56,905,83"/>
+<area shape="rect" id="node3" href="$class_command_handler.html#a6c61c87a0ad0045aa6133dd69112a72b" title=" " alt="" coords="511,12,685,39"/>
+<area shape="rect" id="node4" href="$class_network_manager.html#a0d4ea7d4f0b395249151d0a28af79cd5" title=" " alt="" coords="295,19,463,45"/>
+<area shape="rect" id="node5" href="$classstate_machine.html#a5f4f54735cb0a13393227e3af6863cdd" title=" " alt="" coords="100,31,247,57"/>
+<area shape="rect" id="node6" href="$main_8cpp.html#afe461d27b9c48d5921c00d521181f12f" title=" " alt="" coords="5,81,52,108"/>
+</map>

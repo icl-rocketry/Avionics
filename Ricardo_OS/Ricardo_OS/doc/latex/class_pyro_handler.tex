@@ -1,0 +1,90 @@
+\hypertarget{class_pyro_handler}{}\doxysection{Pyro\+Handler Class Reference}
+\label{class_pyro_handler}\index{PyroHandler@{PyroHandler}}
+
+
+{\ttfamily \#include $<$pyro\+Handler.\+h$>$}
+
+
+
+Collaboration diagram for Pyro\+Handler\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_pyro_handler__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_pyro_handler_a816216743c2c66db4ef0520c9ecd0d37}{Pyro\+Handler}} (\mbox{\hyperlink{classstate_machine}{state\+Machine}} $\ast$sm)
+\item 
+void \mbox{\hyperlink{class_pyro_handler_a2cf899e0c3b0c0c60d236ba27a0112ef}{setup}} (Json\+Array pyro\+Config)
+\item 
+void \mbox{\hyperlink{class_pyro_handler_abca7be09ff52bfdfe45938698b2f299c}{update}} ()
+\item 
+bool \mbox{\hyperlink{class_pyro_handler_a4e08ca805ab2604dda0906f508d67f93}{fire}} (uint8\+\_\+t id)
+\end{DoxyCompactItemize}
+\doxysubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classstate_machine}{state\+Machine}} $\ast$ \mbox{\hyperlink{class_pyro_handler_a61590edd24d2cf677daa237052f92b5e}{\+\_\+sm}}
+\item 
+std\+::vector$<$ std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{class_pyro}{Pyro}} $>$ $>$ \mbox{\hyperlink{class_pyro_handler_ab3b48bad7ed12e17f2aa9ae6957d3ede}{pyro\+List}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_pyro_handler_a816216743c2c66db4ef0520c9ecd0d37}\label{class_pyro_handler_a816216743c2c66db4ef0520c9ecd0d37}} 
+\index{PyroHandler@{PyroHandler}!PyroHandler@{PyroHandler}}
+\index{PyroHandler@{PyroHandler}!PyroHandler@{PyroHandler}}
+\doxysubsubsection{\texorpdfstring{PyroHandler()}{PyroHandler()}}
+{\footnotesize\ttfamily Pyro\+Handler\+::\+Pyro\+Handler (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classstate_machine}{state\+Machine}} $\ast$}]{sm }\end{DoxyParamCaption})}
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_pyro_handler_a4e08ca805ab2604dda0906f508d67f93}\label{class_pyro_handler_a4e08ca805ab2604dda0906f508d67f93}} 
+\index{PyroHandler@{PyroHandler}!fire@{fire}}
+\index{fire@{fire}!PyroHandler@{PyroHandler}}
+\doxysubsubsection{\texorpdfstring{fire()}{fire()}}
+{\footnotesize\ttfamily bool Pyro\+Handler\+::fire (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{id }\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=314pt]{class_pyro_handler_a4e08ca805ab2604dda0906f508d67f93_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_pyro_handler_a2cf899e0c3b0c0c60d236ba27a0112ef}\label{class_pyro_handler_a2cf899e0c3b0c0c60d236ba27a0112ef}} 
+\index{PyroHandler@{PyroHandler}!setup@{setup}}
+\index{setup@{setup}!PyroHandler@{PyroHandler}}
+\doxysubsubsection{\texorpdfstring{setup()}{setup()}}
+{\footnotesize\ttfamily void Pyro\+Handler\+::setup (\begin{DoxyParamCaption}\item[{Json\+Array}]{pyro\+Config }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_pyro_handler_abca7be09ff52bfdfe45938698b2f299c}\label{class_pyro_handler_abca7be09ff52bfdfe45938698b2f299c}} 
+\index{PyroHandler@{PyroHandler}!update@{update}}
+\index{update@{update}!PyroHandler@{PyroHandler}}
+\doxysubsubsection{\texorpdfstring{update()}{update()}}
+{\footnotesize\ttfamily void Pyro\+Handler\+::update (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{class_pyro_handler_a61590edd24d2cf677daa237052f92b5e}\label{class_pyro_handler_a61590edd24d2cf677daa237052f92b5e}} 
+\index{PyroHandler@{PyroHandler}!\_sm@{\_sm}}
+\index{\_sm@{\_sm}!PyroHandler@{PyroHandler}}
+\doxysubsubsection{\texorpdfstring{\_sm}{\_sm}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classstate_machine}{state\+Machine}}$\ast$ Pyro\+Handler\+::\+\_\+sm\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{class_pyro_handler_ab3b48bad7ed12e17f2aa9ae6957d3ede}\label{class_pyro_handler_ab3b48bad7ed12e17f2aa9ae6957d3ede}} 
+\index{PyroHandler@{PyroHandler}!pyroList@{pyroList}}
+\index{pyroList@{pyroList}!PyroHandler@{PyroHandler}}
+\doxysubsubsection{\texorpdfstring{pyroList}{pyroList}}
+{\footnotesize\ttfamily std\+::vector$<$std\+::unique\+\_\+ptr$<$\mbox{\hyperlink{class_pyro}{Pyro}}$>$ $>$ Pyro\+Handler\+::pyro\+List\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+/\+Users/kiran/\+Documents/\+Projects/\+ICLR/\+Avionics/\+Ricardo\+\_\+\+OS/\+Ricardo\+\_\+\+OS/src/\+Pyros/\mbox{\hyperlink{pyro_handler_8h}{pyro\+Handler.\+h}}\end{DoxyCompactItemize}

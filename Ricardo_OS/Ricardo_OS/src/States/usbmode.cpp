@@ -6,7 +6,7 @@
 #include "flags.h"
 
 USBmode::USBmode(stateMachine* sm) : State(sm){
-    _curr_stateID = system_flag::STATE_USBMODE;
+    _curr_stateID = SYSTEM_FLAG::STATE_USBMODE;
     
 };
 

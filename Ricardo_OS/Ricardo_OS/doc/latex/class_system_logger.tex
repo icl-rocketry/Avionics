@@ -1,0 +1,212 @@
+\hypertarget{class_system_logger}{}\doxysection{System\+Logger Class Reference}
+\label{class_system_logger}\index{SystemLogger@{SystemLogger}}
+
+
+{\ttfamily \#include $<$system\+Logger.\+h$>$}
+
+
+
+Inheritance diagram for System\+Logger\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=160pt]{class_system_logger__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for System\+Logger\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_system_logger__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_system_logger_aeb9d18f808194a66d46744f9155db007}{System\+Logger}} (\mbox{\hyperlink{class_storage_controller}{Storage\+Controller}} $\ast$sc, uint16\+\_\+t dt, std\+::string filename, \mbox{\hyperlink{storage_controller_8h_a9539e551e6a3b5229703f97c65f94bae}{STORAGE\+\_\+\+DEVICE}} main\+Storage=\mbox{\hyperlink{storage_controller_8h_a9539e551e6a3b5229703f97c65f94baea12e06b08b2eca71ace052b129c0baa7b}{STORAGE\+\_\+\+DEVICE\+::\+MICROSD}}, \mbox{\hyperlink{storage_controller_8h_a9539e551e6a3b5229703f97c65f94bae}{STORAGE\+\_\+\+DEVICE}} backup\+Storage=\mbox{\hyperlink{storage_controller_8h_a9539e551e6a3b5229703f97c65f94baea227b519e83a8b99329302ad2d37d0bbb}{STORAGE\+\_\+\+DEVICE\+::\+FLASH}})
+\item 
+void \mbox{\hyperlink{class_system_logger_aa4ab39355df87bfe2b68780399200b59}{enable}} ()
+\item 
+void \mbox{\hyperlink{class_system_logger_a475bfd21fcc2cbe58d5d3ec1ddb58068}{disable}} ()
+\item 
+void \mbox{\hyperlink{class_system_logger_aa9d17a2c54cb5a8dd5c9696053a57569}{write\+Log}} ()
+\item 
+void \mbox{\hyperlink{class_system_logger_a5fb487decda1d55bb1ea6ecee82840e2}{log}} (std\+::string message)
+\item 
+void \mbox{\hyperlink{class_system_logger_a17792357e097fc393f618d779fdeaa5b}{log}} (uint32\+\_\+t \mbox{\hyperlink{class_logger_ae6e80fcd7b9058cd4e13649b348a5cca}{status}}, uint32\+\_\+t flag, std\+::string message)
+\item 
+\mbox{\hyperlink{class_system_logger_abf5fa72429af6ef6af87d58ac54a5bc9}{$\sim$\+System\+Logger}} ()
+\end{DoxyCompactItemize}
+\doxysubsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+std\+::string \mbox{\hyperlink{class_system_logger_aa8648a3defcc1f7a79701c4e9b996b67}{flag\+Level}} (uint32\+\_\+t flag)
+\item 
+std\+::string \mbox{\hyperlink{class_system_logger_a473d1136f5c81f89ff67e12e6c159cb6}{flag\+Level}} (\mbox{\hyperlink{flags_8h_a59afb9de21b0cf38347ba06d65fa5de7}{SYSTEM\+\_\+\+FLAG}} flag)
+\end{DoxyCompactItemize}
+\doxysubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classsystem__logframe}{system\+\_\+logframe}} \mbox{\hyperlink{class_system_logger_a293445303271176f118e495ac89e62ac}{system\+\_\+frame}}
+\item 
+std\+::vector$<$ \mbox{\hyperlink{classsystem__logframe}{system\+\_\+logframe}} $>$ \mbox{\hyperlink{class_system_logger_a030ca5018001e7bca94bc0658f37a45b}{system\+\_\+log\+\_\+buffer}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Additional Inherited Members}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_system_logger_aeb9d18f808194a66d46744f9155db007}\label{class_system_logger_aeb9d18f808194a66d46744f9155db007}} 
+\index{SystemLogger@{SystemLogger}!SystemLogger@{SystemLogger}}
+\index{SystemLogger@{SystemLogger}!SystemLogger@{SystemLogger}}
+\doxysubsubsection{\texorpdfstring{SystemLogger()}{SystemLogger()}}
+{\footnotesize\ttfamily System\+Logger\+::\+System\+Logger (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_storage_controller}{Storage\+Controller}} $\ast$}]{sc,  }\item[{uint16\+\_\+t}]{dt,  }\item[{std\+::string}]{filename,  }\item[{\mbox{\hyperlink{storage_controller_8h_a9539e551e6a3b5229703f97c65f94bae}{STORAGE\+\_\+\+DEVICE}}}]{main\+Storage = {\ttfamily \mbox{\hyperlink{storage_controller_8h_a9539e551e6a3b5229703f97c65f94baea12e06b08b2eca71ace052b129c0baa7b}{STORAGE\+\_\+\+DEVICE\+::\+MICROSD}}},  }\item[{\mbox{\hyperlink{storage_controller_8h_a9539e551e6a3b5229703f97c65f94bae}{STORAGE\+\_\+\+DEVICE}}}]{backup\+Storage = {\ttfamily \mbox{\hyperlink{storage_controller_8h_a9539e551e6a3b5229703f97c65f94baea227b519e83a8b99329302ad2d37d0bbb}{STORAGE\+\_\+\+DEVICE\+::\+FLASH}}} }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_system_logger_abf5fa72429af6ef6af87d58ac54a5bc9}\label{class_system_logger_abf5fa72429af6ef6af87d58ac54a5bc9}} 
+\index{SystemLogger@{SystemLogger}!````~SystemLogger@{$\sim$SystemLogger}}
+\index{````~SystemLogger@{$\sim$SystemLogger}!SystemLogger@{SystemLogger}}
+\doxysubsubsection{\texorpdfstring{$\sim$SystemLogger()}{~SystemLogger()}}
+{\footnotesize\ttfamily System\+Logger\+::$\sim$\+System\+Logger (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_system_logger_a475bfd21fcc2cbe58d5d3ec1ddb58068}\label{class_system_logger_a475bfd21fcc2cbe58d5d3ec1ddb58068}} 
+\index{SystemLogger@{SystemLogger}!disable@{disable}}
+\index{disable@{disable}!SystemLogger@{SystemLogger}}
+\doxysubsubsection{\texorpdfstring{disable()}{disable()}}
+{\footnotesize\ttfamily void System\+Logger\+::disable (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Reimplemented from \mbox{\hyperlink{class_logger_ab74d4d6243af381ad0a185a5e7a0f010}{Logger}}.
+
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=315pt]{class_system_logger_a475bfd21fcc2cbe58d5d3ec1ddb58068_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_system_logger_a475bfd21fcc2cbe58d5d3ec1ddb58068_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_system_logger_aa4ab39355df87bfe2b68780399200b59}\label{class_system_logger_aa4ab39355df87bfe2b68780399200b59}} 
+\index{SystemLogger@{SystemLogger}!enable@{enable}}
+\index{enable@{enable}!SystemLogger@{SystemLogger}}
+\doxysubsubsection{\texorpdfstring{enable()}{enable()}}
+{\footnotesize\ttfamily void System\+Logger\+::enable (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Reimplemented from \mbox{\hyperlink{class_logger_af2f7ea41236b2dfa06a7bc88786395bd}{Logger}}.
+
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_system_logger_aa4ab39355df87bfe2b68780399200b59_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_system_logger_aa4ab39355df87bfe2b68780399200b59_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_system_logger_a473d1136f5c81f89ff67e12e6c159cb6}\label{class_system_logger_a473d1136f5c81f89ff67e12e6c159cb6}} 
+\index{SystemLogger@{SystemLogger}!flagLevel@{flagLevel}}
+\index{flagLevel@{flagLevel}!SystemLogger@{SystemLogger}}
+\doxysubsubsection{\texorpdfstring{flagLevel()}{flagLevel()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily std\+::string System\+Logger\+::flag\+Level (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{flags_8h_a59afb9de21b0cf38347ba06d65fa5de7}{SYSTEM\+\_\+\+FLAG}}}]{flag }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_system_logger_a473d1136f5c81f89ff67e12e6c159cb6_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_system_logger_aa8648a3defcc1f7a79701c4e9b996b67}\label{class_system_logger_aa8648a3defcc1f7a79701c4e9b996b67}} 
+\index{SystemLogger@{SystemLogger}!flagLevel@{flagLevel}}
+\index{flagLevel@{flagLevel}!SystemLogger@{SystemLogger}}
+\doxysubsubsection{\texorpdfstring{flagLevel()}{flagLevel()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily std\+::string System\+Logger\+::flag\+Level (\begin{DoxyParamCaption}\item[{uint32\+\_\+t}]{flag }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_system_logger_aa8648a3defcc1f7a79701c4e9b996b67_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_system_logger_a5fb487decda1d55bb1ea6ecee82840e2}\label{class_system_logger_a5fb487decda1d55bb1ea6ecee82840e2}} 
+\index{SystemLogger@{SystemLogger}!log@{log}}
+\index{log@{log}!SystemLogger@{SystemLogger}}
+\doxysubsubsection{\texorpdfstring{log()}{log()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily void System\+Logger\+::log (\begin{DoxyParamCaption}\item[{std\+::string}]{message }\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=307pt]{class_system_logger_a5fb487decda1d55bb1ea6ecee82840e2_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_system_logger_a17792357e097fc393f618d779fdeaa5b}\label{class_system_logger_a17792357e097fc393f618d779fdeaa5b}} 
+\index{SystemLogger@{SystemLogger}!log@{log}}
+\index{log@{log}!SystemLogger@{SystemLogger}}
+\doxysubsubsection{\texorpdfstring{log()}{log()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily void System\+Logger\+::log (\begin{DoxyParamCaption}\item[{uint32\+\_\+t}]{status,  }\item[{uint32\+\_\+t}]{flag,  }\item[{std\+::string}]{message }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=339pt]{class_system_logger_a17792357e097fc393f618d779fdeaa5b_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_system_logger_aa9d17a2c54cb5a8dd5c9696053a57569}\label{class_system_logger_aa9d17a2c54cb5a8dd5c9696053a57569}} 
+\index{SystemLogger@{SystemLogger}!writeLog@{writeLog}}
+\index{writeLog@{writeLog}!SystemLogger@{SystemLogger}}
+\doxysubsubsection{\texorpdfstring{writeLog()}{writeLog()}}
+{\footnotesize\ttfamily void System\+Logger\+::write\+Log (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{class_logger_ac404cb2302cb1761f74a31e797ea2139}{Logger}}.
+
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_system_logger_aa9d17a2c54cb5a8dd5c9696053a57569_icgraph}
+\end{center}
+\end{figure}
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{class_system_logger_a293445303271176f118e495ac89e62ac}\label{class_system_logger_a293445303271176f118e495ac89e62ac}} 
+\index{SystemLogger@{SystemLogger}!system\_frame@{system\_frame}}
+\index{system\_frame@{system\_frame}!SystemLogger@{SystemLogger}}
+\doxysubsubsection{\texorpdfstring{system\_frame}{system\_frame}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classsystem__logframe}{system\+\_\+logframe}} System\+Logger\+::system\+\_\+frame\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{class_system_logger_a030ca5018001e7bca94bc0658f37a45b}\label{class_system_logger_a030ca5018001e7bca94bc0658f37a45b}} 
+\index{SystemLogger@{SystemLogger}!system\_log\_buffer@{system\_log\_buffer}}
+\index{system\_log\_buffer@{system\_log\_buffer}!SystemLogger@{SystemLogger}}
+\doxysubsubsection{\texorpdfstring{system\_log\_buffer}{system\_log\_buffer}}
+{\footnotesize\ttfamily std\+::vector$<$\mbox{\hyperlink{classsystem__logframe}{system\+\_\+logframe}}$>$ System\+Logger\+::system\+\_\+log\+\_\+buffer\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+/\+Users/kiran/\+Documents/\+Projects/\+ICLR/\+Avionics/\+Ricardo\+\_\+\+OS/\+Ricardo\+\_\+\+OS/src/\+Storage/\+Loggers/\mbox{\hyperlink{system_logger_8h}{system\+Logger.\+h}}\item 
+/\+Users/kiran/\+Documents/\+Projects/\+ICLR/\+Avionics/\+Ricardo\+\_\+\+OS/\+Ricardo\+\_\+\+OS/src/\+Storage/\+Loggers/\mbox{\hyperlink{system_logger_8cpp}{system\+Logger.\+cpp}}\end{DoxyCompactItemize}

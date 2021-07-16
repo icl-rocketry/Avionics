@@ -1,0 +1,166 @@
+\hypertarget{class_pyro}{}\doxysection{Pyro Class Reference}
+\label{class_pyro}\index{Pyro@{Pyro}}
+
+
+{\ttfamily \#include $<$pyro.\+h$>$}
+
+
+
+Inheritance diagram for Pyro\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=208pt]{class_pyro__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Pyro\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_pyro__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_pyro_a40f126c3233de8394abb557252edc5d3}{Pyro}} (\mbox{\hyperlink{pyro_8h_a45e0753574b76ce184eb9caa73f63f8a}{PYRO\+\_\+\+TYPE}} type, \mbox{\hyperlink{class_system_status}{System\+Status}} $\ast$systemstatus, uint8\+\_\+t id)
+\item 
+virtual bool \mbox{\hyperlink{class_pyro_a78f8221114043d3991936a91ba789b2b}{check\+\_\+continuity}} ()=0
+\begin{DoxyCompactList}\small\item\em Check continiuty of ematch. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{class_pyro_a12d58ae5118625c65b7b9ebcbe4e0578}{do\+Stuff}} (uint8\+\_\+t duration)
+\begin{DoxyCompactList}\small\item\em Fire the pyro. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_pyro_a21cb36a5bfdb8766d893dd305152c166}{get\+Continuity}} ()
+\begin{DoxyCompactList}\small\item\em Get the Continuity status. \end{DoxyCompactList}\item 
+virtual \mbox{\hyperlink{class_pyro_a3be068d04db1c8012b1561114d215d5f}{$\sim$\+Pyro}} ()=0
+\end{DoxyCompactItemize}
+\doxysubsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_system_status}{System\+Status}} $\ast$ \mbox{\hyperlink{class_pyro_abc24c94f18160239e37a95f4e890f704}{\+\_\+systemstatus}}
+\item 
+\mbox{\hyperlink{pyro_8h_a45e0753574b76ce184eb9caa73f63f8a}{PYRO\+\_\+\+TYPE}} \mbox{\hyperlink{class_pyro_ad03097b0caf7c6e74796bc6c3e849cf1}{\+\_\+type}}
+\item 
+bool \mbox{\hyperlink{class_pyro_a36a94ee600d201dcd10c917c30f2db21}{\+\_\+continuity}}
+\item 
+uint8\+\_\+t \mbox{\hyperlink{class_pyro_a4019deb086109842e0c08b0eba291f1f}{\+\_\+id}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_pyro_a40f126c3233de8394abb557252edc5d3}\label{class_pyro_a40f126c3233de8394abb557252edc5d3}} 
+\index{Pyro@{Pyro}!Pyro@{Pyro}}
+\index{Pyro@{Pyro}!Pyro@{Pyro}}
+\doxysubsubsection{\texorpdfstring{Pyro()}{Pyro()}}
+{\footnotesize\ttfamily Pyro\+::\+Pyro (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{pyro_8h_a45e0753574b76ce184eb9caa73f63f8a}{PYRO\+\_\+\+TYPE}}}]{type,  }\item[{\mbox{\hyperlink{class_system_status}{System\+Status}} $\ast$}]{systemstatus,  }\item[{uint8\+\_\+t}]{id }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_pyro_a3be068d04db1c8012b1561114d215d5f}\label{class_pyro_a3be068d04db1c8012b1561114d215d5f}} 
+\index{Pyro@{Pyro}!````~Pyro@{$\sim$Pyro}}
+\index{````~Pyro@{$\sim$Pyro}!Pyro@{Pyro}}
+\doxysubsubsection{\texorpdfstring{$\sim$Pyro()}{~Pyro()}}
+{\footnotesize\ttfamily Pyro\+::$\sim$\+Pyro (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_pyro_a78f8221114043d3991936a91ba789b2b}\label{class_pyro_a78f8221114043d3991936a91ba789b2b}} 
+\index{Pyro@{Pyro}!check\_continuity@{check\_continuity}}
+\index{check\_continuity@{check\_continuity}!Pyro@{Pyro}}
+\doxysubsubsection{\texorpdfstring{check\_continuity()}{check\_continuity()}}
+{\footnotesize\ttfamily virtual bool Pyro\+::check\+\_\+continuity (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Check continiuty of ematch. 
+
+\begin{DoxyReturn}{Returns}
+true 
+
+false 
+\end{DoxyReturn}
+
+
+Implemented in \mbox{\hyperlink{class_local_pyro_ae75e383477dafe760cd76b00976695cd}{Local\+Pyro}}, and \mbox{\hyperlink{class_b_t_pyro_a76331ce03a2f91e7b92651887cf52beb}{BTPyro}}.
+
+\mbox{\Hypertarget{class_pyro_a12d58ae5118625c65b7b9ebcbe4e0578}\label{class_pyro_a12d58ae5118625c65b7b9ebcbe4e0578}} 
+\index{Pyro@{Pyro}!doStuff@{doStuff}}
+\index{doStuff@{doStuff}!Pyro@{Pyro}}
+\doxysubsubsection{\texorpdfstring{doStuff()}{doStuff()}}
+{\footnotesize\ttfamily void Pyro\+::do\+Stuff (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{duration }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Fire the pyro. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em duration} & \\
+\hline
+\end{DoxyParams}
+
+
+Reimplemented in \mbox{\hyperlink{class_local_pyro_ac0e9498240723ab17951add02a2f58da}{Local\+Pyro}}, and \mbox{\hyperlink{class_b_t_pyro_a9a9ab1c78048ce44939201d63d78b49a}{BTPyro}}.
+
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_pyro_a12d58ae5118625c65b7b9ebcbe4e0578_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=288pt]{class_pyro_a12d58ae5118625c65b7b9ebcbe4e0578_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_pyro_a21cb36a5bfdb8766d893dd305152c166}\label{class_pyro_a21cb36a5bfdb8766d893dd305152c166}} 
+\index{Pyro@{Pyro}!getContinuity@{getContinuity}}
+\index{getContinuity@{getContinuity}!Pyro@{Pyro}}
+\doxysubsubsection{\texorpdfstring{getContinuity()}{getContinuity()}}
+{\footnotesize\ttfamily bool Pyro\+::get\+Continuity (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Get the Continuity status. 
+
+\begin{DoxyReturn}{Returns}
+true 
+
+false 
+\end{DoxyReturn}
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{class_pyro_a36a94ee600d201dcd10c917c30f2db21}\label{class_pyro_a36a94ee600d201dcd10c917c30f2db21}} 
+\index{Pyro@{Pyro}!\_continuity@{\_continuity}}
+\index{\_continuity@{\_continuity}!Pyro@{Pyro}}
+\doxysubsubsection{\texorpdfstring{\_continuity}{\_continuity}}
+{\footnotesize\ttfamily bool Pyro\+::\+\_\+continuity\hspace{0.3cm}{\ttfamily [protected]}}
+
+\mbox{\Hypertarget{class_pyro_a4019deb086109842e0c08b0eba291f1f}\label{class_pyro_a4019deb086109842e0c08b0eba291f1f}} 
+\index{Pyro@{Pyro}!\_id@{\_id}}
+\index{\_id@{\_id}!Pyro@{Pyro}}
+\doxysubsubsection{\texorpdfstring{\_id}{\_id}}
+{\footnotesize\ttfamily uint8\+\_\+t Pyro\+::\+\_\+id\hspace{0.3cm}{\ttfamily [protected]}}
+
+\mbox{\Hypertarget{class_pyro_abc24c94f18160239e37a95f4e890f704}\label{class_pyro_abc24c94f18160239e37a95f4e890f704}} 
+\index{Pyro@{Pyro}!\_systemstatus@{\_systemstatus}}
+\index{\_systemstatus@{\_systemstatus}!Pyro@{Pyro}}
+\doxysubsubsection{\texorpdfstring{\_systemstatus}{\_systemstatus}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_system_status}{System\+Status}}$\ast$ Pyro\+::\+\_\+systemstatus\hspace{0.3cm}{\ttfamily [protected]}}
+
+\mbox{\Hypertarget{class_pyro_ad03097b0caf7c6e74796bc6c3e849cf1}\label{class_pyro_ad03097b0caf7c6e74796bc6c3e849cf1}} 
+\index{Pyro@{Pyro}!\_type@{\_type}}
+\index{\_type@{\_type}!Pyro@{Pyro}}
+\doxysubsubsection{\texorpdfstring{\_type}{\_type}}
+{\footnotesize\ttfamily \mbox{\hyperlink{pyro_8h_a45e0753574b76ce184eb9caa73f63f8a}{PYRO\+\_\+\+TYPE}} Pyro\+::\+\_\+type\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+/\+Users/kiran/\+Documents/\+Projects/\+ICLR/\+Avionics/\+Ricardo\+\_\+\+OS/\+Ricardo\+\_\+\+OS/src/\+Pyros/\mbox{\hyperlink{pyro_8h}{pyro.\+h}}\item 
+/\+Users/kiran/\+Documents/\+Projects/\+ICLR/\+Avionics/\+Ricardo\+\_\+\+OS/\+Ricardo\+\_\+\+OS/src/\+Pyros/\mbox{\hyperlink{pyro_8cpp}{pyro.\+cpp}}\end{DoxyCompactItemize}

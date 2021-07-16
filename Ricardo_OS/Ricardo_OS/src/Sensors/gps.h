@@ -3,28 +3,44 @@
 #ifndef GPS_H
 #define GPS_H
 #include <Arduino.h>
-#include "TinyGPS++.h" 
+//#include "TinyGPS++.h" 
+#include <SparkFun_u-blox_GNSS_Arduino_Library.h>
 #include "Wire.h"
 
-#include "Logging/systemstatus.h"
+#include "Storage/systemstatus.h"
+#include "Storage/logController.h"
 
 #include "sensorStructs.h"
 
 
+#include <Eigen/Core>
+#include <Eigen/Eigen>
+#include <Eigen/Geometry>
+
+
 class GPS{
-public:
-    GPS(TwoWire* wire,SystemStatus* systemstatus,raw_measurements_t* raw_data);
-    void setup();
-    void update();
+    public:
+        GPS(TwoWire* wire,SystemStatus* systemstatus,LogController* logcontroller,raw_measurements_t* raw_data);
+        void setup();
+        void update();
 
-private:
-    TinyGPSPlus tinygps; //define tinygps object
+        
 
-    TwoWire *_wire; //pointer to wire object
-      
-    SystemStatus* _systemstatus;//pointer to system status object
 
-    raw_measurements_t*  _raw_data;//pointer to raw data struct
+
+
+    private:
+        //TinyGPSPlus tinygps; //define tinygps object
+        SFE_UBLOX_GNSS gnss;
+        TwoWire *_wire; //pointer to wire object
+        
+
+        SystemStatus* _systemstatus;//pointer to system status object
+        LogController* _logcontroller;//pointer to log controller
+
+        raw_measurements_t*  _raw_data;//pointer to raw data struct
+
+        bool _i2cerror;// true if i2c failed to start
 };
 
 #endif

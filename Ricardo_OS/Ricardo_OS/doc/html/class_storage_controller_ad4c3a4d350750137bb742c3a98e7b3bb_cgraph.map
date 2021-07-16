@@ -1,0 +1,12 @@
+<map id="StorageController::getUniqueDirectory" name="StorageController::getUniqueDirectory">
+<area shape="rect" id="node1" title="Generate a unique directory name for a given directory on a given device." alt="" coords="5,115,140,156"/>
+<area shape="rect" id="node2" href="$class_storage_controller.html#a51681cde5ca50661eccb563343a2af9e" title=" " alt="" coords="193,5,324,47"/>
+<area shape="rect" id="node3" href="$namespaceutils.html#a5c6e8f8bd74a1e526654d925c0ae2249" title=" " alt="" coords="217,71,300,98"/>
+<area shape="rect" id="node4" href="$class_storage_controller.html#aeff6ec755ddf2df758b273691a1b662f" title="List all files and directories in given path." alt="" coords="188,122,329,149"/>
+<area shape="rect" id="node5" href="$class_storage_controller.html#a4e77f06d615eb2488804886109b98b5c" title=" " alt="" coords="193,173,324,215"/>
+<area shape="rect" id="node10" href="$namespaceutils.html#a80b01b2df5fab1766ccdbfa4fb2ce79d" title=" " alt="" coords="210,239,307,266"/>
+<area shape="rect" id="node6" href="$class_log_controller.html#adb94b2720224b121ac8487c7c0e04ffc" title=" " alt="" coords="377,181,501,207"/>
+<area shape="rect" id="node7" href="$class_telemetry_logger.html#af01a5e0f381d60d53d2c08ddad37ca07" title=" " alt="" coords="549,181,692,207"/>
+<area shape="rect" id="node8" href="$classtelemetry__logframe.html#add67dbfbf886bf1b322628962a03c0de" title=" " alt="" coords="740,173,873,215"/>
+<area shape="rect" id="node9" href="$classtelemetry__logframe.html#ad8ce2864d5faaf045a0ff812c029a4b4" title=" " alt="" coords="921,173,1055,215"/>
+</map>

@@ -5,43 +5,31 @@
 
 
 #include <Arduino.h>
-
-//#include "commandBuffer.h"
+#include <vector>
 #include "commands.h"
+#include "packets.h"
+
 
 #include "interfaces/interfaces.h"
 #include "nodes.h"
 
 
 
+
+
 class stateMachine;//forward declaration to prevent circular dependancy
 
-struct Command {
-	Nodes source_node; //source node 
-	COMMANDS type; 
-    uint8_t arg;
-};
-
 class CommandHandler {
-
-    friend class NetworkManager;
-
     public:
         CommandHandler(stateMachine* sm);
-
-        void setup();
-        void update();
+        void handleCommand(const CommandPacket &commandpacket);
 
 
     private:
         stateMachine* _sm; //pointer to state machine
-
-        std::vector<Command> commandbuffer;
-		
-        void addCommand(Command command);
-
-		void handleCommand(Command command);
-        bool commandAvaliable(Command command);
+        bool commandAvaliable(COMMANDS command);
 };	
 
 #endif
+
+

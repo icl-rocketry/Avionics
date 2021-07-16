@@ -1,0 +1,145 @@
+\hypertarget{class_flight_variable_handler}{}\doxysection{Flight\+Variable\+Handler Class Reference}
+\label{class_flight_variable_handler}\index{FlightVariableHandler@{FlightVariableHandler}}
+
+
+{\ttfamily \#include $<$flight\+Variable\+Handler.\+h$>$}
+
+
+
+Collaboration diagram for Flight\+Variable\+Handler\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_flight_variable_handler__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_flight_variable_handler_aa1df1387f143a3c7cb5397bc085fd85c}{Flight\+Variable\+Handler}} (\mbox{\hyperlink{class_event_handler}{Event\+Handler}} \&eventhandler)
+\item 
+\mbox{\hyperlink{class_flight_variable}{Flight\+Variable}} \& \mbox{\hyperlink{class_flight_variable_handler_a39278fce92a26d5991a15577e04b94db}{operator\mbox{[}$\,$\mbox{]}}} (\mbox{\hyperlink{flight_variable_handler_8h_abf243bc0d903e4fad28d583ec11a81dc}{FLIGHT\+\_\+\+VARIABLE}} flightvariable)
+\item 
+void \mbox{\hyperlink{class_flight_variable_handler_a2fcb3192e414045247a9562296cbcf10}{update}} ()
+\end{DoxyCompactItemize}
+\doxysubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_event_handler}{Event\+Handler}} \& \mbox{\hyperlink{class_flight_variable_handler_acd01823a6e836c064c460101f996141e}{\+\_\+eventhandler}}
+\item 
+\mbox{\hyperlink{class_time___since___launch}{Time\+\_\+\+Since\+\_\+\+Launch}} \mbox{\hyperlink{class_flight_variable_handler_a9171322cacf31787b9a476422b3b103c}{\+\_\+time\+\_\+since\+\_\+launch}}
+\item 
+\mbox{\hyperlink{class_time___since___apogee}{Time\+\_\+\+Since\+\_\+\+Apogee}} \mbox{\hyperlink{class_flight_variable_handler_a112a1d4c343e08377869b20ccb75d12c}{\+\_\+time\+\_\+since\+\_\+apogee}}
+\item 
+\mbox{\hyperlink{class_time___since___event}{Time\+\_\+\+Since\+\_\+\+Event}} \mbox{\hyperlink{class_flight_variable_handler_a973ff0d75cc035b6328d929e7406810d}{\+\_\+time\+\_\+since\+\_\+event}}
+\item 
+\mbox{\hyperlink{class_altitude}{Altitude}} \mbox{\hyperlink{class_flight_variable_handler_aab54e7806676059c56b78317f587d5ca}{\+\_\+altitude}}
+\item 
+\mbox{\hyperlink{class_speed}{Speed}} \mbox{\hyperlink{class_flight_variable_handler_a481c93d0ea222f4afbd89790656a4082}{\+\_\+speed}}
+\item 
+\mbox{\hyperlink{class_acceleration}{Acceleration}} \mbox{\hyperlink{class_flight_variable_handler_aa13be23d7d839a5ee0d7b30af618c627}{\+\_\+acceleration}}
+\item 
+\mbox{\hyperlink{class_apogee}{Apogee}} \mbox{\hyperlink{class_flight_variable_handler_a963413048fbd16342b943257e437d322}{\+\_\+apogee}}
+\item 
+std\+::array$<$ \mbox{\hyperlink{class_flight_variable}{Flight\+Variable}} $\ast$, static\+\_\+cast$<$ unsigned int $>$\mbox{\hyperlink{flight_variable_handler_8h_abf243bc0d903e4fad28d583ec11a81dca74e01ec85a1de69e4106b16478ae8cfb}{FLIGHT\+\_\+\+VARIABLE\+::\+\_\+\+\_\+\+COUNT}})$>$ \mbox{\hyperlink{class_flight_variable_handler_a2d5db90e9b071c666625c3f74f62d3e7}{\+\_\+flight\+Variables}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_flight_variable_handler_aa1df1387f143a3c7cb5397bc085fd85c}\label{class_flight_variable_handler_aa1df1387f143a3c7cb5397bc085fd85c}} 
+\index{FlightVariableHandler@{FlightVariableHandler}!FlightVariableHandler@{FlightVariableHandler}}
+\index{FlightVariableHandler@{FlightVariableHandler}!FlightVariableHandler@{FlightVariableHandler}}
+\doxysubsubsection{\texorpdfstring{FlightVariableHandler()}{FlightVariableHandler()}}
+{\footnotesize\ttfamily Flight\+Variable\+Handler\+::\+Flight\+Variable\+Handler (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_event_handler}{Event\+Handler}} \&}]{eventhandler }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_flight_variable_handler_a39278fce92a26d5991a15577e04b94db}\label{class_flight_variable_handler_a39278fce92a26d5991a15577e04b94db}} 
+\index{FlightVariableHandler@{FlightVariableHandler}!operator\mbox{[}\mbox{]}@{operator[]}}
+\index{operator\mbox{[}\mbox{]}@{operator[]}!FlightVariableHandler@{FlightVariableHandler}}
+\doxysubsubsection{\texorpdfstring{operator[]()}{operator[]()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_flight_variable}{Flight\+Variable}} \& Flight\+Variable\+Handler\+::operator\mbox{[}$\,$\mbox{]} (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{flight_variable_handler_8h_abf243bc0d903e4fad28d583ec11a81dc}{FLIGHT\+\_\+\+VARIABLE}}}]{flightvariable }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_flight_variable_handler_a2fcb3192e414045247a9562296cbcf10}\label{class_flight_variable_handler_a2fcb3192e414045247a9562296cbcf10}} 
+\index{FlightVariableHandler@{FlightVariableHandler}!update@{update}}
+\index{update@{update}!FlightVariableHandler@{FlightVariableHandler}}
+\doxysubsubsection{\texorpdfstring{update()}{update()}}
+{\footnotesize\ttfamily void Flight\+Variable\+Handler\+::update (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{class_flight_variable_handler_aa13be23d7d839a5ee0d7b30af618c627}\label{class_flight_variable_handler_aa13be23d7d839a5ee0d7b30af618c627}} 
+\index{FlightVariableHandler@{FlightVariableHandler}!\_acceleration@{\_acceleration}}
+\index{\_acceleration@{\_acceleration}!FlightVariableHandler@{FlightVariableHandler}}
+\doxysubsubsection{\texorpdfstring{\_acceleration}{\_acceleration}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_acceleration}{Acceleration}} Flight\+Variable\+Handler\+::\+\_\+acceleration\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{class_flight_variable_handler_aab54e7806676059c56b78317f587d5ca}\label{class_flight_variable_handler_aab54e7806676059c56b78317f587d5ca}} 
+\index{FlightVariableHandler@{FlightVariableHandler}!\_altitude@{\_altitude}}
+\index{\_altitude@{\_altitude}!FlightVariableHandler@{FlightVariableHandler}}
+\doxysubsubsection{\texorpdfstring{\_altitude}{\_altitude}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_altitude}{Altitude}} Flight\+Variable\+Handler\+::\+\_\+altitude\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{class_flight_variable_handler_a963413048fbd16342b943257e437d322}\label{class_flight_variable_handler_a963413048fbd16342b943257e437d322}} 
+\index{FlightVariableHandler@{FlightVariableHandler}!\_apogee@{\_apogee}}
+\index{\_apogee@{\_apogee}!FlightVariableHandler@{FlightVariableHandler}}
+\doxysubsubsection{\texorpdfstring{\_apogee}{\_apogee}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_apogee}{Apogee}} Flight\+Variable\+Handler\+::\+\_\+apogee\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{class_flight_variable_handler_acd01823a6e836c064c460101f996141e}\label{class_flight_variable_handler_acd01823a6e836c064c460101f996141e}} 
+\index{FlightVariableHandler@{FlightVariableHandler}!\_eventhandler@{\_eventhandler}}
+\index{\_eventhandler@{\_eventhandler}!FlightVariableHandler@{FlightVariableHandler}}
+\doxysubsubsection{\texorpdfstring{\_eventhandler}{\_eventhandler}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_event_handler}{Event\+Handler}}\& Flight\+Variable\+Handler\+::\+\_\+eventhandler\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{class_flight_variable_handler_a2d5db90e9b071c666625c3f74f62d3e7}\label{class_flight_variable_handler_a2d5db90e9b071c666625c3f74f62d3e7}} 
+\index{FlightVariableHandler@{FlightVariableHandler}!\_flightVariables@{\_flightVariables}}
+\index{\_flightVariables@{\_flightVariables}!FlightVariableHandler@{FlightVariableHandler}}
+\doxysubsubsection{\texorpdfstring{\_flightVariables}{\_flightVariables}}
+{\footnotesize\ttfamily std\+::array$<$\mbox{\hyperlink{class_flight_variable}{Flight\+Variable}}$\ast$,static\+\_\+cast$<$unsigned int$>$\mbox{\hyperlink{flight_variable_handler_8h_abf243bc0d903e4fad28d583ec11a81dca74e01ec85a1de69e4106b16478ae8cfb}{FLIGHT\+\_\+\+VARIABLE\+::\+\_\+\+\_\+\+COUNT}})$>$ Flight\+Variable\+Handler\+::\+\_\+flight\+Variables\hspace{0.3cm}{\ttfamily [private]}}
+
+{\bfseries Initial value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\{\{}
+\DoxyCodeLine{            (\mbox{\hyperlink{class_flight_variable}{FlightVariable}}*)\&\mbox{\hyperlink{class_flight_variable_handler_a9171322cacf31787b9a476422b3b103c}{\_time\_since\_launch}},}
+\DoxyCodeLine{            (\mbox{\hyperlink{class_flight_variable}{FlightVariable}}*)\&\mbox{\hyperlink{class_flight_variable_handler_a112a1d4c343e08377869b20ccb75d12c}{\_time\_since\_apogee}},}
+\DoxyCodeLine{            (\mbox{\hyperlink{class_flight_variable}{FlightVariable}}*)\&\mbox{\hyperlink{class_flight_variable_handler_a973ff0d75cc035b6328d929e7406810d}{\_time\_since\_event}},}
+\DoxyCodeLine{            (\mbox{\hyperlink{class_flight_variable}{FlightVariable}}*)\&\mbox{\hyperlink{class_flight_variable_handler_aab54e7806676059c56b78317f587d5ca}{\_altitude}},}
+\DoxyCodeLine{            (\mbox{\hyperlink{class_flight_variable}{FlightVariable}}*)\&\mbox{\hyperlink{class_flight_variable_handler_a481c93d0ea222f4afbd89790656a4082}{\_speed}},}
+\DoxyCodeLine{            (\mbox{\hyperlink{class_flight_variable}{FlightVariable}}*)\&\mbox{\hyperlink{class_flight_variable_handler_aa13be23d7d839a5ee0d7b30af618c627}{\_acceleration}},}
+\DoxyCodeLine{            (\mbox{\hyperlink{class_flight_variable}{FlightVariable}}*)\&\mbox{\hyperlink{class_flight_variable_handler_a963413048fbd16342b943257e437d322}{\_apogee}}}
+\DoxyCodeLine{        \}\}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{class_flight_variable_handler_a481c93d0ea222f4afbd89790656a4082}\label{class_flight_variable_handler_a481c93d0ea222f4afbd89790656a4082}} 
+\index{FlightVariableHandler@{FlightVariableHandler}!\_speed@{\_speed}}
+\index{\_speed@{\_speed}!FlightVariableHandler@{FlightVariableHandler}}
+\doxysubsubsection{\texorpdfstring{\_speed}{\_speed}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_speed}{Speed}} Flight\+Variable\+Handler\+::\+\_\+speed\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{class_flight_variable_handler_a112a1d4c343e08377869b20ccb75d12c}\label{class_flight_variable_handler_a112a1d4c343e08377869b20ccb75d12c}} 
+\index{FlightVariableHandler@{FlightVariableHandler}!\_time\_since\_apogee@{\_time\_since\_apogee}}
+\index{\_time\_since\_apogee@{\_time\_since\_apogee}!FlightVariableHandler@{FlightVariableHandler}}
+\doxysubsubsection{\texorpdfstring{\_time\_since\_apogee}{\_time\_since\_apogee}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_time___since___apogee}{Time\+\_\+\+Since\+\_\+\+Apogee}} Flight\+Variable\+Handler\+::\+\_\+time\+\_\+since\+\_\+apogee\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{class_flight_variable_handler_a973ff0d75cc035b6328d929e7406810d}\label{class_flight_variable_handler_a973ff0d75cc035b6328d929e7406810d}} 
+\index{FlightVariableHandler@{FlightVariableHandler}!\_time\_since\_event@{\_time\_since\_event}}
+\index{\_time\_since\_event@{\_time\_since\_event}!FlightVariableHandler@{FlightVariableHandler}}
+\doxysubsubsection{\texorpdfstring{\_time\_since\_event}{\_time\_since\_event}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_time___since___event}{Time\+\_\+\+Since\+\_\+\+Event}} Flight\+Variable\+Handler\+::\+\_\+time\+\_\+since\+\_\+event\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{class_flight_variable_handler_a9171322cacf31787b9a476422b3b103c}\label{class_flight_variable_handler_a9171322cacf31787b9a476422b3b103c}} 
+\index{FlightVariableHandler@{FlightVariableHandler}!\_time\_since\_launch@{\_time\_since\_launch}}
+\index{\_time\_since\_launch@{\_time\_since\_launch}!FlightVariableHandler@{FlightVariableHandler}}
+\doxysubsubsection{\texorpdfstring{\_time\_since\_launch}{\_time\_since\_launch}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_time___since___launch}{Time\+\_\+\+Since\+\_\+\+Launch}} Flight\+Variable\+Handler\+::\+\_\+time\+\_\+since\+\_\+launch\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+/\+Users/kiran/\+Documents/\+Projects/\+ICLR/\+Avionics/\+Ricardo\+\_\+\+OS/\+Ricardo\+\_\+\+OS/src/\+Events/\mbox{\hyperlink{flight_variable_handler_8h}{flight\+Variable\+Handler.\+h}}\item 
+/\+Users/kiran/\+Documents/\+Projects/\+ICLR/\+Avionics/\+Ricardo\+\_\+\+OS/\+Ricardo\+\_\+\+OS/src/\+Events/\mbox{\hyperlink{flight_variable_handler_8cpp}{flight\+Variable\+Handler.\+cpp}}\end{DoxyCompactItemize}

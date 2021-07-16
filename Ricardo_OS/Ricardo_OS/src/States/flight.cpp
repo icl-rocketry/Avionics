@@ -6,7 +6,7 @@
 
 
 Flight::Flight(stateMachine* sm) : State(sm){
-    _curr_stateID = system_flag::STATE_FLIGHT;
+    _curr_stateID = SYSTEM_FLAG::STATE_FLIGHT;
 };
 
 void Flight::initialise(){
@@ -17,7 +17,7 @@ void Flight::initialise(){
 
 
 State* Flight::update(){
-
+    
     //at apogee transtion to recovery state
     return this;
 };

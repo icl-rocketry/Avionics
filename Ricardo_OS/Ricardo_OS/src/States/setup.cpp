@@ -1,5 +1,5 @@
 #include "ricardo_pins.h"
-#include "config.h"
+#include "global_config.h"
 #include "Arduino.h"
 
 #include "setup.h"
@@ -8,22 +8,28 @@
 #include "flags.h"
 
 #include "preflight.h"
+#include "groundstation.h"
+
+#include "Sound/Melodies/melodyLibrary.h"
 
 
 
 Setup::Setup(stateMachine* sm) : State(sm){
-    _curr_stateID = system_flag::STATE_SETUP;
+    _curr_stateID = SYSTEM_FLAG::STATE_SETUP;
 };
 
 void Setup::initialise(){
     State::initialise();
+    
     //internal io initilization must happen here so io buses setup for sensor initialzation
         //intialize i2c interface
     _sm->I2C.begin(_SDA,_SCL,I2C_FREQUENCY);
         //initalize spi interface
-        //todo find the lowest denominator for the speed of the spi bus.   
-    _sm->vspi.setClockDivider(SPI_CLOCK_DIV8);
     _sm->vspi.begin();
+    //_sm->vspi.setClockDivider(SPI_CLOCK_DIV2);
+    _sm->vspi.setFrequency(1000000); // 10mhz
+    _sm->vspi.setBitOrder(MSBFIRST);
+    _sm->vspi.setDataMode(SPI_MODE0);
         //setup cs pins
         //initialise output variables as output
     pinMode(LoraCs, OUTPUT);
@@ -43,6 +49,8 @@ void Setup::initialise(){
     Serial.begin(Serial_baud);
     Serial.setRxBufferSize(SERIAL_SIZE_RX);
     
+    
+    //_sm->tunezhandler.play(MELODY::C_SCALEZ); // play startup sound
 
 };
 

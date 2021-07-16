@@ -1,12 +1,14 @@
 #include "radio.h"
 #include "iface.h"
-#include "config.h"
+
+#include "global_config.h"
+
 #include "SPI.h"
 #include "ricardo_pins.h"
 #include "LoRa.h"
 #include "../packets.h"
 
-#include "Logging/systemstatus.h"
+#include "Storage/systemstatus.h"
 #include "flags.h"
 
 #include <memory>
@@ -14,13 +16,19 @@
 
 #include "interfaces.h"
 
+#include <vector>
 
 
 
-Radio::Radio(SPIClass* spi,SystemStatus* systemstatus):
+
+Radio::Radio(SPIClass* spi,SystemStatus* systemstatus,std::vector<std::unique_ptr<std::vector<uint8_t> > >& buf):
 _spi(spi),
-_systemstatus(systemstatus)
-{};
+_systemstatus(systemstatus),
+_packetBuffer(buf),
+_txDone(true)
+{
+    _sendBuffer.reserve(5); // preallocation to reduce heap fragmentation
+};
 
 void Radio::setup(){
     //setup lora module
@@ -28,48 +36,96 @@ void Radio::setup(){
     LoRa.setSPI(*_spi);
 
     while (!LoRa.begin(LORA_REGION)){
-        _systemstatus->new_message(system_flag::ERROR_LORA,"Lora setting up");
+        _systemstatus->new_message(SYSTEM_FLAG::ERROR_LORA,"Lora setting up");
         delay(100);       
     };
-    _systemstatus->delete_message(system_flag::ERROR_LORA);
+    if (_systemstatus->flag_triggered(SYSTEM_FLAG::ERROR_LORA)){
+        _systemstatus->delete_message(SYSTEM_FLAG::ERROR_LORA);
+    }
     
     LoRa.setSyncWord(LORA_SYNC_WORD);
-
+    LoRa.enableCrc();
 };
 
 
-void Radio::send_packet(uint8_t* data, size_t packet_len){
-    if(LoRa.beginPacket()){
-        LoRa.write(data, packet_len);
-        LoRa.endPacket();
-    }else{
-        //radio busy or some awful error
-    };
+
+void Radio::send_packet(std::vector<uint8_t> &data){
+
+    _sendBuffer.push_back(data); 
 };
 
+void Radio::update(){
+    getPacket();
+    checkSendBuffer();
+    checkTx();
+};
 
-void Radio::get_packet(std::vector<std::shared_ptr<uint8_t>> *buf){
-    int packetSize = LoRa.parsePacket();
-    
-    if (packetSize){ //check if theres data to read 
+void Radio::getPacket(){
+    // check if radio is still transmitting
+    if (!_txDone){  // this maybe able to be replaced wiht the begin packet method
+        return;
+    }
 
-        //create shared ptr with custom deleter
-        std::shared_ptr<uint8_t> packet_ptr(new uint8_t[packetSize], [](uint8_t *p) { delete[] p; }); 
+    int packetSize = LoRa.parsePacket(); // put radio back into single receive mode and check for packets
 
-        LoRa.readBytes(packet_ptr.get(), packetSize); // Copy the received data into packet_received
+    if (packetSize){
+        std::unique_ptr<std::vector<uint8_t>> packet_ptr = std::make_unique<std::vector<uint8_t>>(packetSize);
 
-        //deserialize packet header, modify source interface and reserialize.
-        PacketHeader packetheader = PacketHeader(packet_ptr.get());
-        //update source interface
-        packetheader.src_interface = static_cast<uint8_t>(Interface::LORA);
-        //serialize packet header
+        LoRa.readBytes((*packet_ptr).data(),packetSize); // read bytes into vector
+
         std::vector<uint8_t> modified_packet_header;
-        packetheader.serialize(modified_packet_header);
+        //Iface::updateSourceInterface((*packet_ptr),modified_packet_header,INTERFACE::LORA)
+        PacketHeader packetheader = PacketHeader(*packet_ptr);
 
-        memcpy(packet_ptr.get(),modified_packet_header.data(),packetheader.header_len);
+        //update source interface
+        packetheader.src_interface = static_cast<uint8_t>(INTERFACE::LORA);
         
-        buf->push_back(packet_ptr);//add packet ptr  to buffer
+        //serialize packet header
+        
+        
+        packetheader.serialize(modified_packet_header);
+        
 
-    };
-    
-};
+        memcpy((*packet_ptr).data(),modified_packet_header.data(),packetheader.header_len);
+
+        _packetBuffer.push_back(std::move(packet_ptr));//add packet ptr  to buffer
+
+    }
+}
+
+void Radio::checkSendBuffer(){
+
+    if (!(_sendBuffer.size() > 0)){
+        return; // exit if nothing in the buffer
+    }
+
+    // check if radio is busy, if it isnt then send next packe
+    if(LoRa.beginPacket()){ 
+        std::vector<uint8_t> packet = _sendBuffer.front();
+        LoRa.write(packet.data(), packet.size());
+        LoRa.endPacket(true); // asynchronous send 
+        //delete front element of send buffer
+        _sendBuffer.erase(_sendBuffer.begin());
+        _txDone = false;
+    }
+    //LoRa.receive(); // place radio into receive mode
+}
+
+void Radio::checkTx(){
+    if (_txDone){
+        return;
+    }
+    if (!LoRa.isTransmitting()){
+        _txDone = true;
+    }
+}
+
+
+std::vector<double> Radio::getRadioInfo(){
+    std::vector<double> info;
+    info.resize(2);
+    info.at((uint8_t)RADIO_INFO::RSSI) = LoRa.packetRssi();
+    info.at((uint8_t)RADIO_INFO::SNR) = LoRa.packetSnr();
+    return info;
+}
+

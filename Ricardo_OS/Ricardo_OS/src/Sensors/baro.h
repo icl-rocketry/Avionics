@@ -3,8 +3,8 @@
 #include <Arduino.h>
 #include "SPI.h"
 
-#include "Logging/systemstatus.h"
-
+#include "Storage/systemstatus.h"
+#include "Storage/logController.h"
 #include "sensorStructs.h"
 
 struct baro_data_t {
@@ -14,7 +14,7 @@ struct baro_data_t {
 
 class Baro{
     public:
-        Baro(SPIClass* spi,SystemStatus* systemstatus,raw_measurements_t* raw_data);
+        Baro(SPIClass* spi,SystemStatus* systemstatus,LogController* logcontroller,raw_measurements_t* raw_data);
         void setup();
         void update();
 
@@ -23,6 +23,7 @@ class Baro{
         SPIClass* _spi;
         //pointer to system status object
         SystemStatus* _systemstatus;
+        LogController* _logcontroller;
         //pointer to raw data struct
         raw_measurements_t* _raw_data;
 

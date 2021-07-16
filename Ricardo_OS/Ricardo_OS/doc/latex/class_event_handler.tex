@@ -1,0 +1,94 @@
+\hypertarget{class_event_handler}{}\doxysection{Event\+Handler Class Reference}
+\label{class_event_handler}\index{EventHandler@{EventHandler}}
+
+
+{\ttfamily \#include $<$event\+Handler.\+h$>$}
+
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_event_handler_a83b42ecce5badb8f4be864b4cddf4b36}{Event\+Handler}} (State\+Machine $\ast$sm)
+\item 
+void \mbox{\hyperlink{class_event_handler_a97c5814f3ded9c10e1b7b95e15bfbf83}{setup}} (Json\+Array event\+\_\+config)
+\item 
+void \mbox{\hyperlink{class_event_handler_a130cf2694ce9ab04431246615ba02baf}{update}} ()
+\item 
+uint32\+\_\+t \mbox{\hyperlink{class_event_handler_a6020f1f159d75a914a9e2426ea0da5ca}{time\+Triggered}} (uint8\+\_\+t event\+ID)
+\begin{DoxyCompactList}\small\item\em Get the timestamp when an event was triggered. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+State\+Machine $\ast$ \mbox{\hyperlink{class_event_handler_a5cbcf1a3215f4c2cce9520198aed7d82}{\+\_\+sm}}
+\item 
+std\+::vector$<$ std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{class_event}{Event}} $>$ $>$ \mbox{\hyperlink{class_event_handler_a9c472cbe080f89e24e29dcc90b8b8b5e}{event\+List}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_event_handler_a83b42ecce5badb8f4be864b4cddf4b36}\label{class_event_handler_a83b42ecce5badb8f4be864b4cddf4b36}} 
+\index{EventHandler@{EventHandler}!EventHandler@{EventHandler}}
+\index{EventHandler@{EventHandler}!EventHandler@{EventHandler}}
+\doxysubsubsection{\texorpdfstring{EventHandler()}{EventHandler()}}
+{\footnotesize\ttfamily Event\+Handler\+::\+Event\+Handler (\begin{DoxyParamCaption}\item[{State\+Machine $\ast$}]{sm }\end{DoxyParamCaption})}
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_event_handler_a97c5814f3ded9c10e1b7b95e15bfbf83}\label{class_event_handler_a97c5814f3ded9c10e1b7b95e15bfbf83}} 
+\index{EventHandler@{EventHandler}!setup@{setup}}
+\index{setup@{setup}!EventHandler@{EventHandler}}
+\doxysubsubsection{\texorpdfstring{setup()}{setup()}}
+{\footnotesize\ttfamily void Event\+Handler\+::setup (\begin{DoxyParamCaption}\item[{Json\+Array}]{event\+\_\+config }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_event_handler_a6020f1f159d75a914a9e2426ea0da5ca}\label{class_event_handler_a6020f1f159d75a914a9e2426ea0da5ca}} 
+\index{EventHandler@{EventHandler}!timeTriggered@{timeTriggered}}
+\index{timeTriggered@{timeTriggered}!EventHandler@{EventHandler}}
+\doxysubsubsection{\texorpdfstring{timeTriggered()}{timeTriggered()}}
+{\footnotesize\ttfamily uint32\+\_\+t Event\+Handler\+::time\+Triggered (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{event\+ID }\end{DoxyParamCaption})}
+
+
+
+Get the timestamp when an event was triggered. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em event\+ID} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+timestamp in milliseconds. Returns 0 if has not been triggered yet 
+\end{DoxyReturn}
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_event_handler_a6020f1f159d75a914a9e2426ea0da5ca_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_event_handler_a130cf2694ce9ab04431246615ba02baf}\label{class_event_handler_a130cf2694ce9ab04431246615ba02baf}} 
+\index{EventHandler@{EventHandler}!update@{update}}
+\index{update@{update}!EventHandler@{EventHandler}}
+\doxysubsubsection{\texorpdfstring{update()}{update()}}
+{\footnotesize\ttfamily void Event\+Handler\+::update (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{class_event_handler_a5cbcf1a3215f4c2cce9520198aed7d82}\label{class_event_handler_a5cbcf1a3215f4c2cce9520198aed7d82}} 
+\index{EventHandler@{EventHandler}!\_sm@{\_sm}}
+\index{\_sm@{\_sm}!EventHandler@{EventHandler}}
+\doxysubsubsection{\texorpdfstring{\_sm}{\_sm}}
+{\footnotesize\ttfamily State\+Machine$\ast$ Event\+Handler\+::\+\_\+sm\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{class_event_handler_a9c472cbe080f89e24e29dcc90b8b8b5e}\label{class_event_handler_a9c472cbe080f89e24e29dcc90b8b8b5e}} 
+\index{EventHandler@{EventHandler}!eventList@{eventList}}
+\index{eventList@{eventList}!EventHandler@{EventHandler}}
+\doxysubsubsection{\texorpdfstring{eventList}{eventList}}
+{\footnotesize\ttfamily std\+::vector$<$std\+::unique\+\_\+ptr$<$\mbox{\hyperlink{class_event}{Event}}$>$ $>$ Event\+Handler\+::event\+List\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+/\+Users/kiran/\+Documents/\+Projects/\+ICLR/\+Avionics/\+Ricardo\+\_\+\+OS/\+Ricardo\+\_\+\+OS/src/\+Events/\mbox{\hyperlink{event_handler_8h}{event\+Handler.\+h}}\item 
+/\+Users/kiran/\+Documents/\+Projects/\+ICLR/\+Avionics/\+Ricardo\+\_\+\+OS/\+Ricardo\+\_\+\+OS/src/\+Events/\mbox{\hyperlink{event_handler_8cpp}{event\+Handler.\+cpp}}\end{DoxyCompactItemize}
