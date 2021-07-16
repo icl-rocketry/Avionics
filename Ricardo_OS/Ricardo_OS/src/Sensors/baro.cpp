@@ -17,18 +17,24 @@ _raw_data(raw_data)
 void Baro::setup(){
     //some sort of gps intilization idk
     reset();
+    setDelay();
+    readProm();
     
 }
 
 void Baro::update(){
     
     if (_spi != NULL){ //check for null pointer to rpevent undfiend behaviour
-  
+        getRawPressure();
+        getRawTemperature();
+
+        readTemperature();
+        readPressure();  
     };
 }
 
 void Baro::reset() {
-    write8(BARO_CMD::MS5607_RESET);
+    Baro::write(BARO_CMD::MS5607_RESET, 3);
 }
 
 void Baro::setOversamplingRate(uint8_t rate){
@@ -48,31 +54,31 @@ void Baro::setDelay(){
     switch (oversamplingRate)
     {
     case 0:
-        osrdelay = 750;
+        osrdelay =  600; //750;
         break;
     case 2:
-        osrdelay = 1250;
+        osrdelay = 1100; //1250;
         break;
     case 4:
-        osrdelay = 2500;
+        osrdelay = 2250; //2500;
         break;
     case 6:
-        osrdelay = 4750;
+        osrdelay = 4300; //4750;
         break;
     case 8:
-        osrdelay = 9250;
+        osrdelay = 9040; //9250;
         break;
     }
 }
 
 bool Baro::startTemperatureConversion() {
-    write8(MS5607_CONVERT_D2 + oversamplingRate);
+    D2 = read24(BARO_CMD::MS5607_CONVERT_D2 | oversamplingRate);
     lastConversion = micros();
     return true;
 }
 
 bool Baro::startPressureConversion() {
-    write8(MS5607_CONVERT_D1 + oversamplingRate);
+    D1 = read24(BARO_CMD::MS5607_CONVERT_D1 | oversamplingRate);
     lastConversion =  micros();
     return true;
 }
@@ -100,8 +106,7 @@ void Baro::compensateSecondOrder() {
 }
 
 bool Baro::readPressure() {
-    if (micros() - lastConversion > osrdelay){
-        D1 = read24(MS5607_ADC_READ);                           
+    if (micros() - lastConversion > osrdelay){                          
         OFF = ((int64_t)calibration.pressure_offset << 17) + ((dT * calibration.temp_coef_pressure_offset) >> 6);    
         SENS = ((int64_t)calibration.pressure_sensitivity << 16) + ((dT * calibration.temp_coef_pressure_sensitivity) >> 7);  
 
@@ -115,7 +120,6 @@ bool Baro::readPressure() {
 
 bool Baro::readTemperature() {
     if (micros() - lastConversion > osrdelay) {
-        D1 = read24(BARO_CMD::MS5607_ADC_READ);
         dT = D1 - ((uint32_t)calibration.ref_temp << 8);
         TEMP = 2000 + ((dT*(int64_t)calibration.temp_coef_temp) >> 23);
         return true;
@@ -124,9 +128,12 @@ bool Baro::readTemperature() {
         }
 }
 
-void Baro::write8(const uint8_t command){
+void Baro::write(const int command, const int ms = 0){
     digitalWrite(MS5607_CS, LOW);
     _spi->transfer(command);
+    if (ms) {
+        delay(ms);
+    }
     digitalWrite(MS5607_CS, HIGH);
 }
 
@@ -134,22 +141,27 @@ uint16_t Baro::read16(const uint8_t command) {
     digitalWrite(MS5607_CS, LOW);
     uint16_t data {};
     _spi->transfer(command);
-    data = _spi->transfer(0x00);
-    data <<= 8;
-    data |= _spi->transfer(0x00);
+    int data1 = _spi->transfer(0x00);
+    int data2 = _spi->transfer(0x00);
+    data = data1 << 8 | data2;
     digitalWrite(MS5607_CS, HIGH);
     return data;
 }
 
 uint32_t Baro::read24(const uint8_t command) {
     digitalWrite(MS5607_CS, LOW);
-    uint32_t data {};
     _spi->transfer(command);
-    data = _spi->transfer(0x00);
-    data <<= 16;
-    data |= _spi->transfer(0x00);
-    data <<= 8;
-    data |= _spi->transfer(0x00);
+    digitalWrite(MS5607_CS, HIGH);
+
+    delayMicroseconds(osrdelay);
+
+    digitalWrite(MS5607_CS, LOW);
+    uint32_t data {};
+    _spi->transfer(BARO_CMD::MS5607_ADC_READ);
+    int data1 = _spi->transfer(0x00);
+    int data2 = _spi->transfer(0x00);
+    int data3 = _spi->transfer(0x00);
+    data  = data1 << 16 | data2 << 8 | data3;
     digitalWrite(MS5607_CS, HIGH);
     return data;    
 }
