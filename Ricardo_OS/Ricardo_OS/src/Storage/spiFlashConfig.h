@@ -3,7 +3,8 @@
 
 //onboard spi flash descriptor - taken from adafruit flash_devices.h and slightly modified
 
-#define W25Q128JV_SM                                                          \
+
+#define W25Q128JV_SM                                                        \
 {                                                                            \
     .total_size = (1UL << 24), /* 16 MiB */                                    \
         .start_up_time_us = 5000, .manufacturer_id = 0xef,                     \
@@ -13,4 +14,5 @@
     .supports_qspi_writes = true, .write_status_register_split = false,        \
     .single_status_byte = false, .is_fram = false,                             \
   }
+
   

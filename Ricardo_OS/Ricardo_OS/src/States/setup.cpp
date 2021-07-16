@@ -50,7 +50,7 @@ void Setup::initialise(){
     Serial.setRxBufferSize(SERIAL_SIZE_RX);
     
     
-    //_sm->tunezhandler.play(MELODY::C_SCALEZ); // play startup sound
+    _sm->tunezhandler.play(MELODY::C_SCALEZ); // play startup sound
 
 };
 

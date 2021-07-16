@@ -212,8 +212,9 @@ void CommandHandler::handleCommand(const CommandPacket &commandpacket) {
 			case COMMANDS::Calibrate_Baro:
 				{
 				//set beta for testing
-				float beta = ((float)arg) / 100.0;
-				_sm->estimator.changeBeta(beta);
+				// float beta = ((float)arg) / 100.0;
+				// _sm->estimator.changeBeta(beta);
+				_sm->estimator.setup();
 				break;
 				}
 			case COMMANDS::Enter_USBMode:

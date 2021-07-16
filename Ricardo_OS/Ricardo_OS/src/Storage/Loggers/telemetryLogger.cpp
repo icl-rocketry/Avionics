@@ -30,9 +30,13 @@ void TelemetryLogger::writeLog(){
     }
     if (telemetry_log_buffer.size()>=1024){
         main_logfile.write(telemetry_log_buffer.c_str(),telemetry_log_buffer.size());
+        backup_logfile.write(telemetry_log_buffer.c_str(),telemetry_log_buffer.size());
+
+        
+        main_logfile.flush();
+        backup_logfile.flush();
 
         telemetry_log_buffer.clear();
-        main_logfile.flush();
     }
 
 };

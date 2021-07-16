@@ -6,6 +6,7 @@ from Interfaces import commandlineinterface
 from Interfaces import flaskinterface
 from RicardoHandler import serialmanager
 from RicardoHandler import telemetryhandler
+from RicardoHandler import telemetrylogger
 from multiprocessing import Process
 import redis
 
@@ -19,6 +20,7 @@ ap.add_argument("-v", "--verbose", required=False, help="Enable Verbose Mode", a
 ap.add_argument("--redis-host", required=False, help="redis host", type=str,default = "localhost")
 ap.add_argument("--redis-port", required=False, help="redis port", type=int,default = 6379)
 ap.add_argument('-c','--cli', required=False, help="Enable Interactive Commmand Line Interface",action='store_true',default=False)
+ap.add_argument('-l','--logger', required=False, help="Enable Telemetry logging",action='store_true',default=False)
 
 args = vars(ap.parse_args())
 
@@ -69,7 +71,11 @@ if __name__ == '__main__':
                                                                 args['redis_port'],))
     p.start()
 
-    
+    if (args['logger']):
+        logger = telemetrylogger.TelemetryLogger(redishost=args['redis_host'],
+                                                 redisport=args['redis_port'],
+                                                 filename="telemetry_log")
+        logger.start()
     
     if (args['cli']):
         c = commandlineinterface.CommandLineInterface(redishost=args['redis_host'],

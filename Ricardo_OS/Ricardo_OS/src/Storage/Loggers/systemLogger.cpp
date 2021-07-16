@@ -36,12 +36,14 @@ void SystemLogger::writeLog(){
             //microsd_file.print(entry.c_str());
             //microsd_file.write(entry.c_str(),entry.length());
             main_logfile.write(entry.c_str(),entry.length());
+            backup_logfile.write(entry.c_str(),entry.length());
             //_storagecontroller->write(flash_file_path,entry,STORAGE_DEVICE::FLASH);
             
         }
        
         
         main_logfile.flush();
+        backup_logfile.flush();
         system_log_buffer.clear();
 
         _prevWriteTime = millis();

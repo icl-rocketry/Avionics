@@ -144,25 +144,27 @@ class LocalizationKF{
          */
         Eigen::Matrix<float,6,6> P;
 
-        const float accelVariance = 0;
+        const float accelVariance = 0.1;
 
         //GPS MEASUREMENT
+        //cep reference - https://gssc.esa.int/navipedia/index.php/Accuracy
 
         /**
          * @brief Gps position variance given by the CEP ~ 2.5m
          * 
          */
-        const float gpsPositionVariance = 0;
+        const float gpsPositionVariance = 2.123;
         /**
-         * @brief Gps Altitude variance differs from horizontal variance.
+         * @brief Gps Altitude variance differs from horizontal variance but for now assume its the same.
+         * This is in m
          * 
          */
-        const float gpsAltitudeVariance = 0;
+        const float gpsAltitudeVariance = 2.123;
         /**
-         * @brief Gps velocity variance given as +- 0.05ms-1
+         * @brief Gps velocity variance given as +- 0.05ms-1 @ 50%
          * 
          */
-        const float gpsVelocityVariance = 0;
+        const float gpsVelocityVariance = 0.00557;
         /**
          * @brief Covaraince Matrix for the GPS measurements.
          * We assume the variance is constant here where the position variance is given

@@ -79,7 +79,7 @@ void Estimator::update(){
          return;
       }
 
-      localizationkf.predict((state.acceleration * g),dt);
+      localizationkf.predict((state.acceleration * g),dt_seconds);
       
 
       if (_sm->systemstatus.flag_triggered(SYSTEM_FLAG::ERROR_GPS)){

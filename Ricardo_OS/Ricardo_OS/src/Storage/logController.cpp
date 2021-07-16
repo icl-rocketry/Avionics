@@ -26,7 +26,7 @@ void LogController::setup(){
 
     //create new directory
     _storagecontroller->mkdir(uniqueDirectory,STORAGE_DEVICE::MICROSD);
-    //_storagecontroller->mkdir(uniqueDirectory,STORAGE_DEVICE::FLASH);
+    _storagecontroller->mkdir(uniqueDirectory,STORAGE_DEVICE::FLASH);
     
     //update loggers with unique directory
     systemlogger.setDirectory(uniqueDirectory);

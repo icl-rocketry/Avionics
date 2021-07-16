@@ -30,6 +30,7 @@ class Estimator{
         
         void changeBeta(float beta); //remove this
 
+
         state_t state;
     private:
         stateMachine* _sm;//pointer to statemachine object
