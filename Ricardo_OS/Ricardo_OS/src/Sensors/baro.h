@@ -75,6 +75,9 @@ class Baro{
 
         void compensateSecondOrder();
 
+        void export();
+        float Altitude(float pressure);
+
         void write8(uint8_t command);
         uint8_t read16(uint8_t command);
         uint8_t read24(uint8_t command);

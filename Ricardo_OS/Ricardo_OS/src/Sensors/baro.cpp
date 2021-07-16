@@ -131,8 +131,9 @@ bool Baro::readTemperature() {
 }
 
 void Baro::export() {
-    _raw_data->baro_temp = TEMP;
-    _raw_data->baro_press = PRESS;
+    _raw_data->baro_temp = TEMP/100;
+    _raw_data->baro_press = PRESS/100;
+    _raw_data->baro_alt = toAltitude(PRESS/100);
 }
 
 void Baro::write(const int command, const int ms = 0){
@@ -173,3 +174,13 @@ uint32_t Baro::read24(const uint8_t command) {
     return data;    
 }
 
+float toAltitude(float pressure) {
+
+    const float R = 287.052; // specific gas constant R*/M0
+    const float g = 9.80665; // standard gravity 
+    const float t_grad = 0.0065; // gradient of temperature
+    const float t0 = 273.15 + 15; // temperature at 0 altitude
+    const float p0 = 101325; // pressure at 0 altitude
+
+    return t0 / t_grad * (1 - exp((t_grad * R / g) * log(pressure / p0)));
+}
