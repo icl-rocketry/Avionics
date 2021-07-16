@@ -29,7 +29,9 @@ void Baro::update(){
         getRawTemperature();
 
         readTemperature();
-        readPressure();  
+        readPressure();
+
+        export();  
     };
 }
 
@@ -126,6 +128,11 @@ bool Baro::readTemperature() {
     } else {
         return false;
         }
+}
+
+void Baro::export() {
+    _raw_data->baro_temp = TEMP;
+    _raw_data->baro_press = PRESS;
 }
 
 void Baro::write(const int command, const int ms = 0){

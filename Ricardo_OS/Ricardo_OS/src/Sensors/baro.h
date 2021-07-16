@@ -7,10 +7,6 @@
 #include "Storage/logController.h"
 #include "sensorStructs.h"
 
-struct baro_data_t {
-    uint16_t temp;
-    uint16_t pressure;
-};
 
 typedef struct {
     uint16_t pressure_sensitivity {};            
@@ -47,6 +43,7 @@ class Baro{
         Baro(SPIClass* spi,SystemStatus* systemstatus,LogController* logcontroller,raw_measurements_t* raw_data);
         void setup();
         void update();
+
 
     private:
         //pointer to spi object
