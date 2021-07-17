@@ -26,7 +26,7 @@ class Grapher():
 
         self.prevTime = 0
         self.updateDelta = .01
-        self.history = 50
+        self.history = args['history']
     
         #setup figures
 
@@ -116,6 +116,7 @@ if __name__ == "__main__":
     ap.add_argument("--host", required=False, help="redis host", type=str,default = "localhost")
     ap.add_argument("--port", required=False, help="redis port", type=int,default = 6379)
     ap.add_argument("--vars",nargs='+', required=False, help="plotting variables",type = str,default = ['roll','pitch','yaw'])
+    ap.add_argument("--history", required=False, help="plot history", type=int,default = 50)
     args = vars(ap.parse_args())
     
     g = Grapher(args)
