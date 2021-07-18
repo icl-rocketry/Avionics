@@ -185,8 +185,9 @@ class TelemetryView(urwid.WidgetWrap):
                                "Velocity NED (m/s) : ",
                                "Acceleration NED (m/s^2) : ",
                                "Orientation (Roll,Pitch,Yaw) (Rad) : ",
-                               "Temperature (Celcius) : ",
-                               "Pressure (Pa) : "]
+                               "Baro Temperature (Celcius) : ",
+                               "Baro Pressure (Pa) : ",
+                               "Baro Altitude (m) : "]
         self.displayWidgetsList = [urwid.Filler(urwid.Text(text,align="center")) for text in self.displayStrings]
 
         self.displayWidgets = urwid.Pile(self.displayWidgetsList)
@@ -199,8 +200,9 @@ class TelemetryView(urwid.WidgetWrap):
         self.__updateDisplayData__(2,"("+self.__getFromDict__(data,"vn") + "," + self.__getFromDict__(data,"ve") + "," + self.__getFromDict__(data,"vd") + ")" )
         self.__updateDisplayData__(3,"("+self.__getFromDict__(data,"an") + "," + self.__getFromDict__(data,"ae") + "," + self.__getFromDict__(data,"ad") + ")" )
         self.__updateDisplayData__(4,"("+self.__getFromDict__(data,"roll") + "," + self.__getFromDict__(data,"pitch") + "," + self.__getFromDict__(data,"yaw") + ")" )
-        self.__updateDisplayData__(5,"("+self.__getFromDict__(data,"temp")  + ")" )
-        self.__updateDisplayData__(6,"("+self.__getFromDict__(data,"press")  + ")" )
+        self.__updateDisplayData__(5,"("+self.__getFromDict__(data,"baro_temp")  + ")" )
+        self.__updateDisplayData__(6,"("+self.__getFromDict__(data,"baro_press")  + ")" )
+        self.__updateDisplayData__(7,"("+self.__getFromDict__(data,"baro_alt")  + ")" )
 
     def __updateDisplayData__(self,idx,text):
         self.displayWidgetsList[idx].base_widget.set_text(self.displayStrings[idx] + text)

@@ -133,8 +133,9 @@ class TelemetryPacket{
                 &TelemetryPacket::mx,
                 &TelemetryPacket::my,
                 &TelemetryPacket::mz,
-                &TelemetryPacket::temp,
-                &TelemetryPacket::press,
+                &TelemetryPacket::baro_temp,
+                &TelemetryPacket::baro_press,
+                &TelemetryPacket::baro_alt,
                 &TelemetryPacket::batt_voltage,
                 &TelemetryPacket::batt_percent,
                 &TelemetryPacket::launch_lat,
@@ -172,7 +173,7 @@ class TelemetryPacket{
         float gx, gy, gz; // angular rates (deg/s)
         float mx, my, mz;// magnetometer (uT)
         //barometer
-        float temp, press;
+        float baro_temp, baro_press,baro_alt;
         //battery
         uint16_t batt_voltage,batt_percent;
         //launch site

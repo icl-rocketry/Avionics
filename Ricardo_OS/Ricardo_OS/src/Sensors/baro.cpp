@@ -16,7 +16,7 @@ _raw_data(raw_data)
 {};
 
 void Baro::setup(){
-    //some sort of gps intilization idk
+
     reset();
     setOversamplingRate(MS5607_OSR1024);
     readProm();
@@ -42,8 +42,8 @@ void Baro::reset() {
 
 
 void Baro::readProm() {
-    calibration.pressure_offset = read16(BARO_CMD::MS5607_PROM_C1);
-    calibration.pressure_sensitivity = read16(BARO_CMD::MS5607_PROM_C2);
+    calibration.pressure_sensitivity = read16(BARO_CMD::MS5607_PROM_C1);
+    calibration.pressure_offset = read16(BARO_CMD::MS5607_PROM_C2);
     calibration.temp_coef_pressure_sensitivity = read16(BARO_CMD::MS5607_PROM_C3);
     calibration.temp_coef_pressure_offset = read16(BARO_CMD::MS5607_PROM_C4);
     calibration.ref_temp = read16(BARO_CMD::MS5607_PROM_C5);
@@ -130,14 +130,14 @@ void Baro::compensateSecondOrder() {
 
     // Low Temperature
     if (TEMP < 2000){
-        T2 = ((dT * dT) >> 31);                      
-        OFF2 = 61 * (TEMP - 2000)*(TEMP - 2000) >> 4;       
-        SENS2 = 2 * (TEMP - 2000)*(TEMP - 2000);            
+        T2 = ((int64_t)(dT * dT) >> 31);                      
+        OFF2 = (int64_t)61 * (TEMP - 2000)*(TEMP - 2000) >> 4;       
+        SENS2 = (int64_t)2 * (TEMP - 2000)*(TEMP - 2000);            
 
         // Very Low Temperature
         if (TEMP < -1500) {
-            OFF2 += 15 * (TEMP + 1500)*(TEMP + 1500);       
-            SENS2 += 8 * (TEMP + 1500)*(TEMP + 1500);       
+            OFF2 += (int64_t)15 * (TEMP + 1500)*(TEMP + 1500);       
+            SENS2 += (int64_t)8 * (TEMP + 1500)*(TEMP + 1500);       
         }
         TEMP = TEMP - T2;
         OFF = OFF - OFF2;
@@ -148,25 +148,25 @@ void Baro::compensateSecondOrder() {
 bool Baro::calculatePressure() {
 
                         
-    OFF = ((int64_t)calibration.pressure_offset << 17) + ((dT * calibration.temp_coef_pressure_offset) >> 6);    
-    SENS = ((int64_t)calibration.pressure_sensitivity << 16) + ((dT * calibration.temp_coef_pressure_sensitivity) >> 7);  
+    OFF = ((int64_t)calibration.pressure_offset << 17) + (((int64_t)dT * calibration.temp_coef_pressure_offset) >> 6);    
+    SENS = ((int64_t)calibration.pressure_sensitivity << 16) + (((int64_t)dT * calibration.temp_coef_pressure_sensitivity) >> 7);  
 
     compensateSecondOrder();
-    PRESS = (((D1 * SENS) >> 21) - OFF) >> 15;              
+    PRESS = ((((int64_t)D1 * SENS) >> 21) - OFF) >> 15;              
     return true;
 }
 
 bool Baro::calculateTemperature() {
 
-    dT = D2 - ((uint32_t)calibration.ref_temp << 8);
-    TEMP = 2000 + ((dT*(int64_t)calibration.temp_coef_temp) >> 23);
+    dT = D2 - (calibration.ref_temp << 8);
+    TEMP = 2000 + ((dT*calibration.temp_coef_temp) >> 23);
     return true;
 }
 
 void Baro::updateData() {
     _raw_data->baro_temp = TEMP/100.0;
-    _raw_data->baro_press = PRESS/100.0;
-    _raw_data->baro_alt = toAltitude(PRESS/100.0);
+    _raw_data->baro_press = PRESS; // leave as is for pascals
+    _raw_data->baro_alt = toAltitude(PRESS);
 }
 
 void Baro::write(const int command, const int ms){

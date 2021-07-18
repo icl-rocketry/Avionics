@@ -66,9 +66,9 @@ class Baro{
 
         
 
-        int32_t D1 {0};
-        int32_t D2 {0};
-        int64_t dT {0};
+        uint32_t D1 {0};
+        uint32_t D2 {0};
+        int32_t dT {0};
         int32_t TEMP {0};
         int64_t OFF {0};
         int64_t SENS {0};

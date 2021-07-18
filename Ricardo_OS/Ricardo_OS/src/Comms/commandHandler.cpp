@@ -110,8 +110,9 @@ void CommandHandler::handleCommand(const CommandPacket &commandpacket) {
 					telemetry.my = _sm->sensors.sensors_raw.my;
 					telemetry.mz = _sm->sensors.sensors_raw.mz;
 
-					telemetry.temp = _sm->sensors.sensors_raw.baro_temp;
-					telemetry.press = _sm->sensors.sensors_raw.baro_press;
+					telemetry.baro_temp = _sm->sensors.sensors_raw.baro_temp;
+					telemetry.baro_press = _sm->sensors.sensors_raw.baro_press;
+					telemetry.baro_alt = _sm->sensors.sensors_raw.baro_alt;
 
 					telemetry.batt_voltage = _sm->sensors.sensors_raw.batt_volt;
 					telemetry.batt_percent= _sm->sensors.sensors_raw.batt_percent;
