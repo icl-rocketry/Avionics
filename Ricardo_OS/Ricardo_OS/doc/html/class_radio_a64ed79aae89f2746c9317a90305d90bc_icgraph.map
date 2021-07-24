@@ -3,8 +3,8 @@
 <area shape="rect" id="node2" href="$class_network_manager.html#a0d4ea7d4f0b395249151d0a28af79cd5" title=" " alt="" coords="981,81,1149,108"/>
 <area shape="rect" id="node3" href="$classstate_machine.html#a5f4f54735cb0a13393227e3af6863cdd" title=" " alt="" coords="787,56,933,83"/>
 <area shape="rect" id="node4" href="$main_8cpp.html#afe461d27b9c48d5921c00d521181f12f" title=" " alt="" coords="692,56,739,83"/>
-<area shape="rect" id="node5" href="$class_tunez_handler.html#a02e64b5ab21c71fc6e62e6673f80ac63" title="Put Melody on tune queue." alt="" coords="509,56,644,83"/>
-<area shape="rect" id="node6" href="$class_command_handler.html#a54c1b7e2f1a6d0365ef36a0c738d7e02" title=" " alt="" coords="228,5,461,32"/>
+<area shape="rect" id="node5" href="$class_tunez_handler.html#a7fd95225aeb3c4d4260356040608773d" title="play melody from melody library" alt="" coords="509,56,644,83"/>
+<area shape="rect" id="node6" href="$class_command_handler.html#a85cb37fdf6dcbb4dbee77111d4b4ee66" title=" " alt="" coords="228,5,461,32"/>
 <area shape="rect" id="node8" href="$class_setup.html#a315e788a23a012d5993613c627f15302" title=" " alt="" coords="289,56,400,83"/>
-<area shape="rect" id="node7" href="$class_command_handler.html#a6c61c87a0ad0045aa6133dd69112a72b" title=" " alt="" coords="5,56,180,83"/>
+<area shape="rect" id="node7" href="$class_network_manager.html#a31a6ba8c038104a3faf686e53fcfcbe9" title=" " alt="" coords="5,49,180,90"/>
 </map>

@@ -120,7 +120,7 @@ public:
     //gps
     long gps_long, gps_lat,gps_alt;
     long gps_v_n, gps_v_e, gps_v_d;
-    uint8_t gps_sat, gps_fix;
+    uint16_t gps_sat, gps_fix; // these cant be uint8_t as this is a typedef to unsigned char so cannot be converted to a numeric string
     //imu
     float ax, ay, az;
     float gx, gy, gz;

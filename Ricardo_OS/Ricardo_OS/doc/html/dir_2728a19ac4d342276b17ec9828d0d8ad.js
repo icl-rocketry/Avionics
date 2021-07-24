@@ -3,7 +3,6 @@ var dir_2728a19ac4d342276b17ec9828d0d8ad =
     [ "interfaces", "dir_ac2226de93f44a5e89bfa0ad1a2b6e22.html", "dir_ac2226de93f44a5e89bfa0ad1a2b6e22" ],
     [ "commandHandler.cpp", "command_handler_8cpp.html", null ],
     [ "commandHandler.h", "command_handler_8h.html", [
-      [ "Command", "struct_command.html", "struct_command" ],
       [ "CommandHandler", "class_command_handler.html", "class_command_handler" ]
     ] ],
     [ "commands.h", "commands_8h.html", "commands_8h" ],

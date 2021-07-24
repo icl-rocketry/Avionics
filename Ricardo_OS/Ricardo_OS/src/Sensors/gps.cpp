@@ -57,7 +57,7 @@ void GPS::update()
     }
 
    if (gnss.getPVT() && (!gnss.getInvalidLlh())){ // check if new navigation solution is available
-       _raw_data->gps_updated = true;
+        _raw_data->gps_updated = true;
 
        _raw_data->gps_lat = gnss.getLatitude(); //degrees
        _raw_data->gps_long = gnss.getLongitude(); // degrees
@@ -72,7 +72,6 @@ void GPS::update()
        _raw_data->gps_sat = gnss.getSIV(); 
        _raw_data->gps_fix = gnss.getFixType();
        _raw_data->gps_valid = gnss.getGnssFixOk();
-    
 
        _raw_data->gps_year = gnss.getYear();
        _raw_data->gps_month = gnss.getMonth();
@@ -80,6 +79,7 @@ void GPS::update()
        _raw_data->gps_hour = gnss.getHour();
        _raw_data->gps_minute = gnss.getMinute();
        _raw_data->gps_second = gnss.getSecond();
+
 
 
        //gnss.flushPVT();

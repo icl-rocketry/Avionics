@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['networkmanager_1495',['NetworkManager',['../class_command_handler.html#a82ca116715acd6c64f2acf4dc71e4038',1,'CommandHandler']]]
+  ['operator_3c_3c_1727',['operator&lt;&lt;',['../class_routing_table.html#a6303e42a06796509acda1a1214c73c87',1,'RoutingTable']]]
 ];

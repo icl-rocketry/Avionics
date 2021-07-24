@@ -56,6 +56,7 @@ struct raw_measurements_t{
 
 };
 
+
 struct state_t{
 
     Eigen::Quaternionf orientation; //(quaternion)
@@ -66,8 +67,9 @@ struct state_t{
     Eigen::Vector3f angularRates;//(deg/s)
     float thrust; //estimated thrust
 
-    //Launch Site coords
+    //Launch Site 
     long gps_launch_lat,gps_launch_long,gps_launch_alt;
+    float baro_ref_alt;
 
 
 

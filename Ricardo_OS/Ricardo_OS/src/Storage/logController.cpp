@@ -34,7 +34,10 @@ void LogController::setup(){
 
     //enable loggers
     systemlogger.enable();
+    //telmetry logging be default for debugging
+    #ifdef DEBUG_ENABLED
     telemetrylogger.enable();
+    #endif
 
 }
 

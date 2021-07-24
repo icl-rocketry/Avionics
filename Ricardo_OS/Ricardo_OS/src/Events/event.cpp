@@ -2,6 +2,8 @@
 #include "condition.h"
 #include "Storage/utils.h"
 #include "stdexcept"
+#include <string>
+
 
 
 
@@ -20,12 +22,12 @@ void Event::update(){
 
 
 void EngineEvent::_execute(){
-	_logcontroller->log("Event(ENGINE):" + utils::tostring(_eventID) + " fired");
+	_logcontroller->log("Event(ENGINE):" + std::to_string(_eventID) + " fired");
 	return;
 }
 
 
 void PyroEvent::_execute(){
-	_logcontroller->log("Event(PYRO):" + utils::tostring(_eventID) + " fired");
+	_logcontroller->log("Event(PYRO):" + std::to_string(_eventID) + " fired");
 	_pyrohandler->fire(_id);
 }

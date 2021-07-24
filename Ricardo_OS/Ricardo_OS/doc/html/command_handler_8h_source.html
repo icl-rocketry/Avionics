@@ -104,68 +104,45 @@ $(document).ready(function(){initNavTree('command_handler_8h_source.html',''); i
 <div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160; </div>
 <div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="preprocessor">#include &lt;Arduino.h&gt;</span></div>
 <div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="preprocessor">#include &lt;vector&gt;</span></div>
-<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160; </div>
-<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="comment">//#include &quot;commandBuffer.h&quot;</span></div>
-<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="commands_8h.html">commands.h</a>&quot;</span></div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="commands_8h.html">commands.h</a>&quot;</span></div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="packets_8h.html">packets.h</a>&quot;</span></div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160; </div>
 <div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160; </div>
 <div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="interfaces_8h.html">interfaces/interfaces.h</a>&quot;</span></div>
 <div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="nodes_8h.html">nodes.h</a>&quot;</span></div>
 <div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160; </div>
 <div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160; </div>
 <div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160; </div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="keyword">class </span><a class="code" href="classstate_machine.html">stateMachine</a>;<span class="comment">//forward declaration to prevent circular dependancy</span></div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160; </div>
 <div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160; </div>
-<div class="line"><a name="l00020"></a><span class="lineno"><a class="line" href="struct_command.html">   20</a></span>&#160;<span class="keyword">struct </span><a class="code" href="struct_command.html">Command</a> {</div>
-<div class="line"><a name="l00021"></a><span class="lineno"><a class="line" href="struct_command.html#a9a907b2eeb9de098e6ee779153850247">   21</a></span>&#160;    <a class="code" href="nodes_8h.html#ac77cd0a84629014c09956c3f475d6aea">NODES</a> <a class="code" href="struct_command.html#a9a907b2eeb9de098e6ee779153850247">source_node</a>; <span class="comment">//source node </span></div>
-<div class="line"><a name="l00022"></a><span class="lineno"><a class="line" href="struct_command.html#a19e96b7857ed309f27e162dc8c9ed318">   22</a></span>&#160;    <a class="code" href="commands_8h.html#a73b52bb10772a6ec22fce9998c6549aa">COMMANDS</a> <a class="code" href="struct_command.html#a19e96b7857ed309f27e162dc8c9ed318">type</a>; </div>
-<div class="line"><a name="l00023"></a><span class="lineno"><a class="line" href="struct_command.html#a0a9f215b75709f293852ca475ef4f70f">   23</a></span>&#160;    uint8_t <a class="code" href="struct_command.html#a0a9f215b75709f293852ca475ef4f70f">arg</a>;</div>
-<div class="line"><a name="l00024"></a><span class="lineno"><a class="line" href="struct_command.html#a5d091c723e3d155a4edaf3a9f4f4f54c">   24</a></span>&#160;    uint32_t <a class="code" href="struct_command.html#a5d091c723e3d155a4edaf3a9f4f4f54c">uid</a>; <span class="comment">// unique id </span></div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;};</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="keyword">class </span><a class="code" href="classstate_machine.html">stateMachine</a>;<span class="comment">//forward declaration to prevent circular dependancy</span></div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160; </div>
+<div class="line"><a name="l00022"></a><span class="lineno"><a class="line" href="class_command_handler.html">   22</a></span>&#160;<span class="keyword">class </span><a class="code" href="class_command_handler.html">CommandHandler</a> {</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;    <span class="keyword">public</span>:</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;        <a class="code" href="class_command_handler.html#aa55bcfead70e180ab286603cfb5b2ccf">CommandHandler</a>(<a class="code" href="classstate_machine.html">stateMachine</a>* sm);</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;        <span class="keywordtype">void</span> <a class="code" href="class_command_handler.html#a85cb37fdf6dcbb4dbee77111d4b4ee66">handleCommand</a>(<span class="keyword">const</span> <a class="code" href="class_command_packet.html">CommandPacket</a> &amp;commandpacket);</div>
 <div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160; </div>
-<div class="line"><a name="l00027"></a><span class="lineno"><a class="line" href="class_command_handler.html">   27</a></span>&#160;<span class="keyword">class </span><a class="code" href="class_command_handler.html">CommandHandler</a> {</div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160; </div>
-<div class="line"><a name="l00029"></a><span class="lineno"><a class="line" href="class_command_handler.html#a82ca116715acd6c64f2acf4dc71e4038">   29</a></span>&#160;    <span class="keyword">friend</span> <span class="keyword">class </span><a class="code" href="class_network_manager.html">NetworkManager</a>;</div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160; </div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;    <span class="keyword">public</span>:</div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;        <a class="code" href="class_command_handler.html#aa55bcfead70e180ab286603cfb5b2ccf">CommandHandler</a>(<a class="code" href="classstate_machine.html">stateMachine</a>* sm);</div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160; </div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;        <span class="keywordtype">void</span> <a class="code" href="class_command_handler.html#a701fab97d726eb7563583f517e29a1af">setup</a>();</div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;        <span class="keywordtype">void</span> <a class="code" href="class_command_handler.html#a6c61c87a0ad0045aa6133dd69112a72b">update</a>();</div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160; </div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160; </div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;    <span class="keyword">private</span>:</div>
-<div class="line"><a name="l00039"></a><span class="lineno"><a class="line" href="class_command_handler.html#ae0ee0cc2b5b8a64321ff595b66c278f8">   39</a></span>&#160;        <a class="code" href="classstate_machine.html">stateMachine</a>* <a class="code" href="class_command_handler.html#ae0ee0cc2b5b8a64321ff595b66c278f8">_sm</a>; <span class="comment">//pointer to state machine</span></div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160; </div>
-<div class="line"><a name="l00041"></a><span class="lineno"><a class="line" href="class_command_handler.html#a8ae50b25a5f7919da291b3a5bfb4e6e4">   41</a></span>&#160;        std::vector&lt;Command&gt; <a class="code" href="class_command_handler.html#a8ae50b25a5f7919da291b3a5bfb4e6e4">commandbuffer</a>;</div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;        </div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;        <span class="keywordtype">void</span> <a class="code" href="class_command_handler.html#a3ad23bf7d0bb809ac5c3a3ac9c74e5a5">addCommand</a>(<a class="code" href="struct_command.html">Command</a> command);</div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160; </div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;        <span class="keywordtype">void</span> <a class="code" href="class_command_handler.html#a54c1b7e2f1a6d0365ef36a0c738d7e02">handleCommand</a>(<a class="code" href="struct_command.html">Command</a> command);</div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;        <span class="keywordtype">bool</span> <a class="code" href="class_command_handler.html#a89011ae550ba0c0c32b5ae2794bad92c">commandAvaliable</a>(<a class="code" href="struct_command.html">Command</a> command);</div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;};  </div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160; </div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="ttc" id="aclass_command_handler_html"><div class="ttname"><a href="class_command_handler.html">CommandHandler</a></div><div class="ttdef"><b>Definition:</b> commandHandler.h:27</div></div>
-<div class="ttc" id="aclass_command_handler_html_a3ad23bf7d0bb809ac5c3a3ac9c74e5a5"><div class="ttname"><a href="class_command_handler.html#a3ad23bf7d0bb809ac5c3a3ac9c74e5a5">CommandHandler::addCommand</a></div><div class="ttdeci">void addCommand(Command command)</div><div class="ttdef"><b>Definition:</b> commandHandler.cpp:45</div></div>
-<div class="ttc" id="aclass_command_handler_html_a54c1b7e2f1a6d0365ef36a0c738d7e02"><div class="ttname"><a href="class_command_handler.html#a54c1b7e2f1a6d0365ef36a0c738d7e02">CommandHandler::handleCommand</a></div><div class="ttdeci">void handleCommand(Command command)</div><div class="ttdef"><b>Definition:</b> commandHandler.cpp:49</div></div>
-<div class="ttc" id="aclass_command_handler_html_a6c61c87a0ad0045aa6133dd69112a72b"><div class="ttname"><a href="class_command_handler.html#a6c61c87a0ad0045aa6133dd69112a72b">CommandHandler::update</a></div><div class="ttdeci">void update()</div><div class="ttdef"><b>Definition:</b> commandHandler.cpp:35</div></div>
-<div class="ttc" id="aclass_command_handler_html_a701fab97d726eb7563583f517e29a1af"><div class="ttname"><a href="class_command_handler.html#a701fab97d726eb7563583f517e29a1af">CommandHandler::setup</a></div><div class="ttdeci">void setup()</div><div class="ttdef"><b>Definition:</b> commandHandler.cpp:32</div></div>
-<div class="ttc" id="aclass_command_handler_html_a89011ae550ba0c0c32b5ae2794bad92c"><div class="ttname"><a href="class_command_handler.html#a89011ae550ba0c0c32b5ae2794bad92c">CommandHandler::commandAvaliable</a></div><div class="ttdeci">bool commandAvaliable(Command command)</div><div class="ttdef"><b>Definition:</b> commandHandler.cpp:260</div></div>
-<div class="ttc" id="aclass_command_handler_html_a8ae50b25a5f7919da291b3a5bfb4e6e4"><div class="ttname"><a href="class_command_handler.html#a8ae50b25a5f7919da291b3a5bfb4e6e4">CommandHandler::commandbuffer</a></div><div class="ttdeci">std::vector&lt; Command &gt; commandbuffer</div><div class="ttdef"><b>Definition:</b> commandHandler.h:41</div></div>
-<div class="ttc" id="aclass_command_handler_html_aa55bcfead70e180ab286603cfb5b2ccf"><div class="ttname"><a href="class_command_handler.html#aa55bcfead70e180ab286603cfb5b2ccf">CommandHandler::CommandHandler</a></div><div class="ttdeci">CommandHandler(stateMachine *sm)</div><div class="ttdef"><b>Definition:</b> commandHandler.cpp:25</div></div>
-<div class="ttc" id="aclass_command_handler_html_ae0ee0cc2b5b8a64321ff595b66c278f8"><div class="ttname"><a href="class_command_handler.html#ae0ee0cc2b5b8a64321ff595b66c278f8">CommandHandler::_sm</a></div><div class="ttdeci">stateMachine * _sm</div><div class="ttdef"><b>Definition:</b> commandHandler.h:39</div></div>
-<div class="ttc" id="aclass_network_manager_html"><div class="ttname"><a href="class_network_manager.html">NetworkManager</a></div><div class="ttdef"><b>Definition:</b> networkManager.h:31</div></div>
-<div class="ttc" id="aclassstate_machine_html"><div class="ttname"><a href="classstate_machine.html">stateMachine</a></div><div class="ttdef"><b>Definition:</b> stateMachine.h:33</div></div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160; </div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;    <span class="keyword">private</span>:</div>
+<div class="line"><a name="l00029"></a><span class="lineno"><a class="line" href="class_command_handler.html#ae0ee0cc2b5b8a64321ff595b66c278f8">   29</a></span>&#160;        <a class="code" href="classstate_machine.html">stateMachine</a>* <a class="code" href="class_command_handler.html#ae0ee0cc2b5b8a64321ff595b66c278f8">_sm</a>; <span class="comment">//pointer to state machine</span></div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;        <span class="keywordtype">bool</span> <a class="code" href="class_command_handler.html#a36521857e718c5819c9fe59b8effdb9d">commandAvaliable</a>(<a class="code" href="commands_8h.html#a73b52bb10772a6ec22fce9998c6549aa">COMMANDS</a> command);</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;};  </div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160; </div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160; </div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160; </div>
+<div class="ttc" id="aclass_command_handler_html"><div class="ttname"><a href="class_command_handler.html">CommandHandler</a></div><div class="ttdef"><b>Definition:</b> commandHandler.h:22</div></div>
+<div class="ttc" id="aclass_command_handler_html_a36521857e718c5819c9fe59b8effdb9d"><div class="ttname"><a href="class_command_handler.html#a36521857e718c5819c9fe59b8effdb9d">CommandHandler::commandAvaliable</a></div><div class="ttdeci">bool commandAvaliable(COMMANDS command)</div><div class="ttdef"><b>Definition:</b> commandHandler.cpp:273</div></div>
+<div class="ttc" id="aclass_command_handler_html_a85cb37fdf6dcbb4dbee77111d4b4ee66"><div class="ttname"><a href="class_command_handler.html#a85cb37fdf6dcbb4dbee77111d4b4ee66">CommandHandler::handleCommand</a></div><div class="ttdeci">void handleCommand(const CommandPacket &amp;commandpacket)</div><div class="ttdef"><b>Definition:</b> commandHandler.cpp:32</div></div>
+<div class="ttc" id="aclass_command_handler_html_aa55bcfead70e180ab286603cfb5b2ccf"><div class="ttname"><a href="class_command_handler.html#aa55bcfead70e180ab286603cfb5b2ccf">CommandHandler::CommandHandler</a></div><div class="ttdeci">CommandHandler(stateMachine *sm)</div><div class="ttdef"><b>Definition:</b> commandHandler.cpp:26</div></div>
+<div class="ttc" id="aclass_command_handler_html_ae0ee0cc2b5b8a64321ff595b66c278f8"><div class="ttname"><a href="class_command_handler.html#ae0ee0cc2b5b8a64321ff595b66c278f8">CommandHandler::_sm</a></div><div class="ttdeci">stateMachine * _sm</div><div class="ttdef"><b>Definition:</b> commandHandler.h:29</div></div>
+<div class="ttc" id="aclass_command_packet_html"><div class="ttname"><a href="class_command_packet.html">CommandPacket</a></div><div class="ttdef"><b>Definition:</b> packets.h:200</div></div>
+<div class="ttc" id="aclassstate_machine_html"><div class="ttname"><a href="classstate_machine.html">stateMachine</a></div><div class="ttdef"><b>Definition:</b> stateMachine.h:34</div></div>
 <div class="ttc" id="acommands_8h_html"><div class="ttname"><a href="commands_8h.html">commands.h</a></div></div>
 <div class="ttc" id="acommands_8h_html_a73b52bb10772a6ec22fce9998c6549aa"><div class="ttname"><a href="commands_8h.html#a73b52bb10772a6ec22fce9998c6549aa">COMMANDS</a></div><div class="ttdeci">COMMANDS</div><div class="ttdef"><b>Definition:</b> commands.h:6</div></div>
 <div class="ttc" id="ainterfaces_8h_html"><div class="ttname"><a href="interfaces_8h.html">interfaces.h</a></div></div>
 <div class="ttc" id="anodes_8h_html"><div class="ttname"><a href="nodes_8h.html">nodes.h</a></div></div>
-<div class="ttc" id="anodes_8h_html_ac77cd0a84629014c09956c3f475d6aea"><div class="ttname"><a href="nodes_8h.html#ac77cd0a84629014c09956c3f475d6aea">NODES</a></div><div class="ttdeci">NODES</div><div class="ttdef"><b>Definition:</b> nodes.h:6</div></div>
-<div class="ttc" id="astruct_command_html"><div class="ttname"><a href="struct_command.html">Command</a></div><div class="ttdef"><b>Definition:</b> commandHandler.h:20</div></div>
-<div class="ttc" id="astruct_command_html_a0a9f215b75709f293852ca475ef4f70f"><div class="ttname"><a href="struct_command.html#a0a9f215b75709f293852ca475ef4f70f">Command::arg</a></div><div class="ttdeci">uint8_t arg</div><div class="ttdef"><b>Definition:</b> commandHandler.h:23</div></div>
-<div class="ttc" id="astruct_command_html_a19e96b7857ed309f27e162dc8c9ed318"><div class="ttname"><a href="struct_command.html#a19e96b7857ed309f27e162dc8c9ed318">Command::type</a></div><div class="ttdeci">COMMANDS type</div><div class="ttdef"><b>Definition:</b> commandHandler.h:22</div></div>
-<div class="ttc" id="astruct_command_html_a5d091c723e3d155a4edaf3a9f4f4f54c"><div class="ttname"><a href="struct_command.html#a5d091c723e3d155a4edaf3a9f4f4f54c">Command::uid</a></div><div class="ttdeci">uint32_t uid</div><div class="ttdef"><b>Definition:</b> commandHandler.h:24</div></div>
-<div class="ttc" id="astruct_command_html_a9a907b2eeb9de098e6ee779153850247"><div class="ttname"><a href="struct_command.html#a9a907b2eeb9de098e6ee779153850247">Command::source_node</a></div><div class="ttdeci">NODES source_node</div><div class="ttdef"><b>Definition:</b> commandHandler.h:21</div></div>
+<div class="ttc" id="apackets_8h_html"><div class="ttname"><a href="packets_8h.html">packets.h</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->

@@ -53,6 +53,14 @@ float \mbox{\hyperlink{class_telemetry_packet_a3744bd09063a2b818f957d46a6e4a837}
 \item 
 float \mbox{\hyperlink{class_telemetry_packet_aceeebf4da7ceb5e5c622d1ae5012a456}{yaw}}
 \item 
+float \mbox{\hyperlink{class_telemetry_packet_af3172151d14c987507bb0be5c3e8ac00}{q0}}
+\item 
+float \mbox{\hyperlink{class_telemetry_packet_aaa5244577e6f819691d0fa4df2123743}{q1}}
+\item 
+float \mbox{\hyperlink{class_telemetry_packet_a02f723d38b1a17e5750210462abc265c}{q2}}
+\item 
+float \mbox{\hyperlink{class_telemetry_packet_ab70d0fb15a652517745c4b219142b306}{q3}}
+\item 
 long \mbox{\hyperlink{class_telemetry_packet_ac71fc5795f4f7198e2394c5d228c4623}{lat}}
 \item 
 long \mbox{\hyperlink{class_telemetry_packet_a2c59fb9d2bdfc54b45ad674fe0077c33}{lng}}
@@ -79,9 +87,11 @@ float \mbox{\hyperlink{class_telemetry_packet_a4d218095c049bc8cf34c013c5a6524ed}
 \item 
 float \mbox{\hyperlink{class_telemetry_packet_ab20a49137d62d42e4af30907209427f1}{mz}}
 \item 
-float \mbox{\hyperlink{class_telemetry_packet_a566ae38e945f59b71c3a217d095ce044}{temp}}
+float \mbox{\hyperlink{class_telemetry_packet_aff34faafb5c2a7205a33544eeb69c085}{baro\+\_\+temp}}
 \item 
-float \mbox{\hyperlink{class_telemetry_packet_ad79850d9c713494b84955246070e999d}{press}}
+float \mbox{\hyperlink{class_telemetry_packet_a7185a846f836954b5bd0b3e4ea3ebd0a}{baro\+\_\+press}}
+\item 
+float \mbox{\hyperlink{class_telemetry_packet_a3ee532836674533bf020286d6435ca26}{baro\+\_\+alt}}
 \item 
 uint16\+\_\+t \mbox{\hyperlink{class_telemetry_packet_a9f13b93d8ac63902179624becbd77190}{batt\+\_\+voltage}}
 \item 
@@ -145,7 +155,8 @@ Here is the call graph for this function\+:\nopagebreak
 \doxysubsubsection{\texorpdfstring{getSerializer()}{getSerializer()}}
 {\footnotesize\ttfamily static constexpr auto Telemetry\+Packet\+::get\+Serializer (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}, {\ttfamily [constexpr]}, {\ttfamily [private]}}
 
-Here is the caller graph for this function\+:\nopagebreak
+Here is the caller graph for this function\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -178,7 +189,8 @@ Here is the call graph for this function\+:\nopagebreak
 \includegraphics[width=350pt]{class_telemetry_packet_a081eba8279f9c3ed6a04df2e88c16df1_cgraph}
 \end{center}
 \end{figure}
-Here is the caller graph for this function\+:\nopagebreak
+Here is the caller graph for this function\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -229,6 +241,24 @@ Here is the caller graph for this function\+:\nopagebreak
 \index{az@{az}!TelemetryPacket@{TelemetryPacket}}
 \doxysubsubsection{\texorpdfstring{az}{az}}
 {\footnotesize\ttfamily float Telemetry\+Packet\+::az}
+
+\mbox{\Hypertarget{class_telemetry_packet_a3ee532836674533bf020286d6435ca26}\label{class_telemetry_packet_a3ee532836674533bf020286d6435ca26}} 
+\index{TelemetryPacket@{TelemetryPacket}!baro\_alt@{baro\_alt}}
+\index{baro\_alt@{baro\_alt}!TelemetryPacket@{TelemetryPacket}}
+\doxysubsubsection{\texorpdfstring{baro\_alt}{baro\_alt}}
+{\footnotesize\ttfamily float Telemetry\+Packet\+::baro\+\_\+alt}
+
+\mbox{\Hypertarget{class_telemetry_packet_a7185a846f836954b5bd0b3e4ea3ebd0a}\label{class_telemetry_packet_a7185a846f836954b5bd0b3e4ea3ebd0a}} 
+\index{TelemetryPacket@{TelemetryPacket}!baro\_press@{baro\_press}}
+\index{baro\_press@{baro\_press}!TelemetryPacket@{TelemetryPacket}}
+\doxysubsubsection{\texorpdfstring{baro\_press}{baro\_press}}
+{\footnotesize\ttfamily float Telemetry\+Packet\+::baro\+\_\+press}
+
+\mbox{\Hypertarget{class_telemetry_packet_aff34faafb5c2a7205a33544eeb69c085}\label{class_telemetry_packet_aff34faafb5c2a7205a33544eeb69c085}} 
+\index{TelemetryPacket@{TelemetryPacket}!baro\_temp@{baro\_temp}}
+\index{baro\_temp@{baro\_temp}!TelemetryPacket@{TelemetryPacket}}
+\doxysubsubsection{\texorpdfstring{baro\_temp}{baro\_temp}}
+{\footnotesize\ttfamily float Telemetry\+Packet\+::baro\+\_\+temp}
 
 \mbox{\Hypertarget{class_telemetry_packet_a303b82cfc45efeecdda99e998929fb09}\label{class_telemetry_packet_a303b82cfc45efeecdda99e998929fb09}} 
 \index{TelemetryPacket@{TelemetryPacket}!batt\_percent@{batt\_percent}}
@@ -338,11 +368,29 @@ Here is the caller graph for this function\+:\nopagebreak
 \doxysubsubsection{\texorpdfstring{pn}{pn}}
 {\footnotesize\ttfamily float Telemetry\+Packet\+::pn}
 
-\mbox{\Hypertarget{class_telemetry_packet_ad79850d9c713494b84955246070e999d}\label{class_telemetry_packet_ad79850d9c713494b84955246070e999d}} 
-\index{TelemetryPacket@{TelemetryPacket}!press@{press}}
-\index{press@{press}!TelemetryPacket@{TelemetryPacket}}
-\doxysubsubsection{\texorpdfstring{press}{press}}
-{\footnotesize\ttfamily float Telemetry\+Packet\+::press}
+\mbox{\Hypertarget{class_telemetry_packet_af3172151d14c987507bb0be5c3e8ac00}\label{class_telemetry_packet_af3172151d14c987507bb0be5c3e8ac00}} 
+\index{TelemetryPacket@{TelemetryPacket}!q0@{q0}}
+\index{q0@{q0}!TelemetryPacket@{TelemetryPacket}}
+\doxysubsubsection{\texorpdfstring{q0}{q0}}
+{\footnotesize\ttfamily float Telemetry\+Packet\+::q0}
+
+\mbox{\Hypertarget{class_telemetry_packet_aaa5244577e6f819691d0fa4df2123743}\label{class_telemetry_packet_aaa5244577e6f819691d0fa4df2123743}} 
+\index{TelemetryPacket@{TelemetryPacket}!q1@{q1}}
+\index{q1@{q1}!TelemetryPacket@{TelemetryPacket}}
+\doxysubsubsection{\texorpdfstring{q1}{q1}}
+{\footnotesize\ttfamily float Telemetry\+Packet\+::q1}
+
+\mbox{\Hypertarget{class_telemetry_packet_a02f723d38b1a17e5750210462abc265c}\label{class_telemetry_packet_a02f723d38b1a17e5750210462abc265c}} 
+\index{TelemetryPacket@{TelemetryPacket}!q2@{q2}}
+\index{q2@{q2}!TelemetryPacket@{TelemetryPacket}}
+\doxysubsubsection{\texorpdfstring{q2}{q2}}
+{\footnotesize\ttfamily float Telemetry\+Packet\+::q2}
+
+\mbox{\Hypertarget{class_telemetry_packet_ab70d0fb15a652517745c4b219142b306}\label{class_telemetry_packet_ab70d0fb15a652517745c4b219142b306}} 
+\index{TelemetryPacket@{TelemetryPacket}!q3@{q3}}
+\index{q3@{q3}!TelemetryPacket@{TelemetryPacket}}
+\doxysubsubsection{\texorpdfstring{q3}{q3}}
+{\footnotesize\ttfamily float Telemetry\+Packet\+::q3}
 
 \mbox{\Hypertarget{class_telemetry_packet_af85f2141167b776d9369a3c66f05f713}\label{class_telemetry_packet_af85f2141167b776d9369a3c66f05f713}} 
 \index{TelemetryPacket@{TelemetryPacket}!roll@{roll}}
@@ -379,12 +427,6 @@ Here is the caller graph for this function\+:\nopagebreak
 \index{system\_time@{system\_time}!TelemetryPacket@{TelemetryPacket}}
 \doxysubsubsection{\texorpdfstring{system\_time}{system\_time}}
 {\footnotesize\ttfamily uint64\+\_\+t Telemetry\+Packet\+::system\+\_\+time}
-
-\mbox{\Hypertarget{class_telemetry_packet_a566ae38e945f59b71c3a217d095ce044}\label{class_telemetry_packet_a566ae38e945f59b71c3a217d095ce044}} 
-\index{TelemetryPacket@{TelemetryPacket}!temp@{temp}}
-\index{temp@{temp}!TelemetryPacket@{TelemetryPacket}}
-\doxysubsubsection{\texorpdfstring{temp}{temp}}
-{\footnotesize\ttfamily float Telemetry\+Packet\+::temp}
 
 \mbox{\Hypertarget{class_telemetry_packet_ac2f177a213cc299a5dc4f77f3378d84b}\label{class_telemetry_packet_ac2f177a213cc299a5dc4f77f3378d84b}} 
 \index{TelemetryPacket@{TelemetryPacket}!vd@{vd}}

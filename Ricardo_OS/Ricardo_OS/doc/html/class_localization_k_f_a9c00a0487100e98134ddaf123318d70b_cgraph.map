@@ -1,0 +1,5 @@
+<map id="LocalizationKF::gpsUpdate" name="LocalizationKF::gpsUpdate">
+<area shape="rect" id="node1" title="Add new gps measurement to position estimate." alt="" coords="5,5,184,32"/>
+<area shape="rect" id="node2" href="$class_localization_k_f.html#adc53430b2dec651ae367cf7176b256ef" title="Get the relative NED coordinates from the reference point in m." alt="" coords="232,5,416,32"/>
+<area shape="rect" id="node3" href="$class_localization_k_f.html#aaa14cdfb2ff3eabba986b45ef2bc3df4" title=" " alt="" coords="464,5,655,32"/>
+</map>

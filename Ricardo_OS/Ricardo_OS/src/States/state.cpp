@@ -1,6 +1,7 @@
 #include "state.h"
 #include "stateMachine.h"
 #include "Storage/utils.h"
+#include <string>
 
 State::State(stateMachine* sm):
 _sm(sm)
@@ -20,7 +21,7 @@ void State::initialise(){
 void State::exitstate(){
     time_exited_state = millis();
     time_duration_state = time_exited_state - time_entered_state;
-     _sm->systemstatus.delete_message(_curr_stateID,"state exited | state duration: " + utils::tostring(time_duration_state));
+     _sm->systemstatus.delete_message(_curr_stateID,"state exited | state duration: " + std::to_string(time_duration_state));
 
 };
 

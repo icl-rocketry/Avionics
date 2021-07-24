@@ -2,7 +2,8 @@ var dir_afe58f6d0ef7eec69c2706509daaefe7 =
 [
     [ "baro.cpp", "baro_8cpp.html", null ],
     [ "baro.h", "baro_8h.html", [
-      [ "Baro", "class_baro.html", "class_baro" ]
+      [ "Baro", "class_baro.html", "class_baro" ],
+      [ "baro_cal_t", "struct_baro_1_1baro__cal__t.html", "struct_baro_1_1baro__cal__t" ]
     ] ],
     [ "battery.cpp", "battery_8cpp.html", null ],
     [ "battery.h", "battery_8h.html", [
@@ -15,9 +16,13 @@ var dir_afe58f6d0ef7eec69c2706509daaefe7 =
       [ "GPS", "class_g_p_s.html", "class_g_p_s" ]
     ] ],
     [ "imu.cpp", "imu_8cpp.html", null ],
-    [ "imu.h", "imu_8h.html", "imu_8h" ],
-    [ "kalman.cpp", "kalman_8cpp.html", null ],
-    [ "kalman.h", "kalman_8h.html", null ],
+    [ "imu.h", "imu_8h.html", [
+      [ "Imu", "class_imu.html", "class_imu" ]
+    ] ],
+    [ "localizationkf.cpp", "localizationkf_8cpp.html", null ],
+    [ "localizationkf.h", "localizationkf_8h.html", [
+      [ "LocalizationKF", "class_localization_k_f.html", "class_localization_k_f" ]
+    ] ],
     [ "sensors.cpp", "sensors_8cpp.html", null ],
     [ "sensors.h", "sensors_8h.html", "sensors_8h" ],
     [ "sensorStructs.h", "sensor_structs_8h.html", [

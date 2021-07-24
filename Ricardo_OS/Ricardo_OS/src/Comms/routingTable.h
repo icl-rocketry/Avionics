@@ -8,7 +8,8 @@
 #include <iostream>
 #include <iomanip>
 #include <exception>
-
+#include <optional>
+#include <stdexcept>
 /*
 routing table class implementation using nested vectors with ability to modify during runtime. Also has nice printing.
 TODO! 
@@ -20,14 +21,8 @@ add logging if bounds are out of bounds lol
 struct RoutingTableEntry{
     INTERFACE gateway;
     uint8_t metric;
+    std::string address;
 };
-/*
-const RoutingTableEntry routingtable[2][5] =
-{
-    {{INTERFACE::LOOPBACK,0},{INTERFACE::LORA,1},{INTERFACE::LORA,2},{INTERFACE::CAN,1},{INTERFACE::USBSerial,1}}, 
-    {{INTERFACE::LORA,1},{INTERFACE::LOOPBACK,0},{INTERFACE::USBSerial,1},{INTERFACE::LORA,2},{INTERFACE::USBSerial,1}}
-};
-*/
 
 class RoutingTable{
     public:
@@ -89,24 +84,26 @@ class RoutingTable{
         }
 
         template<typename T> std::vector<RoutingTableEntry>& operator()(T source_idx) {
-            
-            return _table.at(static_cast<uint8_t>(source_idx));
-        };
-        template<typename T> std::vector<RoutingTableEntry> operator()(T source_idx) const{
-            
             return _table.at(static_cast<uint8_t>(source_idx));
         };
 
+        template<typename T> std::optional<std::vector<RoutingTableEntry> > operator()(T source_idx) const{
+            try
+            {
+                return {_table.at(static_cast<uint8_t>(source_idx))};
+            }
+            catch(std::out_of_range){
+                return {}; 
+            }
+        };
 
-        template<typename T> RoutingTableEntry operator()(T source_idx, T destination_idx) const{ //the get operator -> returns an error entry so we can discard the dodgy packet 
-            
+
+        template<typename T> std::optional<RoutingTableEntry> operator()(T source_idx, T destination_idx) const{ //the get operator -> returns an error entry so we can discard the dodgy packet        
             std::vector<RoutingTableEntry> entries = _table.at(static_cast<uint8_t>(source_idx));
             if (destination_idx >= entries.size()){
-                
-                return error_entry;
-                
+                return {};     
             }else{
-                return entries.at(static_cast<uint8_t>(destination_idx));
+                return {entries.at(static_cast<uint8_t>(destination_idx))};
             }
         };
 
@@ -114,7 +111,7 @@ class RoutingTable{
 
     private:
         std::vector< std::vector<RoutingTableEntry> > _table;
-        const RoutingTableEntry error_entry{INTERFACE::ERROR,255}; // error entry return
+        //const RoutingTableEntry error_entry{INTERFACE::ERROR,255}; // error entry return
        
 };
 

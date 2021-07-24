@@ -1,7 +1,7 @@
 var class_sensors =
 [
     [ "Sensors", "class_sensors.html#a0d11b12054d42e68d30bb62c2412d213", null ],
-    [ "callibrate", "class_sensors.html#a8b07d5b68b42c7c11f4532fc997585a3", null ],
+    [ "calibrate", "class_sensors.html#ae1089d97497ea940abfde7b3a203b1ea", null ],
     [ "setup", "class_sensors.html#a53a14d2dc2f063893ba275aa6be2ffc0", null ],
     [ "update", "class_sensors.html#af0290d09b1ae4dd7726a2a6613bf354b", null ],
     [ "_sm", "class_sensors.html#a12693f171ad16b3abed526e54c50dc75", null ],

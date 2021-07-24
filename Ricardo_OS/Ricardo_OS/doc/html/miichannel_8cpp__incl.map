@@ -1,7 +1,8 @@
 <map id="/Users/kiran/Documents/Projects/ICLR/Avionics/Ricardo_OS/Ricardo_OS/src/Sound/Melodies/miichannel.cpp" name="/Users/kiran/Documents/Projects/ICLR/Avionics/Ricardo_OS/Ricardo_OS/src/Sound/Melodies/miichannel.cpp">
-<area shape="rect" id="node1" title=" " alt="" coords="5,5,216,76"/>
-<area shape="rect" id="node2" href="$melody_library_8h.html" title=" " alt="" coords="8,124,120,151"/>
-<area shape="rect" id="node3" href="$melody_class_8h.html" title=" " alt="" coords="56,199,165,225"/>
-<area shape="rect" id="node4" href="$pitches_8h.html" title=" " alt="" coords="31,273,105,300"/>
-<area shape="rect" id="node5" title=" " alt="" coords="129,273,180,300"/>
+<area shape="rect" id="node1" title=" " alt="" coords="27,5,237,76"/>
+<area shape="rect" id="node2" href="$melody_library_8h.html" title=" " alt="" coords="123,124,235,151"/>
+<area shape="rect" id="node3" href="$melody_class_8h.html" title=" " alt="" coords="31,199,140,225"/>
+<area shape="rect" id="node6" title=" " alt="" coords="164,199,215,225"/>
+<area shape="rect" id="node4" href="$pitches_8h.html" title=" " alt="" coords="5,273,80,300"/>
+<area shape="rect" id="node5" title=" " alt="" coords="104,273,155,300"/>
 </map>

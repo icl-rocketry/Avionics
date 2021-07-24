@@ -6,7 +6,8 @@
 
 
 
-Collaboration diagram for Imu\+:\nopagebreak
+Collaboration diagram for Imu\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -36,7 +37,11 @@ void \mbox{\hyperlink{class_imu_aacd0c15a4b84dfffd3bbc139fe2475a7}{read\+\_\+mag
 void \mbox{\hyperlink{class_imu_aea185774a50d2050a782f36903256fcc}{read\+\_\+accel}} ()
 \item 
 void \mbox{\hyperlink{class_imu_a2a31fdb5287aa1910c6bf7680de38a16}{read\+\_\+temp}} ()
-\end{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{class_imu_a0c78951531e132f0f7f0a93bdc8831f4}{write\+Bias\+Calibration}} ()
+\begin{DoxyCompactList}\small\item\em write accel gyro bias callibration to nvs storage \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_imu_a4f66c9f2ab6efa5a85beb57b63ed5e7c}{load\+Bias\+Calibration}} ()
+\begin{DoxyCompactList}\small\item\em Load accel gyro bias callibration from nvs storage. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Private Attributes}
 \begin{DoxyCompactItemize}
 \item 
@@ -49,10 +54,6 @@ SPIClass $\ast$ \mbox{\hyperlink{class_imu_afaacc86e5ba550168d702f98603b24bd}{\+
 LSM9\+DS1 \mbox{\hyperlink{class_imu_ab9c174aca19b97517abf02607f6d667d}{imu}}
 \item 
 \mbox{\hyperlink{structraw__measurements__t}{raw\+\_\+measurements\+\_\+t}} $\ast$ \mbox{\hyperlink{class_imu_a841b5561b9b72207f919d37f19a80b59}{\+\_\+raw\+\_\+data}}
-\item 
-uint64\+\_\+t \mbox{\hyperlink{class_imu_ad592c28e85ab206572ae7dda5f5c77f0}{prev\+\_\+read\+\_\+time}}
-\item 
-uint16\+\_\+t \mbox{\hyperlink{class_imu_ac3176803dc50bd1d6183a09595e87d5d}{time\+\_\+period}}
 \end{DoxyCompactItemize}
 
 
@@ -72,11 +73,20 @@ uint16\+\_\+t \mbox{\hyperlink{class_imu_ac3176803dc50bd1d6183a09595e87d5d}{time
 \doxysubsubsection{\texorpdfstring{calibrateAccelGyro()}{calibrateAccelGyro()}}
 {\footnotesize\ttfamily void Imu\+::calibrate\+Accel\+Gyro (\begin{DoxyParamCaption}\item[{bool}]{autocalc }\end{DoxyParamCaption})}
 
-Here is the caller graph for this function\+:\nopagebreak
+Here is the call graph for this function\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=336pt]{class_imu_a276260589f4398307a9b51cb0797a3c5_icgraph}
+\includegraphics[width=350pt]{class_imu_a276260589f4398307a9b51cb0797a3c5_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_imu_a276260589f4398307a9b51cb0797a3c5_icgraph}
 \end{center}
 \end{figure}
 \mbox{\Hypertarget{class_imu_a77139289cb2d9dac11503095a93db00f}\label{class_imu_a77139289cb2d9dac11503095a93db00f}} 
@@ -85,11 +95,38 @@ Here is the caller graph for this function\+:\nopagebreak
 \doxysubsubsection{\texorpdfstring{calibrateMag()}{calibrateMag()}}
 {\footnotesize\ttfamily void Imu\+::calibrate\+Mag (\begin{DoxyParamCaption}\item[{bool}]{load\+In }\end{DoxyParamCaption})}
 
-Here is the caller graph for this function\+:\nopagebreak
+Here is the caller graph for this function\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=309pt]{class_imu_a77139289cb2d9dac11503095a93db00f_icgraph}
+\includegraphics[width=350pt]{class_imu_a77139289cb2d9dac11503095a93db00f_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_imu_a4f66c9f2ab6efa5a85beb57b63ed5e7c}\label{class_imu_a4f66c9f2ab6efa5a85beb57b63ed5e7c}} 
+\index{Imu@{Imu}!loadBiasCalibration@{loadBiasCalibration}}
+\index{loadBiasCalibration@{loadBiasCalibration}!Imu@{Imu}}
+\doxysubsubsection{\texorpdfstring{loadBiasCalibration()}{loadBiasCalibration()}}
+{\footnotesize\ttfamily void Imu\+::load\+Bias\+Calibration (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Load accel gyro bias callibration from nvs storage. 
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_imu_a4f66c9f2ab6efa5a85beb57b63ed5e7c_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_imu_a4f66c9f2ab6efa5a85beb57b63ed5e7c_icgraph}
 \end{center}
 \end{figure}
 \mbox{\Hypertarget{class_imu_aea185774a50d2050a782f36903256fcc}\label{class_imu_aea185774a50d2050a782f36903256fcc}} 
@@ -98,7 +135,8 @@ Here is the caller graph for this function\+:\nopagebreak
 \doxysubsubsection{\texorpdfstring{read\_accel()}{read\_accel()}}
 {\footnotesize\ttfamily void Imu\+::read\+\_\+accel (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
 
-Here is the caller graph for this function\+:\nopagebreak
+Here is the caller graph for this function\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -111,7 +149,8 @@ Here is the caller graph for this function\+:\nopagebreak
 \doxysubsubsection{\texorpdfstring{read\_gyro()}{read\_gyro()}}
 {\footnotesize\ttfamily void Imu\+::read\+\_\+gyro (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
 
-Here is the caller graph for this function\+:\nopagebreak
+Here is the caller graph for this function\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -124,7 +163,8 @@ Here is the caller graph for this function\+:\nopagebreak
 \doxysubsubsection{\texorpdfstring{read\_mag()}{read\_mag()}}
 {\footnotesize\ttfamily void Imu\+::read\+\_\+mag (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
 
-Here is the caller graph for this function\+:\nopagebreak
+Here is the caller graph for this function\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -137,7 +177,8 @@ Here is the caller graph for this function\+:\nopagebreak
 \doxysubsubsection{\texorpdfstring{read\_temp()}{read\_temp()}}
 {\footnotesize\ttfamily void Imu\+::read\+\_\+temp (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
 
-Here is the caller graph for this function\+:\nopagebreak
+Here is the caller graph for this function\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -150,7 +191,8 @@ Here is the caller graph for this function\+:\nopagebreak
 \doxysubsubsection{\texorpdfstring{setup()}{setup()}}
 {\footnotesize\ttfamily void Imu\+::setup (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
 
-Here is the call graph for this function\+:\nopagebreak
+Here is the call graph for this function\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -177,11 +219,38 @@ Here is the call graph for this function\+:\nopagebreak
 \includegraphics[width=270pt]{class_imu_a250b49055c531aa7ed5c807e4f447741_cgraph}
 \end{center}
 \end{figure}
-Here is the caller graph for this function\+:\nopagebreak
+Here is the caller graph for this function\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
 \includegraphics[width=350pt]{class_imu_a250b49055c531aa7ed5c807e4f447741_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_imu_a0c78951531e132f0f7f0a93bdc8831f4}\label{class_imu_a0c78951531e132f0f7f0a93bdc8831f4}} 
+\index{Imu@{Imu}!writeBiasCalibration@{writeBiasCalibration}}
+\index{writeBiasCalibration@{writeBiasCalibration}!Imu@{Imu}}
+\doxysubsubsection{\texorpdfstring{writeBiasCalibration()}{writeBiasCalibration()}}
+{\footnotesize\ttfamily void Imu\+::write\+Bias\+Calibration (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+write accel gyro bias callibration to nvs storage 
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_imu_a0c78951531e132f0f7f0a93bdc8831f4_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_imu_a0c78951531e132f0f7f0a93bdc8831f4_icgraph}
 \end{center}
 \end{figure}
 
@@ -216,18 +285,6 @@ Here is the caller graph for this function\+:\nopagebreak
 \index{imu@{imu}!Imu@{Imu}}
 \doxysubsubsection{\texorpdfstring{imu}{imu}}
 {\footnotesize\ttfamily LSM9\+DS1 Imu\+::imu\hspace{0.3cm}{\ttfamily [private]}}
-
-\mbox{\Hypertarget{class_imu_ad592c28e85ab206572ae7dda5f5c77f0}\label{class_imu_ad592c28e85ab206572ae7dda5f5c77f0}} 
-\index{Imu@{Imu}!prev\_read\_time@{prev\_read\_time}}
-\index{prev\_read\_time@{prev\_read\_time}!Imu@{Imu}}
-\doxysubsubsection{\texorpdfstring{prev\_read\_time}{prev\_read\_time}}
-{\footnotesize\ttfamily uint64\+\_\+t Imu\+::prev\+\_\+read\+\_\+time\hspace{0.3cm}{\ttfamily [private]}}
-
-\mbox{\Hypertarget{class_imu_ac3176803dc50bd1d6183a09595e87d5d}\label{class_imu_ac3176803dc50bd1d6183a09595e87d5d}} 
-\index{Imu@{Imu}!time\_period@{time\_period}}
-\index{time\_period@{time\_period}!Imu@{Imu}}
-\doxysubsubsection{\texorpdfstring{time\_period}{time\_period}}
-{\footnotesize\ttfamily uint16\+\_\+t Imu\+::time\+\_\+period\hspace{0.3cm}{\ttfamily [private]}}
 
 
 

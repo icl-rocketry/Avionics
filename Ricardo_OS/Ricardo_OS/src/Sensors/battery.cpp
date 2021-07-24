@@ -7,7 +7,6 @@
 
 #include "sensorStructs.h"
 
-#include "Storage/utils.h"
 
 Battery::Battery(uint8_t pin, SystemStatus* systemstatus,LogController* logcontroller,raw_measurements_t* raw_data):
 
@@ -30,7 +29,7 @@ void Battery::update(){
     _raw_data->batt_volt = (uint16_t)(factor*(float)reading); // voltage in mV
 
     if ((_raw_data->batt_volt < warn_battery_voltage) && (!_systemstatus->flag_triggered(SYSTEM_FLAG::ERROR_BATT))){
-        _systemstatus->new_message(SYSTEM_FLAG::ERROR_BATT,"Battery at " + utils::tostring(_raw_data->batt_volt) + "mV"); 
+        _systemstatus->new_message(SYSTEM_FLAG::ERROR_BATT,"Battery at " + std::to_string(_raw_data->batt_volt) + "mV"); 
     }else if ((_raw_data->batt_volt > warn_battery_voltage) && (_systemstatus->flag_triggered(SYSTEM_FLAG::ERROR_BATT))){
          _systemstatus->delete_message(SYSTEM_FLAG::ERROR_BATT);
     }

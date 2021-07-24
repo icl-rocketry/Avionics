@@ -7,6 +7,8 @@
 #include <Arduino.h>
 #include <cassert>
 #include <sstream>
+#include "utils.h"
+
 
 
 template <class C, class T>
@@ -21,6 +23,7 @@ public:
 
     void stringify(const C& owner, std::stringstream &buffer) const 
     {
+        
         buffer << owner.*ptr << ',';
     }
 

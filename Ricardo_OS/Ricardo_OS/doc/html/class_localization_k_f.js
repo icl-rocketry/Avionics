@@ -1,0 +1,38 @@
+var class_localization_k_f =
+[
+    [ "STATE", "class_localization_k_f.html#a918865a864705c58ca9ad5e9ebef804a", [
+      [ "Pn", "class_localization_k_f.html#a918865a864705c58ca9ad5e9ebef804aa99a0dd53807a1637c9444a067c6a6be7", null ],
+      [ "Vn", "class_localization_k_f.html#a918865a864705c58ca9ad5e9ebef804aa579951efc1d928e2f1cf6c51e193e899", null ],
+      [ "Pe", "class_localization_k_f.html#a918865a864705c58ca9ad5e9ebef804aaefa6bbcc81e1c9c099a2b741ce910860", null ],
+      [ "Ve", "class_localization_k_f.html#a918865a864705c58ca9ad5e9ebef804aa421bcab9679295d92772dacc7996f425", null ],
+      [ "Pd", "class_localization_k_f.html#a918865a864705c58ca9ad5e9ebef804aa70c62818a3aed8e80d799f643acf98b2", null ],
+      [ "Vd", "class_localization_k_f.html#a918865a864705c58ca9ad5e9ebef804aae8ed9f9ea72e4c6d128c1aefd4c13617", null ]
+    ] ],
+    [ "LocalizationKF", "class_localization_k_f.html#a00c8619f7487ed4e20616698f2e440fb", null ],
+    [ "baroUpdate", "class_localization_k_f.html#abb29471220060409d6bff22b2ba4b08e", null ],
+    [ "getPosition", "class_localization_k_f.html#a272e86466a5c0ddf1dffa21e1c007e8b", null ],
+    [ "getVelocity", "class_localization_k_f.html#a8c6712f8416e09a15f487805f750bb32", null ],
+    [ "GPStoECEF", "class_localization_k_f.html#aaa14cdfb2ff3eabba986b45ef2bc3df4", null ],
+    [ "GPStoNED", "class_localization_k_f.html#adc53430b2dec651ae367cf7176b256ef", null ],
+    [ "gpsUpdate", "class_localization_k_f.html#a9c00a0487100e98134ddaf123318d70b", null ],
+    [ "predict", "class_localization_k_f.html#a0b45816094a37dab54f6ff4ebc13d2a9", null ],
+    [ "setup", "class_localization_k_f.html#a2873598a8af341b4086be8effdd5dc65", null ],
+    [ "updateGPSReference", "class_localization_k_f.html#a4fdb1020f368ef41448fe02008ada591", null ],
+    [ "_gpsReferenceCLat", "class_localization_k_f.html#a34cc04ea591de2e15c4d927dd74ac277", null ],
+    [ "_gpsReferenceCLng", "class_localization_k_f.html#a46f27483d4da359a2f476c192973c911", null ],
+    [ "_gpsReferenceECEF", "class_localization_k_f.html#ad25c534c8ff0282051fa1ef7c88a3ead", null ],
+    [ "_gpsReferenceSLat", "class_localization_k_f.html#a4c5b4e1291804ceffae33d361bf6b832", null ],
+    [ "_gpsReferenceSLng", "class_localization_k_f.html#a8681c82b46ca0c53b831f1072b2c6c83", null ],
+    [ "_logcontroller", "class_localization_k_f.html#ae8767d637d3d0ceb34474760653641c0", null ],
+    [ "accelVariance", "class_localization_k_f.html#a81c1b93aa144a3672ec8d4adb8297ca6", null ],
+    [ "baroVariance", "class_localization_k_f.html#a5e2d855e4fe02da773e112802cbb510a", null ],
+    [ "degtorad", "class_localization_k_f.html#aadafda534f1643df0a4c10f84c420c87", null ],
+    [ "earthEccentricity2", "class_localization_k_f.html#aaac95965acaf4eb085671aaf47536839", null ],
+    [ "earthMajorAxis", "class_localization_k_f.html#a380842c73db643f55304c33915b24f3e", null ],
+    [ "gpsAltitudeVariance", "class_localization_k_f.html#aadf6881e8e0d13e4f3dde540eafedd0d", null ],
+    [ "gpsPositionVariance", "class_localization_k_f.html#a144dc3e1f4b758d211cf721eb01c4bab", null ],
+    [ "gpsVelocityVariance", "class_localization_k_f.html#a9586a554a8b2997164b7ba6392f2e741", null ],
+    [ "P", "class_localization_k_f.html#ac531224a8e15ef47188438aa52d4ddda", null ],
+    [ "R_GPS", "class_localization_k_f.html#a9326f0b3e89d8b1bb488cdb276e2e2c1", null ],
+    [ "X", "class_localization_k_f.html#af5fdcbe03ae1416251f8e8b866267f46", null ]
+];

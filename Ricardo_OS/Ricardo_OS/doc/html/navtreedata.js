@@ -29,8 +29,7 @@ var NAVTREE =
       [ "Namespace List", "namespaces.html", "namespaces_dup" ],
       [ "Namespace Members", "namespacemembers.html", [
         [ "All", "namespacemembers.html", null ],
-        [ "Functions", "namespacemembers_func.html", null ],
-        [ "Variables", "namespacemembers_vars.html", null ]
+        [ "Functions", "namespacemembers_func.html", null ]
       ] ]
     ] ],
     [ "Classes", "annotated.html", [
@@ -41,6 +40,8 @@ var NAVTREE =
         [ "All", "functions.html", "functions_dup" ],
         [ "Functions", "functions_func.html", "functions_func" ],
         [ "Variables", "functions_vars.html", "functions_vars" ],
+        [ "Enumerations", "functions_enum.html", null ],
+        [ "Enumerator", "functions_eval.html", null ],
         [ "Related Functions", "functions_rela.html", null ]
       ] ]
     ] ],
@@ -60,10 +61,11 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "_fireflies_8cpp.html",
-"class_log_controller.html#aac44151b8e5e60b3383d2fa1369b22b9",
-"class_time___since___apogee.html#a22d8d89fba2e98c7faf52460d7106eaa",
-"flags_8h.html#a59afb9de21b0cf38347ba06d65fa5de7ab43e115900ff95630743f780fad1a7f5",
-"pitches_8h.html#a3cf820bf5e8bac30a1d1d6f5b0a80278"
+"class_iface.html#a0645651fc947fa2f574ef9a52058a404",
+"class_storage_controller.html#a133cf5b82ad976cb324e06742538daa8",
+"commands_8h.html#a73b52bb10772a6ec22fce9998c6549aaa19e528ebf239171154c78bdd3fe9bd36",
+"interfaces_8h.html#a0702347e8797fcd7166de65ba3c3315a",
+"state_8h_source.html"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

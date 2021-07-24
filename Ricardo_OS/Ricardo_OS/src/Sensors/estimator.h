@@ -14,6 +14,7 @@ enum class ESTIMATOR_STATE: uint8_t{
     PARTIAL_GPS_BARO,
     PARTIAL_GPS,
     PARTIAL_BARO,
+    NOHOME,
     NOSOLUTION
 };
 
@@ -27,6 +28,7 @@ class Estimator{
         void update();
 
         void setHome(); //records the current position as the launch site
+        bool isHomeSet(){return _homeSet;};
         
         void changeBeta(float beta); //remove this
 
@@ -46,7 +48,7 @@ class Estimator{
         const float g  = 9.81; //the gravity constant which really isnt constant but oh well
         const Eigen::Vector3f gravity_vector{0,0,1};
         /**
-         * @brief Flip coordinate system
+         * @brief Flip z coordinate system
          * 
          */
         bool _upsideDown = false;

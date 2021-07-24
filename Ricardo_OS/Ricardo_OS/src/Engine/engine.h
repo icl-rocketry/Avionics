@@ -1,7 +1,6 @@
-#ifndef ENGINECONTROLLER_H
-#define ENGINECONTROLLER_H
+#pragma once
 
-#include <Arduino.h>
+// Abstract interface to engines
 
 enum class ENGINE_STATE:uint8_t{
     NOMINAL,
@@ -12,8 +11,9 @@ class stateMachine;
 
 class Engine{
     public:
-        Engine(stateMachine* sm);
+        Engine(stateMachine* sm); // logcontroller systemstatus networkmanager
 
+        void update(); //????  
 
         bool iginition();
         int getStatus();
@@ -26,5 +26,3 @@ class Engine{
 
 
 
-
-#endif

@@ -1,0 +1,10 @@
+<map id="Sensors::calibrate" name="Sensors::calibrate">
+<area shape="rect" id="node1" title=" " alt="" coords="5,56,132,83"/>
+<area shape="rect" id="node2" href="$class_imu.html#a276260589f4398307a9b51cb0797a3c5" title=" " alt="" coords="180,5,343,32"/>
+<area shape="rect" id="node4" href="$class_log_controller.html#adb94b2720224b121ac8487c7c0e04ffc" title=" " alt="" coords="607,31,731,57"/>
+<area shape="rect" id="node8" href="$class_imu.html#a77139289cb2d9dac11503095a93db00f" title=" " alt="" coords="198,107,325,133"/>
+<area shape="rect" id="node3" href="$class_imu.html#a0c78951531e132f0f7f0a93bdc8831f4" title="write accel gyro bias callibration to nvs storage" alt="" coords="391,5,559,32"/>
+<area shape="rect" id="node5" href="$class_telemetry_logger.html#af01a5e0f381d60d53d2c08ddad37ca07" title=" " alt="" coords="779,31,921,57"/>
+<area shape="rect" id="node6" href="$classtelemetry__logframe.html#add67dbfbf886bf1b322628962a03c0de" title=" " alt="" coords="969,23,1103,65"/>
+<area shape="rect" id="node7" href="$classtelemetry__logframe.html#ad8ce2864d5faaf045a0ff812c029a4b4" title=" " alt="" coords="1151,23,1284,65"/>
+</map>

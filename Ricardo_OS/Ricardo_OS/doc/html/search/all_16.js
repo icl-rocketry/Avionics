@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['yaw_769',['yaw',['../class_telemetry_packet.html#aceeebf4da7ceb5e5c622d1ae5012a456',1,'TelemetryPacket::yaw()'],['../classtelemetry__logframe.html#a33a031f8c4e3431c9cc49263fa7fd092',1,'telemetry_logframe::yaw()']]]
+  ['x_883',['X',['../class_localization_k_f.html#af5fdcbe03ae1416251f8e8b866267f46',1,'LocalizationKF']]]
 ];

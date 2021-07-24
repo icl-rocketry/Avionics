@@ -17,6 +17,7 @@
 #include <memory>
 #include <vector>
 #include "flags.h"
+#include <optional>
 
 
 NetworkManager::NetworkManager(stateMachine* sm):
@@ -28,18 +29,18 @@ NetworkManager::NetworkManager(stateMachine* sm):
     
 {
    
-    routingtable(NODES::ROCKET) = std::vector<RoutingTableEntry>({  {INTERFACE::LOOPBACK,0},
-                                                                    {INTERFACE::LORA,1},
-                                                                    {INTERFACE::LORA,2},
-                                                                    {INTERFACE::CAN,1},
-                                                                    {INTERFACE::USBSerial,1}
+    routingtable(NODES::ROCKET) = std::vector<RoutingTableEntry>({  {INTERFACE::LOOPBACK,0,""},
+                                                                    {INTERFACE::LORA,1,""},
+                                                                    {INTERFACE::LORA,2,""},
+                                                                    {INTERFACE::CAN,1,""},
+                                                                    {INTERFACE::USBSerial,1,""}
                                                                     });
 
-    routingtable(NODES::GROUNDSTATION) = std::vector<RoutingTableEntry>( {{INTERFACE::LORA,1},
-                                                                          {INTERFACE::LOOPBACK,0},
-                                                                          {INTERFACE::USBSerial,1},
-                                                                          {INTERFACE::LORA,2},
-                                                                          {INTERFACE::USBSerial,1}
+    routingtable(NODES::GROUNDSTATION) = std::vector<RoutingTableEntry>( {{INTERFACE::LORA,1,""},
+                                                                          {INTERFACE::LOOPBACK,0,""},
+                                                                          {INTERFACE::USBSerial,1,""},
+                                                                          {INTERFACE::LORA,2,""},
+                                                                          {INTERFACE::USBSerial,1,""}
                                                                           });
 
     _packetBuffer.reserve(5);
@@ -64,7 +65,7 @@ void NetworkManager::update(){
     
 };
 
-void NetworkManager::send_packet(INTERFACE iface,std::vector<uint8_t> &data){
+void NetworkManager::send_packet(INTERFACE iface,std::vector<uint8_t> &data,std::string address = ""){
     switch (iface){
         case INTERFACE::LOOPBACK:
             {
@@ -106,30 +107,24 @@ void NetworkManager::send_packet(INTERFACE iface,std::vector<uint8_t> &data){
 };
 
 void NetworkManager::send_to_node(NODES destination,std::vector<uint8_t> &data){
-    
-   
+
     uint8_t current_node = getNodeType();
+
     //get sending interface from routing table
-    INTERFACE send_interface = routingtable(current_node,static_cast<uint8_t>(destination)).gateway;
-    //Serial.println((int)send_interface);
- 
-    if (send_interface == INTERFACE::ERROR){
-        // dump this packet as it looks like the dodgyness of highest quality
+    std::optional<RoutingTableEntry> rt_entry = routingtable(current_node,static_cast<uint8_t>(destination));
+    
+    if (!rt_entry){
+        return;   
+    }
+
+    INTERFACE send_interface = rt_entry.value().gateway;
+    
+    if ((send_interface == INTERFACE::LOOPBACK) && (current_node != static_cast<uint8_t>(destination))){
         return;
     }
 
-    if ((send_interface == INTERFACE::LOOPBACK) && (current_node != static_cast<uint8_t>(destination))){
-        /*
-                DO NOTHING... some one has messed up the routing table. 
-                
-                explanation: if we send this packet over the loopback it will place the packet back in the global packet buffer
-                but after send we delete the pointer to clean up so the pointer will be pointing to freed memory which can lead to undefined 
-                actions. Further as the destination for not equal to the source this packet will get cycled in the buffer forever which
-                isnt good.
-                */
-    }else{
-        send_packet(send_interface,data);
-    };
+    send_packet(send_interface,data);
+    
 
 }
 

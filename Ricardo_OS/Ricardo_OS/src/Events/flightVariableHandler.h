@@ -6,6 +6,8 @@
 #include "flightVariable.h"
 #include "eventHandler.h"
 #include <functional>
+#include <algorithm>
+
 //object handles intialization and management of flight variable
 //default flight variables
 
@@ -72,6 +74,6 @@ class FlightVariableHandler{
             (FlightVariable*)&_acceleration,
             (FlightVariable*)&_apogee
         }}; // array containing references to flight variables
-
+       
 };
 

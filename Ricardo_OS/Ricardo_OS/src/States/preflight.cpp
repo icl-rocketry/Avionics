@@ -20,8 +20,6 @@ void Preflight::initialise(){
 
 
 State* Preflight::update(){
-
-
     return this;
 };
 

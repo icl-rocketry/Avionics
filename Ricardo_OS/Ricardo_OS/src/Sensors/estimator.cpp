@@ -4,6 +4,7 @@
 #include "Storage/utils.h"
 #include "flags.h"
 #include "Eigen/Eigen"
+#include <string>
 
 
 Estimator::Estimator(stateMachine* sm):
@@ -73,6 +74,11 @@ void Estimator::update(){
       updateOrientation(dt_seconds);
       updateLinearAcceleration();
 
+      if (!_homeSet){
+         changeEstimatorState(ESTIMATOR_STATE::NOHOME,"Home not set, Localization not avaliable");
+         return;
+      }
+
       if (_sm->systemstatus.flag_triggered(SYSTEM_FLAG::ERROR_GPS) && _sm->systemstatus.flag_triggered(SYSTEM_FLAG::ERROR_BARO)){
          //no data so only orientation avalibale
          changeEstimatorState(ESTIMATOR_STATE::PARTIAL_IMU,"no gps and baro, cannot compute positional navigation solution");
@@ -89,8 +95,8 @@ void Estimator::update(){
          state.velocity = localizationkf.getVelocity();
          return;
       }else{
-         // if there is no error in the gps check if gps data is updated at perform kf update
-         if (_sm->sensors.sensors_raw.gps_updated){
+         // if there is no error in the gps check if gps data is updated and we have a valid fixat perform kf update
+         if (_sm->sensors.sensors_raw.gps_updated && _sm->sensors.sensors_raw.gps_fix >= 3){
             localizationkf.gpsUpdate(_sm->sensors.sensors_raw.gps_lat,
                                      _sm->sensors.sensors_raw.gps_long,
                                      _sm->sensors.sensors_raw.gps_alt,
@@ -125,15 +131,20 @@ void Estimator::setHome(){
    state.gps_launch_lat = _sm->sensors.sensors_raw.gps_lat;
    state.gps_launch_long = _sm->sensors.sensors_raw.gps_long;
    state.gps_launch_alt = _sm->sensors.sensors_raw.gps_alt;
+   //update barometer reference altitude
+   state.baro_ref_alt = _sm->sensors.sensors_raw.baro_alt;
    //log the new home position
    _sm->logcontroller.log("Home Position Updated to Lat: " 
-                           + utils::tostring(state.gps_launch_lat)
+                           + std::to_string(state.gps_launch_lat)
                            + " Long: "
-                           + utils::tostring(state.gps_launch_long)
+                           + std::to_string(state.gps_launch_long)
                            + " Alt: "
-                           + utils::tostring(state.gps_launch_alt));
+                           + std::to_string(state.gps_launch_alt)
+                           + " Baro Ref Alt: ",
+                           + std::to_string(state.baro_ref_alt));
    //update reference coordinates in position estimation
    localizationkf.updateGPSReference(state.gps_launch_lat,state.gps_launch_long,state.gps_launch_alt);
+   //update baro alt in position estimation
    localizationkf.setup(); // reinitialize the filter 
    _homeSet = true;
 }

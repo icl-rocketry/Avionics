@@ -13,6 +13,7 @@
 #include "spiFlashConfig.h"
 
 
+
 StorageController::StorageController(stateMachine* sm):
 _sm(sm),
 microsd(&(sm->vspi)),
@@ -76,7 +77,7 @@ std::string StorageController::getUniqueDirectory(std::string input_directory,ST
         std::string fName = elem.name;
 
         digitIndex = getFileNameIndex(fName);
-        dirNum = utils::intify(fName.substr(digitIndex, fName.length() - digitIndex));
+        dirNum = std::stoi(fName.substr(digitIndex, fName.length() - digitIndex));
 
         //Serial.println(dirNum);
         if (dirNum > maxDirNum) {
@@ -87,7 +88,7 @@ std::string StorageController::getUniqueDirectory(std::string input_directory,ST
         }
     }
 
-    return input_directory + "/" + maxDirName.substr(0, maxDigitIndex) + utils::tostring(maxDirNum + 1);
+    return input_directory + "/" + maxDirName.substr(0, maxDigitIndex) + std::to_string(maxDirNum + 1);
 }
 
 int StorageController::getFileNameIndex(const std::string fileName) {

@@ -4,6 +4,16 @@
 
 {\ttfamily \#include $<$tunez\+Handler.\+h$>$}
 
+
+
+Collaboration diagram for Tunez\+Handler\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_tunez_handler__coll__graph}
+\end{center}
+\end{figure}
 \doxysubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
@@ -11,16 +21,23 @@
 \item 
 void \mbox{\hyperlink{class_tunez_handler_af211ca5ab587196115824c76acf72942}{setup}} ()
 \item 
-void \mbox{\hyperlink{class_tunez_handler_a02e64b5ab21c71fc6e62e6673f80ac63}{play}} (\mbox{\hyperlink{classmelody__base__t}{melody\+\_\+base\+\_\+t}} $\ast$melody, bool \mbox{\hyperlink{main_8cpp_afe461d27b9c48d5921c00d521181f12f}{loop}}=false)
-\begin{DoxyCompactList}\small\item\em Put Melody on tune queue. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_tunez_handler_a7fd95225aeb3c4d4260356040608773d}{play}} (\mbox{\hyperlink{melody_library_8h_a80998ddaab7bc8feaa385b34efef2cc0}{MELODY}} melody, bool \mbox{\hyperlink{main_8cpp_afe461d27b9c48d5921c00d521181f12f}{loop}}=false)
+\begin{DoxyCompactList}\small\item\em play melody from melody library \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{class_tunez_handler_aba4b9c0675f27f9b6ecaae62d5038998}{skip}} ()
 \begin{DoxyCompactList}\small\item\em Skip current tune. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{class_tunez_handler_ab78ca4b6e8ace4a3a01d9926ba89cf98}{clear}} ()
 \begin{DoxyCompactList}\small\item\em Clear song queue. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{class_tunez_handler_afd8ffcb9834b2e01729fd916b8ae7d51}{update}} ()
 \end{DoxyCompactItemize}
+\doxysubsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{class_tunez_handler_ac1d908329ae959e1927e23b395d8059d}{play}} (\mbox{\hyperlink{classmelody__base__t}{melody\+\_\+base\+\_\+t}} $\ast$melody, bool \mbox{\hyperlink{main_8cpp_afe461d27b9c48d5921c00d521181f12f}{loop}})
+\begin{DoxyCompactList}\small\item\em Put Melody on tune queue. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Private Attributes}
 \begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_melody_library}{Melody\+Library}} \mbox{\hyperlink{class_tunez_handler_ab68c464b752ee486b59c81ef21e56018}{library}}
 \item 
 std\+::vector$<$ \mbox{\hyperlink{structtune__t}{tune\+\_\+t}} $>$ \mbox{\hyperlink{class_tunez_handler_a407fcd38cffe8a53e64535daa1e3ed55}{tune\+\_\+queue}}
 \item 
@@ -50,11 +67,52 @@ uint16\+\_\+t \mbox{\hyperlink{class_tunez_handler_aceccf204e58522aa075b41ce2eed
 
 Clear song queue. 
 
-\mbox{\Hypertarget{class_tunez_handler_a02e64b5ab21c71fc6e62e6673f80ac63}\label{class_tunez_handler_a02e64b5ab21c71fc6e62e6673f80ac63}} 
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_tunez_handler_ab78ca4b6e8ace4a3a01d9926ba89cf98_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_tunez_handler_a7fd95225aeb3c4d4260356040608773d}\label{class_tunez_handler_a7fd95225aeb3c4d4260356040608773d}} 
 \index{TunezHandler@{TunezHandler}!play@{play}}
 \index{play@{play}!TunezHandler@{TunezHandler}}
-\doxysubsubsection{\texorpdfstring{play()}{play()}}
-{\footnotesize\ttfamily void Tunez\+Handler\+::play (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classmelody__base__t}{melody\+\_\+base\+\_\+t}} $\ast$}]{melody,  }\item[{bool}]{loop = {\ttfamily false} }\end{DoxyParamCaption})}
+\doxysubsubsection{\texorpdfstring{play()}{play()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily void Tunez\+Handler\+::play (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{melody_library_8h_a80998ddaab7bc8feaa385b34efef2cc0}{MELODY}}}]{melody,  }\item[{bool}]{loop = {\ttfamily false} }\end{DoxyParamCaption})}
+
+
+
+play melody from melody library 
+
+
+\begin{DoxyParams}{Parameters}
+{\em melody} & melody enum \\
+\hline
+{\em loop} & \\
+\hline
+\end{DoxyParams}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_tunez_handler_a7fd95225aeb3c4d4260356040608773d_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_tunez_handler_a7fd95225aeb3c4d4260356040608773d_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_tunez_handler_ac1d908329ae959e1927e23b395d8059d}\label{class_tunez_handler_ac1d908329ae959e1927e23b395d8059d}} 
+\index{TunezHandler@{TunezHandler}!play@{play}}
+\index{play@{play}!TunezHandler@{TunezHandler}}
+\doxysubsubsection{\texorpdfstring{play()}{play()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily void Tunez\+Handler\+::play (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classmelody__base__t}{melody\+\_\+base\+\_\+t}} $\ast$}]{melody,  }\item[{bool}]{loop }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
 
 
 
@@ -67,18 +125,12 @@ Put Melody on tune queue.
 {\em loop} & \\
 \hline
 \end{DoxyParams}
-Here is the call graph for this function\+:\nopagebreak
+Here is the call graph for this function\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=350pt]{class_tunez_handler_a02e64b5ab21c71fc6e62e6673f80ac63_cgraph}
-\end{center}
-\end{figure}
-Here is the caller graph for this function\+:\nopagebreak
-\begin{figure}[H]
-\begin{center}
-\leavevmode
-\includegraphics[width=350pt]{class_tunez_handler_a02e64b5ab21c71fc6e62e6673f80ac63_icgraph}
+\includegraphics[width=350pt]{class_tunez_handler_ac1d908329ae959e1927e23b395d8059d_cgraph}
 \end{center}
 \end{figure}
 \mbox{\Hypertarget{class_tunez_handler_af211ca5ab587196115824c76acf72942}\label{class_tunez_handler_af211ca5ab587196115824c76acf72942}} 
@@ -104,13 +156,22 @@ Here is the caller graph for this function\+:\nopagebreak
 
 Skip current tune. 
 
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_tunez_handler_aba4b9c0675f27f9b6ecaae62d5038998_icgraph}
+\end{center}
+\end{figure}
 \mbox{\Hypertarget{class_tunez_handler_afd8ffcb9834b2e01729fd916b8ae7d51}\label{class_tunez_handler_afd8ffcb9834b2e01729fd916b8ae7d51}} 
 \index{TunezHandler@{TunezHandler}!update@{update}}
 \index{update@{update}!TunezHandler@{TunezHandler}}
 \doxysubsubsection{\texorpdfstring{update()}{update()}}
 {\footnotesize\ttfamily void Tunez\+Handler\+::update (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
 
-Here is the caller graph for this function\+:\nopagebreak
+Here is the caller graph for this function\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -120,6 +181,12 @@ Here is the caller graph for this function\+:\nopagebreak
 
 
 \doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{class_tunez_handler_ab68c464b752ee486b59c81ef21e56018}\label{class_tunez_handler_ab68c464b752ee486b59c81ef21e56018}} 
+\index{TunezHandler@{TunezHandler}!library@{library}}
+\index{library@{library}!TunezHandler@{TunezHandler}}
+\doxysubsubsection{\texorpdfstring{library}{library}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_melody_library}{Melody\+Library}} Tunez\+Handler\+::library\hspace{0.3cm}{\ttfamily [private]}}
+
 \mbox{\Hypertarget{class_tunez_handler_aceccf204e58522aa075b41ce2eed2a06}\label{class_tunez_handler_aceccf204e58522aa075b41ce2eed2a06}} 
 \index{TunezHandler@{TunezHandler}!note\_duration@{note\_duration}}
 \index{note\_duration@{note\_duration}!TunezHandler@{TunezHandler}}

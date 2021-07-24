@@ -1,8 +1,8 @@
 var hierarchy =
 [
     [ "Baro", "class_baro.html", null ],
+    [ "Baro::baro_cal_t", "struct_baro_1_1baro__cal__t.html", null ],
     [ "Battery", "class_battery.html", null ],
-    [ "Command", "struct_command.html", null ],
     [ "CommandHandler", "class_command_handler.html", null ],
     [ "CommandPacket", "class_command_packet.html", null ],
     [ "Condition", "class_condition.html", [
@@ -36,15 +36,25 @@ var hierarchy =
       [ "USB", "class_u_s_b.html", null ]
     ] ],
     [ "Imu", "class_imu.html", null ],
+    [ "LocalizationKF", "class_localization_k_f.html", null ],
     [ "LogController", "class_log_controller.html", null ],
     [ "Logger", "class_logger.html", [
       [ "SystemLogger", "class_system_logger.html", null ],
       [ "TelemetryLogger", "class_telemetry_logger.html", null ]
     ] ],
     [ "melody_base_t", "classmelody__base__t.html", [
+      [ "melody_t< 64 >", "classmelody__t.html", null ],
+      [ "melody_t< 1186 >", "classmelody__t.html", null ],
+      [ "melody_t< 3 >", "classmelody__t.html", null ],
+      [ "melody_t< 130 >", "classmelody__t.html", null ],
+      [ "melody_t< 340 >", "classmelody__t.html", null ],
+      [ "melody_t< 286 >", "classmelody__t.html", null ],
+      [ "melody_t< 110 >", "classmelody__t.html", null ],
+      [ "melody_t< 8 >", "classmelody__t.html", null ],
       [ "melody_t< S >", "classmelody__t.html", null ]
     ] ],
     [ "melody_note_t", "structmelody__note__t.html", null ],
+    [ "MelodyLibrary", "class_melody_library.html", null ],
     [ "network_logframe", "classnetwork__logframe.html", null ],
     [ "NetworkManager", "class_network_manager.html", null ],
     [ "PacketHeader", "class_packet_header.html", null ],

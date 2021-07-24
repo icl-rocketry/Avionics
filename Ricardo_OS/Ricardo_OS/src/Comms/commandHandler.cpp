@@ -21,6 +21,8 @@
 
 #include "Sound/Melodies/melodyLibrary.h"
 
+#include "Storage/logController.h"
+
 
 
 CommandHandler::CommandHandler(stateMachine* sm):
@@ -55,13 +57,11 @@ void CommandHandler::handleCommand(const CommandPacket &commandpacket) {
 					_sm->changeState(new Recovery(_sm));
 				}
 				break;
-			case COMMANDS::Zero_Sensors:
-				break;
 			case COMMANDS::Start_Logging:
-				_sm->logcontroller.startLogging(LOG_TYPE::TELEMETRY);
+				_sm->logcontroller.startLogging((LOG_TYPE)arg);
 				break;
 			case COMMANDS::Stop_Logging:
-				_sm->logcontroller.stopLogging(LOG_TYPE::TELEMETRY);
+				_sm->logcontroller.stopLogging((LOG_TYPE)arg);
 				break;
 			case COMMANDS::Telemetry:
 				{
@@ -158,63 +158,26 @@ void CommandHandler::handleCommand(const CommandPacket &commandpacket) {
 			case COMMANDS::Clear_Song_Queue:
 				_sm->tunezhandler.clear(); // play startup sound
 				break;
-			case COMMANDS::Raw_Sensors:
-				break;
-			case COMMANDS::Detailed_All_Sensors:
-				{
-					std::vector<uint8_t> packet;
-
-					DetailedAllPacket detailedall;
-
-					detailedall.header.source = _sm->networkmanager.getNodeType();
-					detailedall.header.destination = (uint8_t)source;
-					detailedall.header.uid = uid; 
-
-					detailedall.ax = _sm->sensors.sensors_raw.ax;
-					detailedall.ay = _sm->sensors.sensors_raw.ay;
-					detailedall.az = _sm->sensors.sensors_raw.az;
-
-					detailedall.gx = _sm->sensors.sensors_raw.gx;
-					detailedall.gy = _sm->sensors.sensors_raw.gy;
-					detailedall.gz = _sm->sensors.sensors_raw.gz;
-
-					detailedall.mx = _sm->sensors.sensors_raw.mx;
-					detailedall.my = _sm->sensors.sensors_raw.my;
-					detailedall.mz = _sm->sensors.sensors_raw.mz;
-
-					detailedall.gps_lat = _sm->sensors.sensors_raw.gps_lat / 10000000.0;
-					detailedall.gps_long = _sm->sensors.sensors_raw.gps_long / 10000000.0;
-					
-					detailedall.gps_speed = _sm->sensors.sensors_raw.gps_sat;
-
-					detailedall.gps_alt = _sm->sensors.sensors_raw.gps_alt;
-
-					detailedall.baro_alt = _sm->sensors.sensors_raw.baro_alt;
-					detailedall.baro_temp = _sm->sensors.sensors_raw.baro_temp;
-					detailedall.baro_press = _sm->sensors.sensors_raw.baro_press;
-
-					detailedall.batt_volt = _sm->sensors.sensors_raw.batt_volt;
-					detailedall.batt_percent= _sm->sensors.sensors_raw.batt_percent;
-
-					detailedall.serialize(packet);
-
-					_sm->networkmanager.send_to_node(source,packet);
-					
-				}
-				break;
-			case COMMANDS::Calibrate_AccelGyro:
+			case COMMANDS::Calibrate_AccelGyro_Bias:
 				_sm->sensors.calibrate(SENSOR::ACCELGYRO);
 				_sm->tunezhandler.play(MELODY::CONFIRMATION); //play sound when complete
 				break;
-			case COMMANDS::Calibrate_Mag:
+			case COMMANDS::Calibrate_Mag_Bias:
 				_sm->sensors.calibrate(SENSOR::MAG);
 				_sm->tunezhandler.play(MELODY::CONFIRMATION); //play sound when complete
 				break;
-			case COMMANDS::Calibrate_Baro:
+			case COMMANDS::Set_Beta:
 				{
-				//set beta for testing
-				// float beta = ((float)arg) / 100.0;
-				// _sm->estimator.changeBeta(beta);
+				float beta = ((float)arg) / 100.0;
+				_sm->estimator.changeBeta(beta);
+				break;
+				}
+			case COMMANDS::Reset_Orientation:
+				{
+				break;
+				}
+			case COMMANDS::Reset_Localization:
+				{
 				_sm->estimator.setup();
 				break;
 				}
@@ -251,6 +214,8 @@ void CommandHandler::handleCommand(const CommandPacket &commandpacket) {
 				break;
 			case COMMANDS::Set_Throttle:
 				break;
+			case COMMANDS::Engine_Info:
+				break;
 			case COMMANDS::Pyro_info:
 				{
 				uint8_t pyro_number = arg;
@@ -276,6 +241,7 @@ bool CommandHandler::commandAvaliable(COMMANDS command) {
 		case COMMANDS::Start_Logging:
 		case COMMANDS::Telemetry:
 		case COMMANDS::Pyro_info:
+		case COMMANDS::Engine_Info:
     		return true; // all states
 		case COMMANDS::Abort:
 			return _sm->systemstatus.flag_triggered(SYSTEM_FLAG::STATE_LAUNCH) 
@@ -300,20 +266,16 @@ bool CommandHandler::commandAvaliable(COMMANDS command) {
 		case COMMANDS::Skip_Song:
 		case COMMANDS::Clear_Song_Queue:
 			return _sm->systemstatus.flag_triggered(SYSTEM_FLAG::STATE_PREFLIGHT);
-		case COMMANDS::Raw_Sensors:
-		case COMMANDS::Detailed_All_Sensors:
-		case COMMANDS::Calibrate_AccelGyro:
-		case COMMANDS::Calibrate_Mag:
-		case COMMANDS::Calibrate_Baro:
+		case COMMANDS::Reset_Orientation:
+		case COMMANDS::Reset_Localization:
+		case COMMANDS::Set_Beta:
+		case COMMANDS::Calibrate_AccelGyro_Bias:
+		case COMMANDS::Calibrate_Mag_Bias:
 		case COMMANDS::Enter_Groundstation:
 		case COMMANDS::Stop_Logging:
+		case COMMANDS::Set_Home:
 			return _sm->systemstatus.flag_triggered(SYSTEM_FLAG::STATE_PREFLIGHT) 
-		||  _sm->systemstatus.flag_triggered(SYSTEM_FLAG::DEBUG)
-		|| _sm->systemstatus.flag_triggered(SYSTEM_FLAG::STATE_GROUNDSTATION); //for testing
-		case COMMANDS::Zero_Sensors:
-			return _sm->systemstatus.flag_triggered(SYSTEM_FLAG::STATE_GROUNDSTATION) 
-			|| _sm->systemstatus.flag_triggered(SYSTEM_FLAG::STATE_PREFLIGHT)
-			|| _sm->systemstatus.flag_triggered(SYSTEM_FLAG::DEBUG);
+		||  _sm->systemstatus.flag_triggered(SYSTEM_FLAG::DEBUG);
 		case COMMANDS::Reset:
 			return _sm->systemstatus.flag_triggered(SYSTEM_FLAG::STATE_RECOVERY)
 			|| _sm->systemstatus.flag_triggered(SYSTEM_FLAG::STATE_GROUNDSTATION);

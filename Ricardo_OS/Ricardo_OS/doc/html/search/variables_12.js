@@ -1,8 +1,22 @@
 var searchData=
 [
-  ['uid_1351',['uid',['../struct_command.html#a5d091c723e3d155a4edaf3a9f4f4f54c',1,'Command::uid()'],['../class_packet_header.html#a4abf267b640231f156546a22d4c51ad0',1,'PacketHeader::uid()']]],
-  ['uniquedirectory_1352',['uniqueDirectory',['../class_log_controller.html#a2adffdd8b1e05ac7f89ab968b824beb2',1,'LogController']]],
-  ['update_5ffrequency_1353',['update_frequency',['../class_estimator.html#a9b28f8a3c1ea229bf1953efbe43eb4ff',1,'Estimator']]],
-  ['upsidedown_1354',['upsideDown',['../class_estimator.html#aae44479412a2799063a48293013946cf',1,'Estimator']]],
-  ['usbserial_1355',['usbserial',['../class_network_manager.html#ac8de949b2c89c1871a2393578eb9685e',1,'NetworkManager']]]
+  ['telemetry_5fframe_1523',['telemetry_frame',['../class_telemetry_logger.html#ab7bb6a1cc5da45939d32c8385a90cb96',1,'TelemetryLogger']]],
+  ['telemetry_5flog_5fbuffer_1524',['telemetry_log_buffer',['../class_telemetry_logger.html#a410ca890f5ba2e82671be55f5bf0b5cd',1,'TelemetryLogger']]],
+  ['telemetry_5flog_5ffrequency_1525',['telemetry_log_frequency',['../class_log_controller.html#a8cfd8682297540952c5978b8b8879f64',1,'LogController']]],
+  ['telemetry_5fprev_5flog_5ftime_1526',['telemetry_prev_log_time',['../class_log_controller.html#abe00eb8238536ed8e282d22253b1ce8f',1,'LogController']]],
+  ['telemetrylogger_1527',['telemetrylogger',['../class_log_controller.html#a24121c2c4e1cbf92f66d236abdd46e9f',1,'LogController']]],
+  ['temp_1528',['TEMP',['../class_baro.html#aabfc52c2f04658ffcfd350bb9133c509',1,'Baro']]],
+  ['temp_5fcoef_5fpressure_5foffset_1529',['temp_coef_pressure_offset',['../struct_baro_1_1baro__cal__t.html#a706add62d4e432e65685d3adc170a213',1,'Baro::baro_cal_t']]],
+  ['temp_5fcoef_5fpressure_5fsensitivity_1530',['temp_coef_pressure_sensitivity',['../struct_baro_1_1baro__cal__t.html#a008ac9cd025d9d0397c437546f85f345',1,'Baro::baro_cal_t']]],
+  ['temp_5fcoef_5ftemp_1531',['temp_coef_temp',['../struct_baro_1_1baro__cal__t.html#a6fe50891dc9fb1f6331b216abc8d4cdd',1,'Baro::baro_cal_t']]],
+  ['test_1532',['test',['../classnetwork__logframe.html#a3993fab458fe41e49ac139a85198f2a1',1,'network_logframe']]],
+  ['thrust_1533',['thrust',['../structstate__t.html#a5eb9436d80be94277a87afb1eedeb988',1,'state_t']]],
+  ['time_5fduration_5fstate_1534',['time_duration_state',['../class_state.html#ae8a73335ba15859e7fccab7d17604df1',1,'State']]],
+  ['time_5fentered_5fstate_1535',['time_entered_state',['../class_state.html#ab7d3cbb49c6b925374be62a095f6e3b1',1,'State']]],
+  ['time_5fexited_5fstate_1536',['time_exited_state',['../class_state.html#afb8dae4fa97af9680d18f5f7673b0787',1,'State']]],
+  ['timestamp_1537',['timestamp',['../classsystem__logframe.html#aca597363f2fc7888e7a275c19b99cd0f',1,'system_logframe::timestamp()'],['../classtelemetry__logframe.html#ae2fa5f4295980c9980e681d088e63ddf',1,'telemetry_logframe::timestamp()']]],
+  ['ttl_1538',['ttl',['../class_packet_header.html#a8a2e4a283eb6eb6cea4ecb750b1c36e5',1,'PacketHeader']]],
+  ['tune_5fqueue_1539',['tune_queue',['../class_tunez_handler.html#a407fcd38cffe8a53e64535daa1e3ed55',1,'TunezHandler']]],
+  ['tunezhandler_1540',['tunezhandler',['../classstate_machine.html#a64c2ebf972d5b5a35cdd95f382c42516',1,'stateMachine']]],
+  ['type_1541',['type',['../class_packet_header.html#a76c5031c8115a17ec011d3af8046aeef',1,'PacketHeader::type()'],['../structdirectory__element__t.html#a7c40d94f98c5839420b742519b2e0c9a',1,'directory_element_t::type()']]]
 ];

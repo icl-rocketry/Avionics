@@ -16,6 +16,8 @@ class Flight: public State {
     void initialise();
     State* update();
     void exitstate();
+  private:
+    bool apogeeDetect();
 };
 
 #endif

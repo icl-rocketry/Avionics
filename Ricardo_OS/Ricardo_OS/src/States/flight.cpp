@@ -11,17 +11,23 @@ Flight::Flight(stateMachine* sm) : State(sm){
 
 void Flight::initialise(){
     State::initialise();
-
-
 };
 
 
 State* Flight::update(){
     
-    //at apogee transtion to recovery state
-    return this;
+    if (apogeeDetect()){
+        State* recovery_ptr = new Recovery(_sm);
+        return recovery_ptr;
+    }else{
+        return this;
+    }
 };
 
 void Flight::exitstate(){
     State::exitstate();
 };
+
+bool Flight::apogeeDetect(){
+    return false;
+}

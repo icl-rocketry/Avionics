@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['nodes_1370',['NODES',['../nodes_8h.html#ac77cd0a84629014c09956c3f475d6aea',1,'nodes.h']]]
+  ['log_5ftype_1563',['LOG_TYPE',['../log_controller_8h.html#a3fe34aa18aae383b0dedd08b476f3844',1,'logController.h']]]
 ];

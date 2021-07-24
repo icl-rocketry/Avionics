@@ -7,24 +7,24 @@
 #include <sstream>
 
 
-namespace utils {
+// namespace utils {
 
-inline int intify(std::string value) {
-    int ret;
-    std::stringstream str(value);
-    str >> ret;
+// inline int intify(std::string value) {
+//     int ret;
+//     std::stringstream str(value);
+//     str >> ret;
 
-    return ret;
-}
-
-
-template<typename T>
-inline std::string tostring(T value){
-    std::ostringstream stm;
-    stm << value;
-    return stm.str();
-};
+//     return ret;
+// }
 
 
-}
+// template<typename T>
+// inline std::string tostring(T value){
+//     std::ostringstream stm;
+//     stm << value;
+//     return stm.str();
+// };
+
+
+// }
 
