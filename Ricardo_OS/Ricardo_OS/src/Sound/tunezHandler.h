@@ -13,7 +13,7 @@
 
 
 struct tune_t{
-    melody_base_t* melody;
+    melody_base_t *melody;
     uint16_t index = 0; // index in current melody
     bool loop;
 };
@@ -24,12 +24,22 @@ class TunezHandler{
         void setup();
 
         /**
-         * @brief play melody from melody library
+         * @brief play songs by index
          * 
-         * @param melody melody enum
+         * @param song_idx index of song to play from songLibrary array
          * @param loop 
          */
-        void play(MELODY melody,bool loop = false);
+        void play_by_idx(int song_idx,bool loop = false);
+
+         /**
+         * @brief Put Melody on tune queue
+         * 
+         * @param melody 
+         * @param loop 
+         */
+        void play(melody_base_t &melody,bool loop = false);
+        
+
         
         /**
          * @brief Skip current tune
@@ -45,24 +55,14 @@ class TunezHandler{
         void update();
 
     private:
-        MelodyLibrary library;
+
         
         std::vector<tune_t> tune_queue; 
 
         uint64_t prev_time = 0;
         uint16_t note_duration = 0;
 
-        /**
-         * @brief Put Melody on tune queue
-         * 
-         * @param melody 
-         * @param loop 
-         */
-        void play(melody_base_t *melody,bool loop);
-
-       
-
-
 };
+       
 
 #endif

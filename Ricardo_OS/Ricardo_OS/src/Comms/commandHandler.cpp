@@ -137,11 +137,11 @@ void CommandHandler::handleCommand(const CommandPacket &commandpacket) {
 				break;
 			case COMMANDS::Clear_Flash:
 				_sm->storagecontroller.erase(STORAGE_DEVICE::FLASH);
-				_sm->tunezhandler.play(MELODY::CONFIRMATION); //play sound when complete
+				_sm->tunezhandler.play(MelodyLibrary::confirmation); //play sound when complete
 				break;
 			case COMMANDS::Clear_SD:
 				_sm->storagecontroller.erase(STORAGE_DEVICE::MICROSD);
-				_sm->tunezhandler.play(MELODY::CONFIRMATION); //play sound when complete
+				_sm->tunezhandler.play(MelodyLibrary::confirmation); //play sound when complete
 				break;
 			case COMMANDS::Print_Flash_filesystem:
 				break;
@@ -149,7 +149,7 @@ void CommandHandler::handleCommand(const CommandPacket &commandpacket) {
 				break;
 			case COMMANDS::Play_Song:
 			{	
-				_sm->tunezhandler.play(static_cast<MELODY>(arg)); 
+				_sm->tunezhandler.play_by_idx(arg); 
 				break;
 			}
 			case COMMANDS::Skip_Song:
@@ -160,11 +160,11 @@ void CommandHandler::handleCommand(const CommandPacket &commandpacket) {
 				break;
 			case COMMANDS::Calibrate_AccelGyro_Bias:
 				_sm->sensors.calibrate(SENSOR::ACCELGYRO);
-				_sm->tunezhandler.play(MELODY::CONFIRMATION); //play sound when complete
+				_sm->tunezhandler.play(MelodyLibrary::confirmation); //play sound when complete
 				break;
 			case COMMANDS::Calibrate_Mag_Bias:
 				_sm->sensors.calibrate(SENSOR::MAG);
-				_sm->tunezhandler.play(MELODY::CONFIRMATION); //play sound when complete
+				_sm->tunezhandler.play(MelodyLibrary::confirmation); //play sound when complete
 				break;
 			case COMMANDS::Set_Beta:
 				{

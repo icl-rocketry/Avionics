@@ -20,22 +20,21 @@ void TunezHandler::setup()
 
 };
 
-void TunezHandler::play(MELODY melody,bool loop){
-    melody_base_t* m = library.get(melody);
-    if (m == NULL){
+void TunezHandler::play_by_idx(int song_idx,bool loop){
+    if (song_idx > MelodyLibrary::songLibrary.size()){
         return;
     }
-    play(m,loop);
+    play(*MelodyLibrary::songLibrary.at(song_idx),loop);
 
 }
 
-void TunezHandler::play(melody_base_t *melody,bool loop){
 
-     tune_t new_tune;
-     new_tune.melody = melody;
-     new_tune.loop = loop;
+void TunezHandler::play(melody_base_t &melody,bool loop){
 
-     if(melody->getPriority()){
+     tune_t new_tune{&melody,0,loop};
+
+
+     if(melody.getPriority()){
          //high priority tune
          //insert high priority tune at front of vector 
         tune_queue.insert(tune_queue.begin(),new_tune);

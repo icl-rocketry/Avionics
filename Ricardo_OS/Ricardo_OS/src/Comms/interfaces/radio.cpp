@@ -44,6 +44,8 @@ void Radio::setup(){
     }
     
     LoRa.setSyncWord(LORA_SYNC_WORD);
+    LoRa.setSignalBandwidth(250e3);
+    LoRa.setSpreadingFactor(7);
     LoRa.enableCrc();
 };
 

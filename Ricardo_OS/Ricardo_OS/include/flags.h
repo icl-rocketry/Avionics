@@ -1,6 +1,7 @@
 #ifndef FLAGS_H
 #define FLAGS_H
 
+#include "Arduino.h"
 
 enum class SYSTEM_FLAG:uint32_t{
     //state flags

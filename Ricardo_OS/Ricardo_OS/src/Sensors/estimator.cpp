@@ -140,7 +140,7 @@ void Estimator::setHome(){
                            + std::to_string(state.gps_launch_long)
                            + " Alt: "
                            + std::to_string(state.gps_launch_alt)
-                           + " Baro Ref Alt: ",
+                           + " Baro Ref Alt: "
                            + std::to_string(state.baro_ref_alt));
    //update reference coordinates in position estimation
    localizationkf.updateGPSReference(state.gps_launch_lat,state.gps_launch_long,state.gps_launch_alt);

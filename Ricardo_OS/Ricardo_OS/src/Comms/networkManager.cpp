@@ -65,7 +65,7 @@ void NetworkManager::update(){
     
 };
 
-void NetworkManager::send_packet(INTERFACE iface,std::vector<uint8_t> &data,std::string address = ""){
+void NetworkManager::send_packet(INTERFACE iface,std::vector<uint8_t> &data,std::string address){
     switch (iface){
         case INTERFACE::LOOPBACK:
             {

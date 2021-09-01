@@ -20,6 +20,9 @@
 #include <memory>
 #include <vector>
 
+#include <BluetoothSerial.h>
+#include <BluetoothSPP.h>
+
 
 
 
@@ -37,7 +40,7 @@ class NetworkManager{
         void update();
         
         void send_to_node(NODES destination,std::vector<uint8_t> &data);
-        void send_packet(INTERFACE iface,std::vector<uint8_t> &data);
+        void send_packet(INTERFACE iface,std::vector<uint8_t> &data,std::string address = "");
 
         uint8_t getNodeType(){return static_cast<uint8_t>(_nodeType);};
         void changeNodeType(NODES node){_nodeType = node;};
@@ -59,6 +62,7 @@ class NetworkManager{
         //interfaces
         USB usbserial; //usb serial object
         Radio radio; // lora radio object
+        BluetoothSPP bts;
 
        
         NODES _nodeType;
