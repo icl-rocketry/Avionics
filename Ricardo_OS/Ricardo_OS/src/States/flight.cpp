@@ -1,4 +1,4 @@
-#include "Arduino.h"
+
 #include "flight.h"
 #include "recovery.h"
 

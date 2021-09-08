@@ -3,7 +3,7 @@
 #include <Arduino.h>
 #include "Sensors/sensorStructs.h"
 #include "logframe.h"
-#include "Comms/packets.h"
+
 #include "storageController.h"
 #include <vector>
 #include <string>
@@ -32,9 +32,9 @@ class LogController{
         //telemtry logging
         void log(state_t &estimator_state ,raw_measurements_t &raw_sensors,bool force=false);
         //network logging
-		void log(PacketHeader &header);
+		//void log(PacketHeader &header);
         //system logging
-        void log(std::string message);
+        void log(const std::string &message);
         void log(uint32_t status,uint32_t flag,std::string message);
         void log(uint32_t status,uint32_t flag);
 

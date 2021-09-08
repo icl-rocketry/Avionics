@@ -8,6 +8,7 @@ Written by the Electronics team, Imperial College London Rocketry
 #include "stateMachine.h"
 #include <string>
 #include <vector>
+#include <functional>
 
 #include "States/state.h"
 
@@ -19,11 +20,12 @@ Written by the Electronics team, Imperial College London Rocketry
 
 
 #include "Sensors/estimator.h"
-#include "Comms/networkManager.h"
 #include "Sensors/sensors.h"
 
 #include "Sound/tunezHandler.h"
 
+#include "rnp_networkmanager.h"
+#include "rnp_default_address.h"
 
 #include "SPI.h"
 #include "Wire.h"
@@ -38,7 +40,8 @@ stateMachine::stateMachine() :
     storagecontroller(this),
     logcontroller(&storagecontroller),
     systemstatus(&logcontroller),
-    networkmanager(this),
+    networkmanager(static_cast<uint8_t>(DEFAULT_ADDRESS::ROCKET),NODETYPE::HUB,true),
+    commandhandler(this),
     sensors(this),
     estimator(this)    
 {};
@@ -60,7 +63,12 @@ void stateMachine::initialise(State* initStatePtr) {
   ConfigController configcontroller(&storagecontroller,&logcontroller); 
   configcontroller.load(); // load configuration from sd card into ram
   //setup network manager so communication is running
-  networkmanager.setup();
+  // add interfaces
+  //load rt table
+  networkmanager.enableAutoRouteGen(false);
+  networkmanager.setNoRouteAction(RnpNetworkManager::NOROUTE_ACTION::DUMP,{});
+  networkmanager.setLogCb([this](const std::string& message){return logcontroller.log(message);});
+  networkmanager.registerService(static_cast<uint8_t>(DEFAULT_SERVICES::COMMAND),commandhandler.getCallback()); // register command handler callback
   //sensors must be setup before estimator
   sensors.setup();
   estimator.setup();

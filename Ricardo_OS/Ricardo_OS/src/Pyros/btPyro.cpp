@@ -1,8 +1,8 @@
 #include "btPyro.h"
-#include "Comms/networkManager.h"
+#include "rnp_networkmanager.h"
 #include "Storage/systemstatus.h"
 
-BTPyro::BTPyro(uint8_t id,NetworkManager* networkmanager,uint8_t nodeID,SystemStatus* systemstatus):
+BTPyro::BTPyro(uint8_t id,RnpNetworkManager* networkmanager,uint8_t nodeID,SystemStatus* systemstatus):
 Pyro::Pyro(PYRO_TYPE::REMOTE_BT,systemstatus,id),
 _networkmanager(networkmanager),
 _nodeID(nodeID)

@@ -1,5 +1,5 @@
 #include "localPyro.h"
-#include "Comms/networkManager.h"
+
 #include "Storage/systemstatus.h"
 
 LocalPyro::LocalPyro(uint8_t id,uint8_t continuity_pin,uint8_t fire_pin,SystemStatus* systemstatus):

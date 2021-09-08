@@ -1,9 +1,8 @@
 //command id and definition. find description on excel doc
 
-#ifndef COMMANDS_H
-#define COMMANDS_H
+#pragma once
 
-enum class COMMANDS {
+enum class COMMANDS:uint8_t {
     Launch = 1, 
     Reset = 2,
     Abort = 3,
@@ -38,4 +37,6 @@ enum class COMMANDS {
 
 
 
-#endif
+
+
+

@@ -7,7 +7,7 @@ Transtion to countdown state happens through lora command
 
 #ifndef PREFLIGHT_H
 #define PREFLIGHT_H
-#include "Arduino.h"
+
 #include "state.h"
 
 

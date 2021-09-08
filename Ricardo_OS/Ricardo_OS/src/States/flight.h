@@ -5,7 +5,7 @@ State during flight portion of rocket controlling thrust output and relaying tel
 
 #ifndef FLIGHT_H
 #define FLIGHT_H
-#include "Arduino.h"
+
 #include "state.h"
 
 

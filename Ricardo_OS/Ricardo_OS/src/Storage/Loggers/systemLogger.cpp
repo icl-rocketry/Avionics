@@ -52,7 +52,7 @@ void SystemLogger::writeLog(){
 };
 
 
-void SystemLogger::log(std::string message){
+void SystemLogger::log(const std::string &message){
     system_frame.logLevel = "[MESSAGE]";
     system_frame.timestamp = millis();
     system_frame.systemStatus = 0;

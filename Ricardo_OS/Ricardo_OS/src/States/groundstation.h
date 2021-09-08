@@ -3,7 +3,7 @@ state for groundstation use as reciever
 */
 #ifndef GROUNDSTATION_H
 #define GROUNDSTATION_H
-#include <Arduino.h>
+
 #include "state.h"
 
 class Groundstation: public State {

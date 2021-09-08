@@ -23,7 +23,7 @@ class SystemLogger : public Logger{
 
         void writeLog();
 
-        void log(std::string message);
+        void log(const std::string &message);
         void log(uint32_t status,uint32_t flag,std::string message);
 
         ~SystemLogger();

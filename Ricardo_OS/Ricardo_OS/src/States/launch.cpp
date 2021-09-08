@@ -1,4 +1,4 @@
-#include "Arduino.h"
+
 #include "launch.h"
 #include "flight.h"
 

@@ -18,12 +18,16 @@ Written by the Electronics team, Imperial College London Rocketry
 
 
 #include "Sensors/estimator.h"
-#include "Comms/networkManager.h"
+
 #include "Sensors/sensors.h"
 
 #include "Sound/tunezHandler.h"
 
 #include "Events/flightVariableHandler.h"
+
+#include "rnp_networkmanager.h"
+
+#include "Commands/commandHandler.h"
 
 #include "SPI.h"
 #include "Wire.h"
@@ -51,7 +55,8 @@ class stateMachine {
  
     SystemStatus systemstatus;
     
-    NetworkManager networkmanager;
+    RnpNetworkManager networkmanager;
+    CommandHandler commandhandler;
 
     Sensors sensors;
     Estimator estimator;

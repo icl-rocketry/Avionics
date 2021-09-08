@@ -55,9 +55,9 @@ void LogController::log(state_t &estimator_state,raw_measurements_t &raw_sensors
 }
 
 
-void LogController::log(PacketHeader &header) {}
+//void LogController::log(PacketHeader &header) {}
 
-void LogController::log(std::string message) {
+void LogController::log(const std::string &message) {
     systemlogger.log(message);
 }
 

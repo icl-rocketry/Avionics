@@ -1,8 +1,7 @@
 #include "pyro.h"
-#include "Comms/networkManager.h"
 #include "Storage/systemstatus.h"
 #include "flags.h"
-#include "Storage/utils.h"
+
 #include "string"
 
 Pyro::Pyro(PYRO_TYPE type,SystemStatus* systemstatus,uint8_t id):
