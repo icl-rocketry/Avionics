@@ -34,7 +34,7 @@ void Loopback::sendPacket(RnpPacket& data){
     _packetBuffer->push(std::move(packet_ptr));
 };
 
-void Loopback::send(std::vector<uint8_t>& data){
-    // not implementing this yet. i dont even know how this shoud work
-    return; 
-}
+// void Loopback::send(std::vector<uint8_t>& data){
+//     // not implementing this yet. i dont even know how this shoud work
+//     return; 
+// }

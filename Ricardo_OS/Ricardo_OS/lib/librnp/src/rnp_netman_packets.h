@@ -8,8 +8,6 @@
 #include <array>
 
 
-
-
 enum class NETMAN_TYPES:uint8_t{
     PING_REQ = 1,
     PING_RES = 2,
@@ -45,6 +43,7 @@ class PingPacket: public RnpPacket{
          */
         void serialize(std::vector<uint8_t>& buf) override;
 
+
         //data members
         uint32_t sys_time;
 
@@ -75,6 +74,7 @@ class SetAddressPacket: public RnpPacket{
          * @param buf 
          */
         void serialize(std::vector<uint8_t>& buf) override;
+
 
         //data members
         uint8_t address;
@@ -140,6 +140,8 @@ class SetRoutePacket: public RnpPacket{
         uint8_t address_len;
         
         std::array<uint8_t,32> address_data; //address payload
+
+    
         
         static constexpr size_t size(){
             return getSerializer().member_size() + sizeof(address_data);

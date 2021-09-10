@@ -178,7 +178,7 @@ void RnpNetworkManager::removeInterface(RnpInterface* iface){
     removeInterface(ifaceID);
 };
 
-RnpInterfaceInfo* RnpNetworkManager::getInterfaceInfo(const uint8_t ifaceID){
+const RnpInterfaceInfo* RnpNetworkManager::getInterfaceInfo(const uint8_t ifaceID){
     auto iface_ptr = getInterface(ifaceID);
     if (!iface_ptr){
         return nullptr;

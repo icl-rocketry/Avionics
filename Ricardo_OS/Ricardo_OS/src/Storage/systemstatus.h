@@ -18,14 +18,14 @@ class SystemStatus{
         void new_message(SYSTEM_FLAG flag,std::string info);
         void new_message(SYSTEM_FLAG flag);
 
-        uint32_t get_string();
+        uint32_t getStatus();
 
         void delete_message(SYSTEM_FLAG flag);
         void delete_message(SYSTEM_FLAG flag,std::string info);
 
         template<typename... Args> // TODO -> ensure all ARGS are enum or integral
         bool flag_triggered(Args... args){
-            uint32_t flags = (... | (uint32_t)args);
+            uint32_t flags = (... | static_cast<uint32_t>(args));
             return (_status & flags);
         };
 

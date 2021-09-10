@@ -19,9 +19,9 @@ class Loopback : public RnpInterface{
         void update() override;
 
         void sendPacket(RnpPacket& data) override;
-        void send(std::vector<uint8_t>& data) override;
+        //void send(std::vector<uint8_t>& data) override;
         
-        RnpInterfaceInfo* getInfo() override {return &info;};
+        const RnpInterfaceInfo* getInfo() override {return &info;};
         std::string getName() override {return _name;};
         ~Loopback(){};
 

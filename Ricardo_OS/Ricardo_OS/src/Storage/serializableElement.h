@@ -49,9 +49,9 @@ class serializer
     std::tuple<serializableElement<C, T>...> elements;
 
     template <size_t I>
-    void deserialize_impl(C& owner, const std::vector<uint8_t>& buffer, size_t pos) const
+    void deserialize_impl(C& owner, const std::vector<uint8_t>& buffer,[[maybe_unused]] size_t pos) const
     {
-        size_t p1 = pos;
+        
         if constexpr (I < sizeof...(T)) // sizeof...(T) gives the number of elements in the pack expression
         {
             auto element_size = std::get<I>(elements).deserialize(owner, buffer, pos); // gets the I'th element from elements tuple and calls deserialize
@@ -106,36 +106,5 @@ public:
 
 };
 
-/*
-
-
-class myclass {
-
-    static constexpr auto getserializer()
-    {
-        auto ret = serializer(&myclass::a, &myclass::b, &myclass::c);
-        return ret;
-    }
-
-public:
-    float a;
-    int b;
-    long c;
-
-
-    std::vector<uint8_t> serialize() const
-    {
-        return getserializer().serialize(*this);
-    }
-
-    static myclass deserialize(const std::vector<uint8_t>& buffer)
-    {
-        myclass ret;
-        getserializer().deserialize(ret, buffer);
-        return ret;
-    }
-};
-
-*/
 
 #endif

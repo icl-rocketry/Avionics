@@ -21,6 +21,9 @@ struct RnpInterfaceInfo{
     //add commmon members here
     bool state; // interface up or dowwwwnnnnn
     bool error; // in error ?? or error codes?
+    size_t MTU; // max transmitable unit
+    uint8_t rxerror;
+    uint8_t txerror;
     virtual ~RnpInterfaceInfo(){};
 };
 
@@ -32,9 +35,9 @@ class RnpInterface{
         {};
         virtual void setup() = 0;
         virtual void sendPacket(RnpPacket& data) = 0;
-        virtual void send(std::vector<uint8_t>& data) = 0;
+        //virtual void send(std::vector<uint8_t>& data) = 0;
         virtual void update() = 0;
-        virtual RnpInterfaceInfo* getInfo() = 0;
+        virtual const RnpInterfaceInfo* getInfo() = 0;
         virtual std::string getName() = 0;
         virtual ~RnpInterface(){};
 

@@ -248,7 +248,7 @@ void CommandHandler::TelemetryCommand(const CommandPacket &commandpacket)
 	// telemetry.launch_lng = _sm->estimator.state.gps_launch_long;
 	// telemetry.launch_alt = _sm->estimator.state.gps_launch_alt;
 
-	// telemetry.system_status = _sm->systemstatus.get_string();
+	// telemetry.system_status = _sm->systemstatus.getStatus();
 	// telemetry.system_time = millis();
 
 	// std::vector<double> radioInfo = _sm->networkmanager.getInterfaceInfo(INTERFACE::LORA);

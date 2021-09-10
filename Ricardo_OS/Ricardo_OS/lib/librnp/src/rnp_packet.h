@@ -32,6 +32,7 @@ class RnpPacket {
          */
         virtual void serialize(std::vector<uint8_t>& buf);
 
+    
         RnpHeader header; 
 };
 

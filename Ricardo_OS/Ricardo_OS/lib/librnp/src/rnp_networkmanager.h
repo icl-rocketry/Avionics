@@ -24,6 +24,7 @@ using packetBuffer_t = std::queue<packetptr_t>;
 using PacketHandlerCb = std::function<void(packetptr_t)>;
 using LogCb_t = std::function<void(const std::string&)>;
 
+
 enum class NODETYPE : uint8_t{
             LEAF=0, // only accepts packets addressed to this node and dumps any others. 
             HUB=1, // accepts all packets and forwards to the correct interface (promiscous mode)
@@ -39,52 +40,186 @@ class RnpNetworkManager {
     public:
         RnpNetworkManager(uint8_t address = 0, NODETYPE nodeType = NODETYPE::LEAF,bool enableLogging = false);
         
-        void setup(); // run default setup
-        void update(); // run update on all interfaces
+        /**
+         * @brief Runs default setup -> currently nothing
+         * 
+         */
+        void setup(); 
+        /**
+         * @brief Runs update routine on all interfaces in the iflist, also calls routePacket command to process any received packets.
+         * 
+         */
+        void update(); 
+        /**
+         * @brief Resets the network configuration including routing table to the orignal loaded configuration
+         * 
+         */
         void reset(); //reset routing table to the loaded routing table
 
-        void loadFromJson(); // load from arudino json object
+        /**
+         * @brief Loads config from a json string
+         * 
+         */
+        void loadFromJson();
+        /**
+         * @brief saves network configuration to Non Volatile Storage (esp32 specific),
+         * configruation is stored as a json string
+         * 
+         */
         void saveToNVS();//saves network config to nvs
+        /**
+         * @brief Loads network configruation from Non Volatile Storage
+         * 
+         */
         void loadFromNVS();//loads network config from nvs
 
+        /**
+         * @brief Sends a RnpPacket. All routing information is contained within the header of the packet.
+         * 
+         * @param packet RnpPacket type, typically a class derived from RnpPacket is passed
+         */
         void sendPacket(RnpPacket &packet); // if u wwant to send raw data use the actual interface
+        /**
+         * @brief send packet over a specified route
+         * 
+         * @param route 
+         * @param packet 
+         */
         void sendByRoute(const Route& route, RnpPacket&packet);
 
+        /**
+         * @brief Set the Address of the node, this removes the previous loopback route and generates a new loopback route aswell so that the loopback route always exists
+         * 
+         * @param address 
+         */
         void setAddress(uint8_t address); 
+        /**
+         * @brief Get the Address of the node.
+         * 
+         * @return uint8_t 
+         */
         uint8_t getAddress(){return _currentAddress;};
 
+        /**
+         * @brief Set the Node Type
+         * 
+         * @param nodeType 
+         */
         void setNodeType(NODETYPE nodeType); // hub or leaf
+        /**
+         * @brief Get the Node Type
+         * 
+         * @return NODETYPE 
+         */
         NODETYPE getNodeType(){return _nodeType;};
 
+        /**
+         * @brief Add interface to iface list, places the interface at the id speicifed in the interface object
+         * 
+         * @param iface Pointer to interface object
+         */
         void addInterface(RnpInterface* iface);
-        std::optional<RnpInterface*> getInterface(const uint8_t ifaceID); // checks if a valid interface exists at the proived index
-        void removeInterface(const uint8_t ifaceID); // no clue why someone would want to do this
+        /**
+         * @brief Get the Interface object from ifacelist
+         * 
+         * @param ifaceID id of interface
+         * @return std::optional<RnpInterface*> 
+         */
+        std::optional<RnpInterface*> getInterface(const uint8_t ifaceID); 
+        /**
+         * @brief Remove interface at iface id
+         * 
+         * @param ifaceID 
+         */
+        void removeInterface(const uint8_t ifaceID); 
+        /**
+         * @brief Remove interface by iface pointer 
+         * 
+         * @param iface 
+         */
         void removeInterface(RnpInterface* iface); 
 
-        RnpInterfaceInfo* getInterfaceInfo(const uint8_t ifaceID);
+        /**
+         * @brief Get Interface info
+         * 
+         * @param ifaceID 
+         * @return RnpInterfaceInfo* 
+         */
+        const RnpInterfaceInfo* getInterfaceInfo(const uint8_t ifaceID);
+        /**
+         * @brief Get List of interfaces
+         * 
+         * @return std::string 
+         */
         std::string getInterfaceList(){return "";}; //not implemented yet
 
-        void registerService(const uint8_t serviceID, PacketHandlerCb packetHandler); //when deserializing, ensure the lenght in the header and the expected length match
-        void unregisterService(const uint8_t serviceID); // remeber to call this on invalidation of function pointer
+        /**
+         * @brief Register a packet callback handler for a specifed service id. Thread saftey is up to the implmentation of the callback.
+         * check that the expect packet length and recieved packet length match
+         * 
+         * @param serviceID 
+         * @param packetHandler 
+         */
+        void registerService(const uint8_t serviceID, PacketHandlerCb packetHandler);
+        /**
+         * @brief remove callback by id, ensure this is called if the callback passed gets destructed otherwise there will be UB
+         * 
+         * @param serviceID 
+         */
+        void unregisterService(const uint8_t serviceID); 
 
+        /**
+         * @brief Pass a logging function pointer to allow logging of errors from network manager
+         * 
+         * @param logcb 
+         */
         void setLogCb(LogCb_t logcb){_logcb = logcb;};
 
+        /**
+         * @brief Enable the learning of routes by analyzing packets comming from previously unkown sources
+         * 
+         * @param setting 
+         */
         void enableAutoRouteGen(bool setting){_routeGenEnabled = setting;};
 
+        
         enum class NOROUTE_ACTION:uint8_t{
-            DUMP=0, // Dump the packet
-            BROADCAST=1 // broadcast the packet to the specifed interfaces NB careful of packet duplication -> no de-duplication service has been written yet
+            DUMP=0, /*! Dumps the packet !*/
+            BROADCAST=1 /*! broadcast the packet to the specifed interfaces NB careful of packet duplication -> no de-duplication service has been written yet !*/
         };
+        /**
+         * @brief Set action if no route is found in the routing table.
+         * 
+         * @param action 
+         * @param ifaces list of interface ids to broadcast the packet on
+         */
         void setNoRouteAction(const NOROUTE_ACTION action,const std::vector<uint8_t> ifaces = {});
 
+        /**
+         * @brief Generates the loopback route aswell as the debug port route
+         * 
+         */
         void generateDefaultRoutes();
+        /**
+         * @brief updates the _basetable to the current routing table
+         * 
+         */
         void updateBaseTable(){_basetable = routingtable;};
         RoutingTable routingtable;
 
     private:
 
+        /**
+         * @brief Processes any recieved packets 
+         * 
+         */
         void routePackets();
         
+        /**
+         * @brief Internal network management packets handler
+         * 
+         * @param packet_ptr 
+         */
         void NetManHandler(packetptr_t packet_ptr); //internal network packet handler
 
         packetBuffer_t packetBuffer;

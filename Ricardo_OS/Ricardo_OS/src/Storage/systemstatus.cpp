@@ -19,7 +19,7 @@ void SystemStatus::new_message(SYSTEM_FLAG flag,std::string info){
 
 };
 
-uint32_t SystemStatus::get_string(){
+uint32_t SystemStatus::getStatus(){
     return _status;
 }
 

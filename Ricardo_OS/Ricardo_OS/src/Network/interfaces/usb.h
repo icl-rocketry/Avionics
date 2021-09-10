@@ -1,0 +1,53 @@
+#ifndef USBSEERIAL_H
+#define USBSEERIAL_H
+
+#include "rnp_interface.h"
+
+#include "Storage/systemstatus.h"
+#include "Storage/logController.h"
+
+#include <memory>
+#include <vector>
+#include <array>
+#include <string>
+
+#include <HardwareSerial.h>
+
+struct USBInterfaceInfo:public RnpInterfaceInfo{
+    size_t sendBufferSize;
+    bool sendBufferOverflow;
+    size_t receiveBufferSize;
+    bool receiveBufferOverflow;
+};
+
+class USB: public RnpInterface{
+
+    public:
+        USB(HardwareSerial& serial,SystemStatus& systemstatus,LogController& logcontroller,std::string name="Serial");
+        void setup() override;
+        //void send_packet(std::vector<uint8_t> &data);
+        
+
+        void sendPacket(RnpPacket& data) override;
+        void checkSendBuffer();
+        void update() override;
+        const RnpInterfaceInfo* getInfo() override {return &_info;};
+        std::string getName() override {return _name;};
+
+    private:
+        HardwareSerial& _serial; // pointer to stream interface
+        SystemStatus& _systemstatus; //pointer to system status object
+        LogController& _logcontroller;
+
+        USBInterfaceInfo _info;
+        std::string _name;
+
+        std::vector<uint8_t> _sendBuffer;
+        std::vector<uint8_t> _receiveBuffer;
+        void getPackets();
+
+
+};
+
+
+#endif

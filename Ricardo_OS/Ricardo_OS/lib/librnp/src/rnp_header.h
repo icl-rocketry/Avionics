@@ -23,6 +23,9 @@ class RnpHeader {
             );
             return ret;
         }
+
+       
+
        
     public:
         RnpHeader();
@@ -59,7 +62,7 @@ class RnpHeader {
         static constexpr size_t size(){
                 return getSerializer().member_size();
         }
-
+        
         static std::stringstream print(RnpHeader& header){
             std::stringstream aout;
             aout<< ">>>HEADER<<<\n";

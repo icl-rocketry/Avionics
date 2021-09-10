@@ -8,7 +8,7 @@
 
 
 ConfigController::ConfigController(StorageController* storagecontroller,LogController* logcontroller):
-configDoc(16384),
+configDoc(16384),//max 16kb config size
 _storagecontroller(storagecontroller),
 _logcontroller(logcontroller),
 _configOK(true)
