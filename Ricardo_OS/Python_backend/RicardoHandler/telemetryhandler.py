@@ -3,7 +3,7 @@ import multiprocessing
 from RicardoHandler import packets
 import time
 import json
-
+import copy
 
 class TelemetryHandler(multiprocessing.Process):
     
@@ -18,8 +18,8 @@ class TelemetryHandler(multiprocessing.Process):
 
 
         self.state = {
-            "run":True,
-            "source":4,
+            "run":False,
+            "source":1,
             "destination":0,
             "dt":updateTimePeriod,
         }
@@ -50,8 +50,10 @@ class TelemetryHandler(multiprocessing.Process):
 
     def __sendTelemetryPacket__(self):
         #construct command packet for telemetry
-        header = packets.Header(2, 0, 2, 0, source=self.state["source"], destination=self.state["destination"]) # source=4 for USB and destination=0 for rocket
-        cmd_packet = packets.Command(header, 8, 0) # 8 for telemetry
+        # header = packets.Header(packet_len = packets, 0, 2, 0, source=self.state["source"], destination=self.state["destination"]) # source=4 for USB and destination=0 for rocket
+        cmd_packet = packets.Command(command=8,arg=0) # 8 for telemetry
+        cmd_packet.header.source = self.state["source"]
+        cmd_packet.header.destination = self.state["destination"]
         send_data = {
             "data":cmd_packet.serialize().hex(),
             "clientid":self.clientid
@@ -68,10 +70,10 @@ class TelemetryHandler(multiprocessing.Process):
             header : packets.Header  = packets.Header.from_bytes(received_packet)
             #check the correct packet type was received
             #!!!! change packet type to telemetry packet once everything els ehas been changed properly
-            if header.packet_type == 1:
+            if header.service == 2:
                 self.lastPacketTime = time.time_ns()
                 decoded_packet = packets.Telemetry.from_bytes(received_packet)
-                packet_data = vars(decoded_packet)
+                packet_data = copy.deepcopy(vars(decoded_packet))
                 #remove header from data
                 packet_data.pop("header")
                 packet_data["connectionstatus"] = True

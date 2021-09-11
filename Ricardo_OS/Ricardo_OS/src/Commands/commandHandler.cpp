@@ -26,6 +26,8 @@
 #include "rnp_packet.h"
 #include "commandpacket.h"
 
+#include "Network/packets/TelemetryPacket.h"
+
 
 
 CommandHandler::CommandHandler(stateMachine* sm):
@@ -192,73 +194,73 @@ void CommandHandler::StopLoggingCommand(const CommandPacket &commandpacket)
 
 void CommandHandler::TelemetryCommand(const CommandPacket &commandpacket) 
 {
-	// std::vector<uint8_t> packet;
-	// TelemetryPacket telemetry;
+	//std::vector<uint8_t> packet;
+	TelemetryPacket telemetry;
 
-	// telemetry.header.source = _sm->networkmanager.getNodeType();
-	// telemetry.header.destination = (uint8_t)source;
-	// telemetry.header.uid = uid; 
+	telemetry.header.source = _sm->networkmanager.getAddress();
+	telemetry.header.destination = commandpacket.header.source;
+	telemetry.header.uid = commandpacket.header.uid; 
 
-	// telemetry.pn = _sm->estimator.state.position(0);
-	// telemetry.pe = _sm->estimator.state.position(1);
-	// telemetry.pd = _sm->estimator.state.position(2);
+	telemetry.pn = _sm->estimator.state.position(0);
+	telemetry.pe = _sm->estimator.state.position(1);
+	telemetry.pd = _sm->estimator.state.position(2);
 
-	// telemetry.vn = _sm->estimator.state.velocity(0);
-	// telemetry.ve = _sm->estimator.state.velocity(1);
-	// telemetry.vd = _sm->estimator.state.velocity(2);
+	telemetry.vn = _sm->estimator.state.velocity(0);
+	telemetry.ve = _sm->estimator.state.velocity(1);
+	telemetry.vd = _sm->estimator.state.velocity(2);
 
-	// telemetry.an = _sm->estimator.state.acceleration(0);
-	// telemetry.ae = _sm->estimator.state.acceleration(1);
-	// telemetry.ad = _sm->estimator.state.acceleration(2);
+	telemetry.an = _sm->estimator.state.acceleration(0);
+	telemetry.ae = _sm->estimator.state.acceleration(1);
+	telemetry.ad = _sm->estimator.state.acceleration(2);
 
-	// telemetry.roll = _sm->estimator.state.eulerAngles(0);
-	// telemetry.pitch = _sm->estimator.state.eulerAngles(1);
-	// telemetry.yaw =_sm->estimator.state.eulerAngles(2);
+	telemetry.roll = _sm->estimator.state.eulerAngles(0);
+	telemetry.pitch = _sm->estimator.state.eulerAngles(1);
+	telemetry.yaw =_sm->estimator.state.eulerAngles(2);
 
-	// telemetry.q0 = _sm->estimator.state.orientation.w();
-	// telemetry.q1 = _sm->estimator.state.orientation.x();
-	// telemetry.q2 =_sm->estimator.state.orientation.y();
-	// telemetry.q3 =_sm->estimator.state.orientation.z();
+	telemetry.q0 = _sm->estimator.state.orientation.w();
+	telemetry.q1 = _sm->estimator.state.orientation.x();
+	telemetry.q2 =_sm->estimator.state.orientation.y();
+	telemetry.q3 =_sm->estimator.state.orientation.z();
 
-	// telemetry.lat = _sm->sensors.sensors_raw.gps_lat / 10000000.0;
-	// telemetry.lng = _sm->sensors.sensors_raw.gps_long / 10000000.0;
-	// telemetry.alt = _sm->sensors.sensors_raw.gps_alt;
-	// telemetry.sat = _sm->sensors.sensors_raw.gps_sat;
+	telemetry.lat = _sm->sensors.sensors_raw.gps_lat / 10000000.0;
+	telemetry.lng = _sm->sensors.sensors_raw.gps_long / 10000000.0;
+	telemetry.alt = _sm->sensors.sensors_raw.gps_alt;
+	telemetry.sat = _sm->sensors.sensors_raw.gps_sat;
 
-	// telemetry.ax = _sm->sensors.sensors_raw.ax;
-	// telemetry.ay = _sm->sensors.sensors_raw.ay;
-	// telemetry.az = _sm->sensors.sensors_raw.az;
+	telemetry.ax = _sm->sensors.sensors_raw.ax;
+	telemetry.ay = _sm->sensors.sensors_raw.ay;
+	telemetry.az = _sm->sensors.sensors_raw.az;
 
-	// telemetry.gx = _sm->sensors.sensors_raw.gx;
-	// telemetry.gy = _sm->sensors.sensors_raw.gy;
-	// telemetry.gz = _sm->sensors.sensors_raw.gz;
+	telemetry.gx = _sm->sensors.sensors_raw.gx;
+	telemetry.gy = _sm->sensors.sensors_raw.gy;
+	telemetry.gz = _sm->sensors.sensors_raw.gz;
 
-	// telemetry.mx = _sm->sensors.sensors_raw.mx;
-	// telemetry.my = _sm->sensors.sensors_raw.my;
-	// telemetry.mz = _sm->sensors.sensors_raw.mz;
+	telemetry.mx = _sm->sensors.sensors_raw.mx;
+	telemetry.my = _sm->sensors.sensors_raw.my;
+	telemetry.mz = _sm->sensors.sensors_raw.mz;
 
-	// telemetry.baro_temp = _sm->sensors.sensors_raw.baro_temp;
-	// telemetry.baro_press = _sm->sensors.sensors_raw.baro_press;
-	// telemetry.baro_alt = _sm->sensors.sensors_raw.baro_alt;
+	telemetry.baro_temp = _sm->sensors.sensors_raw.baro_temp;
+	telemetry.baro_press = _sm->sensors.sensors_raw.baro_press;
+	telemetry.baro_alt = _sm->sensors.sensors_raw.baro_alt;
 
-	// telemetry.batt_voltage = _sm->sensors.sensors_raw.batt_volt;
-	// telemetry.batt_percent= _sm->sensors.sensors_raw.batt_percent;
+	telemetry.batt_voltage = _sm->sensors.sensors_raw.batt_volt;
+	telemetry.batt_percent= _sm->sensors.sensors_raw.batt_percent;
 
-	// telemetry.launch_lat = _sm->estimator.state.gps_launch_lat;
-	// telemetry.launch_lng = _sm->estimator.state.gps_launch_long;
-	// telemetry.launch_alt = _sm->estimator.state.gps_launch_alt;
+	telemetry.launch_lat = _sm->estimator.state.gps_launch_lat;
+	telemetry.launch_lng = _sm->estimator.state.gps_launch_long;
+	telemetry.launch_alt = _sm->estimator.state.gps_launch_alt;
 
-	// telemetry.system_status = _sm->systemstatus.getStatus();
-	// telemetry.system_time = millis();
+	telemetry.system_status = _sm->systemstatus.getStatus();
+	telemetry.system_time = millis();
 
-	// std::vector<double> radioInfo = _sm->networkmanager.getInterfaceInfo(INTERFACE::LORA);
+	//std::vector<double> radioInfo = _sm->networkmanager.getInterfaceInfo(INTERFACE::LORA);
 
 	// telemetry.rssi = radioInfo.at((uint8_t)RADIO_INFO::RSSI);
 	// telemetry.snr = radioInfo.at((uint8_t)RADIO_INFO::SNR);
 
-	// telemetry.serialize(packet);
 
-	// _sm->networkmanager.send_to_node(source,packet);
+
+	_sm->networkmanager.sendPacket(telemetry);
 
 }
 

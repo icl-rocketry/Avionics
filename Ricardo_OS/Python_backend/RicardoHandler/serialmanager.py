@@ -4,6 +4,7 @@ import time
 import multiprocessing
 import redis
 import json
+from cobs import cobs
 
 
 class SerialManager(multiprocessing.Process):
@@ -20,6 +21,7 @@ class SerialManager(multiprocessing.Process):
 		
 
 		self.packetRecordTimeout = 2*60 #default 2 minute timeout
+		self.receiveBuffer = []
 		#dictionary structure
         #{key(packet uid):[client id, time_sent]}
 		self.packetRecord = {} 
@@ -75,27 +77,54 @@ class SerialManager(multiprocessing.Process):
 				self.boot_messages += str(data)
 	
 	def __readPacket__(self):
-		if self.ser.in_waiting > 0: 
-			b = self.ser.read(1)
-			if (b == Header.start_byte.to_bytes(1, 'little')):
-	
-				header_bytes = self.ser.read(Header.header_size - 1) # -1 as we have read the first byte already
-				if (len(b+header_bytes) < Header.header_size):
-					#full header wasnt received and we porbbaly wont recieve this full header so dump it
+		#cobs decode
+		while self.ser.in_waiting > 0:
+			incomming = self.ser.read(1)
+			if (incomming == (0x00).to_bytes(1,'little')):
+				if (len(self.receiveBuffer) == 0):
+					#empty frame receved, discard this
 					return
+				decodedData = cobs.decode(bytearray(self.receiveBuffer))
+				self.__processReceivedPacket__(decodedData)
+				#empty receive buffer
+				self.receiveBuffer = []
+			else:
+				#place new byte at end of buffer
+				self.receiveBuffer += incomming
+		
 
-				header : Header = Header.from_bytes(b + header_bytes)
-				body = self.ser.read(header.packet_len) # Read the rest of the packet -> this is likley the command which will block. Maybe its better to rewrite this to individually read each byte
+		# if self.ser.in_waiting > 0: 
+		# 	b = self.ser.read(1)
+		# 	if (b == Header.start_byte.to_bytes(1, 'little')):
+	
+		# 		header_bytes = self.ser.read(Header.header_size - 1) # -1 as we have read the first byte already
+		# 		if (len(b+header_bytes) < Header.header_size):
+		# 			#full header wasnt received and we porbbaly wont recieve this full header so dump it
+		# 			return
+
+		# 		header : Header = Header.from_bytes(b + header_bytes)
+		# 		body = self.ser.read(header.packet_len) # Read the rest of the packet -> this is likley the command which will block. Maybe its better to rewrite this to individually read each byte
 				
-				if (len(body) < header.packet_len):
-					#full body wasnt received and we probbaly wont recieve the full packet so dump it
-					return
-				#add received packet to packet buffer
-				#self.packetBuffer.append((b + header_bytes + body))
-				self.__processReceivedPacket__((b + header_bytes + body))
+		# 		if (len(body) < header.packet_len):
+		# 			#full body wasnt received and we probbaly wont recieve the full packet so dump it
+		# 			return
+		# 		#add received packet to packet buffer
+		# 		#self.packetBuffer.append((b + header_bytes + body))
+		# 		self.__processReceivedPacket__((b + header_bytes + body))
 
 	def __processReceivedPacket__(self,data:bytes):
-		header = Header.from_bytes(data)#decode header
+		try:
+			header = Header.from_bytes(data)#decode header
+		except DeserializeError:
+			print("Deserialization Error")
+			print(data)
+			return
+		#check header len
+		
+		if (len(data) != (Header.size + header.packet_len)):
+			print("Length Mismatch")
+			return
+
 		uid = header.uid #get unique id
 
 		if uid in self.packetRecord:
@@ -131,7 +160,10 @@ class SerialManager(multiprocessing.Process):
 		self.packetRecord[uid] = [clientid,time.time()] #update packetrecord dictionary
 		#self.sendBuffer.append(data)#add packet to send buffer
 
-		self.ser.write(modifieddata)#write packet to serial port and hope its free lol
+		# cobs encode
+		encoded = bytearray(cobs.encode(modifieddata))
+		encoded += (0x00).to_bytes(1,'little') #add end packet marker
+		self.ser.write(encoded)#write packet to serial port and hope its free lol
 
 	def __checkSendQueue__(self):
 		#check if there are items present in send queue

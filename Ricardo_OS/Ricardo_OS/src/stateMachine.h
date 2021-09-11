@@ -25,6 +25,8 @@ Written by the Electronics team, Imperial College London Rocketry
 
 #include "Events/flightVariableHandler.h"
 
+#include "Network/interfaces/usb.h"
+
 #include "rnp_networkmanager.h"
 
 #include "Commands/commandHandler.h"
@@ -55,6 +57,7 @@ class stateMachine {
  
     SystemStatus systemstatus;
     
+    USB usbserial;
     RnpNetworkManager networkmanager;
     CommandHandler commandhandler;
 
@@ -64,6 +67,8 @@ class stateMachine {
     TunezHandler tunezhandler;
   private:
     State* _currStatePtr;
+
+
 
 };
 

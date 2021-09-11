@@ -3,6 +3,7 @@
 #pragma once
 
 enum class COMMANDS:uint8_t {
+    Nocommand = 0,
     Launch = 1, 
     Reset = 2,
     Abort = 3,

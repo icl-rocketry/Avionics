@@ -18,7 +18,7 @@ _raw_data(raw_data)
 void Baro::setup(){
 
     reset();
-    setOversamplingRate(MS5607_OSR1024);
+    setOversamplingRate(MS5607_OSR2048);
     readProm();
     
 }

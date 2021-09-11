@@ -44,8 +44,10 @@ def send_command():
             source = command_data["source"]
         else:
             source = 2
-        header = packets.Header(2,0,2,0,source = source,destination = command_data["destination"])
-        cmd_packet = packets.Command(header,command_data["command"],command_data["arg"])
+
+        cmd_packet :packets.Command = packets.Command(command=command_data["command"],arg=command_data["arg"])
+        cmd_packet.header.source = source
+        cmd_packet.header.destination = command_data["destination"]
         send_data = {
             "data":cmd_packet.serialize().hex(),
             "clientid":command_data["clientid"]

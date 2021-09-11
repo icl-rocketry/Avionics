@@ -40,6 +40,7 @@ stateMachine::stateMachine() :
     storagecontroller(this),
     logcontroller(&storagecontroller),
     systemstatus(&logcontroller),
+    usbserial(Serial,systemstatus,logcontroller),
     networkmanager(static_cast<uint8_t>(DEFAULT_ADDRESS::ROCKET),NODETYPE::HUB,true),
     commandhandler(this),
     sensors(this),
@@ -62,8 +63,11 @@ void stateMachine::initialise(State* initStatePtr) {
   // create config controller object
   ConfigController configcontroller(&storagecontroller,&logcontroller); 
   configcontroller.load(); // load configuration from sd card into ram
+  //setup interfaces
+  usbserial.setup();
   //setup network manager so communication is running
   // add interfaces
+  networkmanager.addInterface(&usbserial);
   //load rt table
   networkmanager.enableAutoRouteGen(false);
   networkmanager.setNoRouteAction(RnpNetworkManager::NOROUTE_ACTION::DUMP,{});
