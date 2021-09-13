@@ -6,12 +6,16 @@ state for groundstation use as reciever
 
 #include "state.h"
 
+#include "rnp_routingtable.h"
+
 class Groundstation: public State {
     public:
         Groundstation(stateMachine* sm);
         void initialise();
         State* update();
         void exitstate();
+    private:
+
 
 };
 

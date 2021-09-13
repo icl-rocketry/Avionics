@@ -207,7 +207,7 @@ class RnpNetworkManager {
          */
         void updateBaseTable(){_basetable = routingtable;};
         RoutingTable routingtable;
-
+        
     private:
 
         /**
@@ -239,6 +239,8 @@ class RnpNetworkManager {
         bool _routeGenEnabled;
 
         RoutingTable _basetable; //copy of the intial routing table read in from config
+       
+
 
         const bool _loggingEnabled;
         LogCb_t _logcb; // callback to logging function

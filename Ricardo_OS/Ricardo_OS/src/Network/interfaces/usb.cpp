@@ -20,11 +20,10 @@
 
 
 USB::USB(HardwareSerial& serial,SystemStatus& systemstatus,LogController& logcontroller,std::string name) :
-RnpInterface((uint8_t)DEFAULT_INTERFACES::USBSERIAL),
+RnpInterface((uint8_t)DEFAULT_INTERFACES::USBSERIAL,name),
 _serial(serial),
 _systemstatus(systemstatus),
-_logcontroller(logcontroller),
-_name(name)
+_logcontroller(logcontroller)
 {
     _info.MTU = 256;
     _info.sendBufferSize = 1024;
@@ -64,6 +63,8 @@ void USB::checkSendBuffer(){ // hmm this seems to be causing lag issues if a pac
     if (_sendBuffer.size() == 0){
         return;
     }
+    // _serial.write(_sendBuffer.data(),_sendBuffer.size());
+    // _sendBuffer.clear();
     const size_t numBytes = _serial.availableForWrite();
     if (numBytes < _sendBuffer.size()){
         _serial.write(_sendBuffer.data(),numBytes);
@@ -74,7 +75,7 @@ void USB::checkSendBuffer(){ // hmm this seems to be causing lag issues if a pac
         _sendBuffer.clear();
         //maybe shrink to fit vector?
     }
-};
+ };
 
 
 void USB::update(){

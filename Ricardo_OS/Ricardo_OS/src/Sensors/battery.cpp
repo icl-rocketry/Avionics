@@ -24,8 +24,9 @@ void Battery::setup(){
 
 void Battery::update(){
     
-    const float factor = (1.0/0.488)*3300.0/4095.0; // esp32 pins can read upto 3.3v (3300mv) in 4095 steps, voltage divider halves the input voltage hence we get 2*3300 -> from actual board r1 = 9.22k, r2 = 8.79k
-    uint16_t reading = analogRead(_pin);
+    constexpr float factor = (1.0/0.488)*3300.0/4095.0; // esp32 pins can read upto 3.3v (3300mv) in 4095 steps, voltage divider halves the input voltage hence we get 2*3300 -> from actual board r1 = 9.22k, r2 = 8.79k
+    
+    const uint16_t reading = analogRead(_pin);
     _raw_data->batt_volt = (uint16_t)(factor*(float)reading); // voltage in mV
 
     if ((_raw_data->batt_volt < warn_battery_voltage) && (!_systemstatus->flag_triggered(SYSTEM_FLAG::ERROR_BATT))){

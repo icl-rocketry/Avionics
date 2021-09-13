@@ -8,6 +8,8 @@
 #include "Sensors/sensorStructs.h"
 #include "../logframe.h"
 
+#include "Arduino.h"
+
 
 TelemetryLogger::TelemetryLogger(StorageController* sc,uint16_t dt,std::string filename,STORAGE_DEVICE mainStorage,STORAGE_DEVICE backupStorage):
 Logger(sc,dt,filename,mainStorage,backupStorage)
@@ -29,14 +31,7 @@ void TelemetryLogger::writeLog(){
         return; // check if logger is enabled
     }
     if (telemetry_log_buffer.size()>=1024){
-        main_logfile.write(telemetry_log_buffer.c_str(),telemetry_log_buffer.size());
-        backup_logfile.write(telemetry_log_buffer.c_str(),telemetry_log_buffer.size());
-
-        
-        main_logfile.flush();
-        backup_logfile.flush();
-
-        telemetry_log_buffer.clear();
+        flush();
     }
 
 };
@@ -85,14 +80,13 @@ void TelemetryLogger::log(state_t &estimator_state,raw_measurements_t &raw_senso
     telemetry_frame.an = estimator_state.acceleration[0];
     telemetry_frame.ae = estimator_state.acceleration[1];
     telemetry_frame.ad = estimator_state.acceleration[2];
-    telemetry_frame.timestamp = millis();
+    telemetry_frame.timestamp = micros();
 
     std::string string_data = telemetry_frame.stringify();
 
     //check capacity of vector
-    if (telemetry_log_buffer.size() + string_data.size() > telemetry_log_buffer.capacity()){
-        
-        telemetry_log_buffer.clear(); // this should never happen but it prevents the logger eating all ram like the cookie monster
+    if (telemetry_log_buffer.size() + string_data.size() >= 1024){
+        flush();
     }
     //telemetry_log_buffer.resize(telemetry_log_buffer.size() + string_data.size());
     telemetry_log_buffer += string_data;
@@ -105,4 +99,16 @@ void TelemetryLogger::log(state_t &estimator_state,raw_measurements_t &raw_senso
        
 };
 
-TelemetryLogger::~TelemetryLogger(){};
+TelemetryLogger::~TelemetryLogger(){}
+
+void TelemetryLogger::flush() 
+{
+    main_logfile.write(telemetry_log_buffer.c_str(),telemetry_log_buffer.size());
+        backup_logfile.write(telemetry_log_buffer.c_str(),telemetry_log_buffer.size());
+
+        
+        main_logfile.flush();
+        backup_logfile.flush();
+
+        telemetry_log_buffer.clear();
+};

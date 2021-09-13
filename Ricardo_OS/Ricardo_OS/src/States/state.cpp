@@ -1,10 +1,12 @@
 #include "state.h"
+#include "flags.h"
 #include "stateMachine.h"
 #include "Storage/utils.h"
 #include <string>
 
-State::State(stateMachine* sm):
-_sm(sm)
+State::State(stateMachine* sm,SYSTEM_FLAG state_id):
+_sm(sm),
+_curr_stateID(state_id)
 {};
 
 State::~State(){

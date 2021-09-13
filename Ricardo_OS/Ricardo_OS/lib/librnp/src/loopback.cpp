@@ -7,8 +7,7 @@
 #include "rnp_interface.h"
 
 Loopback::Loopback(std::string name):
-RnpInterface((uint8_t)DEFAULT_INTERFACES::LOOPBACK),
-_name(name)
+RnpInterface((uint8_t)DEFAULT_INTERFACES::LOOPBACK,name)
 {};
 
 void Loopback::setup()
@@ -33,8 +32,3 @@ void Loopback::sendPacket(RnpPacket& data){
     packet_ptr->header.src_iface = getID();
     _packetBuffer->push(std::move(packet_ptr));
 };
-
-// void Loopback::send(std::vector<uint8_t>& data){
-//     // not implementing this yet. i dont even know how this shoud work
-//     return; 
-// }

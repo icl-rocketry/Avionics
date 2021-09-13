@@ -24,7 +24,7 @@ telemetry_broadcast_exit_event = threading.Event()
 r : redis.Redis = None
 
 prev_time = 0
-updateTimePeriod = 200e6
+updateTimePeriod = 50e6
 
 
 
@@ -76,7 +76,7 @@ def get_response():
     if "clientid" in response_data:
         key = "ReceiveQueue:" + str(response_data["clientid"])
         if r.llen(key) > 0 :
-            received_response = json.loads(r.rpop(key))
+            received_response :bytes = r.rpop(key)
             return received_response,200
         else:
             return "NODATA",200

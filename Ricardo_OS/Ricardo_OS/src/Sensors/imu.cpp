@@ -29,13 +29,13 @@ Imu::Imu(SPIClass* spi, SystemStatus* systemstatus,LogController* logcontroller,
 void Imu::setup(){
 
     imu.setAccelScale(ACCEL_SCALE);
-    //set samplerate of accel to 952Hz
-    imu.settings.accel.sampleRate = 6;
+    //set samplerate of accel to 476Hz
+    imu.settings.accel.sampleRate = 5;
     imu.settings.accel.enabled = true; // Enable accelerometer
     
     imu.setGyroScale(GYRO_SCALE);
-    //set samplerate of gyro to 952Hz
-    imu.settings.gyro.sampleRate = 6;
+    //set samplerate of gyro to 476Hz
+    imu.settings.gyro.sampleRate = 5;
     imu.settings.gyro.lowPowerEnable = false;
     //imu.settings.accel.enabled = false; // Enable accelerometer
     // [HPFEnable] enables or disables the high-pass filter
@@ -80,6 +80,12 @@ void Imu::update(){
 void Imu::read_gyro(){
     imu.readGyro(); //degrees per second
     //rotated to right hand coordiante system 
+    // _raw_data->gx = -imu.calcGyro(imu.gx);
+    // _raw_data->gy = imu.calcGyro(imu.gy);
+    // _raw_data->gz = imu.calcGyro(imu.gz);
+    // _raw_data->gx = imu.calcGyro(imu.gy);
+    // _raw_data->gy = -imu.calcGyro(imu.gx);
+    // _raw_data->gz = -imu.calcGyro(imu.gz);
     _raw_data->gx = imu.calcGyro(imu.gx);
     _raw_data->gy = -imu.calcGyro(imu.gy);
     _raw_data->gz = imu.calcGyro(imu.gz);
@@ -89,17 +95,31 @@ void Imu::read_accel(){
 
     imu.readAccel();//g's
     //rotated to right hand coordiante system 
+    // _raw_data->ax = -imu.calcAccel(imu.ax);
+    // _raw_data->ay = imu.calcAccel(imu.ay);
+    // _raw_data->az = imu.calcAccel(imu.az);
+//     _raw_data->ax = imu.calcGyro(imu.ay);
+//     _raw_data->ay = -imu.calcGyro(imu.ax);
+//     _raw_data->az = -imu.calcGyro(imu.az);
     _raw_data->ax = imu.calcAccel(imu.ax);
     _raw_data->ay = -imu.calcAccel(imu.ay);
     _raw_data->az = imu.calcAccel(imu.az);
-}
+ }
 void Imu::read_mag(){
     imu.readMag(); 
     //conversion from Gauss to uT (microTesla) elon to the moon
     //coordinate system flipped
-    _raw_data->mx = -imu.calcMag(imu.mx) * 100;
-    _raw_data->my = -imu.calcMag(imu.my) * 100;
-    _raw_data->mz = imu.calcMag(imu.mz) * 100;
+    // _raw_data->mx = -imu.calcMag(imu.mx);
+    // _raw_data->my = -imu.calcMag(imu.my);
+    // _raw_data->mz = imu.calcMag(imu.mz);
+    // _raw_data->mx = imu.calcMag(imu.mx);
+    // _raw_data->my = imu.calcMag(imu.my);
+    // _raw_data->mz = -imu.calcMag(imu.mz);
+
+    _raw_data->mx = -imu.calcMag(imu.mx);
+    _raw_data->my = -imu.calcMag(imu.my);
+    _raw_data->mz = imu.calcMag(imu.mz);
+    
 
 }
 void Imu::read_temp(){

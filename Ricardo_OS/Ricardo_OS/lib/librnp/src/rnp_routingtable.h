@@ -61,6 +61,10 @@ class RoutingTable{
             _table.at(destination) = {false,Route()};
         }
 
+        void clearTable(){
+            _table.clear();
+        }
+
         void loadJson(){}; // loads table from supplied json string
         void saveJson(){}; // saves table as json string
 

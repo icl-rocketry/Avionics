@@ -24,6 +24,8 @@
 #include "Storage/logController.h"
 
 #include "rnp_packet.h"
+#include "rnp_interface.h"
+#include "Network/interfaces/radio.h"
 #include "commandpacket.h"
 
 #include "Network/packets/TelemetryPacket.h"
@@ -255,8 +257,9 @@ void CommandHandler::TelemetryCommand(const CommandPacket &commandpacket)
 
 	//std::vector<double> radioInfo = _sm->networkmanager.getInterfaceInfo(INTERFACE::LORA);
 
-	// telemetry.rssi = radioInfo.at((uint8_t)RADIO_INFO::RSSI);
-	// telemetry.snr = radioInfo.at((uint8_t)RADIO_INFO::SNR);
+	const RadioInterfaceInfo* radioinfo = static_cast<const RadioInterfaceInfo*>(_sm->radio.getInfo());
+	telemetry.rssi = radioinfo->rssi;
+	telemetry.snr = radioinfo->snr;
 
 
 

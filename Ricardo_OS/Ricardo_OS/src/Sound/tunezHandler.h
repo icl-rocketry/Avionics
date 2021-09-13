@@ -58,6 +58,7 @@ class TunezHandler{
 
         
         std::vector<tune_t> tune_queue; 
+        uint8_t _volume = 0;
 
         uint64_t prev_time = 0;
         uint16_t note_duration = 0;

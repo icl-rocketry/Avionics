@@ -121,9 +121,14 @@ void RnpNetworkManager::sendByRoute(const Route& route, RnpPacket& packet)
 
 void RnpNetworkManager::setAddress(uint8_t address) 
 {
-    routingtable.deleteRoute(_currentAddress);
+
+    auto currentRoute = routingtable.getRoute(_currentAddress);
+    if (currentRoute && (currentRoute.value().iface == static_cast<uint8_t>(DEFAULT_INTERFACES::LOOPBACK))){
+        routingtable.deleteRoute(_currentAddress); // ensure we dont delete a new route if this is called after a new routing table is assigned
+    }
     _currentAddress = address;
-    routingtable.setRoute(_currentAddress,Route{0,1,{}});
+    generateDefaultRoutes();
+   
 };
 
 void RnpNetworkManager::setNodeType(NODETYPE nodeType) 

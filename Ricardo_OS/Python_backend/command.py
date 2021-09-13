@@ -14,3 +14,4 @@ while True:
     }
     r = requests.post("http://localhost:1337/command",json = data)
     print(r.status_code, r.reason)
+    

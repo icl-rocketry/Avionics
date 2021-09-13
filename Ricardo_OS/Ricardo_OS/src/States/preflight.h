@@ -12,12 +12,16 @@ Transtion to countdown state happens through lora command
 
 
 
+
+
 class Preflight: public State {
   public:
     Preflight(stateMachine* sm);
     void initialise();
     State* update();
     void exitstate();
+
+    
 };
 
 #endif

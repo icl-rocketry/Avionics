@@ -5,9 +5,9 @@
 #include "flags.h"
 #include "stateMachine.h"
 
-Launch::Launch(stateMachine* sm) : State(sm){
-    _curr_stateID = SYSTEM_FLAG::STATE_LAUNCH;
-};
+Launch::Launch(stateMachine* sm):
+State(sm,SYSTEM_FLAG::STATE_LAUNCH)
+{};
 
 void Launch::initialise(){
     State::initialise();

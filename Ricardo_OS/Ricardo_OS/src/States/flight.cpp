@@ -5,9 +5,9 @@
 #include "flags.h"
 
 
-Flight::Flight(stateMachine* sm) : State(sm){
-    _curr_stateID = SYSTEM_FLAG::STATE_FLIGHT;
-};
+Flight::Flight(stateMachine* sm):
+State(sm,SYSTEM_FLAG::STATE_FLIGHT)
+{};
 
 void Flight::initialise(){
     State::initialise();

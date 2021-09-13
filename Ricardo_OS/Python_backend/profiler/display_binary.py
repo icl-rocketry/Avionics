@@ -21,20 +21,18 @@ time.sleep(1)
 ser.flushInput()
 ser.setDTR(True)
 
-data = []
+data = ""
 
 def exitBackend(signalNumber, frame):
-    global telemetrytask,sm
-    # f.stop()
-    #flask_thread.join()
-    #flaskinterface.bg_exit_event.set()
-    telemetrytask.stop()
-    flaskinterface.stopFlaskInterface()
-    sm.stop() #halt serial manager process
+    file = open('profile.txt', 'w')
+    file.write(data)
+    file.close()
+
     sys.exit(0)
 
 signal.signal(signal.SIGINT, exitBackend)
 signal.signal(signal.SIGTERM, exitBackend)
+
 
 while True:
     b = ser.read()

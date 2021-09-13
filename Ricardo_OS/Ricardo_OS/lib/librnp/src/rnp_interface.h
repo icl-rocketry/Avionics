@@ -29,23 +29,25 @@ struct RnpInterfaceInfo{
 
 class RnpInterface{
     public:
-        RnpInterface(uint8_t id):
+        RnpInterface(uint8_t id,std::string name):
         _packetBuffer(nullptr),
-        _id(id)
+        _id(id),
+        _name(name)
         {};
         virtual void setup() = 0;
         virtual void sendPacket(RnpPacket& data) = 0;
         //virtual void send(std::vector<uint8_t>& data) = 0;
         virtual void update() = 0;
         virtual const RnpInterfaceInfo* getInfo() = 0;
-        virtual std::string getName() = 0;
         virtual ~RnpInterface(){};
 
         void setPacketBuffer(packetBuffer_t* buffer){_packetBuffer = buffer;};
         uint8_t getID(){return _id;}
+        std::string getName(){return _name;};
 
     protected:
         packetBuffer_t* _packetBuffer;
         uint8_t _id; // unique id for interface 
+        std::string _name;
 };
 

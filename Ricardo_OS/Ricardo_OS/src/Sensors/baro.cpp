@@ -7,6 +7,8 @@
 #include "Storage/logController.h"
 #include "sensorStructs.h"
 
+#include <string>
+
 
 Baro::Baro(SPIClass* spi,SystemStatus* systemstatus,LogController* logcontroller,raw_measurements_t* raw_data):
 _spi(spi),
@@ -18,7 +20,7 @@ _raw_data(raw_data)
 void Baro::setup(){
 
     reset();
-    setOversamplingRate(MS5607_OSR2048);
+    setOversamplingRate(MS5607_OSR1024);
     readProm();
     
 }
@@ -48,6 +50,12 @@ void Baro::readProm() {
     calibration.temp_coef_pressure_offset = read16(BARO_CMD::MS5607_PROM_C4);
     calibration.ref_temp = read16(BARO_CMD::MS5607_PROM_C5);
     calibration.temp_coef_temp = read16(BARO_CMD::MS5607_PROM_C6);
+    _logcontroller->log("pres_sen " + std::to_string(calibration.pressure_sensitivity) +
+                        "\npres_off" + std::to_string(calibration.pressure_offset) +
+                        "\ntemp_coef_pres_sens" + std::to_string(calibration.temp_coef_pressure_sensitivity) +
+                        "\ntemp_coef_pres_off" + std::to_string(calibration.temp_coef_pressure_offset) +
+                        "\nref_temp" + std::to_string(calibration.ref_temp) +
+                        "\ntemp_coef" + std::to_string(calibration.temp_coef_temp));
 }
 
 void Baro::setOversamplingRate(const BARO_OSR osr){
@@ -131,13 +139,13 @@ void Baro::compensateSecondOrder() {
     // Low Temperature
     if (TEMP < 2000){
         T2 = ((int64_t)(dT * dT) >> 31);                      
-        OFF2 = (int64_t)61 * (TEMP - 2000)*(TEMP - 2000) >> 4;       
-        SENS2 = (int64_t)2 * (TEMP - 2000)*(TEMP - 2000);            
+        OFF2 = (int64_t)61 * ((TEMP - 2000)*(TEMP - 2000)) >> 4;       
+        SENS2 = (int64_t)2 * ((TEMP - 2000)*(TEMP - 2000));            
 
         // Very Low Temperature
         if (TEMP < -1500) {
-            OFF2 += (int64_t)15 * (TEMP + 1500)*(TEMP + 1500);       
-            SENS2 += (int64_t)8 * (TEMP + 1500)*(TEMP + 1500);       
+            OFF2 += (int64_t)15 * ((TEMP + 1500)*(TEMP + 1500));       
+            SENS2 += (int64_t)8 * ((TEMP + 1500)*(TEMP + 1500));       
         }
         TEMP = TEMP - T2;
         OFF = OFF - OFF2;
@@ -207,11 +215,11 @@ uint32_t Baro::read24(const uint8_t command) {
 
 float Baro::toAltitude(float pressure) {
 
-    const float R = 287.052; // specific gas constant R*/M0
-    const float g = 9.80665; // standard gravity 
-    const float t_grad = 0.0065; // gradient of temperature
-    const float t0 = 273.15 + 15; // temperature at 0 altitude
-    const float p0 = 101325; // pressure at 0 altitude
+    constexpr float R = 287.052; // specific gas constant R*/M0
+    constexpr float g = 9.80665; // standard gravity 
+    constexpr float t_grad = 0.0065; // gradient of temperature
+    constexpr float t0 = 273.15 + 15; // temperature at 0 altitude
+    constexpr float p0 = 101325; // pressure at 0 altitude
 
     return t0 / t_grad * (1 - exp((t_grad * R / g) * log(pressure / p0)));
 }

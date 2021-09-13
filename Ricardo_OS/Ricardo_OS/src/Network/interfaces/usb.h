@@ -29,10 +29,8 @@ class USB: public RnpInterface{
         
 
         void sendPacket(RnpPacket& data) override;
-        void checkSendBuffer();
         void update() override;
         const RnpInterfaceInfo* getInfo() override {return &_info;};
-        std::string getName() override {return _name;};
 
     private:
         HardwareSerial& _serial; // pointer to stream interface
@@ -40,12 +38,11 @@ class USB: public RnpInterface{
         LogController& _logcontroller;
 
         USBInterfaceInfo _info;
-        std::string _name;
 
         std::vector<uint8_t> _sendBuffer;
         std::vector<uint8_t> _receiveBuffer;
+        void checkSendBuffer();
         void getPackets();
-
 
 };
 

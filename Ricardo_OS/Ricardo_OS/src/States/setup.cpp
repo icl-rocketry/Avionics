@@ -14,44 +14,13 @@
 
 
 
-Setup::Setup(stateMachine* sm) : State(sm){
-    _curr_stateID = SYSTEM_FLAG::STATE_SETUP;
-};
+Setup::Setup(stateMachine* sm):
+State(sm,SYSTEM_FLAG::STATE_SETUP)
+{};
 
 void Setup::initialise(){
-    State::initialise();
-    
-    //internal io initilization must happen here so io buses setup for sensor initialzation
-        //intialize i2c interface
-    _sm->I2C.begin(_SDA,_SCL,I2C_FREQUENCY);
-        //initalize spi interface
-    _sm->vspi.begin();
-    //_sm->vspi.setClockDivider(SPI_CLOCK_DIV2);
-    _sm->vspi.setFrequency(1000000); // 10mhz
-    _sm->vspi.setBitOrder(MSBFIRST);
-    _sm->vspi.setDataMode(SPI_MODE0);
-        //setup cs pins
-        //initialise output variables as output
-    pinMode(LoraCs, OUTPUT);
-    pinMode(ImuCs, OUTPUT);
-    pinMode(BaroCs, OUTPUT);
-    pinMode(MagCs, OUTPUT);
-    pinMode(FlashCs, OUTPUT);
-    pinMode(SdCs, OUTPUT);
-        //initialise outputs as high
-    digitalWrite(LoraCs, HIGH);
-    digitalWrite(ImuCs, HIGH);
-    digitalWrite(BaroCs, HIGH);
-    digitalWrite(MagCs, HIGH);
-    digitalWrite(FlashCs, HIGH);
-    digitalWrite(SdCs, HIGH);
-        //open serial port on usb interface
-    Serial.begin(Serial_baud);
-    Serial.setRxBufferSize(SERIAL_SIZE_RX);
-    
-    
+    State::initialise(); 
     _sm->tunezhandler.play(MelodyLibrary::c_scalez); // play startup sound
-
 };
 
 
