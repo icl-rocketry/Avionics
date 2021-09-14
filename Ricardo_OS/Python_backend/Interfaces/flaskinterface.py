@@ -6,6 +6,14 @@ import time
 import redis
 import threading
 import json
+if __name__ == "__main__":
+    import sys
+    import os
+    # insert at 1, 0 is the script path (or '' in REPL)
+    abspath = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+    sys.path.insert(1, abspath)
+
+
 from RicardoHandler import packets
 
 
@@ -14,7 +22,7 @@ app = Flask(__name__)
 app.config["SECRET_KEY"] = "secret!"
 app.config['DEBUG'] = False
 
-socketio = SocketIO(app)
+socketio = SocketIO(app,cors_allowed_origins="*")
 
 flask_thread = None
 
@@ -94,9 +102,13 @@ def get_telemetry():
     else:
         return "NODATA",200
 
-@app.route("/graphs",methods=['get'])
-def get_graphs():
+@app.route("/graph",methods=['get'])
+def get_graph():
     return render_template('graph.html',x_window = 100)
+
+@app.route("/map",methods=['get'])
+def get_map():
+    return render_template('map.html',x_window = 100)
 
 @socketio.on('connect')
 def connect():
@@ -152,3 +164,6 @@ def startFlaskInterface(flaskhost="0.0.0.0",flaskport=5000,redishost = 'localhos
 
 def stopFlaskInterface():
     __stopTelemetryBroadcastTask__()
+
+if __name__ == "__main__":
+    startFlaskInterface(flaskport=1337)
