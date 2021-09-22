@@ -8,6 +8,8 @@
 #include "Storage/logController.h"
 #include "sensorStructs.h"
 
+#include "magcalibration.h"
+
 
 class Imu{
     public:
@@ -15,9 +17,9 @@ class Imu{
         void setup();
         void update();
 
-        //BIAS CALIBRATION
+        //SENSOR CALIBRATION
         void calibrateAccelGyro(bool autocalc); // autocalc automatically subtracts accel gyro biases
-        void calibrateMag(bool loadIn); // loadIn loads mag biases into mag registers -> this is only a bias correction 
+        void calibrateMag(bool save); // perform ellispoid fitting to calculate callibration coefficents and offset biases
 
     
     private:
@@ -30,6 +32,8 @@ class Imu{
         LSM9DS1 imu;
         //pointer to raw measurements struct
         raw_measurements_t* _raw_data;
+        //mag calibration container
+        MagCalibrationParameters _magCal;
 
         //functions for reading and converting read int16 values
         void read_gyro();
@@ -40,13 +44,16 @@ class Imu{
          * @brief write accel gyro bias callibration to nvs storage
          * 
          */
-        void writeBiasCalibration();
+        void writeAccelGyroBias();
         /**
          * @brief Load accel gyro bias callibration from nvs storage
          * 
          */
-        void loadBiasCalibration();
+        void loadAccelGyroBias();
+        
+        void writeMagCal();
 
+        void loadMagCal();
 
 };    
 

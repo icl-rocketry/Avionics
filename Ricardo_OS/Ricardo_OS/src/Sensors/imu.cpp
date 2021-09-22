@@ -11,6 +11,10 @@
 
 #include "Preferences.h"
 
+#include "magcalibration.h"
+
+#include <Eigen/Core>
+
 
 
 
@@ -19,7 +23,8 @@ Imu::Imu(SPIClass* spi, SystemStatus* systemstatus,LogController* logcontroller,
     _systemstatus(systemstatus),
     _logcontroller(logcontroller),
     imu(spi),
-    _raw_data(raw_data)
+    _raw_data(raw_data),
+    magCal{Eigen::Matrix3f{{1,0,0},{0,1,0},{0,0,1}},Eigen::Vector3f{{0,0,0}},false} // default for mag biases
 {};
 
 
@@ -55,7 +60,7 @@ void Imu::setup(){
     //mag temp compensation -> this is a good thing right?
     imu.settings.mag.tempCompensationEnable = true;
 
-    loadBiasCalibration(); //load previously callibrated bias values from nvs
+    loadAccelGyroBias(); //load previously callibrated bias values from nvs
 
     if (!imu.beginSPI(_SCLK,_MISO,_MOSI,ImuCs, MagCs)){
         _systemstatus->new_message(SYSTEM_FLAG::ERROR_IMU, "Unable to initialize the imu");
@@ -79,13 +84,6 @@ void Imu::update(){
 
 void Imu::read_gyro(){
     imu.readGyro(); //degrees per second
-    //rotated to right hand coordiante system 
-    // _raw_data->gx = -imu.calcGyro(imu.gx);
-    // _raw_data->gy = imu.calcGyro(imu.gy);
-    // _raw_data->gz = imu.calcGyro(imu.gz);
-    // _raw_data->gx = imu.calcGyro(imu.gy);
-    // _raw_data->gy = -imu.calcGyro(imu.gx);
-    // _raw_data->gz = -imu.calcGyro(imu.gz);
     _raw_data->gx = imu.calcGyro(imu.gx);
     _raw_data->gy = -imu.calcGyro(imu.gy);
     _raw_data->gz = imu.calcGyro(imu.gz);
@@ -94,28 +92,13 @@ void Imu::read_gyro(){
 void Imu::read_accel(){
 
     imu.readAccel();//g's
-    //rotated to right hand coordiante system 
-    // _raw_data->ax = -imu.calcAccel(imu.ax);
-    // _raw_data->ay = imu.calcAccel(imu.ay);
-    // _raw_data->az = imu.calcAccel(imu.az);
-//     _raw_data->ax = imu.calcGyro(imu.ay);
-//     _raw_data->ay = -imu.calcGyro(imu.ax);
-//     _raw_data->az = -imu.calcGyro(imu.az);
     _raw_data->ax = imu.calcAccel(imu.ax);
     _raw_data->ay = -imu.calcAccel(imu.ay);
     _raw_data->az = imu.calcAccel(imu.az);
  }
 void Imu::read_mag(){
     imu.readMag(); 
-    //conversion from Gauss to uT (microTesla) elon to the moon
-    //coordinate system flipped
-    // _raw_data->mx = -imu.calcMag(imu.mx);
-    // _raw_data->my = -imu.calcMag(imu.my);
-    // _raw_data->mz = imu.calcMag(imu.mz);
-    // _raw_data->mx = imu.calcMag(imu.mx);
-    // _raw_data->my = imu.calcMag(imu.my);
-    // _raw_data->mz = -imu.calcMag(imu.mz);
-
+    //Gauss
     _raw_data->mx = -imu.calcMag(imu.mx);
     _raw_data->my = -imu.calcMag(imu.my);
     _raw_data->mz = imu.calcMag(imu.mz);
@@ -123,23 +106,50 @@ void Imu::read_mag(){
 
 }
 void Imu::read_temp(){
-  if(imu.tempAvailable()){
-        imu.readTemp();
-        _raw_data->imu_temp = imu.temperature;
-    }
+    imu.readTemp();
+    _raw_data->imu_temp = imu.temperature;
 }
 
 void Imu::calibrateAccelGyro(bool autocalc){
     //4.56 0.76 0.45 521 87 51
     imu.calibrate(autocalc);
-    writeBiasCalibration(); // write bias offsets to nvs
+    writeAccelGyroBias(); // write bias offsets to nvs
 }
 
-void Imu::calibrateMag(bool loadIn){
-    imu.calibrateMag(loadIn);
+void Imu::calibrateMag(bool save){
+    
+    const uint32_t duration = 10000; // 10 seconds
+    const uint32_t interval = 100; // 100 milliseconds
+    const uint32_t prev_time = millis();
+    std::vector<float> mx;
+    std::vector<float> my;
+    std::vector<float> mz;
+    while (millis() - prev_time < duration){
+        uint32_t interval_prev_time = millis();
+        if (millis()-interval_prev_time > interval){
+            interval_prev_time = millis();
+            read_mag();
+            mx.push_back(_raw_data->mx);
+            my.push_back(_raw_data->my);
+            mz.push_back(_raw_data->mz);
+        }
+    }
+
+    MagCalibration magc(1,0,0); 
+    MagCalibrationParameters res = magc.calibrate(mx,my,mz);
+    if(res.error){
+        return;
+    }
+    _magCal = res;
+
+
+    if (save){
+        writeMagCal();
+    }
 }
 
-void Imu::writeBiasCalibration(){
+
+void Imu::writeAccelGyroBias(){
     Preferences pref;
 
     if (!pref.begin("IMU")){
@@ -160,7 +170,7 @@ void Imu::writeBiasCalibration(){
 
 }
 
-void Imu::loadBiasCalibration(){
+void Imu::loadAccelGyroBias(){
     Preferences pref;
 
     if (!pref.begin("IMU",true)){
@@ -176,4 +186,14 @@ void Imu::loadBiasCalibration(){
     imu.aBiasRaw[2] = pref.getShort("azBias");
 
 
+}
+
+void Imu::writeMagCal() 
+{
+    
+}
+
+void Imu::loadMagCal() 
+{
+    
 }

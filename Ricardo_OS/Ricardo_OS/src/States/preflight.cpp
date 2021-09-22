@@ -22,8 +22,8 @@ void Preflight::initialise(){
     _sm->networkmanager.routingtable.clearTable();
     _sm->networkmanager.setAddress(static_cast<uint8_t>(DEFAULT_ADDRESS::ROCKET));
 
-    _sm->networkmanager.routingtable.setRoute((uint8_t)DEFAULT_ADDRESS::GROUNDSTATION,Route{2,1});
-    _sm->networkmanager.routingtable.setRoute((uint8_t)DEFAULT_ADDRESS::DESKTOP,Route{2,2});
+    _sm->networkmanager.routingtable.setRoute((uint8_t)DEFAULT_ADDRESS::GROUNDSTATION,Route{2,1,{}});
+    _sm->networkmanager.routingtable.setRoute((uint8_t)DEFAULT_ADDRESS::DESKTOP,Route{2,2,{}});
 
     _sm->networkmanager.updateBaseTable(); // save the new base table
     

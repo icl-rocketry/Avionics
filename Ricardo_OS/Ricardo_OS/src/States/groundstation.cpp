@@ -17,8 +17,8 @@ void Groundstation::initialise(){
     _sm->networkmanager.routingtable.clearTable();
     _sm->networkmanager.setAddress(static_cast<uint8_t>(DEFAULT_ADDRESS::GROUNDSTATION));
 
-    _sm->networkmanager.routingtable.setRoute((uint8_t)DEFAULT_ADDRESS::ROCKET,Route{2,1});
-    _sm->networkmanager.routingtable.setRoute((uint8_t)DEFAULT_ADDRESS::DESKTOP,Route{1,1});
+    _sm->networkmanager.routingtable.setRoute((uint8_t)DEFAULT_ADDRESS::ROCKET,Route{2,1,{}});
+    _sm->networkmanager.routingtable.setRoute((uint8_t)DEFAULT_ADDRESS::DESKTOP,Route{1,1,{}});
     _sm->networkmanager.updateBaseTable(); // save the new base table
 
     _sm->networkmanager.enableAutoRouteGen(true); // enable route learning

@@ -50,12 +50,12 @@ void Baro::readProm() {
     calibration.temp_coef_pressure_offset = read16(BARO_CMD::MS5607_PROM_C4);
     calibration.ref_temp = read16(BARO_CMD::MS5607_PROM_C5);
     calibration.temp_coef_temp = read16(BARO_CMD::MS5607_PROM_C6);
-    _logcontroller->log("pres_sen " + std::to_string(calibration.pressure_sensitivity) +
-                        "\npres_off" + std::to_string(calibration.pressure_offset) +
-                        "\ntemp_coef_pres_sens" + std::to_string(calibration.temp_coef_pressure_sensitivity) +
-                        "\ntemp_coef_pres_off" + std::to_string(calibration.temp_coef_pressure_offset) +
-                        "\nref_temp" + std::to_string(calibration.ref_temp) +
-                        "\ntemp_coef" + std::to_string(calibration.temp_coef_temp));
+    // _logcontroller->log("pres_sen " + std::to_string(calibration.pressure_sensitivity) +
+    //                     "\npres_off" + std::to_string(calibration.pressure_offset) +
+    //                     "\ntemp_coef_pres_sens" + std::to_string(calibration.temp_coef_pressure_sensitivity) +
+    //                     "\ntemp_coef_pres_off" + std::to_string(calibration.temp_coef_pressure_offset) +
+    //                     "\nref_temp" + std::to_string(calibration.ref_temp) +
+    //                     "\ntemp_coef" + std::to_string(calibration.temp_coef_temp));
 }
 
 void Baro::setOversamplingRate(const BARO_OSR osr){

@@ -55,7 +55,7 @@ void StorageController::setup(){
 
 std::string StorageController::getUniqueDirectory(std::string input_directory,STORAGE_DEVICE device){
     // Looks for the highest numbered log folder and increments by one
-    std::vector<directory_element_t> fileNames = std::vector<directory_element_t>();
+    std::vector<directory_element_t> fileNames;
 
     mkdir(input_directory,device); // ensure directory exists
 

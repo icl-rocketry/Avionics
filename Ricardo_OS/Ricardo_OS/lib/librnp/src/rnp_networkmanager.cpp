@@ -85,7 +85,7 @@ void RnpNetworkManager::sendPacket(RnpPacket& packet){
                         continue; // dont broadcast packet over the interface it was received
                     }
                 
-                    sendByRoute({ifaceID,0,{}},packet); // we cannot know the link layer address here and metric is not important
+                    sendByRoute({ifaceID,0,{}},packet); //metric is not important and link layer addressing is ignored.
                 }
             }
             default:
@@ -242,7 +242,7 @@ void RnpNetworkManager::routePackets(){
         packet_ptr->header.destination = _currentAddress; // process packets addressed to no address on the debug interface as local packets
        
     }
-    
+
     if (packet_ptr->header.destination != _currentAddress){
         if (_nodeType == NODETYPE::HUB){
             sendPacket(*packet_ptr);
@@ -250,8 +250,12 @@ void RnpNetworkManager::routePackets(){
         return;
     }
 
+    if ((packet_ptr->header.source == _currentAddress) && (packet_ptr->header.src_iface != static_cast<uint8_t>(DEFAULT_INTERFACES::LOOPBACK))){ //this can happend if a packet is badly addressed and/or a routing table is bad
+        return; 
+    }
+
     uint8_t packetService = packet_ptr->header.service;
-    if (packetService == static_cast<uint8_t>(DEFAULT_SERVICES::NETMAN)){
+    if (packetService == static_cast<uint8_t>(DEFAULT_SERVICES::NETMAN)){ // handle network management packets
         NetManHandler(std::move(packet_ptr));
     }else{
         if (packetService >= serviceLookup.size()){
