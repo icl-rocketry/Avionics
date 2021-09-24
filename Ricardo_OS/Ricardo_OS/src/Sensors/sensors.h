@@ -13,16 +13,6 @@
 #include "battery.h"
 
 
-enum class SENSOR:uint8_t{
-    ACCEL,
-    GYRO,
-    ACCELGYRO, // subroutines such as the callibration are perfomed simultaneously for both
-    MAG,  
-    BARO,
-    GPS,
-    BATT
-};
-
 
 class stateMachine; //forward declaration
 
@@ -32,22 +22,18 @@ class Sensors{
 
         void setup();
         void update();
-        void calibrate(SENSOR sensor);
 
         raw_measurements_t sensors_raw;
 
+        GPS gps;
+        Baro baro;
+        Imu imu;
+        Battery batt;
 
     private:
         stateMachine* _sm; //pointer to statemachine
 
-        //individual sensor objects
-        GPS gps;
-        Baro baro;
-        Imu imu;
-        
-        Battery batt;
-
-
+    
 };
 
 

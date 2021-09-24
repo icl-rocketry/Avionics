@@ -339,7 +339,7 @@ void CommandHandler::CalibrateAccelGyroBiasCommand(const CommandPacket &commandp
 	if(!_sm->systemstatus.flag_triggered(SYSTEM_FLAG::STATE_PREFLIGHT,SYSTEM_FLAG::DEBUG)){
 		return;
 	}
-	_sm->sensors.calibrate(SENSOR::ACCELGYRO);
+	_sm->sensors.imu.calibrateAccelGyroBias(true);
 	_sm->tunezhandler.play(MelodyLibrary::confirmation); //play sound when complete
 }
 
@@ -348,7 +348,7 @@ void CommandHandler::CalibrateMagBiasCommand(const CommandPacket &commandpacket)
 	if(!_sm->systemstatus.flag_triggered(SYSTEM_FLAG::STATE_PREFLIGHT,SYSTEM_FLAG::DEBUG)){
 		return;
 	}
-	_sm->sensors.calibrate(SENSOR::MAG);
+	_sm->sensors.imu.calibrateMagBias(true);
 	_sm->tunezhandler.play(MelodyLibrary::confirmation); //play sound when complete
 }
 

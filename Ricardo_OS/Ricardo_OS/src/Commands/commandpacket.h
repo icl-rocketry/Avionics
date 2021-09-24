@@ -43,3 +43,5 @@ class CommandPacket: public RnpPacket{
 };
 
 
+class SimpleCommandPacket{};
+class MagCalCommandPacket{};

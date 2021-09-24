@@ -23,6 +23,7 @@ enum class COMMANDS:uint8_t {
     Set_Beta = 52,
     Calibrate_AccelGyro_Bias = 60,
     Calibrate_Mag_Bias = 61,
+    Calibrate_Mag_Full = 62,
     Enter_USBMode = 100,
     Enter_Groundstation = 101,
     Enter_Countdown = 102,

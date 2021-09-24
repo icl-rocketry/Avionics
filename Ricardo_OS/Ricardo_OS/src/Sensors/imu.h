@@ -8,8 +8,15 @@
 #include "Storage/logController.h"
 #include "sensorStructs.h"
 
-#include "magcalibration.h"
 
+
+struct MagCalibrationParameters{
+    float fieldMagnitude;
+    float inclination;
+    float declination;
+    Eigen::Matrix3f A_1;
+    Eigen::Vector3f b;
+};
 
 class Imu{
     public:
@@ -18,9 +25,9 @@ class Imu{
         void update();
 
         //SENSOR CALIBRATION
-        void calibrateAccelGyro(bool autocalc); // autocalc automatically subtracts accel gyro biases
-        void calibrateMag(bool save); // perform ellispoid fitting to calculate callibration coefficents and offset biases
-
+        void calibrateAccelGyroBias(bool autocalc); // autocalc automatically subtracts accel gyro biases
+        void calibrateMagBias(bool loadIn); // perform ellispoid fitting to calculate callibration coefficents and offset biases
+        void calibrateMagFull(MagCalibrationParamters magcal); // full calibration of mag
     
     private:
         //pointer to spi object

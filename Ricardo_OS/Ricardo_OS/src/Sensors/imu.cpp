@@ -24,7 +24,11 @@ Imu::Imu(SPIClass* spi, SystemStatus* systemstatus,LogController* logcontroller,
     _logcontroller(logcontroller),
     imu(spi),
     _raw_data(raw_data),
-    magCal{Eigen::Matrix3f{{1,0,0},{0,1,0},{0,0,1}},Eigen::Vector3f{{0,0,0}},false} // default for mag biases
+    magCal{1,
+           0,
+           0,
+           Eigen::Matrix3f{{1,0,0},{0,1,0},{0,0,1}},
+           Eigen::Vector3f{{0,0,0}}} // default for mag biases
 {};
 
 
@@ -99,9 +103,13 @@ void Imu::read_accel(){
 void Imu::read_mag(){
     imu.readMag(); 
     //Gauss
-    _raw_data->mx = -imu.calcMag(imu.mx);
-    _raw_data->my = -imu.calcMag(imu.my);
-    _raw_data->mz = imu.calcMag(imu.mz);
+    float mx = -imu.calcMag(imu.mx);
+    float my = -imu.calcMag(imu.my);
+    float mz = imu.calcMag(imu.mz);
+    Eigen::Vector3f corrected_mag = _magCal.A_1*(Eigen::Vector3f{{mx,my,mz}} - b);
+    _raw_data->mx = corrected_mag[0];
+    _raw_data->my = corrected_mag[1];
+    _raw_data->mz = corrected_mag[2];
     
 
 }
@@ -110,43 +118,19 @@ void Imu::read_temp(){
     _raw_data->imu_temp = imu.temperature;
 }
 
-void Imu::calibrateAccelGyro(bool autocalc){
+void Imu::calibrateAccelGyroBias(bool autocalc){
     //4.56 0.76 0.45 521 87 51
     imu.calibrate(autocalc);
     writeAccelGyroBias(); // write bias offsets to nvs
+    _logcontroller->log("IMU accel gyro bias callibration complete");
 }
 
-void Imu::calibrateMag(bool save){
-    
-    const uint32_t duration = 10000; // 10 seconds
-    const uint32_t interval = 100; // 100 milliseconds
-    const uint32_t prev_time = millis();
-    std::vector<float> mx;
-    std::vector<float> my;
-    std::vector<float> mz;
-    while (millis() - prev_time < duration){
-        uint32_t interval_prev_time = millis();
-        if (millis()-interval_prev_time > interval){
-            interval_prev_time = millis();
-            read_mag();
-            mx.push_back(_raw_data->mx);
-            my.push_back(_raw_data->my);
-            mz.push_back(_raw_data->mz);
-        }
-    }
-
-    MagCalibration magc(1,0,0); 
-    MagCalibrationParameters res = magc.calibrate(mx,my,mz);
-    if(res.error){
-        return;
-    }
-    _magCal = res;
-
-
-    if (save){
-        writeMagCal();
-    }
+void Imu::calibrateMagBias(bool loadIn){ // simple bias correction. 
+    imu.calibrateMag(loadIn);
+    _logcontroller->log("IMU simple mag bias callibration complete");
 }
+
+
 
 
 void Imu::writeAccelGyroBias(){

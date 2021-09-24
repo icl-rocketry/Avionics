@@ -33,38 +33,6 @@ void Sensors::setup(){
     
 };
 
-void Sensors::calibrate(SENSOR sensor){
-    switch(sensor) {
-        case SENSOR::ACCELGYRO:
-        {
-            imu.calibrateAccelGyro(true); // this is performed while the gyro and accel is STABLE and FLAT
-            _sm->logcontroller.log("IMU accel gyro bias callibration complete");
-            break;
-        }
-        case SENSOR::MAG:
-        {
-            imu.calibrateMag(true); // wave ricardo in the air like you just dont care or in a figure of eight up to you although i know which one i would do...
-            _sm->logcontroller.log("IMU mag bias callibration complete");
-            break;
-        }
-        case SENSOR::BARO:
-        {
-            break;
-        }
-        case SENSOR::GPS:
-        {
-            break;
-        }
-        case SENSOR::BATT:
-        {
-            break;
-        }
-        default:
-        //do nothing 
-        break;
-    }
-}
-
 void Sensors::update(){
 //updates the raw_measuremets data structure with new measurements
     gps.update();
