@@ -11,7 +11,6 @@
 
 #include "Preferences.h"
 
-#include "magcalibration.h"
 
 #include <Eigen/Core>
 
@@ -24,7 +23,7 @@ Imu::Imu(SPIClass* spi, SystemStatus* systemstatus,LogController* logcontroller,
     _logcontroller(logcontroller),
     imu(spi),
     _raw_data(raw_data),
-    magCal{1,
+    _magCal{1,
            0,
            0,
            Eigen::Matrix3f{{1,0,0},{0,1,0},{0,0,1}},
@@ -106,7 +105,7 @@ void Imu::read_mag(){
     float mx = -imu.calcMag(imu.mx);
     float my = -imu.calcMag(imu.my);
     float mz = imu.calcMag(imu.mz);
-    Eigen::Vector3f corrected_mag = _magCal.A_1*(Eigen::Vector3f{{mx,my,mz}} - b);
+    Eigen::Vector3f corrected_mag = _magCal.A_1*(Eigen::Vector3f{{mx,my,mz}} - _magCal.b);
     _raw_data->mx = corrected_mag[0];
     _raw_data->my = corrected_mag[1];
     _raw_data->mz = corrected_mag[2];
@@ -130,8 +129,11 @@ void Imu::calibrateMagBias(bool loadIn){ // simple bias correction.
     _logcontroller->log("IMU simple mag bias callibration complete");
 }
 
-
-
+void Imu::calibrateMagFull(MagCalibrationParameters magCal) 
+{
+    _magCal = magCal;
+    writeMagCal();
+}
 
 void Imu::writeAccelGyroBias(){
     Preferences pref;
@@ -174,10 +176,49 @@ void Imu::loadAccelGyroBias(){
 
 void Imu::writeMagCal() 
 {
+    Preferences pref;
+
+    if (!pref.begin("IMU")){
+        _logcontroller->log("nvs failed to start. Can't write calbration offsets");
+        return;
+    }   
+
+    if (!pref.putFloat("F",_magCal.fieldMagnitude)){_logcontroller->log("nvs error while writing");};
+    if (!pref.putFloat("I",_magCal.inclination)){_logcontroller->log("nvs error while writing");};
+    if (!pref.putFloat("D",_magCal.declination)){_logcontroller->log("nvs error while writing");};
+    if (!pref.putFloat("A11",_magCal.A_1(0,0))){_logcontroller->log("nvs error while writing");};
+    if (!pref.putFloat("A12",_magCal.A_1(0,1))){_logcontroller->log("nvs error while writing");};
+    if (!pref.putFloat("A12",_magCal.A_1(0,2))){_logcontroller->log("nvs error while writing");};
+    if (!pref.putFloat("A21",_magCal.A_1(1,0))){_logcontroller->log("nvs error while writing");};
+    if (!pref.putFloat("A22",_magCal.A_1(1,1))){_logcontroller->log("nvs error while writing");};
+    if (!pref.putFloat("A22",_magCal.A_1(1,2))){_logcontroller->log("nvs error while writing");};
+    if (!pref.putFloat("A31",_magCal.A_1(2,0))){_logcontroller->log("nvs error while writing");};
+    if (!pref.putFloat("A32",_magCal.A_1(2,1))){_logcontroller->log("nvs error while writing");};
+    if (!pref.putFloat("A32",_magCal.A_1(2,2))){_logcontroller->log("nvs error while writing");};
+    if (!pref.putFloat("b1",_magCal.b(0))){_logcontroller->log("nvs error while writing");};
+    if (!pref.putFloat("b2",_magCal.b(1))){_logcontroller->log("nvs error while writing");};
+    if (!pref.putFloat("b3",_magCal.b(2))){_logcontroller->log("nvs error while writing");};
     
+ 
+
 }
 
 void Imu::loadMagCal() 
 {
-    
+    Preferences pref;
+
+    if (!pref.begin("IMU",true)){
+        _logcontroller->log("nvs failed to start");
+        return;
+    }  
+
+    _magCal.fieldMagnitude = pref.getFloat("F");
+    _magCal.inclination = pref.getFloat("I");
+    _magCal.declination = pref.getFloat("D");
+
+    _magCal.A_1 << pref.getFloat("A11"),pref.getFloat("A12"),pref.getFloat("A13"),
+                   pref.getFloat("A21"),pref.getFloat("A22"),pref.getFloat("A23"),
+                   pref.getFloat("A31"),pref.getFloat("A32"),pref.getFloat("A33");
+
+    _magCal.b << pref.getFloat("b1"),pref.getFloat("b2"),pref.getFloat("b3");
 }

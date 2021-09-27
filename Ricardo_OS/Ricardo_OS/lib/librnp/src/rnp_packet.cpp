@@ -41,10 +41,10 @@ void RnpPacketSerialized::serialize(std::vector<uint8_t>& buf) {
     std::memcpy(buf.data() + bufsize, packet.data(),packet.size());
 };
 
-std::vector<uint8_t> RnpPacketSerialized::getBody(){
+std::vector<uint8_t> RnpPacketSerialized::getBody()const { 
     return std::vector<uint8_t> {packet.begin() + header.size(),packet.end()};
 }
 
-size_t RnpPacketSerialized::getBodySize(){
+size_t RnpPacketSerialized::getBodySize()const {
     return (packet.size() < header.size()) ? (0) : (packet.size() - header.size()); //ensure we dont return a negative number 
 }

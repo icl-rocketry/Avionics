@@ -26,8 +26,8 @@ class Imu{
 
         //SENSOR CALIBRATION
         void calibrateAccelGyroBias(bool autocalc); // autocalc automatically subtracts accel gyro biases
-        void calibrateMagBias(bool loadIn); // perform ellispoid fitting to calculate callibration coefficents and offset biases
-        void calibrateMagFull(MagCalibrationParamters magcal); // full calibration of mag
+        void calibrateMagBias(bool loadIn); // perform simple mag bias calibration
+        void calibrateMagFull(MagCalibrationParameters magCal); // full calibration of mag
     
     private:
         //pointer to spi object

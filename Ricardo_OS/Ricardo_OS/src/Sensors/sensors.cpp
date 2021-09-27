@@ -15,14 +15,13 @@
 #include "battery.h"
 
 Sensors::Sensors(stateMachine* sm) :
-    _sm(sm),
     gps(&(sm->I2C),&(sm->systemstatus),&(sm->logcontroller),&sensors_raw),
     baro(&(sm->vspi),&(sm->systemstatus),&(sm->logcontroller),&sensors_raw),
     imu(&(sm->vspi),&(sm->systemstatus),&(sm->logcontroller),&sensors_raw),
-    batt(BattVolt,&(sm->systemstatus),&(sm->logcontroller),&sensors_raw)
+    batt(BattVolt,&(sm->systemstatus),&(sm->logcontroller),&sensors_raw),
+    _sm(sm)
     
-{
-}
+{}
 
 void Sensors::setup(){
     //calls setup for each indiviual sensor

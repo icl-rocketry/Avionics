@@ -67,14 +67,14 @@ class RnpPacketSerialized: public RnpPacket {
          * 
          * @return std::vector<uint8_t> 
          */
-        std::vector<uint8_t> getBody();
+        std::vector<uint8_t> getBody() const;
 
         /**
          * @brief Get the size of the packet Body
          * 
          * @return size_t 
          */
-        size_t getBodySize(); 
+        size_t getBodySize() const; 
 
         std::vector<uint8_t> packet; // contains serialized packet and header
 

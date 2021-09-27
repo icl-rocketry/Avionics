@@ -38,93 +38,95 @@ _sm(sm)
 
 void CommandHandler::handleCommand(std::unique_ptr<RnpPacketSerialized> packetptr) {
 
-	CommandPacket commandpacket(*packetptr);
 
-	switch (static_cast<COMMANDS>(commandpacket.command)) {
+	switch (static_cast<COMMANDS>(CommandPacket::getCommand(*packetptr))) {
 		case COMMANDS::Launch:
-			LaunchCommand(commandpacket);
+			LaunchCommand(*packetptr);
 			break;
 		case COMMANDS::Reset:
-			ResetCommand(commandpacket);
+			ResetCommand(*packetptr);
 			break;
 		case COMMANDS::Abort:
-			AbortCommand(commandpacket);
+			AbortCommand(*packetptr);
 			break;
 		case COMMANDS::Start_Logging:
-			StartLoggingCommand(commandpacket);
+			StartLoggingCommand(*packetptr);
 			break;
 		case COMMANDS::Stop_Logging:
-			StopLoggingCommand(commandpacket);
+			StopLoggingCommand(*packetptr);
 			break;
 		case COMMANDS::Telemetry:
-			TelemetryCommand(commandpacket);
+			TelemetryCommand(*packetptr);
 			break;
 		case COMMANDS::Clear_Flash:
-			ClearFlashCommand(commandpacket);
+			ClearFlashCommand(*packetptr);
 			break;
 		case COMMANDS::Clear_SD:
-			ClearSDCommand(commandpacket);
+			ClearSDCommand(*packetptr);
 			break;
 		case COMMANDS::Print_Flash_filesystem:
 			break;
 		case COMMANDS::Print_Sd_filesystem:
 			break;
 		case COMMANDS::Play_Song:
-			PlaySongCommand(commandpacket);
+			PlaySongCommand(*packetptr);
 			break;
 		case COMMANDS::Skip_Song:
-			SkipSongCommand(commandpacket);
+			SkipSongCommand(*packetptr);
 			break;
 		case COMMANDS::Clear_Song_Queue:
-			ClearSongQueueCommand(commandpacket);
+			ClearSongQueueCommand(*packetptr);
 			break;
 		case COMMANDS::Calibrate_AccelGyro_Bias:
-			CalibrateAccelGyroBiasCommand(commandpacket);
+			CalibrateAccelGyroBiasCommand(*packetptr);
 			break;
 		case COMMANDS::Calibrate_Mag_Bias:
-			CalibrateMagBiasCommand(commandpacket);
+			CalibrateMagBiasCommand(*packetptr);
+			break;
+		case COMMANDS::Calibrate_Mag_Full:
+			CalibrateMagFullCommand(*packetptr);
 			break;
 		case COMMANDS::Set_Beta:
-			SetBetaCommand(commandpacket);
+			SetBetaCommand(*packetptr);
 			break;
 		case COMMANDS::Reset_Orientation:
-			ResetOrientationCommand(commandpacket);
+			ResetOrientationCommand(*packetptr);
 			break;
 		case COMMANDS::Reset_Localization:
-			ResetLocalizationCommand(commandpacket);
+			ResetLocalizationCommand(*packetptr);
 			break;
 		case COMMANDS::Enter_USBMode:
-			EnterUSBModeCommand(commandpacket);
+			EnterUSBModeCommand(*packetptr);
 			break;
 		case COMMANDS::Enter_Groundstation:
-			EnterGroundstationCommand(commandpacket);
+			EnterGroundstationCommand(*packetptr);
 			break;
 		case COMMANDS::Enter_Countdown:
-			EnterCountdownCommand(commandpacket);
+			EnterCountdownCommand(*packetptr);
 			break;
 		case COMMANDS::Enter_Flight:
-			EnterFlightCommand(commandpacket);
+			EnterFlightCommand(*packetptr);
 			break;
 		case COMMANDS::Enter_Recovery:
-			EnterRecoveryCommand(commandpacket);
+			EnterRecoveryCommand(*packetptr);
 			break;
 		case COMMANDS::Exit_USBMode:
-			ExitUSBModeCommand(commandpacket);
+			ExitUSBModeCommand(*packetptr);
 			break;
 		case COMMANDS::Exit_to_USBMode:
-			ExitUSBModeCommand(commandpacket);
+			ExitUSBModeCommand(*packetptr);
 			break;
 		case COMMANDS::Set_Throttle:
-			SetThrottleCommand(commandpacket);
+			SetThrottleCommand(*packetptr);
 			break;
 		case COMMANDS::Engine_Info:
-			EngineInfoCommand(commandpacket);
+			EngineInfoCommand(*packetptr);
 			break;
 		case COMMANDS::Pyro_info:
-			PyroInfoCommand(commandpacket);
+			PyroInfoCommand(*packetptr);
 			break;
 		case COMMANDS::Fire_pyro:
-			FireInfoCommand(commandpacket);
+			FireInfoCommand(*packetptr);
 			break;
 		default:
 			//invalid command issued DELETE IT 
@@ -141,7 +143,7 @@ std::function<void(std::unique_ptr<RnpPacketSerialized>)> CommandHandler::getCal
 
 
 
-void CommandHandler::LaunchCommand(const CommandPacket &commandpacket) 
+void CommandHandler::LaunchCommand(const RnpPacketSerialized& packet) 
 {
 	if(!_sm->systemstatus.flag_triggered(SYSTEM_FLAG::STATE_PREFLIGHT)){
 		return;
@@ -149,7 +151,7 @@ void CommandHandler::LaunchCommand(const CommandPacket &commandpacket)
 	_sm->changeState(new Launch(_sm));
 }
 
-void CommandHandler::ResetCommand(const CommandPacket &commandpacket) 
+void CommandHandler::ResetCommand(const RnpPacketSerialized& packet) 
 {
 	if(!_sm->systemstatus.flag_triggered(SYSTEM_FLAG::STATE_RECOVERY,SYSTEM_FLAG::STATE_GROUNDSTATION)){
 		return;
@@ -157,7 +159,7 @@ void CommandHandler::ResetCommand(const CommandPacket &commandpacket)
 	_sm->changeState(new Preflight(_sm));
 }
 
-void CommandHandler::AbortCommand(const  CommandPacket &commandpacket) 
+void CommandHandler::AbortCommand(const  RnpPacketSerialized& packet) 
 {
 	if(!_sm->systemstatus.flag_triggered(SYSTEM_FLAG::STATE_LAUNCH,SYSTEM_FLAG::STATE_FLIGHT)){
 		return;
@@ -173,7 +175,7 @@ void CommandHandler::AbortCommand(const  CommandPacket &commandpacket)
 	}
 }
 
-void CommandHandler::SetHomeCommand(const CommandPacket &commandpacket) 
+void CommandHandler::SetHomeCommand(const RnpPacketSerialized& packet) 
 {
 	if(!_sm->systemstatus.flag_triggered(SYSTEM_FLAG::STATE_PREFLIGHT,SYSTEM_FLAG::DEBUG)){
 		return;
@@ -181,22 +183,25 @@ void CommandHandler::SetHomeCommand(const CommandPacket &commandpacket)
 	
 }
 
-void CommandHandler::StartLoggingCommand(const CommandPacket &commandpacket) 
+void CommandHandler::StartLoggingCommand(const RnpPacketSerialized& packet) 
 {
+	SimpleCommandPacket commandpacket(packet);
 	_sm->logcontroller.startLogging((LOG_TYPE)commandpacket.arg);
 }
 
-void CommandHandler::StopLoggingCommand(const CommandPacket &commandpacket) 
+void CommandHandler::StopLoggingCommand(const RnpPacketSerialized& packet) 
 {
 	if(!_sm->systemstatus.flag_triggered(SYSTEM_FLAG::STATE_PREFLIGHT,SYSTEM_FLAG::DEBUG)){
 		return;
 	}
+	SimpleCommandPacket commandpacket(packet);
 	_sm->logcontroller.stopLogging((LOG_TYPE)commandpacket.arg);
 }
 
-void CommandHandler::TelemetryCommand(const CommandPacket &commandpacket) 
+void CommandHandler::TelemetryCommand(const RnpPacketSerialized& packet) 
 {
-	//std::vector<uint8_t> packet;
+	SimpleCommandPacket commandpacket(packet);
+
 	TelemetryPacket telemetry;
 
 	telemetry.header.source = _sm->networkmanager.getAddress();
@@ -267,7 +272,7 @@ void CommandHandler::TelemetryCommand(const CommandPacket &commandpacket)
 
 }
 
-void CommandHandler::ClearFlashCommand(const CommandPacket &commandpacket) 
+void CommandHandler::ClearFlashCommand(const RnpPacketSerialized& packet) 
 {
 	if(!_sm->systemstatus.flag_triggered(SYSTEM_FLAG::STATE_PREFLIGHT,SYSTEM_FLAG::STATE_GROUNDSTATION,SYSTEM_FLAG::DEBUG)){
 		return;
@@ -277,7 +282,7 @@ void CommandHandler::ClearFlashCommand(const CommandPacket &commandpacket)
 
 }
 
-void CommandHandler::ClearSDCommand(const CommandPacket &commandpacket) 
+void CommandHandler::ClearSDCommand(const RnpPacketSerialized& packet) 
 {
 	if(!_sm->systemstatus.flag_triggered(SYSTEM_FLAG::STATE_PREFLIGHT,SYSTEM_FLAG::STATE_GROUNDSTATION,SYSTEM_FLAG::DEBUG)){
 		return;
@@ -286,15 +291,16 @@ void CommandHandler::ClearSDCommand(const CommandPacket &commandpacket)
 	_sm->tunezhandler.play(MelodyLibrary::confirmation); //play sound when complete
 }
 
-void CommandHandler::PlaySongCommand(const CommandPacket &commandpacket) 
+void CommandHandler::PlaySongCommand(const RnpPacketSerialized& packet) 
 {
 	if(!_sm->systemstatus.flag_triggered(SYSTEM_FLAG::STATE_PREFLIGHT)){
 		return;
 	}
+	SimpleCommandPacket commandpacket(packet);
 	_sm->tunezhandler.play_by_idx(commandpacket.arg);
 }
 
-void CommandHandler::SkipSongCommand(const CommandPacket &commandpacket) 
+void CommandHandler::SkipSongCommand(const RnpPacketSerialized& packet) 
 {
 	if(!_sm->systemstatus.flag_triggered(SYSTEM_FLAG::STATE_PREFLIGHT)){
 		return;
@@ -302,7 +308,7 @@ void CommandHandler::SkipSongCommand(const CommandPacket &commandpacket)
 	_sm->tunezhandler.skip();
 }
 
-void CommandHandler::ClearSongQueueCommand(const CommandPacket &commandpacket) 
+void CommandHandler::ClearSongQueueCommand(const RnpPacketSerialized& packet) 
 {
 	if(!_sm->systemstatus.flag_triggered(SYSTEM_FLAG::STATE_PREFLIGHT)){
 		return;
@@ -310,14 +316,14 @@ void CommandHandler::ClearSongQueueCommand(const CommandPacket &commandpacket)
 	_sm->tunezhandler.clear();
 }
 
-void CommandHandler::ResetOrientationCommand(const CommandPacket &commandpacket) 
+void CommandHandler::ResetOrientationCommand(const RnpPacketSerialized& packet) 
 {
 	if(!_sm->systemstatus.flag_triggered(SYSTEM_FLAG::STATE_PREFLIGHT,SYSTEM_FLAG::DEBUG)){
 		return;
 	}
 }
 
-void CommandHandler::ResetLocalizationCommand(const CommandPacket &commandpacket) 
+void CommandHandler::ResetLocalizationCommand(const RnpPacketSerialized& packet) 
 {
 	if(!_sm->systemstatus.flag_triggered(SYSTEM_FLAG::STATE_PREFLIGHT,SYSTEM_FLAG::DEBUG)){
 		return;
@@ -325,16 +331,17 @@ void CommandHandler::ResetLocalizationCommand(const CommandPacket &commandpacket
 	_sm->estimator.setup();
 }
 
-void CommandHandler::SetBetaCommand(const CommandPacket &commandpacket) 
+void CommandHandler::SetBetaCommand(const RnpPacketSerialized& packet) 
 {
 	if(!_sm->systemstatus.flag_triggered(SYSTEM_FLAG::STATE_PREFLIGHT,SYSTEM_FLAG::DEBUG)){
 		return;
 	}
+	SimpleCommandPacket commandpacket(packet);
 	float beta = ((float)commandpacket.arg) / 100.0;
 	_sm->estimator.changeBeta(beta);
 }
 
-void CommandHandler::CalibrateAccelGyroBiasCommand(const CommandPacket &commandpacket) 
+void CommandHandler::CalibrateAccelGyroBiasCommand(const RnpPacketSerialized& packet) 
 {
 	if(!_sm->systemstatus.flag_triggered(SYSTEM_FLAG::STATE_PREFLIGHT,SYSTEM_FLAG::DEBUG)){
 		return;
@@ -343,7 +350,7 @@ void CommandHandler::CalibrateAccelGyroBiasCommand(const CommandPacket &commandp
 	_sm->tunezhandler.play(MelodyLibrary::confirmation); //play sound when complete
 }
 
-void CommandHandler::CalibrateMagBiasCommand(const CommandPacket &commandpacket) 
+void CommandHandler::CalibrateMagBiasCommand(const RnpPacketSerialized& packet) 
 {
 	if(!_sm->systemstatus.flag_triggered(SYSTEM_FLAG::STATE_PREFLIGHT,SYSTEM_FLAG::DEBUG)){
 		return;
@@ -352,7 +359,27 @@ void CommandHandler::CalibrateMagBiasCommand(const CommandPacket &commandpacket)
 	_sm->tunezhandler.play(MelodyLibrary::confirmation); //play sound when complete
 }
 
-void CommandHandler::EnterUSBModeCommand(const CommandPacket &commandpacket) 
+void CommandHandler::CalibrateMagFullCommand(const RnpPacketSerialized& packet) 
+{
+	if(!_sm->systemstatus.flag_triggered(SYSTEM_FLAG::STATE_PREFLIGHT,SYSTEM_FLAG::DEBUG)){
+		return;
+	}
+	//check packet type received
+	if (packet.header.type != static_cast<uint8_t>(CommandPacket::TYPES::MAGCAL)){
+		//incorrect packet type received do not deserialize
+		return;
+	}
+	
+	MagCalCommandPacket magcalpacket(packet);
+	_sm->sensors.imu.calibrateMagFull(MagCalibrationParameters{magcalpacket.fieldMagnitude,
+															   magcalpacket.inclination,
+															   magcalpacket.declination,
+															   magcalpacket.getA(),
+															   magcalpacket.getB()});
+
+}
+
+void CommandHandler::EnterUSBModeCommand(const RnpPacketSerialized& packet) 
 {
 	if(!_sm->systemstatus.flag_triggered(SYSTEM_FLAG::STATE_PREFLIGHT)){
 		return;
@@ -361,7 +388,7 @@ void CommandHandler::EnterUSBModeCommand(const CommandPacket &commandpacket)
 	_sm->systemstatus.new_message(SYSTEM_FLAG::DEBUG);
 }
 
-void CommandHandler::EnterGroundstationCommand(const CommandPacket &commandpacket) 
+void CommandHandler::EnterGroundstationCommand(const RnpPacketSerialized& packet) 
 {
 	if(!_sm->systemstatus.flag_triggered(SYSTEM_FLAG::STATE_PREFLIGHT,SYSTEM_FLAG::DEBUG)){
 		return;
@@ -369,7 +396,7 @@ void CommandHandler::EnterGroundstationCommand(const CommandPacket &commandpacke
 	_sm->changeState(new Groundstation(_sm));
 }
 
-void CommandHandler::EnterCountdownCommand(const CommandPacket &commandpacket) 
+void CommandHandler::EnterCountdownCommand(const RnpPacketSerialized& packet) 
 {
 	if(!_sm->systemstatus.flag_triggered(SYSTEM_FLAG::DEBUG)){
 		return;
@@ -377,7 +404,7 @@ void CommandHandler::EnterCountdownCommand(const CommandPacket &commandpacket)
 	_sm->changeState(new Launch(_sm));
 }
 
-void CommandHandler::EnterFlightCommand(const CommandPacket &commandpacket) 
+void CommandHandler::EnterFlightCommand(const RnpPacketSerialized& packet) 
 {
 	if(!_sm->systemstatus.flag_triggered(SYSTEM_FLAG::DEBUG)){
 		return;
@@ -385,7 +412,7 @@ void CommandHandler::EnterFlightCommand(const CommandPacket &commandpacket)
 	_sm->changeState(new Flight(_sm));
 }
 
-void CommandHandler::EnterRecoveryCommand(const CommandPacket &commandpacket) 
+void CommandHandler::EnterRecoveryCommand(const RnpPacketSerialized& packet) 
 {
 	if(!_sm->systemstatus.flag_triggered(SYSTEM_FLAG::DEBUG)){
 		return;
@@ -393,7 +420,7 @@ void CommandHandler::EnterRecoveryCommand(const CommandPacket &commandpacket)
 	_sm->changeState(new Recovery(_sm));
 }
 
-void CommandHandler::ExitUSBModeCommand(const CommandPacket &commandpacket) 
+void CommandHandler::ExitUSBModeCommand(const RnpPacketSerialized& packet) 
 {
 	if(!_sm->systemstatus.flag_triggered(SYSTEM_FLAG::DEBUG)){
 		return;
@@ -403,7 +430,7 @@ void CommandHandler::ExitUSBModeCommand(const CommandPacket &commandpacket)
 	_sm->changeState(new Preflight(_sm));
 }
 
-void CommandHandler::ExitToUSBModeCommand(const CommandPacket &commandpacket) 
+void CommandHandler::ExitToUSBModeCommand(const RnpPacketSerialized& packet) 
 {
 	if(!_sm->systemstatus.flag_triggered(SYSTEM_FLAG::DEBUG)){
 		return;
@@ -411,24 +438,24 @@ void CommandHandler::ExitToUSBModeCommand(const CommandPacket &commandpacket)
 	_sm->changeState(new USBmode(_sm));
 }
 
-void CommandHandler::EngineInfoCommand(const CommandPacket &commandpacket) 
+void CommandHandler::EngineInfoCommand(const RnpPacketSerialized& packet) 
 {
 	
 }
 
-void CommandHandler::SetThrottleCommand(const CommandPacket &commandpacket) 
+void CommandHandler::SetThrottleCommand(const RnpPacketSerialized& packet) 
 {
 	if(!_sm->systemstatus.flag_triggered(SYSTEM_FLAG::STATE_USBMODE)){
 		return;
 	}
 }
 
-void CommandHandler::PyroInfoCommand(const CommandPacket &commandpacket) 
+void CommandHandler::PyroInfoCommand(const RnpPacketSerialized& packet) 
 {
 	
 }
 
-void CommandHandler::FireInfoCommand(const CommandPacket &commandpacket) 
+void CommandHandler::FireInfoCommand(const RnpPacketSerialized& packet) 
 {
 	if(!_sm->systemstatus.flag_triggered(SYSTEM_FLAG::STATE_USBMODE)){
 		return;

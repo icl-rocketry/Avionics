@@ -68,7 +68,7 @@ class TelemetryPacket : public RnpPacket{
          * 
          * @param data 
          */
-        TelemetryPacket(RnpPacketSerialized& packet);
+        TelemetryPacket(const RnpPacketSerialized& packet);
 
         /**
          * @brief Serialize Telemetry Packet

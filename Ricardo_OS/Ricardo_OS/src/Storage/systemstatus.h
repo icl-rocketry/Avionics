@@ -23,7 +23,14 @@ class SystemStatus{
         void delete_message(SYSTEM_FLAG flag);
         void delete_message(SYSTEM_FLAG flag,std::string info);
 
-        template<typename... Args> // TODO -> ensure all ARGS are enum or integral
+        template<typename... Args> 
+        /**
+         * @brief Checks if multiple flags have been triggered e.g flag1 or flag2 or ... 
+         * 
+         * @param args 
+         * @return true 
+         * @return false 
+         */
         bool flag_triggered(Args... args){
             uint32_t flags = (... | static_cast<uint32_t>(args));
             return (_status & flags);

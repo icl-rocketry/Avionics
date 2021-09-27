@@ -16,6 +16,7 @@
 
 class stateMachine;//forward declaration to prevent circular dependancy
 
+
 class CommandHandler {
     public:
         CommandHandler(stateMachine* sm);
@@ -29,33 +30,34 @@ class CommandHandler {
 
         void handleCommand(std::unique_ptr<RnpPacketSerialized> packetptr);
         
-        void LaunchCommand(const CommandPacket &commandpacket);
-        void ResetCommand(const CommandPacket &commandpacket);
-        void AbortCommand(const  CommandPacket &commandpacket);
-        void SetHomeCommand(const CommandPacket &commandpacket);
-        void StartLoggingCommand(const CommandPacket &commandpacket);
-        void StopLoggingCommand(const CommandPacket &commandpacket);
-        void TelemetryCommand(const CommandPacket &commandpacket);
-        void ClearFlashCommand(const CommandPacket &commandpacket);
-        void ClearSDCommand(const CommandPacket &commandpacket);
-        void PlaySongCommand(const CommandPacket &commandpacket);
-        void SkipSongCommand(const CommandPacket &commandpacket);
-        void ClearSongQueueCommand(const CommandPacket &commandpacket);
-        void ResetOrientationCommand(const CommandPacket &commandpacket);
-        void ResetLocalizationCommand(const CommandPacket &commandpacket);
-        void SetBetaCommand(const CommandPacket &commandpacket);
-        void CalibrateAccelGyroBiasCommand(const CommandPacket &commandpacket);
-        void CalibrateMagBiasCommand(const CommandPacket &commandpacket);
-        void EnterUSBModeCommand(const CommandPacket &commandpacket);
-        void EnterGroundstationCommand(const CommandPacket &commandpacket);
-        void EnterCountdownCommand(const CommandPacket &commandpacket);
-        void EnterFlightCommand(const CommandPacket &commandpacket);
-        void EnterRecoveryCommand(const CommandPacket &commandpacket);
-        void ExitUSBModeCommand(const CommandPacket &commandpacket);
-        void ExitToUSBModeCommand(const CommandPacket &commandpacket);
-        void EngineInfoCommand(const CommandPacket &commandpacket);
-        void SetThrottleCommand(const CommandPacket &commandpacket);
-        void PyroInfoCommand(const CommandPacket &commandpacket);
-        void FireInfoCommand(const CommandPacket &commandpacket);
+        void LaunchCommand(const RnpPacketSerialized& packet);
+        void ResetCommand(const RnpPacketSerialized& packet);
+        void AbortCommand(const  RnpPacketSerialized& packet);
+        void SetHomeCommand(const RnpPacketSerialized& packet);
+        void StartLoggingCommand(const RnpPacketSerialized& packet);
+        void StopLoggingCommand(const RnpPacketSerialized& packet);
+        void TelemetryCommand(const RnpPacketSerialized& packet);
+        void ClearFlashCommand(const RnpPacketSerialized& packet);
+        void ClearSDCommand(const RnpPacketSerialized& packet);
+        void PlaySongCommand(const RnpPacketSerialized& packet);
+        void SkipSongCommand(const RnpPacketSerialized& packet);
+        void ClearSongQueueCommand(const RnpPacketSerialized& packet);
+        void ResetOrientationCommand(const RnpPacketSerialized& packet);
+        void ResetLocalizationCommand(const RnpPacketSerialized& packet);
+        void SetBetaCommand(const RnpPacketSerialized& packet);
+        void CalibrateAccelGyroBiasCommand(const RnpPacketSerialized& packet);
+        void CalibrateMagBiasCommand(const RnpPacketSerialized& packet);
+        void CalibrateMagFullCommand(const RnpPacketSerialized& packet);
+        void EnterUSBModeCommand(const RnpPacketSerialized& packet);
+        void EnterGroundstationCommand(const RnpPacketSerialized& packet);
+        void EnterCountdownCommand(const RnpPacketSerialized& packet);
+        void EnterFlightCommand(const RnpPacketSerialized& packet);
+        void EnterRecoveryCommand(const RnpPacketSerialized& packet);
+        void ExitUSBModeCommand(const RnpPacketSerialized& packet);
+        void ExitToUSBModeCommand(const RnpPacketSerialized& packet);
+        void EngineInfoCommand(const RnpPacketSerialized& packet);
+        void SetThrottleCommand(const RnpPacketSerialized& packet);
+        void PyroInfoCommand(const RnpPacketSerialized& packet);
+        void FireInfoCommand(const RnpPacketSerialized& packet);
 
 };	
