@@ -64,6 +64,7 @@ void Imu::setup(){
     imu.settings.mag.tempCompensationEnable = true;
 
     loadAccelGyroBias(); //load previously callibrated bias values from nvs
+    loadMagCal(); //load mag calibration coefficents from nvs
 
     if (!imu.beginSPI(_SCLK,_MISO,_MOSI,ImuCs, MagCs)){
         _systemstatus->new_message(SYSTEM_FLAG::ERROR_IMU, "Unable to initialize the imu");
@@ -212,13 +213,13 @@ void Imu::loadMagCal()
         return;
     }  
 
-    _magCal.fieldMagnitude = pref.getFloat("F");
-    _magCal.inclination = pref.getFloat("I");
-    _magCal.declination = pref.getFloat("D");
+    _magCal.fieldMagnitude = pref.getFloat("F",1);
+    _magCal.inclination = pref.getFloat("I",0);
+    _magCal.declination = pref.getFloat("D",0);
 
-    _magCal.A_1 << pref.getFloat("A11"),pref.getFloat("A12"),pref.getFloat("A13"),
-                   pref.getFloat("A21"),pref.getFloat("A22"),pref.getFloat("A23"),
-                   pref.getFloat("A31"),pref.getFloat("A32"),pref.getFloat("A33");
+    _magCal.A_1 << pref.getFloat("A11",1),pref.getFloat("A12",0),pref.getFloat("A13",0),
+                   pref.getFloat("A21",0),pref.getFloat("A22",1),pref.getFloat("A23",0),
+                   pref.getFloat("A31",0),pref.getFloat("A32",0),pref.getFloat("A33",1);
 
-    _magCal.b << pref.getFloat("b1"),pref.getFloat("b2"),pref.getFloat("b3");
+    _magCal.b << pref.getFloat("b1",0),pref.getFloat("b2",0),pref.getFloat("b3",0);
 }

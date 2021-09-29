@@ -36,34 +36,13 @@ updateTimePeriod = 50e6
 
 
 
+
+
 @app.route('/')
 def index():
 
     #maybe here have a webpage with current status
     return "Ricardo Backend",200
-
-@app.route('/command', methods=['POST'])
-def send_command():
-    command_data = request.json
-    if command_data == None:
-        return 'Bad Request',400
-    try:
-        if "source" in command_data:
-            source = command_data["source"]
-        else:
-            source = 2
-
-        cmd_packet :packets.Command = packets.Command(command=command_data["command"],arg=command_data["arg"])
-        cmd_packet.header.source = source
-        cmd_packet.header.destination = command_data["destination"]
-        send_data = {
-            "data":cmd_packet.serialize().hex(),
-            "clientid":command_data["clientid"]
-        }
-        r.lpush("SendQueue",json.dumps(send_data))
-        return 'OK',200
-    except KeyError:
-        return 'Bad Request',400
 
 @app.route('/packet', methods=['POST'])
 def send_packet():
@@ -111,7 +90,7 @@ def get_map():
     return render_template('map.html',x_window = 100)
 
 @socketio.on('connect')
-def connect():
+def connect():  
     pass
 
 @socketio.on('disconnect')
@@ -126,18 +105,25 @@ def __FlaskTask__(host,port):
 
 
 def __TelemetryBroadcastTask__():
+    prev_telemetry = {}
     #global _currentTelemetry
     # get latest telemetry from redis queue and emit
     prev_time = 0
     while not telemetry_broadcast_exit_event.is_set():
         if (time.time_ns() - prev_time > updateTimePeriod):
                 
-                #get telemetry data from redis db
-                #the telemetry key will be a json object
-                telemetry_data = r.get("telemetry")
-                if telemetry_data is not None:
-                    socketio.emit('telemetry', json.loads(telemetry_data), broadcast=True,namespace='/telemetry')
-                prev_time = time.time_ns()
+            #get telemetry data from redis db
+            #the telemetry key will be a json object
+            telemetry_data = r.get("telemetry")
+            if telemetry_data is not None:
+                if prev_telemetry.get("connectionstatus",None) is not None and True: #check if theres prev_telemetry and that we are connected
+                    
+                    if (prev_telemetry.get("system_time",0) == (json.loads(telemetry_data)).get("system_time",0)):#dont broadcast a duplicate packet
+                        continue
+                socketio.emit('telemetry', json.loads(telemetry_data), broadcast=True,namespace='/telemetry')
+            prev_time = time.time_ns()
+            prev_telemetry = json.loads(telemetry_data)
+
         eventlet.sleep(.02)
 
 def __stopTelemetryBroadcastTask__():

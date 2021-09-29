@@ -3,6 +3,8 @@ from cmd2.argparse_custom import Cmd2ArgumentParser
 from cmd2.decorators import with_argparser
 import redis
 import json
+import threading
+import multiprocessing
 
 
 class CommandLineInterface(cmd2.Cmd):
@@ -50,6 +52,11 @@ class CommandLineInterface(cmd2.Cmd):
         self.r.set(opts.task + ":STATE",json.dumps(new_state))
 
 
+
+
+
 if __name__ == '__main__':
     c = CommandLineInterface()
     c.cmdloop() #start cmd event loop
+
+

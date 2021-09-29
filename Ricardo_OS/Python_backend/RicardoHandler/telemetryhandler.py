@@ -7,7 +7,7 @@ import copy
 
 class TelemetryHandler(multiprocessing.Process):
     
-    def __init__(self,updateTimePeriod = 100e6,redishost = 'localhost',redisport = 6379,clientid = "LOCAL:TELEMETRYTASK"):
+    def __init__(self,updateTimePeriod = 500e6,redishost = 'localhost',redisport = 6379,clientid = "LOCAL:TELEMETRYTASK"):
         
         super(TelemetryHandler,self).__init__()
         self.prev_time = 0
@@ -19,8 +19,8 @@ class TelemetryHandler(multiprocessing.Process):
 
         self.state = {
             "run":False,
-            "source":1,
-            "destination":0,
+            "source":4,
+            "destination":2,
             "dt":updateTimePeriod,
         }
 
@@ -51,7 +51,7 @@ class TelemetryHandler(multiprocessing.Process):
     def __sendTelemetryPacket__(self):
         #construct command packet for telemetry
         # header = packets.Header(packet_len = packets, 0, 2, 0, source=self.state["source"], destination=self.state["destination"]) # source=4 for USB and destination=0 for rocket
-        cmd_packet = packets.Command(command=8,arg=0) # 8 for telemetry
+        cmd_packet = packets.SimpleCommand(command=8,arg=0) # 8 for telemetry
         cmd_packet.header.source = self.state["source"]
         cmd_packet.header.destination = self.state["destination"]
         send_data = {

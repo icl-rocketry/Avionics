@@ -150,7 +150,7 @@ class Telemetry(Packet):
 
 
 
-class Command(Packet):
+class SimpleCommand(Packet):
 	
 	struct_str = '<BI'
 	size = struct.calcsize(struct_str)
@@ -170,8 +170,8 @@ class Command(Packet):
 	def from_bytes(data: bytes): # Deserialize from a bytearray
 		header = Header.from_bytes(data)
 		telemetry_data = data[Header.size:] # Drop the first n bytes beloning to header
-		variable_list = struct.unpack(Command.struct_str,telemetry_data)
-		obj = Command(header,*variable_list)
+		variable_list = struct.unpack(SimpleCommand.struct_str,telemetry_data)
+		obj = SimpleCommand(header,*variable_list)
 		
 		return obj
 	
@@ -182,7 +182,7 @@ class Command(Packet):
 		#remove header variable
 		member_variables.pop("header")
 		
-		packet_bytes = struct.pack(Command.struct_str,*(member_variables.values()))
+		packet_bytes = struct.pack(SimpleCommand.struct_str,*(member_variables.values()))
 
 		data_byte_arr += packet_bytes
 
@@ -190,7 +190,7 @@ class Command(Packet):
 
 	def __str__(self):
 		header_str = self.header.__str__() + "\n"
-		param_str = f'COMMAND PACKET BODY: \tcommand = {self.command}\n \t\t\targument = {self.arg}\n'
+		param_str = f'SIMPLE COMMAND PACKET BODY: \tcommand = {self.command}\n \t\t\targument = {self.arg}\n'
 		return header_str + param_str
 
 
