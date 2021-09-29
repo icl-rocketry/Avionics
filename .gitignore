@@ -1,3 +1,4 @@
 .DS_Store
 ./Ricardo_OS/Ricardo_OS/doc/html/*
 ./Ricardo_OS/Ricardo_OS/doc/latex/*
+./Ricardo_OS/Python_backend/venv
