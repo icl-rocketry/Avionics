@@ -26,13 +26,13 @@ args = vars(ap.parse_args())
 
 
 def exitBackend(signalNumber, frame):
-    global telemetrytask,sm
-    # f.stop()
-    #flask_thread.join()
-    #flaskinterface.bg_exit_event.set()
-    telemetrytask.stop()
-    flaskinterface.stopFlaskInterface()
-    sm.stop() #halt serial manager process
+    sm.terminate()
+    sm.join()
+    telemetrytask.terminate()
+    telemetrytask.join()
+    p.terminate()
+    p.join()
+
     sys.exit(0)
 
 def checkRedis():

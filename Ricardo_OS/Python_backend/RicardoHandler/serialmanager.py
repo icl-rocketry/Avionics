@@ -1,3 +1,4 @@
+from serial.serialutil import PARITY_NONE
 from .packets import *
 import serial
 import time
@@ -22,15 +23,12 @@ class SerialManager(multiprocessing.Process):
 
 		self.packetRecordTimeout = 2*60 #default 2 minute timeout
 		self.receiveBuffer = []
-		#dictionary structure
-        #{key(packet uid):[client id, time_sent]}
+
 		self.packetRecord = {} 
 		self.counter = 0
 
 		self.receivedQueueTimeout = 10*60 #default 10 minute timeout
-        #dictionary structure
-        #{key(client id):serialized packet data,time_added}
-		#self.receivedPackets = {}
+
 
 		self.exit_event = multiprocessing.Event()
 		#connect to redis 
@@ -91,26 +89,6 @@ class SerialManager(multiprocessing.Process):
 			else:
 				#place new byte at end of buffer
 				self.receiveBuffer += incomming
-		
-
-		# if self.ser.in_waiting > 0: 
-		# 	b = self.ser.read(1)
-		# 	if (b == Header.start_byte.to_bytes(1, 'little')):
-	
-		# 		header_bytes = self.ser.read(Header.header_size - 1) # -1 as we have read the first byte already
-		# 		if (len(b+header_bytes) < Header.header_size):
-		# 			#full header wasnt received and we porbbaly wont recieve this full header so dump it
-		# 			return
-
-		# 		header : Header = Header.from_bytes(b + header_bytes)
-		# 		body = self.ser.read(header.packet_len) # Read the rest of the packet -> this is likley the command which will block. Maybe its better to rewrite this to individually read each byte
-				
-		# 		if (len(body) < header.packet_len):
-		# 			#full body wasnt received and we probbaly wont recieve the full packet so dump it
-		# 			return
-		# 		#add received packet to packet buffer
-		# 		#self.packetBuffer.append((b + header_bytes + body))
-		# 		self.__processReceivedPacket__((b + header_bytes + body))
 
 	def __processReceivedPacket__(self,data:bytes):
 		try:
@@ -149,14 +127,8 @@ class SerialManager(multiprocessing.Process):
 		uid = self.__generateUID__() #get uuid
 		header.uid = uid #get uuid
 		serialized_header = header.serialize() #re-serialize header
-		#data[:len(serialized_header)] = serialized_header #overwrite old header
-		# print(data)
-		# print(data.hex())
-		#modifieddata = serialized_header + data[len(serialized_header)-1 : -1]
 		modifieddata = bytearray(data)
 		modifieddata[:len(serialized_header)] = serialized_header
-		# print(modifieddata)
-		# print(modifieddata.hex())
 		self.packetRecord[uid] = [clientid,time.time()] #update packetrecord dictionary
 		#self.sendBuffer.append(data)#add packet to send buffer
 

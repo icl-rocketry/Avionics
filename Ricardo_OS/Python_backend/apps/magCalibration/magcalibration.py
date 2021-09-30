@@ -50,7 +50,7 @@ class MagCalibration():
         self.filename:str = filename
 
         if self.filename != '':
-            self.__load_from_file__()
+            self.__load_data__()
 
 
     def updateData(self,telemetry):
@@ -154,12 +154,14 @@ class MagCalibration():
                     print(self.b)
                 elif msg == "VISUALIZE":
                     self.plotCalibration()
-                elif msg == "LOADFILE":
+                elif msg == "LOADDATA":
                     self.stopData = True
                     self.filename = data.get("filename",'magdata.csv')
-                    self.__load_from_file__()
-                elif msg == "SAVEFILE":
-                    self.__save_to_file__(data.get("filename","magdata.csv"))
+                    self.__load_data__()
+                elif msg == "SAVEDATA":
+                    self.__save_data__(data.get("filename","magdata.csv"))
+                elif msg == "SAVECAL":
+                    self.__save_cal__(data.get("filename","magcal.txt"))
                 else: 
                     return
         except queue.Empty:
@@ -231,7 +233,7 @@ class MagCalibration():
             print(d)
         return M, n, d
 
-    def __load_from_file__(self):
+    def __load_data__(self):
         if not os.path.isfile(self.filename):
             print(str(self.filename) + " Not Found!")
             return
@@ -254,11 +256,24 @@ class MagCalibration():
 
             self.newData.set()
 
-    def __save_to_file__(self,filename:str):
+    def __save_data__(self,filename:str):
         if not filename.endswith(".csv"):
             filename += ".csv"
         with open(filename,'w') as csvfile:
             writer = csv.writer(csvfile)
             writer.writerows(zip(*[self.magData[key] for key in ["mx","my","mz"]]))
 
+    def __save_cal__(self,filename:str):
+        if not filename.endswith(".txt"):
+            filename += ".txt"
+        with open(filename,'w') as file:
+            file.write("MAGNETOMTER CALIBRATION\n")
+            file.write("A_1:\n")
+            for line in self.A_1:
+                np.savetxt(file,line,fmt='%0.30f')
+            file.write("\nb:\n")
+            for line in self.b:
+                np.savetxt(file,line,fmt='%0.30f')
+            
+        
    

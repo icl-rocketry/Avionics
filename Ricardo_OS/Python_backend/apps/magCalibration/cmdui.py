@@ -48,19 +48,27 @@ class MagCalCmdUI(cmd2.Cmd):
     def do_visualize(self,line):
         self.msgQ.put({'msg':"VISUALIZE"})
     
-    loadfile_ap = Cmd2ArgumentParser()
-    loadfile_ap.add_argument("-f",'--filename',required=True,type=str,help='data file path')
-    @with_argparser(loadfile_ap)
-    def do_loadfile(self,opts):
-        self.msgQ.put({'msg':'LOADFILE',
+    loaddata_ap = Cmd2ArgumentParser()
+    loaddata_ap.add_argument("-f",'--filename',required=False,type=str,help='data file path',default='magdata.csv')
+    @with_argparser(loaddata_ap)
+    def do_loaddata(self,opts):
+        self.msgQ.put({'msg':'LOADDATA',
                        'filename':opts.filename})
 
-    savefile_ap = Cmd2ArgumentParser()
-    savefile_ap.add_argument("-f",'--filename',required=True,type=str,help='save file name')
-    @with_argparser(savefile_ap)
-    def do_savefile(self,opts):
-        self.msgQ.put({'msg':'SAVEFILE',
+    savedata_ap = Cmd2ArgumentParser()
+    savedata_ap.add_argument("-f",'--filename',required=False,type=str,help='save file name',default='magdata.csv')
+    @with_argparser(savedata_ap)
+    def do_savedata(self,opts):
+        self.msgQ.put({'msg':'SAVEDATA',
                        'filename':opts.filename})
+    
+    savecal_ap = Cmd2ArgumentParser()
+    savecal_ap.add_argument("-f",'--filename',required=False,type=str,help='save file name',default='magcal.txt')
+    @with_argparser(savecal_ap)
+    def do_savecal(self,opts):
+        self.msgQ.put({'msg':'SAVECAL',
+                       'filename':opts.filename})
+
 
     def sigint_handler(self):
         return True

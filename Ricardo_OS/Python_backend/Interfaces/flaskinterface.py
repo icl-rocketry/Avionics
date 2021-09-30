@@ -32,7 +32,7 @@ telemetry_broadcast_exit_event = threading.Event()
 r : redis.Redis = None
 
 prev_time = 0
-updateTimePeriod = 50e6
+updateTimePeriod = 10e6
 
 
 
