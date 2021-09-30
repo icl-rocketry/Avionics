@@ -25,3 +25,4 @@ while True:
     new_command(105,0)
     print("exit")
     time.sleep(1.2)
+    

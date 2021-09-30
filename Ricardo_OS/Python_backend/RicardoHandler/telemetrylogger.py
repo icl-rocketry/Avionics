@@ -5,14 +5,13 @@ import json
 
 import time
 import pandas as pd
-import multiprocessing
+
 import csv
 
 
 
-class TelemetryLogger(multiprocessing.Process):
+class TelemetryLogger():
     def __init__(self,redishost,redisport,filename,vars = None):
-        super().__init__()
 
         self.prev_telemetry_data = None
 

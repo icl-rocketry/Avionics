@@ -1,15 +1,13 @@
 import redis
-import multiprocessing
 from RicardoHandler import packets
 import time
 import json
 import copy
 
-class TelemetryHandler(multiprocessing.Process):
+class TelemetryHandler():
     
     def __init__(self,updateTimePeriod = 500e6,redishost = 'localhost',redisport = 6379,clientid = "LOCAL:TELEMETRYTASK"):
         
-        super(TelemetryHandler,self).__init__()
         self.prev_time = 0
 
         self.lastPacketTime = 0
@@ -27,13 +25,13 @@ class TelemetryHandler(multiprocessing.Process):
         self.clientid : str = clientid 
         self.updateTimePeriod = updateTimePeriod
 
-        self.exit_event = multiprocessing.Event()
+
         self.r = redis.Redis(host=redishost,port=redisport)
         self.r.set(clientid + ":STATE",json.dumps(self.state))
 
 
     def run(self):
-        while not self.exit_event.is_set():
+        while True:
             if (time.time_ns() - self.prev_time > self.state["dt"]):
                 if self.state["run"]:
                     self.__sendTelemetryPacket__()
@@ -42,8 +40,7 @@ class TelemetryHandler(multiprocessing.Process):
             self.__checkState__()
             time.sleep(.001)    
             
-    def get_id(self):
-        return self.clientid
+
 
     def stop(self):
         self.exit_event.set()

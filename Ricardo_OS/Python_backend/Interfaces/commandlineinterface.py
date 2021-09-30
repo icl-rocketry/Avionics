@@ -3,8 +3,8 @@ from cmd2.argparse_custom import Cmd2ArgumentParser
 from cmd2.decorators import with_argparser
 import redis
 import json
-import threading
-import multiprocessing
+
+
 
 
 class CommandLineInterface(cmd2.Cmd):
@@ -50,6 +50,10 @@ class CommandLineInterface(cmd2.Cmd):
             new_state["dt"] = opts.dt
         #push new state to redis
         self.r.set(opts.task + ":STATE",json.dumps(new_state))
+    
+    def sigint_handler(self, signum, param2):
+        #override default behaviour to exit on ctrl c
+        return True
 
 
 

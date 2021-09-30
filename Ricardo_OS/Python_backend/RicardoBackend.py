@@ -1,15 +1,29 @@
-import argparse
+
+
 import re
 import signal
 import sys
 from Interfaces import commandlineinterface
-from Interfaces import flaskinterface
 from RicardoHandler import serialmanager
 from RicardoHandler import telemetryhandler
 from RicardoHandler import telemetrylogger
 from multiprocessing import Process
 import redis
 
+import argparse
+import multiprocessing
+import threading
+
+def get_threads(location=''):
+    print(location)
+    print(threading.current_thread())
+    print(threading.main_thread())
+    print(id(threading.current_thread()))
+    print(id(threading.main_thread()))
+get_threads('top:' + __name__)
+
+from Interfaces import flaskinterface
+get_threads('after import: ' + __name__ )
 # Argument Parsing
 ap = argparse.ArgumentParser()
 ap.add_argument("-d", "--device", required=True, help="Ricardo Serial Port", type=str)
@@ -22,71 +36,89 @@ ap.add_argument("--redis-port", required=False, help="redis port", type=int,defa
 ap.add_argument('-c','--cli', required=False, help="Enable Interactive Commmand Line Interface",action='store_true',default=False)
 ap.add_argument('-l','--logger', required=False, help="Enable Telemetry logging",action='store_true',default=False)
 
-args = vars(ap.parse_args())
+argsin = vars(ap.parse_args())
 
 
-def exitBackend(signalNumber, frame):
-    sm.terminate()
-    sm.join()
-    telemetrytask.terminate()
-    telemetrytask.join()
-    p.terminate()
-    p.join()
+
+def exitBackend(signalNumber=None, frame=None):
+    for proc in proclist.values():
+        proc.terminate()
+        print('waiting for join')
+        proc.join()
 
     sys.exit(0)
 
+
 def checkRedis():
     try:
-        server = redis.Redis(host=args["redis_host"],port=args["redis_port"])
+        server = redis.Redis(host=argsin["redis_host"],port=argsin["redis_port"])
         server.ping()
     except redis.exceptions.ConnectionError:
-        errormsg = "[ERROR] -> Redis server not found at host:'" + args["redis_host"] + "' port:" + str(args["redis_port"]) + "\nPlease check redis is running"
+        errormsg = "[ERROR] -> Redis server not found at host:'" + argsin["redis_host"] + "' port:" + str(argsin["redis_port"]) + "\nPlease check redis is running"
         sys.exit(errormsg)
 
+def startSerialManager(args):
+    serman = serialmanager.SerialManager(device = args["device"],
+                                     baud = args["baud"],
+                                     redishost = args["redis_host"],
+                                     redisport=args["redis_port"])
+    serman.run()
+
+def startTelemetryHandler(args,taskid):
+    telemetrytask = telemetryhandler.TelemetryHandler(redishost = args["redis_host"],
+                                                      redisport=args["redis_port"],
+                                                      clientid=taskid)
+    telemetrytask.run()
+
+def startTelemetryLogger(args):
+    logger = telemetrylogger.TelemetryLogger(redishost=args['redis_host'],
+                                                 redisport=args['redis_port'],
+                                                 filename="telemetry_log")
+    logger.run()
+
 if __name__ == '__main__':
+ 
     tasklist = []
+    proclist = {}
+
     signal.signal(signal.SIGINT, exitBackend)
     signal.signal(signal.SIGTERM, exitBackend)
 
     #check redis server is running
     checkRedis()
 
-   
+    proclist['serialmanager'] = multiprocessing.Process(target=startSerialManager,args=(argsin,))
+    proclist['serialmanager'].start()
 
-    #start serial maanger process
-    sm = serialmanager.SerialManager(device = args["device"],
-                                     baud = args["baud"],
-                                     redishost = args["redis_host"],
-                                     redisport=args["redis_port"])
-    sm.start() 
+
     #start telemetry handler process
-    telemetrytask = telemetryhandler.TelemetryHandler(redishost = args["redis_host"],
-                                                      redisport=args["redis_port"])
-    tasklist.append(telemetrytask.get_id()) #add task id to running task list
-    telemetrytask.start()
-    #start flask interface process
-    p = Process(target=flaskinterface.startFlaskInterface,args=(args['flask_host'],
-                                                                args['flask_port'],
-                                                                args['redis_host'],
-                                                                args['redis_port'],))
-    p.start()
+    telemetrytask_id = "LOCAL:TELEMETRYTASK"
+    proclist['telemetryhandler'] = multiprocessing.Process(target=startTelemetryHandler,args=(argsin,telemetrytask_id,))
+    proclist['telemetryhandler'].start()
+    tasklist.append(telemetrytask_id) #add task id to running task list
 
-    if (args['logger']):
-        logger = telemetrylogger.TelemetryLogger(redishost=args['redis_host'],
-                                                 redisport=args['redis_port'],
-                                                 filename="telemetry_log")
-        logger.start()
     
-    if (args['cli']):
-        c = commandlineinterface.CommandLineInterface(redishost=args['redis_host'],
-                                                      redisport=args['redis_port'],
+    #start flask interface process
+    proclist['flaskinterface'] = Process(target=flaskinterface.startFlaskInterface,args=(argsin['flask_host'],
+                                                                                            argsin['flask_port'],
+                                                                                            argsin['redis_host'],
+                                                                                            argsin['redis_port'],))
+    proclist['flaskinterface'].start()
+
+
+    if (argsin['logger']):
+        proclist['telemetrylogger'] = multiprocessing.Process(target=startTelemetryLogger,args=(argsin,))
+        proclist['telemetrylogger'].start()
+    
+    if (argsin['cli']):
+        c = commandlineinterface.CommandLineInterface(redishost=argsin['redis_host'],
+                                                      redisport=argsin['redis_port'],
                                                       tasklist=tasklist
                                                       )
-        #c.cmdloop() #start cmd event loop
-        c.preloop()
-        c._cmdloop()
-        c.postloop()
-        # while True:
+        c.cmdloop()
+        exitBackend()
+    
+    
 
         
 

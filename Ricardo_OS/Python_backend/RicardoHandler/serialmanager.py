@@ -2,17 +2,15 @@ from serial.serialutil import PARITY_NONE
 from .packets import *
 import serial
 import time
-import multiprocessing
 import redis
 import json
 from cobs import cobs
 
 
-class SerialManager(multiprocessing.Process):
+class SerialManager():
 
 	def __init__(self, device, baud=115200, waittime = .3,redishost = 'localhost',redisport = 6379):
 		
-		super(SerialManager,self).__init__()
 		self.device = device
 		self.baud = baud
 		self.waittime = waittime
@@ -29,26 +27,23 @@ class SerialManager(multiprocessing.Process):
 
 		self.receivedQueueTimeout = 10*60 #default 10 minute timeout
 
+		self.redishost = redishost
+		self.redisport= redisport
 
-		self.exit_event = multiprocessing.Event()
 		#connect to redis 
-		self.rd = redis.Redis(host = redishost,port = redisport)
+		self.rd = redis.Redis(host = self.redishost,port = self.redisport)
 		#clear SendQueue
 		self.rd.delete("SendQueue")
-		self.__connect__() #connect to ricardo 
 		
-
-
+		
 	def run(self):
-		while not self.exit_event.is_set():
+		self.__connect__() #connect to ricardo 
+
+		while True:
 			self.__checkSendQueue__()
 			self.__readPacket__()
 			self.__cleanupPacketRecord__()
 
-
-	#kill the thread if program exited
-	def stop(self):
-		self.exit_event.set()
 		
 	def __connect__(self):
 		self.ser = serial.Serial(port=self.device, baudrate=self.baud, timeout = self.waittime)  # open serial port
