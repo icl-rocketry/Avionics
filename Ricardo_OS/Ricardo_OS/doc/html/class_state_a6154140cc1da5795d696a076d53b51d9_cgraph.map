@@ -1,9 +1,0 @@
-<map id="State::exitstate" name="State::exitstate">
-<area shape="rect" id="node1" title=" " alt="" coords="5,42,116,69"/>
-<area shape="rect" id="node2" href="$class_system_status.html#a881b11600f6b3a9dcd5520e8ada5600b" title=" " alt="" coords="164,5,312,47"/>
-<area shape="rect" id="node7" href="$namespaceutils.html#a80b01b2df5fab1766ccdbfa4fb2ce79d" title=" " alt="" coords="189,71,287,98"/>
-<area shape="rect" id="node3" href="$class_log_controller.html#adb94b2720224b121ac8487c7c0e04ffc" title=" " alt="" coords="360,13,484,39"/>
-<area shape="rect" id="node4" href="$class_telemetry_logger.html#af01a5e0f381d60d53d2c08ddad37ca07" title=" " alt="" coords="532,13,675,39"/>
-<area shape="rect" id="node5" href="$classtelemetry__logframe.html#add67dbfbf886bf1b322628962a03c0de" title=" " alt="" coords="723,5,856,47"/>
-<area shape="rect" id="node6" href="$classtelemetry__logframe.html#ad8ce2864d5faaf045a0ff812c029a4b4" title=" " alt="" coords="904,5,1037,47"/>
-</map>

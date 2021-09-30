@@ -1,7 +1,0 @@
-<map id="Imu::writeBiasCalibration" name="Imu::writeBiasCalibration">
-<area shape="rect" id="node1" title="write accel gyro bias callibration to nvs storage" alt="" coords="5,13,173,39"/>
-<area shape="rect" id="node2" href="$class_log_controller.html#adb94b2720224b121ac8487c7c0e04ffc" title=" " alt="" coords="221,13,345,39"/>
-<area shape="rect" id="node3" href="$class_telemetry_logger.html#af01a5e0f381d60d53d2c08ddad37ca07" title=" " alt="" coords="393,13,536,39"/>
-<area shape="rect" id="node4" href="$classtelemetry__logframe.html#add67dbfbf886bf1b322628962a03c0de" title=" " alt="" coords="584,5,717,47"/>
-<area shape="rect" id="node5" href="$classtelemetry__logframe.html#ad8ce2864d5faaf045a0ff812c029a4b4" title=" " alt="" coords="765,5,899,47"/>
-</map>

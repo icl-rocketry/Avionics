@@ -1,5 +1,0 @@
-<map id="EngineEvent::update" name="EngineEvent::update">
-<area shape="rect" id="node1" title="Check to see if condition has been met." alt="" coords="5,5,148,32"/>
-<area shape="rect" id="node2" href="$class_event.html#a104089a099a45971f10fdf7eaf5654f4" title=" " alt="" coords="196,5,299,32"/>
-<area shape="rect" id="node3" href="$class_event.html#a2e507736868dd4d8c5f9f23dc9a09693" title="virtual action function for event" alt="" coords="347,5,464,32"/>
-</map>

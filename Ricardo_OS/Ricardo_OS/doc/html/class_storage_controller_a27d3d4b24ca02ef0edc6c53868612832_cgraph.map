@@ -1,4 +1,0 @@
-<map id="StorageController::ls" name="StorageController::ls">
-<area shape="rect" id="node1" title="List all files and directories in root path." alt="" coords="5,5,147,32"/>
-<area shape="rect" id="node2" href="$class_storage_controller.html#aeff6ec755ddf2df758b273691a1b662f" title="List all files and directories in given path." alt="" coords="195,5,336,32"/>
-</map>

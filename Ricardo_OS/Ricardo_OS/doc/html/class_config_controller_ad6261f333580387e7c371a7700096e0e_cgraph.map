@@ -1,8 +1,0 @@
-<map id="ConfigController::load" name="ConfigController::load">
-<area shape="rect" id="node1" title="Load configuration and store in configDoc variable." alt="" coords="5,38,153,65"/>
-<area shape="rect" id="node2" href="$class_log_controller.html#adb94b2720224b121ac8487c7c0e04ffc" title=" " alt="" coords="219,13,343,39"/>
-<area shape="rect" id="node6" href="$class_storage_controller.html#ab9c231ae032416dc120009b4b63fa54c" title="open a file on specified path on specific device" alt="" coords="201,63,360,90"/>
-<area shape="rect" id="node3" href="$class_telemetry_logger.html#af01a5e0f381d60d53d2c08ddad37ca07" title=" " alt="" coords="408,13,551,39"/>
-<area shape="rect" id="node4" href="$classtelemetry__logframe.html#add67dbfbf886bf1b322628962a03c0de" title=" " alt="" coords="599,5,732,47"/>
-<area shape="rect" id="node5" href="$classtelemetry__logframe.html#ad8ce2864d5faaf045a0ff812c029a4b4" title=" " alt="" coords="780,5,913,47"/>
-</map>

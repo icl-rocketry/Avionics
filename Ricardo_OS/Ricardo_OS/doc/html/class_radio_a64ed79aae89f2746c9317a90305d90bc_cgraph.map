@@ -1,8 +1,0 @@
-<map id="Radio::update" name="Radio::update">
-<area shape="rect" id="node1" title=" " alt="" coords="5,56,108,83"/>
-<area shape="rect" id="node2" href="$class_radio.html#ade28962900128f1bbad608a9eb7cae58" title=" " alt="" coords="156,5,320,32"/>
-<area shape="rect" id="node3" href="$class_radio.html#a71afa4f66f08408fbef7235a339918ab" title=" " alt="" coords="181,56,295,83"/>
-<area shape="rect" id="node4" href="$class_radio.html#ad357a689877f0b7c253b8c25baacbd9e" title=" " alt="" coords="177,107,299,133"/>
-<area shape="rect" id="node5" href="$class_packet_header.html#a77e1156dbd831df7a2e8c412adbaecd3" title=" " alt="" coords="368,107,529,133"/>
-<area shape="rect" id="node6" href="$class_packet_header.html#acf9c5c5c063bf6ed809d8d6144a5aa56" title=" " alt="" coords="577,107,763,133"/>
-</map>

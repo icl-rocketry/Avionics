@@ -1,5 +1,0 @@
-<map id="NetworkManager::send_packet" name="NetworkManager::send_packet">
-<area shape="rect" id="node1" title=" " alt="" coords="5,23,163,65"/>
-<area shape="rect" id="node2" href="$class_radio.html#a7b903240e57d52fc31f9cbec4275c0fa" title="send_packet places packet onto send buffer to be sent if radio isnt busy This is to ensure that we ca..." alt="" coords="211,5,349,32"/>
-<area shape="rect" id="node3" href="$class_u_s_b.html#a94de2f605b24851ceb41499d6fef5f75" title=" " alt="" coords="214,56,346,83"/>
-</map>

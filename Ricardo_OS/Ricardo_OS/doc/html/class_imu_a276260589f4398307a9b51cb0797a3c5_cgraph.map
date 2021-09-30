@@ -1,8 +1,0 @@
-<map id="Imu::calibrateAccelGyro" name="Imu::calibrateAccelGyro">
-<area shape="rect" id="node1" title=" " alt="" coords="5,13,168,39"/>
-<area shape="rect" id="node2" href="$class_imu.html#a0c78951531e132f0f7f0a93bdc8831f4" title="write accel gyro bias callibration to nvs storage" alt="" coords="216,13,384,39"/>
-<area shape="rect" id="node3" href="$class_log_controller.html#adb94b2720224b121ac8487c7c0e04ffc" title=" " alt="" coords="432,13,556,39"/>
-<area shape="rect" id="node4" href="$class_telemetry_logger.html#af01a5e0f381d60d53d2c08ddad37ca07" title=" " alt="" coords="604,13,747,39"/>
-<area shape="rect" id="node5" href="$classtelemetry__logframe.html#add67dbfbf886bf1b322628962a03c0de" title=" " alt="" coords="795,5,928,47"/>
-<area shape="rect" id="node6" href="$classtelemetry__logframe.html#ad8ce2864d5faaf045a0ff812c029a4b4" title=" " alt="" coords="976,5,1109,47"/>
-</map>
