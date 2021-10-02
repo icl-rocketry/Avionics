@@ -40,7 +40,7 @@ class Grapher():
         
         self.ax = self.fig.add_subplot(111)
         self.ax.grid(True,which='both',color='grey')
-        plt.show()
+        
 
         self.lines = []
 
@@ -55,11 +55,14 @@ class Grapher():
         
 
         self.r = redis.Redis(args["host"],args["port"])
+        plt.show(block=False)
     
         
 
     def run(self):
+        
         while True:
+            plt.pause(.001)
             if (time.time() - self.prevTime > self.updateDelta):
                 self.prevTime = time.time()
                 self.__getTelemetry__() 
@@ -102,13 +105,13 @@ class Grapher():
             
             self.lines[idx].set_xdata(self.telemetry_timeseries["system_time"])
             self.lines[idx].set_ydata(self.telemetry_timeseries[var])
-        plt.pause(.001)
+        
         self.ax.relim()
         #self.ax.set_xlim(left=self.telemetry_timeseries["system_time"][1], right=self.telemetry_timeseries["system_time"][-1])
         self.ax.autoscale_view()
         #self.ax.set_ylim(bottom=-3.2, top=3.2)
         self.fig.canvas.draw_idle()
-        self.fig.canvas.flush_events()
+
 
 
 if __name__ == "__main__":

@@ -81,10 +81,10 @@ def get_graph():
 def get_map():
     return render_template('map.html',x_window = 100)
 
-@socketio.on('connect')
+@socketio.on('connect',namespace='/telemetry')
 def connect():  
     global telemetry_broadcast_running
-    #start broadcasting telemetry on socketio on connection of the first client
+    #start broadcasting telemetry on socketio on connection of the first client to the telemetry namespace
     if not telemetry_broadcast_running :
         telemetry_broadcast_running = True
         socketio.start_background_task(__TelemetryBroadcastTask__,rhost,rport)
