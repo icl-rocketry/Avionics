@@ -8,6 +8,8 @@ from flask_socketio import SocketIO, emit
 import time
 import redis
 import json
+import signal
+import sys
 
 
 app = Flask(__name__)
@@ -115,9 +117,13 @@ def __TelemetryBroadcastTask__(redishost,redisport):
         eventlet.sleep(.02)
 
 
-def cleanup(): #ensure the telemetry broadcast thread has been killed
+def cleanup(sig=None,frame=None): #ensure the telemetry broadcast thread has been killed
     global telemetry_broadcast_running
+    print("Flask Interface Exited")
     telemetry_broadcast_running = False
+    sys.exit(0)
+
+
 
     
 def startFlaskInterface(flaskhost="0.0.0.0",flaskport=5000,redishost = 'localhost',redisport = 6379):
@@ -125,13 +131,14 @@ def startFlaskInterface(flaskhost="0.0.0.0",flaskport=5000,redishost = 'localhos
     rhost = redishost
     rport = redisport
 
+    # signal.signal(signal.SIGINT,cleanup)
+    # signal.signal(signal.SIGTERM,cleanup)
+
     if r is None:
         r = redis.Redis(host=redishost,port=redisport)
-    
-    print("starting socketio server")  
+
     socketio.run(app,host=flaskhost,port=flaskport,debug=False,use_reloader=False)
     cleanup()
- 
 
 if __name__ == "__main__":
-    startFlaskInterface(flaskport=2000)
+    startFlaskInterface(flaskport=1337)

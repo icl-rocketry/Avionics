@@ -1,29 +1,18 @@
-
-
-import re
+import multiprocessing
+import argparse
 import signal
 import sys
+import redis
+
 from Interfaces import commandlineinterface
+from Interfaces import flaskinterface
+
 from RicardoHandler import serialmanager
 from RicardoHandler import telemetryhandler
 from RicardoHandler import telemetrylogger
-from multiprocessing import Process
-import redis
 
-import argparse
-import multiprocessing
-import threading
 
-def get_threads(location=''):
-    print(location)
-    print(threading.current_thread())
-    print(threading.main_thread())
-    print(id(threading.current_thread()))
-    print(id(threading.main_thread()))
-get_threads('top:' + __name__)
 
-from Interfaces import flaskinterface
-get_threads('after import: ' + __name__ )
 # Argument Parsing
 ap = argparse.ArgumentParser()
 ap.add_argument("-d", "--device", required=True, help="Ricardo Serial Port", type=str)
@@ -33,18 +22,18 @@ ap.add_argument("--flask-port", required=False, help="flask Port", type=int,defa
 ap.add_argument("-v", "--verbose", required=False, help="Enable Verbose Mode", action='store_true')
 ap.add_argument("--redis-host", required=False, help="redis host", type=str,default = "localhost")
 ap.add_argument("--redis-port", required=False, help="redis port", type=int,default = 6379)
-ap.add_argument('-c','--cli', required=False, help="Enable Interactive Commmand Line Interface",action='store_true',default=False)
 ap.add_argument('-l','--logger', required=False, help="Enable Telemetry logging",action='store_true',default=False)
 
 argsin = vars(ap.parse_args())
 
 
+def exitBackend(proclist):
+    for key in proclist:
+        print("Killing: " + key + " Pid: " + str(proclist[key].pid))
+        proclist[key].terminate()
+        proclist[key].join()
 
-def exitBackend(signalNumber=None, frame=None):
-    for proc in proclist.values():
-        proc.terminate()
-        print('waiting for join')
-        proc.join()
+    proclist = {}
 
     sys.exit(0)
 
@@ -77,13 +66,7 @@ def startTelemetryLogger(args):
     logger.run()
 
 if __name__ == '__main__':
- 
-    tasklist = []
     proclist = {}
-
-    signal.signal(signal.SIGINT, exitBackend)
-    signal.signal(signal.SIGTERM, exitBackend)
-
     #check redis server is running
     checkRedis()
 
@@ -95,11 +78,10 @@ if __name__ == '__main__':
     telemetrytask_id = "LOCAL:TELEMETRYTASK"
     proclist['telemetryhandler'] = multiprocessing.Process(target=startTelemetryHandler,args=(argsin,telemetrytask_id,))
     proclist['telemetryhandler'].start()
-    tasklist.append(telemetrytask_id) #add task id to running task list
 
     
     #start flask interface process
-    proclist['flaskinterface'] = Process(target=flaskinterface.startFlaskInterface,args=(argsin['flask_host'],
+    proclist['flaskinterface'] = multiprocessing.Process(target=flaskinterface.startFlaskInterface,args=(argsin['flask_host'],
                                                                                             argsin['flask_port'],
                                                                                             argsin['redis_host'],
                                                                                             argsin['redis_port'],))
@@ -110,17 +92,12 @@ if __name__ == '__main__':
         proclist['telemetrylogger'] = multiprocessing.Process(target=startTelemetryLogger,args=(argsin,))
         proclist['telemetrylogger'].start()
     
-    if (argsin['cli']):
-        c = commandlineinterface.CommandLineInterface(redishost=argsin['redis_host'],
-                                                      redisport=argsin['redis_port'],
-                                                      tasklist=tasklist
-                                                      )
-        c.cmdloop()
-        exitBackend()
-    
-    
 
-        
+    c = commandlineinterface.CommandLineInterface(redishost=argsin['redis_host'],
+                                                    redisport=argsin['redis_port'],
+                                                    )
+    c.cmdloop()
+    exitBackend(proclist)
 
 
 

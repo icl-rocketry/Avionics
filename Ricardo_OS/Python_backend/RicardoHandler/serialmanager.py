@@ -5,18 +5,22 @@ import time
 import redis
 import json
 from cobs import cobs
+import signal
+import sys
+
 
 
 class SerialManager():
 
-	def __init__(self, device, baud=115200, waittime = .3,redishost = 'localhost',redisport = 6379):
-		
+	def __init__(self, device, baud=115200, waittime = .3,redishost = 'localhost',redisport = 6379,verbose=False):
+		signal.signal(signal.SIGINT,self.exitHandler)
+		signal.signal(signal.SIGTERM,self.exitHandler)
 		self.device = device
 		self.baud = baud
 		self.waittime = waittime
-		self.boot_messages = ''
 		self.prevSendTime = 0
 		self.sendDelta = 50e6
+		self.verbose = verbose
 		
 
 		self.packetRecordTimeout = 2*60 #default 2 minute timeout
@@ -38,14 +42,20 @@ class SerialManager():
 		
 	def run(self):
 		self.__connect__() #connect to ricardo 
-
+		
 		while True:
 			self.__checkSendQueue__()
 			self.__readPacket__()
 			self.__cleanupPacketRecord__()
+	
+	def exitHandler(self,sig,frame):
+		print("Serial Manager Exited")
+		self.ser.close() #close serial port
+		sys.exit(0)
 
 		
 	def __connect__(self):
+		boot_messages = ''
 		self.ser = serial.Serial(port=self.device, baudrate=self.baud, timeout = self.waittime)  # open serial port
 
 		self.ser.stopbits = serial.STOPBITS_ONE
@@ -60,15 +70,16 @@ class SerialManager():
 		#print('esp32 reset')
 		self.ser.flushInput()
 		time.sleep(1)
-		#print('flushing boot messages')
 		#get boot messages after reboot
 		while (self.ser.in_waiting):
 			data = self.ser.read(1)
 			try:
-				self.boot_messages += data.decode("utf-8")
+				boot_messages += data.decode("utf-8")
 			except:
-				self.boot_messages += str(data)
-	
+				boot_messages += str(data)
+		if self.verbose:
+			print(boot_messages)
+
 	def __readPacket__(self):
 		#cobs decode
 		while self.ser.in_waiting > 0:
@@ -77,8 +88,12 @@ class SerialManager():
 				if (len(self.receiveBuffer) == 0):
 					#empty frame receved, discard this
 					return
-				decodedData = cobs.decode(bytearray(self.receiveBuffer))
-				self.__processReceivedPacket__(decodedData)
+				try:
+					decodedData = cobs.decode(bytearray(self.receiveBuffer))
+					self.__processReceivedPacket__(decodedData)
+				except cobs.DecodeError:
+					print("Decode Error, the following data could not be decoded...")
+					print(self.receiveBuffer)
 				#empty receive buffer
 				self.receiveBuffer = []
 			else:
@@ -104,7 +119,6 @@ class SerialManager():
 			#get client id from packetrecord and remove corresponding entry
 			client_id = self.packetRecord.pop(uid)[0]
 			#add entry to recieved packets dictionary with client id as key
-			#self.receivedPackets[client_id] = [data,time.time()]
 			key = "ReceiveQueue:"+str(client_id)	
 		else:
 			#we dont have this packet as a repsonse so place it in recieve buffer

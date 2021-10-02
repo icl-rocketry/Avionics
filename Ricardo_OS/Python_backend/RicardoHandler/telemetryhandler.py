@@ -3,11 +3,15 @@ from RicardoHandler import packets
 import time
 import json
 import copy
+import signal
+import sys
 
 class TelemetryHandler():
     
     def __init__(self,updateTimePeriod = 500e6,redishost = 'localhost',redisport = 6379,clientid = "LOCAL:TELEMETRYTASK"):
-        
+        signal.signal(signal.SIGTERM,self.exitHandler)
+        signal.signal(signal.SIGINT,self.exitHandler)
+
         self.prev_time = 0
 
         self.lastPacketTime = 0
@@ -31,6 +35,7 @@ class TelemetryHandler():
 
 
     def run(self):
+
         while True:
             if (time.time_ns() - self.prev_time > self.state["dt"]):
                 if self.state["run"]:
@@ -39,11 +44,10 @@ class TelemetryHandler():
             self.__checkRecieveQueue__()
             self.__checkState__()
             time.sleep(.001)    
-            
 
-
-    def stop(self):
-        self.exit_event.set()
+    def exitHandler(self,sig,frame):
+        print("Telemetry Handler Exited")
+        sys.exit(0)
 
     def __sendTelemetryPacket__(self):
         #construct command packet for telemetry

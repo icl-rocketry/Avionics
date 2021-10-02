@@ -3,15 +3,16 @@ from cmd2.argparse_custom import Cmd2ArgumentParser
 from cmd2.decorators import with_argparser
 import redis
 import json
+import sys
+
 
 
 
 
 class CommandLineInterface(cmd2.Cmd):
-    def __init__(self,redishost = 'localhost',redisport = 6379,tasklist=[]):
+    def __init__(self,redishost = 'localhost',redisport = 6379):
         super().__init__(allow_cli_args=False)
         self.r : redis.Redis = redis.Redis(host=redishost,port=redisport)
-        self.tasklist = tasklist
         
     
     task_ap = Cmd2ArgumentParser()
@@ -24,18 +25,16 @@ class CommandLineInterface(cmd2.Cmd):
     
     @with_argparser(task_ap)
     def do_task(self,opts):
-        #if opts.task not in self.tasklist:
-        if opts.task not in self.tasklist:
-            self.poutput("ERROR : invalid Task ID given")
-            return
         prev_state = self.r.get(opts.task + ":STATE")
+        if prev_state is None:
+            self.poutput("ERROR -> cant find task id!")
         try:
             new_state = json.loads(prev_state)
         except:
-            self.poutput("ERROR : cannot deserialize json key")
+            self.poutput("ERROR -> cannot deserialize json key")
         if opts.start and opts.stop:
             #throw error
-            self.poutput("ERROR : start and stop both specifed")
+            self.poutput("ERROR -> start and stop both specifed")
             return
         #update state
         if opts.start:
@@ -51,9 +50,10 @@ class CommandLineInterface(cmd2.Cmd):
         #push new state to redis
         self.r.set(opts.task + ":STATE",json.dumps(new_state))
     
-    def sigint_handler(self, signum, param2):
+    def sigint_handler(self, signum, param2) -> None:
         #override default behaviour to exit on ctrl c
-        return True
+        sys.exit(0)
+        return
 
 
 

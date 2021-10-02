@@ -7,11 +7,15 @@ import time
 import pandas as pd
 
 import csv
+import signal
+import sys
 
 
 
 class TelemetryLogger():
     def __init__(self,redishost,redisport,filename,vars = None):
+        signal.signal(signal.SIGTERM,self.exitHandler)
+        signal.signal(signal.SIGINT,self.exitHandler)
 
         self.prev_telemetry_data = None
 
@@ -31,9 +35,14 @@ class TelemetryLogger():
 
     def __exit__(self, *args):
         self._file.close()
-        
+    
+    def exitHandler(self,sig,frame):
+        self.__exit__() #ensure we call the destructor to close the file
+        print("Telemetry Logger Exited")
+        sys.exit(0)
 
     def run(self):
+        
         while True:
             if (time.time() - self.prevTime > self.updateDelta):
                 self.prevTime = time.time()
