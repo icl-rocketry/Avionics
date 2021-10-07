@@ -8,12 +8,12 @@
 #include "Sensors/sensorStructs.h"
 #include "../logframe.h"
 #include <vector>
+#include <queue>
 #include "flags.h"
 
 class SystemLogger : public Logger{
     public:
         SystemLogger(StorageController* sc,
-                    uint16_t dt,
                     std::string filename,
                     STORAGE_DEVICE mainStorage = STORAGE_DEVICE::MICROSD,
                     STORAGE_DEVICE backupStorage = STORAGE_DEVICE::FLASH);
@@ -21,7 +21,7 @@ class SystemLogger : public Logger{
         void enable();
         void disable();
 
-        void writeLog();
+        void flush();
 
         void log(const std::string &message);
         void log(uint32_t status,uint32_t flag,std::string message);
@@ -29,10 +29,17 @@ class SystemLogger : public Logger{
         ~SystemLogger();
     private:
         system_logframe system_frame;
-        std::vector<system_logframe> system_log_buffer;
+        std::queue<system_logframe> system_log_buffer;
+        std::string raw_data_buffer;
+        uint16_t raw_data_buffer_max_size = 5120; // max size 5kb
 
         std::string flagLevel(uint32_t flag);
         std::string flagLevel(SYSTEM_FLAG flag);
+
+        uint16_t writeDelta;
+
+        bool writeRawBuffer();
+
 
 
 };

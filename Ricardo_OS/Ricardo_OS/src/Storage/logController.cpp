@@ -10,8 +10,8 @@
 
 LogController::LogController(StorageController* storagecontroller):
 _storagecontroller(storagecontroller),
-systemlogger(storagecontroller,5000,"/system_log.txt",STORAGE_DEVICE::MICROSD,STORAGE_DEVICE::NONE), // overriding defaults to no backup device for debugging currently
-telemetrylogger(storagecontroller,5000,"/telemetry_log.txt",STORAGE_DEVICE::MICROSD,STORAGE_DEVICE::NONE)
+systemlogger(storagecontroller,"/system_log.txt",STORAGE_DEVICE::MICROSD,STORAGE_DEVICE::NONE), // overriding defaults to no backup device for debugging currently
+telemetrylogger(storagecontroller,"/telemetry_log.txt",STORAGE_DEVICE::MICROSD,STORAGE_DEVICE::NONE)
 {};
 
 void LogController::setup(){
@@ -47,15 +47,14 @@ void LogController::generateLogDirectories(STORAGE_DEVICE device){
 }
 
 void LogController::log(state_t &estimator_state,raw_measurements_t &raw_sensors,bool force) {
-    if((millis()-telemetry_prev_log_time) > telemetry_log_frequency || force){
-        telemetry_prev_log_time = millis(); // update previous log time
-        telemetrylogger.log(estimator_state,raw_sensors);
+    uint64_t current_time = micros();
+    if((current_time-telemetrylogger_prevTime) >= (telemetrylogger_logDelta*1000) || force){
+        telemetrylogger_prevTime = current_time; // update previous log time
+        telemetrylogger.log(estimator_state,raw_sensors,current_time);
         
     }
 }
 
-
-//void LogController::log(PacketHeader &header) {}
 
 void LogController::log(const std::string &message) {
     systemlogger.log(message);
@@ -70,36 +69,21 @@ void LogController::log(uint32_t status,uint32_t flag) {
 }
 
 void LogController::update(){
-
-    systemlogger.writeLog();
-    telemetrylogger.writeLog();
-
+    //system logger is an event based log, but we dont want to write each time there is an event as this is unessecarily ineeficent
+    //and we would like to if possible take advantage of multi-block writes so we call writelog periodically to check if we need to
+    //write the logs to file. This means there is a possibilty that in the event of a crash (physical or computatinal) we may loose logs
+    //so we must perform this check often enough.
+    if (millis() - systemlogger_prevTime >= systemlogger_writeDelta){
+        systemlogger_prevTime = millis();
+        systemlogger.flush(); 
+        
+    }
 
 }
 
 
-void LogController::change_write_Frequency(uint16_t time_period,LOG_TYPE log_type){
-    //simple bounds checking
-    switch(log_type){
-        case LOG_TYPE::NETWORK:{
-            break;
-        }
-        case LOG_TYPE::SYSTEM:{
-            systemlogger.changeFrequency(time_period);
-            break;
-        }
-        case LOG_TYPE::TELEMETRY:{
-            telemetrylogger.changeFrequency(time_period);
-            break;
-        }
-        default:{
-            //do nothing
-            break;
-        }
-    }
-};
 
-void LogController::telemetry_Frequency(uint16_t time_period){telemetry_log_frequency = time_period;};
+void LogController::telemetryFrequency(uint16_t time_period){telemetrylogger_logDelta = time_period;};
 
 void LogController::startLogging(LOG_TYPE log){
     switch(log){

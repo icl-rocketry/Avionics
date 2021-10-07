@@ -1,7 +1,7 @@
 #include "estimator.h"
 #include "stateMachine.h"
 #include "math.h"
-#include "Storage/utils.h"
+
 #include "flags.h"
 #include "Eigen/Eigen"
 #include <string>
@@ -195,4 +195,8 @@ void Estimator::changeEstimatorState(ESTIMATOR_STATE status,std::string logmessa
 
 void Estimator::changeBeta(float beta){
    madgwick.setBeta(beta);
+}
+
+void Estimator::resetOrientation(){
+   madgwick.reset();
 }

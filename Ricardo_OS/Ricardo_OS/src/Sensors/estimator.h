@@ -30,7 +30,8 @@ class Estimator{
         void setHome(); //records the current position as the launch site
         bool isHomeSet(){return _homeSet;};
         
-        void changeBeta(float beta); //remove this
+        void changeBeta(float beta);
+        void resetOrientation();
 
 
         state_t state;

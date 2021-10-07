@@ -103,7 +103,19 @@ class StorageController{
          */
         void generateDirectoryStructure(STORAGE_DEVICE device);
 
-        
+        enum class DEVICE_STATE:uint8_t{
+            OK,
+            ERR_WRITE,
+            ERR_READ,
+            ERR_OPEN
+        };
+
+        /**
+         * @brief Report an error has occured while using a storage device
+         * 
+         * @param device 
+         */
+        void reportStatus(STORAGE_DEVICE device,DEVICE_STATE error);
 
 
     private:

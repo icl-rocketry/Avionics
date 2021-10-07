@@ -70,7 +70,8 @@ class stateMachine {
     TunezHandler tunezhandler;
   private:
     State* _currStatePtr;
-
+    
+    uint32_t out_loop_time=0;
 };
 
 #endif

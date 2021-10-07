@@ -34,9 +34,19 @@ void Sensors::setup(){
 
 void Sensors::update(){
 //updates the raw_measuremets data structure with new measurements
+    // uint32_t time = micros();
+    
     gps.update();
+    // Serial.println("gps:" + String((micros()-time)));
+    // time =micros();
     baro.update();
+    // Serial.println("baro:" + String((micros()-time)));
+    // time =micros();
     imu.update();
+    // Serial.println("imu:" + String((micros()-time)));
+    // time =micros();
     batt.update();
+    // Serial.println("batt:" + String((micros()-time)));
+    // time =micros();
     
 };

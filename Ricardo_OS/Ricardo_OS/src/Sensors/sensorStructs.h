@@ -25,7 +25,9 @@ struct raw_measurements_t{
 
     
     //GPS RAW DATA
-    long gps_lat,gps_long,gps_alt; // gps poisition -> 10E7 to avoid floating math - alitude in mm
+    float gps_lat,gps_long;
+    
+    long gps_alt; // gps poisition -> 10^-7 to avoid floating math - alitude in mm
     long gps_v_n,gps_v_e,gps_v_d; // gps velocity mm/s
     int gps_sat; // gps satilites
     uint16_t gps_pdop; // poisitonal dillution of precision * 10^-2
@@ -68,7 +70,8 @@ struct state_t{
     float thrust; //estimated thrust
 
     //Launch Site 
-    long gps_launch_lat,gps_launch_long,gps_launch_alt;
+    float gps_launch_lat,gps_launch_long;
+    long gps_launch_alt;
     float baro_ref_alt;
 
 

@@ -180,6 +180,8 @@ void CommandHandler::SetHomeCommand(const RnpPacketSerialized& packet)
 	if(!_sm->systemstatus.flag_triggered(SYSTEM_FLAG::STATE_PREFLIGHT,SYSTEM_FLAG::DEBUG)){
 		return;
 	}
+	_sm->estimator.setHome();
+	_sm->tunezhandler.play(MelodyLibrary::confirmation); //play sound when complete
 	
 }
 
@@ -207,6 +209,7 @@ void CommandHandler::TelemetryCommand(const RnpPacketSerialized& packet)
 	telemetry.header.source = _sm->networkmanager.getAddress();
 	telemetry.header.destination = commandpacket.header.source;
 	telemetry.header.uid = commandpacket.header.uid; 
+	telemetry.system_time = millis();
 
 	telemetry.pn = _sm->estimator.state.position(0);
 	telemetry.pe = _sm->estimator.state.position(1);
@@ -229,8 +232,8 @@ void CommandHandler::TelemetryCommand(const RnpPacketSerialized& packet)
 	telemetry.q2 =_sm->estimator.state.orientation.y();
 	telemetry.q3 =_sm->estimator.state.orientation.z();
 
-	telemetry.lat = _sm->sensors.sensors_raw.gps_lat / 10000000.0;
-	telemetry.lng = _sm->sensors.sensors_raw.gps_long / 10000000.0;
+	telemetry.lat = _sm->sensors.sensors_raw.gps_lat;
+	telemetry.lng = _sm->sensors.sensors_raw.gps_long;
 	telemetry.alt = _sm->sensors.sensors_raw.gps_alt;
 	telemetry.sat = _sm->sensors.sensors_raw.gps_sat;
 
@@ -258,9 +261,7 @@ void CommandHandler::TelemetryCommand(const RnpPacketSerialized& packet)
 	telemetry.launch_alt = _sm->estimator.state.gps_launch_alt;
 
 	telemetry.system_status = _sm->systemstatus.getStatus();
-	telemetry.system_time = millis();
-
-	//std::vector<double> radioInfo = _sm->networkmanager.getInterfaceInfo(INTERFACE::LORA);
+	
 
 	const RadioInterfaceInfo* radioinfo = static_cast<const RadioInterfaceInfo*>(_sm->radio.getInfo());
 	telemetry.rssi = radioinfo->rssi;
@@ -321,6 +322,8 @@ void CommandHandler::ResetOrientationCommand(const RnpPacketSerialized& packet)
 	if(!_sm->systemstatus.flag_triggered(SYSTEM_FLAG::STATE_PREFLIGHT,SYSTEM_FLAG::DEBUG)){
 		return;
 	}
+	_sm->estimator.resetOrientation();
+	_sm->tunezhandler.play(MelodyLibrary::confirmation); //play sound when complete
 }
 
 void CommandHandler::ResetLocalizationCommand(const RnpPacketSerialized& packet) 
@@ -329,6 +332,7 @@ void CommandHandler::ResetLocalizationCommand(const RnpPacketSerialized& packet)
 		return;
 	}
 	_sm->estimator.setup();
+	_sm->tunezhandler.play(MelodyLibrary::confirmation); //play sound when complete
 }
 
 void CommandHandler::SetBetaCommand(const RnpPacketSerialized& packet) 
@@ -376,6 +380,7 @@ void CommandHandler::CalibrateMagFullCommand(const RnpPacketSerialized& packet)
 															   magcalpacket.declination,
 															   magcalpacket.getA(),
 															   magcalpacket.getB()});
+	_sm->tunezhandler.play(MelodyLibrary::confirmation); //play sound when complete
 
 }
 

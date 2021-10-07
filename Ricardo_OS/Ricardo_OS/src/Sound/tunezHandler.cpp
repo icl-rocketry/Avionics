@@ -66,6 +66,8 @@ void TunezHandler::update(){
     if(tune_queue.size() > 0){ //check there are tunez to play
         
         if (((millis() - prev_time) > note_duration)){
+            prev_time = millis(); //update previous time
+
             //time to update index to next on
             if(tune_queue.front().index < tune_queue.front().melody->getSize()){
                 //get new freuqnecy and note duration
@@ -83,7 +85,7 @@ void TunezHandler::update(){
                     tune_queue.erase(tune_queue.begin());
                 }
             }
-            prev_time = millis(); //update previous time
+            
         }
     }else{
         ledcWriteTone(0,0);

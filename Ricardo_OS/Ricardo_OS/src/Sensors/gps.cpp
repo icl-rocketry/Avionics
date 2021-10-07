@@ -59,8 +59,8 @@ void GPS::update()
    if (gnss.getPVT() && (!gnss.getInvalidLlh())){ // check if new navigation solution is available
         _raw_data->gps_updated = true;
 
-       _raw_data->gps_lat = gnss.getLatitude(); //degrees
-       _raw_data->gps_long = gnss.getLongitude(); // degrees
+       _raw_data->gps_lat = (float)gnss.getLatitude()/10000000.0; //degrees
+       _raw_data->gps_long = (float)gnss.getLongitude()/10000000.0; // degrees
        _raw_data->gps_alt = gnss.getAltitude(); //mm above ellipsoid
 
        _raw_data->gps_pdop = gnss.getPDOP();

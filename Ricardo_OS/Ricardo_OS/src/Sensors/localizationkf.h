@@ -70,7 +70,7 @@ class LocalizationKF{
          * @param ve EAST velocity (m/s)
          * @param vd DOWN velocity (m/s)
          */
-        void gpsUpdate(const long lat, const long lng, const long alt,
+        void gpsUpdate(const float lat, const float lng, const long alt,
                             const long vn, const long ve, const long vd);
         /**
          * @brief Add new baro measurement to position estimate
@@ -85,7 +85,7 @@ class LocalizationKF{
          * @param lng 
          * @param alt 
          */
-        void updateGPSReference(const long lat, const long lng, const long alt);
+        void updateGPSReference(const float lat, const float lng, const long alt);
 
         /**
          * @brief Get the Position vector (Pn, Pe, Pd)
@@ -115,7 +115,7 @@ class LocalizationKF{
          * @param alt Altitude in mm
          * @return Eigen::Vector3f 
          */
-        Eigen::Vector3f GPStoNED(const long lat, const long lng, const long alt);
+        Eigen::Vector3f GPStoNED(const float lat, const float lng, const long alt);
 
     private:
         LogController& _logcontroller;
@@ -199,7 +199,7 @@ class LocalizationKF{
         //conversion constant 
         const float degtorad = 0.01745329251;
 
-        Eigen::Vector3f GPStoECEF(const long lat, const long lng, const long alt);
+        Eigen::Vector3f GPStoECEF(const float lat, const float lng, const long alt);
         
         
 

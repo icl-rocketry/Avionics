@@ -42,34 +42,29 @@ class LogController{
         void startLogging(LOG_TYPE log);
 
         void generateLogDirectories(STORAGE_DEVICE device);
-        
 
-        void change_write_Frequency(uint16_t time_period,LOG_TYPE log_type);
+        void telemetryFrequency(uint16_t time_period);
 
-        void telemetry_Frequency(uint16_t time_period);
-        
-        //update function controls writing to file 
         void update();
 
  
-        
 
     private:
 
         StorageController* _storagecontroller; //pointer to storage controller
 
         SystemLogger systemlogger;
+        uint16_t systemlogger_writeDelta = 1000; // in millis
+        uint64_t systemlogger_prevTime = 0;
+
         TelemetryLogger telemetrylogger;
+        uint16_t telemetrylogger_logDelta = 50; //in millis
+        uint64_t telemetrylogger_prevTime = 0;
+
 
         //loging directory prefix;
         const std::string parentDirectory = "/Logs" ;
         std::string uniqueDirectory;
-
-        //telemetry logging frequnecy variables
-        uint16_t telemetry_log_frequency = 50; 
-        uint64_t telemetry_prev_log_time = 0;
-
-        
 
 };
 

@@ -9,11 +9,10 @@
 #include "../logframe.h"
 
 
-SystemLogger::SystemLogger(StorageController* sc,uint16_t dt,std::string filename,STORAGE_DEVICE mainStorage,STORAGE_DEVICE backupStorage):
-Logger(sc,dt,filename,mainStorage,backupStorage)
-{
-    system_log_buffer.reserve(10); //this we need to estimate
-};
+SystemLogger::SystemLogger(StorageController* sc,std::string filename,STORAGE_DEVICE mainStorage,STORAGE_DEVICE backupStorage):
+Logger(sc,filename,mainStorage,backupStorage)
+{};
+
 SystemLogger::~SystemLogger(){};
 
 void SystemLogger::enable(){
@@ -21,34 +20,45 @@ void SystemLogger::enable(){
 };
 
 void SystemLogger::disable(){
+    flush();
     Logger::disable();
 };
 
-void SystemLogger::writeLog(){
+void SystemLogger::flush(){
     if (!_status){
         return; // check if logger is enabled
     }
-    if (millis()-_prevWriteTime > _writeDelta){
-        for (int i = 0; i< system_log_buffer.size();i++){
-            //processing each frame individually so we dont accidentally use all of heap
-            std::string entry = system_log_buffer[i].stringify();
-            
-            //microsd_file.print(entry.c_str());
-            //microsd_file.write(entry.c_str(),entry.length());
-            main_logfile.write(entry.c_str(),entry.length());
-            backup_logfile.write(entry.c_str(),entry.length());
-            //_storagecontroller->write(flash_file_path,entry,STORAGE_DEVICE::FLASH);
+
+    if (system_log_buffer.size() == 0){
+        return;
+    }
+
+    bool error = false;
+
+    while(system_log_buffer.size() > 0){
+
+        std::string entry = system_log_buffer.front().stringify(); //get string representation of the first element
+        if (entry.size() + raw_data_buffer.size() <= raw_data_buffer_max_size){
+            raw_data_buffer += entry;
+        }
+
+        if (raw_data_buffer.size() >= 2048){ // try to take advantage of multi block writes
+
+            error = writeRawBuffer();
             
         }
-       
+
+        system_log_buffer.pop(); // remove front element from queue
         
-        main_logfile.flush();
-        backup_logfile.flush();
-        system_log_buffer.clear();
-
-        _prevWriteTime = millis();
-
     }
+
+    if (raw_data_buffer.size() > 0 && !error){
+        error = writeRawBuffer();
+    }
+
+    main_logfile.flush();
+    backup_logfile.flush();
+
 };
 
 
@@ -60,7 +70,7 @@ void SystemLogger::log(const std::string &message){
     system_frame.message = message;
 
  
-    system_log_buffer.push_back(system_frame);
+    system_log_buffer.push(system_frame);
 };
 void SystemLogger::log(uint32_t status,uint32_t flag,std::string message){
     //will create a new log frame each time it is called
@@ -74,11 +84,8 @@ void SystemLogger::log(uint32_t status,uint32_t flag,std::string message){
     
 
     //add frame to buffer
-    system_log_buffer.push_back(system_frame);
+    system_log_buffer.push(system_frame);
 };
-
-
-
 
 
 
@@ -105,4 +112,21 @@ std::string SystemLogger::flagLevel(uint32_t flag){
 
 std::string SystemLogger::flagLevel(SYSTEM_FLAG flag){
     return flagLevel(static_cast<uint32_t>(flag));
+}
+
+bool SystemLogger::writeRawBuffer() 
+{
+    bool main_log_ok = main_logfile.write(raw_data_buffer.c_str(),raw_data_buffer.length());
+    bool backup_log_ok = backup_logfile.write(raw_data_buffer.c_str(),raw_data_buffer.length());
+
+    if (!(main_log_ok && backup_log_ok)){ 
+        if ((main_logfile.getDevice() == STORAGE_DEVICE::NONE) || (backup_logfile.getDevice() == STORAGE_DEVICE::NONE)){ // the case where both devices are none will never be handled here as the write function will return true if a none device is set
+            // if we have encountered errors writing in either log files and if either log file is not assigned a device
+            //then we want to try to not loose the data unless we exceed max size of buffer
+            return false; // indicate we are in error 
+        }
+                    
+    }
+    raw_data_buffer.clear();
+    return true;
 };

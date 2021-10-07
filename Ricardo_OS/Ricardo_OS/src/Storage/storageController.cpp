@@ -1,7 +1,7 @@
 #include "storageController.h"
 #include "stateMachine.h"
 #include "ricardo_pins.h"
-#include "utils.h"
+
 
 #include <Arduino.h>
 #include <string>
@@ -181,7 +181,7 @@ File StorageController::open(std::string path, STORAGE_DEVICE device,oflag_t mod
     switch(device){
         case(STORAGE_DEVICE::MICROSD):{
             microsd.chvol();
-            ret = microsd.open(path.c_str(),mode);
+            ret = microsd.open(path.c_str(),mode); // this opens the file if a storage device is present or not. Errors are not reported
             break;
         }
         case(STORAGE_DEVICE::FLASH):{
@@ -353,5 +353,54 @@ void StorageController::generateDirectoryStructure(STORAGE_DEVICE device){
     */
    mkdir("/Logs",device);
    mkdir("/Configuration",device);
+}
+
+void StorageController::reportStatus(STORAGE_DEVICE device,DEVICE_STATE state) 
+{
+    SYSTEM_FLAG flag;
+    //if there ever is more devices, we need some mapping between flags and storage device
+    switch(device){
+        case STORAGE_DEVICE::MICROSD:
+        {
+            flag = SYSTEM_FLAG::ERROR_SD;
+            break;
+        }
+        case STORAGE_DEVICE::FLASH:
+        {
+            flag = SYSTEM_FLAG::ERROR_FLASH;
+            break;
+        }
+        default:
+            return;   
+    }
+
+    std::string message;
+    switch(state){
+        case DEVICE_STATE::OK:
+        {
+            _sm->systemstatus.delete_message(flag,"Device is OK!");
+            return;
+        }
+        case DEVICE_STATE::ERR_WRITE:
+        {
+            message = "Device error writing!";
+            break;
+        }
+        case DEVICE_STATE::ERR_READ:
+        {
+            message = "Device error reading!";
+            break;
+        }
+        case DEVICE_STATE::ERR_OPEN:
+        {
+            message = "Device error opening!";
+            break;
+        }
+        default:
+            message = "Device unkown error!";
+            break;
+    }
+    _sm->systemstatus.new_message(flag,message);
+    
 }
 

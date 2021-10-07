@@ -50,7 +50,7 @@ void LocalizationKF::predict(const Eigen::Vector3f& linear_acceleration,float dt
     P = A*P*A.transpose() + Q; 
 }
 
-void LocalizationKF::gpsUpdate(const long lat, const long lng, const long alt,const long vn, const long ve, const long vd){
+void LocalizationKF::gpsUpdate(const float lat, const float lng, const long alt,const long vn, const long ve, const long vd){
     //measurement matrix
     Eigen::Vector3f positionNED = GPStoNED(lat,lng,alt); 
     const Eigen::Vector<float,6> z{{positionNED(0),
@@ -73,7 +73,7 @@ void LocalizationKF::gpsUpdate(const long lat, const long lng, const long alt,co
         
 }
 
-void LocalizationKF::updateGPSReference(const long lat, const long lng, const long alt){
+void LocalizationKF::updateGPSReference(const float lat, const float lng, const long alt){
     _gpsReferenceECEF = GPStoECEF(lat,lng,alt);
     _gpsReferenceSLat = sin(lat * degtorad);
     _gpsReferenceCLat = cos(lat * degtorad);
@@ -81,7 +81,7 @@ void LocalizationKF::updateGPSReference(const long lat, const long lng, const lo
     _gpsReferenceCLng = cos(lng * degtorad);
 }
 
-Eigen::Vector3f LocalizationKF::GPStoECEF(const long lat, const long lng,const long alt){
+Eigen::Vector3f LocalizationKF::GPStoECEF(const float lat, const float lng,const long alt){
     const float slat = sin(lat * degtorad);
     const float clat = cos(lat * degtorad);
     const float slng = sin(lng * degtorad);
@@ -97,7 +97,7 @@ Eigen::Vector3f LocalizationKF::GPStoECEF(const long lat, const long lng,const l
     return Eigen::Vector3f{ecefX,ecefY,ecefZ};
 }
 
-Eigen::Vector3f LocalizationKF::GPStoNED(const long lat, const long lng, const long alt){
+Eigen::Vector3f LocalizationKF::GPStoNED(const float lat, const float lng, const long alt){
     Eigen::Matrix3f  _tangentPlane{{-_gpsReferenceSLng, _gpsReferenceCLng, 0},
                                    {-_gpsReferenceSLat*_gpsReferenceCLng, -_gpsReferenceSLat*_gpsReferenceSLng, _gpsReferenceCLat},
                                    {_gpsReferenceCLat*_gpsReferenceCLng, _gpsReferenceCLat*_gpsReferenceSLng, _gpsReferenceSLat}};

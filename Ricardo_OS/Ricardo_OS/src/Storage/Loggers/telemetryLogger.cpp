@@ -11,10 +11,10 @@
 #include "Arduino.h"
 
 
-TelemetryLogger::TelemetryLogger(StorageController* sc,uint16_t dt,std::string filename,STORAGE_DEVICE mainStorage,STORAGE_DEVICE backupStorage):
-Logger(sc,dt,filename,mainStorage,backupStorage)
+TelemetryLogger::TelemetryLogger(StorageController* sc,std::string filename,STORAGE_DEVICE mainStorage,STORAGE_DEVICE backupStorage):
+Logger(sc,filename,mainStorage,backupStorage)
 {
-telemetry_log_buffer.reserve(1224); // 1024 + 200 bytes 
+telemetry_log_buffer.reserve(2248); // 1024 + 200 bytes 
 };
 
 void TelemetryLogger::enable(){
@@ -23,28 +23,18 @@ void TelemetryLogger::enable(){
 
 
 void TelemetryLogger::disable(){
+    flush(); // ensure all frames are written  before disabling
     Logger::disable();
 };
 
-void TelemetryLogger::writeLog(){
-    if (!_status){
-        return; // check if logger is enabled
-    }
-    if (telemetry_log_buffer.size()>=1024){
-        flush();
-    }
 
-};
-
-
-
-void TelemetryLogger::log(state_t &estimator_state,raw_measurements_t &raw_sensors){
+void TelemetryLogger::log(state_t &estimator_state,raw_measurements_t &raw_sensors,uint64_t time){
 
     if (!_status){
         return; // check if logger is enabled
     }
 
-
+    
     telemetry_frame.gps_long = raw_sensors.gps_long;
     telemetry_frame.gps_lat = raw_sensors.gps_lat;
     telemetry_frame.gps_alt = raw_sensors.gps_alt;
@@ -80,35 +70,34 @@ void TelemetryLogger::log(state_t &estimator_state,raw_measurements_t &raw_senso
     telemetry_frame.an = estimator_state.acceleration[0];
     telemetry_frame.ae = estimator_state.acceleration[1];
     telemetry_frame.ad = estimator_state.acceleration[2];
-    telemetry_frame.timestamp = micros();
-
-    std::string string_data = telemetry_frame.stringify();
+    telemetry_frame.timestamp = time;
 
     //check capacity of vector
-    if (telemetry_log_buffer.size() + string_data.size() >= 1024){
+    telemetry_log_buffer += telemetry_frame.stringify();
+
+    if (telemetry_log_buffer.size()>= 4096){
         flush();
     }
-    //telemetry_log_buffer.resize(telemetry_log_buffer.size() + string_data.size());
-    telemetry_log_buffer += string_data;
-    //memcpy(telemetry_log_buffer.data() + telemetry_log_buffer.size(),string_data.data(),string_data.size());
-    
-    //telemetry_log_buffer.push_back(telemetry_frame); // add frame to buffer
-    //std::vector<uint8_t> data = telemetry_frame.serialize();
-    //std::string data = telemetry_frame.stringify();
-    //telemetry_logfile.write(data.data(),data.size());
+
        
 };
-
+ 
 TelemetryLogger::~TelemetryLogger(){}
 
 void TelemetryLogger::flush() 
 {
+    if (telemetry_log_buffer.size() == 0){
+        return;
+    }
+
+    //we want to clear the log buffer even if the write fails as its "okay" to loose some of the telemetry data
     main_logfile.write(telemetry_log_buffer.c_str(),telemetry_log_buffer.size());
-        backup_logfile.write(telemetry_log_buffer.c_str(),telemetry_log_buffer.size());
+    backup_logfile.write(telemetry_log_buffer.c_str(),telemetry_log_buffer.size());
 
-        
-        main_logfile.flush();
-        backup_logfile.flush();
+    
+    main_logfile.flush();
+    backup_logfile.flush();
 
-        telemetry_log_buffer.clear();
+    telemetry_log_buffer.clear();
 };
+

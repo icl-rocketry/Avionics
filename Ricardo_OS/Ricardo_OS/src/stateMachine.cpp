@@ -121,16 +121,21 @@ void stateMachine::initialise(State* initStatePtr) {
 };
 
 void stateMachine::update() {
-  //call udpate on tunez handler
+
 
   tunezhandler.update();
+
   //write logs to file 
   logcontroller.update();
+
   //request new sensor data
   sensors.update();
+ 
   //process updated sensor data
   estimator.update();
+
   logcontroller.log(estimator.state,sensors.sensors_raw);// log new navigation solution and sensor output
+
   //check for new packets and process
   networkmanager.update();
 
@@ -140,6 +145,8 @@ void stateMachine::update() {
   if (newStatePtr != _currStatePtr) {
     changeState(newStatePtr);
   }
+
+  
 };
 
 void stateMachine::changeState(State* newStatePtr) {

@@ -88,7 +88,8 @@ class TelemetryPacket : public RnpPacket{
         float roll,pitch,yaw; // orientation degrees
         float q0,q1,q2,q3; //quaternion representation
         //gps
-        long lat,lng,alt;
+        float lat,lng;
+        long alt;//in mm
         uint8_t sat;
         //imu
         float ax, ay, az; // acceleration (g's)
@@ -99,7 +100,8 @@ class TelemetryPacket : public RnpPacket{
         //battery
         uint16_t batt_voltage,batt_percent;
         //launch site
-        long launch_lat,launch_lng,launch_alt;
+        float launch_lat,launch_lng;
+        long launch_alt;
         //system details
         uint32_t system_status;
         uint64_t system_time;

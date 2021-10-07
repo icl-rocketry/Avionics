@@ -34,12 +34,12 @@ class Baro{
         };
 
         struct baro_cal_t{
-            uint16_t pressure_sensitivity;            
-            uint16_t pressure_offset;            
-            uint16_t temp_coef_pressure_sensitivity;           
-            uint16_t temp_coef_pressure_offset;           
-            uint16_t ref_temp;            
-            uint16_t temp_coef_temp;            
+            int64_t pressure_sensitivity;            
+            int64_t pressure_offset;            
+            int64_t temp_coef_pressure_sensitivity;           
+            int64_t temp_coef_pressure_offset;           
+            int64_t ref_temp;            
+            int64_t temp_coef_temp;            
         }; 
         baro_cal_t calibration;
 
@@ -68,7 +68,7 @@ class Baro{
 
         uint32_t D1 {0};
         uint32_t D2 {0};
-        int32_t dT {0};
+        int64_t dT {0};
         int32_t TEMP {0};
         int64_t OFF {0};
         int64_t SENS {0};
