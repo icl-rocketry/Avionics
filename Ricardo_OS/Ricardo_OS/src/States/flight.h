@@ -8,6 +8,8 @@ State during flight portion of rocket controlling thrust output and relaying tel
 
 #include "state.h"
 
+#include <array>
+
 
 
 class Flight: public State {
@@ -17,7 +19,10 @@ class Flight: public State {
     State* update();
     void exitstate();
   private:
+    std::array<float,3> altitudeHistory;
     bool apogeeDetect();
+    uint32_t prevApogeeDetectTime;
+    const uint16_t apogeeDelta;
 };
 
 #endif

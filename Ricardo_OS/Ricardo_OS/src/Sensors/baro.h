@@ -5,6 +5,7 @@
 
 #include "Storage/systemstatus.h"
 #include "Storage/logController.h"
+#include "barofilter.h"
 #include "sensorStructs.h"
 
 
@@ -26,6 +27,8 @@ class Baro{
 
 
     private:
+        BaroFilter _barofilter;
+
         float refTemp{273.15 + 15};
         float refPress{101325};
         //pointer to spi object
