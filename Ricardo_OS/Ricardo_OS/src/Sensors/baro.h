@@ -16,8 +16,18 @@ class Baro{
         void setup();
         void update();
 
+        /**
+         * @brief zero barometer altitude 
+         * 
+         * @param temp in celcius
+         * @param press in pa
+         */
+        void calibrate();
+
 
     private:
+        float refTemp{273.15 + 15};
+        float refPress{101325};
         //pointer to spi object
         SPIClass* _spi;
         //pointer to system status object
@@ -34,12 +44,12 @@ class Baro{
         };
 
         struct baro_cal_t{
-            int64_t pressure_sensitivity;            
-            int64_t pressure_offset;            
-            int64_t temp_coef_pressure_sensitivity;           
-            int64_t temp_coef_pressure_offset;           
-            int64_t ref_temp;            
-            int64_t temp_coef_temp;            
+            uint16_t pressure_sensitivity;            
+            uint16_t pressure_offset;            
+            uint16_t temp_coef_pressure_sensitivity;           
+            uint16_t temp_coef_pressure_offset;           
+            uint16_t ref_temp;            
+            uint16_t temp_coef_temp;            
         }; 
         baro_cal_t calibration;
 
@@ -68,11 +78,12 @@ class Baro{
 
         uint32_t D1 {0};
         uint32_t D2 {0};
-        int64_t dT {0};
+        int32_t dT {0};
         int32_t TEMP {0};
         int64_t OFF {0};
         int64_t SENS {0};
         int32_t PRESS {0};
+
         uint8_t oversamplingRate {};
         uint32_t osrdelay {0};
 

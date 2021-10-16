@@ -24,6 +24,7 @@ enum class COMMANDS:uint8_t {
     Calibrate_AccelGyro_Bias = 60,
     Calibrate_Mag_Bias = 61,
     Calibrate_Mag_Full = 62,
+    Calibrate_Baro = 63,
     Enter_USBMode = 100,
     Enter_Groundstation = 101,
     Enter_Countdown = 102,

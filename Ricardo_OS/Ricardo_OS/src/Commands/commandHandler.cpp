@@ -49,6 +49,9 @@ void CommandHandler::handleCommand(std::unique_ptr<RnpPacketSerialized> packetpt
 		case COMMANDS::Abort:
 			AbortCommand(*packetptr);
 			break;
+		case COMMANDS::Set_Home:
+			SetHomeCommand(*packetptr);
+			break;
 		case COMMANDS::Start_Logging:
 			StartLoggingCommand(*packetptr);
 			break;
@@ -85,6 +88,9 @@ void CommandHandler::handleCommand(std::unique_ptr<RnpPacketSerialized> packetpt
 			break;
 		case COMMANDS::Calibrate_Mag_Full:
 			CalibrateMagFullCommand(*packetptr);
+			break;
+		case COMMANDS::Calibrate_Baro:
+			CalibrateBaroCommand(*packetptr);
 			break;
 		case COMMANDS::Set_Beta:
 			SetBetaCommand(*packetptr);
@@ -384,6 +390,15 @@ void CommandHandler::CalibrateMagFullCommand(const RnpPacketSerialized& packet)
 
 }
 
+void CommandHandler::CalibrateBaroCommand(const RnpPacketSerialized& packet)
+{
+	if(!_sm->systemstatus.flag_triggered(SYSTEM_FLAG::STATE_PREFLIGHT,SYSTEM_FLAG::DEBUG)){
+		return;
+	}
+	_sm->sensors.baro.calibrate();
+	_sm->tunezhandler.play(MelodyLibrary::confirmation); //play sound when complete
+}
+
 void CommandHandler::EnterUSBModeCommand(const RnpPacketSerialized& packet) 
 {
 	if(!_sm->systemstatus.flag_triggered(SYSTEM_FLAG::STATE_PREFLIGHT)){
@@ -392,6 +407,9 @@ void CommandHandler::EnterUSBModeCommand(const RnpPacketSerialized& packet)
 	_sm->changeState(new USBmode(_sm));
 	_sm->systemstatus.new_message(SYSTEM_FLAG::DEBUG);
 }
+
+
+
 
 void CommandHandler::EnterGroundstationCommand(const RnpPacketSerialized& packet) 
 {

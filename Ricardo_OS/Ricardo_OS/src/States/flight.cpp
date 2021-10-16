@@ -15,6 +15,8 @@ void Flight::initialise(){
 
 
 State* Flight::update(){
+
+    
     
     if (apogeeDetect()){
         State* recovery_ptr = new Recovery(_sm);

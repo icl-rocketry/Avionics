@@ -48,6 +48,7 @@ class CommandHandler {
         void CalibrateAccelGyroBiasCommand(const RnpPacketSerialized& packet);
         void CalibrateMagBiasCommand(const RnpPacketSerialized& packet);
         void CalibrateMagFullCommand(const RnpPacketSerialized& packet);
+        void CalibrateBaroCommand(const RnpPacketSerialized& packet);
         void EnterUSBModeCommand(const RnpPacketSerialized& packet);
         void EnterGroundstationCommand(const RnpPacketSerialized& packet);
         void EnterCountdownCommand(const RnpPacketSerialized& packet);
