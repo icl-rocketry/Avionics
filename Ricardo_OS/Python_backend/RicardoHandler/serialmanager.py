@@ -91,8 +91,9 @@ class SerialManager():
 				try:
 					decodedData = cobs.decode(bytearray(self.receiveBuffer))
 					self.__processReceivedPacket__(decodedData)
-				except cobs.DecodeError:
+				except cobs.DecodeError as e:
 					print("Decode Error, the following data could not be decoded...")
+					print(e)
 					print(self.receiveBuffer)
 				#empty receive buffer
 				self.receiveBuffer = []

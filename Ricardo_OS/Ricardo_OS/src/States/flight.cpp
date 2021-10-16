@@ -20,7 +20,7 @@ void Flight::initialise(){
 State* Flight::update(){
 
     float Ad = _sm->estimator.state.acceleration(2);
-    
+
     if (Ad > 0 && !_sm->systemstatus.flag_triggered(SYSTEM_FLAG::FLIGHTPHASE_BOOST)){
         _sm->systemstatus.new_message(SYSTEM_FLAG::FLIGHTPHASE_BOOST,"Entered Boost Phase");
         _sm->systemstatus.delete_message(SYSTEM_FLAG::FLIGHTPHASE_COAST);
@@ -47,6 +47,7 @@ void Flight::exitstate(){
 bool Flight::apogeeDetect(){ // 20hz
 
     if (millis() - prevApogeeDetectTime >= apogeeDelta){
+        prevApogeeDetectTime = millis();
         altitudeHistory.at(0) = altitudeHistory.at(1);
         altitudeHistory.at(1) = altitudeHistory.at(2);
         altitudeHistory.at(2) = _sm->sensors.sensors_raw.baro_alt;

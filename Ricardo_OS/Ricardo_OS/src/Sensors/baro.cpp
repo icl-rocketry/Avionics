@@ -11,7 +11,7 @@
 
 
 Baro::Baro(SPIClass* spi,SystemStatus* systemstatus,LogController* logcontroller,raw_measurements_t* raw_data):
-_barofilter(.09),
+_barofilter(0.09),
 _spi(spi),
 _systemstatus(systemstatus),
 _logcontroller(logcontroller),
@@ -195,7 +195,8 @@ bool Baro::calculateTemperature() {
 void Baro::updateData() {
     _raw_data->baro_temp = (float)TEMP/100.0;
     _raw_data->baro_press = (float)PRESS; // leave as is for pascals
-    _raw_data->baro_alt = _barofilter.getFilterAlt(toAltitude(PRESS));
+    //_raw_data->baro_alt = _barofilter.getFilterAlt(toAltitude((float)PRESS));
+    _raw_data->baro_alt = toAltitude((float)PRESS);
 }
 
 void Baro::write(const int command, const int ms){

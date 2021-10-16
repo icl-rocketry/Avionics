@@ -6,6 +6,7 @@
 #include "rnp_default_address.h"
 #include "rnp_routingtable.h"
 
+#include "Sound/Melodies/melodyLibrary.h"
 
 #include "flags.h"
 
@@ -30,6 +31,8 @@ void Preflight::initialise(){
     _sm->networkmanager.enableAutoRouteGen(false);
     _sm->networkmanager.setNoRouteAction(RnpNetworkManager::NOROUTE_ACTION::DUMP,{});
 
+    _sm->tunezhandler.play(MelodyLibrary::miichannel,true);
+
 };
 
 
@@ -39,4 +42,5 @@ State* Preflight::update(){
 
 void Preflight::exitstate(){
     State::exitstate();
+    _sm->tunezhandler.clear();
 };

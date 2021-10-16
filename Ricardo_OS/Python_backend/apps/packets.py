@@ -3,6 +3,7 @@ import copy
 
 class DeserializeError(Exception):
 	pass
+
 class Header:
 	
 	struct_str='<BHHBBBBB'
@@ -53,7 +54,7 @@ class Packet:
 
 class Telemetry(Packet):
 	
-	struct_str = '<fffffffffffffffffflBffffffffffffHHfflLQhf'
+	struct_str = '<fffffffffffffffflllBffffffffffffHHlllIQhf'
 	size = struct.calcsize(struct_str)
 	service = 2
 	packet_type = 0
@@ -64,13 +65,13 @@ class Telemetry(Packet):
 				an: float = 0, ae: float = 0, ad: float = 0,
 				roll: float = 0, pitch: float = 0, yaw: float = 0,
 				q0: float = 0, q1: float = 0, q2: float = 0, q3:float = 0,
-				lat: float = 0, lng: float = 0, alt: int = 0, sat: int = 0,
+				lat: int = 0, lng: int = 0, alt: int = 0, sat: int = 0,
 				ax: float = 0, ay: float = 0, az: float = 0,
 				gx: float = 0, gy: float = 0, gz: float = 0,
 				mx: float = 0, my: float = 0, mz: float = 0,
 				baro_temp: float = 0, baro_press: float = 0,baro_alt: float = 0,
 				batt_voltage: int = 0, batt_percent: int = 0,
-				launch_lat: float = 0, launch_lng: float = 0, launch_alt: int = 0,
+				launch_lat: int = 0, launch_lng: int = 0, launch_alt: int = 0,
 				system_status: int = 0,
 				system_time: int = 0,
 				rssi: int = 0, snr: float = 0):

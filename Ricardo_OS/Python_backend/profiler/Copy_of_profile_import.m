@@ -30,26 +30,19 @@ profile1 = readtable("/Users/kiran/Documents/Projects/ICLR/Avionics/Ricardo_OS/P
 %% Clear temporary variables
 clear opts
 
-profile_table.log = table2array(profile1(profile1.cat=='tel_log',2))
-profile_table.logc = table2array(profile1(profile1.cat=='logcontroller',2))
-profile_table.est = table2array(profile1(profile1.cat=='est',2))
-profile_table.net = table2array(profile1(profile1.cat=='netm',2))
-profile_table.sens = table2array(profile1(profile1.cat=='sens',2))
-profile_table.tunez = table2array(profile1(profile1.cat=='tunez',2))
-profile_table.total = table2array(profile1(profile1.cat=='total',2))
-profile_table.outofloop = table2array(profile1(profile1.cat=='outloop',2))
+profile_table.imu = table2array(profile1(profile1.cat=='imu',2))
+profile_table.gps = table2array(profile1(profile1.cat=='gps',2))
+profile_table.baro = table2array(profile1(profile1.cat=='baro',2))
+profile_table.batt = table2array(profile1(profile1.cat=='batt',2))
+
 
 figure
 hold on
 
-plot(profile_table.log/1000)
-plot(profile_table.logc/1000)
-plot(profile_table.est/1000)
-plot(profile_table.net/1000)
-plot(profile_table.sens/1000)
-plot(profile_table.tunez/1000)
-plot(profile_table.total/1000)
+plot(profile_table.imu/1000)
+plot(profile_table.gps/1000)
+plot(profile_table.baro/1000)
+plot(profile_table.batt/1000)
 
-plot(profile_table.outofloop/1000)
 
-legend('tlog','logc','est','net','sens','tunez','total','outofloop')
+legend('imu','gps','baro','batt')

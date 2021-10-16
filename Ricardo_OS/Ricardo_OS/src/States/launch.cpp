@@ -5,6 +5,8 @@
 #include "flags.h"
 #include "stateMachine.h"
 
+#include "Sound/Melodies/melodyLibrary.h"
+
 Launch::Launch(stateMachine* sm):
 State(sm,SYSTEM_FLAG::STATE_LAUNCH)
 {};
@@ -13,6 +15,7 @@ void Launch::initialise(){
     State::initialise();
     //start telemetry logging here
     _sm->logcontroller.startLogging(LOG_TYPE::TELEMETRY);
+    _sm->tunezhandler.play(MelodyLibrary::confirmation);
 
 
 };

@@ -291,5 +291,5 @@ melody_t<286> MelodyLibrary::miichannel = { { {
 {NOTE_E4,300},
 {REST,150}
 } }, 
-true 
+false 
  };

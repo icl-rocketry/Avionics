@@ -2,7 +2,7 @@ import argparse
 import time
 import json
 import requests
-import RicardoHandler.packets as packets
+import packets
 
 ap = argparse.ArgumentParser()
 ap.add_argument("-i", "--id", required=True, help="Client ID", type=str)

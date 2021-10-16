@@ -38,7 +38,7 @@ class MagCalibration():
         self.b = np.zeros([3,1])
         self.A_1 = np.eye(3)
 
-        if self.server or self.port is None:
+        if (self.server or self.port) is None:
             self.networkEnabled = False
             
         else:
