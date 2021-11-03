@@ -30,6 +30,7 @@ class LocalizationKF{
          * @param linear_acceleration Acceleration (ms-2) in NED frame with gravtiy removed
          * @param dt time step
          */
+        
         void predict(const Eigen::Vector3f& linear_acceleration,float dt);
         /**
          * @brief Add new gps measurement to position estimate
@@ -118,6 +119,10 @@ class LocalizationKF{
         Eigen::Vector3f GPStoNED(const float lat, const float lng, const long alt);
 
     private:
+        /**
+         * @brief Reference to log controller
+         * 
+         */
         LogController& _logcontroller;
 
         /**

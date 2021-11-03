@@ -88,7 +88,19 @@ def connect():
     if not telemetry_broadcast_running :
         telemetry_broadcast_running = True
         socketio.start_background_task(__TelemetryBroadcastTask__,rhost,rport)
+
+# @socketio.on('send_packet',namespace='/sendData')
+# def socketio_send_data(data):
+#     try:
+#         packetData = json.loads(data)
+#     except:
+#         print("Json deserialization error")
+#         return
     
+#     if all (keys in packetData for keys in ("data","clientid")):
+#         packetData["clientid"] = packetData["clientid"] + ":" + 
+
+#     pass
 
 @socketio.on('disconnect')
 def disconnect():
