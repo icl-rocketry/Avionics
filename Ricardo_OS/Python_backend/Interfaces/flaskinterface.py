@@ -11,8 +11,12 @@ import json
 import signal
 import sys
 
+# packages used to send static files from frontend
+from flask import send_from_directory
+import os
 
-app = Flask(__name__)
+
+app = Flask(__name__, static_folder='./frontend/build')
 app.config["SECRET_KEY"] = "secret!"
 app.config['DEBUG'] = False
 
@@ -31,11 +35,21 @@ prev_time = 0
 updateTimePeriod = 10e6
 
 
-@app.route('/')
-def index():
+# return react site
+@app.route('/', defaults={'path': ''})
+@app.route('/<path:path>')
+def serve(path):
+    if path != "" and os.path.exists(app.static_folder + '/' + path):
+        return send_from_directory(app.static_folder, path)
+    else:
+        return send_from_directory(app.static_folder, 'index.html')
 
-    #maybe here have a webpage with current status
-    return "Ricardo Backend",200
+# @app.route('/')
+# def index():
+#     print("GET / 200")
+#     #maybe here have a webpage with current status
+#     return "Hello world", 200
+
 
 @app.route('/packet', methods=['POST'])
 def send_packet():
