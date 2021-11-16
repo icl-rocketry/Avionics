@@ -2,26 +2,14 @@
 #include <stdexcept>
 
 bool ConditionCondition::check() {
-	switch (_op) {
-	case Operator::AND:
-		return _cond1->check() && _cond2->check();
-	case Operator::OR:
-		return _cond1->check() || _cond2->check();
-	default:
-		throw std::invalid_argument("Invalid operator type");
-		return false;
+	if (_cond1 && _cond2) {
+		return _op(_cond1->check(), _cond2->check());
+	} else {
+		throw "something"; // TODO:
 	}
 }
 
 
 bool ConditionFlightVar::check() {
-	switch (_op) {
-	case Operator::LT:
-		return _var.get() < _threshold;
-	case Operator::GT:
-		return _var.get() > _threshold;
-	default:
-		throw std::invalid_argument("Invalid operator type");
-		return false;
-	}
+	return _op(_var.get(), _threshold);
 }

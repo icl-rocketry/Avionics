@@ -19,7 +19,7 @@ class estimator_state_t;
 class FlightVariable{
     public:
         FlightVariable();
-        virtual double get(int arg = 0){return _value;};
+        virtual double get(int arg = 0) const {return _value;};
         virtual void update() = 0;
         
         virtual ~FlightVariable();
@@ -32,9 +32,9 @@ class Time_Since_Launch: public FlightVariable{
     public:
         Time_Since_Launch(); // system status
 
-        double get();
+        double get() override const;
         
-        void update();
+        void update() override;
     
     private:
         bool _launched;
@@ -46,9 +46,9 @@ class Time_Since_Apogee: public FlightVariable{
     public:
         Time_Since_Apogee();// system status
         
-        double get();
+        double get() override const;
         
-        void update();
+        void update() override;
     
     private:
         double _apogeeTime;
@@ -57,13 +57,13 @@ class Time_Since_Apogee: public FlightVariable{
 
 class Time_Since_Event: public FlightVariable{
     public:
-        Time_Since_Event(EventHandler& eventHandler);
+        Time_Since_Event(const EventHandler& eventHandler);
         
-        double get(int arg);
-        void update();
+        double get(int arg) override const;
+        void update() override;
     
     private:
-        EventHandler& _eventHandler;
+        const EventHandler& _eventHandler;
          
         double _apogeeTime;
         
@@ -76,7 +76,7 @@ class Apogee: public FlightVariable{
         
         //double get(){return FlightVariable::get();}
         
-        void update();
+        void update() override;
     
 };
 
@@ -86,7 +86,7 @@ class Speed: public FlightVariable{
         
         //double get(){return FlightVariable::get();}
         
-        void update();
+        void update() override;
     
 };
 
@@ -96,7 +96,7 @@ class Acceleration: public FlightVariable{
         
         //double get(){return FlightVariable::get();}
         
-        void update();
+        void update() override;
 };
 
 class Altitude: public FlightVariable{
@@ -105,7 +105,7 @@ class Altitude: public FlightVariable{
         
         //double get(){return FlightVariable::get();}
         
-        void update();
+        void update() override;
     
 };
 
