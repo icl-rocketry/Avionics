@@ -4,6 +4,7 @@
 # MODULES
 import csv
 import copy
+import os
 
 
 # UTILS
@@ -39,7 +40,8 @@ def parse_log(filename):
     # opening file
     try:
         filename = filename_handler(filename)
-        filepath = "./data/" + filename
+        filepath = os.path.dirname(__file__) + "/../data/" + filename
+        print(filepath)
         target = open(filepath, "r")
     except FileTypeError:
         print("FileTypeError: Specified file is not a .csv file.")
