@@ -26,6 +26,7 @@ flask_thread = None
 
 telemetry_broadcast_running:bool = False
 
+dummy_signal_running:bool = False
 r : redis.Redis = None
 rhost = ''
 rport = ''
@@ -96,12 +97,20 @@ def get_map():
     return render_template('map.html',x_window = 100)
 
 @socketio.on('connect',namespace='/telemetry')
-def connect():  
+def connect_telemetry():
     global telemetry_broadcast_running
     #start broadcasting telemetry on socketio on connection of the first client to the telemetry namespace
     if not telemetry_broadcast_running :
         telemetry_broadcast_running = True
         socketio.start_background_task(__TelemetryBroadcastTask__,rhost,rport)
+
+@socketio.on('connect', namespace='/')
+def connect():
+    global dummy_signal_running
+    if not dummy_signal_running:
+        dummy_signal_running = True
+        socketio.start_background_task(__DummySignalBroadcastTask__)
+
 
 # @socketio.on('send_packet',namespace='/sendData')
 # def socketio_send_data(data):
@@ -142,9 +151,14 @@ def __TelemetryBroadcastTask__(redishost,redisport):
 
         eventlet.sleep(.02)
 
+# dummy signal
+from emitter import emitter
+def __DummySignalBroadcastTask__():
+    while dummy_signal_running:
+        emitter.external_emitter('telemetry-log')
 
 def cleanup(sig=None,frame=None): #ensure the telemetry broadcast thread has been killed
-    global telemetry_broadcast_running
+    global telemetry_broadcast_running, dummy_signal_running
     
     # original
     # print("Flask Interface Exited")
@@ -152,6 +166,7 @@ def cleanup(sig=None,frame=None): #ensure the telemetry broadcast thread has bee
     print("\nFlask Interface Exited")
 
     telemetry_broadcast_running = False
+    dummy_signal_running = False
     sys.exit(0)
 
 
@@ -180,14 +195,11 @@ def startFlaskInterface(flaskhost="0.0.0.0", flaskport=5000,
         # server logs
         fake_signal_filename = 'telemetry_log.txt'
         print("Reading fake signal from " + fake_signal_filename)
-        print("Starting server on port " + str(flaskport) + " ...")
-
-        
-        # signalGenerator(filename)
+        print("Starting server on port " + str(flaskport) + "...")
 
         socketio.run(app, host=flaskhost, port=flaskport, debug=False, use_reloader=False)
         cleanup()
         
 
 if __name__ == "__main__":
-    startFlaskInterface(flaskport=3001)
+    startFlaskInterface(flaskport=3001, real_data=False)
