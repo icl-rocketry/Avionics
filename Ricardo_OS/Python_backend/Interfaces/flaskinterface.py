@@ -1,42 +1,54 @@
-import eventlet #Dont Monkey Patch 
-#this module is started as a multiprocessing process in the RicardoBackend.py module. If we monkey patch, we monkey patch everything else imported.
-# We can get away with this here as we make sure to not use anything requiring monkey patch i.e using socketio.start_background_task() instead of starting
-# the thread with python threading. Eventlet monkey patch changes the memory location of threading.current_thread resulting 
-# in (threading.current_tread() is threading.main_thread() returning false which breaks cmd2...
-from flask import Flask,jsonify,request,Response,render_template
-from flask_socketio import SocketIO, emit
+# PACKAGES
+# flask packages
+from flask import Flask, jsonify, request, Response, render_template, send_from_directory
+from flask_socketio import SocketIO, emit, send # added emit from flask_socketio
+# system packages
 import time
 import redis
 import json
 import signal
 import sys
-
-# packages used to send static files from frontend
-from flask import send_from_directory
 import os
+# third-party packages
+import eventlet # re-formatted eventlet comment
+'''
+Dont Monkey Patch 
+this module is started as a multiprocessing process in the RicardoBackend.py 
+module. If we monkey patch, we monkey patch everything else imported. We can 
+get away with this here as we make sure to not use anything requiring monkey 
+patch i.e using socketio.start_background_task() instead of starting the thread 
+with python threading. Eventlet monkey patch changes the memory location of 
+threading.current_thread resulting in (threading.current_tread() is 
+threading.main_thread() returning false which breaks cmd2...
+'''
 
 
+
+# APP INITIALIZATION
+# flask app 
 app = Flask(__name__, static_folder='../frontend/build')
 app.config["SECRET_KEY"] = "secret!"
 app.config['DEBUG'] = False
-
+# socketio app
 socketio = SocketIO(app,cors_allowed_origins="*",async_mode='eventlet')
 
-flask_thread = None
-
+# SYSTEM VARIABLES
+# thread-safe variables
 telemetry_broadcast_running:bool = False
-
 dummy_signal_running:bool = False
+flask_thread = None
+# redis variables
 r : redis.Redis = None
 rhost = ''
 rport = ''
-
-
+# misc
 prev_time = 0
 updateTimePeriod = 10e6
 
 
-# return react site
+
+# FLASK APP 
+# new / route: return react site
 @app.route('/', defaults={'path': ''})
 @app.route('/<path:path>')
 def serve(path):
@@ -45,12 +57,12 @@ def serve(path):
     else:
         return send_from_directory(app.static_folder, 'index.html')
 
+# original / route: return hello world
 # @app.route('/')
 # def index():
 #     print("GET / 200")
 #     #maybe here have a webpage with current status
 #     return "Hello world", 200
-
 
 @app.route('/packet', methods=['POST'])
 def send_packet():
@@ -104,6 +116,9 @@ def connect_telemetry():
         telemetry_broadcast_running = True
         socketio.start_background_task(__TelemetryBroadcastTask__,rhost,rport)
 
+
+
+# SOCKETIO APP
 @socketio.on('connect', namespace='/')
 def connect():
     global dummy_signal_running
@@ -129,6 +144,10 @@ def connect():
 def disconnect():
     pass
 
+
+
+# UTIL FUNCTIONS
+# telemetry broadcast
 def __TelemetryBroadcastTask__(redishost,redisport):
     redis_connection = redis.Redis(host=redishost,port=redisport)
     prev_telemetry = {}
@@ -157,6 +176,7 @@ def __DummySignalBroadcastTask__():
     while dummy_signal_running:
         emitter.external_emitter('telemetry-log')
 
+# thread cleanup
 def cleanup(sig=None,frame=None): #ensure the telemetry broadcast thread has been killed
     global telemetry_broadcast_running, dummy_signal_running
     
@@ -171,7 +191,7 @@ def cleanup(sig=None,frame=None): #ensure the telemetry broadcast thread has bee
 
 
 
-    
+# DUTY FUNCTION
 def startFlaskInterface(flaskhost="0.0.0.0", flaskport=5000, 
                         redishost='localhost', redisport=6379, real_data=True):
     # original signal handler
@@ -200,6 +220,5 @@ def startFlaskInterface(flaskhost="0.0.0.0", flaskport=5000,
         socketio.run(app, host=flaskhost, port=flaskport, debug=False, use_reloader=False)
         cleanup()
         
-
 if __name__ == "__main__":
     startFlaskInterface(flaskport=3001, real_data=False)
