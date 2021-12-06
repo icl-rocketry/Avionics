@@ -3,6 +3,7 @@
 #include "flightVariable.h"
 #include <stdexcept>
 #include <memory>
+#include <functional>
 
 enum class Operator:uint8_t {
 	AND,
@@ -11,6 +12,12 @@ enum class Operator:uint8_t {
 	GT // Greater than
 };
 
+////////////////////////////////////////////////////////
+//		1. We can use std::function in place of Operator, makes the code cleaner...
+//		2. Why are we even bothering with flight variables? 
+//		   We can just use member variable pointers which we get from state estimator
+//		3. I feel like we could get rid of ConditionCondition and ConditionFlightVar
+//		   with some clever templating
 
 class Condition {
 
@@ -27,47 +34,37 @@ inline Condition::~Condition(){};
 class ConditionCondition: public Condition {
 public:
 	
-	ConditionCondition(std::unique_ptr<Condition> cond1, Operator op, std::unique_ptr<Condition> cond2):
+	ConditionCondition(std::unique_ptr<Condition> cond1, std::function<bool(bool, bool)> op, std::unique_ptr<Condition> cond2):
 	_cond1(std::move(cond1)),//move ownership to the condition object
 	_cond2(std::move(cond2)),
-	_op(op) 
-	{
-		(op == Operator::LT || op == Operator::GT) ? throw std::invalid_argument("Invalid operator type") : 0;
-	}
-
-	~ConditionCondition() {};
+	_op(std::move(op))
+	{ }
 
 
 
-	bool check();
-
-private:
-	// Condition& _cond1;
 	// Condition& _cond2;
 	std::unique_ptr<Condition> _cond1;
 	std::unique_ptr<Condition> _cond2;
 
-	Operator _op;
+	std::function<bool(bool, bool)> _op;
 
 };
 
 class ConditionFlightVar: public Condition {
 public:
 	
-	ConditionFlightVar(FlightVariable& var, Operator op, double threshold):
+	ConditionFlightVar(const FlightVariable& var, std::function<bool(double, double)> op, double threshold):
 	_var(var),
 	_threshold(threshold),
-	_op(op)
-	{
-		(op == Operator::AND || op == Operator::OR) ? throw std::invalid_argument("Invalid operator type") : 0;
-	};
+	_op(std::move(op))
+	{ };
 
 	~ConditionFlightVar() {};
 
 	bool check();
 
 private:
-	FlightVariable& _var;
+	const FlightVariable& _var;
 	double _threshold;
-	Operator _op;
+	std::function<bool(double, double)> _op;
 };
