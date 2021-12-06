@@ -7,6 +7,7 @@ import sys
 
 ap = argparse.ArgumentParser()
 ap.add_argument("-p", "--port", required=True, help="Port hosting ricardo", type=str)
+ap.add_argument("-f", "--filename", required=True, help="filename", type=str)
 args = vars(ap.parse_args())
 
 ser = serial.Serial(port = args['port'],baudrate = 115200)  # open serial port
@@ -24,7 +25,7 @@ ser.setDTR(True)
 data = ""
 
 def exitBackend(signalNumber, frame):
-    file = open('profile.txt', 'w')
+    file = open(args["filename"]+'.txt', 'w')
     file.write(data)
     file.close()
 
