@@ -1,27 +1,44 @@
 #pragma once
 
+#include <Arduino.h>
+#include <ArduinoJson.h>
+#include "rnp_networkmanager.h"
+
+#include "stateMachine.h"
+
+#include "Storage/logController.h"
+#include "Storage/systemstatus.h"
+
 // Abstract interface to engines
 
-enum class ENGINE_STATE:uint8_t{
-    NOMINAL,
-    ABNORMAL
+enum class ENGINESTATE:uint8_t{
+    SHUTDOWN,
+    IGNITION,
+    RUNNING
 };
-
-class stateMachine;
+struct EngineInfo{
+    ENGINESTATE EngineState;
+};
 
 class Engine{
     public:
-        Engine(stateMachine* sm); // logcontroller systemstatus networkmanager
+        Engine(LogController& logcontroller,SystemStatus& systemstatus,RnpNetworkManager& networkmanager); // logcontroller systemstatus networkmanager
 
         void update(); //????  
 
-        bool iginition();
-        int getStatus();
-        bool shutdown();
+        virtual void start();
+       
+        virtual void stop();
+        virtual EngineInfo* getInfo();
 
     private:
-        stateMachine* _sm;
-        ENGINE_STATE _engine_state;
+
+        LogController& _logcontroller;
+        SystemStatus& _systemstatus;
+        
+
+        
+        
 };
 
 

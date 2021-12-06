@@ -83,7 +83,7 @@ class TelemetryPacket : public RnpPacket{
         //estimator output
         float pn, pe, pd; // position NED (m)
         float vn, ve, vd; // velocity NED (m/s)
-        float an, ae, ad; // acceleration NED (m/s^2)
+        float an, ae, ad; // acceleration NED (g's)
         //orientation
         float roll,pitch,yaw; // orientation degrees
         float q0,q1,q2,q3; //quaternion representation

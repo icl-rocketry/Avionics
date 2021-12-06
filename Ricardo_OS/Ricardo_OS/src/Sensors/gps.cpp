@@ -82,7 +82,7 @@ void GPS::update()
 
 
 
-       //gnss.flushPVT();
+    //    gnss.flushPVT();
    }else{
        _raw_data->gps_updated = false;
    }

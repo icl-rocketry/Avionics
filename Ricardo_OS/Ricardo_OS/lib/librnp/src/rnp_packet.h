@@ -5,7 +5,7 @@
 
 class RnpPacket {
     public:
-        ~RnpPacket();
+        virtual ~RnpPacket();
 
         /**
          * @brief Construct a new Rnp Packet object
