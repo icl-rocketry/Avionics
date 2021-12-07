@@ -27,7 +27,7 @@ enum class FLIGHT_VARIABLE:unsigned int{
     Speed,
     Acceleration,
     Apogee,
-    __COUNT // THIS VARIABLE HAS TO BE THE LAST!!
+    _COUNT // THIS VARIABLE HAS TO BE THE LAST!!
 
 };
 
@@ -65,7 +65,7 @@ class FlightVariableHandler{
         Apogee _apogee;
 
         //container of pointers to flight variables
-        std::array<FlightVariable*,static_cast<unsigned int>(FLIGHT_VARIABLE::__COUNT)> _flightVariables{{
+        std::array<FlightVariable*,static_cast<unsigned int>(FLIGHT_VARIABLE::_COUNT)> _flightVariables{{
             (FlightVariable*)&_time_since_launch,
             (FlightVariable*)&_time_since_apogee,
             (FlightVariable*)&_time_since_event,
