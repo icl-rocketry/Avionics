@@ -4,16 +4,15 @@
 
 #include "string"
 
-Pyro::Pyro(PYRO_TYPE type,SystemStatus* systemstatus,uint8_t id):
+Pyro::Pyro(uint8_t id,uint16_t duration,SystemStatus& systemstatus,PYROTYPE pyrotype):
+_id(id),
+_fireDuration(duration),
 _systemstatus(systemstatus),
-_type(type),
-_continuity(false),
-_id(id)
+_pyrotype(pyrotype),
+_continuity(false)
 {};
 
-Pyro::~Pyro(){};
-
-void Pyro::doStuff(uint8_t duration){
-    _systemstatus->new_message(SYSTEM_FLAG::WARN_PYRO,"Pyro " + std::to_string(_id) + " firing for " + std::to_string(duration) + " seconds!");
-    _systemstatus->delete_message(SYSTEM_FLAG::WARN_PYRO);
+void Pyro::doStuff(){
+    _systemstatus.new_message(SYSTEM_FLAG::WARN_PYRO,"Pyro " + std::to_string(_id) + " firing for " + std::to_string(_fireDuration) + " seconds!");
+    _systemstatus.delete_message(SYSTEM_FLAG::WARN_PYRO);
 }

@@ -10,21 +10,22 @@ using flightvariablefunc_t = std::function<flightvariable_t(int)>;
 
 class FlightVariables;
 using memberfunc = std::function<flightvariable_t(FlightVariables*,int)>;
-
 class FlightVariables{
-	// typedef flightvariable_t (FlightVariables::*MFP)();
-	// using MFP = flightvariable_t (FlightVariables::*)(int);
+    public:
+    
+	flightvariablefunc_t get(const std::string& funcName);
 
-	flightvariablefunc_t get(const std::string& );
-        
     private:
         flightvariable_t TimeSinceLaunch(int arg=0);
         flightvariable_t TimeSinceApogee(int arg=0);
         flightvariable_t TimeSinceEvent(int arg=0);
         flightvariable_t Velocity(int arg=0);
 		flightvariable_t Acceleration(int arg=0);
+
+		FlightVariables() = default;
 	
-	static const std::unordered_map<std::string, memberfunc> function_map;
+	
+    static const std::unordered_map<std::string, memberfunc> function_map;
 
 };
 

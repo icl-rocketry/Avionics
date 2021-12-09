@@ -1,34 +1,34 @@
-//abstract pyro interface
+//base pyro interface
 
 #ifndef PYRO_H
 #define PYRO_H
 
 #include <Arduino.h>
+
 #include "Storage/systemstatus.h"
+#include "Storage/logController.h"
 
-
-enum class PYRO_TYPE:uint8_t{
-    LOCAL, //local gpio type igniter
-    REMOTE_BT //bluetooth remote igniter
+enum class PYROTYPE:uint8_t{
+    LOCAL,
+    NETWORKED
 };
 
 class Pyro{
 
     public:
-        Pyro(PYRO_TYPE type,SystemStatus* systemstatus,uint8_t id);     
+        Pyro(uint8_t id,uint16_t duration,SystemStatus& systemstatus,PYROTYPE pyrotype);     
         /**
-         * @brief Check continiuty of ematch
+         * @brief Check continiuty of ematch and update the internal continuity state
          * 
          * @return true 
          * @return false 
          */
-        virtual bool check_continuity() = 0; 
+        virtual void check_continuity() = 0; 
         /**
          * @brief Fire the pyro
          * 
-         * @param duration 
          */
-        virtual void doStuff(uint8_t duration);
+        virtual void doStuff();
         /**
          * @brief Get the Continuity status
          * 
@@ -36,14 +36,27 @@ class Pyro{
          * @return false 
          */
         bool getContinuity(){return _continuity;};
+
+        /**
+         * @brief Set the how long the ematch is fired for
+         * 
+         * @param duration 
+         */
+        void setDuration(uint16_t duration){_fireDuration = duration;};
+
+        PYROTYPE getType(){return _pyrotype;};
         
-        virtual ~Pyro() = 0;
+        virtual ~Pyro(){};
 
     protected:
-        SystemStatus* _systemstatus; // pointer to system status object
-        PYRO_TYPE _type; //type of igniter
-        bool _continuity; 
         uint8_t _id; // pyro id for logging purposes
+        uint16_t _fireDuration; // how long we fire the ematch for
+        SystemStatus& _systemstatus; // pointer to system status object
+        PYROTYPE _pyrotype;
+        bool _continuity; 
+        
+        
+        
 
        
 };

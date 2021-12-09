@@ -1,40 +1,41 @@
 #pragma once
 
-#include <Arduino.h>
-#include <ArduinoJson.h>
-#include "rnp_networkmanager.h"
 
-#include "stateMachine.h"
 
 #include "Storage/logController.h"
 #include "Storage/systemstatus.h"
+#include "Pyros/pyroHandler.h"
 
-// Abstract interface to engines
+// base class for engines
 
-enum class ENGINESTATE:uint8_t{
-    SHUTDOWN,
-    IGNITION,
-    RUNNING
+enum class ENGINESTATE:uint16_t{
+    STARTED = (1<<0),
+    SHUTDOWN = (1<<1)
+
 };
 struct EngineInfo{
-    ENGINESTATE EngineState;
+    uint16_t EngineState;
+    uint32_t ignitiionTime;
+    uint32_t shutdownTime;
 };
 
 class Engine{
     public:
-        Engine(LogController& logcontroller,SystemStatus& systemstatus,RnpNetworkManager& networkmanager); // logcontroller systemstatus networkmanager
-
-        void update(); //????  
+        Engine(uint8_t engineID,LogController& logcontroller,SystemStatus& systemstatus,PyroHandler& pyrohandler);
 
         virtual void start();
+        virtual void shutdown();
+
+        virtual ~Engine(){}; // virtual empty destructor 
        
-        virtual void stop();
-        virtual EngineInfo* getInfo();
+        virtual const EngineInfo* getInfo() = 0;
 
-    private:
-
+    protected:
+        uint8_t _engineID;
         LogController& _logcontroller;
         SystemStatus& _systemstatus;
+        PyroHandler& _pyrohandler;
+        // RnpNetworkManager& _networkmanager;
         
 
         

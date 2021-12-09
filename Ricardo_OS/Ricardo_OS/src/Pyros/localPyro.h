@@ -6,15 +6,14 @@
 
 class LocalPyro:public Pyro{
     public:
-        LocalPyro(uint8_t id,uint8_t continuity_pin,uint8_t fire_pin,SystemStatus* systemstatus);
+        LocalPyro(uint8_t id,uint16_t duration,SystemStatus& systemstatus,uint8_t continuity_pin,uint8_t fire_pin);
 
-        bool check_continuity();
-
-        void doStuff(uint8_t duration);
+        void check_continuity() override;
+        void doStuff() override;
 
     private:
-        uint8_t _continuity_pin;
-        uint8_t _fire_pin;
+        const uint8_t _continuity_pin;
+        const uint8_t _fire_pin;
 };
 
 #endif
