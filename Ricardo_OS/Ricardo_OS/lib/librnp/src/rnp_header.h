@@ -15,7 +15,8 @@ class RnpHeader {
                 &RnpHeader::start_byte,
                 &RnpHeader::packet_len,
                 &RnpHeader::uid,
-                &RnpHeader::service,
+                &RnpHeader::source_service,
+                &RnpHeader::destination_service,
                 &RnpHeader::type,
                 &RnpHeader::source,
                 &RnpHeader::destination,
@@ -49,7 +50,8 @@ class RnpHeader {
         uint8_t start_byte = 0xAF; // Marks the begin of the header
         uint16_t packet_len = 0x00; // packet length not including header length
         uint16_t uid = 0x00000000; // unique id -> used for request response needs to be unique for source desintaiton pair
-        uint8_t service = 0x00; //service id
+        uint8_t source_service = 0x00; //source service id
+        uint8_t destination_service = 0x00; //service id
         uint8_t type = 0x00; // Type of the packet
         uint8_t source = 0x00; // Source interface ID for the packet
         uint8_t destination = 0x00; // Destination interface ID for the packet
@@ -69,7 +71,8 @@ class RnpHeader {
             aout<<  "start_byte: " << (int)header.start_byte << "\n";  
             aout<<  "packet_len: " << (int)header.packet_len<< "\n"; 
             aout<<  "uid: " << (int)header.uid<< "\n"; 
-            aout<<  "service: " << (int)header.service<< "\n"; 
+            aout<<  "source_service: " << (int)header.source_service<< "\n"; 
+            aout<<  "destination_service: " << (int)header.destination_service<< "\n"; 
             aout<<  "type: " << (int)header.type<< "\n"; 
             aout<<  "source: " << (int)header.source<< "\n";
             aout<<  "destination: " << (int)header.destination<< "\n"; 

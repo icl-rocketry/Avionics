@@ -20,7 +20,7 @@ class NetworkPyro:public Pyro{
          * 
          * @param packet 
          */
-        void networkCallback(std::unique_ptr<RnpPacketSerialized> packet);
+        void networkCallback(std::unique_ptr<RnpPacketSerialized> packet_ptr);
 
     private:
         RnpNetworkManager& _networkmanager; // reference to network manager

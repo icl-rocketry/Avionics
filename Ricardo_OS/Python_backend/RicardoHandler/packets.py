@@ -5,19 +5,22 @@ class DeserializeError(Exception):
 	pass
 class Header:
 	
-	struct_str='<BHHBBBBB'
+	struct_str='<BHHBBBBBB'
 	size = struct.calcsize(struct_str)
 	_start_byte = 0xAF
 	
 
 	def __init__(self,packet_len:int = 0,uid:int = 0,
-				service:int = 0, packet_type:int = 0,
-				source:int = 0, destination:int = 0, hops:int = 0):
+				source_service:int = 0,destination_service:int = 0,
+				packet_type:int = 0,
+				source:int = 0, destination:int = 0, 
+				hops:int = 0):
 
 		self.start_byte = Header._start_byte
 		self.packet_len = packet_len
 		self.uid = uid
-		self.service = service
+		self.source_service = source_service
+		self.destination_service = destination_service
 		self.packet_type = packet_type
 		self.source = source
 		self.destination = destination
@@ -45,7 +48,7 @@ class Header:
 		return bytes(packet_bytes)
 	
 	def __str__(self):
-		return f'HEADER:\n\tstart byte = {self.start_byte}\n\tpacket len = {self.packet_len}\n\tuid = {self.uid}\n\tservice = {self.service}\n\tpacket type = {self.packet_type}\n\tsource = {self.source}\n\tdestination = {self.destination}\n\thops = {self.hops}'
+		return f'HEADER:\n\tstart byte = {self.start_byte}\n\tpacket len = {self.packet_len}\n\tuid = {self.uid}\n\tsource_service = {self.source_service}n\tdestination_service = {self.destination_service}\n\tpacket type = {self.packet_type}\n\tsource = {self.source}\n\tdestination = {self.destination}\n\thops = {self.hops}'
 
 
 class Packet:
@@ -55,10 +58,10 @@ class Telemetry(Packet):
 	
 	struct_str = '<fffffffffffffffffflBffffffffffffHHfflLQhf'
 	size = struct.calcsize(struct_str)
-	service = 2
+	service = 3
 	packet_type = 0
 
-	def __init__(self, header: Header = Header(packet_len=size,service=service,packet_type=packet_type),
+	def __init__(self, header: Header = Header(packet_len=size,destination_service=service,packet_type=packet_type),
 				pn: float = 0, pe: float = 0, pd: float = 0,
 				vn: float = 0, ve: float = 0, vd: float = 0,
 				an: float = 0, ae: float = 0, ad: float = 0,
@@ -154,10 +157,10 @@ class SimpleCommand(Packet):
 	
 	struct_str = '<BI'
 	size = struct.calcsize(struct_str)
-	service = 1
+	service = 2
 	packet_type = 0
 
-	def __init__(self, header: Header= Header(packet_len=size,service=service,packet_type=packet_type), command: int = 0, arg: int = 0):
+	def __init__(self, header: Header= Header(packet_len=size,destination_service=service,packet_type=packet_type), command: int = 0, arg: int = 0):
 
 		self.header = header
 
@@ -169,8 +172,8 @@ class SimpleCommand(Packet):
 	@staticmethod
 	def from_bytes(data: bytes): # Deserialize from a bytearray
 		header = Header.from_bytes(data)
-		telemetry_data = data[Header.size:] # Drop the first n bytes beloning to header
-		variable_list = struct.unpack(SimpleCommand.struct_str,telemetry_data)
+		command_data = data[Header.size:] # Drop the first n bytes beloning to header
+		variable_list = struct.unpack(SimpleCommand.struct_str,command_data)
 		obj = SimpleCommand(header,*variable_list)
 		
 		return obj

@@ -7,9 +7,10 @@
 RnpHeader::RnpHeader() {}
 RnpHeader::~RnpHeader() {}
 
-RnpHeader::RnpHeader(uint8_t packetService, uint8_t packetType, uint16_t packetSize):
+RnpHeader::RnpHeader(uint8_t destinationService, uint8_t packetType, uint16_t packetSize):
 packet_len{packetSize},
-service{packetService},
+source_service{0},//default is zero
+destination_service{destinationService},
 type{packetType},
 hops{0}
 {};

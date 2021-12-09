@@ -18,10 +18,8 @@ class Pyro{
     public:
         Pyro(uint8_t id,uint16_t duration,SystemStatus& systemstatus,PYROTYPE pyrotype);     
         /**
-         * @brief Check continiuty of ematch and update the internal continuity state
+         * @brief Check continiuty of ematch and update the internal continuity state, this requqests an update to the status but may take time to update
          * 
-         * @return true 
-         * @return false 
          */
         virtual void check_continuity() = 0; 
         /**

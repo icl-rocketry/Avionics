@@ -5,19 +5,22 @@ class DeserializeError(Exception):
 	pass
 class Header:
 	
-	struct_str='<BHHBBBBB'
+	struct_str='<BHHBBBBBB'
 	size = struct.calcsize(struct_str)
 	_start_byte = 0xAF
 	
 
 	def __init__(self,packet_len:int = 0,uid:int = 0,
-				service:int = 0, packet_type:int = 0,
-				source:int = 0, destination:int = 0, hops:int = 0):
+				source_service:int = 0,destination_service:int = 0,
+				packet_type:int = 0,
+				source:int = 0, destination:int = 0, 
+				hops:int = 0):
 
 		self.start_byte = Header._start_byte
 		self.packet_len = packet_len
 		self.uid = uid
-		self.service = service
+		self.source_service = source_service
+		self.destination_service = destination_service
 		self.packet_type = packet_type
 		self.source = source
 		self.destination = destination
@@ -45,7 +48,7 @@ class Header:
 		return bytes(packet_bytes)
 	
 	def __str__(self):
-		return f'HEADER:\n\tstart byte = {self.start_byte}\n\tpacket len = {self.packet_len}\n\tuid = {self.uid}\n\tservice = {self.service}\n\tpacket type = {self.packet_type}\n\tsource = {self.source}\n\tdestination = {self.destination}\n\thops = {self.hops}'
+		return f'HEADER:\n\tstart byte = {self.start_byte}\n\tpacket len = {self.packet_len}\n\tuid = {self.uid}\n\tsource_service = {self.source_service}n\tdestination_service = {self.destination_service}\n\tpacket type = {self.packet_type}\n\tsource = {self.source}\n\tdestination = {self.destination}\n\thops = {self.hops}'
 
 
 class Packet:
@@ -55,10 +58,10 @@ class MagCalCommand(Packet):
 	
 	struct_str = '<Bfffffffffffffff'
 	size = struct.calcsize(struct_str)
-	service = 1
+	service = 2
 	packet_type = 10
 
-	def __init__(self, header: Header = Header(packet_len=size,service=service,packet_type=packet_type),
+	def __init__(self, header: Header = Header(packet_len=size,destination_service=service,packet_type=packet_type),
 				command:int = 0,
 				fieldMagnitude:float=0,inclination:float=0,declination:float=0,
 				A11:float=0,A12:float=0,A13:float=0,
@@ -120,10 +123,10 @@ class SimpleCommand(Packet):
 	
 	struct_str = '<BI'
 	size = struct.calcsize(struct_str)
-	service = 1
+	service = 2
 	packet_type = 0
 
-	def __init__(self, header: Header= Header(packet_len=size,service=service,packet_type=packet_type), command: int = 0, arg: int = 0):
+	def __init__(self, header: Header= Header(packet_len=size,destination_service=service,packet_type=packet_type), command: int = 0, arg: int = 0):
 
 		self.header = header
 

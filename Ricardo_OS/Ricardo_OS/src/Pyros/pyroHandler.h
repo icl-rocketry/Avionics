@@ -15,6 +15,7 @@
 
 
 
+
 class PyroHandler{
     public:
         PyroHandler(RnpNetworkManager& rnpnetman,SystemStatus& systemstatus,LogController& logcontroller);
@@ -26,6 +27,7 @@ class PyroHandler{
 
         Pyro* get(int pyroID);
 
+        static constexpr uint8_t PyroHandlerServiceID = static_cast<uint8_t>(DEFAULT_SERVICES::PYRO);
     
     private:
         RnpNetworkManager& _rnpnetman;
@@ -33,9 +35,7 @@ class PyroHandler{
         LogController& _logcontroller;
 
         std::vector<std::unique_ptr<Pyro> > _pyroList; // vector containing pointers to all pyro objects
-        
-        std::unordered_map<uint8_t,uint8_t> _pyroNetworkMap; // maping a network address to a pyro id <KEY(node address),VALUE (pyroID)>
-        
+
         /**
          * @brief network callback used when registering the pyro serivce
          * 

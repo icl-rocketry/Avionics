@@ -31,9 +31,12 @@ enum class NODETYPE : uint8_t{
 };
 
 enum class DEFAULT_SERVICES:uint8_t{
-    NETMAN = 0,
-    COMMAND = 1,
-    TELEMETRY = 2
+    NOSERVICE = 0, //if not serivce is specified
+    NETMAN = 1,
+    COMMAND = 2,
+    TELEMETRY = 3,
+    PYRO = 4,
+    ENGINE = 5
 };
 
 

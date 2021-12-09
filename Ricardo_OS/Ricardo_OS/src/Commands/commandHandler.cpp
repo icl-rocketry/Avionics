@@ -213,7 +213,9 @@ void CommandHandler::TelemetryCommand(const RnpPacketSerialized& packet)
 	TelemetryPacket telemetry;
 
 	telemetry.header.source = _sm->networkmanager.getAddress();
+	telemetry.header.source_service = serviceID;
 	telemetry.header.destination = commandpacket.header.source;
+	telemetry.header.destination_service = commandpacket.header.source_service;
 	telemetry.header.uid = commandpacket.header.uid; 
 	telemetry.system_time = millis();
 

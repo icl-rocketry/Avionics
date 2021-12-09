@@ -11,15 +11,24 @@ _pyroID(pyroID)
 
 
 void SimpleEngine::start(){
-    _pyrohandler.fire(_pyroID);
+    Engine::start();
     engineinfo.ignitiionTime = millis();
+    _pyrohandler.get(_pyroID)->doStuff(); // fire pyro
     
 };
 
 void SimpleEngine::shutdown(){
+    Engine::shutdown();
     engineinfo.shutdownTime = millis();
 };
 
 const EngineInfo* SimpleEngine::getInfo(){
-    _pyrohandler.
+    if (!_pyrohandler.get(_pyroID)->getContinuity()){
+        engineinfo.EngineState |= static_cast<uint16_t>(SIMPLEENGINESTATE::PYROERROR); //no continuity
+    }else{
+        //we have continuity
+        engineinfo.EngineState &= ~static_cast<uint16_t>(SIMPLEENGINESTATE::PYROERROR);
+    }
+    return &engineinfo;
+
 }

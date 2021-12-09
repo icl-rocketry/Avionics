@@ -254,7 +254,7 @@ void RnpNetworkManager::routePackets(){
         return; 
     }
 
-    uint8_t packetService = packet_ptr->header.service;
+    uint8_t packetService = packet_ptr->header.destination_service;
     if (packetService == static_cast<uint8_t>(DEFAULT_SERVICES::NETMAN)){ // handle network management packets
         NetManHandler(std::move(packet_ptr));
     }else{
@@ -279,6 +279,8 @@ void RnpNetworkManager::NetManHandler(packetptr_t packet_ptr){
             PingPacket pong(*packet_ptr);
             std::swap(pong.header.destination,pong.header.source);
             pong.header.type = (uint8_t)NETMAN_TYPES::PING_RES; // change type from request to response
+            pong.header.destination_service = pong.header.source_service; //reply ping to orignator service
+            pong.header.source_service = (uint8_t)DEFAULT_SERVICES::NETMAN; // update source service
             sendPacket(pong);
             log("ping sent");
             break;

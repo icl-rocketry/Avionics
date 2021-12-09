@@ -2,6 +2,7 @@
 #include "pyro.h"
 #include "networkPyro.h"
 #include "localPyro.h"
+#include "Packets/pyroPackets.h"
 
 #include "rnp_networkmanager.h"
 #include "Storage/systemstatus.h"
@@ -38,15 +39,14 @@ Pyro* PyroHandler::get(uint8_t pyroID)
     return _pyroList[pyroID].get(); // return a non-owning pointer to callee
 };
 
-void Pyrohandler::networkCallback(std::unique_ptr<RnpPacketSerialized> packet){
-    uint8_t senderAddress = packet.header.source;
-    // lookup pyroID from network map
-    uint8_t pyroID = _pyroNetworkMap.at(senderAddress);
+void Pyrohandler::networkCallback(std::unique_ptr<RnpPacketSerialized> packet_ptr){
+    // get pyro id from packet
+    uint8_t pyroID = PyroPacket::getPyroID(*packet_ptr);
 
     Pyro* pyro = get(pyroID); // get pointer to pyro object
 
     if (pyro == nullptr){
-        _logcontroller.log("PyroHandler networkCallback Failed");
+        _logcontroller.log("PyroHandler no pyro found at id supplied");
         return; // check an invalid pyro hasnt been returned
     }
 
@@ -56,11 +56,12 @@ void Pyrohandler::networkCallback(std::unique_ptr<RnpPacketSerialized> packet){
     }
 
     NetworkPyro* netpyro = dynamic_cast<NetworkPyro*>(pyro);
+
     if (netpyro == NULL){
         _logcontroller.log("PyroHandler bad dynamic cast");
         return; 
     }
-    netpyro->networkCallback(std::move(packet));
+    netpyro->networkCallback(std::move(packet_ptr));
     
 }
 
