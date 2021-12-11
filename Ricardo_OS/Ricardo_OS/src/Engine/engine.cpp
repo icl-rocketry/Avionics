@@ -16,10 +16,10 @@ _pyrohandler(pyrohandler)
 void Engine::start() 
 {
     _logcontroller.log("Engine : " + std::to_string(_engineID) + " started...");
-    
+
 }
 
-void Engine::stop() 
+void Engine::shutdown() 
 {
     _logcontroller.log("Engine : " + std::to_string(_engineID) + " shutdown...");
 }
