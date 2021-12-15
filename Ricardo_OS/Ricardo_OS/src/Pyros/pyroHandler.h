@@ -13,6 +13,14 @@
 #include <ArduinoJson.h>
 #include <unordered_map>
 
+/****
+ * TODO:
+ * Add deployment lockout using a system wide flag
+ * disable deploment when debug is entered
+ * add deployment full test option where all deploymet channels are tested
+ * add servo specialization as deployers can either by pyro or servo based
+ * 
+ ****/
 
 
 

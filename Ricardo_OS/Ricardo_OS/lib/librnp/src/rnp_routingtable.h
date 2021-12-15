@@ -7,6 +7,7 @@
 #include <utility>
 #include <sstream>
 #include <string>
+#include <iostream>
 
 
 
@@ -17,6 +18,13 @@ struct Route{
     uint8_t metric;
     std::variant<std::monostate,std::string> address;
 };
+
+//overload monostate stream operator so that std::visit plays nicley with 
+// std::ostream& operator<<(std::ostream& os, const std::monostate& var)
+// {
+//     os << "- NO ADDRESS - |";
+//     return os;
+// }
 
 class RoutingTable{
     public:
@@ -80,11 +88,14 @@ class RoutingTable{
                 }else{
                     Route r = std::get<Route>(elem);
                     sout<<" | "<<(int)r.iface<<" | "<<(int)r.metric<<" | ";
-                    if (std::holds_alternative<std::monostate>(r.address)){
+                    if (std::holds_alternative<std::monostate>(r.address)){ // cant visit the variant as std::monostate does not have a ostream operator defined 
                         sout<<" - NO ADDRESS - |";
-                    }else{
+                    }else if (std::holds_alternative<std::string>(r.address)){
                         sout<<std::get<std::string>(r.address)<<" |";
                         //std::visit([&sout](const auto &elem) { sout << elem << "|"; }, r.address);
+                        // std::visit([&sout](auto& lla){ sout << lla << "|"; }, r.address);
+                    }else{
+                        sout<<" INVALID ADDRESS TYPE |";
                     }
                 }
                 sout<< "\n";

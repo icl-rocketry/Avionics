@@ -16,6 +16,6 @@ void LocalPyro::check_continuity(){
 void LocalPyro::doStuff(){
     Pyro::doStuff(); // call base implmenetation to log the fire command
     //fire the pyro for the duration
-    // spawn freertos task to run for the correct duration using isr?
+    // spawn freertos task to run for the correct duration 
 
 };
