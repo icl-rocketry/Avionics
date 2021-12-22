@@ -12,7 +12,7 @@ class BaroFilter{
          * 
          * @param alpha exponential weighting
          */
-        BaroFilter(float alpha);
+        explicit BaroFilter(float alpha);
 
         /**
          * @brief Get filtered altitude reading
