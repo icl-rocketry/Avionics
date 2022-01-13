@@ -23,7 +23,7 @@ MarkupSafe==2.0.1
 matplotlib==3.4.2
 numpy==1.20.3
 pandas
-Pillow==8.3.2
+Pillow==9.0.0
 pipreqs==0.4.10
 pygame==2.0.1
 PyOpenGL==3.1.5
