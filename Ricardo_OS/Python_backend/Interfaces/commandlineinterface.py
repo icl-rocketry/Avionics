@@ -4,6 +4,7 @@ from cmd2.decorators import with_argparser
 import redis
 import json
 import sys
+import pprint
 
 
 
@@ -49,6 +50,22 @@ class CommandLineInterface(cmd2.Cmd):
             new_state["dt"] = opts.dt
         #push new state to redis
         self.r.set(opts.task + ":STATE",json.dumps(new_state))
+
+    def do_tasklist(self,opts):
+        for key in self.r.scan_iter("*:STATE"):
+            try:
+                taskname = key.decode('UTF-8')
+            except:
+                taskname = str(key)
+            self.stdout.write(taskname)
+            self.stdout.write("\n")
+            try:
+                self.stdout.write(pprint.pformat(json.loads(self.r.get(key))))
+            except:
+                self.stdout.write("INVALID STATE")
+            self.stdout.write("\n")
+
+
     
     def sigint_handler(self, signum, param2) -> None:
         #override default behaviour to exit on ctrl c
