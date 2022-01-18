@@ -1,1 +1,4 @@
 
+[submodule "Ricardo_OS/Ricardo_OS/lib/librnp"]
+	path = Ricardo_OS/Ricardo_OS/lib/librnp
+	url = git@github.com:icl-rocketry/librnp.git
