@@ -20,7 +20,35 @@ except ImportError:
     external = False
 
 
+#Class implementation to respect the kill signal from flaskinterface
+class EmitterClass():
+    def __init__(self,filename:str,loop:bool = False):
+        self.data_array = parser_csv.parse_log(filename)
+        self.index = 0
+        self.loop = loop
 
+    def emit(self):
+        if self.index < len(self.data_array):
+            item = self.data_array[self.index]
+            package = processor.format_package(item["data"])
+            if external:
+                # emit socketio signal
+                print("Emitting package " + str(self.index))
+                socketio.emit("telemetry", package, namespace="/telemetry",broadcast=True)
+            else:
+                # print package when emitted
+                print(package)
+
+            self.index += 1
+            if self.loop and self.index == len(self.data_array):
+                self.index = 0
+
+            eventlet.sleep(item["interval"]/1000)
+        return
+
+        
+              
+        
 
 # DUTY FUNCTION
 def emitter(data_array):

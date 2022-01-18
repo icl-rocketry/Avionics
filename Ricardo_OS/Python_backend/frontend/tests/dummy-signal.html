@@ -19,7 +19,7 @@
             console.log("Socket connected with id ", socket.id, "...")
         })
 
-        socket.on("package", (package) => {
+        socket.on("telemetry", (package) => {
             document.getElementById('data').innerHTML = syntaxHighlight(package);
             packageobj = JSON.parse(package)
             console.log("Package received @ client: ", Date.now()/1000, "& server: ", packageobj["system_time"])
