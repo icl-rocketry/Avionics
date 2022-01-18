@@ -23,8 +23,6 @@ threading.current_thread resulting in (threading.current_tread() is
 threading.main_thread() returning false which breaks cmd2...
 '''
 
-
-
 # APP INITIALIZATION
 # flask app 
 app = Flask(__name__, static_folder='../frontend/build')
@@ -107,7 +105,6 @@ def get_map():
 def connect_telemetry():
     pass
 
-
 # SOCKETIO APP
 @socketio.on('connect', namespace='/')
 def connect():
@@ -142,25 +139,21 @@ def __TelemetryBroadcastTask__(redishost,redisport):
     prev_telemetry = {}
     
     while telemetry_broadcast_running:
+        eventlet.sleep(updateTimePeriod)# sleep for update time 
         telemetry_data = redis_connection.get("telemetry")
         if telemetry_data is not None:
-            if prev_telemetry.get("connectionstatus",None) is not None and True: #check if theres prev_telemetry and that we are connected
-                
-                if (prev_telemetry.get("system_time",0) == (json.loads(telemetry_data)).get("system_time",0)):#dont broadcast a duplicate packet
-                    continue
-
-            socketio.emit('telemetry', json.loads(telemetry_data), broadcast=True,namespace='/telemetry') #need to see how this function handles socketio not being started
-        prev_telemetry = json.loads(telemetry_data)
-        eventlet.sleep(updateTimePeriod)# sleep for update time 
+            if (prev_telemetry.get("system_time",0) != (json.loads(telemetry_data)).get("system_time",0)) or not prev_telemetry:#only broadcast new data
+                socketio.emit('telemetry', json.loads(telemetry_data), broadcast=True,namespace='/telemetry') #need to see how this function handles socketio not being started
+            prev_telemetry = json.loads(telemetry_data)
+        
     
     print('TelemetryBroadcastTask Killed')
 
 # dummy signal
-from emitter import emitter
 def __DummySignalBroadcastTask__():
+    from emitter import emitter
     global dummy_signal_running
     dummy_signal_running = True
-
     e = emitter.EmitterClass('telemetry-log')
     while dummy_signal_running:
         e.emit() #call emit
@@ -190,7 +183,7 @@ def startFlaskInterface(flaskhost="0.0.0.0", flaskport=5000,
 
 
         socketio.start_background_task(__TelemetryBroadcastTask__,redishost,redisport)
-        socketio.run(app, host=flaskhost, port=flaskport, debug=False, use_reloader=False)
+        socketio.run(app, host=flaskhost, port=flaskport, debug=True, use_reloader=False)
         cleanup()
 
     # fake signal handler
