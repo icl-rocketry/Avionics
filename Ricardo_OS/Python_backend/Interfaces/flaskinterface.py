@@ -31,16 +31,16 @@ app.config["SECRET_KEY"] = "secret!"
 app.config['DEBUG'] = False
 # socketio app
 socketio = SocketIO(app,cors_allowed_origins="*",async_mode='eventlet')
+socketio_clients = []
 
 # SYSTEM VARIABLES
 # thread-safe variables
 telemetry_broadcast_running:bool = False
+socketio_response_task_running:bool = False
 dummy_signal_running:bool = False
 
 # redis variables
 r : redis.Redis = None
-rhost = ''
-rport = ''
 # misc
 prev_time = 0
 updateTimePeriod = 0.01 #in seconds
@@ -101,35 +101,51 @@ def get_graph():
 def get_map():
     return render_template('map.html',x_window = 100)
 
-@socketio.on('connect',namespace='/telemetry')
-def connect_telemetry():
-    pass
 
 # SOCKETIO APP
+@socketio.on('connect',namespace='/telemetry')
+def connect_telemetry():
+    # maybe emit the newest telemetry so connecting clients know whats up
+    pass
+
 @socketio.on('connect', namespace='/')
 def connect():
     pass
 
-# @socketio.on('send_packet',namespace='/sendData')
-# def socketio_send_data(data):
-#     try:
-#         packetData = json.loads(data)
-#     except:
-#         print("Json deserialization error")
-#         return
+@socketio.on('connect',namespace='/command')
+def connect_command():
+    print("Client : " + request.sid + " joined command...")
+    socketio_clients.append(request.sid)
     
-#     if all (keys in packetData for keys in ("data","clientid")):
-#         packetData["clientid"] = packetData["clientid"] + ":" + 
-
-#     pass
-
-@socketio.on('disconnect')
-def disconnect():
-    pass
 
 
+@socketio.on('send_data',namespace='/command')
+def send_data_event(data):
+    # try:
+    #     #packet data should be a json object with a single field 'data' which contains the serialized packet
+    #     packetData = json.loads(data)
+    # except:
+    #     print("Json deserialization error")
+    #     emit('Error',{'Error':'Json Deserialization Error!'},namespace='/command')
+    #     return
+    packetData = data
+    if 'data' not in packetData.keys():
+        emit('Error',{'Error':'No Data!'},namespace='/command')
+        return
+    
+    sendData = {'data':packetData.get('data'),
+                'clientid':'LOCAL:SOCKETIO:'+str(request.sid)}
+    r.lpush("SendQueue",json.dumps(sendData))
+    
 
-# UTIL FUNCTIONS
+@socketio.on('disconnect',namespace='/command')
+def disconnect_command():
+    global socketio_clients
+    print("Client : " + request.sid + " left command...")
+    socketio_clients.remove(request.sid)
+
+
+# TASKS
 # telemetry broadcast
 def __TelemetryBroadcastTask__(redishost,redisport):
     global telemetry_broadcast_running
@@ -143,11 +159,38 @@ def __TelemetryBroadcastTask__(redishost,redisport):
         telemetry_data = redis_connection.get("telemetry")
         if telemetry_data is not None:
             if (prev_telemetry.get("system_time",0) != (json.loads(telemetry_data)).get("system_time",0)) or not prev_telemetry:#only broadcast new data
-                socketio.emit('telemetry', json.loads(telemetry_data), broadcast=True,namespace='/telemetry') #need to see how this function handles socketio not being started
+                socketio.emit('telemetry', json.loads(telemetry_data),namespace='/telemetry') #need to see how this function handles socketio not being started
             prev_telemetry = json.loads(telemetry_data)
         
     
     print('TelemetryBroadcastTask Killed')
+
+#socketio repsonse task
+def __SocketIOResponseTask__(redishost,redisport):
+    global socketio_response_task_running
+    socketio_response_task_running = True
+
+    redis_connection = redis.Redis(host=redishost,port=redisport)
+
+    while socketio_response_task_running:
+        keylist = list(redis_connection.scan_iter('ReceiveQueue:LOCAL:SOCKETIO:*',1)) #find keys with the prefix 
+        if keylist: #check we got keys
+            key = keylist[0] #only process 1 key at a time
+            key_string:str = bytes(key).decode("UTF-8")
+            sid = key_string.removeprefix('ReceiveQueue:LOCAL:SOCKETIO:')
+            if sid in socketio_clients:
+                redis_connection.persist(key) #remove key timeout
+                responseData:bytes = redis_connection.rpop(key)
+                response = {'Data':str(responseData.hex())}
+                socketio.emit('Response',response,to=sid,namespace='/command')
+
+            else:
+                redis_connection.delete(key)#delete the whole receive queue as client is no longer connected     
+        
+        eventlet.sleep(0.01)
+
+    print("SocketIOResponseTask Killed")
+    
 
 # dummy signal
 def __DummySignalBroadcastTask__():
@@ -159,19 +202,21 @@ def __DummySignalBroadcastTask__():
         e.emit() #call emit
     print('DummySignalBroadCastTask Killed')
 
+
+
 # thread cleanup
 def cleanup(sig=None,frame=None): #ensure the telemetry broadcast thread has been killed
-    global telemetry_broadcast_running, dummy_signal_running
+    global telemetry_broadcast_running, dummy_signal_running, socketio_response_task_running
     
     telemetry_broadcast_running = False
     dummy_signal_running = False
+    socketio_response_task_running = False
 
-    eventlet.sleep(.02)#allow threads to terminate
+    eventlet.sleep(0.2)#allow threads to terminate
 
     print("\nFlask Interface Exited")
 
     sys.exit(0)
-
 
 
 # DUTY FUNCTION
@@ -179,14 +224,17 @@ def startFlaskInterface(flaskhost="0.0.0.0", flaskport=5000,
                         redishost='localhost', redisport=6379, real_data=True):
     # original signal handler
     if (real_data):
+        global r
         print("Server starting on port " + str(flaskport) + " ...")
 
+        r = redis.Redis(redishost,redisport)
 
         socketio.start_background_task(__TelemetryBroadcastTask__,redishost,redisport)
+        socketio.start_background_task(__SocketIOResponseTask__,redishost,redisport)
         socketio.run(app, host=flaskhost, port=flaskport, debug=True, use_reloader=False)
         cleanup()
 
-    # fake signal handler
+    # fake signal handler for ui testing only!!!
     else:
         # server logs
         fake_signal_filename = 'telemetry_log.txt'

@@ -29,6 +29,7 @@ class CommandLineInterface(cmd2.Cmd):
         prev_state = self.r.get(opts.task + ":STATE")
         if prev_state is None:
             self.poutput("ERROR -> cant find task id!")
+            return
         try:
             new_state = json.loads(prev_state)
         except:
