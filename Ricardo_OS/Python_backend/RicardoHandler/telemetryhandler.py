@@ -56,8 +56,8 @@ class TelemetryHandler():
         cmd_packet = SimpleCommandPacket(command=8,arg=0) # 8 for telemetry
         cmd_packet.header.source = self.state["source"]
         cmd_packet.header.destination = self.state["destination"]
-        cmd_packet.header.source_service = 2
-        cmd_packet.header.destination_service = 2 #destiantion service is command handler on ric
+        cmd_packet.header.source_service = 1
+        # cmd_packet.header.destination_service = 2 #destiantion service is command handler on ric
 
         send_data = {
             "data":cmd_packet.serialize().hex(),
@@ -65,7 +65,7 @@ class TelemetryHandler():
         }
         self.r.lpush("SendQueue",json.dumps(send_data))
         
-    
+
     def __checkRecieveQueue__(self):
         self.r.persist("ReceiveQueue:"+str(self.clientid)) #remove key expiry as we are acsessing it
         if self.r.llen("ReceiveQueue:"+str(self.clientid)) > 0:
@@ -75,12 +75,14 @@ class TelemetryHandler():
             header : RnpHeader  = RnpHeader.from_bytes(received_packet)
             #check the correct packet type was received
             #!!!! change packet type to telemetry packet once everything els ehas been changed properly
-            if header.service == 2:
+            if header.source_service == 2:
                 self.lastPacketTime = time.time_ns()
                 decoded_packet = TelemetryPacket.from_bytes(received_packet)
-                packet_data = copy.deepcopy(vars(decoded_packet))
+                keys = decoded_packet.packetvars #get keys for the variables we care about
+                packet_data_values = copy.deepcopy([vars(decoded_packet)[key] for key in keys])
                 #remove header from data
-                packet_data.pop("header")
+                packet_data = dict(zip(keys,packet_data_values)) #create dict from 2 lists
+                
                 packet_data["connectionstatus"] = True
                 self.lastTelemetry = packet_data
                 self.r.set("telemetry",json.dumps(packet_data))
