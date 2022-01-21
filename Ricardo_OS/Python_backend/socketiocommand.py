@@ -1,6 +1,6 @@
 import requests
-from pylibrnp.defaultpackets import *
 from pylibrnp.rnppacket import *
+from pylibrnp.defaultpackets import *
 
 import socketio
 import argparse
@@ -25,12 +25,12 @@ def disconnect():
 @sio.on('Response',namespace='/command')
 def on_response_handler(data):
     print(data)
-    try:
-        header = RnpHeader.from_bytes(bytes.fromhex(data['Data']))
-        print(header)
-    except:
-        print("Failed to decode header")
+    print(type(data['Data']))
+    header = RnpHeader.from_bytes(bytes.fromhex(data['Data']))
+    print(header)
+    
 
+        
 @sio.on('Error',namespace='/command')
 def on_error_handler(data):
     print(data)
@@ -52,8 +52,8 @@ if __name__ == "__main__":
         destination = input("destination node : ")
         command_num = input("command id : ")
         arg = input("arg : ")
-        cmd_packet :SimpleCommandPacket= SimpleCommandPacket(command = int(command_num), arg = int(arg))
-        cmd_packet.header.destination_service = 2
+        cmd_packet :SimpleCommandPacket = SimpleCommandPacket(command = int(command_num), arg = int(arg))
+        cmd_packet.header.source_service = 1
         cmd_packet.header.source = int(source)
         cmd_packet.header.destination = int(destination)
         serializedPacket:str = cmd_packet.serialize().hex()
