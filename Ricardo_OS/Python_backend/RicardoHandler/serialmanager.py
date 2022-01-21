@@ -1,5 +1,6 @@
 from serial.serialutil import PARITY_NONE
-from .packets import *
+# from .packets import *
+from pylibrnp.rnppacket import DeserializationError, RnpHeader
 import serial
 import time
 import redis
@@ -103,14 +104,14 @@ class SerialManager():
 
 	def __processReceivedPacket__(self,data:bytes):
 		try:
-			header = Header.from_bytes(data)#decode header
-		except DeserializeError:
+			header = RnpHeader.from_bytes(data)#decode header
+		except DeserializationError:
 			print("Deserialization Error")
 			print(data)
 			return
 		#check header len
 		
-		if (len(data) != (Header.size + header.packet_len)):
+		if (len(data) != (RnpHeader.size + header.packet_len)):
 			print("Length Mismatch")
 			return
 
@@ -133,7 +134,7 @@ class SerialManager():
 
 
 	def __sendPacket__(self,data:bytes,clientid):
-		header = Header.from_bytes(data)#decode header
+		header = RnpHeader.from_bytes(data)#decode header
 		uid = self.__generateUID__() #get uuid
 		header.uid = uid #get uuid
 		serialized_header = header.serialize() #re-serialize header

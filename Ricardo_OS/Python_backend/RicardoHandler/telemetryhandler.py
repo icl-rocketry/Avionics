@@ -1,5 +1,6 @@
 import redis
-from RicardoHandler import packets
+from pylibrnp.defaultpackets import TelemetryPacket,SimpleCommandPacket
+from pylibrnp.rnppacket import RnpHeader
 import time
 import json
 import copy
@@ -52,9 +53,12 @@ class TelemetryHandler():
     def __sendTelemetryPacket__(self):
         #construct command packet for telemetry
         # header = packets.Header(packet_len = packets, 0, 2, 0, source=self.state["source"], destination=self.state["destination"]) # source=4 for USB and destination=0 for rocket
-        cmd_packet = packets.SimpleCommand(command=8,arg=0) # 8 for telemetry
+        cmd_packet = SimpleCommandPacket(command=8,arg=0) # 8 for telemetry
         cmd_packet.header.source = self.state["source"]
         cmd_packet.header.destination = self.state["destination"]
+        cmd_packet.header.source_service = 2
+        cmd_packet.header.destination_service = 2 #destiantion service is command handler on ric
+
         send_data = {
             "data":cmd_packet.serialize().hex(),
             "clientid":self.clientid
@@ -68,12 +72,12 @@ class TelemetryHandler():
             #we have packets to process
             #this should return a bytes array
             received_packet : bytes = self.r.rpop("ReceiveQueue:"+str(self.clientid))
-            header : packets.Header  = packets.Header.from_bytes(received_packet)
+            header : RnpHeader  = RnpHeader.from_bytes(received_packet)
             #check the correct packet type was received
             #!!!! change packet type to telemetry packet once everything els ehas been changed properly
             if header.service == 2:
                 self.lastPacketTime = time.time_ns()
-                decoded_packet = packets.Telemetry.from_bytes(received_packet)
+                decoded_packet = TelemetryPacket.from_bytes(received_packet)
                 packet_data = copy.deepcopy(vars(decoded_packet))
                 #remove header from data
                 packet_data.pop("header")
