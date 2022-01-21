@@ -56,8 +56,8 @@ class TelemetryHandler():
         cmd_packet = SimpleCommandPacket(command=8,arg=0) # 8 for telemetry
         cmd_packet.header.source = self.state["source"]
         cmd_packet.header.destination = self.state["destination"]
-        cmd_packet.header.source_service = 1
-        # cmd_packet.header.destination_service = 2 #destiantion service is command handler on ric
+        cmd_packet.header.source_service = 2
+        cmd_packet.header.destination_service = 2 #destiantion service is command handler on ric ( on old firwmare command handler is id 1)
 
         send_data = {
             "data":cmd_packet.serialize().hex(),
@@ -82,7 +82,7 @@ class TelemetryHandler():
                 packet_data_values = copy.deepcopy([vars(decoded_packet)[key] for key in keys])
                 #remove header from data
                 packet_data = dict(zip(keys,packet_data_values)) #create dict from 2 lists
-                
+
                 packet_data["connectionstatus"] = True
                 self.lastTelemetry = packet_data
                 self.r.set("telemetry",json.dumps(packet_data))

@@ -1,12 +1,13 @@
 import requests
-import packets
+from pylibrnp.defaultpackets import *
 
 while True:
     source = input("source node : ")
     destination = input("destination node : ")
     command_num = input("command id : ")
     arg = input("arg : ")
-    cmd_packet :packets.SimpleCommand = packets.SimpleCommand(command = int(command_num), arg = int(arg))
+    cmd_packet : SimpleCommandPacket = SimpleCommandPacket(command = int(command_num), arg = int(arg))
+    cmd_packet.header.destination_service = 2 #Note on old fw this will be 1
     cmd_packet.header.source = int(source)
     cmd_packet.header.destination = int(destination)
     

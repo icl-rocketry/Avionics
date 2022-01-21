@@ -6,7 +6,7 @@ from scipy import linalg
 import threading
 import csv
 import os
-import packets
+import magpackets
 import socket
 
 import graphui
@@ -120,7 +120,8 @@ class MagCalibration():
                     if not self.networkEnabled:
                         print("No Server!")
                         return
-                    magcalpacket = packets.MagCalCommand(command = 62)
+                    magcalpacket = magpackets.MagCalCommand(command = 62)
+                    magcalpacket.header.destination_service = 2
                     magcalpacket.header.source = data.get('source',4)
                     magcalpacket.header.destination = data.get('destination',2)
                     magcalpacket.fieldMagnitude = data.get('fieldMagnitude',1)

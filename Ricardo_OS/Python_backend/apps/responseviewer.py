@@ -2,7 +2,8 @@ import argparse
 import time
 import json
 import requests
-import packets
+from Python_backend.pylibrnp.rnppacket import RnpPacket
+from pylibrnp.rnppacket import RnpHeader
 
 ap = argparse.ArgumentParser()
 ap.add_argument("-i", "--id", required=True, help="Client ID", type=str)
@@ -31,7 +32,7 @@ if __name__ == '__main__':
                 data = r.content
                 print(data)
 
-                head = packets.Header.from_bytes(data)
+                head = RnpPacket.from_bytes(data)
                 print(head)
 
                 
