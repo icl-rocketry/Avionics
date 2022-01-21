@@ -1,41 +1,61 @@
-import eventlet #Dont Monkey Patch 
-#this module is started as a multiprocessing process in the RicardoBackend.py module. If we monkey patch, we monkey patch everything else imported.
-# We can get away with this here as we make sure to not use anything requiring monkey patch i.e using socketio.start_background_task() instead of starting
-# the thread with python threading. Eventlet monkey patch changes the memory location of threading.current_thread resulting 
-# in (threading.current_tread() is threading.main_thread() returning false which breaks cmd2...
-from flask import Flask,jsonify,request,Response,render_template
-from flask_socketio import SocketIO, emit
+# PACKAGES
+# flask packages
+from queue import Empty
+from flask import Flask, jsonify, request, Response, render_template, send_from_directory
+from flask_socketio import SocketIO, emit, send # added emit from flask_socketio
+# system packages
 import time
 import redis
 import json
 import signal
 import sys
+import os
+# third-party packages
+import eventlet # re-formatted eventlet comment
+'''
+Dont Monkey Patch 
+this module is started as a multiprocessing process in the RicardoBackend.py 
+module. If we monkey patch, we monkey patch everything else imported. We can 
+get away with this here as we make sure to not use anything requiring monkey 
+patch i.e using socketio.start_background_task() instead of starting the thread 
+with python threading. Eventlet monkey patch changes the memory location of 
+threading.current_thread resulting in (threading.current_tread() is 
+threading.main_thread() returning false which breaks cmd2...
+'''
 
-
-app = Flask(__name__)
+# APP INITIALIZATION
+# flask app 
+app = Flask(__name__, static_folder='../frontend/build')
+#app = Flask(__name__)
 app.config["SECRET_KEY"] = "secret!"
 app.config['DEBUG'] = False
-
+# socketio app
 socketio = SocketIO(app,cors_allowed_origins="*",async_mode='eventlet')
+socketio_clients = []
 
-flask_thread = None
-
+# SYSTEM VARIABLES
+# thread-safe variables
 telemetry_broadcast_running:bool = False
+socketio_response_task_running:bool = False
+dummy_signal_running:bool = False
 
+# redis variables
 r : redis.Redis = None
-rhost = ''
-rport = ''
-
-
+# misc
 prev_time = 0
-updateTimePeriod = 10e6
+updateTimePeriod = 0.01 #in seconds
 
 
-@app.route('/')
-def index():
 
-    #maybe here have a webpage with current status
-    return "Ricardo Backend",200
+# FLASK APP 
+# new / route: return react site
+@app.route('/', defaults={'path': ''})
+@app.route('/<path:path>')
+def serve(path):
+    if path != "" and os.path.exists(app.static_folder + '/' + path):
+        return send_from_directory(app.static_folder, path)
+    else:
+        return send_from_directory(app.static_folder, 'index.html')
 
 @app.route('/packet', methods=['POST'])
 def send_packet():
@@ -81,76 +101,150 @@ def get_graph():
 def get_map():
     return render_template('map.html',x_window = 100)
 
+
+# SOCKETIO APP
 @socketio.on('connect',namespace='/telemetry')
-def connect():  
-    global telemetry_broadcast_running
-    #start broadcasting telemetry on socketio on connection of the first client to the telemetry namespace
-    if not telemetry_broadcast_running :
-        telemetry_broadcast_running = True
-        socketio.start_background_task(__TelemetryBroadcastTask__,rhost,rport)
-
-# @socketio.on('send_packet',namespace='/sendData')
-# def socketio_send_data(data):
-#     try:
-#         packetData = json.loads(data)
-#     except:
-#         print("Json deserialization error")
-#         return
-    
-#     if all (keys in packetData for keys in ("data","clientid")):
-#         packetData["clientid"] = packetData["clientid"] + ":" + 
-
-#     pass
-
-@socketio.on('disconnect')
-def disconnect():
+def connect_telemetry():
+    # maybe emit the newest telemetry so connecting clients know whats up
     pass
 
+@socketio.on('connect', namespace='/')
+def connect():
+    pass
+
+@socketio.on('connect',namespace='/command')
+def connect_command():
+    print("Client : " + request.sid + " joined command...")
+    socketio_clients.append(request.sid)
+    
+
+
+@socketio.on('send_data',namespace='/command')
+def send_data_event(data):
+    # try:
+    #     #packet data should be a json object with a single field 'data' which contains the serialized packet
+    #     packetData = json.loads(data)
+    # except:
+    #     print("Json deserialization error")
+    #     emit('Error',{'Error':'Json Deserialization Error!'},namespace='/command')
+    #     return
+    packetData = data
+    if 'data' not in packetData.keys():
+        emit('Error',{'Error':'No Data!'},namespace='/command')
+        return
+    
+    sendData = {'data':packetData.get('data'),
+                'clientid':'LOCAL:SOCKETIO:'+str(request.sid)}
+    r.lpush("SendQueue",json.dumps(sendData))
+    
+
+@socketio.on('disconnect',namespace='/command')
+def disconnect_command():
+    global socketio_clients
+    print("Client : " + request.sid + " left command...")
+    socketio_clients.remove(request.sid)
+
+
+# TASKS
+# telemetry broadcast
 def __TelemetryBroadcastTask__(redishost,redisport):
+    global telemetry_broadcast_running
+    telemetry_broadcast_running = True
+
     redis_connection = redis.Redis(host=redishost,port=redisport)
     prev_telemetry = {}
-    prev_time = 0
     
     while telemetry_broadcast_running:
-        if (time.time_ns() - prev_time > updateTimePeriod):
-                
-            telemetry_data = redis_connection.get("telemetry")
-            if telemetry_data is not None:
-                if prev_telemetry.get("connectionstatus",None) is not None and True: #check if theres prev_telemetry and that we are connected
-                    
-                    if (prev_telemetry.get("system_time",0) == (json.loads(telemetry_data)).get("system_time",0)):#dont broadcast a duplicate packet
-                        continue
-
-                socketio.emit('telemetry', json.loads(telemetry_data), broadcast=True,namespace='/telemetry')
-        
-            prev_time = time.time_ns()
+        eventlet.sleep(updateTimePeriod)# sleep for update time 
+        telemetry_data = redis_connection.get("telemetry")
+        if telemetry_data is not None:
+            if (prev_telemetry.get("system_time",0) != (json.loads(telemetry_data)).get("system_time",0)) or not prev_telemetry:#only broadcast new data
+                socketio.emit('telemetry', json.loads(telemetry_data),namespace='/telemetry') #need to see how this function handles socketio not being started
             prev_telemetry = json.loads(telemetry_data)
+        
+    
+    print('TelemetryBroadcastTask Killed')
 
-        eventlet.sleep(.02)
+#socketio repsonse task
+def __SocketIOResponseTask__(redishost,redisport):
+    global socketio_response_task_running
+    socketio_response_task_running = True
+
+    redis_connection = redis.Redis(host=redishost,port=redisport)
+
+    while socketio_response_task_running:
+        keylist = list(redis_connection.scan_iter('ReceiveQueue:LOCAL:SOCKETIO:*',1)) #find keys with the prefix 
+        if keylist: #check we got keys
+            key = keylist[0] #only process 1 key at a time
+            key_string:str = bytes(key).decode("UTF-8")
+            sid = key_string.removeprefix('ReceiveQueue:LOCAL:SOCKETIO:')
+            if sid in socketio_clients:
+                redis_connection.persist(key) #remove key timeout
+                responseData:bytes = redis_connection.rpop(key)
+                response = {'Data':str(responseData.hex())}
+                socketio.emit('Response',response,to=sid,namespace='/command')
+
+            else:
+                redis_connection.delete(key)#delete the whole receive queue as client is no longer connected     
+        
+        eventlet.sleep(0.01)
+
+    print("SocketIOResponseTask Killed")
+    
+
+# dummy signal
+def __DummySignalBroadcastTask__():
+    from emitter import emitter
+    global dummy_signal_running
+    dummy_signal_running = True
+    e = emitter.EmitterClass('telemetry-log')
+    while dummy_signal_running:
+        e.emit() #call emit
+    print('DummySignalBroadCastTask Killed')
 
 
+
+# thread cleanup
 def cleanup(sig=None,frame=None): #ensure the telemetry broadcast thread has been killed
-    global telemetry_broadcast_running
-    print("Flask Interface Exited")
+    global telemetry_broadcast_running, dummy_signal_running, socketio_response_task_running
+    
     telemetry_broadcast_running = False
+    dummy_signal_running = False
+    socketio_response_task_running = False
+
+    eventlet.sleep(0.2)#allow threads to terminate
+
+    print("\nFlask Interface Exited")
+
     sys.exit(0)
 
 
+# DUTY FUNCTION
+def startFlaskInterface(flaskhost="0.0.0.0", flaskport=5000, 
+                        redishost='localhost', redisport=6379, real_data=True):
+    # original signal handler
+    if (real_data):
+        global r
+        print("Server starting on port " + str(flaskport) + " ...")
 
-    
-def startFlaskInterface(flaskhost="0.0.0.0",flaskport=5000,redishost = 'localhost',redisport = 6379):
-    global r,rhost,rport
-    rhost = redishost
-    rport = redisport
+        r = redis.Redis(redishost,redisport)
 
-    # signal.signal(signal.SIGINT,cleanup)
-    # signal.signal(signal.SIGTERM,cleanup)
+        socketio.start_background_task(__TelemetryBroadcastTask__,redishost,redisport)
+        socketio.start_background_task(__SocketIOResponseTask__,redishost,redisport)
+        socketio.run(app, host=flaskhost, port=flaskport, debug=True, use_reloader=False)
+        cleanup()
 
-    if r is None:
-        r = redis.Redis(host=redishost,port=redisport)
+    # fake signal handler for ui testing only!!!
+    else:
+        # server logs
+        fake_signal_filename = 'telemetry_log.txt'
+        print("Reading fake signal from " + fake_signal_filename)
+        print("Starting server on port " + str(flaskport) + "...")
 
-    socketio.run(app,host=flaskhost,port=flaskport,debug=False,use_reloader=False)
-    cleanup()
+        socketio.start_background_task(__DummySignalBroadcastTask__)
+        socketio.run(app, host=flaskhost, port=flaskport, debug=True, use_reloader=False)
+        cleanup()
 
+        
 if __name__ == "__main__":
-    startFlaskInterface(flaskport=1337)
+    startFlaskInterface(flaskport=3001, real_data=False)

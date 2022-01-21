@@ -14,12 +14,12 @@ socket.on('connect', function(msg) { // (1)
 
 
 socket.on('telemetry', function (msg) { // (3)
-    ///console.log(msg);
+    //console.log(msg);
     
     let telemetry = JSON.parse(JSON.stringify(msg));
 
     if (telemetry.system_time != prev_telemetry.system_time){
-
+        
         telemetry_timeseries[telemetry_timeseries.length] = telemetry;
         if (telemetry_timeseries.length >= 1000){
             telemetry_timeseries.pop();
@@ -94,7 +94,6 @@ map.on('load', async () => {
 
     // Update the source from the API every 2 seconds.
     const updateSource = setInterval(async () => {
-        
         map.getSource('rocketLocation').setData(getCurrentLocation());
         // map.getSource('launchLocation').setData(getLaunchLocation());
         launch_marker.setLngLat([telemetry_timeseries[telemetry_timeseries.length - 1].launch_lng,telemetry_timeseries[telemetry_timeseries.length - 1].launch_lat])

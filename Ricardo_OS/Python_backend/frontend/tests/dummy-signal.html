@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Dummy Signal Client Test</h1>
+    <h2>Data: </h2>
+    <pre id="data"></pre>
+    <button onclick="reset()">Reset Data Field</button> 
+
+    <script src="https://cdn.socket.io/3.1.3/socket.io.min.js" integrity="sha384-cPwlPLvBTa3sKAgddT6krw0cJat7egBga3DJepJyrLl4Q9/5WLra3rrnMcyTyOnh" crossorigin="anonymous"></script>
+    <script>
+        const socket = io("http://localhost:3001/telemetry");
+        socket.on("connect", () => {
+            console.log("Socket connected with id ", socket.id, "...")
+        })
+
+        socket.on("telemetry", (package) => {
+            document.getElementById('data').innerHTML = syntaxHighlight(package);
+            packageobj = JSON.parse(package)
+            console.log("Package received @ client: ", Date.now()/1000, "& server: ", packageobj["system_time"])
+        })
+
+        socket.on("disconnected", () => {
+            console.log("SocketIO disconnted!")
+        })
+        
+        function reset() {
+            console.log("reset()")
+            document.getElementById('data').innerHTML = "{}";
+        }
+        
+        // external syntax-highlighting functions
+        function syntaxHighlight(json) {
+            special_match_string = /("(\\u[a-zA-Z0-9]{4}|\\[^u]|[^\\"])*"(\s*:)?|\b(true|false|null)\b|-?\d+(?:\.\d*)?(?:[eE][+\-]?\d+)?)/g;
+            json = json.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+            json = json.replace(special_match_string, match);
+            return json
+        }
+
+        function match(match) {
+            var cls = 'number';
+            if (/^"/.test(match)) {
+                if (/:$/.test(match)) {
+                    cls = 'key';
+                } else {
+                    cls = 'string';
+                }
+            } else if (/true|false/.test(match)) {
+                cls = 'boolean';
+            } else if (/null/.test(match)) {
+                cls = 'null';
+            }
+            return '<span class="' + cls + '">' + match + '</span>';
+        }
+        // external end
+    </script>
+    <style>
+        body {
+            margin: 2%;
+            background-color: rgb(30, 30, 30);
+            font-family: sans-serif
+        }
+        h1 {
+            font-size: 1.5em;
+            color: rgb(212, 212, 212)
+        }
+
+        h2 {
+            font-size: 1em;
+            color: rgb(212, 212, 212)
+        }
+
+        pre { color: rgb(212, 212, 212) }
+        .key { color: rgb(142, 199, 230) }
+        .string { color: rgb(204, 144, 119)}
+        .number { color: rgb(177, 202, 165) }
+
+        button {
+            border: 0;
+            padding: 8px;
+            background-color: #fff;
+            color: #333
+        }
+        
+    </style>
+</body>
+</html>
