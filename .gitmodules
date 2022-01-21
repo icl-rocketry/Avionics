@@ -2,6 +2,9 @@
 [submodule "Ricardo_OS/Ricardo_OS/lib/librnp"]
 	path = Ricardo_OS/Ricardo_OS/lib/librnp
 	url = git@github.com:icl-rocketry/librnp.git
+	ignore = dirty
 [submodule "Ricardo_OS/Python_backend/pylibrnp"]
 	path = Ricardo_OS/Python_backend/pylibrnp
 	url = git@github.com:icl-rocketry/pylibrnp.git
+	ignore = dirty
+
