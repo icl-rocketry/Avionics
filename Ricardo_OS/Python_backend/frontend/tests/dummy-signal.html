@@ -22,7 +22,8 @@
         socket.on("telemetry", (package) => {
             document.getElementById('data').innerHTML = syntaxHighlight(package);
             packageobj = JSON.parse(package)
-            console.log("Package received @ client: ", Date.now()/1000, "& server: ", packageobj["system_time"])
+            console.log("Package received @ client: ", Date.now()/1000, "& server: ", package["system_time"])
+            console.log(packageobj)
         })
 
         socket.on("disconnected", () => {

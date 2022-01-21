@@ -31,6 +31,7 @@ class EmitterClass():
         if self.index < len(self.data_array):
             item = self.data_array[self.index]
             package = processor.format_package(item["data"])
+            print(package)
             if external:
                 # emit socketio signal
                 print("Emitting package " + str(self.index))

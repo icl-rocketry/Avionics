@@ -6,10 +6,10 @@ from scipy import linalg
 import threading
 import csv
 import os
-import magpackets
+from . import magpackets
 import socket
 
-import graphui
+from . import graphui
 
 
 class MagCalibration():

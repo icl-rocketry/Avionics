@@ -4,10 +4,13 @@ import socketio
 import sys
 import signal
 import argparse
+import json
 
 
-import magcalibration
-import cmdui
+# import magcalibration
+from . import magcalibration
+from . import cmdui
+# import cmdui
 
 ap = argparse.ArgumentParser()
 ap.add_argument("-f","--filename",required=False,help='Filename of csv mag data formatted as mx,my,mz',type=str,default='')
@@ -29,7 +32,7 @@ def startNetworkedMagCalApp(msgQ,
 
     @sio.on('telemetry',namespace='/telemetry')
     def on_telemetry(data):  
-        magcal.updateData(data)
+        magcal.updateData(json.loads(data))
 
     magcal.run()
 

@@ -121,13 +121,6 @@ def connect_command():
 
 @socketio.on('send_data',namespace='/command')
 def send_data_event(data):
-    # try:
-    #     #packet data should be a json object with a single field 'data' which contains the serialized packet
-    #     packetData = json.loads(data)
-    # except:
-    #     print("Json deserialization error")
-    #     emit('Error',{'Error':'Json Deserialization Error!'},namespace='/command')
-    #     return
     packetData = data
     if 'data' not in packetData.keys():
         emit('Error',{'Error':'No Data!'},namespace='/command')
@@ -159,7 +152,7 @@ def __TelemetryBroadcastTask__(redishost,redisport):
         telemetry_data = redis_connection.get("telemetry")
         if telemetry_data is not None:
             if (prev_telemetry.get("system_time",0) != (json.loads(telemetry_data)).get("system_time",0)) or not prev_telemetry:#only broadcast new data
-                socketio.emit('telemetry', json.loads(telemetry_data),namespace='/telemetry') #need to see how this function handles socketio not being started
+                socketio.emit('telemetry', json.dumps(json.loads(telemetry_data)),namespace='/telemetry') #need to see how this function handles socketio not being started
             prev_telemetry = json.loads(telemetry_data)
         
     

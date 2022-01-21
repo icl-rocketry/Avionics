@@ -1,6 +1,11 @@
-import requests
+print(__name__)
+print(__package__)
+print(__file__)
 from pylibrnp.defaultpackets import *
 from pylibrnp.rnppacket import *
+# import ..pylibrnp.defaultpackets
+# import ..pylibrnp.rnppacket
+
 
 import socketio
 import argparse

@@ -28,4 +28,5 @@ def on_message(data):
 
 @sio.on('telemetry',namespace='/telemetry')
 def on_message(data):
-    print(data)    
+    print(data)  
+    print(type(data))  
