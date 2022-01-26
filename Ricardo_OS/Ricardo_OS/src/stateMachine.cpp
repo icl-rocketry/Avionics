@@ -25,6 +25,9 @@ Written by the Electronics team, Imperial College London Rocketry
 #include "Sensors/estimator.h"
 #include "Sensors/sensors.h"
 
+#include "Events/eventHandler.h"
+#include "Events/stubs.h"
+
 #include "Sound/tunezHandler.h"
 
 #include "Network/interfaces/usb.h"
@@ -51,7 +54,8 @@ stateMachine::stateMachine() :
     networkmanager(static_cast<uint8_t>(DEFAULT_ADDRESS::ROCKET),NODETYPE::HUB,true),
     commandhandler(this),
     sensors(this),
-    estimator(this)    
+    estimator(this),
+    eventhandler(&estimator.state,enginehandler,deploymenthandler,logcontroller)    
 {};
 
 
@@ -95,6 +99,10 @@ void stateMachine::initialise(State* initStatePtr) {
   // create config controller object
   ConfigController configcontroller(&storagecontroller,&logcontroller); 
   configcontroller.load(); // load configuration from sd card into ram
+
+  //enumerate events this should be done after the rocket componets have been enumerated and setup in their respetive handlers
+  eventhandler.setup(configcontroller.configDoc["Events"]);
+
   //setup interfaces
   usbserial.setup();
   radio.setup();
@@ -135,6 +143,8 @@ void stateMachine::update() {
   estimator.update();
 
   logcontroller.log(estimator.state,sensors.sensors_raw);// log new navigation solution and sensor output
+
+  eventhandler.update();
 
   //check for new packets and process
   networkmanager.update();

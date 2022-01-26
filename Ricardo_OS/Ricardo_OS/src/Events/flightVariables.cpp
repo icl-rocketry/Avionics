@@ -1,98 +1,99 @@
 #include "flightVariables.h"
 
-#include <Arduino.h>
+// #include <Arduino.h>
 #include <optional>
 #include <variant>
 #include <functional>
 #include <unordered_map>
 
-const std::unordered_map<std::string, memberfunc_t> FlightVariables::function_map {
+#include "eventHandler.h"
+
+
+
+
+
+
+const std::unordered_map<std::string, memberFunc_t> FlightVariables::function_map {
+	{"TimeSinceIgnition", &FlightVariables::TimeSinceIgnition},
 	{"TimeSinceLaunch", &FlightVariables::TimeSinceLaunch},
 	{"TimeSinceApogee", &FlightVariables::TimeSinceApogee},
 	{"TimeSinceEvent", &FlightVariables::TimeSinceEvent},
+	{"Position", &FlightVariables::Position},
 	{"Velocity", &FlightVariables::Velocity},
 	{"Acceleration", &FlightVariables::Acceleration}
 };
 
-// Singleton "constructor"
-FlightVariables& FlightVariables::getInstance() {
-	static FlightVariables instance;
-
-	return instance;
-}
-
-flightvariable_t FlightVariables::TimeSinceIgnition(int arg) 
+flightVariable_t FlightVariables::TimeSinceIgnition(int arg) 
 {
-	if (!_ignitionTime){
-		return {};
-	}
-	uint32_t currTime = millis();
-	if (currTime < _ignitionTime){ //something has gone wrong
-		return{}; 
-	}
-	return {{static_cast<uint32_t>(currTime-_ignitionTime)}};
+	return timeSince(_ignitionTime);
 }
 
-flightvariable_t FlightVariables::TimeSinceLaunch(int arg) 
+flightVariable_t FlightVariables::TimeSinceLaunch(int arg) 
 {
-	if (!_launchTime){
-		return {};
-	}
-	uint32_t currTime = millis();
-	if (currTime < _launchTime){ //something has gone wrong
-		return{}; 
-	}
-	return {{static_cast<uint32_t>(currTime-_launchTime)}};
+	return timeSince(_launchTime);
 }
 
-flightvariable_t FlightVariables::TimeSinceApogee(int arg) 
+flightVariable_t FlightVariables::TimeSinceApogee(int arg) 
 {
-	if (!_apogeeTime){
-		return {};
-	}
-	uint32_t currTime = millis();
-	if (currTime < _apogeeTime){ //something has gone wrong
-		return{}; 
-	}
-	return {{static_cast<uint32_t>(currTime-_apogeeTime)}};
+	return timeSince(_apogeeTime);
 }
 
-flightvariable_t FlightVariables::TimeSinceEvent(int arg) 
+flightVariable_t FlightVariables::TimeSinceEvent(int arg) 
 {
-
-	uint32_t eventTime = _eventhandler->timeTriggered(arg);
-
-	if (!eventTime){
-		return {};
-	}
-	uint32_t currTime = millis();
-	if (currTime < eventTime){ //something has gone wrong
-		return{}; 
-	}
-	return {{static_cast<uint32_t>(currTime-eventTime)}};
-
+	uint32_t eventTime = _eventhandler.timeTriggered(arg);
+	return timeSince(eventTime);
 }
 
-flightvariable_t FlightVariables::Position(int arg) 
+flightVariable_t FlightVariables::Position(int arg) 
 {
-	return {};
+	return getComponent(_state->position,arg);
 }
 
-flightvariable_t FlightVariables::Velocity(int arg) 
+flightVariable_t FlightVariables::Velocity(int arg) 
 {
-	return {};
+	return getComponent(_state->velocity, arg);
 }
 
-flightvariable_t FlightVariables::Acceleration(int arg) 
+flightVariable_t FlightVariables::Acceleration(int arg) 
 {
-	return {};
+	return getComponent(_state->acceleration, arg);
 }
 
 
-flightvariablefunc_t FlightVariables::get(const std::string& funcName) {
-	// returns a lambda that binds the member function pointer obtained from function_map to a singleton instance
-	return [&funcName](int idx) {
-		// syntax from hell lmao
-		return (getInstance().*(function_map.at(funcName)))(idx);
+flightVariableFunc_t FlightVariables::get(const std::string& funcName) {
+	auto funcptr = function_map.at(funcName);
+	return [this,funcName,funcptr](int idx) {
+		flightVariable_t var = ((*this).*(funcptr))(idx);
+		#ifdef DEBUG
+		const std::string variablename(funcName);
+		std::cout<<"[FlightVar] :"+variablename+" called with value : " + std::to_string(var.value_or(0))<<std::endl;
+		#endif
+		return var;
 	};
+}
+
+std::optional<float> FlightVariables::timeSince(uint32_t time) {
+	if (!time) {
+		return {};
+	}
+
+	uint32_t currTime = millis();
+	if (currTime < time) {
+		return {};
+	}
+
+	return {float(currTime - time)};
+
+}
+
+std::optional<float> FlightVariables::getComponent(Eigen::Vector3f& var, int arg) {
+	if (arg == -1) {
+		return {var.norm()};
+	} else if (arg < -1 || arg >= var.size()) {
+		#ifdef DEBUG
+			throw std::runtime_error("Chorley fucked the config!");
+		#endif
+		return {};
+	}
+	return {float(var(arg))};
 }

@@ -1,0 +1,68 @@
+{
+    "Pyros":
+    //"Num": 42069, // Number of pyros
+    [
+        {
+            "type": "bt",
+            "address": "0x69696969",
+            "fire_duration": 1000
+        }, // fire duration in ms
+        {
+            "type": "local",
+            "fire_pin": 10,
+            "continuity_pin": 11,
+            "fire_duration": 69420
+        }
+    ],
+    "Engine": [
+        {
+            "type": "solid",
+            "interface": 0
+        } // filll up later
+    ],
+    "Events": // id is the index of the pyro/engine in their respective arrays
+    [
+        {
+            "single_fire": true,
+            "cooldown":0,
+            "action":[
+                {
+                    "type":"engine",
+                    "id":0,
+                    "param":20
+                },
+                {
+                    "type":"deployment",
+                    "id":2,
+                    "param":50
+                }
+            ],
+            "condition":{
+                "operator":"AND",
+                "condition":[
+                    {
+                    "operator": "MORETHAN",
+                    "flightVar": "Acceleration",
+                    "component": 1,
+                    "threshold": 10
+                    },
+                    {
+                    "operator": "MORETHAN",
+                    "flightVar": "Velocity",
+                    "component": 1,
+                    "threshold": 15
+                    }
+                ]
+            }
+
+        }
+    ]
+}
+// A or B or C
+// A or (B or C)
+// A or B
+// B = C or D or E
+// C = fc < cond
+// D = fc < cond
+// E = fc < cond
+

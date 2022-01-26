@@ -23,7 +23,7 @@ Written by the Electronics team, Imperial College London Rocketry
 
 #include "Sound/tunezHandler.h"
 
-// #include "Events/flightVariableHandler.h"
+ #include "Events/eventHandler.h"
 
 #include "Network/interfaces/usb.h"
 #include "Network/interfaces/radio.h"
@@ -66,12 +66,16 @@ class stateMachine {
 
     Sensors sensors;
     Estimator estimator;
+
+    EventHandler eventhandler;
+    //temporary stubs
+    EngineHandler enginehandler;
+    DeploymentHandler deploymenthandler;
     
     TunezHandler tunezhandler;
   private:
     State* _currStatePtr;
-    
-    uint32_t out_loop_time=0;
+
 };
 
 #endif

@@ -1,146 +1,54 @@
-#ifndef EVENT_H
-#define EVENT_H
+#pragma once
 //object representing event
+#include <memory>
+#include <functional>
+#include <string>
 
 #include "condition.h"
-#include <memory>
-#include "Pyros/pyroHandler.h"
-#include "Engine/enginehandler.h"
-#include "Storage/logcontroller.h"
+#include "Storage/logController.h"
 
-
-//DUMMY CLASS // UR A DUMMY CLASS
-// class Pyro {
-// public:
-//     void doStuff() {}
-// };
-//DUMMY CLASS
+using condition_t = std::function<bool()>;
+using action_t = std::function<void()>;
 
 
 
 class Event{
     public:
-        /**
-         * @brief Construct a new Event object
-         * 
-         * @param id Interface ID
-         * @param cond Condition Object
-         * @param singleFire Is Multiple firing allowed
-         * @param eventID event id
-         * @param logcontroller pointer to log controller
-         */
-        Event(uint8_t id, std::unique_ptr<Condition> cond,bool singleFire,uint8_t eventID,LogController* logcontroller):
-        _id(id),
-        _cond(std::move(cond)), // transfer ownership
-        _singleFire(singleFire),
-        _previouslyFired(false),
+        Event(int eventID,condition_t condition,action_t action,bool singleUse,uint16_t actionCooldown,LogController& logcontroller):
         _eventID(eventID),
+        _condition(std::move(condition)),
+        _action(std::move(action)),
+        _singleUse(singleUse),
+        _cooldown(actionCooldown),
         _logcontroller(logcontroller),
-        _triggerTime(0)
-        {};
+        _timeTriggered(0), // initialize to zero as no event can be triggered at 'zero' time
+        _lastActionTime(0),
+        _previouslyFired(false)
+        {
+            _logcontroller.log("Event " + std::to_string(_eventID) + " created");
+        };
 
-        virtual void update();
-        virtual ~Event();
-        virtual uint32_t timeTriggered(){return _triggerTime;};
+        void update();
 
-    protected:
-        /**
-         * @brief id of interface to fire
-         * 
-         */
-        uint8_t _id; 
-        std::unique_ptr<Condition> _cond;
-        bool _singleFire;
+        uint32_t timeTriggered(){return _timeTriggered;};
+    
+    private:
+
+        const int _eventID;
+        const condition_t _condition;
+        const action_t _action;
+        const bool _singleUse;
+        const uint16_t _cooldown; // dont know how useful this will be
+
+        LogController& _logcontroller;
+
+        uint32_t _timeTriggered;
+        uint32_t _lastActionTime;
+
         bool _previouslyFired;
-        uint8_t _eventID;
-        LogController* _logcontroller;
-
-        uint32_t _triggerTime;
-
-        /**
-         * @brief virtual action function for event
-         * 
-         */
-        virtual void _execute() = 0;
         
-};
 
-class EngineEvent: public Event{
-    public:
-    /**
-     * @brief Construct a new Engine Event object
-     * 
-     * @param id Id of engine
-     * @param cond Condition object
-     * @param singleFire Can this event fire multiple times
-     * @param eventID Event id
-     * @param enginehandler pointer to engine handler
-     * @param logcontroller pointer to log controller
-     */
-    EngineEvent(uint8_t id,std::unique_ptr<Condition> cond,bool singleFire,uint8_t eventID,EngineHandler* enginehandler,LogController* logcontroller):
-    Event(id,std::move(cond),singleFire,eventID,logcontroller),
-    _enginehandler(enginehandler)
-    {};
-    /**
-     * @brief Check to see if condition has been met
-     * 
-     */
 
-    void update(){Event::update();};
-    /**
-     * @brief Get the Time when the event has been triggered.
-     * 
-     * @return uint32_t Trigger time in milliseconds. Returns 0 if has not been triggered
-     */
-    uint32_t timeTriggered(){return Event::timeTriggered();};
-
-    protected:
-        EngineHandler* _enginehandler; //pointer to engine handler
-
-        void _execute();
 
 };
 
-/**
- * @brief This represents an event which triggers a pyro directly such as main chutes.
- * 
- */
-class PyroEvent: public Event{
-    public:
-        /**
-         * @brief Construct a new Pyro Event object
-         * 
-         * @param id Pyro interface ID
-         * @param cond Condition Object
-         * @param singleFire Can this event fire multiple times
-         * @param eventID Event ID
-         * @param pyrohandler pointer to pyrohandler
-         * @param logcontroller pointer to log controller
-         */
-        PyroEvent(uint8_t id, std::unique_ptr<Condition> cond,bool singleFire, uint8_t eventID, PyroHandler* pyrohandler,LogController* logcontroller):
-        Event(id,std::move(cond),singleFire,eventID,logcontroller),
-        _pyrohandler(pyrohandler)
-        {};
-
-        void update(){Event::update();};
-
-        uint32_t timeTriggered(){return Event::timeTriggered();};
-
-    protected:
-        PyroHandler* _pyrohandler;
-        
-        void _execute();
-};
-
-
-
-
-
-/*
-Pyro pyrotest;
-Time_Since_Launch fv;
-ConditionFlightVar testcondition(fv,Operator::GT,100);
-
-Event test(pyrotest,testcondition);*/
-
-#endif

@@ -1,70 +1,74 @@
 #pragma once
 
-#include "flightVariable.h"
-#include <stdexcept>
-#include <memory>
+#include <iostream>
+#include <cstring>
+
 #include <functional>
+#include <optional>
 
-enum class Operator:uint8_t {
-	AND,
-	OR,
-	LT, // Less than
-	GT // Greater than
+#include <assert.h>
+
+
+using flightVariable_t = std::optional<float>;
+using flightVariableFunc_t = std::function<flightVariable_t(int)>;
+using conditionOperator_t = std::function<bool(bool,bool)>;
+using flightVariableOperator_t = std::function<bool(float,float)>;
+
+namespace ConditionOperator{
+    static flightVariableOperator_t LESSTHAN = [](float a,float b){return a < b;};
+    static flightVariableOperator_t MORETHAN = [](float a,float b){return a >= b;};
+    static conditionOperator_t AND = [](bool a,bool b){return a && b;};
+    static conditionOperator_t OR = [](bool a,bool b){return a || b;};
+}
+
+class Condition{
+    public:
+        Condition(flightVariableFunc_t flightVariable,int flightVariableIndex, float threshold, flightVariableOperator_t op):
+        _flightVariable(flightVariable),
+        _flightVariableIndex(flightVariableIndex),
+        _threshold(threshold),
+        _op(std::move(op))
+        {}
+
+        bool operator()()
+        {
+            std::optional<float> flightvar = _flightVariable(_flightVariableIndex); // get flightvariable
+            //check flight variable returned okay
+            
+            
+            if (flightvar){ 
+                return _op(flightvar.value(),_threshold); // perform operation
+            }else{
+                return false;
+            }
+        };
+
+    private:
+        flightVariableFunc_t _flightVariable;
+        int _flightVariableIndex;
+        float _threshold;
+        flightVariableOperator_t _op;
+        
 };
 
-////////////////////////////////////////////////////////
-//		1. We can use std::function in place of Operator, makes the code cleaner...
-//		2. Why are we even bothering with flight variables? 
-//		   We can just use member variable pointers which we get from state estimator
-//		3. I feel like we could get rid of ConditionCondition and ConditionFlightVar
-//		   with some clever templating
 
-class Condition {
+class ConditionCombination{
+    public :
+        //conditions represented as functors so that Condition combinations can also be compared
+        ConditionCombination(std::function<bool()> condition1, std::function<bool()> condition2, conditionOperator_t op):
+        _condition1(std::move(condition1)),
+        _condition2(std::move(condition2)),
+        _op(std::move(op))
+        {}
 
-	public:
-		//Condition(FlightVariable& var, Operator op, double threshold);
-		//Condition(FlightVariable& var, Operator op, FlightVariable& var2);
+        bool operator()()
+        {
+            return _op(_condition1(),_condition2());
+        }
 
-		virtual bool check() = 0;
-		virtual ~Condition() = 0;
-};
+    private:
+        std::function<bool()> _condition1;
+        std::function<bool()> _condition2;
+        conditionOperator_t _op;
 
-inline Condition::~Condition(){};
-
-class ConditionCondition: public Condition {
-public:
-	
-	ConditionCondition(std::unique_ptr<Condition> cond1, std::function<bool(bool, bool)> op, std::unique_ptr<Condition> cond2):
-	_cond1(std::move(cond1)),//move ownership to the condition object
-	_cond2(std::move(cond2)),
-	_op(std::move(op))
-	{ }
-
-
-
-	// Condition& _cond2;
-	std::unique_ptr<Condition> _cond1;
-	std::unique_ptr<Condition> _cond2;
-
-	std::function<bool(bool, bool)> _op;
-
-};
-
-class ConditionFlightVar: public Condition {
-public:
-	
-	ConditionFlightVar(const FlightVariable& var, std::function<bool(double, double)> op, double threshold):
-	_var(var),
-	_threshold(threshold),
-	_op(std::move(op))
-	{ };
-
-	~ConditionFlightVar() {};
-
-	bool check();
-
-private:
-	const FlightVariable& _var;
-	double _threshold;
-	std::function<bool(double, double)> _op;
 };

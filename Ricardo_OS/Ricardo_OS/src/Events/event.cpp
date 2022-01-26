@@ -1,32 +1,31 @@
 #include "event.h"
-#include "condition.h"
-#include "stdexcept"
+
 #include <string>
+#include <Arduino.h>
 
 
+void Event::update()
+{
+	if (_singleUse && _previouslyFired)
+	{
+		return; //no need to continue evaluating the contiions
+	}
 
+	if (_condition())
+	{ //check if condition has been met
 
+		//update time triggered
+		_timeTriggered = millis();
 
-Event::~Event(){};
+		//update _previouslyFired flag
+		_previouslyFired = true;
 
-void Event::update(){
-	if (_cond->check()){
-		if ((_singleFire && !_previouslyFired) || (!_singleFire)){ // ensure that it only fires once if singlefire is true
-			_execute();
-			_triggerTime = millis();
-			_previouslyFired = true;
+		// execute action
+		if (millis() - _lastActionTime > _cooldown)
+		{
+			_action();
+			_lastActionTime = millis();
+			_logcontroller.log("Event:" + std::to_string(_eventID) + " fired at " + std::to_string(_timeTriggered));
 		}
 	}
-}
-
-
-void EngineEvent::_execute(){
-	_logcontroller->log("Event(ENGINE):" + std::to_string(_eventID) + " fired");
-	return;
-}
-
-
-void PyroEvent::_execute(){
-	_logcontroller->log("Event(PYRO):" + std::to_string(_eventID) + " fired");
-	_pyrohandler->fire(_id);
 }

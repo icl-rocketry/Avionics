@@ -5,36 +5,36 @@
 #include <functional>
 #include <unordered_map>
 
-#include "eventhandler.h"
+#include <Eigen/Core>
+#include <Eigen/Eigen>
+#include <Eigen/Geometry>
 
-using flightvariable_t = std::optional<std::variant<float,uint32_t>>;
-using flightvariablefunc_t = std::function<flightvariable_t(int)>;
+#include "Sensors/sensorStructs.h"
 
+//forward declarations
 class FlightVariables;
-// using memberfunc = std::function<flightvariable_t(FlightVariables*,int)>;
-using memberfunc_t = flightvariable_t (FlightVariables::*)(int);
+class EventHandler;
+
+using flightVariable_t = std::optional<float>;
+using flightVariableFunc_t = std::function<flightVariable_t(int)>;
+using memberFunc_t = flightVariable_t (FlightVariables::*)(int);
+
 
 class FlightVariables{ 
     public:
-    
+
+        FlightVariables(state_t *state, EventHandler& event_handler) : 
+        _state(state),
+        _eventhandler(event_handler)
+        {}
+
         /**
          * @brief Get function pointer for given flight variable name
          * 
          * @param funcName 
-         * @return flightvariablefunc_t 
+         * @return flightVariableFunc_t 
          */
-        flightvariablefunc_t get(const std::string& funcName);
-
-        /**
-         * @brief Get the Instance of flightvariables
-         * 
-         * @return FlightVariables& 
-         */
-        static FlightVariables& getInstance();
-
-        FlightVariables(FlightVariables const &) = delete;
-        void operator=(FlightVariables const &) = delete;
-
+        flightVariableFunc_t get(const std::string& funcName);
 
         /**
          * @brief Set the Launch Time in ms
@@ -62,47 +62,57 @@ class FlightVariables{
          * @brief pointer to event handler
          * 
          */
-        EventHandler* _eventhandler;
+        state_t* _state;
+        EventHandler& _eventhandler;
 
         uint32_t _ignitionTime;
         uint32_t _launchTime;
         uint32_t _apogeeTime;
         
-        flightvariable_t TimeSinceIgnition(int arg=0);
-        flightvariable_t TimeSinceLaunch(int arg=0);
-        flightvariable_t TimeSinceApogee(int arg=0);
+        flightVariable_t TimeSinceIgnition(int arg=0);
+        flightVariable_t TimeSinceLaunch(int arg=0);
+        flightVariable_t TimeSinceApogee(int arg=0);
         /**
          * @brief Get Time since Event
          * 
          * @param arg Event ID
-         * @return flightvariable_t 
+         * @return flightVariable_t 
          */
-        flightvariable_t TimeSinceEvent(int arg);
+        flightVariable_t TimeSinceEvent(int arg);
         /**
          * @brief Position
          * 
          * @param arg 0:North,1:East,2:Down,3:Magnitude
-         * @return flightvariable_t 
+         * @return flightVariable_t 
          */
-        flightvariable_t Position(int arg);
+        flightVariable_t Position(int arg);
         /**
          * @brief Velocity
          * 
          * @param arg 0:North,1:East,2:Down,3:Magnitude
-         * @return flightvariable_t 
+         * @return flightVariable_t 
          */
-        flightvariable_t Velocity(int arg);
+        flightVariable_t Velocity(int arg);
         /**
          * @brief Acceleration
          * 
          * @param arg 0:North,1:East,2:Down,3:Magnitude
-         * @return flightvariable_t 
+         * @return flightVariable_t 
          */
-		flightvariable_t Acceleration(int arg);
+		flightVariable_t Acceleration(int arg);
 
-		FlightVariables() = default;
+        /**
+         * @brief Helpfer function to get component of a eigen vector
+         * 
+         * @param var Eigen Vector
+         * @param arg 
+         * @return float 
+         */
+        std::optional<float> getComponent(Eigen::Vector3f& var, int arg);
 
-        static const std::unordered_map<std::string, memberfunc_t> function_map; // constexpr in the future smh
+        std::optional<float> timeSince(uint32_t time);
+
+        static const std::unordered_map<std::string, memberFunc_t> function_map; // constexpr in the future smh
 
 };
 

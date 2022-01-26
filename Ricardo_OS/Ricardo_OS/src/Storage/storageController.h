@@ -29,7 +29,6 @@ struct directory_element_t{
     FILE_TYPE type;
 };
 
-
 class StorageController{
     public:
         /**
