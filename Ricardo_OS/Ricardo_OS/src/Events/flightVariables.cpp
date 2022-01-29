@@ -82,7 +82,7 @@ std::optional<float> FlightVariables::timeSince(uint32_t time) {
 		return {};
 	}
 
-	return {float(currTime - time)};
+	return {static_cast<float>(currTime - time)};
 
 }
 
@@ -95,5 +95,5 @@ std::optional<float> FlightVariables::getComponent(Eigen::Vector3f& var, int arg
 		#endif
 		return {};
 	}
-	return {float(var(arg))};
+	return {var(arg)};
 }
