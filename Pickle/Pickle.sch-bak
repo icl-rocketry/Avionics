@@ -1,0 +1,304 @@
+EESchema Schematic File Version 4
+EELAYER 30 0
+EELAYER END
+$Descr A4 11693 8268
+encoding utf-8
+Sheet 1 5
+Title ""
+Date ""
+Rev ""
+Comp ""
+Comment1 ""
+Comment2 ""
+Comment3 ""
+Comment4 ""
+$EndDescr
+$Comp
+L RF_Module:ESP32-WROOM-32D U?
+U 1 1 61F5843A
+P 5950 3600
+F 0 "U?" H 5950 5181 50  0000 C CNN
+F 1 "ESP32-WROOM-32D" H 5450 5000 50  0000 C CNN
+F 2 "RF_Module:ESP32-WROOM-32" H 5950 2100 50  0001 C CNN
+F 3 "https://www.espressif.com/sites/default/files/documentation/esp32-wroom-32d_esp32-wroom-32u_datasheet_en.pdf" H 5650 3650 50  0001 C CNN
+	1    5950 3600
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:+3V3 #PWR?
+U 1 1 61F58FCB
+P 5950 2200
+F 0 "#PWR?" H 5950 2050 50  0001 C CNN
+F 1 "+3V3" H 5965 2373 50  0000 C CNN
+F 2 "" H 5950 2200 50  0001 C CNN
+F 3 "" H 5950 2200 50  0001 C CNN
+	1    5950 2200
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:GND #PWR?
+U 1 1 61F5959F
+P 5950 5000
+F 0 "#PWR?" H 5950 4750 50  0001 C CNN
+F 1 "GND" H 5955 4827 50  0000 C CNN
+F 2 "" H 5950 5000 50  0001 C CNN
+F 3 "" H 5950 5000 50  0001 C CNN
+	1    5950 5000
+	1    0    0    -1  
+$EndComp
+NoConn ~ 5350 3600
+NoConn ~ 5350 3700
+NoConn ~ 5350 3800
+NoConn ~ 5350 3900
+NoConn ~ 5350 4000
+NoConn ~ 5350 4100
+Text Notes 5300 4700 1    50   ~ 0
+Connected to integrated SPI flash
+Wire Wire Line
+	6550 2400 7600 2400
+Wire Wire Line
+	6550 2500 7600 2500
+Wire Wire Line
+	6550 2600 7600 2600
+Wire Wire Line
+	6550 2700 7600 2700
+Text Label 7600 2400 2    50   ~ 0
+BOOT
+Text Label 7600 2600 2    50   ~ 0
+BUZZER
+Wire Wire Line
+	6550 2800 7600 2800
+Wire Wire Line
+	6550 2900 7600 2900
+Wire Wire Line
+	6550 3400 7600 3400
+Wire Wire Line
+	6550 3500 7600 3500
+Wire Wire Line
+	6550 3600 7600 3600
+Wire Wire Line
+	6550 3700 7600 3700
+Wire Wire Line
+	6550 3800 7600 3800
+Wire Wire Line
+	6550 3900 7600 3900
+Wire Wire Line
+	6550 4000 7600 4000
+Wire Wire Line
+	6550 4100 7600 4100
+Wire Wire Line
+	6550 4200 7600 4200
+Wire Wire Line
+	6550 4300 7600 4300
+Wire Wire Line
+	6550 4400 7600 4400
+Wire Wire Line
+	6550 4500 7600 4500
+Wire Wire Line
+	6550 4600 7600 4600
+Wire Wire Line
+	6550 4700 7600 4700
+Wire Wire Line
+	5350 2400 4750 2400
+Wire Wire Line
+	5350 2600 4750 2600
+Wire Wire Line
+	5350 2700 4750 2700
+Text Label 7600 2800 2    50   ~ 0
+LORA_RESET
+Text Label 7600 2900 2    50   ~ 0
+LORA_CS
+Text Label 7600 3000 2    50   ~ 0
+HSPI_MISO
+Text Label 7600 3100 2    50   ~ 0
+HSPI_MOSI
+Text Label 7600 3200 2    50   ~ 0
+HSPI_SCLK
+Text Label 7600 3400 2    50   ~ 0
+IMU1_CS
+Text Label 7600 3500 2    50   ~ 0
+IMU2_CS
+Text Label 7600 3600 2    50   ~ 0
+VSPI_SCLK
+Text Label 7600 3700 2    50   ~ 0
+VSPI_MISO
+Text Label 7600 4000 2    50   ~ 0
+VSPI_MOSI
+Text Label 7600 4100 2    50   ~ 0
+SD1_CS
+Text Label 7600 4200 2    50   ~ 0
+SD2_CS
+Text Label 7600 4300 2    50   ~ 0
+BARO_CS
+Text Label 7600 4400 2    50   ~ 0
+CAN_TX
+Text Label 7600 4500 2    50   ~ 0
+CAN_RX
+Text Notes 6550 2900 0    50   ~ 0
+VSPICS0/CS
+Text Notes 6550 3000 0    50   ~ 0
+HSPIQ/MISO
+Text Notes 6550 3100 0    50   ~ 0
+HSPID/MOSI
+Text Notes 6550 3200 0    50   ~ 0
+HSPICLK/CLK
+Text Notes 6550 3300 0    50   ~ 0
+HSPICS0/CS
+Text Notes 6550 3600 0    50   ~ 0
+VSPICLK/CLK
+Text Notes 6550 3700 0    50   ~ 0
+VSPIQ/MISO
+Text Notes 6550 4000 0    50   ~ 0
+VSPID/MOSI
+Text Notes 6550 4400 0    50   ~ 0
+CRYSTAL INPUT
+Text Notes 6550 4500 0    50   ~ 0
+CRYSTAL OUTPUT
+$Sheet
+S 10500 5900 550  450 
+U 61F64581
+F0 "baro" 50
+F1 "baro.sch" 50
+F2 "MISO" I L 10500 5950 50 
+F3 "MOSI" I L 10500 6050 50 
+F4 "SCLK" I L 10500 6150 50 
+F5 "BARO_CS" I L 10500 6250 50 
+$EndSheet
+Wire Wire Line
+	10100 5950 10500 5950
+Wire Wire Line
+	10500 6050 10100 6050
+Wire Wire Line
+	10100 6150 10500 6150
+Wire Wire Line
+	10500 6250 10100 6250
+Text Label 10100 5950 0    50   ~ 0
+VSPI_MISO
+Text Label 10100 6050 0    50   ~ 0
+VSPI_MOSI
+Text Label 10100 6150 0    50   ~ 0
+VSPI_SCLK
+Text Label 10100 6250 0    50   ~ 0
+BARO_CS
+Text Label 7600 2500 2    50   ~ 0
+TX
+Text Label 7600 2700 2    50   ~ 0
+RX
+Text Label 7600 3300 2    50   ~ 0
+MAG_CS
+Wire Wire Line
+	6550 3000 8200 3000
+Wire Wire Line
+	6550 3100 8200 3100
+Wire Wire Line
+	6550 3200 8200 3200
+Wire Wire Line
+	6550 3300 8200 3300
+Text Notes 7600 3000 0    50   ~ 0
+/JTAG TDI
+Text Notes 7600 3100 0    50   ~ 0
+/JTAG TCK
+Text Notes 7600 3200 0    50   ~ 0
+/JTAG TMS
+Text Notes 7600 3300 0    50   ~ 0
+/JTAG TDO
+Text Label 7600 3800 2    50   ~ 0
+I2C_SDA
+Text Label 7600 3900 2    50   ~ 0
+I2C_SCL
+Text Label 4750 2700 0    50   ~ 0
+LORA_INT
+Text Label 4750 2400 0    50   ~ 0
+EN
+$Comp
+L power:GND #PWR?
+U 1 1 61F71A05
+P 4850 1950
+F 0 "#PWR?" H 4850 1700 50  0001 C CNN
+F 1 "GND" H 4855 1777 50  0000 C CNN
+F 2 "" H 4850 1950 50  0001 C CNN
+F 3 "" H 4850 1950 50  0001 C CNN
+	1    4850 1950
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:C C?
+U 1 1 61F73E5C
+P 5000 1950
+F 0 "C?" V 4748 1950 50  0000 C CNN
+F 1 "1mF" V 4839 1950 50  0000 C CNN
+F 2 "" H 5038 1800 50  0001 C CNN
+F 3 "~" H 5000 1950 50  0001 C CNN
+	1    5000 1950
+	0    1    1    0   
+$EndComp
+Wire Wire Line
+	5150 1950 5300 1950
+Wire Wire Line
+	5300 1950 5300 1800
+Connection ~ 5300 1950
+Wire Wire Line
+	5300 1950 5500 1950
+$Comp
+L Device:R R?
+U 1 1 61F717BA
+P 5300 1650
+F 0 "R?" H 5370 1696 50  0000 L CNN
+F 1 "10K" H 5370 1605 50  0000 L CNN
+F 2 "" V 5230 1650 50  0001 C CNN
+F 3 "~" H 5300 1650 50  0001 C CNN
+	1    5300 1650
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:+3V3 #PWR?
+U 1 1 61F7150F
+P 5300 1500
+F 0 "#PWR?" H 5300 1350 50  0001 C CNN
+F 1 "+3V3" H 5315 1673 50  0000 C CNN
+F 2 "" H 5300 1500 50  0001 C CNN
+F 3 "" H 5300 1500 50  0001 C CNN
+	1    5300 1500
+	1    0    0    -1  
+$EndComp
+Text Label 5500 1950 2    50   ~ 0
+EN
+$Sheet
+S 9350 5900 550  450 
+U 61F81823
+F0 "mag" 50
+F1 "mag.sch" 50
+F2 "MAG_CS" I L 9350 6250 50 
+F3 "SCLK" I L 9350 6150 50 
+F4 "MOSI" I L 9350 6050 50 
+F5 "MISO" I L 9350 5950 50 
+$EndSheet
+Wire Wire Line
+	8950 5950 9350 5950
+Wire Wire Line
+	9350 6050 8950 6050
+Wire Wire Line
+	8950 6150 9350 6150
+Wire Wire Line
+	9350 6250 8950 6250
+Text Label 8950 6250 0    50   ~ 0
+MAG_CS
+Text Label 8950 6150 0    50   ~ 0
+VSPI_SCLK
+Text Label 8950 6050 0    50   ~ 0
+VSPI_MOSI
+Text Label 8950 5950 0    50   ~ 0
+VSPI_MISO
+$Sheet
+S 6600 5650 850  400 
+U 61F70B79
+F0 "imu" 50
+F1 "imu.sch" 50
+$EndSheet
+$Sheet
+S 8650 4650 800  450 
+U 61F7E509
+F0 "pyro" 50
+F1 "pyro.sch" 50
+$EndSheet
+$EndSCHEMATC

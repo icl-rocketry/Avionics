@@ -1,0 +1,116 @@
+EESchema Schematic File Version 4
+EELAYER 30 0
+EELAYER END
+$Descr A4 11693 8268
+encoding utf-8
+Sheet 3 5
+Title ""
+Date ""
+Rev ""
+Comp ""
+Comment1 ""
+Comment2 ""
+Comment3 ""
+Comment4 ""
+$EndDescr
+Text HLabel 4900 3250 0    50   Input ~ 0
+MAG_CS
+Text HLabel 4900 3350 0    50   Input ~ 0
+SCLK
+Text HLabel 4900 3450 0    50   Input ~ 0
+MOSI
+Text HLabel 4900 3550 0    50   Input ~ 0
+MISO
+NoConn ~ 6500 3850
+$Comp
+L iclr:MMC5983MA U?
+U 1 1 61F5C709
+P 5700 3550
+F 0 "U?" H 5700 4317 50  0000 C CNN
+F 1 "MMC5983MA" H 5700 4226 50  0000 C CNN
+F 2 "PQFN50P300X300X100-16N" H 5700 3550 50  0001 L BNN
+F 3 "" H 5700 3550 50  0001 L BNN
+F 4 "1.00 mm" H 5700 3550 50  0001 L BNN "MAXIMUM_PACKAGE_HEIGHT"
+F 5 "A" H 5700 3550 50  0001 L BNN "PARTREV"
+F 6 "Memsic Inc." H 5700 3550 50  0001 L BNN "MANUFACTURER"
+F 7 "IPC 7351B" H 5700 3550 50  0001 L BNN "STANDARD"
+	1    5700 3550
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	6600 3150 6600 3050
+Wire Wire Line
+	6600 3050 6600 2900
+Connection ~ 6600 3050
+$Comp
+L power:+3V3 #PWR?
+U 1 1 61F6C0B8
+P 6600 2900
+F 0 "#PWR?" H 6600 2750 50  0001 C CNN
+F 1 "+3V3" H 6615 3073 50  0000 C CNN
+F 2 "" H 6600 2900 50  0001 C CNN
+F 3 "" H 6600 2900 50  0001 C CNN
+	1    6600 2900
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:C C?
+U 1 1 61F6C4E7
+P 6850 3050
+F 0 "C?" V 6598 3050 50  0000 C CNN
+F 1 "1uF" V 6689 3050 50  0000 C CNN
+F 2 "" H 6888 2900 50  0001 C CNN
+F 3 "~" H 6850 3050 50  0001 C CNN
+	1    6850 3050
+	0    1    1    0   
+$EndComp
+Wire Wire Line
+	6500 3050 6600 3050
+Wire Wire Line
+	6500 3150 6600 3150
+Wire Wire Line
+	6600 3050 6700 3050
+Wire Wire Line
+	4900 3750 4750 3750
+Wire Wire Line
+	4750 3750 4750 3850
+$Comp
+L Device:C C?
+U 1 1 61F6E736
+P 4750 4000
+F 0 "C?" H 4865 4046 50  0000 L CNN
+F 1 "10uF" H 4865 3955 50  0000 L CNN
+F 2 "" H 4788 3850 50  0001 C CNN
+F 3 "~" H 4750 4000 50  0001 C CNN
+	1    4750 4000
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	4750 4150 4750 4250
+Wire Wire Line
+	4750 4250 6700 4250
+Wire Wire Line
+	6500 4050 6700 4050
+Wire Wire Line
+	6700 4050 6700 4250
+Wire Wire Line
+	6700 4050 7000 4050
+Wire Wire Line
+	7000 3050 7000 4050
+Connection ~ 6700 4050
+Wire Wire Line
+	7000 4050 7000 4100
+Connection ~ 7000 4050
+$Comp
+L power:GND #PWR?
+U 1 1 61F6F603
+P 7000 4100
+F 0 "#PWR?" H 7000 3850 50  0001 C CNN
+F 1 "GND" H 7005 3927 50  0000 C CNN
+F 2 "" H 7000 4100 50  0001 C CNN
+F 3 "" H 7000 4100 50  0001 C CNN
+	1    7000 4100
+	1    0    0    -1  
+$EndComp
+NoConn ~ 6500 3450
+$EndSCHEMATC
