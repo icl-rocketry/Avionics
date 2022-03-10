@@ -4,7 +4,7 @@
 #include <SPI.h>
 
 #include "Storage/systemstatus.h"
-#include "Storage/logcontroller.h"
+#include "Storage/logController.h"
 
 #include <memory>
 #include <vector>

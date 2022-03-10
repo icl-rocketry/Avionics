@@ -26,7 +26,7 @@ void Setup::initialise(){
 
 State* Setup::update(){
     //transtion to preflight state
-    State* _preflight_ptr = new Groundstation(_sm);
+    State* _preflight_ptr = new Preflight(_sm);
     return _preflight_ptr;
 };
 
