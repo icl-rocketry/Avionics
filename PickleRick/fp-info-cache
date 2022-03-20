@@ -1,4 +1,4 @@
-19871445160298920
+19884037215250139
 Audio_Module
 Reverb_BTDR-1H
 Digital Reverberation Unit, http://www.belton.co.kr/inc/downfile.php?seq=17&file=pdf (footprint from http://www.uk-electronic.de/PDF/BTDR-1.pdf)
@@ -17268,6 +17268,20 @@ connector JST ZE horizontal
 0
 18
 17
+Connector_Molex
+1723103105
+
+
+0
+7
+7
+Connector_Molex
+2002411215
+
+
+0
+5
+5
 Connector_Molex
 Molex_CLIK-Mate_502382-0270_1x02-1MP_P1.25mm_Vertical
 Molex CLIK-Mate series connector, 502382-0270 (http://www.molex.com/pdm_docs/sd/5023820270_sd.pdf), generated with kicad-footprint-generator
@@ -84532,6 +84546,13 @@ IND_ETQP5M330YFM
 2
 2
 iclr
+IND_SRP6540-390M
+
+
+0
+2
+2
+iclr
 LGA88-1.4-17.8X15.8X2.4MM
 
 
@@ -84602,6 +84623,27 @@ QFN65P400X400X100-17N
 17
 17
 iclr
+QFP50P900X900X120-48N
+PFB (S-PQFP-G48) PLASTIC QUAD FLATPACK
+Integrated Circuit
+0
+48
+48
+iclr
+SI7315DNT1GE3
+SI7315DN-T1-GE3-1
+MOSFET (P-Channel)
+0
+9
+9
+iclr
+SIS862DNT1GE3
+PowerPAK 1212-8 Single_2
+MOSFET (P-Channel)
+0
+11
+11
+iclr
 SOIC127P599X175-8N
 
 
@@ -84615,6 +84657,13 @@ Integrated Circuit
 0
 9
 9
+iclr
+SOIC127P600X170-9N
+
+
+0
+15
+15
 iclr
 SOP65P637X110-16N
 
