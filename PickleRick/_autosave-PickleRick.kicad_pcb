@@ -6402,7 +6402,7 @@
 
   (footprint "iclr:Write_Pad" (layer "F.Cu")
     (tedit 5E25EB20) (tstamp bfb966e5-9b0e-461c-bd07-ac2aeeea6f96)
-    (at 191.575 77.875)
+    (at 147.95 78.975 180)
     (attr through_hole)
     (fp_text reference "REF**" (at 0 5.88) (layer "F.SilkS") hide
       (effects (font (size 1 1) (thickness 0.15)))
@@ -9498,7 +9498,7 @@
 
   (footprint "iclr:pickle_ric" (layer "B.Cu")
     (tedit 6055D838) (tstamp 9c06f9a6-0f5a-4c37-a10e-152425bda20a)
-    (at 167.73 77.84 90)
+    (at 167.2 79.7 -90)
     (attr through_hole)
     (fp_text reference "G***" (at 0 0 90) (layer "B.SilkS") hide
       (effects (font (size 1.524 1.524) (thickness 0.3)) (justify mirror))
@@ -11590,6 +11590,11 @@
       (net 71 "/SD2_DET") (pinfunction "7") (pintype "unspecified") (tstamp 49df8396-8764-4be9-bf47-6292ba12084b))
     (pad "8" smd rect (at -3.500999 4.9784) (size 2.413 3.302) (layers "B.Cu" "B.Paste" "B.Mask") (tstamp a5f05c22-9b1f-41c4-a591-521168cb1dbe))
     (pad "9" smd rect (at 12.501001 4.9784) (size 2.413 3.302) (layers "B.Cu" "B.Paste" "B.Mask") (tstamp 0a3cb8ad-0c22-4ceb-8004-3f1349c6189b))
+    (model "/Users/kiran/Documents/Projects/ICLR/iclr-hw/3d/c-292227-7-a1-3d.stp"
+      (offset (xyz 4.5 8.5 2.5))
+      (scale (xyz 1 1 1))
+      (rotate (xyz -90 0 180))
+    )
   )
 
   (footprint "Jumper:SolderJumper-2_P1.3mm_Open_RoundedPad1.0x1.5mm" (layer "B.Cu")
@@ -11701,10 +11706,10 @@
   (gr_line (start 200 94) (end 200 63) (layer "Edge.Cuts") (width 0.1) (tstamp c333dfcd-e807-4bf7-95f0-0240ef924f92))
   (gr_line (start 214 78.5) (end 99.5 78.5) (layer "User.1") (width 0.15) (tstamp 2bfabe68-531b-4022-8666-b90f79d9e01e))
   (gr_line (start 214 97) (end 214 78.5) (layer "User.1") (width 0.15) (tstamp 6dce5be7-59c3-43ed-b393-7b8d6f9d6549))
-  (gr_text "D-" (at 163.425 87.525) (layer "B.SilkS") (tstamp 0c461c0f-6ad1-4746-9482-5560091c57d8)
+  (gr_text "D-" (at 163.425 87.525 180) (layer "B.SilkS") (tstamp 0c461c0f-6ad1-4746-9482-5560091c57d8)
     (effects (font (size 1 1) (thickness 0.15)) (justify mirror))
   )
-  (gr_text "D+" (at 161.325 87.6) (layer "B.SilkS") (tstamp 135fb0a4-eaed-463d-a531-ae07047b8541)
+  (gr_text "D+" (at 161.325 87.6 180) (layer "B.SilkS") (tstamp 135fb0a4-eaed-463d-a531-ae07047b8541)
     (effects (font (size 1 1) (thickness 0.15)) (justify mirror))
   )
   (gr_text "VBUS" (at 159.8 93.875) (layer "B.SilkS") (tstamp 5dd5e6c4-2ddb-4170-9f8d-c9d1d3b4b0ab)
@@ -11719,7 +11724,7 @@
   (gr_text "H_MOSI" (at 130.175 81.825 90) (layer "B.SilkS") (tstamp 95d45766-6f00-4da6-8e8d-8c1700f5164a)
     (effects (font (size 1 1) (thickness 0.15)) (justify mirror))
   )
-  (gr_text "Designed By Kiran de Silva\nElectronics & Payload 2022" (at 149.25 78.4 270) (layer "B.SilkS") (tstamp 9ab12d8b-a228-4d5b-9e84-0967ce1f80cd)
+  (gr_text "Designed By Kiran de Silva\nElectronics & Payload 2022" (at 195.5 78.175 90) (layer "B.SilkS") (tstamp 9ab12d8b-a228-4d5b-9e84-0967ce1f80cd)
     (effects (font (size 1 1) (thickness 0.15)) (justify mirror))
   )
   (gr_text "H_SCLK" (at 132.625 81.875 90) (layer "B.SilkS") (tstamp 9e3c2b24-6659-47a2-bd1d-b081c218f0e3)
@@ -11782,7 +11787,7 @@
   (gr_text "RBUS" (at 162.45 71.25 180) (layer "F.SilkS") (tstamp 80d5e2f4-5e8c-488a-98a4-70ff21d56aca)
     (effects (font (size 1 1) (thickness 0.15)))
   )
-  (gr_text "PYROS" (at 128.075 66.325 180) (layer "F.SilkS") (tstamp 826338c3-592c-44ef-b7fb-7afdf3ecbaf1)
+  (gr_text "NUKES" (at 128.075 66.325 180) (layer "F.SilkS") (tstamp 826338c3-592c-44ef-b7fb-7afdf3ecbaf1)
     (effects (font (size 1 1) (thickness 0.15)))
   )
   (gr_text "V_SCLK" (at 169.05 82.7) (layer "F.SilkS") (tstamp 860ae345-1920-42fe-8aee-04eba8984d39)
