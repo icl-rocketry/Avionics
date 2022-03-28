@@ -64,8 +64,8 @@
       35,
       36
     ],
-    "visible_layers": "0009e30_80000007",
-    "zone_display_mode": 1
+    "visible_layers": "0009f30_80000007",
+    "zone_display_mode": 0
   },
   "meta": {
     "filename": "Mainboard.kicad_prl",

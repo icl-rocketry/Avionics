@@ -5,7 +5,7 @@
       "Application": "Pcbnew",
       "Version": "(6.0.1-0)"
     },
-    "CreationDate": "2022-03-21T22:53:49+00:00"
+    "CreationDate": "2022-03-28T19:55:36+01:00"
   },
   "GeneralSpecs": {
     "ProjectId": {
@@ -25,8 +25,8 @@
   "DesignRules": [
     {
       "Layers": "Outer",
-      "PadToPad": 0.2,
-      "PadToTrack": 0.2,
+      "PadToPad": 0.09,
+      "PadToTrack": 0.09,
       "TrackToTrack": 0.2,
       "MinLineWidth": 0.2,
       "TrackToRegion": 0.254,
@@ -63,16 +63,6 @@
       "FilePolarity": "Positive"
     },
     {
-      "Path": "PickleRick-F_Paste.gbr",
-      "FileFunction": "SolderPaste,Top",
-      "FilePolarity": "Positive"
-    },
-    {
-      "Path": "PickleRick-B_Paste.gbr",
-      "FileFunction": "SolderPaste,Bot",
-      "FilePolarity": "Positive"
-    },
-    {
       "Path": "PickleRick-F_Silkscreen.gbr",
       "FileFunction": "Legend,Top",
       "FilePolarity": "Positive"
@@ -81,16 +71,6 @@
       "Path": "PickleRick-B_Silkscreen.gbr",
       "FileFunction": "Legend,Bot",
       "FilePolarity": "Positive"
-    },
-    {
-      "Path": "PickleRick-F_Mask.gbr",
-      "FileFunction": "SolderMask,Top",
-      "FilePolarity": "Negative"
-    },
-    {
-      "Path": "PickleRick-B_Mask.gbr",
-      "FileFunction": "SolderMask,Bot",
-      "FilePolarity": "Negative"
     },
     {
       "Path": "PickleRick-Edge_Cuts.gbr",
