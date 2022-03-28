@@ -23,6 +23,12 @@ class Sensors{
         void setup();
         void update();
 
+        void enableHITL();
+        void disableHITL();
+        void updateHITL();
+
+        raw_measurements_t const * getRaw();
+
         raw_measurements_t sensors_raw;
 
         GPS gps;
