@@ -4337,7 +4337,7 @@
     (in_bom yes) (on_board yes)
     (uuid 8f141cb6-d196-4940-89f8-4e8940598ec7)
     (property "Reference" "C2" (id 0) (at 25.4 164.3634 90))
-    (property "Value" "1nF" (id 1) (at 25.4 166.6748 90))
+    (property "Value" "0.1uF" (id 1) (at 25.4 166.6748 90))
     (property "Footprint" "Capacitor_SMD:C_0603_1608Metric" (id 2) (at 25.4 170.18 0)
       (effects (font (size 1.27 1.27)) hide)
     )
@@ -4828,7 +4828,7 @@
     (in_bom yes) (on_board yes)
     (uuid d2eb360b-2bc4-4408-a8b3-07959277e262)
     (property "Reference" "C3" (id 0) (at 54.61 164.3634 90))
-    (property "Value" "1uF" (id 1) (at 54.61 166.6748 90))
+    (property "Value" "0.1uF" (id 1) (at 54.61 166.6748 90))
     (property "Footprint" "Capacitor_SMD:C_0603_1608Metric" (id 2) (at 54.61 170.18 0)
       (effects (font (size 1.27 1.27)) hide)
     )
@@ -5421,9 +5421,9 @@
     (path "/" (page "1"))
     (path "/ca0eab8e-e3fd-464d-bb03-d1603b8a651b" (page "3"))
     (path "/7b7fe22f-5db7-4fb0-a6e2-91b9a8e5f484" (page "4"))
+    (path "/150d7a0e-7d8c-4788-bc30-4a3682bf4d09" (page "7"))
     (path "/53a382a5-9123-45f3-a2e9-3b2de6ca541d" (page "5"))
     (path "/698a410d-6a39-45b6-9e32-be9222181ad1" (page "7"))
-    (path "/150d7a0e-7d8c-4788-bc30-4a3682bf4d09" (page "7"))
     (path "/a5e505c0-c0af-4f61-a9d4-cf031c548012" (page "7"))
   )
 
@@ -5780,10 +5780,10 @@
       (reference "C1") (unit 1) (value "0.1uF") (footprint "Capacitor_SMD:C_0603_1608Metric")
     )
     (path "/8f141cb6-d196-4940-89f8-4e8940598ec7"
-      (reference "C2") (unit 1) (value "1nF") (footprint "Capacitor_SMD:C_0603_1608Metric")
+      (reference "C2") (unit 1) (value "0.1uF") (footprint "Capacitor_SMD:C_0603_1608Metric")
     )
     (path "/d2eb360b-2bc4-4408-a8b3-07959277e262"
-      (reference "C3") (unit 1) (value "1uF") (footprint "Capacitor_SMD:C_0603_1608Metric")
+      (reference "C3") (unit 1) (value "0.1uF") (footprint "Capacitor_SMD:C_0603_1608Metric")
     )
     (path "/f238640e-3401-420a-ac31-a433f268cbfc"
       (reference "C4") (unit 1) (value "10uf") (footprint "Capacitor_SMD:C_0603_1608Metric")
