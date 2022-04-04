@@ -46,17 +46,16 @@ class SerialManager():
 		if (UDPMonitor):
 			self.UDPIp = UDPIp
 			self.UDPPort = UDPPort
-			self.sock = None
+			self.sock = socket.socket(socket.AF_INET,socket.SOCK_DGRAM)
 
 		
 	def run(self):
-		with socket.socket(socket.AF_INET,socket.SOCK_DGRAM) as self.sock:
-			self.__connect__() #connect to ricardo 
-			
-			while True:
-				self.__checkSendQueue__()
-				self.__readPacket__()
-				self.__cleanupPacketRecord__()
+		self.__connect__() #connect to ricardo 
+		
+		while True:
+			self.__checkSendQueue__()
+			self.__readPacket__()
+			self.__cleanupPacketRecord__()
 	
 	def exitHandler(self,sig,frame):
 		print("Serial Manager Exited")

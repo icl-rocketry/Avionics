@@ -23,6 +23,9 @@ ap.add_argument("-v", "--verbose", required=False, help="Enable Verbose Mode", a
 ap.add_argument("--redis-host", required=False, help="redis host", type=str,default = "localhost")
 ap.add_argument("--redis-port", required=False, help="redis port", type=int,default = 6379)
 ap.add_argument('-l','--logger', required=False, help="Enable Telemetry logging",action='store_true',default=False)
+ap.add_argument('-mon','--monitor', required=False, help="Enable network monitoring ",action='store_true',default=False)
+ap.add_argument('-monip','--monitor-ip', required=False, help="Set network monitoring ip",type=str,default = "127.0.0.1")
+ap.add_argument('-monport','--monitor-port', required=False, help="Set network monitoring port",type=int,default = 7000)
 
 argsin = vars(ap.parse_args())
 
@@ -47,10 +50,14 @@ def checkRedis():
         sys.exit(errormsg)
 
 def startSerialManager(args):
+
     serman = serialmanager.SerialManager(device = args["device"],
                                      baud = args["baud"],
                                      redishost = args["redis_host"],
-                                     redisport=args["redis_port"])
+                                     redisport=args["redis_port"],
+                                     UDPMonitor=args['monitor'],
+                                     UDPIp=args['monitor_ip'],
+                                     UDPPort=args["monitor_port"])
     serman.run()
 
 def startTelemetryHandler(args,taskid):

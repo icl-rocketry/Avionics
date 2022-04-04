@@ -1,0 +1,19 @@
+{
+    "Rx":{
+        "port":1234
+    },
+    "Tx":{
+        "port":1235
+    },
+    "filters":
+    [
+        {
+            "name":"test",
+            "port": 135,
+            "filter": 
+            {
+                "source": 5
+            }
+        }
+    ]
+}

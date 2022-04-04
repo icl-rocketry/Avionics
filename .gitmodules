@@ -8,3 +8,6 @@
 	url = git@github.com:icl-rocketry/pylibrnp.git
 	ignore = dirty
 
+[submodule "Ricardo_OS/Python_backend/apps/udpAdapter/pylibrnp"]
+	path = Ricardo_OS/Python_backend/apps/udpAdapter/pylibrnp
+	url = git@github.com:icl-rocketry/pylibrnp.git
