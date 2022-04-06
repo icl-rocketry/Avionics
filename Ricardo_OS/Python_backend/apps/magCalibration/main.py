@@ -8,8 +8,10 @@ import json
 
 
 # import magcalibration
-from . import magcalibration
-from . import cmdui
+# from . import magcalibration
+# from . import cmdui
+import magcalibration
+import cmdui
 # import cmdui
 
 ap = argparse.ArgumentParser()

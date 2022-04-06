@@ -3,18 +3,15 @@ from serial.serialutil import PARITY_NONE
 from pylibrnp.rnppacket import DeserializationError, RnpHeader
 import serial
 import time
-import redis
-import json
 from cobs import cobs
 import signal
 import sys
-import socket
-
-
+import multiprocessing
+import queue
 
 class SerialManager():
 
-	def __init__(self, device, baud=115200, waittime = .3,redishost = 'localhost',redisport = 6379,verbose=False,UDPMonitor=False,UDPIp='127.0.0.1',UDPPort=7000):
+	def __init__(self, device, sendQ,receiveQ, baud=115200, waittime = .3,verbose=False):
 		signal.signal(signal.SIGINT,self.exitHandler)
 		signal.signal(signal.SIGTERM,self.exitHandler)
 		self.device = device
@@ -25,39 +22,25 @@ class SerialManager():
 		self.verbose = verbose
 		
 
-		self.packetRecordTimeout = 2*60 #default 2 minute timeout
+		# self.packetRecordTimeout = 2*60 #default 2 minute timeout
 		self.receiveBuffer = []
-
-		self.packetRecord = {} 
 		self.counter = 0
 
 		self.receivedQueueTimeout = 10*60 #default 10 minute timeout
 
-		self.redishost = redishost
-		self.redisport= redisport
+		self.sendQueue = sendQ
+		self.receiveQueue = receiveQ
 
-		#connect to redis 
-		self.rd = redis.Redis(host = self.redishost,port = self.redisport)
-		#clear SendQueue
-		self.rd.delete("SendQueue")
-
-		self.UDPMonitor = UDPMonitor
-		#setup udp monitor
-		if (UDPMonitor):
-			self.UDPIp = UDPIp
-			self.UDPPort = UDPPort
-			self.sock = socket.socket(socket.AF_INET,socket.SOCK_DGRAM)
-
+		
 		
 	def run(self):
 		self.__connect__() #connect to ricardo 
-		
 		while True:
 			self.__checkSendQueue__()
 			self.__readPacket__()
-			self.__cleanupPacketRecord__()
-	
-	def exitHandler(self,sig,frame):
+		self.exitHandler()
+
+	def exitHandler(self,sig=None,frame=None):
 		print("Serial Manager Exited")
 		self.ser.close() #close serial port
 		sys.exit(0)
@@ -100,7 +83,6 @@ class SerialManager():
 				try:
 					decodedData = cobs.decode(bytearray(self.receiveBuffer))
 					self.__processReceivedPacket__(decodedData)
-					self.__sendToUDP__(decodedData)
 				except cobs.DecodeError as e:
 					print("Decode Error, the following data could not be decoded...")
 					print(e)
@@ -119,39 +101,18 @@ class SerialManager():
 			print(data)
 			return
 		#check header len
-		
 		if (len(data) != (RnpHeader.size + header.packet_len)):
 			print("Length Mismatch")
 			return
+		self.receiveQueue.put({"data":data})
 
-		uid = header.uid #get unique id
-
-		if uid in self.packetRecord:
-			#get client id from packetrecord and remove corresponding entry
-			client_id = self.packetRecord.pop(uid)[0]
-			#add entry to recieved packets dictionary with client id as key
-			key = "ReceiveQueue:"+str(client_id)	
-		else:
-			#we dont have this packet as a repsonse so place it in recieve buffer
-			print("unkown packet recieved")
-			key = "ReceiveQueue:__LOCAL__"
-		#add received packets to redis db
-		self.rd.lpush(key,data)
-		#set timeout for list so list will be deleted if never acsessed
-		#ensure on any redis interfaces, that the expiry is reset to esnure we dont loose packets
-		self.rd.expire(key , self.receivedQueueTimeout) 
-
-
-	def __sendPacket__(self,data:bytes,clientid):
+	def __sendPacket__(self,data:bytes):
 		header = RnpHeader.from_bytes(data)#decode header
 		uid = self.__generateUID__() #get uuid
 		header.uid = uid #get uuid
 		serialized_header = header.serialize() #re-serialize header
 		modifieddata = bytearray(data)
 		modifieddata[:len(serialized_header)] = serialized_header
-		self.packetRecord[uid] = [clientid,time.time()] #update packetrecord dictionary
-		#self.sendBuffer.append(data)#add packet to send buffer
-		self.__sendToUDP__(modifieddata)  #send data to udp monitor
 		# cobs encode
 		encoded = bytearray(cobs.encode(modifieddata))
 		encoded += (0x00).to_bytes(1,'little') #add end packet marker
@@ -161,30 +122,15 @@ class SerialManager():
 	def __checkSendQueue__(self):
 		#check if there are items present in send queue
 		if (time.time_ns() - self.prevSendTime) > self.sendDelta :
-			if self.rd.llen("SendQueue") > 0:
-				item = json.loads(self.rd.rpop("SendQueue"))
-				#item is a json object with structure 
-				#{data:bytes as hex string,
-				# clientid:""}
-				self.__sendPacket__(bytes.fromhex(item["data"]),item["clientid"])
-				self.prevSendTime = time.time_ns()
-			
+			try:
+				packet = self.sendQueue.get_nowait()
+				self.__sendPacket__(bytes(packet['data']))
+			except queue.Empty:
+				pass
+			self.prevSendTime = time.time_ns()
 				
-		
 
 	def __generateUID__(self):#replace this with a better uuid method lol this is such a hacky way
 		uid = self.counter
 		self.counter += 1
 		return uid 
-			
-	def __cleanupPacketRecord__(self):
-		expiry_time = time.time() - self.packetRecordTimeout
-		
-		#use list to force python to copy items
-		for key,value in list(self.packetRecord.items()):
-			if value[1] < expiry_time:
-				self.packetRecord.pop(key) #remove entry
-
-	def __sendToUDP__(self,data:bytearray):
-		if (self.UDPMonitor):
-			self.sock.sendto(data,(self.UDPIp,self.UDPPort))

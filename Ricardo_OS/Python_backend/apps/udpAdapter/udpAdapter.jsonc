@@ -1,18 +1,26 @@
 {
     "Rx":{
-        "port":1234
+        "port":8000
     },
     "Tx":{
-        "port":1235
+        "port":8001
     },
     "filters":
     [
         {
-            "name":"test",
-            "port": 135,
+            "port": 8002,
             "filter": 
             {
-                "source": 5
+                "source": 2
+            }
+        },
+        {
+            "host":"127.0.0.1",
+            "port": 8003,
+            "filter": 
+            {
+                "source": 2,
+                "destination":5
             }
         }
     ]
