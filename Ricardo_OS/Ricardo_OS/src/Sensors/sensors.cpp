@@ -42,15 +42,14 @@ void Sensors::setup(){
 
 void Sensors::update()
 {
+    
     gps.update(sensors_raw.gps);
     baro.update(sensors_raw.baro);
     accelgyro.update(sensors_raw.accelgyro);
     accel.update(sensors_raw.accel);
     mag.update(sensors_raw.mag);
-
     batt.update(sensors_raw.batt);
 
-    
 };
 
 const SensorStructs::raw_measurements_t& Sensors::getData()

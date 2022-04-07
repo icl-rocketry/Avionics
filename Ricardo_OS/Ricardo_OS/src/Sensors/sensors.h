@@ -30,48 +30,37 @@
 
 #include "battery.h"
 
+class Sensors
+{
+public:
+    Sensors(SPIClass &spi, TwoWire &I2C, SystemStatus &systemstatus, LogController &logcontroller);
 
-class Sensors{
-    public:
-        Sensors(SPIClass& spi,TwoWire& I2C,SystemStatus& systemstatus,LogController& logcontroller);
+    void setup();
+    void update();
 
-        void setup();
-        void update();
+    /**
+     * @brief Get the Raw Sensor Data
+     *
+     * @return const SensorStructs::raw_measurements_t&
+     */
+    const SensorStructs::raw_measurements_t &getData();
 
-        void enableHITL();
-        void disableHITL();
-        void updateHITL();
+    // Sensor Calibration Functions
+    void calibrateAccelGyro();
+    void calibrateMag(MagCalibrationParameters magcal);
+    void calibrateBaro();
 
+private:
+    SensorStructs::raw_measurements_t sensors_raw;
 
-        /**
-         * @brief Get the Raw Sensor Data
-         * 
-         * @return const SensorStructs::raw_measurements_t& 
-         */
-        const SensorStructs::raw_measurements_t& getData();   
-
-        // Sensor Calibration Functions     
-        void calibrateAccelGyro();
-        void calibrateMag(MagCalibrationParameters magcal);
-        void calibrateBaro();
-
-
-        
-
-    private:
-
-        SensorStructs::raw_measurements_t sensors_raw;
-
-
-        Max_M8Q gps;
-        MS5607 baro;
-        ICM_20608 accelgyro;
-        H3LIS331DL accel;
-        MMC5983MA mag;
-        
-        Battery batt;
+    Max_M8Q gps;
+    MS5607 baro;
+    ICM_20608 accelgyro;
+    H3LIS331DL accel;
+    MMC5983MA mag;
+    Battery batt;
 
     
+
+
 };
-
-

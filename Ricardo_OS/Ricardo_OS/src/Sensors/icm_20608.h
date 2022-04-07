@@ -6,6 +6,7 @@
  * Original Implementation from https://github.com/hobbeshunter/ICM-20608-G
  * TODO
  * add configurabiliy thru json on setup
+ * add method which reads all registers in one go
  * @version 0.1
  * @date 2022-04-06
  * 
