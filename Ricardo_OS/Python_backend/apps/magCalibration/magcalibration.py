@@ -122,7 +122,7 @@ class MagCalibration():
                     if not self.networkEnabled:
                         print("No Server!")
                         return
-                    magcalpacket = magpackets.MagCalCommand(command = 62)
+                    magcalpacket = magpackets.MagCalCommand(command = 61)
                     magcalpacket.header.destination_service = 2
                     magcalpacket.header.source = data.get('source',4)
                     magcalpacket.header.destination = data.get('destination',2)

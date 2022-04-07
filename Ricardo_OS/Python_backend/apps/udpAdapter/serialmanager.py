@@ -1,4 +1,4 @@
-from serial.serialutil import PARITY_NONE
+from serial.serialutil import PARITY_NONE,SerialException
 # from .packets import *
 from pylibrnp.rnppacket import DeserializationError, RnpHeader
 import serial
@@ -8,18 +8,21 @@ import signal
 import sys
 import multiprocessing
 import queue
+import signal
+import os
 
 class SerialManager():
 
 	def __init__(self, device, sendQ,receiveQ, baud=115200, waittime = .3,verbose=False):
-		signal.signal(signal.SIGINT,self.exitHandler)
-		signal.signal(signal.SIGTERM,self.exitHandler)
+
 		self.device = device
 		self.baud = baud
 		self.waittime = waittime
 		self.prevSendTime = 0
 		self.sendDelta = 50e6
 		self.verbose = verbose
+
+		self.ser = None
 		
 
 		# self.packetRecordTimeout = 2*60 #default 2 minute timeout
@@ -34,21 +37,32 @@ class SerialManager():
 		
 		
 	def run(self):
+		signal.signal(signal.SIGINT,self.exitHandler)
+		signal.signal(signal.SIGTERM,self.exitHandler)
+		print("PID:" + str(os.getpid()) + " - Starting SerialManager")
 		self.__connect__() #connect to ricardo 
 		while True:
 			self.__checkSendQueue__()
 			self.__readPacket__()
-		self.exitHandler()
 
 	def exitHandler(self,sig=None,frame=None):
 		print("Serial Manager Exited")
-		self.ser.close() #close serial port
+		print("PID:" + str(os.getpid()) + " killed")
+		try:
+			self.ser.close() #close serial port
+		except:
+			pass
 		sys.exit(0)
 
 		
 	def __connect__(self):
 		boot_messages = ''
-		self.ser = serial.Serial(port=self.device, baudrate=self.baud, timeout = self.waittime)  # open serial port
+
+		try:
+			self.ser = serial.Serial(port=self.device, baudrate=self.baud, timeout = self.waittime)  # open serial port
+		except SerialException as e:
+			print(e)
+			self.exitHandler()
 
 		self.ser.stopbits = serial.STOPBITS_ONE
 		self.ser.parity = serial.PARITY_NONE
@@ -81,6 +95,8 @@ class SerialManager():
 					#empty frame receved, discard this
 					return
 				try:
+					if self.verbose:
+						print(bytearray(self.receiveBuffer).hex())
 					decodedData = cobs.decode(bytearray(self.receiveBuffer))
 					self.__processReceivedPacket__(decodedData)
 				except cobs.DecodeError as e:
@@ -134,3 +150,9 @@ class SerialManager():
 		uid = self.counter
 		self.counter += 1
 		return uid 
+
+	def __printToMon__(self,data):
+		try:
+			print(data.decode("utf-8"))
+		except:
+			print(str(data))

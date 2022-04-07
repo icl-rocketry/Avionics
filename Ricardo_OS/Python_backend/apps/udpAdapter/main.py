@@ -8,7 +8,7 @@ import multiprocessing
 import sys
 import signal
 import time
-
+import os
 # Argument Parsing
 ap = argparse.ArgumentParser()
 ap.add_argument("-d", "--dev", required=True, help="Serial Device", type=str)
@@ -39,6 +39,9 @@ class RxPort():
         self.sock.sendto(packet['data'],(self.udpIp,self.udpPort))
         
     def run(self):
+        signal.signal(signal.SIGINT,self.exitHandler)
+        signal.signal(signal.SIGTERM,self.exitHandler)
+        print("PID:" + str(os.getpid()) + " - Starting FilteredRxPort " + self.udpIp + ":" + str(self.udpPort))
         with socket.socket(socket.AF_INET,socket.SOCK_DGRAM) as self.sock:
             if '255' in self.udpIp:
                 self.sock.setsockopt(socket.SOL_SOCKET, socket.SO_BROADCAST, 1)
@@ -46,7 +49,10 @@ class RxPort():
             while True:
                 newdata = self.queue.get(block=True)
                 self.newPacket(newdata)
-
+        
+    def exitHandler(self,*args):
+        print("PID:" + str(os.getpid()) + " killed")
+        sys.exit(0)
 
 class TxPort():
     def __init__(self,config) -> None:
@@ -56,11 +62,19 @@ class TxPort():
         self.queue = multiprocessing.Queue()
     
     def run(self):
+        signal.signal(signal.SIGINT,self.exitHandler)
+        signal.signal(signal.SIGTERM,self.exitHandler)
+        print("PID:" + str(os.getpid()) + " - Starting TxPort " + self.udpIp + ":" + str(self.udpPort))
         with socket.socket(socket.AF_INET,socket.SOCK_DGRAM) as self.sock:
             self.sock.bind((self.udpIp,self.udpPort))
-            while True:
+            while True :
                 data, addr = self.sock.recvfrom(8192)
                 self.queue.put({'data':data})
+        
+    
+    def exitHandler(self,*args):
+        print("PID:" + str(os.getpid()) + " killed")
+        sys.exit(0)
             
 def receivePacketQueueManager(receiveQueue,PacketFilterQueues):
     while True:
@@ -68,13 +82,29 @@ def receivePacketQueueManager(receiveQueue,PacketFilterQueues):
         for queue in PacketFilterQueues:
             queue.put(newpacket)
 
+
 def exitHandler(*args):
-    exit=True
+    global exit_app
+    print('Exiting UdpAdapter')
+    print("Killing Processes")
+    exit_app = True
+    [p.terminate() for p in proclist]
+    [p.join() for p in proclist]
+    sys.exit(0)
+    
+    
+    
+
+
+    # raise KeyboardInterruptError()    
+    
+    
+    
 
 if __name__ == "__main__":
     multiprocessing.set_start_method('spawn',force=True)
 
-    exit = False
+    exit_app = False
     signal.signal(signal.SIGINT, exitHandler)
     signal.signal(signal.SIGTERM, exitHandler)
 
@@ -110,7 +140,8 @@ if __name__ == "__main__":
     #spawn processes
     [p.start() for p in proclist]
 
-    while not exit:
+
+    while not exit_app:
         prevTime = 0
         if (time.time_ns() - prevTime > 5000000):
             cmd_packet = SimpleCommandPacket(command=8,arg=0) # 8 for telemetry
@@ -121,6 +152,7 @@ if __name__ == "__main__":
             udpTxPort.queue.put({"data":bytes(cmd_packet.serialize())})
             prevTime = time.time_ns()
 
-    [p.terminate() for p in proclist]
-    [p.join() for p in proclist]
-    sys.exit(0)
+
+   
+    
+    
