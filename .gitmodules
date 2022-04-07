@@ -12,3 +12,6 @@
 	path = Ricardo_OS/Python_backend/apps/udpAdapter/pylibrnp
 	url = git@github.com:icl-rocketry/pylibrnp.git
 
+[submodule "Ricardo_OS/Python_backend/apps/magCalibration/pylibrnp"]
+	path = Ricardo_OS/Python_backend/apps/magCalibration/pylibrnp
+	url = git@github.com:icl-rocketry/pylibrnp.git
