@@ -95,10 +95,10 @@ class SerialManager():
 					#empty frame receved, discard this
 					return
 				try:
-					if self.verbose:
-						print(bytearray(self.receiveBuffer).hex())
 					decodedData = cobs.decode(bytearray(self.receiveBuffer))
 					self.__processReceivedPacket__(decodedData)
+					if self.verbose:
+						print(bytearray(decodedData).hex())
 				except cobs.DecodeError as e:
 					print("Decode Error, the following data could not be decoded...")
 					print(e)
