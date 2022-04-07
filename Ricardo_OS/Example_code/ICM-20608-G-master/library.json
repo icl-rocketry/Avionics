@@ -1,0 +1,10 @@
+{
+    "name": "ICM-20608-G",
+    "description": "",
+    "keywords": "IMU, sensor",
+    "repository":
+    {
+        "type": "git",
+        "url": "https://github.com/hobbeshunter/ICM-20608-G.git"
+    }
+}
