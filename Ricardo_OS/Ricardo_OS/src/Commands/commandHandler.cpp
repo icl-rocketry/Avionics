@@ -30,6 +30,8 @@
 
 #include "Network/packets/TelemetryPacket.h"
 
+#include "Sensors/mmc5983ma.h"
+#include "Sensors/sensorStructs.h"
 
 
 CommandHandler::CommandHandler(stateMachine* sm):
@@ -82,9 +84,6 @@ void CommandHandler::handleCommand(std::unique_ptr<RnpPacketSerialized> packetpt
 			break;
 		case COMMANDS::Calibrate_AccelGyro_Bias:
 			CalibrateAccelGyroBiasCommand(*packetptr);
-			break;
-		case COMMANDS::Calibrate_Mag_Bias:
-			CalibrateMagBiasCommand(*packetptr);
 			break;
 		case COMMANDS::Calibrate_Mag_Full:
 			CalibrateMagFullCommand(*packetptr);
@@ -186,7 +185,7 @@ void CommandHandler::SetHomeCommand(const RnpPacketSerialized& packet)
 	if(!_sm->systemstatus.flag_triggered(SYSTEM_FLAG::STATE_PREFLIGHT,SYSTEM_FLAG::DEBUG)){
 		return;
 	}
-	_sm->estimator.setHome();
+	_sm->estimator.setHome(_sm->sensors.getData());
 	_sm->tunezhandler.play(MelodyLibrary::confirmation); //play sound when complete
 	
 }
@@ -212,6 +211,10 @@ void CommandHandler::TelemetryCommand(const RnpPacketSerialized& packet)
 
 	TelemetryPacket telemetry;
 
+	auto raw_sensors = _sm->sensors.getData();
+	auto estimator_state = _sm->estimator.getData();
+
+
 	telemetry.header.source = _sm->networkmanager.getAddress();
 	telemetry.header.source_service = serviceID;
 	telemetry.header.destination = commandpacket.header.source;
@@ -219,54 +222,58 @@ void CommandHandler::TelemetryCommand(const RnpPacketSerialized& packet)
 	telemetry.header.uid = commandpacket.header.uid; 
 	telemetry.system_time = millis();
 
-	telemetry.pn = _sm->estimator.state.position(0);
-	telemetry.pe = _sm->estimator.state.position(1);
-	telemetry.pd = _sm->estimator.state.position(2);
+	telemetry.pn = estimator_state.position(0);
+	telemetry.pe = estimator_state.position(1);
+	telemetry.pd = estimator_state.position(2);
 
-	telemetry.vn = _sm->estimator.state.velocity(0);
-	telemetry.ve = _sm->estimator.state.velocity(1);
-	telemetry.vd = _sm->estimator.state.velocity(2);
+	telemetry.vn = estimator_state.velocity(0);
+	telemetry.ve = estimator_state.velocity(1);
+	telemetry.vd = estimator_state.velocity(2);
 
-	telemetry.an = _sm->estimator.state.acceleration(0);
-	telemetry.ae = _sm->estimator.state.acceleration(1);
-	telemetry.ad = _sm->estimator.state.acceleration(2);
+	telemetry.an = estimator_state.acceleration(0);
+	telemetry.ae = estimator_state.acceleration(1);
+	telemetry.ad = estimator_state.acceleration(2);
 
-	telemetry.roll = _sm->estimator.state.eulerAngles(0);
-	telemetry.pitch = _sm->estimator.state.eulerAngles(1);
-	telemetry.yaw =_sm->estimator.state.eulerAngles(2);
+	telemetry.roll = estimator_state.eulerAngles(0);
+	telemetry.pitch = estimator_state.eulerAngles(1);
+	telemetry.yaw =estimator_state.eulerAngles(2);
 
-	telemetry.q0 = _sm->estimator.state.orientation.w();
-	telemetry.q1 = _sm->estimator.state.orientation.x();
-	telemetry.q2 =_sm->estimator.state.orientation.y();
-	telemetry.q3 =_sm->estimator.state.orientation.z();
+	telemetry.q0 = estimator_state.orientation.w();
+	telemetry.q1 = estimator_state.orientation.x();
+	telemetry.q2 =estimator_state.orientation.y();
+	telemetry.q3 =estimator_state.orientation.z();
 
-	telemetry.lat = _sm->sensors.sensors_raw.gps_lat;
-	telemetry.lng = _sm->sensors.sensors_raw.gps_long;
-	telemetry.alt = _sm->sensors.sensors_raw.gps_alt;
-	telemetry.sat = _sm->sensors.sensors_raw.gps_sat;
+	telemetry.lat = raw_sensors.gps.lat;
+	telemetry.lng = raw_sensors.gps.lng;
+	telemetry.alt = raw_sensors.gps.alt;
+	telemetry.sat = raw_sensors.gps.sat;
 
-	telemetry.ax = _sm->sensors.sensors_raw.ax;
-	telemetry.ay = _sm->sensors.sensors_raw.ay;
-	telemetry.az = _sm->sensors.sensors_raw.az;
+	telemetry.ax = raw_sensors.accelgyro.ax;
+	telemetry.ay = raw_sensors.accelgyro.ay;
+	telemetry.az = raw_sensors.accelgyro.az;
 
-	telemetry.gx = _sm->sensors.sensors_raw.gx;
-	telemetry.gy = _sm->sensors.sensors_raw.gy;
-	telemetry.gz = _sm->sensors.sensors_raw.gz;
+	telemetry.h_ax = raw_sensors.accel.ax;
+	telemetry.h_ay = raw_sensors.accel.ay;
+	telemetry.h_az = raw_sensors.accel.az;
 
-	telemetry.mx = _sm->sensors.sensors_raw.mx;
-	telemetry.my = _sm->sensors.sensors_raw.my;
-	telemetry.mz = _sm->sensors.sensors_raw.mz;
+	telemetry.gx = raw_sensors.accelgyro.gx;
+	telemetry.gy = raw_sensors.accelgyro.gy;
+	telemetry.gz = raw_sensors.accelgyro.gz;
 
-	telemetry.baro_temp = _sm->sensors.sensors_raw.baro_temp;
-	telemetry.baro_press = _sm->sensors.sensors_raw.baro_press;
-	telemetry.baro_alt = _sm->sensors.sensors_raw.baro_alt;
+	telemetry.mx = raw_sensors.mag.mx;
+	telemetry.my = raw_sensors.mag.my;
+	telemetry.mz = raw_sensors.mag.mz;
 
-	telemetry.batt_voltage = _sm->sensors.sensors_raw.batt_volt;
-	telemetry.batt_percent= _sm->sensors.sensors_raw.batt_percent;
+	telemetry.baro_temp = raw_sensors.baro.temp;
+	telemetry.baro_press = raw_sensors.baro.press;
+	telemetry.baro_alt = raw_sensors.baro.alt;
 
-	telemetry.launch_lat = _sm->estimator.state.gps_launch_lat;
-	telemetry.launch_lng = _sm->estimator.state.gps_launch_long;
-	telemetry.launch_alt = _sm->estimator.state.gps_launch_alt;
+	telemetry.batt_voltage = raw_sensors.batt.volt;
+	telemetry.batt_percent= raw_sensors.batt.percent;
+
+	telemetry.launch_lat = estimator_state.gps_launch_lat;
+	telemetry.launch_lng = estimator_state.gps_launch_long;
+	telemetry.launch_alt = estimator_state.gps_launch_alt;
 
 	telemetry.system_status = _sm->systemstatus.getStatus();
 	
@@ -358,16 +365,7 @@ void CommandHandler::CalibrateAccelGyroBiasCommand(const RnpPacketSerialized& pa
 	if(!_sm->systemstatus.flag_triggered(SYSTEM_FLAG::STATE_PREFLIGHT,SYSTEM_FLAG::DEBUG)){
 		return;
 	}
-	_sm->sensors.imu.calibrateAccelGyroBias(true);
-	_sm->tunezhandler.play(MelodyLibrary::confirmation); //play sound when complete
-}
-
-void CommandHandler::CalibrateMagBiasCommand(const RnpPacketSerialized& packet) 
-{
-	if(!_sm->systemstatus.flag_triggered(SYSTEM_FLAG::STATE_PREFLIGHT,SYSTEM_FLAG::DEBUG)){
-		return;
-	}
-	_sm->sensors.imu.calibrateMagBias(true);
+	_sm->sensors.calibrateAccelGyro();
 	_sm->tunezhandler.play(MelodyLibrary::confirmation); //play sound when complete
 }
 
@@ -381,15 +379,14 @@ void CommandHandler::CalibrateMagFullCommand(const RnpPacketSerialized& packet)
 		//incorrect packet type received do not deserialize
 		return;
 	}
-	
-	MagCalCommandPacket magcalpacket(packet);
-	_sm->sensors.imu.calibrateMagFull(MagCalibrationParameters{magcalpacket.fieldMagnitude,
-															   magcalpacket.inclination,
-															   magcalpacket.declination,
-															   magcalpacket.getA(),
-															   magcalpacket.getB()});
-	_sm->tunezhandler.play(MelodyLibrary::confirmation); //play sound when complete
 
+	MagCalCommandPacket magcalpacket(packet);
+	_sm->sensors.calibrateMag(MagCalibrationParameters{magcalpacket.fieldMagnitude,
+													   magcalpacket.inclination,
+													   magcalpacket.declination,
+													   magcalpacket.getA(),
+													   magcalpacket.getB()});
+	_sm->tunezhandler.play(MelodyLibrary::confirmation); // play sound when complete
 }
 
 void CommandHandler::CalibrateBaroCommand(const RnpPacketSerialized& packet)
@@ -397,7 +394,7 @@ void CommandHandler::CalibrateBaroCommand(const RnpPacketSerialized& packet)
 	if(!_sm->systemstatus.flag_triggered(SYSTEM_FLAG::STATE_PREFLIGHT,SYSTEM_FLAG::DEBUG)){
 		return;
 	}
-	_sm->sensors.baro.calibrate();
+	_sm->sensors.calibrateBaro();
 	_sm->tunezhandler.play(MelodyLibrary::confirmation); //play sound when complete
 }
 

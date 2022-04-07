@@ -23,7 +23,7 @@ using memberFunc_t = flightVariable_t (FlightVariables::*)(int);
 class FlightVariables{ 
     public:
 
-        FlightVariables(state_t *state, EventHandler& event_handler) : 
+        FlightVariables(SensorStructs::state_t *state, EventHandler& event_handler) : 
         _state(state),
         _eventhandler(event_handler)
         {}
@@ -58,11 +58,8 @@ class FlightVariables{
         void setApogeeTime(uint32_t time){ _apogeeTime = time; };
 
     private:
-        /**
-         * @brief pointer to event handler
-         * 
-         */
-        state_t* _state;
+
+        SensorStructs::state_t* _state;
         EventHandler& _eventhandler;
 
         uint32_t _ignitionTime;

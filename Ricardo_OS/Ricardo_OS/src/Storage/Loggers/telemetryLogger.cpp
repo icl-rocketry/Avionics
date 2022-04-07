@@ -28,36 +28,36 @@ void TelemetryLogger::disable(){
 };
 
 
-void TelemetryLogger::log(state_t &estimator_state,raw_measurements_t &raw_sensors,uint64_t time){
+void TelemetryLogger::log(const SensorStructs::state_t &estimator_state ,const SensorStructs::raw_measurements_t &raw_sensors,uint64_t time){
 
     if (!_status){
         return; // check if logger is enabled
     }
 
     
-    telemetry_frame.gps_long = raw_sensors.gps_long;
-    telemetry_frame.gps_lat = raw_sensors.gps_lat;
-    telemetry_frame.gps_alt = raw_sensors.gps_alt;
-    telemetry_frame.gps_v_n = raw_sensors.gps_v_n;
-    telemetry_frame.gps_v_e = raw_sensors.gps_v_e;
-    telemetry_frame.gps_v_d = raw_sensors.gps_v_d;
-    telemetry_frame.gps_sat = raw_sensors.gps_sat;
-    telemetry_frame.gps_fix = raw_sensors.gps_fix;
-    telemetry_frame.ax = raw_sensors.ax;
-    telemetry_frame.ay = raw_sensors.ay;
-    telemetry_frame.az = raw_sensors.az;
-    telemetry_frame.gx = raw_sensors.gx;
-    telemetry_frame.gy = raw_sensors.gy;
-    telemetry_frame.gz = raw_sensors.gz;
-    telemetry_frame.mx = raw_sensors.mx;
-    telemetry_frame.my = raw_sensors.my;
-    telemetry_frame.mz = raw_sensors.mz;
-    telemetry_frame.imu_temp = raw_sensors.imu_temp;
-    telemetry_frame.baro_alt = raw_sensors.baro_alt;
-    telemetry_frame.baro_temp = raw_sensors.baro_temp;
-    telemetry_frame.baro_press = raw_sensors.baro_press;
-    telemetry_frame.batt_volt = raw_sensors.batt_volt;
-    telemetry_frame.batt_percent = raw_sensors.batt_percent;
+    telemetry_frame.gps_long = raw_sensors.gps.lng;
+    telemetry_frame.gps_lat = raw_sensors.gps.lat;
+    telemetry_frame.gps_alt = raw_sensors.gps.alt;
+    telemetry_frame.gps_v_n = raw_sensors.gps.v_n;
+    telemetry_frame.gps_v_e = raw_sensors.gps.v_e;
+    telemetry_frame.gps_v_d = raw_sensors.gps.v_d;
+    telemetry_frame.gps_sat = raw_sensors.gps.sat;
+    telemetry_frame.gps_fix = raw_sensors.gps.fix;
+    telemetry_frame.ax = raw_sensors.accelgyro.ax;
+    telemetry_frame.ay = raw_sensors.accelgyro.ay;
+    telemetry_frame.az = raw_sensors.accelgyro.az;
+    telemetry_frame.gx = raw_sensors.accelgyro.gx;
+    telemetry_frame.gy = raw_sensors.accelgyro.gy;
+    telemetry_frame.gz = raw_sensors.accelgyro.gz;
+    telemetry_frame.mx = raw_sensors.mag.mx;
+    telemetry_frame.my = raw_sensors.mag.my;
+    telemetry_frame.mz = raw_sensors.mag.mz;
+    telemetry_frame.imu_temp = raw_sensors.accelgyro.temp;
+    telemetry_frame.baro_alt = raw_sensors.baro.alt;
+    telemetry_frame.baro_temp = raw_sensors.baro.temp;
+    telemetry_frame.baro_press = raw_sensors.baro.press;
+    telemetry_frame.batt_volt = raw_sensors.batt.volt;
+    telemetry_frame.batt_percent = raw_sensors.batt.percent;
     telemetry_frame.roll = estimator_state.eulerAngles[0];
     telemetry_frame.pitch = estimator_state.eulerAngles[1];
     telemetry_frame.yaw = estimator_state.eulerAngles[2];

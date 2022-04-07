@@ -34,6 +34,9 @@ class TelemetryPacket : public RnpPacket{
                 &TelemetryPacket::ax,
                 &TelemetryPacket::ay,
                 &TelemetryPacket::az,
+                &TelemetryPacket::h_ax,
+                &TelemetryPacket::h_ay,
+                &TelemetryPacket::h_az,
                 &TelemetryPacket::gx,
                 &TelemetryPacket::gy,
                 &TelemetryPacket::gz,
@@ -93,6 +96,7 @@ class TelemetryPacket : public RnpPacket{
         uint8_t sat;
         //imu
         float ax, ay, az; // acceleration (g's)
+        float h_ax,h_ay,h_az;// high g accel (g's)
         float gx, gy, gz; // angular rates (deg/s)
         float mx, my, mz;// magnetometer (uT)
         //barometer

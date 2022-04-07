@@ -4,7 +4,7 @@
 
 #include <SPI.h>
 #include "ricardo_pins.h"
-#include "LoRa.h"
+#include <LoRa.h>
 
 #include "Storage/systemstatus.h"
 #include "flags.h"
@@ -33,9 +33,9 @@ void Radio::setup(){
     LoRa.setPins(LoraCs,LoraReset,LoraInt);
     LoRa.setSPI(_spi);
 
-    while (!LoRa.begin(LORA_REGION)){
-        _systemstatus.new_message(SYSTEM_FLAG::ERROR_LORA,"Lora setting up");
-        delay(100);       
+
+    if (!LoRa.begin(LORA_REGION)){
+        _systemstatus.new_message(SYSTEM_FLAG::ERROR_LORA,"Lora setting up");      
     };
     if (_systemstatus.flag_triggered(SYSTEM_FLAG::ERROR_LORA)){
         _systemstatus.delete_message(SYSTEM_FLAG::ERROR_LORA);

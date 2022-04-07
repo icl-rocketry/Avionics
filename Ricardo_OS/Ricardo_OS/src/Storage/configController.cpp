@@ -18,6 +18,7 @@ void ConfigController::load(){
     File _file; // file object
     _file = _storagecontroller->open(configuration_file_path.c_str(),STORAGE_DEVICE::MICROSD,O_RDONLY); //try to open file at directory
     if(!_file){
+        
         _configOK = false;
         _logcontroller->log("Error opening config file!");
         return;

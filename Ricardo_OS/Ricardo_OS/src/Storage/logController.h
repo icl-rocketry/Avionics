@@ -30,7 +30,7 @@ class LogController{
         LogController(StorageController* storagecontroller);
         void setup();
         //telemtry logging
-        void log(state_t &estimator_state ,raw_measurements_t &raw_sensors,bool force=false);
+        void log(const SensorStructs::state_t &estimator_state ,const SensorStructs::raw_measurements_t &raw_sensors,bool force=false);
         //network logging
 		//void log(PacketHeader &header);
         //system logging

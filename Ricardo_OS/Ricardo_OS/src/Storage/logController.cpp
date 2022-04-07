@@ -46,7 +46,7 @@ void LogController::generateLogDirectories(STORAGE_DEVICE device){
     _storagecontroller->mkdir(uniqueDirectory,device);
 }
 
-void LogController::log(state_t &estimator_state,raw_measurements_t &raw_sensors,bool force) {
+void LogController::log(const SensorStructs::state_t &estimator_state ,const SensorStructs::raw_measurements_t &raw_sensors,bool force) {
     uint64_t current_time = micros();
     if((current_time-telemetrylogger_prevTime) >= (telemetrylogger_logDelta*1000) || force){
         telemetrylogger_prevTime = current_time; // update previous log time

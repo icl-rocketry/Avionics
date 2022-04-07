@@ -53,9 +53,9 @@ stateMachine::stateMachine() :
     radio(vspi,systemstatus,logcontroller),
     networkmanager(static_cast<uint8_t>(DEFAULT_ADDRESS::ROCKET),NODETYPE::HUB,true),
     commandhandler(this),
-    sensors(this),
-    estimator(this),
-    eventhandler(&estimator.state,enginehandler,deploymenthandler,logcontroller)    
+    sensors(vspi,I2C,systemstatus,logcontroller),
+    estimator(systemstatus,logcontroller),
+    eventhandler(NULL,enginehandler,deploymenthandler,logcontroller)    
 {};
 
 
@@ -66,25 +66,27 @@ void stateMachine::initialise(State* initStatePtr) {
   I2C.begin(_SDA,_SCL,I2C_FREQUENCY);
   //initalize spi interface
   vspi.begin();
-  //_sm->vspi.setClockDivider(SPI_CLOCK_DIV2);
   vspi.setFrequency(1000000); // 10mhz
   vspi.setBitOrder(MSBFIRST);
   vspi.setDataMode(SPI_MODE0);
   //setup cs pins
   //initialise output variables as output
   pinMode(LoraCs, OUTPUT);
-  pinMode(ImuCs, OUTPUT);
+  pinMode(ImuCs_1, OUTPUT);
+  pinMode(ImuCs_2, OUTPUT);
   pinMode(BaroCs, OUTPUT);
   pinMode(MagCs, OUTPUT);
-  pinMode(FlashCs, OUTPUT);
-  pinMode(SdCs, OUTPUT);
+  pinMode(SdCs_1, OUTPUT);
+  pinMode(SdCs_2, OUTPUT);
+
   //initialise outputs as high
   digitalWrite(LoraCs, HIGH);
-  digitalWrite(ImuCs, HIGH);
+  digitalWrite(ImuCs_1, HIGH);
+  digitalWrite(ImuCs_2, HIGH);
   digitalWrite(BaroCs, HIGH);
   digitalWrite(MagCs, HIGH);
-  digitalWrite(FlashCs, HIGH);
-  digitalWrite(SdCs, HIGH);
+  digitalWrite(SdCs_1, HIGH);
+  digitalWrite(SdCs_2, HIGH);
   //open serial port on usb interface
   Serial.begin(Serial_baud);
   Serial.setRxBufferSize(SERIAL_SIZE_RX);
@@ -101,7 +103,7 @@ void stateMachine::initialise(State* initStatePtr) {
   configcontroller.load(); // load configuration from sd card into ram
 
   //enumerate events this should be done after the rocket componets have been enumerated and setup in their respetive handlers
-  eventhandler.setup(configcontroller.configDoc["Events"]);
+  // eventhandler.setup(configcontroller.configDoc["Events"]);
 
   //setup interfaces
   usbserial.setup();
@@ -121,7 +123,6 @@ void stateMachine::initialise(State* initStatePtr) {
   //sensors must be setup before estimator
   sensors.setup();
   estimator.setup();
-
   //call setup state
   changeState(initStatePtr);
  
@@ -140,11 +141,11 @@ void stateMachine::update() {
   sensors.update();
  
   //process updated sensor data
-  estimator.update();
+  estimator.update(sensors.getData());
 
-  logcontroller.log(estimator.state,sensors.sensors_raw);// log new navigation solution and sensor output
+  logcontroller.log(estimator.getData(),sensors.getData());// log new navigation solution and sensor output
 
-  eventhandler.update();
+
 
   //check for new packets and process
   networkmanager.update();

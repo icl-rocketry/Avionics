@@ -1,7 +1,7 @@
-#ifndef BARO_H
-#define BARO_H
+#pragma once
+
 #include <Arduino.h>
-#include "SPI.h"
+#include <SPI.h>
 
 #include "Storage/systemstatus.h"
 #include "Storage/logController.h"
@@ -11,19 +11,17 @@
 
 
 
-class Baro{
+class MS5607{
     public:
-        Baro(SPIClass* spi,SystemStatus* systemstatus,LogController* logcontroller,raw_measurements_t* raw_data);
+        MS5607(SPIClass& spi,SystemStatus& systemstatus,LogController& logcontroller,uint8_t cs);
         void setup();
-        void update();
+        void update(SensorStructs::BARO_t& barodata);
 
         /**
          * @brief zero barometer altitude 
          * 
-         * @param temp in celcius
-         * @param press in pa
          */
-        void calibrate();
+        void calibrateBaro();
 
 
     private:
@@ -32,12 +30,12 @@ class Baro{
         float refTemp{273.15 + 15};
         float refPress{101325};
         //pointer to spi object
-        SPIClass* _spi;
+        SPIClass& _spi;
         //pointer to system status object
-        SystemStatus* _systemstatus;
-        LogController* _logcontroller;
-        //pointer to raw data struct
-        raw_measurements_t* _raw_data;
+        SystemStatus& _systemstatus;
+        LogController& _logcontroller;
+        const uint8_t _cs;
+
 
        
 
@@ -107,8 +105,7 @@ class Baro{
         bool getRawPressure();
 
         void compensateSecondOrder();
-
-        void updateData();
+        
         float toAltitude(float pressure);
 
         void write(const int command, const int ms = 0);
@@ -117,8 +114,5 @@ class Baro{
 
         bool calculatePressure();
         bool calculateTemperature();
-
-        
 };    
 
-#endif

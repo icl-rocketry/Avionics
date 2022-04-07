@@ -15,7 +15,7 @@ class EventHandler{
 
     public:
 
-        EventHandler(state_t* state, EngineHandler& enginehandler, DeploymentHandler& deploymenthandler,LogController& logcontroller):
+        EventHandler(SensorStructs::state_t* state, EngineHandler& enginehandler, DeploymentHandler& deploymenthandler,LogController& logcontroller):
         _flightvariables(state, *this),
         _enginehandler(enginehandler),
         _deploymenthandler(deploymenthandler),

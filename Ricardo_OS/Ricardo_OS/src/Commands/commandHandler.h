@@ -46,7 +46,6 @@ class CommandHandler {
         void ResetLocalizationCommand(const RnpPacketSerialized& packet);
         void SetBetaCommand(const RnpPacketSerialized& packet);
         void CalibrateAccelGyroBiasCommand(const RnpPacketSerialized& packet);
-        void CalibrateMagBiasCommand(const RnpPacketSerialized& packet);
         void CalibrateMagFullCommand(const RnpPacketSerialized& packet);
         void CalibrateBaroCommand(const RnpPacketSerialized& packet);
         void EnterUSBModeCommand(const RnpPacketSerialized& packet);

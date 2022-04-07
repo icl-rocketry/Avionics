@@ -8,36 +8,34 @@
 #include "sensorStructs.h"
 
 
-Battery::Battery(uint8_t pin, SystemStatus* systemstatus,LogController* logcontroller,raw_measurements_t* raw_data):
-
+Battery::Battery(SystemStatus& systemstatus,LogController& logcontroller,uint8_t pin):
 _systemstatus(systemstatus),
 _logcontroller(logcontroller),
-_raw_data(raw_data),
 _pin(pin)
-
-
 {};
 
 void Battery::setup(){
-    //maybe some sort of calibration??
+    //todo -> add configuration to allow communication with pdus as a network sensor
 }
 
-void Battery::update(){
+void Battery::update(SensorStructs::BATT_t &data)
+{
 
-    if (millis()-prevSampleTime >= sampleDelta){
-    
-        
-        
+    if (millis() - prevSampleTime >= sampleDelta)
+    {
+
         const uint16_t reading = analogRead(_pin);
-        _raw_data->batt_volt = (uint16_t)(factor*(float)reading); // voltage in mV
+        data.volt = (uint16_t)(factor * (float)reading); // voltage in mV
 
-        if ((_raw_data->batt_volt < warn_battery_voltage) && (!_systemstatus->flag_triggered(SYSTEM_FLAG::ERROR_BATT))){
-            _systemstatus->new_message(SYSTEM_FLAG::ERROR_BATT,"Battery at " + std::to_string(_raw_data->batt_volt) + "mV"); 
-        }else if ((_raw_data->batt_volt > warn_battery_voltage) && (_systemstatus->flag_triggered(SYSTEM_FLAG::ERROR_BATT))){
-            _systemstatus->delete_message(SYSTEM_FLAG::ERROR_BATT);
+        if ((data.volt < warn_battery_voltage) && (!_systemstatus.flag_triggered(SYSTEM_FLAG::ERROR_BATT)))
+        {
+            _systemstatus.new_message(SYSTEM_FLAG::ERROR_BATT, "Battery at " + std::to_string(data.volt) + "mV");
+        }
+        else if ((data.volt > warn_battery_voltage) && (_systemstatus.flag_triggered(SYSTEM_FLAG::ERROR_BATT)))
+        {
+            _systemstatus.delete_message(SYSTEM_FLAG::ERROR_BATT);
         }
 
-
-        _raw_data->batt_percent = uint16_t(((float)(_raw_data->batt_volt-empty_battery_voltage)/(float)(full_battery_voltage-empty_battery_voltage))*100.0);
+        data.percent = uint16_t(((float)(data.volt - empty_battery_voltage) / (float)(full_battery_voltage - empty_battery_voltage)) * 100.0);
     }
 }

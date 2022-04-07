@@ -24,7 +24,7 @@ public:
 
     void flush();
 
-    void log(state_t &estimator_state,raw_measurements_t &raw_sensors,uint64_t time);
+    void log(const SensorStructs::state_t &estimator_state ,const SensorStructs::raw_measurements_t &raw_sensors,uint64_t time);
 
     ~TelemetryLogger();
 private:

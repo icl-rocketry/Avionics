@@ -4,7 +4,9 @@
 #include "sensorStructs.h"
 #include "MadgwickAHRS.h"
 #include "localizationkf.h"
-//#include "sensors.h"
+#include "sensors.h"
+#include "Storage/systemstatus.h"
+#include "Storage/logController.h"
 
 enum class ESTIMATOR_STATE: uint8_t{
     NOMINAL,
@@ -18,25 +20,30 @@ enum class ESTIMATOR_STATE: uint8_t{
     NOSOLUTION
 };
 
-class stateMachine; //forward declaration
 
 class Estimator{
     public:
-        Estimator(stateMachine* sm);   
+        Estimator(SystemStatus& systemstatus,LogController& logcontroller);   
         
         void setup();
-        void update();
+        void update(const SensorStructs::raw_measurements_t& raw_sensors);
 
-        void setHome(); //records the current position as the launch site
+        void setHome(const SensorStructs::raw_measurements_t& raw_sensors); //records the current position as the launch site
         bool isHomeSet(){return _homeSet;};
         
         void changeBeta(float beta);
         void resetOrientation();
 
+        const SensorStructs::state_t& getData();
 
-        state_t state;
+        
     private:
-        stateMachine* _sm;//pointer to statemachine object
+        // stateMachine* _sm;//pointer to statemachine object
+        SystemStatus& _systemstatus;
+        LogController& _logcontroller;
+
+        SensorStructs::state_t state;
+
         //time variables
         unsigned long last_update;
         unsigned long update_frequency;
@@ -61,9 +68,9 @@ class Estimator{
         //private methods
 
 
-        void updateAngularRates();
-        void updateOrientation(float dt); // madgwick filter update
-        void updateLinearAcceleration();
+        void updateAngularRates(const float& gx,const float& gy,const float& gz);
+        void updateOrientation(const float& gx,const float& gy,const float& gz,const float& ax,const float& ay,const float& az,const float& mx,const float& my,const float& mz,float dt); // madgwick filter update
+        void updateLinearAcceleration(const float& ax,const float& ay,const float& az);
 
         void changeEstimatorState(ESTIMATOR_STATE state,std::string logmessage);
 };

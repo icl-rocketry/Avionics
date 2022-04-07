@@ -17,13 +17,13 @@
 StorageController::StorageController(stateMachine* sm):
 _sm(sm),
 microsd(&(sm->vspi)),
-flashTransport(FlashCs,&(sm->vspi)),
+flashTransport(SdCs_2,&(sm->vspi)),
 flash(&flashTransport)
 {};
 
 void StorageController::setup(){
- 
-    if(microsd.begin(SdCs,SD_SCK_MHZ(10))){
+
+    if(microsd.begin(SdCs_1,SD_SCK_MHZ(10))){
         generateDirectoryStructure(STORAGE_DEVICE::MICROSD);
         _sm->logcontroller.log("SD Initalized");   
     }else{
@@ -32,7 +32,6 @@ void StorageController::setup(){
     
 
     const SPIFlash_Device_t flash_config = W25Q128JV_SM; //pass in spi flash config
-    
     if(flash.begin(&flash_config)){
 
         _sm->logcontroller.log("Flash Initalized");

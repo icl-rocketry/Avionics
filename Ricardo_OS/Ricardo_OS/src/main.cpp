@@ -18,6 +18,7 @@ void setup() {
   esp_log_level_set("*", ESP_LOG_INFO);        // set all components to ERROR level
   //esp_log_level_set("*", ESP_LOG_NONE);  
   statemachine.initialise(new Setup(&statemachine)); //intialize statemachine with setup state to run all necessary setup tasks.
+  // Serial.println("done");
 }
 
 void loop() {

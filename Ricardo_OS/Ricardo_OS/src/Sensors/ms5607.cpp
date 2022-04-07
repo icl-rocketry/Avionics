@@ -1,7 +1,10 @@
-#include "baro.h"
+#include "ms5607.h"
+
 #include "config.h"
 #include "ricardo_pins.h"
-#include "SPI.h"
+
+#include <Arduino.h>
+#include <SPI.h>
 
 #include "Storage/systemstatus.h"
 #include "Storage/logController.h"
@@ -10,15 +13,15 @@
 #include <string>
 
 
-Baro::Baro(SPIClass* spi,SystemStatus* systemstatus,LogController* logcontroller,raw_measurements_t* raw_data):
+MS5607::MS5607(SPIClass& spi,SystemStatus& systemstatus,LogController& logcontroller,uint8_t cs):
 _barofilter(0.09),
 _spi(spi),
 _systemstatus(systemstatus),
 _logcontroller(logcontroller),
-_raw_data(raw_data)
+_cs(cs)
 {};
 
-void Baro::setup(){
+void MS5607::setup(){
 
     reset();
     setOversamplingRate(MS5607_OSR4096);
@@ -26,33 +29,34 @@ void Baro::setup(){
     
 }
 
-void Baro::update(){
+void MS5607::update(SensorStructs::BARO_t& barodata){
     
-
     getRawTemp();
     getRawPressure();
 
     calculateTemperature();
     calculatePressure();
 
-    updateData();  
-
+    barodata.temp = (float)TEMP/100.0;
+    barodata.press = (float)PRESS; 
+    //_raw_data->baro_alt = _barofilter.getFilterAlt(toAltitude((float)PRESS));
+    barodata.alt = toAltitude((float)PRESS);
 
 }
 
 
-void Baro::calibrate() 
+void MS5607::calibrateBaro() 
 {
-    refTemp = 273.17+_raw_data->baro_temp;
-    refPress = _raw_data->baro_press;
+    refTemp = 273.17 + (float)TEMP/100.0;
+    refPress = (float)PRESS;
 }
 
-void Baro::reset() {
+void MS5607::reset() {
     write(BARO_CMD::MS5607_RESET, 3);
 }
 
 
-void Baro::readProm() {
+void MS5607::readProm() {
     calibration.pressure_sensitivity = read16(BARO_CMD::MS5607_PROM_C1);
     calibration.pressure_offset = read16(BARO_CMD::MS5607_PROM_C2);
     calibration.temp_coef_pressure_sensitivity = read16(BARO_CMD::MS5607_PROM_C3);
@@ -61,7 +65,7 @@ void Baro::readProm() {
     calibration.temp_coef_temp = read16(BARO_CMD::MS5607_PROM_C6);
 }
 
-void Baro::setOversamplingRate(const BARO_OSR osr){
+void MS5607::setOversamplingRate(const BARO_OSR osr){
     oversamplingRate = osr;
     switch (osr)
     {
@@ -93,7 +97,7 @@ void Baro::setOversamplingRate(const BARO_OSR osr){
     }
 }
 
-bool Baro::getRawTemp() {
+bool MS5607::getRawTemp() {
     if (_currentConversion == BARO_CONVERSION::TEMPERATURE){
         if (!_conversionInProgress){
             write(BARO_CMD::MS5607_CONVERT_D2 | oversamplingRate,0); // write spi command to start conversion
@@ -115,7 +119,7 @@ bool Baro::getRawTemp() {
 }
 
 
-bool Baro::getRawPressure(){
+bool MS5607::getRawPressure(){
     if (_currentConversion == BARO_CONVERSION::PRESSURE){
         if (!_conversionInProgress){
             write(BARO_CMD::MS5607_CONVERT_D1 | oversamplingRate,0); // write spi command to start conversion
@@ -136,7 +140,7 @@ bool Baro::getRawPressure(){
     return true;
 }
 
-void Baro::compensateSecondOrder() {
+void MS5607::compensateSecondOrder() {
     int64_t T2 = 0;
     int64_t OFF2 = 0;
     int64_t SENS2 = 0;
@@ -161,7 +165,7 @@ void Baro::compensateSecondOrder() {
     }   
 }
 
-bool Baro::calculatePressure() {
+bool MS5607::calculatePressure() {
 
                         
     OFF = ((int64_t)calibration.pressure_offset << 17) + (((int64_t)dT * (int64_t)calibration.temp_coef_pressure_offset) >> 6);    
@@ -177,7 +181,7 @@ bool Baro::calculatePressure() {
     return true;
 }
 
-bool Baro::calculateTemperature() {
+bool MS5607::calculateTemperature() {
 
     // dT = D2 - (calibration.ref_temp << 8);
     // TEMP = 2000 + ((int64_t)(dT*calibration.temp_coef_temp) >> 23);
@@ -192,46 +196,40 @@ bool Baro::calculateTemperature() {
 
 }
 
-void Baro::updateData() {
-    _raw_data->baro_temp = (float)TEMP/100.0;
-    _raw_data->baro_press = (float)PRESS; // leave as is for pascals
-    //_raw_data->baro_alt = _barofilter.getFilterAlt(toAltitude((float)PRESS));
-    _raw_data->baro_alt = toAltitude((float)PRESS);
-}
 
-void Baro::write(const int command, const int ms){
-    digitalWrite(BaroCs, LOW);
-    _spi->transfer(command);
+void MS5607::write(const int command, const int ms){
+    digitalWrite(_cs, LOW);
+    _spi.transfer(command);
     if (ms) delay(ms);
-    digitalWrite(BaroCs, HIGH);
+    digitalWrite(_cs, HIGH);
 }
 
-uint16_t Baro::read16(const uint8_t command) {
-    digitalWrite(BaroCs, LOW);
+uint16_t MS5607::read16(const uint8_t command) {
+    digitalWrite(_cs, LOW);
     uint16_t data;
-    _spi->transfer(command);
-    int data1 = _spi->transfer(0x00);
-    int data2 = _spi->transfer(0x00);
+    _spi.transfer(command);
+    int data1 = _spi.transfer(0x00);
+    int data2 = _spi.transfer(0x00);
     data = data1 << 8 | data2;
-    digitalWrite(BaroCs, HIGH);
+    digitalWrite(_cs, HIGH);
     return data;
 }
 
-uint32_t Baro::read24(const uint8_t command) {
+uint32_t MS5607::read24(const uint8_t command) {
 
 
-    digitalWrite(BaroCs, LOW);
+    digitalWrite(_cs, LOW);
     uint32_t data;
-    _spi->transfer(command);
-    int data1 = _spi->transfer(0x00);
-    int data2 = _spi->transfer(0x00);
-    int data3 = _spi->transfer(0x00);
+    _spi.transfer(command);
+    int data1 = _spi.transfer(0x00);
+    int data2 = _spi.transfer(0x00);
+    int data3 = _spi.transfer(0x00);
     data  = data1 << 16 | data2 << 8 | data3;
-    digitalWrite(BaroCs, HIGH);
+    digitalWrite(_cs, HIGH);
     return data;    
 }
 
-float Baro::toAltitude(float pressure) {
+float MS5607::toAltitude(float pressure) {
 
     constexpr float R = 287.052; // specific gas constant R*/M0
     constexpr float g = 9.80665; // standard gravity 

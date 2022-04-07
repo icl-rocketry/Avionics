@@ -126,7 +126,7 @@ public:
     float ax, ay, az;
     float gx, gy, gz;
     float mx, my, mz;
-    uint16_t imu_temp;
+    float imu_temp;
     //baro
     float baro_alt,baro_temp,baro_press;
     //battery

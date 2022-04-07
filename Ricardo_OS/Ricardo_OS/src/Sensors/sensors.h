@@ -1,24 +1,39 @@
-#ifndef SENSORS_H
-#define SENSORS_H
-//calls and updates raw sensor values
+#pragma once
+/**
+ * @file sensors.h
+ * @author Kiran de Silva
+ * @brief Manages sensor suite on avionics.
+ * TODO:
+ * Threadsafe
+ * @version 0.1
+ * @date 2022-04-06
+ * 
+ * @copyright Copyright (c) 2022
+ * 
+ */
 
-#include "Arduino.h"
 
 #include "sensorStructs.h"
 
+#include <SPI.h>
+#include <Wire.h>
+#include "Storage/logController.h"
+#include "Storage/systemstatus.h"
 
-#include "gps.h"
-#include "baro.h"
-#include "imu.h"
+
+#include "max_m8q.h"
+#include "ms5607.h"
+#include "icm_20608.h"
+#include "h3lis331dl.h"
+#include "mmc5983ma.h"
+
+
 #include "battery.h"
 
 
-
-class stateMachine; //forward declaration
-
 class Sensors{
     public:
-        Sensors(stateMachine* sm);
+        Sensors(SPIClass& spi,TwoWire& I2C,SystemStatus& systemstatus,LogController& logcontroller);
 
         void setup();
         void update();
@@ -27,20 +42,36 @@ class Sensors{
         void disableHITL();
         void updateHITL();
 
-        raw_measurements_t const * getRaw();
 
-        raw_measurements_t sensors_raw;
+        /**
+         * @brief Get the Raw Sensor Data
+         * 
+         * @return const SensorStructs::raw_measurements_t& 
+         */
+        const SensorStructs::raw_measurements_t& getData();   
 
-        GPS gps;
-        Baro baro;
-        Imu imu;
-        Battery batt;
+        // Sensor Calibration Functions     
+        void calibrateAccelGyro();
+        void calibrateMag(MagCalibrationParameters magcal);
+        void calibrateBaro();
+
+
+        
 
     private:
-        stateMachine* _sm; //pointer to statemachine
+
+        SensorStructs::raw_measurements_t sensors_raw;
+
+
+        Max_M8Q gps;
+        MS5607 baro;
+        ICM_20608 accelgyro;
+        H3LIS331DL accel;
+        MMC5983MA mag;
+        
+        Battery batt;
 
     
 };
 
 
-#endif

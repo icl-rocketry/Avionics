@@ -1,6 +1,10 @@
 #include "sensors.h"
 #include "stateMachine.h"
 
+#include <SPI.h>
+#include <Wire.h>
+#include "Storage/logController.h"
+#include "Storage/systemstatus.h"
 
 
 //config
@@ -9,17 +13,20 @@
 
 //indivudal sensor classes
 
-#include "gps.h"
-#include "imu.h"
-#include "baro.h"
+#include "max_m8q.h"
+#include "ms5607.h"
+#include "icm_20608.h"
+#include "h3lis331dl.h"
+
 #include "battery.h"
 
-Sensors::Sensors(stateMachine* sm) :
-    gps(&(sm->I2C),&(sm->systemstatus),&(sm->logcontroller),&sensors_raw),
-    baro(&(sm->vspi),&(sm->systemstatus),&(sm->logcontroller),&sensors_raw),
-    imu(&(sm->vspi),&(sm->systemstatus),&(sm->logcontroller),&sensors_raw),
-    batt(BattVolt,&(sm->systemstatus),&(sm->logcontroller),&sensors_raw),
-    _sm(sm)
+Sensors::Sensors(SPIClass& spi,TwoWire& I2C,SystemStatus& systemstatus,LogController& logcontroller) :
+    gps(I2C,systemstatus,logcontroller),
+    baro(spi,systemstatus,logcontroller,10),
+    accelgyro(spi,systemstatus,logcontroller,10),
+    accel(spi,systemstatus,logcontroller,10),
+    mag(spi,systemstatus,logcontroller,10),
+    batt(systemstatus,logcontroller,BattVolt)
     
 {}
 
@@ -27,26 +34,42 @@ void Sensors::setup(){
     //calls setup for each indiviual sensor
     gps.setup();
     baro.setup();
-    imu.setup();
+    accelgyro.setup();
+    accel.setup();
     batt.setup();
     
 };
 
-void Sensors::update(){
-//updates the raw_measuremets data structure with new measurements
-    // uint32_t time = micros();
-    
-    gps.update();
-    // Serial.println("gps:" + String((micros()-time)));
-    // time =micros();
-    baro.update();
-    // Serial.println("baro:" + String((micros()-time)));
-    // time =micros();
-    imu.update();
-    // Serial.println("imu:" + String((micros()-time)));
-    // time =micros();
-    batt.update();
-    // Serial.println("batt:" + String((micros()-time)));
-    // time =micros();
+void Sensors::update()
+{
+    gps.update(sensors_raw.gps);
+    baro.update(sensors_raw.baro);
+    accelgyro.update(sensors_raw.accelgyro);
+    accel.update(sensors_raw.accel);
+    mag.update(sensors_raw.mag);
+
+    batt.update(sensors_raw.batt);
+
     
 };
+
+const SensorStructs::raw_measurements_t& Sensors::getData()
+{
+    //TODO make this threadsafe maybe use a double buffer to make it lock free
+    return sensors_raw;
+}
+
+void Sensors::calibrateAccelGyro()
+{
+    accelgyro.calibrateBias();
+}
+
+void Sensors::calibrateMag(MagCalibrationParameters magcal)
+{
+    mag.calibrate(magcal);
+}
+
+void Sensors::calibrateBaro()
+{
+    baro.calibrateBaro();
+}
