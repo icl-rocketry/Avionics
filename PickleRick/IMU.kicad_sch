@@ -1082,7 +1082,7 @@
     (in_bom yes) (on_board yes) (fields_autoplaced)
     (uuid b43f5fd2-756d-4ff4-a723-c4e592d5bb1a)
     (property "Reference" "U7" (id 0) (at 65.405 40.64 0))
-    (property "Value" "H3LIS100DLTR" (id 1) (at 65.405 43.18 0))
+    (property "Value" "H3LIS331DLTR" (id 1) (at 65.405 43.18 0))
     (property "Footprint" "iclr:PQFN50P300X300X100-16N" (id 2) (at 65.405 58.42 0)
       (effects (font (size 1.27 1.27)) (justify left bottom) hide)
     )
