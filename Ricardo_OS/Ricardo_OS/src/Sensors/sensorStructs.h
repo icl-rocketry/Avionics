@@ -51,7 +51,7 @@ namespace SensorStructs
         long v_e;
         long v_d;
 
-        int sat;                    // gps satilites
+        uint8_t sat;                    // gps satilites
         uint16_t pdop;              // poisitonal dillution of precision * 10^-2
         /* 0 = no fix
         1 = dead reckoning (requires external sensors)

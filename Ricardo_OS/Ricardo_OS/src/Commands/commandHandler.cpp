@@ -6,7 +6,7 @@
 
 
 #include "stateMachine.h"
-#include "States/usbmode.h"
+#include "States/debug.h"
 #include "States/groundstation.h"
 #include "States/launch.h"
 #include "States/flight.h"
@@ -100,8 +100,8 @@ void CommandHandler::handleCommand(std::unique_ptr<RnpPacketSerialized> packetpt
 		case COMMANDS::Reset_Localization:
 			ResetLocalizationCommand(*packetptr);
 			break;
-		case COMMANDS::Enter_USBMode:
-			EnterUSBModeCommand(*packetptr);
+		case COMMANDS::Enter_Debug:
+			EnterDebugCommand(*packetptr);
 			break;
 		case COMMANDS::Enter_Groundstation:
 			EnterGroundstationCommand(*packetptr);
@@ -115,11 +115,11 @@ void CommandHandler::handleCommand(std::unique_ptr<RnpPacketSerialized> packetpt
 		case COMMANDS::Enter_Recovery:
 			EnterRecoveryCommand(*packetptr);
 			break;
-		case COMMANDS::Exit_USBMode:
-			ExitUSBModeCommand(*packetptr);
+		case COMMANDS::Exit_Debug:
+			ExitDebugCommand(*packetptr);
 			break;
-		case COMMANDS::Exit_to_USBMode:
-			ExitUSBModeCommand(*packetptr);
+		case COMMANDS::Exit_to_Debug:
+			ExitDebugCommand(*packetptr);
 			break;
 		case COMMANDS::Set_Throttle:
 			SetThrottleCommand(*packetptr);
@@ -398,17 +398,14 @@ void CommandHandler::CalibrateBaroCommand(const RnpPacketSerialized& packet)
 	_sm->tunezhandler.play(MelodyLibrary::confirmation); //play sound when complete
 }
 
-void CommandHandler::EnterUSBModeCommand(const RnpPacketSerialized& packet) 
+void CommandHandler::EnterDebugCommand(const RnpPacketSerialized& packet) 
 {
 	if(!_sm->systemstatus.flag_triggered(SYSTEM_FLAG::STATE_PREFLIGHT)){
 		return;
 	}
-	_sm->changeState(new USBmode(_sm));
+	_sm->changeState(new Debug(_sm));
 	_sm->systemstatus.new_message(SYSTEM_FLAG::DEBUG);
 }
-
-
-
 
 void CommandHandler::EnterGroundstationCommand(const RnpPacketSerialized& packet) 
 {
@@ -442,22 +439,22 @@ void CommandHandler::EnterRecoveryCommand(const RnpPacketSerialized& packet)
 	_sm->changeState(new Recovery(_sm));
 }
 
-void CommandHandler::ExitUSBModeCommand(const RnpPacketSerialized& packet) 
+void CommandHandler::ExitDebugCommand(const RnpPacketSerialized& packet) 
 {
 	if(!_sm->systemstatus.flag_triggered(SYSTEM_FLAG::DEBUG)){
 		return;
 	}
-	_sm->changeState(new USBmode(_sm));
+	_sm->changeState(new Debug(_sm));
 	_sm->systemstatus.delete_message(SYSTEM_FLAG::DEBUG);
 	_sm->changeState(new Preflight(_sm));
 }
 
-void CommandHandler::ExitToUSBModeCommand(const RnpPacketSerialized& packet) 
+void CommandHandler::ExitToDebugCommand(const RnpPacketSerialized& packet) 
 {
 	if(!_sm->systemstatus.flag_triggered(SYSTEM_FLAG::DEBUG)){
 		return;
 	}
-	_sm->changeState(new USBmode(_sm));
+	_sm->changeState(new Debug(_sm));
 }
 
 void CommandHandler::EngineInfoCommand(const RnpPacketSerialized& packet) 
@@ -467,7 +464,7 @@ void CommandHandler::EngineInfoCommand(const RnpPacketSerialized& packet)
 
 void CommandHandler::SetThrottleCommand(const RnpPacketSerialized& packet) 
 {
-	if(!_sm->systemstatus.flag_triggered(SYSTEM_FLAG::STATE_USBMODE)){
+	if(!_sm->systemstatus.flag_triggered(SYSTEM_FLAG::STATE_DEBUG)){
 		return;
 	}
 }
@@ -479,7 +476,7 @@ void CommandHandler::PyroInfoCommand(const RnpPacketSerialized& packet)
 
 void CommandHandler::FireInfoCommand(const RnpPacketSerialized& packet) 
 {
-	if(!_sm->systemstatus.flag_triggered(SYSTEM_FLAG::STATE_USBMODE)){
+	if(!_sm->systemstatus.flag_triggered(SYSTEM_FLAG::STATE_DEBUG)){
 		return;
 	}
 };

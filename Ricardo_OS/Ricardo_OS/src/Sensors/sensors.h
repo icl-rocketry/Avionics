@@ -13,12 +13,20 @@
  */
 
 
-#include "sensorStructs.h"
-
 #include <SPI.h>
 #include <Wire.h>
+#include <memory>
+#include <functional>
+
+
+#include <rnp_networkmanager.h>
+#include <rnp_packet.h>
+
+
 #include "Storage/logController.h"
 #include "Storage/systemstatus.h"
+#include "sensorStructs.h"
+
 
 
 #include "max_m8q.h"
@@ -26,8 +34,6 @@
 #include "icm_20608.h"
 #include "h3lis331dl.h"
 #include "mmc5983ma.h"
-
-
 #include "battery.h"
 
 class Sensors
@@ -50,8 +56,11 @@ public:
     void calibrateMag(MagCalibrationParameters magcal);
     void calibrateBaro();
 
+    std::function<void(std::unique_ptr<RnpPacketSerialized>)> getHitlCallback();
+
 private:
     SensorStructs::raw_measurements_t sensors_raw;
+    SystemStatus& _systemstatus;
 
     Max_M8Q gps;
     MS5607 baro;
@@ -60,7 +69,13 @@ private:
     MMC5983MA mag;
     Battery batt;
 
-    
-
+    /**
+     * @brief Handle fake sensor data packets from hardware in the loop service
+     * 
+     * @param packet_ptr 
+     */
+    void hitlHandler(std::unique_ptr<RnpPacketSerialized> packet_ptr);
+    void hitlCommandHandler(RnpPacketSerialized& packet);
+    bool _hitlEnabled;
 
 };

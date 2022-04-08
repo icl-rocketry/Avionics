@@ -48,13 +48,13 @@ class CommandHandler {
         void CalibrateAccelGyroBiasCommand(const RnpPacketSerialized& packet);
         void CalibrateMagFullCommand(const RnpPacketSerialized& packet);
         void CalibrateBaroCommand(const RnpPacketSerialized& packet);
-        void EnterUSBModeCommand(const RnpPacketSerialized& packet);
+        void EnterDebugCommand(const RnpPacketSerialized& packet);
         void EnterGroundstationCommand(const RnpPacketSerialized& packet);
         void EnterCountdownCommand(const RnpPacketSerialized& packet);
         void EnterFlightCommand(const RnpPacketSerialized& packet);
         void EnterRecoveryCommand(const RnpPacketSerialized& packet);
-        void ExitUSBModeCommand(const RnpPacketSerialized& packet);
-        void ExitToUSBModeCommand(const RnpPacketSerialized& packet);
+        void ExitDebugCommand(const RnpPacketSerialized& packet);
+        void ExitToDebugCommand(const RnpPacketSerialized& packet);
         void EngineInfoCommand(const RnpPacketSerialized& packet);
         void SetThrottleCommand(const RnpPacketSerialized& packet);
         void PyroInfoCommand(const RnpPacketSerialized& packet);

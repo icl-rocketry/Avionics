@@ -11,7 +11,7 @@ TelemetryPacket::~TelemetryPacket()
 {};
 
 TelemetryPacket::TelemetryPacket():
-RnpPacket(static_cast<uint8_t>(DEFAULT_SERVICES::TELEMETRY),
+RnpPacket(0,
           0,
           size())
 {};

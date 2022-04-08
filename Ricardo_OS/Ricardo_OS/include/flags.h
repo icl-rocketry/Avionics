@@ -1,11 +1,10 @@
-#ifndef FLAGS_H
-#define FLAGS_H
+#pragma once
 
-#include "Arduino.h"
+#include <Arduino.h>
 
 enum class SYSTEM_FLAG:uint32_t{
     //state flags
-    STATE_USBMODE = (1 << 0), 
+    STATE_DEBUG = (1 << 0), 
     STATE_PREFLIGHT = (1 << 1),
     STATE_LAUNCH = (1 << 2),
     STATE_FLIGHT = (1 << 3),
@@ -43,4 +42,3 @@ enum class SYSTEM_FLAG:uint32_t{
 };
 
 
-#endif

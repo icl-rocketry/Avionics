@@ -10,7 +10,7 @@ Transtion to countdown state happens through lora command
 
 #include "state.h"
 
-
+#include <rnp_routingtable.h>
 
 
 
@@ -20,7 +20,6 @@ class Preflight: public State {
     void initialise();
     State* update();
     void exitstate();
-
     
 };
 

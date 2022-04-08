@@ -116,7 +116,7 @@ void stateMachine::initialise(State* initStatePtr) {
   networkmanager.addInterface(&radio);
   //load rt table
   networkmanager.enableAutoRouteGen(false);
-  networkmanager.setNoRouteAction(RnpNetworkManager::NOROUTE_ACTION::DUMP,{});
+  networkmanager.setNoRouteAction(NOROUTE_ACTION::DUMP,{});
   networkmanager.setLogCb([this](const std::string& message){return logcontroller.log(message);});
   networkmanager.registerService(static_cast<uint8_t>(DEFAULT_SERVICES::COMMAND),commandhandler.getCallback()); // register command handler callback
 
