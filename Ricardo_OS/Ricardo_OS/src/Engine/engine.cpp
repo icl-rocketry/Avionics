@@ -1,28 +1,39 @@
 #include "engine.h"
 
-#include "Storage/logController.h"
-#include "Storage/systemstatus.h"
-#include "Pyros/pyroHandler.h"
+#include <ArduinoJson.h>
+#include <memory>
+#include <rnp_networkmanager.h>
 
-#include "string"
-
-Engine:: Engine(uint8_t engineID,LogController& logcontroller,SystemStatus& systemstatus,PyroHandler& pyrohandler):
-_engineID(engineID),
-_logcontroller(logcontroller),
-_systemstatus(systemstatus),
-_pyrohandler(pyrohandler)
-{}
-
-void Engine::start() 
-{
-    _logcontroller.log("Engine : " + std::to_string(_engineID) + " started...");
-
-}
-
-void Engine::shutdown() 
-{
-    _logcontroller.log("Engine : " + std::to_string(_engineID) + " shutdown...");
-}
+#include "../RocketComponents/rocketcomponent.h"
 
 
+#include "stubs.h"
 
+void Engine::execute(int func){
+    switch(func){
+        case 1:
+        {
+            ignite();
+            break;
+        }
+        case 0:
+        {
+            shutdown();
+            break;
+        }
+        default:
+        {
+            break;
+        }
+    }
+};
+
+void Engine::ignite(){
+    _logcontroller.log("Engine: " + std::to_string(getID()) + " ignition called!");
+};
+
+void Engine::shutdown(){
+    _logcontroller.log("Engine: " + std::to_string(getID()) + "shutdown called!" );
+};
+
+Engine::~Engine(){};

@@ -1,39 +1,41 @@
 #pragma once
 
-#include "rnp_packet.h"
-#include "rnp_serializer.h"
+#include <rnp_packet.h>
+#include <rnp_serializer.h>
 
 #include <vector>
 
-namespace PyroPacket{
-    uint8_t getPyroID(const RnpPacketSerialized& packet); // extracts pyro id from a pyro packet
+//(N)etwork(R)ocket(C)omponent
+
+namespace NRCPacket{
     enum class TYPES:uint8_t{
-        PYROINFOPACKET = 0
+        NRC_COMMAND = 0,
+        NRC_STATE = 1
     };
 };
 
-class PyroInfoPacket : public RnpPacket{
+class NRCStatePacket : public RnpPacket{
     private:
     //serializer framework
         static constexpr auto getSerializer()
         {
             auto ret = RnpSerializer(
-                &PyroInfoPacket::pyroID,
-                &PyroInfoPacket::continuity
+                &NRCStatePacket::state,
+                &NRCStatePacket::value
             );
             return ret;
         }
         
     public:
-        ~PyroInfoPacket();
+        ~NRCStatePacket();
 
-        PyroInfoPacket();
+        NRCStatePacket(uint8_t destinationService);
         /**
          * @brief Deserialize PyroInfo Packet
          * 
          * @param data 
          */
-        PyroInfoPacket(const RnpPacketSerialized& packet);
+        NRCStatePacket(const RnpPacketSerialized& packet);
 
         /**
          * @brief Serialize PyroInfo Packet
@@ -42,8 +44,8 @@ class PyroInfoPacket : public RnpPacket{
          */
         void serialize(std::vector<uint8_t>& buf) override;
 
-        uint8_t pyroID;
-        bool continuity;
+        uint8_t state;
+        int32_t value;
 
         static constexpr size_t size(){
             return getSerializer().member_size();

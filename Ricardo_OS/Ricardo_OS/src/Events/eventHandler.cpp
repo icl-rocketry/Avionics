@@ -32,7 +32,7 @@ void EventHandler::setup(JsonArrayConst event_config)
 
     for (JsonObjectConst jsonEvent : event_config)
     {
-        #ifdef DEBUG
+        #ifdef _RICDEBUG
         _decisiontree = "";
         #endif
 
@@ -58,7 +58,7 @@ void EventHandler::setup(JsonArrayConst event_config)
                                                  actionCooldown,
                                                  _logcontroller);
 
-        #ifdef DEBUG
+        #ifdef _RICDEBUG
         _logcontroller.log(_decisiontree);
         #endif
 
@@ -78,11 +78,11 @@ action_t EventHandler::configureAction(JsonVariantConst actions){
 
         if (actionType == "engine")
         {
-            return [actionParam,actionID,this](){_enginehandler.get(actionID)(actionParam);}; 
+            return [actionParam,actionID,this](){_enginehandler.getActionFunc(actionID)(actionParam);}; 
         }
         else if (actionType == "deployment")
         {
-            return [actionParam,actionID,this](){_deploymenthandler.get(actionID)(actionParam);};
+            return [actionParam,actionID,this](){_deploymenthandler.getActionFunc(actionID)(actionParam);};
         }
         else if (actionType == "null")
         {
@@ -90,7 +90,7 @@ action_t EventHandler::configureAction(JsonVariantConst actions){
         }
         else
         {
-            #ifdef DEBUG
+            #ifdef _RICDEBUG
             std::string actionJsonSer;
             serializeJson(actionJson,actionJsonSer);
             throw std::runtime_error("Bad Action Type: " + actionJsonSer);
@@ -111,7 +111,7 @@ action_t EventHandler::configureAction(JsonVariantConst actions){
             }
         };
     }else{
-        #ifdef DEBUG
+        #ifdef _RICDEBUG
         std::string actionJsonSer;
         serializeJson(actions,actionJsonSer);
         throw std::runtime_error("Bad Action config: " + actionJsonSer);
@@ -156,14 +156,14 @@ condition_t EventHandler::configureCondition(JsonVariantConst condition, uint8_t
             //generate decision tree
 
             //get initial condition
-            #ifdef DEBUG
+            #ifdef _RICDEBUG
             _decisiontree += "  (";
             #endif
 
             auto conditionCombination = configureCondition(subconditionarray.getElement(0),recursion_level + 1);
             
             for (int i = 1; i < arraysize;i++){
-                #ifdef DEBUG
+                #ifdef _RICDEBUG
                 _decisiontree += "  ";
                 _decisiontree += conditionJson["operator"].as<std::string>();
                 _decisiontree += "  ";
@@ -172,7 +172,7 @@ condition_t EventHandler::configureCondition(JsonVariantConst condition, uint8_t
                 conditionCombination = ConditionCombination(conditionCombination,
                                                              configureCondition(subconditionarray.getElement(i),recursion_level + 1),
                                                              op);
-                #ifdef DEBUG
+                #ifdef _RICDEBUG
                 _decisiontree += " ) ";
                 #endif
 
@@ -183,13 +183,12 @@ condition_t EventHandler::configureCondition(JsonVariantConst condition, uint8_t
 
         }else if (conditionJson.containsKey("flightVar")){
 
-            // what happens if config requests that flight var is time since this event
+            // what happens if config requests that flight var is time since event on its self?
             // if it is the only condition and u are testing time_triggered then the event will never trigger
-            // if the conditon is and with antoher condition it will again never trigger
-            // if the conditon is or'ed then it makes no difference as event are triggers only, i.e once anevent is triggered the time is recorded but not changed if the condition isnt met later
-            // so if we have the first condition met and record the time and we or that iwth a condition which checks if time tirggered on that event is less than some value
-            // we can test that the condition is still being met i.e if accel> 2g for a certain period
-
+            // if the conditon is 'and' with another condition it will again never trigger
+            // if the conditon is or'ed then if the other condition is met, the event will trigger. If the conditon comparing
+            // time trigered is less than, the result is no different to just testing the other conditon. If using more than, 
+            // we effectivley latch the output of the event, it will always be on meaning the action will be continually called
             
             flightVariableOperator_t op;
             if (conditionJson["operator"].as<std::string>() == "LESSTHAN"){
@@ -200,7 +199,7 @@ condition_t EventHandler::configureCondition(JsonVariantConst condition, uint8_t
                 throw std::runtime_error("Invalid Operator Supplied");
             }
 
-            #ifdef DEBUG
+            #ifdef _RICDEBUG
             serializeJson(conditionJson,_decisiontree);
             #endif
 

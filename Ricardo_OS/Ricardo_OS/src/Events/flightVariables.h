@@ -9,7 +9,8 @@
 #include <Eigen/Eigen>
 #include <Eigen/Geometry>
 
-#include "Sensors/sensorStructs.h"
+// #include "Sensors/sensorStructs.h"
+#include "stubs.h"
 
 //forward declarations
 class FlightVariables;
@@ -23,7 +24,7 @@ using memberFunc_t = flightVariable_t (FlightVariables::*)(int);
 class FlightVariables{ 
     public:
 
-        FlightVariables(SensorStructs::state_t *state, EventHandler& event_handler) : 
+        FlightVariables(state_t *state, EventHandler& event_handler) : 
         _state(state),
         _eventhandler(event_handler)
         {}
@@ -58,8 +59,11 @@ class FlightVariables{
         void setApogeeTime(uint32_t time){ _apogeeTime = time; };
 
     private:
-
-        SensorStructs::state_t* _state;
+        /**
+         * @brief pointer to event handler
+         * 
+         */
+        state_t* _state;
         EventHandler& _eventhandler;
 
         uint32_t _ignitionTime;

@@ -1,34 +1,49 @@
 #pragma once
 
+#include <ArduinoJson.h>
+#include <memory>
+
+#include "../RocketComponents/rocketactuator.h"
+
 #include "engine.h"
 
 
-#include "Storage/logController.h"
-#include "Storage/systemstatus.h"
-#include "Pyros/pyroHandler.h"
-//simple engine class with only a single pyro to ignite, no throttling -> represents a normal solid rocket motor
-
-enum class SIMPLEENGINESTATE:uint16_t{ // first 2 indices taken by base class states
-    PYROERROR = (1<<2)
-};
-
-struct SimpleEngineInfo : public EngineInfo{}; // no extra members needed
-
-class SimpleEngine : public Engine {
+class SimpleEngine:public Engine{
     public:
+        SimpleEngine(uint8_t id,JsonObjectConst engineConfig,addNetworkCallbackF_t addNetworkCallbackF,RnpNetworkManager& networkmanager,uint8_t handlerServiceID,LogController& logcontroller);
 
-        SimpleEngine(uint8_t engineID,LogController& logcontroller,SystemStatus& systemstatus,PyroHandler& pyrohandler,uint8_t pyroID);
+        void updateState() override;
 
-        void start() override;
+        uint8_t flightCheck() override;
 
-        void shutdown() override; // does nothing lol
+        void update() override {}; //empty we dont need an update as this a simple on and off
 
-        const EngineInfo* getInfo() override;
-        
+        const EngineState* getState()override {return &_state;};
+        /**
+         * @brief No control of a simple engine
+         * 
+         * @param u 
+         */
+        void control(std::vector<float> u) override{
+            #ifdef _RICDEBUG
+            std::cout<<"control input on engine " << std::to_string(getID()) << ": ";
+            for (auto& elem : u){
+                std::cout<<std::to_string(elem)<<",";
+            }
+            std::cout<<std::endl;
+            #endif
+        };
 
     private:
-        int _pyroID;
+        EngineState _state;
 
-        SimpleEngineInfo engineinfo;
+        std::unique_ptr<RocketActuator> _igniter;
+        int32_t _igniterParam;
+
+        void ignite() override;
+        void shutdown() override ; 
+
+        static constexpr uint16_t _networkRetryInterval = 5000;
+
 
 };

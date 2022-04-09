@@ -7,15 +7,20 @@
 
 #include "event.h"
 #include "flightVariables.h"
-#include "Storage/logController.h"
+// #include "Storage/logController.h"
+
+
 
 #include "stubs.h"
+#include "../Deployment/deploymenthandler.h"
+#include "../Engine/enginehandler.h"
+
 
 class EventHandler{
 
     public:
 
-        EventHandler(SensorStructs::state_t* state, EngineHandler& enginehandler, DeploymentHandler& deploymenthandler,LogController& logcontroller):
+        EventHandler(state_t* state, EngineHandler& enginehandler, DeploymentHandler& deploymenthandler,LogController& logcontroller):
         _flightvariables(state, *this),
         _enginehandler(enginehandler),
         _deploymenthandler(deploymenthandler),
@@ -52,7 +57,7 @@ class EventHandler{
         
         static constexpr uint8_t condition_recursion_max_depth = 6;
 
-        #ifdef DEBUG
+        #ifdef _RICDEBUG
         std::string _decisiontree = "";
         #endif
         

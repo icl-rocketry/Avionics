@@ -1,8 +1,11 @@
 #include "event.h"
 
 #include <string>
+#ifdef ARDUINO
 #include <Arduino.h>
-
+#else
+#include "stubs.h"
+#endif
 
 void Event::update()
 {

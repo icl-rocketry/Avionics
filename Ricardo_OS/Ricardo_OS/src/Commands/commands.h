@@ -34,7 +34,8 @@ enum class COMMANDS:uint8_t {
     Engine_Info = 180,
     Set_Throttle  = 181,
     Pyro_info = 200,
-    Fire_pyro = 201
+    Fire_pyro = 201,
+    Free_Ram = 250
 };
 
 

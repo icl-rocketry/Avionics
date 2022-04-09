@@ -1,69 +1,63 @@
-#include "deploymentHandler.h"
-#include "pyro.h"
-#include "networkPyro.h"
-#include "localPyro.h"
-#include "Packets/pyroPackets.h"
-
-#include "rnp_networkmanager.h"
-#include "Storage/systemstatus.h"
-#include "Storage/logController.h"
+#include "../RocketComponents/deploymenthandler.h"
 
 #include <vector>
 #include <memory>
+#include <functional>
+
+#include <rnp_networkmanager.h>
 #include <ArduinoJson.h>
-#include <unordered_map>
-#include <string>
 
 
-PyroHandler::PyroHandler(RnpNetworkManager& rnpnetman,SystemStatus& systemstatus,LogController& logcontroller):
-_rnpnetman(rnpnetman),
-_systemstatus(systemstatus),
-_logcontroller(logcontroller)
-{}
+#include "../RocketComponents/rocketcomponent.h"
+#include "../RocketComponents/rocketcomponenttype.h"
 
-void PyroHandler::setup(JsonArray pyroConfig) 
+#include "../RocketComponents/networkactuator.h"
+#include "../RocketComponents/packets/nrcpackets.h"
+
+void DeploymentHandler::setupIndividual_impl(size_t id,JsonObjectConst deployerconfig)
 {
-// build them pyro objects into heappppp    
-};
+   using namespace ConfigurableDynamicHandlerHelpers;
 
-void PyroHandler::update(){};
+   auto type = getIfContains<std::string>(deployerconfig,"type");
 
 
-Pyro* PyroHandler::get(uint8_t pyroID) 
-{
-    if (pyroID >= _pyroList.size()){//out of bounds access
-        _logcontroller.log("PyroHandler out of bounds access - pyroID:" + std::tostring(pyroID));
-        return nullptr;
+    if (type == "i2c_act_servo"){
+        throw std::runtime_error("i2c servo Not implemented!");
+    }else if (type == "i2c_act_pyro"){
+        throw std::runtime_error("i2c pyro Not implemented!");
+    }else if (type == "net_actuator"){
+        auto address = getIfContains<uint8_t>(deployerconfig,"address");
+        auto destination_service = getIfContains<uint8_t>(deployerconfig,"destination_service");
+        addObject(std::make_unique<NetworkActuator>(id, 
+                                                    _logcontroller,
+                                                    address,
+                                                    _serviceID,
+                                                    destination_service, 
+                                                    _networkmanager));
+        //umm i tried okay
+        addNetworkCallback(address,
+                           destination_service,
+                           [this,id](packetptr_t packetptr)
+                                {
+                                    dynamic_cast<NetworkActuator*>(getObject(id))->networkCallback(std::move(packetptr));
+                                }
+                            );
+            
+    }else{
+        throw std::runtime_error("Invalid type!");
     }
-    // need to ensure this never crashes lol
-    return _pyroList[pyroID].get(); // return a non-owning pointer to callee
-};
 
-void Pyrohandler::networkCallback(std::unique_ptr<RnpPacketSerialized> packet_ptr){
-    // get pyro id from packet
-    uint8_t pyroID = PyroPacket::getPyroID(*packet_ptr);
 
-    Pyro* pyro = get(pyroID); // get pointer to pyro object
-
-    if (pyro == nullptr){
-        _logcontroller.log("PyroHandler no pyro found at id supplied");
-        return; // check an invalid pyro hasnt been returned
-    }
-
-    if (pyro->getType != PYROTYPE::NETWORKED){ // invalid pyro type has been returned -> this should never happen
-        _logcontroller.log("PyroHandler bad pyro type");
-        return; 
-    }
-
-    NetworkPyro* netpyro = dynamic_cast<NetworkPyro*>(pyro);
-
-    if (netpyro == NULL){
-        _logcontroller.log("PyroHandler bad dynamic cast");
-        return; 
-    }
-    netpyro->networkCallback(std::move(packet_ptr));
     
+};
+
+uint8_t DeploymentHandler::flightCheck_impl()
+{
+    uint8_t components_in_error = 0;
+    for (auto &component : *this)
+    {
+        components_in_error += component->flightCheck(_networkRetryInterval,"DeploymentHandler");
+    }
+    return components_in_error;
 }
-
-
 

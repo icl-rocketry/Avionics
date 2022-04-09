@@ -14,7 +14,7 @@
 #include "commandpacket.h"
 
 
-class stateMachine;//forward declaration to prevent circular dependancy
+class stateMachine;//forward declaration 
 
 
 class CommandHandler {
@@ -59,5 +59,6 @@ class CommandHandler {
         void SetThrottleCommand(const RnpPacketSerialized& packet);
         void PyroInfoCommand(const RnpPacketSerialized& packet);
         void FireInfoCommand(const RnpPacketSerialized& packet);
+        void FreeRamCommand(const RnpPacketSerialized& packet);
 
 };	

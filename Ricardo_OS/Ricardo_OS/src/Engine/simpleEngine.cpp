@@ -1,34 +1,68 @@
-#include "simpleEngine.h"
+#include "simpleengine.h"
 
-#include "Storage/logController.h"
-#include "Storage/systemstatus.h"
-#include "Pyros/pyroHandler.h"
+#include <memory>
 
-SimpleEngine::SimpleEngine(uint8_t engineID,LogController& logcontroller,SystemStatus& systemstatus,PyroHandler& pyrohandler,uint8_t pyroID):
-Engine(engineID,logcontroller,systemstatus,pyrohandler),
-_pyroID(pyroID) 
-{};
+#include <ArduinoJson.h>
 
+#include "../RocketComponents/networkactuator.h"
+#include "../configurabledynamichandler.h"
 
-void SimpleEngine::start(){
-    Engine::start();
-    engineinfo.ignitiionTime = millis();
-    _pyrohandler.get(_pyroID)->doStuff(); // fire pyro
+#include "stubs.h"
+
+SimpleEngine::SimpleEngine(uint8_t id,JsonObjectConst engineConfig,addNetworkCallbackF_t addNetworkCallbackF,RnpNetworkManager& networkmanager,uint8_t handlerServiceID,LogController& logcontroller):
+Engine(id,engineConfig,addNetworkCallbackF,networkmanager,handlerServiceID,logcontroller)
+{
+    using namespace ConfigurableDynamicHandlerHelpers;
+    auto igniterConf = getIfContains<JsonObjectConst>(engineConfig,"igniter");
+    auto igniterType = getIfContains<std::string>(igniterConf,"type");
+
+    _igniterParam = getIfContains<uint8_t>(igniterConf,"param");
     
-};
-
-void SimpleEngine::shutdown(){
-    Engine::shutdown();
-    engineinfo.shutdownTime = millis();
-};
-
-const EngineInfo* SimpleEngine::getInfo(){
-    if (!_pyrohandler.get(_pyroID)->getContinuity()){
-        engineinfo.EngineState |= static_cast<uint16_t>(SIMPLEENGINESTATE::PYROERROR); //no continuity
+    
+    if (igniterType == "net_actuator"){
+        auto igniterAddress = getIfContains<uint8_t>(igniterConf,"address");
+        auto igniterDestinationService = getIfContains<uint8_t>(igniterConf,"destination_service");
+        _igniter = std::make_unique<NetworkActuator>(0,
+                                                     logcontroller,
+                                                     igniterAddress,
+                                                     _handlerServiceID,
+                                                     igniterDestinationService,
+                                                     networkmanager);
+        addNetworkCallbackF(igniterAddress,
+                            igniterDestinationService,
+                            [this](packetptr_t packetptr)
+                                {
+                                    dynamic_cast<NetworkActuator*>(_igniter.get())->networkCallback(std::move(packetptr));
+                                }
+                            ,
+                            true
+                            );
+        
+    }else if (igniterType == "i2c_act_pyro"){
+        throw std::runtime_error("Not implemented!");
     }else{
-        //we have continuity
-        engineinfo.EngineState &= ~static_cast<uint16_t>(SIMPLEENGINESTATE::PYROERROR);
+        throw std::runtime_error("Invalid igniter type!");
     }
-    return &engineinfo;
 
+};
+        
+
+void SimpleEngine::updateState(){
+    _igniter->updateState();
 }
+
+uint8_t SimpleEngine::flightCheck(){
+    return _igniter->flightCheck(_networkRetryInterval,"SimpleEngine");
+}
+
+void SimpleEngine::ignite(){
+    Engine::ignite();
+    _igniter->execute(_igniterParam); // fire the pyro let it rip
+    _state.ignitionTime = millis();
+}
+
+void SimpleEngine::shutdown(){ // the engine cant be shut down
+    Engine::shutdown();
+    _state.shutdownTime = millis();
+}
+

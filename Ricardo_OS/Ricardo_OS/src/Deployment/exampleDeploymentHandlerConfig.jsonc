@@ -1,0 +1,12 @@
+// IDs have to start from zero and increase by 1
+{
+	"DeployerList":
+	[
+		{
+			"id" : 0,
+			"type" : "net_actuator",// ur mom is a type
+			"address":69,
+			"destination_service":21
+		}
+	]
+}

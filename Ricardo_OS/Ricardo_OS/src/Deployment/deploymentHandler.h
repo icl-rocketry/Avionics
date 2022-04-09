@@ -1,55 +1,48 @@
-#ifndef PYROHANDLER_H
-#define PYROHANDLER_H
-
-#include "pyro.h"
-
-#include "rnp_networkmanager.h"
-#include "rnp_packet.h"
-#include "Storage/systemstatus.h"
-#include "Storage/logController.h"
+#pragma once
 
 #include <vector>
 #include <memory>
-#include <ArduinoJson.h>
+#include <functional>
 #include <unordered_map>
 
-/****
- * TODO:
- * Add deployment lockout using a system wide flag
- * disable deploment when debug is entered
- * add deployment full test option where all deploymet channels are tested
- * add servo specialization as deployers can either by pyro or servo based
- * 
- ****/
+#include <rnp_networkmanager.h>
+#include <ArduinoJson.h>
+
+
+#include "../RocketComponents/rocketactuator.h"
+
+#include "../RocketComponents/flightcomponenthandler.h"
+#include "../RocketComponents/configurabledynamichandler.h"
+#include "../RocketComponents/networkeddynamichandler.h"
 
 
 
-class PyroHandler{
+class DeploymentHandler : public FlightComponentHandler<RocketActuator,DeploymentHandler> {
     public:
-        PyroHandler(RnpNetworkManager& rnpnetman,SystemStatus& systemstatus,LogController& logcontroller);
-
-        void setup(JsonArray pyroConfig); // manages construciton of pyro objects
-        void update(); // update pyro status 
-
-        
-
-        Pyro* get(int pyroID);
-
-        static constexpr uint8_t PyroHandlerServiceID = static_cast<uint8_t>(DEFAULT_SERVICES::PYRO);
-    
-    private:
-        RnpNetworkManager& _rnpnetman;
-        SystemStatus& _systemstatus;
-        LogController& _logcontroller;
-
-        std::vector<std::unique_ptr<Pyro> > _pyroList; // vector containing pointers to all pyro objects
-
         /**
-         * @brief network callback used when registering the pyro serivce
+         * @brief Construct a new Deployment Handler object
          * 
-         * @param packet 
+         * @param networkmanager 
+         * @param serviceID network service the handler is assigned to
+         * @param logcontroller 
          */
-        void networkCallback(std::unique_ptr<RnpPacketSerialized> packet);
-};
+        DeploymentHandler(RnpNetworkManager& networkmanager,uint8_t serviceID,LogController& logcontroller):
+            FlightComponentHandler(networkmanager,serviceID,logcontroller)
+        {};
 
-#endif
+
+    protected:
+        friend class ConfigurableDynamicHandler; //base class needs access to implementation so make it friend
+        void setupIndividual_impl(size_t id,JsonObjectConst deployerconfig);
+
+        friend class FlightComponentHandler;
+        /**
+         * @brief Performs the flight check on componets, checks if componets are connected and are functioning nominally
+         * 
+         * @return uint8_t returns 0 if all good, if value is greater than zero, it represents the number of components not ready or not updated
+         */
+        uint8_t flightCheck_impl();
+         
+    private:
+        static constexpr uint16_t _networkRetryInterval = 5000; // 5 seconds before a new update state request is sent
+};

@@ -1,0 +1,16 @@
+{
+    "ControllerList":
+    [
+        {
+            "id":0,
+            "type": "pid",
+            "doohickeyType": "Engine",
+            "doohickeyID":1,
+            "setpoint":0,
+            "stateVariable":2, //this is a really bad example lol
+            "Kp":5,
+            "Ki":0.01,
+            "Kd":5
+        }
+    ]
+}

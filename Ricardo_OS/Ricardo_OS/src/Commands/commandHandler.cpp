@@ -28,7 +28,7 @@
 #include "Network/interfaces/radio.h"
 #include "commandpacket.h"
 
-#include "Network/packets/TelemetryPacket.h"
+#include "TelemetryPacket.h"
 
 #include "Sensors/mmc5983ma.h"
 #include "Sensors/sensorStructs.h"
@@ -133,6 +133,9 @@ void CommandHandler::handleCommand(std::unique_ptr<RnpPacketSerialized> packetpt
 		case COMMANDS::Fire_pyro:
 			FireInfoCommand(*packetptr);
 			break;
+		case COMMANDS::Free_Ram:
+			FreeRamCommand(*packetptr);
+			break;
 		default:
 			//invalid command issued DELETE IT 
 			break;
@@ -214,7 +217,7 @@ void CommandHandler::TelemetryCommand(const RnpPacketSerialized& packet)
 	auto raw_sensors = _sm->sensors.getData();
 	auto estimator_state = _sm->estimator.getData();
 
-
+	telemetry.header.type = static_cast<uint8_t>(CommandPacket::TYPES::TELEMETRY_RESPONSE);
 	telemetry.header.source = _sm->networkmanager.getAddress();
 	telemetry.header.source_service = serviceID;
 	telemetry.header.destination = commandpacket.header.source;
@@ -481,4 +484,17 @@ void CommandHandler::FireInfoCommand(const RnpPacketSerialized& packet)
 	}
 };
 
-
+void CommandHandler::FreeRamCommand(const RnpPacketSerialized& packet)
+{	
+	//avliable in all states
+	//returning as simple string packet for ease
+	//currently only returning free ram
+	MessagePacket_Base<serviceID,static_cast<uint8_t>(CommandPacket::TYPES::MESSAGE_RESPONSE)> message("FreeRam: " + std::to_string(esp_get_free_heap_size()));
+	message.header.source_service = serviceID;
+	message.header.destination_service = packet.header.source_service;
+	message.header.source = packet.header.destination;
+	message.header.destination = packet.header.source;
+	message.header.uid = packet.header.uid;
+	_sm->networkmanager.sendPacket(message);
+	
+}

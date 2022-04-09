@@ -1,0 +1,18 @@
+// IDs have to start from zero and increase by 1
+{
+    "EngineList":
+    [
+        {
+			// ur mom is a simp engine
+            "id":0,
+            "type":"SimpleEngine",
+            "igniter":
+            {
+                "type":"net_actuator",
+                "address":10,
+                "destination_service": 69
+            },
+            "igniter_param":10   
+        }
+    ]
+}

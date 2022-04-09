@@ -11,7 +11,10 @@ namespace CommandPacket{
     command_t getCommand(const RnpPacketSerialized& packet); // extracts command id from a command serivce packet
     enum class TYPES:uint8_t{
         SIMPLE = 0,
-        MAGCAL = 10
+        MAGCAL = 10,
+        MESSAGE_RESPONSE = 100,
+        TELEMETRY_RESPONSE = 101
+
     };
 };
 

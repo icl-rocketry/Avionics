@@ -64,7 +64,7 @@ flightVariableFunc_t FlightVariables::get(const std::string& funcName) {
 	auto funcptr = function_map.at(funcName);
 	return [this,funcName,funcptr](int idx) {
 		flightVariable_t var = ((*this).*(funcptr))(idx);
-		#ifdef DEBUG
+		#ifdef _RICDEBUG
 		const std::string variablename(funcName);
 		std::cout<<"[FlightVar] :"+variablename+" called with value : " + std::to_string(var.value_or(0))<<std::endl;
 		#endif
@@ -90,7 +90,7 @@ std::optional<float> FlightVariables::getComponent(Eigen::Vector3f& var, int arg
 	if (arg == -1) {
 		return {var.norm()};
 	} else if (arg < -1 || arg >= var.size()) {
-		#ifdef DEBUG
+		#ifdef _RICDEBUG
 			throw std::runtime_error("Chorley fucked the config!");
 		#endif
 		return {};
