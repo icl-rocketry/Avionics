@@ -17,7 +17,7 @@
 void DeploymentHandler::setupIndividual_impl(size_t id,JsonObjectConst deployerconfig)
 {
    using namespace ConfigurableDynamicHandlerHelpers;
-
+ 
    auto type = getIfContains<std::string>(deployerconfig,"type");
 
 
