@@ -15,7 +15,8 @@
 #include "Loggers/telemetryLogger.h"
 #include "Loggers/systemLogger.h"
 
-
+//temporary for debugging
+#include <rnp_networkmanager.h>
 
 enum class LOG_TYPE:uint8_t{
     TELEMETRY = 0,
@@ -27,7 +28,7 @@ enum class LOG_TYPE:uint8_t{
 class LogController{
 
     public:
-        LogController(StorageController* storagecontroller);
+        LogController(StorageController* storagecontroller,RnpNetworkManager& netman);
         void setup();
         //telemtry logging
         void log(const SensorStructs::state_t &estimator_state ,const SensorStructs::raw_measurements_t &raw_sensors,bool force=false);
@@ -52,6 +53,7 @@ class LogController{
     private:
 
         StorageController* _storagecontroller; //pointer to storage controller
+        RnpNetworkManager& _netman;
 
         SystemLogger systemlogger;
         uint16_t systemlogger_writeDelta = 1000; // in millis

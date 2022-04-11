@@ -26,7 +26,9 @@ Written by the Electronics team, Imperial College London Rocketry
 #include "Sensors/sensors.h"
 
 #include "Events/eventHandler.h"
-#include "Events/stubs.h"
+#include "Deployment/deploymenthandler.h"
+#include "Engine/enginehandler.h"
+#include "Controller/controllerhandler.h"
 
 #include "Sound/tunezHandler.h"
 
@@ -39,7 +41,7 @@ Written by the Electronics team, Imperial College London Rocketry
 #include "SPI.h"
 #include "Wire.h"
 
-
+#include <ArduinoJson.h>
 
 
 
@@ -47,7 +49,7 @@ stateMachine::stateMachine() :
     vspi(VSPI),
     I2C(0),
     storagecontroller(this),
-    logcontroller(&storagecontroller),
+    logcontroller(&storagecontroller,networkmanager),
     systemstatus(&logcontroller),
     usbserial(Serial,systemstatus,logcontroller),
     radio(vspi,systemstatus,logcontroller),
@@ -55,7 +57,10 @@ stateMachine::stateMachine() :
     commandhandler(this),
     sensors(vspi,I2C,systemstatus,logcontroller),
     estimator(systemstatus,logcontroller),
-    eventhandler(NULL,enginehandler,deploymenthandler,logcontroller)    
+    deploymenthandler(networkmanager,deploymentHandlerServiceID,logcontroller),
+    enginehandler(networkmanager,engineHandlerServiceID,logcontroller),
+    controllerhandler(enginehandler,logcontroller),
+    eventhandler(enginehandler,deploymenthandler,logcontroller)
 {};
 
 
@@ -102,13 +107,24 @@ void stateMachine::initialise(State* initStatePtr) {
   ConfigController configcontroller(&storagecontroller,&logcontroller); 
   configcontroller.load(); // load configuration from sd card into ram
 
-  //enumerate events this should be done after the rocket componets have been enumerated and setup in their respetive handlers
-  // eventhandler.setup(configcontroller.configDoc["Events"]);
-
+  //enumerate deployers engines controllers and events from config file
+  try
+  {
+    deploymenthandler.setup(configcontroller.get()["DeployerList"]);
+    enginehandler.setup(configcontroller.get()["EngineList"]);
+    controllerhandler.setup(configcontroller.get()["ControllerList"]);
+    eventhandler.setup(configcontroller.get()["Events"]);
+  }
+  catch (const std::exception& e)
+  {
+    Serial.println("exception:");
+    Serial.println(std::string(e.what()).c_str());
+    throw std::runtime_error("broke");
+  }
+  
   //setup interfaces
   usbserial.setup();
   radio.setup();
-
 
   //setup network manager so communication is running
   // add interfaces
@@ -116,9 +132,18 @@ void stateMachine::initialise(State* initStatePtr) {
   networkmanager.addInterface(&radio);
   //load rt table
   networkmanager.enableAutoRouteGen(false);
-  networkmanager.setNoRouteAction(NOROUTE_ACTION::DUMP,{});
+  // networkmanager.setNoRouteAction(NOROUTE_ACTION::DUMP,{});
+  networkmanager.setNoRouteAction(NOROUTE_ACTION::BROADCAST,{1}); // broadcasting back to usbserial for debugging
+
   networkmanager.setLogCb([this](const std::string& message){return logcontroller.log(message);});
-  networkmanager.registerService(static_cast<uint8_t>(DEFAULT_SERVICES::COMMAND),commandhandler.getCallback()); // register command handler callback
+
+  // register service callbacks
+  networkmanager.registerService(static_cast<uint8_t>(DEFAULT_SERVICES::COMMAND),commandhandler.getCallback()); 
+  networkmanager.registerService(deploymentHandlerServiceID,deploymenthandler.getThisNetworkCallback());  
+  networkmanager.registerService(engineHandlerServiceID,enginehandler.getThisNetworkCallback());  
+
+
+
 
   //sensors must be setup before estimator
   sensors.setup();
@@ -145,10 +170,12 @@ void stateMachine::update() {
 
   logcontroller.log(estimator.getData(),sensors.getData());// log new navigation solution and sensor output
 
-
-
   //check for new packets and process
   networkmanager.update();
+
+  enginehandler.update();
+  controllerhandler.update(estimator.getData());
+  eventhandler.update(estimator.getData());
 
   //call update on state after new information has been processed
   State* newStatePtr = _currStatePtr->update();

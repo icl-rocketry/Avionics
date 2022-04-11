@@ -34,6 +34,10 @@ class Estimator{
         void changeBeta(float beta);
         void resetOrientation();
 
+        void setIgnitionTime(uint32_t time);
+        void setLaunchTime(uint32_t time);
+        void setApogeeTime(uint32_t time);
+
         const SensorStructs::state_t& getData();
 
         

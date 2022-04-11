@@ -9,11 +9,11 @@
 #include <ArduinoJson.h>
 
 
-#include "../RocketComponents/rocketactuator.h"
+#include "RocketComponents/rocketactuator.h"
 
-#include "../RocketComponents/flightcomponenthandler.h"
-#include "../RocketComponents/configurabledynamichandler.h"
-#include "../RocketComponents/networkeddynamichandler.h"
+#include "RocketComponents/flightcomponenthandler.h"
+#include "RocketComponents/configurabledynamichandler.h"
+#include "RocketComponents/networkeddynamichandler.h"
 
 
 

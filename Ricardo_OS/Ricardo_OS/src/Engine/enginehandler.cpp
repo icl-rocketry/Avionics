@@ -11,7 +11,7 @@
 
 #include "engine.h"
 
-#include "stubs.h"
+#include "Storage/logController.h"
 
 #include "simpleengine.h"
 #include "hypnos.h"

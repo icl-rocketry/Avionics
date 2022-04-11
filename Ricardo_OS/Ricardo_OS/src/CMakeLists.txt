@@ -5,15 +5,8 @@
 
 FILE(GLOB_RECURSE app_sources ${CMAKE_SOURCE_DIR}/src/*.*)
 
-
-# file(GLOB_RECURSE event_sources ${CMAKE_SOURCE_DIR}/src/Events/*.*)
-# list(REMOVE_ITEM app_sources ${event_sources})
-
-file(GLOB_RECURSE pyro_sources ${CMAKE_SOURCE_DIR}/src/Deployment/*.*)
-list(REMOVE_ITEM app_sources ${pyro_sources})
-
-file(GLOB_RECURSE engine_sources ${CMAKE_SOURCE_DIR}/src/Engine/*.*)
-list(REMOVE_ITEM app_sources ${engine_sources})
+# file(GLOB_RECURSE engine_sources ${CMAKE_SOURCE_DIR}/src/Engine/*.*)
+# list(REMOVE_ITEM app_sources ${engine_sources})
 
 
 # message(STATUS "${excluded_sources}")

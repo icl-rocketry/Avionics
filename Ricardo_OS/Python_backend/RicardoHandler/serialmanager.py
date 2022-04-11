@@ -21,7 +21,7 @@ class SerialManager():
 		self.baud = baud
 		self.waittime = waittime
 		self.prevSendTime = 0
-		self.sendDelta = 50e6
+		self.sendDelta = 1e4
 		self.verbose = verbose
 		
 
@@ -122,11 +122,13 @@ class SerialManager():
 		#check header len
 		
 		if (len(data) != (RnpHeader.size + header.packet_len)):
-			print("Length Mismatch")
+			print("Length Mismatch expected:" + str((RnpHeader.size + header.packet_len)) + " Received: " + str(len(data)))
+			print(data.hex())
 			return
 
 		uid = header.uid #get unique id
-
+		
+	
 		if uid in self.packetRecord:
 			#get client id from packetrecord and remove corresponding entry
 			client_id = self.packetRecord.pop(uid)[0]
@@ -134,6 +136,18 @@ class SerialManager():
 			key = "ReceiveQueue:"+str(client_id)	
 		else:
 			#we dont have this packet as a repsonse so place it in recieve buffer
+			if (header.uid is 0) and (header.destination_service is 0):
+	
+				packet_body = data[RnpHeader.size:]
+				try:
+					message = packet_body.decode('UTF-8')
+				except:
+					message = str(packet_body)
+				if self.verbose:
+			#message packet printing - TEMPORARY will build a proper message viewer later
+					print("Message: " + message)
+				return
+
 			print("unkown packet recieved")
 			key = "ReceiveQueue:__LOCAL__"
 		#add received packets to redis db
@@ -173,10 +187,11 @@ class SerialManager():
 				
 		
 
-	def __generateUID__(self):#replace this with a better uuid method lol this is such a hacky way
-		uid = self.counter
-		self.counter += 1
-		return uid 
+	def __generateUID__(self):
+		#UID is a unsigend 16bit integer. UID 0 is reserved for forwarding to local so we want 
+		#strictly increasing integers in the range [1 65535]
+		self.counter = (self.counter%65535) + 1
+		return self.counter 
 			
 	def __cleanupPacketRecord__(self):
 		expiry_time = time.time() - self.packetRecordTimeout

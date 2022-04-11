@@ -1,6 +1,6 @@
 #include "flightVariables.h"
 
-// #include <Arduino.h>
+#include <Arduino.h>
 #include <optional>
 #include <variant>
 #include <functional>
@@ -25,17 +25,17 @@ const std::unordered_map<std::string, memberFunc_t> FlightVariables::function_ma
 
 flightVariable_t FlightVariables::TimeSinceIgnition(int arg) 
 {
-	return timeSince(_ignitionTime);
+	return timeSince(_state.ignitionTime);
 }
 
 flightVariable_t FlightVariables::TimeSinceLaunch(int arg) 
 {
-	return timeSince(_launchTime);
+	return timeSince(_state.launchTime);
 }
 
 flightVariable_t FlightVariables::TimeSinceApogee(int arg) 
 {
-	return timeSince(_apogeeTime);
+	return timeSince(_state.apogeeTime);
 }
 
 flightVariable_t FlightVariables::TimeSinceEvent(int arg) 
@@ -46,17 +46,17 @@ flightVariable_t FlightVariables::TimeSinceEvent(int arg)
 
 flightVariable_t FlightVariables::Position(int arg) 
 {
-	return getComponent(_state->position,arg);
+	return getComponent(_state.position,arg);
 }
 
 flightVariable_t FlightVariables::Velocity(int arg) 
 {
-	return getComponent(_state->velocity, arg);
+	return getComponent(_state.velocity, arg);
 }
 
 flightVariable_t FlightVariables::Acceleration(int arg) 
 {
-	return getComponent(_state->acceleration, arg);
+	return getComponent(_state.acceleration, arg);
 }
 
 
@@ -72,7 +72,7 @@ flightVariableFunc_t FlightVariables::get(const std::string& funcName) {
 	};
 }
 
-std::optional<float> FlightVariables::timeSince(uint32_t time) {
+std::optional<float> FlightVariables::timeSince(const uint32_t time) {
 	if (!time) {
 		return {};
 	}
@@ -86,7 +86,7 @@ std::optional<float> FlightVariables::timeSince(uint32_t time) {
 
 }
 
-std::optional<float> FlightVariables::getComponent(Eigen::Vector3f& var, int arg) {
+std::optional<float> FlightVariables::getComponent(const Eigen::Vector3f& var, int arg) {
 	if (arg == -1) {
 		return {var.norm()};
 	} else if (arg < -1 || arg >= var.size()) {

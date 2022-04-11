@@ -4,10 +4,10 @@
 #include <memory>
 #include <rnp_networkmanager.h>
 
-#include "../RocketComponents/rocketcomponent.h"
+#include "RocketComponents/rocketcomponent.h"
 
 
-#include "stubs.h"
+#include "Storage/logController.h"
 
 void Engine::execute(int func){
     switch(func){

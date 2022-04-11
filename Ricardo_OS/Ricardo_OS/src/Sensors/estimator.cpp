@@ -43,7 +43,7 @@ void Estimator::update(const SensorStructs::raw_measurements_t& raw_sensors){
       last_update = micros(); // update last_update 
       float dt_seconds = float(dt)*0.000001F; //conversion to seconds
 
-      if (_systemstatus.flag_triggered(SYSTEM_FLAG::ERROR_IMU)){
+      if (0 && _systemstatus.flag_triggered(SYSTEM_FLAG::ERROR_IMU)){
 
          if (_systemstatus.flag_triggered(SYSTEM_FLAG::ERROR_GPS) && _systemstatus.flag_triggered(SYSTEM_FLAG::ERROR_BARO)){
             //no data so we cant calculate any nav solution
@@ -99,7 +99,7 @@ void Estimator::update(const SensorStructs::raw_measurements_t& raw_sensors){
          return;
       }
 
-      if (_systemstatus.flag_triggered(SYSTEM_FLAG::ERROR_GPS) && _systemstatus.flag_triggered(SYSTEM_FLAG::ERROR_BARO)){
+      if (0 && _systemstatus.flag_triggered(SYSTEM_FLAG::ERROR_GPS) && _systemstatus.flag_triggered(SYSTEM_FLAG::ERROR_BARO)){
          //no data so only orientation avalibale
          changeEstimatorState(ESTIMATOR_STATE::PARTIAL_IMU,"no gps and baro, cannot compute positional navigation solution");
          return;
@@ -108,7 +108,7 @@ void Estimator::update(const SensorStructs::raw_measurements_t& raw_sensors){
       localizationkf.predict((state.acceleration * g),dt_seconds);
       
 
-      if (_systemstatus.flag_triggered(SYSTEM_FLAG::ERROR_GPS)){
+      if (0 && _systemstatus.flag_triggered(SYSTEM_FLAG::ERROR_GPS)){
          //baro only update
          changeEstimatorState(ESTIMATOR_STATE::PARTIAL_BARO_IMU,"no gps, only baro kf update");
          state.position = localizationkf.getPosition();
@@ -127,7 +127,7 @@ void Estimator::update(const SensorStructs::raw_measurements_t& raw_sensors){
       }
       
 
-      if (_systemstatus.flag_triggered(SYSTEM_FLAG::ERROR_BARO)){
+      if (0 && _systemstatus.flag_triggered(SYSTEM_FLAG::ERROR_BARO)){
          //gps only update
          changeEstimatorState(ESTIMATOR_STATE::PARTIAL_GPS_IMU,"no baro, only gps kf update");
          state.position = localizationkf.getPosition();
@@ -219,6 +219,21 @@ void Estimator::changeBeta(float beta){
 
 void Estimator::resetOrientation(){
    madgwick.reset();
+}
+
+void Estimator::setIgnitionTime(uint32_t time)
+{
+    state.ignitionTime = time;
+}
+
+void Estimator::setLaunchTime(uint32_t time)
+{
+   state.launchTime = time;
+}
+
+void Estimator::setApogeeTime(uint32_t time)
+{
+   state.apogeeTime = time;
 }
 
 const SensorStructs::state_t& Estimator::getData()

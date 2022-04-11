@@ -7,9 +7,12 @@
 #include <vector>
 #include <SdFat.h>
 
+#include <rnp_networkmanager.h>
+#include <rnp_packet.h>
 
-LogController::LogController(StorageController* storagecontroller):
+LogController::LogController(StorageController* storagecontroller,RnpNetworkManager& netman):
 _storagecontroller(storagecontroller),
+_netman(netman),
 systemlogger(storagecontroller,"/system_log.txt",STORAGE_DEVICE::MICROSD,STORAGE_DEVICE::NONE), // overriding defaults to no backup device for debugging currently
 telemetrylogger(storagecontroller,"/telemetry_log.txt",STORAGE_DEVICE::MICROSD,STORAGE_DEVICE::NONE)
 {};
@@ -58,10 +61,23 @@ void LogController::log(const SensorStructs::state_t &estimator_state ,const Sen
 
 void LogController::log(const std::string &message) {
     systemlogger.log(message);
+
+    MessagePacket_Base<0,100> msg(message);
+	msg.header.source = _netman.getAddress();
+	msg.header.destination = 1;
+	msg.header.uid = 0;
+	_netman.sendPacket(msg);
+    
 }
 
 void LogController::log(uint32_t status,uint32_t flag,std::string message) {
     systemlogger.log(status,flag,message);	
+
+    MessagePacket_Base<0,100> msg("flag: " + std::to_string(flag) + " " + message);
+	msg.header.source = _netman.getAddress();
+	msg.header.destination = 1;
+	msg.header.uid = 0;
+	_netman.sendPacket(msg);
 }
 
 void LogController::log(uint32_t status,uint32_t flag) {

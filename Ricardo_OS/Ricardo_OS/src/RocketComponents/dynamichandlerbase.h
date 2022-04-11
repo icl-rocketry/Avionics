@@ -5,7 +5,7 @@
 #include <memory>
 #include <utility>
 
-#include "stubs.h"
+#include "Storage/logController.h"
 
 /**
  * @brief Templated dynamic handler which manages objects of type T 

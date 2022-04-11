@@ -110,6 +110,11 @@ namespace SensorStructs
         long gps_launch_alt;
         float baro_ref_alt;
 
+        //times -> all must be initialized to zero
+        uint32_t ignitionTime{0};
+        uint32_t launchTime{0};
+        uint32_t apogeeTime{0};
+
         // 0 nominal -> full navigation solution available
         // 1 partial -> orientation solution available ONLY
         // 2 no solution -> no solution available

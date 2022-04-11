@@ -221,12 +221,17 @@ condition_t EventHandler::configureCondition(JsonVariantConst condition, uint8_t
 
 }
 
-void EventHandler::update()
+void EventHandler::update(const SensorStructs::state_t& state)
 {
+    //copy rocket state to private rocket state -> idea behind this is in the future 
+    //copy allows event updates to happen in a different task to the estimator
+    rocketState = state;
+
     for (auto &event : _eventList)
     {
         event->update();
     }
+
 };
 
 uint32_t EventHandler::timeTriggered(uint8_t eventID)

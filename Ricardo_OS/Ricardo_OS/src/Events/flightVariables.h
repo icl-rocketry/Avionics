@@ -9,8 +9,8 @@
 #include <Eigen/Eigen>
 #include <Eigen/Geometry>
 
-// #include "Sensors/sensorStructs.h"
-#include "stubs.h"
+#include "Sensors/sensorStructs.h"
+
 
 //forward declarations
 class FlightVariables;
@@ -24,7 +24,7 @@ using memberFunc_t = flightVariable_t (FlightVariables::*)(int);
 class FlightVariables{ 
     public:
 
-        FlightVariables(state_t *state, EventHandler& event_handler) : 
+        FlightVariables(const SensorStructs::state_t& state, EventHandler& event_handler) : 
         _state(state),
         _eventhandler(event_handler)
         {}
@@ -37,39 +37,14 @@ class FlightVariables{
          */
         flightVariableFunc_t get(const std::string& funcName);
 
-        /**
-         * @brief Set the Launch Time in ms
-         * 
-         * @param time 
-         */
-        void setIgnitionTime(uint32_t time){ _ignitionTime = time; };
-
-        /**
-         * @brief Set the Launch Time in ms
-         * 
-         * @param time 
-         */
-        void setLaunchTime(uint32_t time){ _launchTime = time; };
-
-        /**
-         * @brief Set the Apogee Time in ms
-         * 
-         * @param time 
-         */
-        void setApogeeTime(uint32_t time){ _apogeeTime = time; };
-
     private:
+        const SensorStructs::state_t& _state;
         /**
          * @brief pointer to event handler
          * 
          */
-        state_t* _state;
         EventHandler& _eventhandler;
 
-        uint32_t _ignitionTime;
-        uint32_t _launchTime;
-        uint32_t _apogeeTime;
-        
         flightVariable_t TimeSinceIgnition(int arg=0);
         flightVariable_t TimeSinceLaunch(int arg=0);
         flightVariable_t TimeSinceApogee(int arg=0);
@@ -109,9 +84,9 @@ class FlightVariables{
          * @param arg 
          * @return float 
          */
-        std::optional<float> getComponent(Eigen::Vector3f& var, int arg);
+        std::optional<float> getComponent(const Eigen::Vector3f& var, int arg);
 
-        std::optional<float> timeSince(uint32_t time);
+        std::optional<float> timeSince(const uint32_t time);
 
         static const std::unordered_map<std::string, memberFunc_t> function_map; // constexpr in the future smh
 

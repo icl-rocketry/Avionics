@@ -1,6 +1,7 @@
 import argparse
 import socket
 from serialmanager import SerialManager
+from socketioConnector import SocketioConnector
 from pylibrnp.defaultpackets import SimpleCommandPacket
 import pylibrnp.rnppacket as rnppacket
 import json
@@ -11,7 +12,9 @@ import time
 import os
 # Argument Parsing
 ap = argparse.ArgumentParser()
-ap.add_argument("-d", "--dev", required=True, help="Serial Device", type=str)
+ap.add_argument("--backend-host",required = False , help="Ip of backend",type = str)
+ap.add_argument("--backend-port",required = False , help="Port of backend",type = int,default = 1337)
+ap.add_argument("-d", "--dev", required=False, help="Serial Device", type=str)
 ap.add_argument("-b", "--baud", required=False, help="Serial Buad", type=int,default=115200)
 ap.add_argument("-c", "--config", required=True, help="Config file", type=str)
 ap.add_argument("-v", "--verbose", required=False, help="Config file", action='store_true',default=False)
@@ -94,15 +97,18 @@ def exitHandler(*args):
     
     
     
-
-
-    # raise KeyboardInterruptError()    
-    
     
     
 
 if __name__ == "__main__":
     multiprocessing.set_start_method('spawn',force=True)
+
+    #process arguments
+    if args["backend_host"] is not None and args["dev"] is not None:
+
+        print("[ERROR] both backend_host and dev passed!")
+        sys.exit(0)
+    
 
     exit_app = False
     signal.signal(signal.SIGINT, exitHandler)
@@ -132,18 +138,33 @@ if __name__ == "__main__":
     #spawn receive queue manager
     proclist.append(multiprocessing.Process(target=receivePacketQueueManager,args=(receivePacketQueue,udpRxPortQueueList,)))
 
-    #start serial manager
-    sm = SerialManager(device=args['dev'],sendQ=udpTxPort.queue,receiveQ=receivePacketQueue,baud=args['baud'],verbose=args['verbose'])
+    if args['dev'] is not None:
+        sm = SerialManager(device=args['dev'],
+                           sendQ=udpTxPort.queue,
+                           receiveQ=receivePacketQueue,
+                           baud=args['baud'],
+                           verbose=args['verbose'])
 
-    proclist.append(multiprocessing.Process(target=sm.run))
+        proclist.append(multiprocessing.Process(target=sm.run))
+    
+    elif args['backend_host'] is not None:
+        proclist.append(multiprocessing.Process(target=SocketioConnector,
+                                                args=(args['backend_host'],
+                                                args['backend_port'],
+                                                udpTxPort.queue,
+                                                receivePacketQueue,
+                                                args['verbose'],)))
+
+    else:
+        print("Error no connection specified!")
+        sys.exit(0)
 
     #spawn processes
     [p.start() for p in proclist]
 
-
+    prevTime = 0
     while not exit_app:
-        prevTime = 0
-        if (time.time_ns() - prevTime > 5000000):
+        if (time.time_ns() - prevTime > 100e6):
             cmd_packet = SimpleCommandPacket(command=8,arg=0) # 8 for telemetry
             cmd_packet.header.source = 1
             cmd_packet.header.destination = 0

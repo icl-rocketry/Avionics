@@ -19,8 +19,8 @@ TaskHandle_t loopTaskHandle = NULL;
 
 void loopTask(void *pvParameters)
 {
-     esp_log_level_set("*", ESP_LOG_INFO); 
-    statemachine.initialise(new Setup(&statemachine)); //intialize statemachine with setup state to run all necessary setup tasks.
+    esp_log_level_set("*", ESP_LOG_INFO); 
+    statemachine.initialise(new Setup(&statemachine)); //intialize statemachine with setup state to run all necessary setup tasks
     for(;;) {
 
         statemachine.update();

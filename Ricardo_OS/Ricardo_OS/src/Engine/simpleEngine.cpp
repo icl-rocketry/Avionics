@@ -4,10 +4,10 @@
 
 #include <ArduinoJson.h>
 
-#include "../RocketComponents/networkactuator.h"
-#include "../configurabledynamichandler.h"
+#include "RocketComponents/networkactuator.h"
+#include "RocketComponents/configurabledynamichandler.h"
 
-#include "stubs.h"
+#include "Storage/logController.h"
 
 SimpleEngine::SimpleEngine(uint8_t id,JsonObjectConst engineConfig,addNetworkCallbackF_t addNetworkCallbackF,RnpNetworkManager& networkmanager,uint8_t handlerServiceID,LogController& logcontroller):
 Engine(id,engineConfig,addNetworkCallbackF,networkmanager,handlerServiceID,logcontroller)

@@ -8,8 +8,7 @@
 
 #include <ArduinoJson.h>
 
-
-#include "stubs.h"
+#include "Storage/logController.h"
 
 namespace ConfigurableDynamicHandlerHelpers{
     template<typename T>
@@ -23,7 +22,7 @@ namespace ConfigurableDynamicHandlerHelpers{
     }
 
     template<typename T>
-    static T getIfContains(const JsonVariantConst config, const std::string& key, bool throwIfDoesntContain = true) {
+    static T getIfContains(const JsonVariantConst config, const std::string& key, bool throwIfDoesntContain=true) {
         if (config.containsKey(key)) {
            return config[key].as<T>();
         } else {

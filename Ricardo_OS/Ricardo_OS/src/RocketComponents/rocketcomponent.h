@@ -8,7 +8,7 @@
 
 #include "rocketcomponenttype.h"
 
-#include "stubs.h"
+#include "Storage/logController.h"
 
 
 enum class COMPONENT_STATE:uint8_t{
@@ -35,7 +35,7 @@ class RocketComponent{
         virtual bool flightCheck(uint32_t netRetryInterval,std::string handler);
         virtual ~RocketComponent() = 0;
 
-        uint8_t getId(){return _id;};
+        uint8_t getID(){return _id;};
         RocketComponentTypes::TYPES getComponentType(){return _componentType;};
 
     protected:

@@ -2,18 +2,18 @@
 
 #include "controller.h"
 #include "controllable.h"
-#include "stubs.h"
+
+#include "Storage/logController.h"
 
 //purley an example of a control system. Controllers should be implemented more specifically 
 //as generalization here is not ideal-> leads to alot mroe overhead and isnt worth it
 class PID : public Controller {
 public:
-	PID(uint8_t id,float Kp, float Ki, float Kd,  const float& input,float setpoint,Controllable* doohickey,LogController& logcontroller, uint32_t update_interval = 0):
+	PID(uint8_t id,float Kp, float Ki, float Kd,float setpoint,Controllable* doohickey,LogController& logcontroller, uint32_t update_interval = 0):
 		Controller(id,doohickey, logcontroller, update_interval),
 		_Kp(Kp),
 		_Ki(Ki),
 		_Kd(Kd),
-		_input(input),
 		_setpoint(setpoint)	
 	{
 		_logcontroller.log("[ERROR] PID EXAMPLE CS CONSTRUCTED, DONT USE IN LIVE SYSTEM");
@@ -25,21 +25,21 @@ public:
 	 * @brief Very naive implementation of first order discrete PID
 	 *
 	 */
-	inline void calculate() override
+	inline void calculate(const SensorStructs::state_t& estimator_state) override
 	{
-		float error = _setpoint - _input;
+		float input = estimator_state.position[1];
+		float error = _setpoint - input;
 		float derror = (error - prevError) / static_cast<float>(deltaT);
 		intError += (error * static_cast<float>(deltaT));
 
 		float output = (_Kp * error) + (_Ki * intError) + (_Kd * derror);
-		_logcontroller.log("CS:" + std::to_string(_id) + " output: " + std::to_string(output));
+		// _logcontroller.log("CS:" + std::to_string(_id) + " output: " + std::to_string(output));
 		_controllable->control({output});
 	};
 
 private:
 	float _Kp, _Ki, _Kd; 
 	
-	const float& _input;
 	float _setpoint;
 
 	float prevError;

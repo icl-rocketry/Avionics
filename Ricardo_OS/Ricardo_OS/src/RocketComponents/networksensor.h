@@ -6,8 +6,7 @@
 
 #include <rnp_networkmanager.h>
 
-#include "stubs.h"
-
+#include "Storage/logController.h"
 struct NetworkSensorState: public RocketSensorState{
     //no extra members currently
 };

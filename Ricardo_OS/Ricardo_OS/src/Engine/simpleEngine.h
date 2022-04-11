@@ -3,7 +3,7 @@
 #include <ArduinoJson.h>
 #include <memory>
 
-#include "../RocketComponents/rocketactuator.h"
+#include "RocketComponents/rocketactuator.h"
 
 #include "engine.h"
 

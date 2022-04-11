@@ -1,4 +1,4 @@
-#include "../RocketComponents/deploymenthandler.h"
+#include "deploymenthandler.h"
 
 #include <vector>
 #include <memory>
@@ -8,11 +8,11 @@
 #include <ArduinoJson.h>
 
 
-#include "../RocketComponents/rocketcomponent.h"
-#include "../RocketComponents/rocketcomponenttype.h"
+#include "RocketComponents/rocketcomponent.h"
+#include "RocketComponents/rocketcomponenttype.h"
 
-#include "../RocketComponents/networkactuator.h"
-#include "../RocketComponents/packets/nrcpackets.h"
+#include "RocketComponents/networkactuator.h"
+#include "RocketComponents/packets/nrcpackets.h"
 
 void DeploymentHandler::setupIndividual_impl(size_t id,JsonObjectConst deployerconfig)
 {

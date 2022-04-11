@@ -13,9 +13,7 @@
 
 #include <rnp_networkmanager.h>
 
-#include <rnp_networkcallback.h>
-
-#include "stubs.h"
+#include "Storage/logController.h"
 
 
 /**

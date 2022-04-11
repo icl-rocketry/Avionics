@@ -1,8 +1,9 @@
 #include "networksensor.h"
 #include "packets/nrcpackets.h"
-#include "../Commands/commandpacket.h"
+#include "Commands/commandpacket.h"
+#include <Arduino.h>
 
-#include "stubs.h"
+#include "Storage/logController.h"
 
 NetworkSensor::~NetworkSensor(){};
 

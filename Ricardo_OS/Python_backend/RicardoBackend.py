@@ -57,7 +57,8 @@ def startSerialManager(args):
                                      redisport=args["redis_port"],
                                      UDPMonitor=args['monitor'],
                                      UDPIp=args['monitor_ip'],
-                                     UDPPort=args["monitor_port"])
+                                     UDPPort=args["monitor_port"],
+                                     verbose=args['verbose'])
     serman.run()
 
 def startTelemetryHandler(args,taskid):

@@ -4,7 +4,7 @@
 
 #include <memory>
 
-#include "stubs.h"
+#include "Storage/logController.h"
 
 struct RocketActuatorState:public RocketComponentState{
     int32_t currentValue;

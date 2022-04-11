@@ -11,10 +11,10 @@
 #include <rnp_networkmanager.h>
 
 #include "engine.h"
-#include "../flightcomponenthandler.h"
+#include "RocketComponents/flightcomponenthandler.h"
 
 
-#include "stubs.h"
+#include "Storage/logController.h"
 
 using addNetworkCallbackF_t = std::function<void(uint8_t,uint8_t,std::function<void(std::unique_ptr<RnpPacketSerialized>)>,bool)>;
 

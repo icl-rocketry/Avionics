@@ -19,13 +19,12 @@ void ControllerHandler::setupIndividual_impl(size_t id,JsonObjectConst controlle
             auto setpoint = getIfContains<float>(controllerconfig, "setpoint");
 
             uint32_t update_interval = 0;
-            setIfContains(controllerconfig, "updateInterval", update_interval, false);
+            setIfContains(controllerconfig, "updateInterval",update_interval,false);
 
             addObject(std::make_unique<PID>(id,
                                             Kp,
                                             Ki,
                                             Kd,
-                                            _estimator_state.position[1],
                                             setpoint,
                                             getControllable(controllerconfig),
                                             _logcontroller,
@@ -37,9 +36,9 @@ void ControllerHandler::setupIndividual_impl(size_t id,JsonObjectConst controlle
 
 }
 
-void ControllerHandler::update(){
+void ControllerHandler::update(const SensorStructs::state_t& estimator_state){
     for (auto& controller : *this){
-        controller->update();
+        controller->update(estimator_state);
     }
 }
 

@@ -49,6 +49,7 @@ class CommandHandler {
         void CalibrateMagFullCommand(const RnpPacketSerialized& packet);
         void CalibrateBaroCommand(const RnpPacketSerialized& packet);
         void EnterDebugCommand(const RnpPacketSerialized& packet);
+        void EnterPreflightCommand(const RnpPacketSerialized& packet);
         void EnterGroundstationCommand(const RnpPacketSerialized& packet);
         void EnterCountdownCommand(const RnpPacketSerialized& packet);
         void EnterFlightCommand(const RnpPacketSerialized& packet);

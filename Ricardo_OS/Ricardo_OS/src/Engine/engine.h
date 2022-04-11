@@ -19,13 +19,12 @@
 #include <rnp_networkmanager.h>
 #include <ArduinoJson.h>
 
-#include "../Controller/controllable.h"
+#include "Controller/controllable.h"
 
-#include <rnp_networkcallback.h>
-#include "../RocketComponents/rocketcomponent.h"
+#include <rnp_networkcallbackmap.h>
+#include "RocketComponents/rocketcomponent.h"
 
-
-#include "stubs.h"
+#include "Storage/logController.h"
 
 enum class ENGINE_RUN_STATE:uint8_t{
     SHUTDOWN,

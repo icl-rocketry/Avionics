@@ -19,7 +19,7 @@ class SerialManager():
 		self.baud = baud
 		self.waittime = waittime
 		self.prevSendTime = 0
-		self.sendDelta = 50e6
+		self.sendDelta = 5e6
 		self.verbose = verbose
 
 		self.ser = None
@@ -29,7 +29,6 @@ class SerialManager():
 		self.receiveBuffer = []
 		self.counter = 0
 
-		self.receivedQueueTimeout = 10*60 #default 10 minute timeout
 
 		self.sendQueue = sendQ
 		self.receiveQueue = receiveQ
@@ -137,13 +136,13 @@ class SerialManager():
 
 	def __checkSendQueue__(self):
 		#check if there are items present in send queue
-		if (time.time_ns() - self.prevSendTime) > self.sendDelta :
-			try:
-				packet = self.sendQueue.get_nowait()
-				self.__sendPacket__(bytes(packet['data']))
-			except queue.Empty:
-				pass
-			self.prevSendTime = time.time_ns()
+		# if (time.time_ns() - self.prevSendTime) > self.sendDelta :
+		try:
+			packet = self.sendQueue.get_nowait()
+			self.__sendPacket__(bytes(packet['data']))
+		except queue.Empty:
+			pass
+			# self.prevSendTime = time.time_ns()
 				
 
 	def __generateUID__(self):#replace this with a better uuid method lol this is such a hacky way

@@ -103,6 +103,9 @@ void CommandHandler::handleCommand(std::unique_ptr<RnpPacketSerialized> packetpt
 		case COMMANDS::Enter_Debug:
 			EnterDebugCommand(*packetptr);
 			break;
+		case COMMANDS::Enter_Preflight:
+			EnterPreflightCommand(*packetptr);
+			break;
 		case COMMANDS::Enter_Groundstation:
 			EnterGroundstationCommand(*packetptr);
 			break;
@@ -410,6 +413,14 @@ void CommandHandler::EnterDebugCommand(const RnpPacketSerialized& packet)
 	_sm->systemstatus.new_message(SYSTEM_FLAG::DEBUG);
 }
 
+void CommandHandler::EnterPreflightCommand(const RnpPacketSerialized& packet) 
+{
+	if(!_sm->systemstatus.flag_triggered(SYSTEM_FLAG::DEBUG)){
+		return;
+	}
+	_sm->changeState(new Preflight(_sm));
+}
+
 void CommandHandler::EnterGroundstationCommand(const RnpPacketSerialized& packet) 
 {
 	if(!_sm->systemstatus.flag_triggered(SYSTEM_FLAG::STATE_PREFLIGHT,SYSTEM_FLAG::DEBUG)){
@@ -489,7 +500,7 @@ void CommandHandler::FreeRamCommand(const RnpPacketSerialized& packet)
 	//avliable in all states
 	//returning as simple string packet for ease
 	//currently only returning free ram
-	MessagePacket_Base<serviceID,static_cast<uint8_t>(CommandPacket::TYPES::MESSAGE_RESPONSE)> message("FreeRam: " + std::to_string(esp_get_free_heap_size()));
+	MessagePacket_Base<0,static_cast<uint8_t>(CommandPacket::TYPES::MESSAGE_RESPONSE)> message("FreeRam: " + std::to_string(esp_get_free_heap_size()));
 	message.header.source_service = serviceID;
 	message.header.destination_service = packet.header.source_service;
 	message.header.source = packet.header.destination;

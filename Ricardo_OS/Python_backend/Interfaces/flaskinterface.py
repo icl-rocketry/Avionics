@@ -170,7 +170,8 @@ def __SocketIOResponseTask__(redishost,redisport):
         if keylist: #check we got keys
             key = keylist[0] #only process 1 key at a time
             key_string:str = bytes(key).decode("UTF-8")
-            sid = key_string.removeprefix('ReceiveQueue:LOCAL:SOCKETIO:')
+            # sid = key_string.removeprefix('ReceiveQueue:LOCAL:SOCKETIO:') #only works with py3.9
+            sid = key_string[len('ReceiveQueue:LOCAL:SOCKETIO:'):]
             if sid in socketio_clients:
                 redis_connection.persist(key) #remove key timeout
                 responseData:bytes = redis_connection.rpop(key)

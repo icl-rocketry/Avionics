@@ -75,6 +75,9 @@ class TelemetryHandler():
             header : RnpHeader  = RnpHeader.from_bytes(received_packet)
             #check the correct packet type was received
             #!!!! change packet type to telemetry packet once everything els ehas been changed properly
+            if header.packet_type != 101: #check packet type is correct
+                print("[ERROR] - Telemetry Handler, Bad Header packet_type: " + str(header.packet_type))
+                return
             if header.source_service == 2:
                 self.lastPacketTime = time.time_ns()
                 decoded_packet = TelemetryPacket.from_bytes(received_packet)

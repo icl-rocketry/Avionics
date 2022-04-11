@@ -7,32 +7,27 @@
 
 #include "event.h"
 #include "flightVariables.h"
-// #include "Storage/logController.h"
+#include "Storage/logController.h"
 
-
-
-#include "stubs.h"
-#include "../Deployment/deploymenthandler.h"
-#include "../Engine/enginehandler.h"
+#include "Deployment/deploymenthandler.h"
+#include "Engine/enginehandler.h"
 
 
 class EventHandler{
 
     public:
 
-        EventHandler(state_t* state, EngineHandler& enginehandler, DeploymentHandler& deploymenthandler,LogController& logcontroller):
-        _flightvariables(state, *this),
+        EventHandler(EngineHandler& enginehandler, DeploymentHandler& deploymenthandler,LogController& logcontroller):
+        _flightvariables(rocketState, *this),
         _enginehandler(enginehandler),
         _deploymenthandler(deploymenthandler),
         _logcontroller(logcontroller)
         {};
 
-        void setup(JsonArrayConst event_config);// configuration dict - 
-        //number of events
-        //description of each event
-        
-        void update();
-        /**.
+        void setup(JsonArrayConst event_config);
+
+        void update(const SensorStructs::state_t& state);
+        /**
          * @brief Get the timestamp when an event was triggered.
          * 
          * @param eventID 
@@ -43,7 +38,8 @@ class EventHandler{
         
 
     private:
-    
+        SensorStructs::state_t rocketState;
+        
         FlightVariables _flightvariables;
 
         EngineHandler& _enginehandler;

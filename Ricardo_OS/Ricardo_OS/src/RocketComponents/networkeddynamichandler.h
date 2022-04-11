@@ -11,7 +11,7 @@
 
 #include <rnp_networkcallbackmap.h>
 
-#include "stubs.h"
+#include "Storage/logController.h"
 
 
 template<class Object,class Derived>

@@ -8,14 +8,14 @@ RocketComponent::~RocketComponent(){};
 bool RocketComponent::flightCheck(uint32_t networkRetryInterval,std::string handler){
     const RocketComponentState* currentState = this->getState();
     if (currentState == nullptr){
-        #ifdef RICDEBUG
+        #ifdef _RICDEBUG
         throw std::runtime_error("flightCheck() called on base class instance without a derived class!");
         #endif
         _logcontroller.log("flightCheck() called on base class instance without a derived class!");
         return 1; 
     }
 
-    const uint8_t cid = this->getId();
+    const uint8_t cid = this->getID();
 
     if (currentState->lastNewStateRequestTime > currentState->lastNewStateUpdateTime) //component hasnt sent new update
     {

@@ -27,15 +27,16 @@ class ConfigController{
          */
         operator bool(){return _configOK;};
 
-        DynamicJsonDocument configDoc;
-        
-
+        JsonObjectConst get(){return configDoc.as<JsonObject>();};
         
     private:
+        DynamicJsonDocument configDoc;
+
         StorageController* _storagecontroller; //pointer to storage controller
         LogController* _logcontroller;//pointer to log controller
         const std::string configuration_file_path = "/Configuration/rml.jsonc";
         bool _configOK;
+        
         
 };
 

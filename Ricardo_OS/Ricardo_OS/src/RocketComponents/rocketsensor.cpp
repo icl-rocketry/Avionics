@@ -6,7 +6,5 @@
 #include <ArduinoJson.h>
 
 
-#include "stubs.h"
-
 RocketSensor::~RocketSensor(){};
 

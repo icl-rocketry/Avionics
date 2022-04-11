@@ -8,7 +8,7 @@
 
 #include <rnp_networkmanager.h>
 
-#include "stubs.h"
+#include "Storage/logController.h"
 
 struct NetworkActuatorState : public RocketActuatorState{
     //cant think of any other members required here currently

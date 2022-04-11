@@ -5,8 +5,9 @@
 #include <string>
 
 #include "condition.h"
-// #include "Storage/logController.h"
-#include "stubs.h"
+
+#include "Storage/logController.h"
+
 
 using condition_t = std::function<bool()>;
 using action_t = std::function<void()>;
