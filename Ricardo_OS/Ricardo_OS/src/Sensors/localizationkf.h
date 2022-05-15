@@ -13,13 +13,13 @@
 
 class LocalizationKF{
     public:
-        LocalizationKF(LogController& logcontroller);
+        LocalizationKF();
                 
         /**
-         * @brief Initialize Filter 
+         * @brief Reset Navigation Solution 
          * 
          */
-        void setup();
+        void reset();
 
         /**
          * @brief Propagate state transition 
@@ -27,41 +27,14 @@ class LocalizationKF{
          * x=Ax+Bu
          * P_bar=APA'+Q
          * 
-         * @param linear_acceleration Acceleration (ms-2) in NED frame with gravtiy removed
          * @param dt time step
          */
         
-        void predict(const Eigen::Vector3f& linear_acceleration,float dt);
+        void predict(float dt);
+
         /**
          * @brief Add new gps measurement to position estimate
          * 
-         *
-         * System Uncertainty:
-         * S=HP_barH'+R_gps
-         * as H is the identiy matrix:
-         * S=P_bar+R_gps
-         * 
-         * Kalman Gain:
-         * K=P_barH'S^-1
-         * Again as H is the identiy matrix:
-         * K=P_barS^-1
-         * 
-         * 
-         * K=P_bar(P_bar+R_gps)^-1
-         * 
-         * 
-         * residual
-         * y=z−HX
-         * 
-         * state update
-         * x = x + Ky
-         * 
-         * Covariance update
-         * P = (I-KH)P_bar -> unstable numerically
-         * Alternate Form
-         * P = (I−KH)P(I−KH)'+KRK'
-         * Noting that H_gps is the identity matrix we get
-         * P = (I-K)P(I-K)'+KRK'
          * 
          * 
          * @param lat GPS Latitude (deg), WGS84 geodetic coordinates
@@ -72,19 +45,39 @@ class LocalizationKF{
          * @param vd DOWN velocity (m/s)
          */
         void gpsUpdate(const float lat, const float lng, const long alt,
-                            const long vn, const long ve, const long vd);
+                       const long vn, const long ve, const long vd);
+
         /**
-         * @brief Add new baro measurement to position estimate
-         * 
+         * @brief Barometer update
+         *
+         * @param altitude in m
          */
-        void baroUpdate(){}; //not implemented yet
+        void baroUpdate(const float altitude);
+
+        /**
+         * @brief Accelerometer update
+         *
+         * @param an m/s^2
+         * @param ae m/s^2
+         * @param ad m/s^2
+         */
+        void accelUpdate(const float an, const float ae, const float ad);
+
+        /**
+         * @brief High-G accelerometer update
+         *
+         * @param an m/s^2
+         * @param ae m/s^2
+         * @param ad m/s^2
+         */
+        void HaccelUpdate(const float an, const float ae, const float ad);
 
         /**
          * @brief update the reference gps coordinates (the launch site)
-         * 
-         * @param lat 
-         * @param lng 
-         * @param alt 
+         *
+         * @param lat
+         * @param lng
+         * @param alt
          */
         void updateGPSReference(const float lat, const float lng, const long alt);
 
@@ -94,19 +87,138 @@ class LocalizationKF{
          * @return Eigen::Vector3f 
          */
 
-        Eigen::Vector3f getPosition(){return X({(uint8_t)STATE::Pn,
-                                                (uint8_t)STATE::Pe,
-                                                (uint8_t)STATE::Pd});
+        Eigen::Vector3f getPosition(){return X({STATE::Pn,
+                                                STATE::Pe,
+                                                STATE::Pd});
                                                 };
         /**
          * @brief Get the Velocity vector (Vn, Ve, Vd)
          * 
          * @return Eigen::Vector3f 
          */
-        Eigen::Vector3f getVelocity(){return X({(uint8_t)STATE::Vn,
-                                                (uint8_t)STATE::Ve,
-                                                (uint8_t)STATE::Vd});
+        Eigen::Vector3f getVelocity(){return X({STATE::Vn,
+                                                STATE::Ve,
+                                                STATE::Vd});
                                                 };
+        /**
+         * @brief Get the Acceleration Vector (An, Ae, Ad)
+         * 
+         * @return Eigen::Vector3f 
+         */
+        Eigen::Vector3f getAcceleration(){return X({STATE::An,
+                                                    STATE::Ae,
+                                                    STATE::Ad});};
+        
+
+    private:
+
+        /**
+         * @brief State variable [pn, vn, an, pe, ve, ae, pd, vd, ad]
+         * 
+         */
+        Eigen::Vector<float,9> X;
+        /**
+         * @brief Enum containing indicies of state variables
+         * 
+         */
+        enum STATE : uint8_t
+        {
+            Pn,
+            Vn,
+            An,
+            Pe,
+            Ve,
+            Ae,
+            Pd,
+            Vd,
+            Ad
+        };
+
+        /**
+         * @brief State Covariance Matrix
+         * 
+         */
+        Eigen::Matrix<float,9,9> P;
+
+        static constexpr float processVariance = 0.1;
+
+        // ACCELEROMETER MEASUREMENTS
+
+        static constexpr float accelVariance = 0.1;
+        const Eigen::DiagonalMatrix<float, 3> R_ACCEL{{accelVariance, accelVariance, accelVariance}};
+        const Eigen::Matrix<float, 3, 9> H_ACCEL{
+            {0, 0, 1, 0, 0, 0, 0, 0, 0},
+            {0, 0, 0, 0, 0, 1, 0, 0, 0},
+            {0, 0, 0, 0, 0, 0, 0, 0, 1}};
+
+        static constexpr float HaccelVariance = 1.5 * 9.81;
+        const Eigen::DiagonalMatrix<float, 3> R_HACCEL{{HaccelVariance, HaccelVariance, HaccelVariance}};
+
+        // BARO MEASUREMENT
+
+        static constexpr float baroVariance = 0.01;
+        const Eigen::Matrix<float, 1, 9> H_BARO{{0, 0, 0, 0, 0, 0, 1, 0, 0}};
+
+        // GPS MEASUREMENT
+        // cep reference - https://gssc.esa.int/navipedia/index.php/Accuracy
+
+        /**
+         * @brief Gps position variance given by the CEP ~ 2.5m
+         *
+         */
+        static constexpr float gpsPositionVariance = 2.123;
+        /**
+         * @brief Gps Altitude variance differs from horizontal variance but for now assume its the same.
+         * This is in m
+         *
+         */
+        static constexpr float gpsAltitudeVariance = 2.123;
+        /**
+         * @brief Gps velocity variance given as +- 0.05ms-1 @ 50%
+         *
+         */
+        static constexpr float gpsVelocityVariance = 0.00557;
+        /**
+         * @brief Covaraince Matrix for the GPS measurements.
+         * We assume the variance is constant here where the position variance is given
+         * by the CEP and and velocity by the velocity accuracy in the ublox specifications.
+         * This is a bold assumption and will likely be changed later when we have more time.
+         * Further we assume no covaraince between the measurement as we cannot estimate this.
+         *
+         *
+         */
+        const Eigen::DiagonalMatrix<float, 6> R_GPS{{gpsPositionVariance,
+                                                     gpsVelocityVariance,
+                                                     gpsPositionVariance,
+                                                     gpsVelocityVariance,
+                                                     gpsAltitudeVariance,
+                                                     gpsVelocityVariance}};
+
+        /**
+         * @brief Measurement Function matrix
+         *
+         */
+        const Eigen::Matrix<float, 6, 9> H_GPS{
+            {1, 0, 0, 0, 0, 0, 0, 0, 0},
+            {0, 1, 0, 0, 0, 0, 0, 0, 0},
+            {0, 0, 0, 1, 0, 0, 0, 0, 0},
+            {0, 0, 0, 0, 1, 0, 0, 0, 0},
+            {0, 0, 0, 0, 0, 0, 1, 0, 0},
+            {0, 0, 0, 0, 0, 0, 0, 1, 0}};
+
+        Eigen::Vector3f _gpsReferenceECEF = Eigen::Vector3f::Zero();
+        // trignometric values of lat and lng at reference coordinates
+        float _gpsReferenceSLat;
+        float _gpsReferenceCLat;
+        float _gpsReferenceSLng;
+        float _gpsReferenceCLng;
+        //earth constants from wgs84 model
+        static constexpr float earthMajorAxis = 6378137; // equitorial radius (m)
+        static constexpr float earthEccentricity2 = 0.00669437999014; // eccentricity squared
+        //conversion constant 
+        static constexpr float degtorad = 0.01745329251;
+
+        Eigen::Vector3f GPStoECEF(const float lat, const float lng, const long alt);
 
         /**
          * @brief Get the relative NED coordinates from the reference point in m
@@ -118,97 +230,48 @@ class LocalizationKF{
          */
         Eigen::Vector3f GPStoNED(const float lat, const float lng, const long alt);
 
-    private:
+        
         /**
-         * @brief Reference to log controller
+         * @brief Templated kalmanUpdate to handle different sizes of updates
+         * 
+         * @tparam Z_t Sensor Vector Type
+         * @tparam R_t Measurement Noise Matrix Type
+         * @tparam H_t Measurement Function Type
+         * @param z Sensor Vector
+         * @param R Measurement Noise Matrix
+         * @param H Measurement Function
+         * 
+         * System Uncertainty:
+         * S=HP_barH'+R
+         * 
+         * Kalman Gain:
+         * K=P_barH'S^-1
+         * 
+         * residual
+         * y=z−HX
+         * 
+         * state update
+         * x = x + Ky
+         * 
+         * Covariance update
+         * P = (I-KH)P_bar -> unstable numerically
+         * Alternate Form
+         * P = (I−KH)P(I−KH)'+KRK'
          * 
          */
-        LogController& _logcontroller;
-
-        /**
-         * @brief State variable [pn, vn, pe, ve, pd, vd]
-         * 
-         */
-        Eigen::Vector<float,6> X = Eigen::Vector<float,6>::Zero();
-        /**
-         * @brief Enum containing indicies of state variables
-         * 
-         */
-        enum class STATE:uint8_t{
-            Pn,
-            Vn,
-            Pe,
-            Ve,
-            Pd,
-            Vd
+        template <size_t Z_size, typename DerivedZ, typename DerivedR, typename DerivedH>
+        void kalmanUpdate(const Eigen::MatrixBase<DerivedZ> &z, const Eigen::MatrixBase<DerivedR> &R, const Eigen::MatrixBase<DerivedH> &H)
+        {
+            // System Uncertainty
+            Eigen::Matrix<float, Z_size, Z_size> S = (H * P * H.transpose()) + R;
+            // Kalman Gain
+            Eigen::Matrix<float, Z_size, Z_size> K = (P * H.transpose()) * S.inverse();
+            // Residual
+            Eigen::Vector<float, Z_size> y = z - (H * X);
+            // state update
+            X = X + (K * y);
+            // Covariance update
+            Eigen::Matrix<float, 9, 9> I_KH_temp = (Eigen::Matrix<float, 9, 9>::Identity() - (K * H));
+            P = (I_KH_temp * P * I_KH_temp.transpose()) + (K * R * K.transpose());
         };
-
-        /**
-         * @brief State Covariance Matrix
-         * 
-         */
-        Eigen::Matrix<float,6,6> P;
-
-        const float accelVariance = 0.1;
-
-        //GPS MEASUREMENT
-        //cep reference - https://gssc.esa.int/navipedia/index.php/Accuracy
-
-        /**
-         * @brief Gps position variance given by the CEP ~ 2.5m
-         * 
-         */
-        const float gpsPositionVariance = 2.123;
-        /**
-         * @brief Gps Altitude variance differs from horizontal variance but for now assume its the same.
-         * This is in m
-         * 
-         */
-        const float gpsAltitudeVariance = 2.123;
-        /**
-         * @brief Gps velocity variance given as +- 0.05ms-1 @ 50%
-         * 
-         */
-        const float gpsVelocityVariance = 0.00557;
-        /**
-         * @brief Covaraince Matrix for the GPS measurements.
-         * We assume the variance is constant here where the position variance is given
-         * by the CEP and and velocity by the velocity accuracy in the ublox specifications.
-         * This is a bold assumption and will likely be changed later when we have more time.
-         * Further we assume no covaraince between the measurement as we cannot estimate this.
-         * 
-         * 
-         */
-        const Eigen::DiagonalMatrix<float,6> R_GPS{{gpsPositionVariance,
-                                                    gpsVelocityVariance,
-                                                    gpsPositionVariance,
-                                                    gpsVelocityVariance,
-                                                    gpsAltitudeVariance,
-                                                    gpsVelocityVariance}};
-
-
-        const float baroVariance = 0;
-        
-        
-        
-
-        Eigen::Vector3f _gpsReferenceECEF = Eigen::Vector3f::Zero();
-        // trignometric values of lat and lng at reference coordinates
-        float _gpsReferenceSLat;
-        float _gpsReferenceCLat;
-        float _gpsReferenceSLng;
-        float _gpsReferenceCLng;
-        //earth constants from wgs84 model
-        const float earthMajorAxis = 6378137; // equitorial radius (m)
-        const float earthEccentricity2 = 0.00669437999014; // eccentricity squared
-        //conversion constant 
-        const float degtorad = 0.01745329251;
-
-        Eigen::Vector3f GPStoECEF(const float lat, const float lng, const long alt);
-        
-        
-
-
-        
-
 };

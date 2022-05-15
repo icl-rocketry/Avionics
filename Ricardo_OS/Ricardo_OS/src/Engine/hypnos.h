@@ -20,7 +20,7 @@ class Hypnos:public Engine{
 
         uint8_t flightCheck() override{return 0;};
 
-        void update() override {}; //empty we dont need an update as this a simple on and off
+        void update() override {}; 
 
         const EngineState* getState()override {return &_state;};
 
@@ -38,7 +38,7 @@ class Hypnos:public Engine{
         HypnosState _state;
 
         void ignite() override{};
-        void shutdown() override{}; 
+        void shutdown() override{};
         void vent(); // vent main ox tank
         
 
