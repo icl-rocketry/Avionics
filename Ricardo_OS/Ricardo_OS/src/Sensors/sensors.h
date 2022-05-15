@@ -17,6 +17,7 @@
 #include <Wire.h>
 #include <memory>
 #include <functional>
+#include <ArduinoJson.h>
 
 
 #include <rnp_networkmanager.h>
@@ -41,7 +42,7 @@ class Sensors
 public:
     Sensors(SPIClass &spi, TwoWire &I2C, SystemStatus &systemstatus, LogController &logcontroller);
 
-    void setup();
+    void setup(JsonObjectConst config);
     void update();
 
     /**

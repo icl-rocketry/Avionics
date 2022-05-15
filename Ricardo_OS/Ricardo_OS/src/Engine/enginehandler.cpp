@@ -12,6 +12,7 @@
 #include "engine.h"
 
 #include "Storage/logController.h"
+#include "Helpers/jsonconfighelper.h"
 
 #include "simpleengine.h"
 #include "hypnos.h"
@@ -34,7 +35,7 @@ uint8_t EngineHandler::flightCheck_impl(){
 
 
 void EngineHandler::setupIndividual_impl(size_t id, JsonObjectConst engineconfig){
-    using namespace ConfigurableDynamicHandlerHelpers;
+    using namespace JsonConfigHelper;
 
     auto type = getIfContains<std::string>(engineconfig,"type");
 

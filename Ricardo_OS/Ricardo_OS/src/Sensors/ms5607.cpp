@@ -14,7 +14,6 @@
 
 
 MS5607::MS5607(SPIClass& spi,SystemStatus& systemstatus,LogController& logcontroller,uint8_t cs):
-_barofilter(0.09),
 _spi(spi),
 _systemstatus(systemstatus),
 _logcontroller(logcontroller),
@@ -39,7 +38,6 @@ void MS5607::update(SensorStructs::BARO_t& barodata){
 
     barodata.temp = (float)TEMP/100.0;
     barodata.press = (float)PRESS; 
-    //_raw_data->baro_alt = _barofilter.getFilterAlt(toAltitude((float)PRESS));
     barodata.alt = toAltitude((float)PRESS);
 
 }

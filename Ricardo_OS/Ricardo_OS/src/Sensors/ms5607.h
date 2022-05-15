@@ -5,7 +5,6 @@
 
 #include "Storage/systemstatus.h"
 #include "Storage/logController.h"
-#include "barofilter.h"
 #include "sensorStructs.h"
 
 
@@ -25,7 +24,6 @@ class MS5607{
 
 
     private:
-        BaroFilter _barofilter;
 
         float refTemp{273.15 + 15};
         float refPress{101325};

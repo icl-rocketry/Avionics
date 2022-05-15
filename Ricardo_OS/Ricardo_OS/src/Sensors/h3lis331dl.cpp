@@ -7,7 +7,7 @@ _logcontroller(logcontroller),
 _cs(cs)// update with correct chip select
 {};
 
-void H3LIS331DL::setup()
+void H3LIS331DL::setup(const std::array<uint8_t,3>& axesOrder, const std::array<bool,3>& axesFlip)
 {
     setPowerMode(power_mode::NORMAL);
     axesEnable(true);
@@ -20,11 +20,14 @@ void H3LIS331DL::setup()
     setFullScale(fs_range::FS_100G); // needs to be changed to be configured from json
 
      if (!alive()){
-         _systemstatus.new_message(SYSTEM_FLAG::ERROR_IMU, "Unable to initialize the h3lis331dl");
+         _systemstatus.new_message(SYSTEM_FLAG::ERROR_HACCEL, "Unable to initialize the H3LIS331DL");
         return;
     }
 
-    _logcontroller.log("IMU Initialized");
+    axeshelper.setOrder(axesOrder);
+    axeshelper.setFlip(axesFlip);
+
+    _logcontroller.log("H3LIS331DL Initialized");
 
 }
 
@@ -144,9 +147,13 @@ void H3LIS331DL::readAxes(float &x, float &y, float &z)
 
     readRawAxes(ax,ay,az);
 
-    x = raw_to_g*float(ax);
-    y = raw_to_g*float(ay);
-    z = raw_to_g*float(az);
+    std::array<float, 3> accel = axeshelper(std::array<float, 3>{-raw_to_g * float(ay),
+                                                                 -raw_to_g * float(ax),
+                                                                 -raw_to_g * float(az)});
+
+    x = accel[0];
+    y = accel[1];
+    z = accel[2];
 }
 
 void H3LIS331DL::writeRegister(uint8_t reg_address, uint8_t *data, uint8_t len)

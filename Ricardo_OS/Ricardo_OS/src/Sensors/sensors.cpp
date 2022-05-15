@@ -5,7 +5,7 @@
 #include <Wire.h>
 #include <memory>
 #include <functional>
-
+#include <ArduinoJson.h>
 
 #include <rnp_networkmanager.h>
 #include <rnp_packet.h>
@@ -14,6 +14,8 @@
 #include "Storage/systemstatus.h"
 
 #include "Commands/commandpacket.h"
+
+#include "Helpers/jsonconfighelper.h"
 
 
 //config
@@ -42,12 +44,24 @@ Sensors::Sensors(SPIClass& spi,TwoWire& I2C,SystemStatus& systemstatus,LogContro
     
 {}
 
-void Sensors::setup(){
-    //calls setup for each indiviual sensor
+void Sensors::setup(JsonObjectConst config){
+    using namespace JsonConfigHelper;
+    //default axes order and flip
+    std::array<uint8_t,3> axesOrder{0,1,2};
+    std::array<bool,3> axesFlip{0,0,0};
+
+    setIfContains(config,"X_AXIS",axesOrder[0],false);
+    setIfContains(config,"Y_AXIS",axesOrder[1],false);
+    setIfContains(config,"Z_AXIS",axesOrder[2],false);
+    setIfContains(config,"X_FLIP",axesFlip[0],false);
+    setIfContains(config,"Y_FLIP",axesFlip[1],false);
+    setIfContains(config,"Z_FLIP",axesFlip[2],false);
+
     gps.setup();
     baro.setup();
-    accelgyro.setup();
-    accel.setup();
+    accelgyro.setup(axesOrder,axesFlip);
+    accel.setup(axesOrder,axesFlip);
+    mag.setup(axesOrder,axesFlip);
     batt.setup();
     
 };

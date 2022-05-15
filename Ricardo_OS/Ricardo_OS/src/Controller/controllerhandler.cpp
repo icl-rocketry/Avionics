@@ -2,11 +2,13 @@
 #include "PID.h"
 #include <ArduinoJson.h>
 
+#include "Helpers/jsonconfighelper.h"
+
 
 
 
 void ControllerHandler::setupIndividual_impl(size_t id,JsonObjectConst controllerconfig) {
-        using namespace ConfigurableDynamicHandlerHelpers;
+        using namespace JsonConfigHelper;
 
         auto type = getIfContains<std::string>(controllerconfig,"type");
 
@@ -43,7 +45,7 @@ void ControllerHandler::update(const SensorStructs::state_t& estimator_state){
 }
 
 Controllable* ControllerHandler::getControllable(JsonObjectConst config){
-    using namespace ConfigurableDynamicHandlerHelpers;
+    using namespace JsonConfigHelper;
 
     auto type = getIfContains<std::string>(config,"doohickeyType");
     auto id = getIfContains<uint8_t>(config,"doohickeyID");

@@ -7,6 +7,7 @@
 #include <rnp_networkmanager.h>
 #include <ArduinoJson.h>
 
+#include "Helpers/jsonconfighelper.h"
 
 #include "RocketComponents/rocketcomponent.h"
 #include "RocketComponents/rocketcomponenttype.h"
@@ -16,7 +17,7 @@
 
 void DeploymentHandler::setupIndividual_impl(size_t id,JsonObjectConst deployerconfig)
 {
-   using namespace ConfigurableDynamicHandlerHelpers;
+   using namespace JsonConfigHelper;
  
    auto type = getIfContains<std::string>(deployerconfig,"type");
 

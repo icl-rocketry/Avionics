@@ -22,12 +22,14 @@
 #include "Storage/logController.h"
 #include "Storage/systemstatus.h"
 
+#include "Helpers/axeshelper.h"
+
 
 class H3LIS331DL{
     public:
         H3LIS331DL(SPIClass& spi,SystemStatus& systemstatus,LogController& logcontroller,uint8_t cs);
 
-        void setup();
+        void setup(const std::array<uint8_t,3>& axesOrder,const std::array<bool,3>& axesFlip);
 
         void update(SensorStructs::ACCEL_3AXIS_t& data);
 
@@ -38,6 +40,8 @@ class H3LIS331DL{
         SystemStatus& _systemstatus;
         LogController& _logcontroller;
         const uint8_t _cs;
+
+        AxesHelper<> axeshelper;
 
         bool alive();
 

@@ -72,6 +72,16 @@ void Max_M8Q::update(SensorStructs::GPS_t& gpsdata)
        gpsdata.minute = gnss.getMinute();
        gpsdata.second = gnss.getSecond();
 
+       if (gpsdata.fix < 3){
+           if (!_systemstatus.flag_triggered(SYSTEM_FLAG::ERROR_GPS)){
+               _systemstatus.new_message(SYSTEM_FLAG::ERROR_GPS,"GPS bad fix");
+           }
+       }else{
+           if(_systemstatus.flag_triggered(SYSTEM_FLAG::ERROR_GPS)){
+               _systemstatus.delete_message(SYSTEM_FLAG::ERROR_GPS);
+           }
+       }
+
    }else{
        gpsdata.updated = false;
    }

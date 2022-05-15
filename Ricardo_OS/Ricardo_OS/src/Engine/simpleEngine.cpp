@@ -8,11 +8,12 @@
 #include "RocketComponents/configurabledynamichandler.h"
 
 #include "Storage/logController.h"
+#include "Helpers/jsonconfighelper.h"
 
 SimpleEngine::SimpleEngine(uint8_t id,JsonObjectConst engineConfig,addNetworkCallbackF_t addNetworkCallbackF,RnpNetworkManager& networkmanager,uint8_t handlerServiceID,LogController& logcontroller):
 Engine(id,engineConfig,addNetworkCallbackF,networkmanager,handlerServiceID,logcontroller)
 {
-    using namespace ConfigurableDynamicHandlerHelpers;
+    using namespace JsonConfigHelper;
     auto igniterConf = getIfContains<JsonObjectConst>(engineConfig,"igniter");
     auto igniterType = getIfContains<std::string>(igniterConf,"type");
 

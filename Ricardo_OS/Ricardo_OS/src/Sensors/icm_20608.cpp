@@ -12,7 +12,7 @@ _logcontroller(logcontroller),
 _cs(cs) // update this with proper config value
 {}
 
-void ICM_20608::setup()
+void ICM_20608::setup(const std::array<uint8_t,3>& axesOrder, const std::array<bool,3> axesFlip)
 {
     writeRegister(PWR_MGMT_1, RESET);     // reset whole device
     delay(10);                            
@@ -40,6 +40,10 @@ void ICM_20608::setup()
     }
 
     loadAccelGyroBias(); //load offsets from nvs
+
+    axeshelper.setOrder(axesOrder);
+    axeshelper.setFlip(axesFlip);
+
     _logcontroller.log("IMU Initialized");
 
 }
@@ -156,20 +160,26 @@ void ICM_20608::readGyro(float &x, float &y, float &z)
 
     readGyroRaw(xi, yi, zi);
 
-    x = -(float)(xi + offset_gx) * gyro_lsb_to_degs;
-    y = -(float)(yi + offset_gy) * gyro_lsb_to_degs;
-    z = (float)(zi + offset_gz) * gyro_lsb_to_degs;
+    std::array<float, 3> gyro = axeshelper(std::array<float, 3>{(float)(yi + offset_gy) * gyro_lsb_to_degs,
+                                                                 (float)(xi + offset_gx) * gyro_lsb_to_degs,
+                                                                 -(float)(zi + offset_gz) * gyro_lsb_to_degs});
+
+    x = gyro[0];
+    y = gyro[1];
+    z = gyro[2];
 }
 
 void ICM_20608::readAccel(float &x, float &y, float &z)
 {
     int16_t xi, yi, zi;
-
     readAccelRaw(xi, yi, zi);
+    std::array<float, 3> accel = axeshelper(std::array<float, 3>{(float)(yi + offset_ay) * accel_lsb_to_g,
+                                                                  (float)(xi + offset_ay) * accel_lsb_to_g,
+                                                                  -(float)(zi + offset_az) * accel_lsb_to_g});
 
-    x = (float)(xi + offset_ax) * accel_lsb_to_g;
-    y = (float)(yi + offset_ay) * accel_lsb_to_g;
-    z = -(float)(zi + offset_az) * accel_lsb_to_g;
+    x = accel[0];
+    y = accel[1];
+    z = accel[2];
 }
 
 void ICM_20608::readGyroRaw(int16_t &x, int16_t &y, int16_t &z)

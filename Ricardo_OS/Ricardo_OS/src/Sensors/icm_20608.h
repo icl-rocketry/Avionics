@@ -16,6 +16,7 @@
 
 #include <Arduino.h>
 #include <SPI.h>
+#include <array>
 
 #include "config.h"
 
@@ -23,15 +24,23 @@
 #include "Storage/logController.h"
 #include "Storage/systemstatus.h"
 
+#include "Helpers/axeshelper.h"
+
 
 class ICM_20608{
     public:
         ICM_20608(SPIClass& spi,SystemStatus& systemstatus,LogController& logcontroller,uint8_t cs);
 
-        void setup();
+        void setup(const std::array<uint8_t,3>& axesOrder, const std::array<bool,3> axesFlip);
 
         void update(SensorStructs::ACCELGYRO_6AXIS_t& data);
 
+        /**
+         * @brief Callibrate Bias of gyro and accel
+         * Must be performed with icm20608g facing upwards!
+         * Orientation matters, only perform when board is out of rocket!
+         * 
+         */
         void calibrateBias();
 
         enum GyroRange:uint8_t
@@ -56,6 +65,8 @@ class ICM_20608{
         SystemStatus& _systemstatus;
         LogController& _logcontroller;
         const uint8_t _cs;
+
+        AxesHelper<> axeshelper;
 
         void setRange(AccelRange accel_range,GyroRange gyro_range);
 

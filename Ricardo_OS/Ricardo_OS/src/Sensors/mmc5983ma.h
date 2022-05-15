@@ -22,6 +22,8 @@
 #include "Storage/logController.h"
 #include "Storage/systemstatus.h"
 
+#include "Helpers/axeshelper.h"
+
 #include <Eigen/Core>
 
 
@@ -37,7 +39,7 @@ class MMC5983MA{
     public:
         MMC5983MA(SPIClass& spi,SystemStatus& systemstatus,LogController& logcontroller,uint8_t cs);
 
-        void setup();
+        void setup(const std::array<uint8_t,3>& axesOrder,const std::array<bool,3>& axesFlip);
 
         void update(SensorStructs::MAG_3AXIS_t& data);
 
@@ -49,6 +51,8 @@ class MMC5983MA{
         SystemStatus& _systemstatus;
         LogController& _logcontroller;
         const uint8_t _cs;
+
+        AxesHelper<> axeshelper;
 
         //mag calibration container
         MagCalibrationParameters _magCal;

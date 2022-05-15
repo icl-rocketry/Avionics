@@ -24,7 +24,7 @@ _magCal{1,
            Eigen::Vector3f{{0,0,0}}} // default for mag biases
 {};
 
-void MMC5983MA::setup()
+void MMC5983MA::setup(const std::array<uint8_t,3>& axesOrder,const std::array<bool,3>& axesFlip)
 {
     // reset chip
     writeRegister(CTRL_1, RESET);
@@ -42,10 +42,14 @@ void MMC5983MA::setup()
 
     if (!alive())
     {
-        _systemstatus.new_message(SYSTEM_FLAG::ERROR_IMU, "Unable to initialize the mmc5983ma");
+        _systemstatus.new_message(SYSTEM_FLAG::ERROR_MAG, "Unable to initialize the MMC5983MA");
         return;
     }
-    _logcontroller.log("MAG Initialized");
+
+    axeshelper.setOrder(axesOrder);
+    axeshelper.setFlip(axesFlip);
+
+    _logcontroller.log("MMC5983MA Initialized");
 
 }
 
@@ -55,8 +59,10 @@ void MMC5983MA::update(SensorStructs::MAG_3AXIS_t& data)
     float raw_my;
     float raw_mz;
     readData(raw_mx, raw_my, raw_mz, data.temp);
+
+    std::array<float,3> mag_transformed = axeshelper(std::array<float,3>{-raw_my,-raw_mx,raw_mz});
     //apply calibration
-    Eigen::Vector3f corrected_mag = _magCal.A_1 * (Eigen::Vector3f{{raw_mx, raw_my, raw_mz}} - _magCal.b);
+    Eigen::Vector3f corrected_mag = _magCal.A_1 * (Eigen::Vector3f{mag_transformed[0],mag_transformed[1],mag_transformed[2]} - _magCal.b);
     data.mx = corrected_mag[0];
     data.my = corrected_mag[1];
     data.mz = corrected_mag[2];

@@ -146,7 +146,7 @@ void stateMachine::initialise(State* initStatePtr) {
 
 
   //sensors must be setup before estimator
-  sensors.setup();
+  sensors.setup(configcontroller.get());
   estimator.setup();
   //call setup state
   changeState(initStatePtr);
