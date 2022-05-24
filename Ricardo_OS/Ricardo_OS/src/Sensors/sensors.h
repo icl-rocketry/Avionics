@@ -79,4 +79,7 @@ private:
     void hitlCommandHandler(RnpPacketSerialized& packet);
     bool _hitlEnabled;
 
+    void hitlUpdateSensorError(uint8_t sensor_state,SYSTEM_FLAG flag);
+
+    LogController& logcontroller;
 };

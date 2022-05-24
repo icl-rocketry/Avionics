@@ -12,12 +12,12 @@ TelemetryPacket::~TelemetryPacket()
 
 TelemetryPacket::TelemetryPacket():
 RnpPacket(0,
-          0,
+          101,
           size())
 {};
 
 TelemetryPacket::TelemetryPacket(const RnpPacketSerialized& packet):
-RnpPacket(packet.header)
+RnpPacket(packet,size())
 {
     getSerializer().deserialize(*this,packet.getBody());
 };

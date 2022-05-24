@@ -12,17 +12,16 @@
 
 #include <Preferences.h>
 
-MMC5983MA::MMC5983MA(SPIClass& spi,SystemStatus& systemstatus,LogController& logcontroller,uint8_t cs):
-_spi(spi),
-_systemstatus(systemstatus),
-_logcontroller(logcontroller),
-_cs(cs),// update with correct chip select
-_magCal{1,
-           0,
-           0,
-           Eigen::Matrix3f{{1,0,0},{0,1,0},{0,0,1}},
-           Eigen::Vector3f{{0,0,0}}} // default for mag biases
-{};
+MMC5983MA::MMC5983MA(SPIClass &spi, SystemStatus &systemstatus, LogController &logcontroller, uint8_t cs) : _spi(spi),
+                                                                                                            _systemstatus(systemstatus),
+                                                                                                            _logcontroller(logcontroller),
+                                                                                                            _cs(cs), // update with correct chip select
+                                                                                                            _magCal{1,
+                                                                                                                    0,
+                                                                                                                    0,
+                                                                                                                    Eigen::Matrix3f{{1, 0, 0}, {0, 1, 0}, {0, 0, 1}},
+                                                                                                                    Eigen::Vector3f{{0, 0, 0}}} // default for mag biases
+                                                                                                            {};
 
 void MMC5983MA::setup(const std::array<uint8_t,3>& axesOrder,const std::array<bool,3>& axesFlip)
 {

@@ -9,14 +9,14 @@
 NRCStatePacket::~NRCStatePacket()
 {};
 
-NRCStatePacket::NRCStatePacket(uint8_t destinationService):
-RnpPacket(destinationService,
+NRCStatePacket::NRCStatePacket():
+RnpPacket(0,
           static_cast<uint8_t>(NRCPacket::TYPES::NRC_STATE),
           size())
 {};
 
 NRCStatePacket::NRCStatePacket(const RnpPacketSerialized& packet):
-RnpPacket(packet.header)
+RnpPacket(packet,size())
 {
     getSerializer().deserialize(*this,packet.getBody());
 };

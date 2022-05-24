@@ -16,7 +16,7 @@ void NetworkSensor::networkCallback(packetptr_t packetptr){
         {
             NRCStatePacket nrcstatepacket(*packetptr); //deserialize state packet
             _state.lastNewStateUpdateTime = millis();
-            _state.sensorValue = static_cast<float>(nrcstatepacket.value); // this is actually a float 
+            _state.sensorValue = *reinterpret_cast<float*>(&nrcstatepacket.value); // reinterpret int32 as a float
             _state.state = nrcstatepacket.state;
         }
     

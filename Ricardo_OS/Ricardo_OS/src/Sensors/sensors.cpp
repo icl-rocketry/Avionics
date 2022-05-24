@@ -40,7 +40,8 @@ Sensors::Sensors(SPIClass& spi,TwoWire& I2C,SystemStatus& systemstatus,LogContro
     accelgyro(spi,systemstatus,logcontroller,10),
     accel(spi,systemstatus,logcontroller,10),
     mag(spi,systemstatus,logcontroller,10),
-    batt(systemstatus,logcontroller,BattVolt)
+    batt(systemstatus,logcontroller,BattVolt),
+    logcontroller(logcontroller)
     
 {}
 
@@ -125,8 +126,8 @@ void Sensors::hitlHandler(std::unique_ptr<RnpPacketSerialized> packet_ptr)
         }
         case static_cast<uint8_t>(HITL_PACKET_TYPES::PICKLE_RICK_SENSORS):
         {
-            PickleRickSensorsPacket FakeData(*packet_ptr);  //deserialize fake data
 
+            PickleRickSensorsPacket FakeData(*packet_ptr); // deserialize fake data
             sensors_raw.accelgyro.ax = FakeData.ax;
             sensors_raw.accelgyro.ay = FakeData.ay;
             sensors_raw.accelgyro.az = FakeData.az;
@@ -160,10 +161,14 @@ void Sensors::hitlHandler(std::unique_ptr<RnpPacketSerialized> packet_ptr)
             sensors_raw.gps.updated = FakeData.gps_updated;
             sensors_raw.gps.valid = FakeData.gps_valid;
 
-            sensors_raw.batt.volt = FakeData.batt_volt;
-            sensors_raw.batt.percent = FakeData.batt_percent;            
+            hitlUpdateSensorError(FakeData.imu_error, SYSTEM_FLAG::ERROR_IMU);
+            hitlUpdateSensorError(FakeData.haccel_error, SYSTEM_FLAG::ERROR_HACCEL);
+            hitlUpdateSensorError(FakeData.mag_error, SYSTEM_FLAG::ERROR_MAG);
+            hitlUpdateSensorError(FakeData.baro_error, SYSTEM_FLAG::ERROR_BARO);
+            hitlUpdateSensorError(FakeData.gps_error, SYSTEM_FLAG::ERROR_GPS);
 
             sensors_raw.system_time = millis();
+
             return;
         }
         default:
@@ -181,11 +186,13 @@ void Sensors::hitlCommandHandler(RnpPacketSerialized& packet)
         case static_cast<uint8_t>(HITL_COMMANDS::HITL_ENABLE):
         {
             _hitlEnabled = true;
+            logcontroller.log("HITL Enabled!");
             return;
         }
         case static_cast<uint8_t>(HITL_COMMANDS::HITL_DISABLE):
         {
             _hitlEnabled = false;
+            logcontroller.log("HITL Disabled!");
             return;
         }
         default:
@@ -194,3 +201,17 @@ void Sensors::hitlCommandHandler(RnpPacketSerialized& packet)
         }
     }
 }
+
+void Sensors::hitlUpdateSensorError(uint8_t sensor_state,SYSTEM_FLAG flag)
+{
+    if (sensor_state && !_systemstatus.flag_triggered(flag))
+    {
+        _systemstatus.new_message(flag, "hitl raised error");
+    }
+    else if (!sensor_state && _systemstatus.flag_triggered(flag))
+    {
+        _systemstatus.delete_message(flag, "hitl removed flag");
+    }
+}
+
+

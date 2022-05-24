@@ -171,6 +171,7 @@ void stateMachine::update() {
   logcontroller.log(estimator.getData(),sensors.getData());// log new navigation solution and sensor output
 
   //check for new packets and process
+
   networkmanager.update();
 
   enginehandler.update();

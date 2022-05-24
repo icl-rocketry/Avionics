@@ -14,7 +14,7 @@ arg(_arg)
 {};
 
 SimpleCommandPacket::SimpleCommandPacket(const RnpPacketSerialized& packet):
-RnpPacket(packet.header)
+RnpPacket(packet,size())
 {
     getSerializer().deserialize(*this,packet.getBody());
 };
@@ -38,7 +38,7 @@ command(_command)
 {};
 
 MagCalCommandPacket::MagCalCommandPacket(const RnpPacketSerialized& packet):
-RnpPacket(packet.header)
+RnpPacket(packet,size())
 {
     getSerializer().deserialize(*this,packet.getBody());
 };

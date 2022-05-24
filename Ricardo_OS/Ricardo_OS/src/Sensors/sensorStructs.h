@@ -115,9 +115,22 @@ namespace SensorStructs
         uint32_t launchTime{0};
         uint32_t apogeeTime{0};
 
-        // 0 nominal -> full navigation solution available
-        // 1 partial -> orientation solution available ONLY
-        // 2 no solution -> no solution available
+        /**
+         * @brief Estimator state
+         * 
+         * 
+            NOMINAL = 0
+            PARTIAL_NO_IMU = 1
+            PARTIAL_NO_IMU_NO_GPS = 2
+            PARTIAL_NO_IMU_NO_BARO = 3
+            PARTIAL_NO_MAG = 4
+            PARTIAL_NO_GPS = 5
+            PARTIAL_NO_GPS_NO_BARO = 6
+            PARTIAL_NO_BARO = 7
+            NO_HOME = 8
+            NOSOLUTION = 9
+         * 
+         */
         uint8_t estimator_state;
     };
 

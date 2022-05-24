@@ -29,16 +29,16 @@ class NRCStatePacket : public RnpPacket{
     public:
         ~NRCStatePacket();
 
-        NRCStatePacket(uint8_t destinationService);
+        NRCStatePacket();
         /**
-         * @brief Deserialize PyroInfo Packet
+         * @brief Deserialize NRCstate Packet
          * 
          * @param data 
          */
         NRCStatePacket(const RnpPacketSerialized& packet);
 
         /**
-         * @brief Serialize PyroInfo Packet
+         * @brief Serialize NRCstate Packet
          * 
          * @param buf 
          */

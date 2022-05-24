@@ -48,8 +48,12 @@ class PickleRickSensorsPacket : public RnpPacket{
                 &PickleRickSensorsPacket::gps_fix,  
                 &PickleRickSensorsPacket::gps_updated, 
                 &PickleRickSensorsPacket::gps_valid,
-                &PickleRickSensorsPacket::batt_volt,
-                &PickleRickSensorsPacket::batt_percent               
+                &PickleRickSensorsPacket::imu_error,
+                &PickleRickSensorsPacket::haccel_error,
+                &PickleRickSensorsPacket::mag_error,
+                &PickleRickSensorsPacket::baro_error,
+                &PickleRickSensorsPacket::gps_error
+                             
             );
             return ret;
         }
@@ -106,8 +110,11 @@ class PickleRickSensorsPacket : public RnpPacket{
         uint8_t gps_updated; //bools stored at uint8_t for ease 
         uint8_t gps_valid;
 
-        uint16_t batt_volt;
-        uint16_t batt_percent;
+        uint8_t imu_error;
+        uint8_t haccel_error;
+        uint8_t mag_error;
+        uint8_t baro_error;
+        uint8_t gps_error;
 
         static constexpr size_t size(){
             return getSerializer().member_size();

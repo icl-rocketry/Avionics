@@ -41,8 +41,6 @@ void Estimator::update(const SensorStructs::raw_measurements_t &raw_sensors)
       if (_systemstatus.flag_triggered(SYSTEM_FLAG::ERROR_IMU))
       {
 
-         changeEstimatorState(ESTIMATOR_STATE::PARTIAL_NO_IMU, "no IMU");
-
          if (_systemstatus.flag_triggered(SYSTEM_FLAG::ERROR_GPS) && _systemstatus.flag_triggered(SYSTEM_FLAG::ERROR_BARO))
          {
             // no data so we cant calculate any nav solution
@@ -147,7 +145,7 @@ void Estimator::update(const SensorStructs::raw_measurements_t &raw_sensors)
          localizationkf.baroUpdate(raw_sensors.baro.alt - state.baro_ref_alt);
       }
 
-      localizationkf.predict(dt_seconds);
+      predictLocalizationKF(dt_seconds);
 
       if (!_systemstatus.flag_triggered(SYSTEM_FLAG::ERROR_IMU, SYSTEM_FLAG::ERROR_GPS, SYSTEM_FLAG::ERROR_BARO, SYSTEM_FLAG::ERROR_MAG, SYSTEM_FLAG::ERROR_HACCEL))
       {

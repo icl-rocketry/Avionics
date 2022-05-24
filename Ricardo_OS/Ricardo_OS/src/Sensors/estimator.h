@@ -12,7 +12,6 @@
 
 enum class ESTIMATOR_STATE: uint8_t{
     NOMINAL,
-    PARTIAL,
     PARTIAL_NO_IMU,
     PARTIAL_NO_IMU_NO_GPS,
     PARTIAL_NO_IMU_NO_BARO,

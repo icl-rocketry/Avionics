@@ -16,7 +16,7 @@ RnpPacket(0, //no hitl default
 {};
 
 PickleRickSensorsPacket::PickleRickSensorsPacket(const RnpPacketSerialized& packet):
-RnpPacket(packet.header)
+RnpPacket(packet,size())
 {
     getSerializer().deserialize(*this,packet.getBody());
 };
