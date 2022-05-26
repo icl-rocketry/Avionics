@@ -12,7 +12,7 @@
 #include "rocketactuator.h"
 #include "rocketcomponenttype.h"
 
-#include "Storage/logController.h
+#include "Storage/logController.h"
 
 #include <Wire.h>
 
@@ -28,7 +28,7 @@ class I2CPyro: public RocketActuator{
          * @param channel pyro channels 0-3
          * @param wire 
          */
-        I2CPyro(uint8_t id,LogController& logcontroller,uint8_t address,uint8_t channel,TwoWire &wire);
+        I2CPyro(uint8_t id,LogController& logcontroller,uint8_t address,uint8_t channel,bool continuityPolarity,TwoWire &wire);
 
          /**
          * @brief Fires the Pyro
@@ -56,7 +56,8 @@ class I2CPyro: public RocketActuator{
         const uint8_t _channel;
         bool pinsValid;
         const uint8_t _nukePin;
-        const uint8_t _contPin;
+        const uint8_t _continuityPin;
+        const bool _continuityPolarity;
         
 
         TwoWire& _wire;
@@ -82,6 +83,16 @@ class I2CPyro: public RocketActuator{
          * @param channel 
          * @return uint8_t 
          */
-        uint8_t get_cont_pin(uint8_t channel);
+        uint8_t get_continuity_pin(uint8_t channel);
+
+        /**
+         * @brief Get the value in register
+         * 
+         * @param reg 
+         * @return uint8_t 
+         */
+        uint8_t get_register(uint8_t reg);
+
+        
 
 };
