@@ -57,7 +57,7 @@ stateMachine::stateMachine() :
     commandhandler(this),
     sensors(vspi,I2C,systemstatus,logcontroller),
     estimator(systemstatus,logcontroller),
-    deploymenthandler(networkmanager,deploymentHandlerServiceID,logcontroller),
+    deploymenthandler(networkmanager,deploymentHandlerServiceID,I2C,logcontroller),
     enginehandler(networkmanager,engineHandlerServiceID,logcontroller),
     controllerhandler(enginehandler,logcontroller),
     eventhandler(enginehandler,deploymenthandler,logcontroller)

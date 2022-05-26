@@ -7,6 +7,7 @@
 
 #include <rnp_networkmanager.h>
 #include <ArduinoJson.h>
+#include <Wire.h>
 
 
 #include "RocketComponents/rocketactuator.h"
@@ -26,8 +27,9 @@ class DeploymentHandler : public FlightComponentHandler<RocketActuator,Deploymen
          * @param serviceID network service the handler is assigned to
          * @param logcontroller 
          */
-        DeploymentHandler(RnpNetworkManager& networkmanager,uint8_t serviceID,LogController& logcontroller):
-            FlightComponentHandler(networkmanager,serviceID,logcontroller)
+        DeploymentHandler(RnpNetworkManager& networkmanager,uint8_t serviceID,TwoWire& wire,LogController& logcontroller):
+            FlightComponentHandler(networkmanager,serviceID,logcontroller),
+            _wire(wire)
         {};
 
 
@@ -45,4 +47,6 @@ class DeploymentHandler : public FlightComponentHandler<RocketActuator,Deploymen
          
     private:
         static constexpr uint16_t _networkRetryInterval = 5000; // 5 seconds before a new update state request is sent
+
+        TwoWire& _wire;
 };
