@@ -22,7 +22,7 @@ class State {
     
   protected:
     stateMachine* _sm; //pointer to statemachine
-    SYSTEM_FLAG _curr_stateID;
+    const SYSTEM_FLAG _curr_stateID;
 
     uint64_t time_entered_state;
     uint64_t time_exited_state;
