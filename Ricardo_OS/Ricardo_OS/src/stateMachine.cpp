@@ -46,7 +46,7 @@ Written by the Electronics team, Imperial College London Rocketry
 
 
 stateMachine::stateMachine() : 
-    vspi(VSPI),
+    vspi(HSPI),
     I2C(0),
     storagecontroller(this),
     logcontroller(&storagecontroller,networkmanager),
@@ -71,7 +71,7 @@ void stateMachine::initialise(State* initStatePtr) {
   I2C.begin(_SDA,_SCL,I2C_FREQUENCY);
   //initalize spi interface
   vspi.begin();
-  vspi.setFrequency(1000000); // 10mhz
+  vspi.setFrequency(8000000); // 10mhz
   vspi.setBitOrder(MSBFIRST);
   vspi.setDataMode(SPI_MODE0);
   //setup cs pins

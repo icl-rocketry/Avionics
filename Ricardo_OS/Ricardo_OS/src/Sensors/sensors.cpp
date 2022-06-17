@@ -36,10 +36,10 @@
 Sensors::Sensors(SPIClass& spi,TwoWire& I2C,SystemStatus& systemstatus,LogController& logcontroller) :
     _systemstatus(systemstatus),
     gps(I2C,systemstatus,logcontroller),
-    baro(spi,systemstatus,logcontroller,10),
-    accelgyro(spi,systemstatus,logcontroller,10),
-    accel(spi,systemstatus,logcontroller,10),
-    mag(spi,systemstatus,logcontroller,10),
+    baro(spi,systemstatus,logcontroller,BaroCs),
+    accelgyro(spi,systemstatus,logcontroller,ImuCs_1),
+    accel(spi,systemstatus,logcontroller,ImuCs_2),
+    mag(spi,systemstatus,logcontroller,MagCs),
     batt(systemstatus,logcontroller,BattVolt),
     logcontroller(logcontroller)
     
