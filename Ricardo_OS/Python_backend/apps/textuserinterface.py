@@ -352,7 +352,7 @@ class TextUserInterface(multiprocessing.Process):
  
 def decodeSystemStatus(SystemStatusVariable): #decodes system status variable returns list of events
     binaryString = "{0:b}".format(SystemStatusVariable)[::-1]#get binary representation and reverse
-    return [flag_lookup[idx] for idx in range(len(binaryString)) if binaryString[idx] is '1']
+    return [flag_lookup[idx] for idx in range(len(binaryString)) if binaryString[idx] == '1']
 
 def checkRedis():
     try:

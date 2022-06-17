@@ -37,6 +37,7 @@ socketio_clients = []
 # thread-safe variables
 telemetry_broadcast_running:bool = False
 socketio_response_task_running:bool = False
+socketio_message_queue_task_running:bool = False
 dummy_signal_running:bool = False
 
 # redis variables
@@ -184,7 +185,20 @@ def __SocketIOResponseTask__(redishost,redisport):
         eventlet.sleep(0.01)
 
     print("SocketIOResponseTask Killed")
-    
+
+#socket io message queue task
+def __SocketIOMessageQueueTask__(redishost,redisport):
+    global socketio_message_queue_task_running
+    socketio_message_queue_task_running = True
+
+    redis_connection = redis.Redis(host=redishost,port=redisport)
+
+    while socketio_message_queue_task_running:
+        eventlet.sleep(0.1)# sleep for update time 
+        data = redis_connection.rpop("MessageQueue")
+        if data is not None:
+           socketio.emit("message",json.dumps(json.loads(data)),namespace="/messages")
+    print("SocketIOMessageQueueTask Killed")
 
 # dummy signal
 def __DummySignalBroadcastTask__():
@@ -225,6 +239,7 @@ def startFlaskInterface(flaskhost="0.0.0.0", flaskport=5000,
 
         socketio.start_background_task(__TelemetryBroadcastTask__,redishost,redisport)
         socketio.start_background_task(__SocketIOResponseTask__,redishost,redisport)
+        socketio.start_background_task(__SocketIOMessageQueueTask__,redishost,redisport)
         socketio.run(app, host=flaskhost, port=flaskport, debug=True, use_reloader=False)
         cleanup()
 

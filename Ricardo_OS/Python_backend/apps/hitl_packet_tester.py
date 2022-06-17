@@ -13,10 +13,10 @@ class PickleRickRawSensors(RnpPacket):
     '''Telemetry Packer, Also shows how vars can be used to obtain the structure of the packet. 
     Constructor parameters also do not matter to serialization/deserialzation'''
 	
-    struct_str = '<fffffffffffffffffllllBHBBBHH'
+    struct_str = '<fffffffffffffffffllllBHBBBBBBBB'
     size = struct.calcsize(struct_str)
     packet_type = 1
-   
+    
     def __init__(self):
 
         self.ax:float = 0 
@@ -45,8 +45,11 @@ class PickleRickRawSensors(RnpPacket):
         self.gps_fix:int = 0  
         self.gps_updated:int = 0 
         self.gps_valid:int = 0
-        self.batt_volt:int = 0
-        self.batt_percent:int = 0
+        self.imu_error:int = 0
+        self.haccel_error:int = 0
+        self.mag_error:int = 0
+        self.baro_error:int = 0
+        self.gps_error:int = 0
 
 
         super().__init__(list(vars(self).keys()),
@@ -116,9 +119,6 @@ if __name__ == "__main__":
         packet.header.destination = 0
         packet.header.source = 1
 
-        ay = ay-0.1
-        packet.ax = ay
-        # packet.gps_updated = 0
 
 
 

@@ -26,6 +26,7 @@ class SerialManager():
 		
 
 		self.packetRecordTimeout = 2*60 #default 2 minute timeout
+		self.messageQueueSize = 5000
 		self.receiveBuffer = []
 
 		self.packetRecord = {} 
@@ -127,7 +128,6 @@ class SerialManager():
 			return
 
 		uid = header.uid #get unique id
-		
 	
 		if uid in self.packetRecord:
 			#get client id from packetrecord and remove corresponding entry
@@ -135,21 +135,17 @@ class SerialManager():
 			#add entry to recieved packets dictionary with client id as key
 			key = "ReceiveQueue:"+str(client_id)	
 		else:
-			#we dont have this packet as a repsonse so place it in recieve buffer
-			if (header.uid is 0) and (header.destination_service is 0):
-	
-				packet_body = data[RnpHeader.size:]
-				try:
-					message = packet_body.decode('UTF-8')
-				except:
-					message = str(packet_body)
-				if self.verbose:
-			#message packet printing - TEMPORARY will build a proper message viewer later
-					print("Message: " + message)
+			#handle packets addressed to the local packet handler on the backend
+			if (uid == 0) and (header.destination_service == 0):
+				self.__localPacketHandler__(data)
+
 				return
 
-			print("unkown packet recieved")
-			key = "ReceiveQueue:__LOCAL__"
+			#unkown packet received
+			print("[ERROR] unkown packet recieved")
+			key = "ReceiveQueue:__UNKOWN_PACKET__"
+
+			
 		#add received packets to redis db
 		self.rd.lpush(key,data)
 		#set timeout for list so list will be deleted if never acsessed
@@ -204,3 +200,25 @@ class SerialManager():
 	def __sendToUDP__(self,data:bytearray):
 		if (self.UDPMonitor):
 			self.sock.sendto(data,(self.UDPIp,self.UDPPort))
+
+	def __localPacketHandler__(self,data:bytes):
+		#decode header
+		header = RnpHeader.from_bytes(data)
+		if (header.packet_type == 100): #message packet
+			packet_body = data[RnpHeader.size:]
+			try:
+				message:str = packet_body.decode('UTF-8') 
+			except:
+				message:str = str(packet_body)
+			if self.verbose:
+				print("Message: " + message)
+			json_message = {"header" : vars(header),
+							"message": message}
+			#check length of message queue before pushing 
+			if (self.rd.llen("MessageQueue") > self.messageQueueSize):
+				self.rd.delete("MessageQueue")
+			self.rd.lpush("MessageQueue",json.dumps(json_message))
+			self.rd.expire("MessageQueue" , self.receivedQueueTimeout) 
+			return
+		
+		

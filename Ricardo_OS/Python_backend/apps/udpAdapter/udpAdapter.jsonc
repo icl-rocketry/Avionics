@@ -3,7 +3,7 @@
         "port":8000
     },
     "Tx":{
-        "port":8001
+        "port":9090
     },
     "filters":
     [
@@ -11,17 +11,9 @@
             "port": 8002,
             "filter": 
             {
-                "source": 2
-            }
-        },
-        {
-            "host":"127.0.0.1",
-            "port": 8003,
-            "filter": 
-            {
-                "source": 2,
-                "destination":5
+                "source": 8
             }
         }
+
     ]
 }
