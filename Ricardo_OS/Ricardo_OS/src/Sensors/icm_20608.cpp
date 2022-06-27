@@ -2,6 +2,7 @@
 
 #include <Arduino.h>
 #include <SPI.h>
+#include <string>
 
 #include <Preferences.h>
 
@@ -9,19 +10,21 @@ ICM_20608::ICM_20608(SPIClass& spi,SystemStatus& systemstatus,LogController& log
 _spi(spi),
 _systemstatus(systemstatus),
 _logcontroller(logcontroller),
-_cs(cs) // update this with proper config value
+_cs(cs), // update this with proper config value
+_settings(8000000,MSBFIRST,SPI_MODE0)
 {}
 
 void ICM_20608::setup(const std::array<uint8_t,3>& axesOrder, const std::array<bool,3> axesFlip)
 {
     writeRegister(PWR_MGMT_1, RESET);     // reset whole device
-    delay(10);                            
+    delay(100);                            
 
     writeRegister(USER_CTRL, 0x00);       // disable fifo
 
     writeRegister(USER_CTRL, I2C_IF_DIS); // disable I2C mode as recommended in datasheet
 
     writeRegister(PWR_MGMT_1, CLK_ZGYRO); // set clock source
+    delay(5);
     //check we are alive
     if (!alive()){
          _systemstatus.new_message(SYSTEM_FLAG::ERROR_IMU, "Unable to initialize the icm 20608");
@@ -54,6 +57,7 @@ bool ICM_20608::alive(){
 
 void ICM_20608::update(SensorStructs::ACCELGYRO_6AXIS_t& data)
 {
+  
     readAccel(data.ax,data.ay,data.az);
     readGyro(data.gx,data.gy,data.gz);
     readTemp(data.temp);
@@ -139,18 +143,23 @@ void ICM_20608::setRange(AccelRange accel_range,GyroRange gyro_range)
 
 void ICM_20608::writeRegister(uint8_t reg, uint8_t val)
 {
+    _spi.beginTransaction(_settings);
     digitalWrite(_cs, LOW);
     _spi.transfer(reg & ~(1 << 7)); // MSB = 0 for Writing
     _spi.transfer(val);
     digitalWrite(_cs, HIGH);
+    _spi.endTransaction();
 }
 
 uint8_t ICM_20608::readRegister(uint8_t reg)
 {
+    _spi.beginTransaction(_settings);
     digitalWrite(_cs, LOW);
-    SPI.transfer(reg | (1 << 7)); // MSB = 1 for Reading
-    uint8_t val = SPI.transfer(0);
+    _spi.transfer(reg | (1 << 7)); // MSB = 1 for Reading
+    uint8_t val = _spi.transfer(0);
+    delay(1);
     digitalWrite(_cs, HIGH);
+    _spi.endTransaction();
     return val;
 }
 
@@ -184,6 +193,7 @@ void ICM_20608::readAccel(float &x, float &y, float &z)
 
 void ICM_20608::readGyroRaw(int16_t &x, int16_t &y, int16_t &z)
 {
+    _spi.beginTransaction(_settings);
     digitalWrite(_cs, LOW);
 
     _spi.transfer(GYRO_XOUT_H | (1 << 7));
@@ -195,10 +205,12 @@ void ICM_20608::readGyroRaw(int16_t &x, int16_t &y, int16_t &z)
     z |= _spi.transfer(0);
 
     digitalWrite(_cs, HIGH);
+    _spi.endTransaction();
 }
 
 void ICM_20608::readAccelRaw(int16_t &x, int16_t &y, int16_t &z)
 {
+    _spi.beginTransaction(_settings);
     digitalWrite(_cs, LOW);
 
     _spi.transfer(ACCEL_XOUT_H | (1 << 7));
@@ -210,10 +222,12 @@ void ICM_20608::readAccelRaw(int16_t &x, int16_t &y, int16_t &z)
     z |= _spi.transfer(0);
 
     digitalWrite(_cs, HIGH);
+    _spi.endTransaction();
 }
 
 void ICM_20608::readTempRaw(int16_t& temp)
 {
+    _spi.beginTransaction(_settings);
     digitalWrite(_cs, LOW);
 
     _spi.transfer(TEMP_OUT_H | (1 << 7));
@@ -221,6 +235,7 @@ void ICM_20608::readTempRaw(int16_t& temp)
     temp |= _spi.transfer(0x00);
 
     digitalWrite(_cs,HIGH);
+    _spi.endTransaction();
 }
 
 void ICM_20608::readTemp(float& temp)

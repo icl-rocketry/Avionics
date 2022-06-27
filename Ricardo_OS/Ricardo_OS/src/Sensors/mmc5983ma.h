@@ -15,6 +15,7 @@
 #include <Arduino.h>
 
 #include <SPI.h>
+#include <Wire.h>
 
 #include "config.h"
 
@@ -37,7 +38,31 @@ struct MagCalibrationParameters{
 
 class MMC5983MA{
     public:
-        MMC5983MA(SPIClass& spi,SystemStatus& systemstatus,LogController& logcontroller,uint8_t cs);
+        /**
+         * @brief Construct a new MMC5983MA object using spi bus
+         * 
+         * @param spi 
+         * @param systemstatus 
+         * @param logcontroller 
+         * @param cs 
+         */
+        MMC5983MA(SPIClass& spi,uint8_t cs,SystemStatus& systemstatus,LogController& logcontroller);
+
+        /**
+         * @brief Construct a new MMC5983MA object using i2c bus 
+         * Chip select is required as it selects the communication mode of the
+         * MMC5983MA. Pulled High enables i2c.
+         * -> for some unkown reason the first pickle rick mmc5983ma doesnt respond over spi hence this class was created
+         * 
+         * @param wire 
+         * @param systemstatus 
+         * @param logcontroller 
+         * @param scl 
+         * @param sda 
+         */
+        MMC5983MA(TwoWire &wire, uint8_t scl, uint8_t sda,SPIClass &spi, uint8_t cs,SystemStatus &systemstatus, LogController &logcontroller);
+
+
 
         void setup(const std::array<uint8_t,3>& axesOrder,const std::array<bool,3>& axesFlip);
 
@@ -47,10 +72,20 @@ class MMC5983MA{
 
     private:
 
-        SPIClass& _spi;
+        const bool _useSPI;
+
+        SPIClass* _spi;
+        SPISettings _settings;
+        const uint8_t _cs;
+
+        TwoWire* _wire;
+        const uint8_t _scl;
+        const uint8_t _sda;
+
         SystemStatus& _systemstatus;
         LogController& _logcontroller;
-        const uint8_t _cs;
+        
+        
 
         AxesHelper<> axeshelper;
 
@@ -109,7 +144,9 @@ class MMC5983MA{
 
         //registers
         static constexpr uint8_t WHO_AM_I = 0x2F;
-        static constexpr uint8_t WHO_AM_I_RES = 0b00110000; 
+        static constexpr uint8_t WHO_AM_I_RES = 0x30; 
+        static constexpr uint8_t I2C_ADDRESS = 0x30;
+
 
         static constexpr uint8_t XOUT_0 = 0x00;
         static constexpr uint8_t XOUT_1 = 0x01;

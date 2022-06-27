@@ -39,7 +39,8 @@ Sensors::Sensors(SPIClass& spi,TwoWire& I2C,SystemStatus& systemstatus,LogContro
     baro(spi,systemstatus,logcontroller,BaroCs),
     accelgyro(spi,systemstatus,logcontroller,ImuCs_1),
     accel(spi,systemstatus,logcontroller,ImuCs_2),
-    mag(spi,systemstatus,logcontroller,MagCs),
+    // mag(spi,MagCs,systemstatus,logcontroller), // SPI constructor
+    mag(Wire1,H_SCLK,H_MOSI,spi,MagCs,systemstatus,logcontroller),
     batt(systemstatus,logcontroller,BattVolt),
     logcontroller(logcontroller)
     

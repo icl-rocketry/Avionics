@@ -53,6 +53,7 @@ class stateMachine {
 
    
     SPIClass vspi;
+    SPIClass hspi;
     TwoWire I2C;
 
 

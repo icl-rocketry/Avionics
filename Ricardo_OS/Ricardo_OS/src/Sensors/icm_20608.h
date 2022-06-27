@@ -65,6 +65,7 @@ class ICM_20608{
         SystemStatus& _systemstatus;
         LogController& _logcontroller;
         const uint8_t _cs;
+        SPISettings _settings;
 
         AxesHelper<> axeshelper;
 

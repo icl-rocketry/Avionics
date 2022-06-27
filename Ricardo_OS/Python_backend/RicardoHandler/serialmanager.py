@@ -95,6 +95,11 @@ class SerialManager():
 		#cobs decode
 		while self.ser.in_waiting > 0:
 			incomming = self.ser.read(1)
+			# if self.verbose:
+			# 	try:
+			# 		print(incomming.decode('UTF-8'))
+			# 	except:
+			# 		print(str(incomming))
 			if (incomming == (0x00).to_bytes(1,'little')):
 				if (len(self.receiveBuffer) == 0):
 					#empty frame receved, discard this
@@ -102,7 +107,7 @@ class SerialManager():
 				try:
 					decodedData = cobs.decode(bytearray(self.receiveBuffer))
 					self.__processReceivedPacket__(decodedData)
-					self.__sendToUDP__(decodedData)
+					self.__sendToUDP__(decodedData) 
 				except cobs.DecodeError as e:
 					print("Decode Error, the following data could not be decoded...")
 					print(e)
@@ -220,5 +225,4 @@ class SerialManager():
 			self.rd.lpush("MessageQueue",json.dumps(json_message))
 			self.rd.expire("MessageQueue" , self.receivedQueueTimeout) 
 			return
-		
 		

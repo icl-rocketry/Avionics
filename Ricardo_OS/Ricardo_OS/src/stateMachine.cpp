@@ -46,16 +46,17 @@ Written by the Electronics team, Imperial College London Rocketry
 
 
 stateMachine::stateMachine() : 
-    vspi(HSPI),
+    vspi(VSPI),
+    hspi(HSPI),
     I2C(0),
     storagecontroller(this),
     logcontroller(&storagecontroller,networkmanager),
     systemstatus(&logcontroller),
     usbserial(Serial,systemstatus,logcontroller),
-    radio(vspi,systemstatus,logcontroller),
+    radio(hspi,systemstatus,logcontroller),
     networkmanager(static_cast<uint8_t>(DEFAULT_ADDRESS::ROCKET),NODETYPE::HUB,true),
     commandhandler(this),
-    sensors(vspi,I2C,systemstatus,logcontroller),
+    sensors(hspi,I2C,systemstatus,logcontroller),
     estimator(systemstatus,logcontroller),
     deploymenthandler(networkmanager,deploymentHandlerServiceID,I2C,logcontroller),
     enginehandler(networkmanager,engineHandlerServiceID,logcontroller),
@@ -71,9 +72,14 @@ void stateMachine::initialise(State* initStatePtr) {
   I2C.begin(_SDA,_SCL,I2C_FREQUENCY);
   //initalize spi interface
   vspi.begin();
-  vspi.setFrequency(8000000); // 10mhz
+  vspi.setFrequency(1000000);
   vspi.setBitOrder(MSBFIRST);
   vspi.setDataMode(SPI_MODE0);
+
+  hspi.begin();
+  hspi.setFrequency(8000000);
+  hspi.setBitOrder(MSBFIRST);
+  hspi.setDataMode(SPI_MODE0);
   //setup cs pins
   //initialise output variables as output
   pinMode(LoraCs, OUTPUT);
@@ -98,30 +104,7 @@ void stateMachine::initialise(State* initStatePtr) {
 
   // call tunez handler setup first so we can provide startup tone and auditory cues asap
   tunezhandler.setup();
-  
-  //setup storage and logging so any erros encoutered can be logged
-  storagecontroller.setup();
-  logcontroller.setup();
 
-  // create config controller object
-  ConfigController configcontroller(&storagecontroller,&logcontroller); 
-  configcontroller.load(); // load configuration from sd card into ram
-
-  //enumerate deployers engines controllers and events from config file
-  try
-  {
-    deploymenthandler.setup(configcontroller.get()["DeployerList"]);
-    enginehandler.setup(configcontroller.get()["EngineList"]);
-    controllerhandler.setup(configcontroller.get()["ControllerList"]);
-    eventhandler.setup(configcontroller.get()["Events"]);
-  }
-  catch (const std::exception& e)
-  {
-    Serial.println("exception:");
-    Serial.println(std::string(e.what()).c_str());
-    throw std::runtime_error("broke");
-  }
-  
   //setup interfaces
   usbserial.setup();
   radio.setup();
@@ -132,8 +115,9 @@ void stateMachine::initialise(State* initStatePtr) {
   networkmanager.addInterface(&radio);
   //load rt table
   networkmanager.enableAutoRouteGen(false);
-  // networkmanager.setNoRouteAction(NOROUTE_ACTION::DUMP,{});
-  networkmanager.setNoRouteAction(NOROUTE_ACTION::BROADCAST,{1}); // broadcasting back to usbserial for debugging
+  networkmanager.setNoRouteAction(NOROUTE_ACTION::DUMP,{});
+
+  // networkmanager.setNoRouteAction(NOROUTE_ACTION::BROADCAST,{1}); // broadcasting back to usbserial for debugging
 
   networkmanager.setLogCb([this](const std::string& message){return logcontroller.log(message);});
 
@@ -142,10 +126,34 @@ void stateMachine::initialise(State* initStatePtr) {
   networkmanager.registerService(deploymentHandlerServiceID,deploymenthandler.getThisNetworkCallback());  
   networkmanager.registerService(engineHandlerServiceID,enginehandler.getThisNetworkCallback());  
 
+  
+  //setup storage and logging so any erros encoutered can be logged
+  storagecontroller.setup();
+    
+  logcontroller.setup();
+
+  // create config controller object
+  ConfigController configcontroller(&storagecontroller,&logcontroller); 
+  configcontroller.load(); // load configuration from sd card into ram
+
+  //enumerate deployers engines controllers and events from config file
+  try
+  {
+    // deploymenthandler.setup(configcontroller.get()["DeployerList"]);
+    // enginehandler.setup(configcontroller.get()["EngineList"]);
+    // controllerhandler.setup(configcontroller.get()["ControllerList"]);
+    // eventhandler.setup(configcontroller.get()["Events"]);
+  }
+  catch (const std::exception& e)
+  {
+    Serial.println("exception:");
+    Serial.println(std::string(e.what()).c_str());
+    throw std::runtime_error("broke");
+  }
+  
 
 
-
-  //sensors must be setup before estimator
+  // //sensors must be setup before estim ator
   sensors.setup(configcontroller.get());
   estimator.setup();
   //call setup state

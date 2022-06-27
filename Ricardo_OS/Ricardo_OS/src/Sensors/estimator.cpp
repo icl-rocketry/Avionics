@@ -85,7 +85,11 @@ void Estimator::update(const SensorStructs::raw_measurements_t &raw_sensors)
             updateOrientation(raw_sensors.accelgyro.gx, raw_sensors.accelgyro.gy, raw_sensors.accelgyro.gz,
                               raw_sensors.accelgyro.ax, raw_sensors.accelgyro.ay, raw_sensors.accelgyro.az,
                               dt_seconds);
-            changeEstimatorState(ESTIMATOR_STATE::PARTIAL_NO_MAG, "no mag, heading unreliable");
+            // check that there isnt a bigger error
+            if (_homeSet)
+            {
+               changeEstimatorState(ESTIMATOR_STATE::PARTIAL_NO_MAG, "no mag, heading unreliable");
+            }
          }
          else
          {
@@ -96,11 +100,11 @@ void Estimator::update(const SensorStructs::raw_measurements_t &raw_sensors)
          }
          // transform angular rates from body frame to earth frame
          updateAngularRates(raw_sensors.accelgyro.gx, raw_sensors.accelgyro.gy, raw_sensors.accelgyro.gz);
-         localizationkf.accelUpdate(getLinearAcceleration(raw_sensors.accelgyro.ax, raw_sensors.accelgyro.ay, raw_sensors.accelgyro.az)*g);
+         localizationkf.accelUpdate(getLinearAcceleration(raw_sensors.accelgyro.ax, raw_sensors.accelgyro.ay, raw_sensors.accelgyro.az) * g);
          // only update with high-g accelerometer if the low g acceleromter is working
          if (!_systemstatus.flag_triggered(SYSTEM_FLAG::ERROR_HACCEL))
          {
-            localizationkf.HaccelUpdate(getLinearAcceleration(raw_sensors.accel.ax, raw_sensors.accel.ay, raw_sensors.accel.az)*g);
+            localizationkf.HaccelUpdate(getLinearAcceleration(raw_sensors.accel.ax, raw_sensors.accel.ay, raw_sensors.accel.az) * g);
          }
       }
 

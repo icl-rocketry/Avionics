@@ -3,6 +3,7 @@
 #include <SPI.h>
 
 #include "config.h"
+#include <string.h>
 
 #include "sensorStructs.h"
 #include "Storage/logController.h"
@@ -12,16 +13,39 @@
 
 #include <Preferences.h>
 
-MMC5983MA::MMC5983MA(SPIClass &spi, SystemStatus &systemstatus, LogController &logcontroller, uint8_t cs) : _spi(spi),
-                                                                                                            _systemstatus(systemstatus),
-                                                                                                            _logcontroller(logcontroller),
-                                                                                                            _cs(cs), // update with correct chip select
-                                                                                                            _magCal{1,
-                                                                                                                    0,
-                                                                                                                    0,
-                                                                                                                    Eigen::Matrix3f{{1, 0, 0}, {0, 1, 0}, {0, 0, 1}},
-                                                                                                                    Eigen::Vector3f{{0, 0, 0}}} // default for mag biases
-                                                                                                            {};
+MMC5983MA::MMC5983MA(SPIClass &spi, uint8_t cs, SystemStatus &systemstatus, LogController &logcontroller) : 
+_useSPI(true),
+_spi(&spi),
+_settings(10000000, MSBFIRST, SPI_MODE0),
+_cs(cs),
+_wire(nullptr),
+_scl(0),
+_sda(0),
+_systemstatus(systemstatus),
+_logcontroller(logcontroller),
+_magCal({1,
+            0,
+            0,
+            Eigen::Matrix3f{{1, 0, 0}, {0, 1, 0}, {0, 0, 1}},
+            Eigen::Vector3f{{0, 0, 0}}}) // default for mag biases
+{};
+
+MMC5983MA::MMC5983MA(TwoWire &wire, uint8_t scl, uint8_t sda,SPIClass &spi, uint8_t cs,SystemStatus &systemstatus, LogController &logcontroller):
+_useSPI(false),
+_spi(&spi),
+_cs(cs),
+_wire(&wire),
+_scl(scl),
+_sda(sda),
+_systemstatus(systemstatus),
+_logcontroller(logcontroller),
+_magCal({1,
+        0,
+        0,
+        Eigen::Matrix3f{{1, 0, 0}, {0, 1, 0}, {0, 0, 1}},
+        Eigen::Vector3f{{0, 0, 0}}}) // default for mag biases
+{};
+
 
 void MMC5983MA::setup(const std::array<uint8_t,3>& axesOrder,const std::array<bool,3>& axesFlip)
 {
@@ -36,6 +60,7 @@ void MMC5983MA::setup(const std::array<uint8_t,3>& axesOrder,const std::array<bo
     writeRegister(CTRL_1,MBW_100Hz);
     //enable continous measurement and enable periodic set/reset
     writeRegister(CTRL_2, CM_100Hz | 0x08 | (MSET_1000 << 4) | 0x80);
+    delay(100);
 
     loadMagCal(); // load calibration from nvs
 
@@ -54,6 +79,7 @@ void MMC5983MA::setup(const std::array<uint8_t,3>& axesOrder,const std::array<bo
 
 void MMC5983MA::update(SensorStructs::MAG_3AXIS_t& data)
 {
+   
     float raw_mx;
     float raw_my;
     float raw_mz;
@@ -69,6 +95,7 @@ void MMC5983MA::update(SensorStructs::MAG_3AXIS_t& data)
 
 bool MMC5983MA::alive(){
     return (readRegister(WHO_AM_I) == WHO_AM_I_RES);
+    // return true;
 }
 
 
@@ -103,11 +130,26 @@ void MMC5983MA::writeRegister(uint8_t reg_address, uint8_t data)
 
 {
     // SPI write handling code
-    digitalWrite(_cs, LOW);
-    _spi.transfer(reg_address); 
-    _spi.transfer(data);
-    digitalWrite(_cs, HIGH);
-  
+    if (_useSPI){
+        _spi->beginTransaction(_settings);
+        digitalWrite(_cs, LOW);
+        _spi->transfer(reg_address); 
+        _spi->transfer(data);
+        digitalWrite(_cs, HIGH);
+        _spi->endTransaction();
+    }
+    else
+    {  
+        _spi->end();
+        _wire->begin(_sda,_scl,400000); // start wire bus on specified pins as master
+        digitalWrite(_cs,HIGH);
+        _wire->beginTransmission(I2C_ADDRESS);
+        _wire->write(reg_address);
+        _wire->write(data);
+        _wire->endTransmission();
+        _spi->begin(); // restart spi peripheral
+        
+    }
 }
 
 void MMC5983MA::set()
@@ -125,14 +167,37 @@ void MMC5983MA::reset()
 void MMC5983MA::readRegister(uint8_t reg_address, uint8_t *data, uint8_t len)
 
 {
-    // SPI read handling code
-    digitalWrite(_cs, LOW);
-    _spi.transfer(reg_address | RW); // 0b10000000
-    for (int i = 0; i < len; i++)
+    if (_useSPI)
     {
-        data[i] = _spi.transfer(0);
+        // SPI read handling code
+        _spi->beginTransaction(_settings);
+        digitalWrite(_cs, LOW);
+
+        _spi->transfer(reg_address | RW); // 0b10000000
+
+        for (int i = 0; i < len; i++)
+        {
+            data[i] = _spi->transfer(0);
+        }
+
+        digitalWrite(_cs, HIGH);
+        _spi->endTransaction();
     }
-    digitalWrite(_cs, HIGH);
+    else
+    {
+        _spi->end();
+        _wire->begin(_sda,_scl,400000); // start wire bus on specified pins as master
+        digitalWrite(_cs, HIGH);
+        _wire->beginTransmission(I2C_ADDRESS);
+        _wire->write(reg_address);
+        _wire->endTransmission();
+        _wire->requestFrom(I2C_ADDRESS, len);
+        for (int i = 0; i < len; i++)
+        {
+            data[i] = _wire->read();
+        }
+        _spi->begin(); // restart spi peripheral
+    }
 }
 
 uint8_t MMC5983MA::readRegister(uint8_t reg){
