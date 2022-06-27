@@ -30,6 +30,7 @@ Written by the Electronics team, Imperial College London Rocketry
 
 #include "Network/interfaces/usb.h"
 #include "Network/interfaces/radio.h"
+#include "Network/interfaces/canbus.h"
 
 #include "rnp_networkmanager.h"
 #include "rnp_routingtable.h"
@@ -65,6 +66,7 @@ class stateMachine {
     
     USB usbserial;
     Radio radio;
+    CanBus canbus;
     RnpNetworkManager networkmanager;
     CommandHandler commandhandler;
 

@@ -1,5 +1,5 @@
-#ifndef RADIO_H
-#define RADIO_H
+#pragma once
+
 #include <Arduino.h>
 #include <SPI.h>
 
@@ -27,7 +27,7 @@ struct RadioInterfaceInfo:public RnpInterfaceInfo{
 
 class Radio: public RnpInterface{
     public:
-        Radio(SPIClass& spi, SystemStatus& systemstatus,LogController& logcontroller,std::string name="Radio");
+        Radio(SPIClass& spi, SystemStatus& systemstatus,LogController& logcontroller,uint8_t id=2,std::string name="Radio");
         void setup() override;
 
         void sendPacket(RnpPacket& data) override;
@@ -61,4 +61,3 @@ class Radio: public RnpInterface{
 
 
 
-#endif

@@ -81,7 +81,7 @@ struct RnpCanIdentifier
 
 class CanBus: public RnpInterface{
     public:
-        CanBus(uint8_t id,SystemStatus& systemstatus,LogController& logcontroller,std::string name="Can0");
+        CanBus(SystemStatus& systemstatus,LogController& logcontroller,uint8_t id,std::string name="Can0");
         void setup() override;
 
         void sendPacket(RnpPacket& data) override;

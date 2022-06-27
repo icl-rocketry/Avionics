@@ -19,8 +19,8 @@
 #include <HardwareSerial.h>
 
 
-USB::USB(HardwareSerial& serial,SystemStatus& systemstatus,LogController& logcontroller,std::string name) :
-RnpInterface((uint8_t)DEFAULT_INTERFACES::USBSERIAL,name),
+USB::USB(HardwareSerial& serial,SystemStatus& systemstatus,LogController& logcontroller,uint8_t id,std::string name) :
+RnpInterface(id,name),
 _serial(serial),
 _systemstatus(systemstatus),
 _logcontroller(logcontroller)

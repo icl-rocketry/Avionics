@@ -1,5 +1,4 @@
-#ifndef USBSEERIAL_H
-#define USBSEERIAL_H
+#pragma once
 
 #include "rnp_interface.h"
 
@@ -23,7 +22,7 @@ struct USBInterfaceInfo:public RnpInterfaceInfo{
 class USB: public RnpInterface{
 
     public:
-        USB(HardwareSerial& serial,SystemStatus& systemstatus,LogController& logcontroller,std::string name="Serial");
+        USB(HardwareSerial& serial,SystemStatus& systemstatus,LogController& logcontroller,uint8_t id = static_cast<uint8_t>(DEFAULT_INTERFACES::USBSERIAL),std::string name="Serial");
         void setup() override;
         //void send_packet(std::vector<uint8_t> &data);
         
@@ -47,4 +46,3 @@ class USB: public RnpInterface{
 };
 
 
-#endif

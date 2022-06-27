@@ -34,6 +34,7 @@ Written by the Electronics team, Imperial College London Rocketry
 
 #include "Network/interfaces/usb.h"
 #include "Network/interfaces/radio.h"
+#include "Network/interfaces/canbus.h"
 
 #include "rnp_networkmanager.h"
 #include "rnp_default_address.h"
@@ -54,6 +55,7 @@ stateMachine::stateMachine() :
     systemstatus(&logcontroller),
     usbserial(Serial,systemstatus,logcontroller),
     radio(hspi,systemstatus,logcontroller),
+    canbus(systemstatus,logcontroller,3),
     networkmanager(static_cast<uint8_t>(DEFAULT_ADDRESS::ROCKET),NODETYPE::HUB,true),
     commandhandler(this),
     sensors(hspi,I2C,systemstatus,logcontroller),
@@ -108,29 +110,27 @@ void stateMachine::initialise(State* initStatePtr) {
   //setup interfaces
   usbserial.setup();
   radio.setup();
+  canbus.setup();
 
   //setup network manager so communication is running
   // add interfaces
   networkmanager.addInterface(&usbserial);
   networkmanager.addInterface(&radio);
-  //load rt table
+  networkmanager.addInterface(&canbus);
+
   networkmanager.enableAutoRouteGen(false);
   networkmanager.setNoRouteAction(NOROUTE_ACTION::DUMP,{});
 
   // networkmanager.setNoRouteAction(NOROUTE_ACTION::BROADCAST,{1}); // broadcasting back to usbserial for debugging
 
-  networkmanager.setLogCb([this](const std::string& message){return logcontroller.log(message);});
-
-  // register service callbacks
+   // command handler callback
   networkmanager.registerService(static_cast<uint8_t>(DEFAULT_SERVICES::COMMAND),commandhandler.getCallback()); 
-  networkmanager.registerService(deploymentHandlerServiceID,deploymenthandler.getThisNetworkCallback());  
-  networkmanager.registerService(engineHandlerServiceID,enginehandler.getThisNetworkCallback());  
 
-  
   //setup storage and logging so any erros encoutered can be logged
   storagecontroller.setup();
     
   logcontroller.setup();
+  networkmanager.setLogCb([this](const std::string& message){return logcontroller.log(message);});
 
   // create config controller object
   ConfigController configcontroller(&storagecontroller,&logcontroller); 
@@ -139,10 +139,10 @@ void stateMachine::initialise(State* initStatePtr) {
   //enumerate deployers engines controllers and events from config file
   try
   {
-    // deploymenthandler.setup(configcontroller.get()["DeployerList"]);
-    // enginehandler.setup(configcontroller.get()["EngineList"]);
-    // controllerhandler.setup(configcontroller.get()["ControllerList"]);
-    // eventhandler.setup(configcontroller.get()["Events"]);
+    deploymenthandler.setup(configcontroller.get()["DeployerList"]);
+    enginehandler.setup(configcontroller.get()["EngineList"]);
+    controllerhandler.setup(configcontroller.get()["ControllerList"]);
+    eventhandler.setup(configcontroller.get()["Events"]);
   }
   catch (const std::exception& e)
   {
@@ -150,7 +150,9 @@ void stateMachine::initialise(State* initStatePtr) {
     Serial.println(std::string(e.what()).c_str());
     throw std::runtime_error("broke");
   }
-  
+  //register deployment and engine handler services
+  networkmanager.registerService(deploymentHandlerServiceID,deploymenthandler.getThisNetworkCallback());  
+  networkmanager.registerService(engineHandlerServiceID,enginehandler.getThisNetworkCallback());  
 
 
   // //sensors must be setup before estim ator

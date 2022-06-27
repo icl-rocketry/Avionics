@@ -18,7 +18,7 @@
 
 
 
-CanBus::CanBus(uint8_t id,SystemStatus& systemstatus,LogController& logcontroller,std::string name):
+CanBus::CanBus(SystemStatus& systemstatus,LogController& logcontroller,uint8_t id,std::string name):
 RnpInterface(id,name),
 _systemstatus(systemstatus),
 _logcontroller(logcontroller)

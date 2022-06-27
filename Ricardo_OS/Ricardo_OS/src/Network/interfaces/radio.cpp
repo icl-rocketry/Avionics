@@ -15,8 +15,8 @@
 #include "rnp_interface.h"
 #include "rnp_packet.h"
 
-Radio::Radio(SPIClass& spi, SystemStatus& systemstatus,LogController& logcontroller,std::string name):
-RnpInterface(2,name),
+Radio::Radio(SPIClass& spi, SystemStatus& systemstatus,LogController& logcontroller,uint8_t id ,std::string name):
+RnpInterface(id,name),
 _spi(spi),
 _systemstatus(systemstatus),
 _logcontroller(logcontroller),
