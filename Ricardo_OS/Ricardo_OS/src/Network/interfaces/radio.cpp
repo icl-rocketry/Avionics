@@ -90,7 +90,7 @@ void Radio::getPacket(){
     int packetSize = LoRa.parsePacket(); // put radio back into single receive mode and check for packets
 
     if (packetSize){
-
+        _logcontroller.log("packet received");
         std::vector<uint8_t> data(packetSize);
         LoRa.readBytes(data.data(),packetSize);
 
@@ -110,8 +110,10 @@ void Radio::checkSendBuffer(){
     if (_sendBuffer.size() == 0){
         return; // exit if nothing in the buffer
     }
+    
     // check if radio is busy, if it isnt then send next packet
     size_t bytes_written = send(_sendBuffer.front());
+    _logcontroller.log("packet sent");
     if (bytes_written){ // if we succesfully send packet
         _sendBuffer.pop(); //remove packet from buffer
         _currentSendBufferSize -= bytes_written;

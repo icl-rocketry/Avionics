@@ -54,7 +54,7 @@ stateMachine::stateMachine() :
     logcontroller(&storagecontroller,networkmanager),
     systemstatus(&logcontroller),
     usbserial(Serial,systemstatus,logcontroller),
-    radio(hspi,systemstatus,logcontroller),
+    radio(vspi,systemstatus,logcontroller),
     canbus(systemstatus,logcontroller,3),
     networkmanager(static_cast<uint8_t>(DEFAULT_ADDRESS::ROCKET),NODETYPE::HUB,true),
     commandhandler(this),
@@ -139,15 +139,16 @@ void stateMachine::initialise(State* initStatePtr) {
   //enumerate deployers engines controllers and events from config file
   try
   {
-    deploymenthandler.setup(configcontroller.get()["DeployerList"]);
-    enginehandler.setup(configcontroller.get()["EngineList"]);
-    controllerhandler.setup(configcontroller.get()["ControllerList"]);
+    deploymenthandler.setup(configcontroller.get()["Deployers"]);
+    enginehandler.setup(configcontroller.get()["Engines"]);
+    controllerhandler.setup(configcontroller.get()["Controllers"]);
     eventhandler.setup(configcontroller.get()["Events"]);
   }
   catch (const std::exception& e)
   {
     Serial.println("exception:");
     Serial.println(std::string(e.what()).c_str());
+    //impelment panic handler to send crashed message to gc
     throw std::runtime_error("broke");
   }
   //register deployment and engine handler services

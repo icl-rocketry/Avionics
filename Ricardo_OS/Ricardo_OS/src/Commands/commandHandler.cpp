@@ -106,9 +106,9 @@ void CommandHandler::handleCommand(std::unique_ptr<RnpPacketSerialized> packetpt
 		case COMMANDS::Enter_Preflight:
 			EnterPreflightCommand(*packetptr);
 			break;
-		case COMMANDS::Enter_Groundstation:
-			EnterGroundstationCommand(*packetptr);
-			break;
+		// case COMMANDS::Enter_Groundstation:
+		// 	EnterGroundstationCommand(*packetptr);
+		// 	break;
 		case COMMANDS::Enter_Countdown:
 			EnterCountdownCommand(*packetptr);
 			break;
@@ -421,13 +421,13 @@ void CommandHandler::EnterPreflightCommand(const RnpPacketSerialized& packet)
 	_sm->changeState(new Preflight(_sm));
 }
 
-void CommandHandler::EnterGroundstationCommand(const RnpPacketSerialized& packet) 
-{
-	if(!_sm->systemstatus.flag_triggered(SYSTEM_FLAG::STATE_PREFLIGHT,SYSTEM_FLAG::DEBUG)){
-		return;
-	}
-	_sm->changeState(new Groundstation(_sm));
-}
+// void CommandHandler::EnterGroundstationCommand(const RnpPacketSerialized& packet) 
+// {
+// 	if(!_sm->systemstatus.flag_triggered(SYSTEM_FLAG::STATE_PREFLIGHT,SYSTEM_FLAG::DEBUG)){
+// 		return;
+// 	}
+// 	_sm->changeState(new Groundstation(_sm));
+// }
 
 void CommandHandler::EnterCountdownCommand(const RnpPacketSerialized& packet) 
 {

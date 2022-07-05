@@ -26,7 +26,7 @@ enum class COMMANDS:uint8_t {
     Calibrate_Baro = 62,
     Enter_Debug = 100,
     Enter_Preflight = 101,
-    Enter_Groundstation = 102,
+    // Enter_Groundstation = 102,
     Enter_Countdown = 103,
     Enter_Flight = 104,
     Enter_Recovery = 105,

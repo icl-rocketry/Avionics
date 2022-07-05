@@ -1,97 +1,109 @@
 {
-    "Parameters":
-    {
-       "SerialBaud":42069,
-       "Groundstation":true, 
-       "LaunchAccelerationThreshold": 420,
-       "FlightPathPolynomial":[4, 2, 0, 6, 9],
-       "Cd" :[12] // if multiple values present, interpreted as a fitted polynomial on Mach number, if single value using prandtl-glauret correcitons
-    },
-	
-    "Networking":
-        {
-			// enum class Interface{
-			// 	LOOPBACK = 0, //currently just a nice thought and to make the routing table more readable can be used in the future to test interfaces 
-			// 	LORA = 1,
-			// 	USBSerial = 2,
-			// 	CAN = 3,
-			// 	ERROR = 255
-			
-			// };
-            // "Interfaces": // Interfaces which are enabled on the board
-            // {
-
-			// 	//{"Name":"LORA","id":0,"enabled":true}, 
-			// 	"0": "",
-			// 	"1": true
-
-
-            // },
-			"RoutingTable": // full Routing table definition / Network topology
-            [
-                {
-					"SourceNode":0,
-					"entries":
-						[
-							{"DestinationNode":0,"Interface":0,"Metric":0,"Address":"Null"},
-							{"DestinationNode":1,"Interface":1,"Metric":1,"Address":"Null"},
-							{"DestinationNode":2,"Interface":1,"Metric":2,"Address":"Null"},
-							{"DestinationNode":3,"Interface":3,"Metric":1,"Address":"Null"},
-							{"DestinationNode":4,"Interface":2,"Metric":1,"Address":"Null"}
-						]
-				},
-				{
-					"SourceNode":1,
-					"entries":
-						[
-							{"DestinationNode":0,"Interface":1,"Metric":1,"Address":"Null"},
-							{"DestinationNode":1,"Interface":0,"Metric":0,"Address":"Null"},
-							{"DestinationNode":2,"Interface":2,"Metric":1,"Address":"Null"},
-							{"DestinationNode":3,"Interface":1,"Metric":2,"Address":"Null"},
-							{"DestinationNode":4,"Interface":2,"Metric":1,"Address":"Null"}
-						]
-				}
-				
-			]
-        },
-	"Pyros":
-	
-		//"Num": 42069, // Number of pyros
-	    [
-            {"type": "bt",  "address": "0x69696969", "fire_duration": 1000}, // fire duration in ms
-            {"type": "local", "fire_pin": 10, "continuity_pin": 11, "fire_duration": 69420}
-        ],
-
-	"Engine":
-	[
-		{"type": "solid", "interface": 0} // filll up later
+	"General": {
+		"LaunchAccelerationThreshold": 2,
+		"NetworkLogDestination":1
+	},
+	"Orientation":{
+		"X_AXIS":0,
+		"Y_AXIS":1,
+		"Z_AXIS":2,
+		"X_FLIP":0,
+		"Y_FLIP":0,
+		"Z_FLIP":0
+	},
+	"Networking": {
+		"RoutingTable": // full Routing table definition / Network topology
+		[
+			{"Destination":3,"Interface":2,"Metric":1,"Address":"Null"},
+			{"Destination":4,"Interface":2,"Metric":1,"Address":"Null"},
+			{"Destination":5,"Interface":2,"Metric":1,"Address":"Null"}
+		]
+	},
+	"Deployers": [
+		{
+			"id": 0,
+			"type": "net_actuator", // ur mom is a type
+			"address": 69,
+			"destination_service": 21
+		},
+		{
+			"id": 1,
+			"type": "net_actuator", // ur mom is a type
+			"address": 200,
+			"destination_service": 32
+		}
 	],
-    
-	"Events": // interface is the index of the pyro/engine in their respective arrays
-	[
-		{ "type": "engine", "interface": 0, "single_fire": true, "condition": 
-			{
-				"operator": "AND", 
-				"condition1": {
-					"flightVar": "Acceleration",
-					"operator": "LT",
-					"threshold": 420
-				}, 
-				"condition2": {
-					"flightVar": "Altitude",
-					"operator": "GT",
-					"threshold": 69	
-				}
+	"Engines": [
+		{
+			// ur mom is a simp engine
+			"id": 0,
+			"type": "SimpleEngine",
+			"igniter": {
+				"type": "net_actuator",
+				"address": 10,
+				"destination_service": 69,
+				"param": 10
 			}
 		},
-		
-		{ "type": "pyro", "interface": "0", "single_fire": true, "condition": 
-			{ 
-				"flightVar": "Acceleration",
-				"operator": "LT",
-				"threshold": -420
+		{
+			// ur mom is a simp engine
+			"id": 1,
+			"type": "SimpleEngine",
+			"igniter": {
+				"type": "net_actuator",
+				"address": 42,
+				"destination_service": 1,
+				"param": 10
+			}
+		}
+	],
+	"Controllers": [
+		{
+			"id": 0,
+			"type": "pid",
+			"doohickeyType": "Engine",
+			"doohickeyID": 0,
+			"setpoint": 0,
+			"stateVariable": 2, //this is a really bad example lol
+			"Kp": 1,
+			"Ki": 10,
+			"Kd": 5
+		}
+	],
+	"Events": // id is the index of the pyro/engine in their respective arrays
+	[
+		{
+			"single_fire": true,
+			"cooldown": 0,
+			"action": [
+				{
+					"type": "engine",
+					"id": 0,
+					"param": 1
+				},
+				{
+					"type": "deployment",
+					"id": 1,
+					"param": 50
+				}
+			],
+			"condition": {
+				"operator": "OR",
+				"condition": [
+					{
+						"operator": "MORETHAN",
+						"flightVar": "Acceleration",
+						"component": 1,
+						"threshold": 10
+					},
+					{
+						"operator": "MORETHAN",
+						"flightVar": "Velocity",
+						"component": 1,
+						"threshold": 15
+					}
+				]
 			}
 		}
 	]
-	
 }

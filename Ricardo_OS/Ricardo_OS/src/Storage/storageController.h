@@ -15,6 +15,8 @@ class stateMachine; //forward declaration to prevent ciruclar dependancy
 enum class STORAGE_DEVICE:uint8_t{
     MICROSD,
     FLASH,
+    SD1,
+    SD2,
     NONE 
 };
 

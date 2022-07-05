@@ -21,8 +21,8 @@ void Preflight::initialise(){
     //load the rocket routing table
 
     RoutingTable flightRouting;
-    flightRouting.setRoute((uint8_t)DEFAULT_ADDRESS::GROUNDSTATION,Route{2,1,{}});
-    flightRouting.setRoute((uint8_t)DEFAULT_ADDRESS::DESKTOP,Route{2,2,{}});
+    flightRouting.setRoute((uint8_t)DEFAULT_ADDRESS::GROUNDSTATION_GATEWAY,Route{2,1,{}});
+    flightRouting.setRoute((uint8_t)DEFAULT_ADDRESS::GROUNDSTATION,Route{2,2,{}});
     _sm->networkmanager.setRoutingTable(flightRouting);
     _sm->networkmanager.updateBaseTable(); // save the new base table
 
