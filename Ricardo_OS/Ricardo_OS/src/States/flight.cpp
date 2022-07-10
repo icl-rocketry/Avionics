@@ -52,7 +52,7 @@ bool Flight::apogeeDetect(){ // 20hz
         altitudeHistory.at(1) = altitudeHistory.at(2);
         altitudeHistory.at(2) = _sm->sensors.getData().baro.alt;
 
-        if ( (altitudeHistory.at(2) < altitudeHistory.at(1)) && (altitudeHistory.at(1) < altitudeHistory.at(0)) ){
+        if ( (altitudeHistory.at(2) < altitudeHistory.at(1)) && (altitudeHistory.at(1) < altitudeHistory.at(0)) && abs(altitudeHistory.at(2) - altitudeHistory.at(0)) > 2){
             return true;
         }
     }

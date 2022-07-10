@@ -54,7 +54,7 @@ stateMachine::stateMachine() :
     logcontroller(&storagecontroller,networkmanager),
     systemstatus(&logcontroller),
     usbserial(Serial,systemstatus,logcontroller),
-    radio(vspi,systemstatus,logcontroller),
+    radio(hspi,systemstatus,logcontroller),
     canbus(systemstatus,logcontroller,3),
     networkmanager(static_cast<uint8_t>(DEFAULT_ADDRESS::ROCKET),NODETYPE::HUB,true),
     commandhandler(this),

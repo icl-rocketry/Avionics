@@ -49,8 +49,8 @@ Sensors::Sensors(SPIClass& spi,TwoWire& I2C,SystemStatus& systemstatus,LogContro
 void Sensors::setup(JsonObjectConst config){
     using namespace JsonConfigHelper;
     //default axes order and flip
-    std::array<uint8_t,3> axesOrder{0,1,2};
-    std::array<bool,3> axesFlip{0,0,0};
+    std::array<uint8_t,3> axesOrder{2,1,0};
+    std::array<bool,3> axesFlip{1,1,1};
 
     setIfContains(config,"X_AXIS",axesOrder[0],false);
     setIfContains(config,"Y_AXIS",axesOrder[1],false);
